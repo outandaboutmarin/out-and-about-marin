@@ -1,0 +1,41 @@
+name: Daily Event Scraper
+
+on:
+  schedule:
+    # Runs every morning at 6:00 AM Pacific Time (14:00 UTC)
+    - cron: '0 14 * * *'
+  # Also allows you to run it manually from GitHub if needed
+  workflow_dispatch:
+
+jobs:
+  update-events:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+
+    steps:
+      # Step 1: Check out your repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Step 3: Run the scraper
+      - name: Run daily scraper
+        env:
+          BIBLIOCOMMONS_API_KEY: ${{ secrets.BIBLIOCOMMONS_API_KEY }}
+        run: python scraper.py
+
+      # Step 4: Commit and push any changes back to GitHub
+      - name: Commit updated events
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Out AND About Marin Bot"
+          git add events.json scraper_log.txt
+          git diff --staged --quiet || git commit -m "Daily update: events refreshed $(date +'%Y-%m-%d')"
+          git push

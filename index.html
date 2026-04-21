@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Out AND About Marin — family events and activities across Marin County, California">
+<title>Out AND About Marin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- PLACEHOLDER: Replace with your Google Analytics ID -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+</script> -->
+
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --navy: #0D1B3E;
+    --navy-light: #1a2d5a;
+    --navy-dim: rgba(13,27,62,0.85);
+    --white: #ffffff;
+    --off-white: #F4F3EF;
+    --card-bg: #ffffff;
+    --card-border: #E2DED6;
+    --text-primary: #1A1A1A;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Jost', sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-pill: 999px;
+    /* Type colors */
+    --library-bg: #E6F1FB; --library-text: #0C447C;
+    --kids-bg: #FAECE7; --kids-text: #993C1D;
+    --fitness-bg: #E1F5EE; --fitness-text: #085041;
+    --festival-bg: #FAEEDA; --festival-text: #633806;
+    --market-bg: #EAF3DE; --market-text: #3B6D11;
+    --community-bg: #FBEAF0; --community-text: #72243E;
+    /* Day colors */
+    --mon-bg: #E6F1FB; --mon-text: #0C447C;
+    --tue-bg: #EEEDFE; --tue-text: #3C3489;
+    --wed-bg: #E1F5EE; --wed-text: #085041;
+    --thu-bg: #FAEEDA; --thu-text: #633806;
+    --fri-bg: #FAECE7; --fri-text: #712B13;
+    --sat-bg: #FBEAF0; --sat-text: #72243E;
+    --sun-bg: #F1EFE8; --sun-text: #444441;
+  }
+
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--off-white);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Login Screen ── */
+  #loginScreen {
+    min-height: 100vh;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+  }
+  .login-icon {
+    width: 72px; height: 72px;
+    background: var(--navy);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .login-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-align: center;
+    line-height: 1.25;
+    margin-bottom: 0.25rem;
+  }
+  .login-title .and {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    opacity: 0.7;
+    vertical-align: middle;
+    position: relative; top: -2px;
+    margin: 0 3px;
+  }
+  .login-tagline {
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .login-form { width: 100%; max-width: 360px; }
+  .field-group { margin-bottom: 1rem; }
+  .field-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+  .field-input {
+    width: 100%;
+    background: #F8F8F6;
+    border: 1px solid #E2E0D8;
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 0.875rem;
+    font-size: 0.9rem;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .field-input:focus { border-color: var(--navy); }
+  .btn-primary {
+    width: 100%;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.875rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--navy-light); }
+  .or-divider {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin: 0.875rem 0;
+  }
+  .or-line { flex: 1; height: 1px; background: #EBEBEB; }
+  .or-text { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .btn-secondary {
+    width: 100%;
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    border-radius: var(--radius-sm);
+    padding: 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-secondary:hover { background: #F0EEF8; }
+  .privacy-note {
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 1.25rem;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .login-error {
+    color: #A32D2D;
+    font-size: 0.75rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    display: none;
+  }
+
+  /* ── Signup Step 2 ── */
+  #signupScreen2 {
+    min-height: 100vh;
+    background: var(--white);
+    display: none;
+    flex-direction: column;
+    padding: 0;
+  }
+  .signup-header {
+    background: var(--navy);
+    padding: 1rem 1.25rem 1.25rem;
+  }
+  .back-btn {
+    display: flex; align-items: center; gap: 0.375rem;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.7rem;
+    cursor: pointer;
+    margin-bottom: 0.875rem;
+    background: none; border: none; font-family: var(--font-sans);
+  }
+  .signup-title-white {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+  .signup-sub-white {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+  }
+  .signup-body { padding: 1.25rem; flex: 1; }
+  .step-dots { display: flex; justify-content: center; gap: 5px; margin-bottom: 1.25rem; }
+  .step-dot { width: 6px; height: 6px; border-radius: 50%; background: #E2E0D8; }
+  .step-dot.active { background: var(--navy); }
+  .age-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
+  .age-chip {
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid #E2E0D8;
+    background: var(--white);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: var(--font-sans);
+  }
+  .age-chip.selected { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .referral-select {
+    width: 100%;
+    background: #F8F8F6;
+    border: 1px solid #E2E0D8;
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 0.875rem;
+    font-size: 0.85rem;
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    outline: none;
+    margin-top: 0.4rem;
+  }
+  .field-divider { height: 0.5px; background: #EDEAE4; margin: 1rem 0; }
+
+  /* ── Main App ── */
+  #appScreen { display: none; flex-direction: column; min-height: 100vh; }
+
+  /* Header */
+  .app-header {
+    background: var(--navy);
+    padding: 0.875rem 1rem 0.7rem;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .header-left { display: flex; align-items: center; gap: 0.625rem; }
+  .header-title {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+  }
+  .header-title .and {
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    vertical-align: middle;
+    position: relative; top: -1px;
+    margin: 0 2px;
+    opacity: 0.75;
+  }
+  .header-sub { font-size: 0.6rem; color: #7A8AB0; margin-top: 2px; font-weight: 300; letter-spacing: 0.05em; }
+  .search-btn {
+    width: 30px; height: 30px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    background: var(--navy);
+    padding: 0 0.75rem 0.625rem;
+    display: flex; flex-wrap: wrap; gap: 5px;
+    position: sticky; top: 60px; z-index: 99;
+  }
+  .filter-pill {
+    display: flex; align-items: center; gap: 3px;
+    background: rgba(255,255,255,0.1);
+    border: 0.5px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-pill);
+    padding: 3px 9px;
+    cursor: pointer;
+    transition: background 0.15s;
+    position: relative;
+  }
+  .filter-pill.active { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.45); }
+  .filter-pill-label { font-size: 0.625rem; font-weight: 500; color: white; white-space: nowrap; letter-spacing: 0.03em; }
+  .filter-arrow { font-size: 0.45rem; color: rgba(255,255,255,0.55); }
+  .filter-pill.active .filter-arrow { color: white; }
+  .pill-badge {
+    background: rgba(255,255,255,0.9);
+    color: var(--navy);
+    border-radius: var(--radius-pill);
+    font-size: 0.55rem;
+    font-weight: 700;
+    padding: 0 4px;
+    min-width: 14px;
+    text-align: center;
+    line-height: 14px;
+    height: 14px;
+    display: none;
+  }
+
+  /* Dropdowns */
+  .dropdown-panel {
+    position: fixed;
+    top: 116px;
+    left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 1px solid #E5E2DA;
+    overflow-y: auto;
+    max-height: 0;
+    transition: max-height 0.22s ease;
+    z-index: 98;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .dropdown-panel.open { max-height: 260px; }
+  .dropdown-header {
+    padding: 0.5rem 1rem 0.35rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 0.5px solid #EDEAE4;
+    position: sticky; top: 0; background: var(--white);
+  }
+  .dropdown-header-label { font-size: 0.625rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .dropdown-clear { font-size: 0.625rem; font-weight: 500; color: var(--navy); cursor: pointer; }
+  .dd-option {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
+    font-family: var(--font-sans);
+  }
+  .dd-option:hover { background: var(--off-white); }
+  .dd-label { flex: 1; display: flex; align-items: center; gap: 6px; }
+  .type-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dd-checkbox {
+    width: 14px; height: 14px; border-radius: 3px;
+    border: 1.5px solid #C8C4BA; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .dd-option.selected .dd-checkbox { background: var(--navy); border-color: var(--navy); }
+  .dd-option.selected .dd-checkbox::after { content: '✓'; font-size: 9px; color: white; font-weight: 700; line-height: 1; }
+  .dd-option.selected { font-weight: 500; }
+
+  /* Results bar */
+  .results-bar {
+    background: var(--off-white);
+    padding: 0.35rem 0.75rem;
+    border-bottom: 0.5px solid #E5E2DA;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .results-count { font-size: 0.65rem; color: var(--text-muted); }
+  .clear-all-btn { font-size: 0.65rem; color: var(--navy); font-weight: 500; cursor: pointer; }
+
+  /* Coming up section */
+  .coming-up-section { padding: 0.75rem 0.75rem 0; }
+  .coming-up-title {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .coming-up-scroll { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; }
+  .coming-up-scroll::-webkit-scrollbar { display: none; }
+  .coming-card {
+    background: var(--navy);
+    border-radius: var(--radius-md);
+    padding: 0.625rem 0.875rem;
+    min-width: 180px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .coming-date { font-size: 0.6rem; color: rgba(255,255,255,0.6); font-weight: 400; margin-bottom: 3px; }
+  .coming-title { font-family: var(--font-serif); font-size: 0.8rem; font-weight: 600; color: var(--white); line-height: 1.25; margin-bottom: 3px; }
+  .coming-loc { font-size: 0.6rem; color: rgba(255,255,255,0.55); }
+
+  /* Event cards */
+  .cards-body { padding: 0.5rem 0.5rem 5rem; display: flex; flex-direction: column; gap: 5px; }
+  .section-day-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.25rem 0.2rem;
+  }
+  .event-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 0.5rem 0.75rem;
+    border: 0.5px solid var(--card-border);
+    display: flex; align-items: center; gap: 0.625rem;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.1s;
+  }
+  .event-card:active { transform: scale(0.99); }
+  .event-card.featured { border-color: var(--navy); border-width: 1.5px; }
+  .featured-badge {
+    font-size: 0.55rem; font-weight: 600;
+    padding: 1px 6px; border-radius: var(--radius-pill);
+    background: var(--navy); color: white;
+    display: inline-block; margin-bottom: 3px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .card-left { flex: 1; min-width: 0; }
+  .card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.25;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .card-venue {
+    font-size: 0.625rem; color: var(--text-muted);
+    margin-top: 2px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .card-meta { display: flex; gap: 3px; margin-top: 4px; flex-wrap: nowrap; align-items: center; }
+  .tag {
+    font-size: 0.575rem; font-weight: 500;
+    padding: 1px 6px; border-radius: var(--radius-pill);
+    white-space: nowrap; display: inline-block;
+  }
+  .tag-library { background: var(--library-bg); color: var(--library-text); }
+  .tag-kids { background: var(--kids-bg); color: var(--kids-text); }
+  .tag-fitness { background: var(--fitness-bg); color: var(--fitness-text); }
+  .tag-festival { background: var(--festival-bg); color: var(--festival-text); }
+  .tag-market { background: var(--market-bg); color: var(--market-text); }
+  .tag-community { background: var(--community-bg); color: var(--community-text); }
+  .tag-free { background: #E1F5EE; color: #085041; }
+  .tag-paid { background: #FAEEDA; color: #633806; }
+  .tag-age { background: #EEEDFE; color: #3C3489; }
+  .tag-closed { background: #FCEBEB; color: #791F1F; }
+  .day-pill {
+    font-size: 0.625rem; font-weight: 500;
+    padding: 3px 8px; border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+  .day-Monday { background: var(--mon-bg); color: var(--mon-text); }
+  .day-Tuesday { background: var(--tue-bg); color: var(--tue-text); }
+  .day-Wednesday { background: var(--wed-bg); color: var(--wed-text); }
+  .day-Thursday { background: var(--thu-bg); color: var(--thu-text); }
+  .day-Friday { background: var(--fri-bg); color: var(--fri-text); }
+  .day-Saturday { background: var(--sat-bg); color: var(--sat-text); }
+  .day-Sunday { background: var(--sun-bg); color: var(--sun-text); }
+  .card-time { font-size: 0.625rem; color: var(--text-muted); font-weight: 300; white-space: nowrap; }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center; padding: 3rem 1.5rem;
+    display: none; flex-direction: column; align-items: center; gap: 0.5rem;
+  }
+  .empty-state.visible { display: flex; }
+  .empty-title { font-family: var(--font-serif); font-size: 1rem; color: var(--text-secondary); }
+  .empty-sub { font-size: 0.75rem; color: var(--text-muted); }
+  .empty-clear { font-size: 0.75rem; color: var(--navy); font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+
+  /* Detail screen */
+  #detailScreen {
+    display: none; flex-direction: column;
+    min-height: 100vh; background: var(--off-white);
+  }
+  .detail-header {
+    background: var(--navy);
+    padding: 0.875rem 1rem 1.25rem;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .detail-back {
+    display: flex; align-items: center; gap: 5px;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.7rem; cursor: pointer;
+    margin-bottom: 0.875rem;
+    background: none; border: none;
+    font-family: var(--font-sans);
+  }
+  .detail-type-badge {
+    display: inline-block;
+    font-size: 0.575rem; font-weight: 600;
+    padding: 2px 8px; border-radius: var(--radius-pill);
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .detail-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem; font-weight: 600;
+    color: var(--white); line-height: 1.3;
+    margin-bottom: 0.25rem;
+  }
+  .detail-org { font-size: 0.7rem; color: rgba(255,255,255,0.6); font-weight: 300; }
+  .detail-body { flex: 1; overflow-y: auto; padding: 0.625rem 0.625rem 1.5rem; }
+  .detail-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    border: 0.5px solid var(--card-border);
+    overflow: hidden; margin-bottom: 0.625rem;
+  }
+  .detail-section { padding: 0.75rem 0.875rem; border-bottom: 0.5px solid #EDEAE4; }
+  .detail-section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 0.6rem; font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 0.625rem;
+  }
+  .detail-row { display: flex; align-items: flex-start; gap: 0.625rem; margin-bottom: 0.5rem; }
+  .detail-row:last-child { margin-bottom: 0; }
+  .detail-icon {
+    width: 28px; height: 28px; border-radius: var(--radius-sm);
+    background: #F0EEE8;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .detail-row-content { flex: 1; }
+  .detail-row-label { font-size: 0.625rem; color: var(--text-muted); margin-bottom: 1px; }
+  .detail-row-value { font-size: 0.75rem; color: var(--text-primary); font-weight: 500; }
+  .detail-row-sub { font-size: 0.625rem; color: var(--text-muted); margin-top: 1px; }
+  .detail-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .detail-tag {
+    font-size: 0.65rem; font-weight: 500;
+    padding: 3px 9px; border-radius: var(--radius-pill);
+  }
+  .description-text {
+    font-size: 0.75rem; color: #444;
+    line-height: 1.65; font-weight: 300;
+  }
+  .notes-text {
+    font-size: 0.7rem; color: #854F0B;
+    line-height: 1.5; font-weight: 400;
+    background: #FAEEDA; border-radius: var(--radius-sm);
+    padding: 0.5rem 0.75rem; margin-top: 0.5rem;
+  }
+
+  /* Action buttons */
+  .action-row { display: flex; gap: 0.5rem; padding: 0.5rem 0.625rem 0; }
+  .action-btn {
+    flex: 1; border-radius: var(--radius-sm);
+    padding: 0.75rem 0.5rem;
+    font-size: 0.7rem; font-weight: 600;
+    font-family: var(--font-sans);
+    letter-spacing: 0.04em; text-align: center;
+    cursor: pointer; display: flex; align-items: center;
+    justify-content: center; gap: 5px; text-decoration: none;
+  }
+  .btn-maps { background: var(--white); color: var(--navy); border: 1px solid var(--navy); }
+  .btn-website { background: var(--navy); color: var(--white); border: none; }
+  .secondary-row { display: flex; gap: 0.5rem; padding: 0.5rem 0.625rem 0; }
+  .secondary-btn {
+    flex: 1; border-radius: var(--radius-sm);
+    padding: 0.625rem 0.5rem;
+    font-size: 0.7rem; font-weight: 500;
+    font-family: var(--font-sans);
+    text-align: center; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    background: #F4F3EF; color: var(--text-primary);
+    border: 0.5px solid #DDD9D0;
+    transition: all 0.15s;
+  }
+  .secondary-btn.saved { background: #FBEAF0; border-color: #ED93B1; color: #72243E; }
+
+  /* Share sheet */
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 200; display: none;
+  }
+  .overlay.open { display: block; }
+  .share-sheet {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    border-radius: 16px 16px 0 0;
+    padding: 1rem 1rem 2rem;
+    z-index: 201;
+    transform: translateY(100%);
+    transition: transform 0.25s ease;
+  }
+  .share-sheet.open { transform: translateY(0); }
+  .share-handle { width: 32px; height: 3px; background: #DDD; border-radius: 2px; margin: 0 auto 1rem; }
+  .share-title { font-family: var(--font-serif); font-size: 0.9rem; font-weight: 600; color: var(--navy); text-align: center; margin-bottom: 1rem; }
+  .share-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
+  .share-option { display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
+  .share-option-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .share-option-label { font-size: 0.6rem; color: var(--text-secondary); text-align: center; }
+  .share-link-row {
+    background: var(--off-white); border-radius: var(--radius-sm);
+    padding: 0.625rem 0.75rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+  }
+  .share-link-text { font-size: 0.65rem; color: var(--text-muted); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .share-copy-btn { font-size: 0.65rem; font-weight: 600; color: var(--navy); cursor: pointer; white-space: nowrap; }
+
+  /* Save toast */
+  .save-toast {
+    position: fixed; bottom: 75px; left: 0.625rem; right: 0.625rem;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    border: 0.5px solid var(--card-border);
+    padding: 0.875rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    z-index: 150;
+    transform: translateY(120%);
+    transition: transform 0.3s ease;
+  }
+  .save-toast.show { transform: translateY(0); }
+  .toast-title { font-family: var(--font-serif); font-size: 0.8rem; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+  .toast-sub { font-size: 0.65rem; color: var(--text-muted); margin-bottom: 0.625rem; line-height: 1.5; }
+  .toast-pills { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 0.625rem; }
+  .toast-pill { font-size: 0.625rem; font-weight: 500; padding: 2px 8px; border-radius: var(--radius-pill); background: var(--library-bg); color: var(--library-text); }
+  .toast-btns { display: flex; gap: 0.5rem; }
+  .toast-save { flex: 1; background: var(--navy); color: white; border: none; border-radius: var(--radius-sm); padding: 0.5rem; font-size: 0.7rem; font-weight: 600; font-family: var(--font-sans); cursor: pointer; letter-spacing: 0.05em; text-transform: uppercase; }
+  .toast-skip { flex: 1; background: #F4F3EF; color: var(--text-muted); border: none; border-radius: var(--radius-sm); padding: 0.5rem; font-size: 0.7rem; font-family: var(--font-sans); cursor: pointer; }
+
+  /* Profile screen */
+  #profileScreen {
+    display: none; flex-direction: column; min-height: 100vh;
+  }
+  .profile-header {
+    background: var(--navy);
+    padding: 0.875rem 1rem 1rem;
+  }
+  .profile-header-title { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: var(--white); }
+  .profile-header-sub { font-size: 0.65rem; color: #7A8AB0; margin-top: 2px; font-weight: 300; }
+  .profile-body { flex: 1; padding: 0.625rem; overflow-y: auto; padding-bottom: 5rem; }
+  .profile-section { background: var(--white); border-radius: var(--radius-md); border: 0.5px solid var(--card-border); overflow: hidden; margin-bottom: 0.625rem; }
+  .profile-section-header { padding: 0.625rem 0.875rem; border-bottom: 0.5px solid #EDEAE4; display: flex; justify-content: space-between; align-items: center; }
+  .ps-title { font-family: var(--font-serif); font-size: 0.8rem; font-weight: 600; color: var(--navy); }
+  .ps-edit { font-size: 0.65rem; font-weight: 500; color: var(--navy); cursor: pointer; }
+  .profile-row { padding: 0.6rem 0.875rem; border-bottom: 0.5px solid #EDEAE4; display: flex; justify-content: space-between; align-items: center; }
+  .profile-row:last-child { border-bottom: none; }
+  .pr-label { font-size: 0.7rem; color: var(--text-muted); }
+  .pr-value { font-size: 0.7rem; color: var(--text-primary); font-weight: 500; text-align: right; max-width: 60%; }
+  .pr-pills { display: flex; flex-wrap: wrap; gap: 3px; justify-content: flex-end; }
+  .pr-pill { font-size: 0.6rem; font-weight: 500; padding: 2px 7px; border-radius: var(--radius-pill); background: var(--library-bg); color: var(--library-text); }
+  .pr-notset { font-size: 0.7rem; color: #BBB; font-style: italic; }
+  .signout-btn { width: 100%; background: transparent; border: 1px solid #E2E0D8; color: var(--text-muted); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.75rem; font-family: var(--font-sans); cursor: pointer; margin-top: 0.5rem; }
+
+  /* Saved events section */
+  .saved-event-card {
+    background: var(--card-bg); border-radius: 10px; padding: 0.5rem 0.75rem;
+    border: 0.5px solid var(--card-border); display: flex; align-items: center;
+    gap: 0.625rem; cursor: pointer; margin: 0 0.875rem 0.5rem;
+  }
+  .no-saved { padding: 1.5rem; text-align: center; font-size: 0.75rem; color: var(--text-muted); }
+
+  /* Bottom nav */
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    border-top: 1px solid #EDEAE4;
+    padding: 0.5rem 0 0.625rem;
+    display: flex; justify-content: space-around;
+    z-index: 300;
+  }
+  .nav-item {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px; font-size: 0.55rem; color: var(--text-muted);
+    letter-spacing: 0.05em; text-transform: uppercase;
+    cursor: pointer; min-width: 60px;
+    background: none; border: none; font-family: var(--font-sans);
+  }
+  .nav-item.active { color: var(--navy); }
+  .nav-icon { width: 18px; height: 18px; }
+
+  /* Desktop layout */
+  @media (min-width: 768px) {
+    #loginScreen { background: var(--off-white); }
+    .login-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem; width: 100%; max-width: 420px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      border: 0.5px solid #E2E0D8;
+    }
+    #appScreen { max-width: 480px; margin: 0 auto; }
+    .app-header { border-radius: 0; }
+    .bottom-nav { max-width: 480px; left: 50%; transform: translateX(-50%); }
+    .dropdown-panel { max-width: 480px; left: 50%; transform: translateX(-50%); }
+    .share-sheet { max-width: 480px; left: 50%; transform: translateX(-50%) translateY(100%); }
+    .share-sheet.open { transform: translateX(-50%) translateY(0); }
+    .save-toast { max-width: 460px; left: 50%; transform: translateX(-50%) translateY(120%); }
+    .save-toast.show { transform: translateX(-50%) translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     LOGIN SCREEN
+═══════════════════════════════════════════════════ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <!-- Logo -->
+    <div style="display:flex;justify-content:center;margin-bottom:1rem">
+      <div class="login-icon">
+        <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
+          <path d="M30 44L28 42L30 39L29 36L31 34L33 31L33 28L35 25L36 22L38 20L38 17L36 15L34 14L33 12L31 11L28 10L25 10L22 11L19 12L16 11L13 10L10 10L8 11L7 13L7 15L8 17L9 19L8 21L6 22L4 21L3 22L3 24L5 26L7 26L9 27L10 29L10 31L11 33L13 34L14 36L15 38L17 40L19 41L21 42L23 43L26 44Z" fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" opacity="0.9"/>
+          <path d="M8 17L5 16L3 15L2 13L3 11L5 10L7 11L7 13" fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" opacity="0.9"/>
+          <path d="M7 15L10 17L13 18L14 20L13 22" fill="none" stroke="white" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" opacity="0.7"/>
+          <path d="M30 39L32 40L34 41L35 43L33 44L31 44" fill="none" stroke="white" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" opacity="0.75"/>
+        </svg>
+      </div>
+    </div>
+    <h1 class="login-title">Out <span class="and">AND</span> About Marin</h1>
+    <p class="login-tagline">Discover · Explore · Connect</p>
+
+    <!-- Returning user login -->
+    <div id="loginForm">
+      <div class="field-group">
+        <label class="field-label" for="loginPhone">Phone Number</label>
+        <input class="field-input" type="tel" id="loginPhone" placeholder="(415) 555–0000" autocomplete="tel">
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="loginPin">4-Digit PIN</label>
+        <input class="field-input" type="password" id="loginPin" placeholder="••••" maxlength="4" inputmode="numeric" autocomplete="current-password">
+      </div>
+      <div class="login-error" id="loginError">Phone number or PIN not recognized. Please try again.</div>
+      <button class="btn-primary" onclick="handleLogin()">Sign In</button>
+      <div class="or-divider"><div class="or-line"></div><div class="or-text">New here</div><div class="or-line"></div></div>
+      <button class="btn-secondary" onclick="showSignupStep1()">Create Account</button>
+      <p class="privacy-note">Your phone number is used only to identify your account.<br>It will never be shared or sold.</p>
+    </div>
+
+    <!-- New user signup Step 1 (hidden by default) -->
+    <div id="signupForm1" style="display:none">
+      <div style="text-align:center;margin-bottom:1.25rem">
+        <div class="step-dots" style="display:flex;justify-content:center;gap:5px;margin-bottom:0.5rem">
+          <div class="step-dot active" style="width:6px;height:6px;border-radius:50%;background:var(--navy)"></div>
+          <div class="step-dot" style="width:6px;height:6px;border-radius:50%;background:#E2E0D8"></div>
+        </div>
+        <div style="font-size:0.7rem;color:var(--text-muted);font-weight:300">Step 1 of 2 — your details</div>
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="signupName">First Name</label>
+        <input class="field-input" type="text" id="signupName" placeholder="Sarah" autocomplete="given-name">
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="signupPhone">Phone Number</label>
+        <input class="field-input" type="tel" id="signupPhone" placeholder="(415) 555–0000" autocomplete="tel">
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="signupPin">Create a 4-Digit PIN</label>
+        <input class="field-input" type="password" id="signupPin" placeholder="••••" maxlength="4" inputmode="numeric" autocomplete="new-password">
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="signupZip">ZIP Code</label>
+        <input class="field-input" type="text" id="signupZip" placeholder="94901" maxlength="5" inputmode="numeric">
+      </div>
+      <div class="login-error" id="signupError1"></div>
+      <button class="btn-primary" onclick="goToSignupStep2()">Continue →</button>
+      <button class="btn-secondary" style="margin-top:0.625rem" onclick="showLoginForm()">‹ Back to sign in</button>
+      <p class="privacy-note">Your phone number is used only to identify your account.<br>It will never be shared or sold.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SIGNUP SCREEN STEP 2
+═══════════════════════════════════════════════════ -->
+<div id="signupScreen2">
+  <div class="signup-header">
+    <button class="back-btn" onclick="showLogin()">‹ Back to sign in</button>
+    <div class="signup-title-white">About your family</div>
+    <div class="signup-sub-white">Step 2 of 2 — helps us personalize your feed</div>
+  </div>
+  <div style="background:#0D1B3E;padding:0 1.25rem 0.75rem">
+    <div class="step-dots"><div class="step-dot"></div><div class="step-dot active"></div></div>
+  </div>
+  <div class="signup-body">
+    <div class="field-group">
+      <label class="field-label">How old are your kids? <span style="text-transform:none;letter-spacing:0;font-weight:300;color:#BBB">(optional — select all that apply)</span></label>
+      <div class="age-chips">
+        <div class="age-chip" onclick="toggleAge(this)" data-age="0-12 months">Under 1</div>
+        <div class="age-chip" onclick="toggleAge(this)" data-age="1-3 yrs">1–3 yrs</div>
+        <div class="age-chip" onclick="toggleAge(this)" data-age="3-5 yrs">3–5 yrs</div>
+        <div class="age-chip" onclick="toggleAge(this)" data-age="5-8 yrs">5–8 yrs</div>
+        <div class="age-chip" onclick="toggleAge(this)" data-age="8-12 yrs">8–12 yrs</div>
+        <div class="age-chip" onclick="toggleAge(this)" data-age="No kids yet">No kids yet</div>
+      </div>
+    </div>
+    <div class="field-divider"></div>
+    <div class="field-group">
+      <label class="field-label">How did you hear about us? <span style="text-transform:none;letter-spacing:0;font-weight:300;color:#BBB">(optional)</span></label>
+      <select class="referral-select" id="referralSource">
+        <option value="">Select one…</option>
+        <option value="friend">A friend or family member</option>
+        <option value="social">Social media</option>
+        <option value="google">Google search</option>
+        <option value="nextdoor">Nextdoor</option>
+        <option value="library">At the library</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <button class="btn-primary" style="margin-top:1.5rem" onclick="completeSignup()">Let's go →</button>
+    <p class="privacy-note" style="margin-top:1rem">You can update these preferences anytime in your profile settings.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     MAIN APP SCREEN
+═══════════════════════════════════════════════════ -->
+<div id="appScreen">
+
+  <!-- Header -->
+  <div class="app-header">
+    <div class="header-left">
+      <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+        <path d="M30 44L28 42L30 39L29 36L31 34L33 31L33 28L35 25L36 22L38 20L38 17L36 15L34 14L33 12L31 11L28 10L25 10L22 11L19 12L16 11L13 10L10 10L8 11L7 13L7 15L8 17L9 19L8 21L6 22L4 21L3 22L3 24L5 26L7 26L9 27L10 29L10 31L11 33L13 34L14 36L15 38L17 40L19 41L21 42L23 43L26 44Z" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M8 17L5 16L3 15L2 13L3 11L5 10L7 11L7 13" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M7 15L10 17L13 18L14 20L13 22" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M30 39L32 40L34 41L35 43L33 44L31 44" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="header-title">Out <span class="and">AND</span> About Marin</div>
+        <div class="header-sub" id="headerSub">Loading events…</div>
+      </div>
+    </div>
+    <div class="search-btn">
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4" stroke="white" stroke-width="1.5"/><line x1="9.5" y1="9.5" x2="13" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+
+  <!-- Filter pills -->
+  <div class="filter-bar">
+    <div class="filter-pill" id="pill-type" onclick="toggleDropdown('type')">
+      <span class="filter-pill-label" id="lbl-type">Type</span>&nbsp;<span class="filter-arrow">▼</span>
+    </div>
+    <div class="filter-pill" id="pill-location" onclick="toggleDropdown('location')">
+      <span class="filter-pill-label" id="lbl-location">Location</span>&nbsp;<span class="filter-arrow">▼</span>
+    </div>
+    <div class="filter-pill" id="pill-day" onclick="toggleDropdown('day')">
+      <span class="filter-pill-label" id="lbl-day">Day</span>&nbsp;<span class="filter-arrow">▼</span>
+    </div>
+    <div class="filter-pill" id="pill-time" onclick="toggleDropdown('time')">
+      <span class="filter-pill-label" id="lbl-time">Time</span>&nbsp;<span class="filter-arrow">▼</span>
+    </div>
+    <div class="filter-pill" id="pill-age" onclick="toggleDropdown('age')">
+      <span class="filter-pill-label" id="lbl-age">Age</span>&nbsp;<span class="filter-arrow">▼</span>
+    </div>
+    <div class="filter-pill" id="pill-cost" onclick="toggleDropdown('cost')">
+      <span class="filter-pill-label" id="lbl-cost">Cost</span>&nbsp;<span class="filter-arrow">▼</span>
+    </div>
+  </div>
+
+  <!-- Dropdowns -->
+  <div class="dropdown-panel" id="dd-type">
+    <div class="dropdown-header">
+      <span class="dropdown-header-label">Type of event</span>
+      <span class="dropdown-clear" onclick="clearFilter('type')">Clear</span>
+    </div>
+    <div id="dd-type-inner"></div>
+  </div>
+  <div class="dropdown-panel" id="dd-location">
+    <div class="dropdown-header">
+      <span class="dropdown-header-label">Location</span>
+      <span class="dropdown-clear" onclick="clearFilter('location')">Clear</span>
+    </div>
+    <div id="dd-location-inner"></div>
+  </div>
+  <div class="dropdown-panel" id="dd-day">
+    <div class="dropdown-header">
+      <span class="dropdown-header-label">Day of week</span>
+      <span class="dropdown-clear" onclick="clearFilter('day')">Clear</span>
+    </div>
+    <div id="dd-day-inner"></div>
+  </div>
+  <div class="dropdown-panel" id="dd-time">
+    <div class="dropdown-header">
+      <span class="dropdown-header-label">Time of day</span>
+      <span class="dropdown-clear" onclick="clearFilter('time')">Clear</span>
+    </div>
+    <div id="dd-time-inner"></div>
+  </div>
+  <div class="dropdown-panel" id="dd-age">
+    <div class="dropdown-header">
+      <span class="dropdown-header-label">Age group</span>
+      <span class="dropdown-clear" onclick="clearFilter('age')">Clear</span>
+    </div>
+    <div id="dd-age-inner"></div>
+  </div>
+  <div class="dropdown-panel" id="dd-cost">
+    <div class="dropdown-header">
+      <span class="dropdown-header-label">Cost</span>
+      <span class="dropdown-clear" onclick="clearFilter('cost')">Clear</span>
+    </div>
+    <div id="dd-cost-inner"></div>
+  </div>
+
+  <!-- Results bar -->
+  <div class="results-bar">
+    <span class="results-count" id="resultsCount">Loading…</span>
+    <span class="clear-all-btn" onclick="clearAllFilters()">Clear all</span>
+  </div>
+
+  <!-- Main content -->
+  <div id="mainContent">
+    <!-- Coming up section -->
+    <div class="coming-up-section" id="comingUpSection" style="display:none">
+      <div class="coming-up-title">Coming up soon</div>
+      <div class="coming-up-scroll" id="comingUpScroll"></div>
+    </div>
+    <!-- Cards -->
+    <div class="cards-body" id="cardsBody"></div>
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-title">No events found</div>
+      <div class="empty-sub">Try adjusting your filters</div>
+      <div class="empty-clear" onclick="clearAllFilters()">Clear all filters</div>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" id="nav-events" onclick="showScreen('app')">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="7" x2="15" y2="7" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="13" x2="11" y2="13" stroke="currentColor" stroke-width="1.2"/></svg>
+      Events
+    </button>
+    <button class="nav-item" id="nav-profile" onclick="showScreen('profile')">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Profile
+    </button>
+    <button class="nav-item" id="nav-settings" onclick="showScreen('settings')">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Settings
+    </button>
+  </nav>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     DETAIL SCREEN
+═══════════════════════════════════════════════════ -->
+<div id="detailScreen">
+  <div class="detail-header">
+    <button class="detail-back" onclick="closeDetail()">‹ Back to events</button>
+    <div class="detail-type-badge" id="detailTypeBadge"></div>
+    <div class="detail-title" id="detailTitle"></div>
+    <div class="detail-org" id="detailOrg"></div>
+  </div>
+  <div class="detail-body">
+    <div class="detail-card">
+      <div class="detail-section">
+        <div class="section-label">When</div>
+        <div class="detail-row">
+          <div class="detail-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="2" stroke="#0D1B3E" stroke-width="1.2"/><line x1="1" y1="5.5" x2="13" y2="5.5" stroke="#0D1B3E" stroke-width="1.2"/><line x1="4" y1="1" x2="4" y2="3.5" stroke="#0D1B3E" stroke-width="1.2" stroke-linecap="round"/><line x1="10" y1="1" x2="10" y2="3.5" stroke="#0D1B3E" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="detail-row-content">
+            <div class="detail-row-label">Day &amp; time</div>
+            <div class="detail-row-value" id="detailDayTime"></div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#0D1B3E" stroke-width="1.2"/><polyline points="7,4 7,7 9,9" stroke="#0D1B3E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="detail-row-content">
+            <div class="detail-row-label">Cadence</div>
+            <div class="detail-row-value" id="detailCadence"></div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="section-label">Where</div>
+        <div class="detail-row">
+          <div class="detail-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z" stroke="#0D1B3E" stroke-width="1.2"/><circle cx="7" cy="5" r="1.5" stroke="#0D1B3E" stroke-width="1.2"/></svg>
+          </div>
+          <div class="detail-row-content">
+            <div class="detail-row-label">Venue &amp; address</div>
+            <div class="detail-row-value" id="detailVenue"></div>
+            <div class="detail-row-sub" id="detailAddress"></div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="section-label">About this event</div>
+        <div class="description-text" id="detailDescription"></div>
+        <div class="notes-text" id="detailNotes" style="display:none"></div>
+      </div>
+      <div class="detail-section">
+        <div class="section-label">Details</div>
+        <div class="detail-tags" id="detailTags"></div>
+        <div style="margin-top:0.625rem">
+          <div class="detail-row">
+            <div class="detail-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="#0D1B3E" stroke-width="1.2"/><path d="M2 13c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="#0D1B3E" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="detail-row-content">
+              <div class="detail-row-label">Age range</div>
+              <div class="detail-row-value" id="detailAges"></div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="12" height="9" rx="1.5" stroke="#0D1B3E" stroke-width="1.2"/><path d="M1 6h12" stroke="#0D1B3E" stroke-width="1.2"/><path d="M5 3V1.5M9 3V1.5" stroke="#0D1B3E" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="detail-row-content">
+              <div class="detail-row-label">Registration</div>
+              <div class="detail-row-value" id="detailReg"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Actions -->
+    <div class="action-row">
+      <a class="action-btn btn-maps" id="mapsBtn" href="#" target="_blank">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z" stroke="#0D1B3E" stroke-width="1.3"/></svg>
+        Directions
+      </a>
+      <a class="action-btn btn-website" id="websiteBtn" href="#" target="_blank">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c-1.5 2-2 3.5-2 5.5s.5 3.5 2 5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c1.5 2 2 3.5 2 5.5s-.5 3.5-2 5.5" stroke="white" stroke-width="1.2"/><line x1="1.5" y1="7" x2="12.5" y2="7" stroke="white" stroke-width="1.2"/></svg>
+        Visit website
+      </a>
+    </div>
+    <div class="secondary-row">
+      <div class="action-btn secondary-btn" id="saveBtn" onclick="toggleSave()">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" id="heartIcon"><path d="M7 12S1 8 1 4.5A3.5 3.5 0 0 1 7 3a3.5 3.5 0 0 1 6 1.5C13 8 7 12 7 12z" stroke="#1A1A1A" stroke-width="1.2"/></svg>
+        <span id="saveLabel">Save to my list</span>
+      </div>
+      <div class="action-btn secondary-btn" onclick="openShare()">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="11" cy="2.5" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="11" cy="11.5" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="3" cy="7" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><line x1="4.4" y1="6.2" x2="9.6" y2="3.3" stroke="#1A1A1A" stroke-width="1.2"/><line x1="4.4" y1="7.8" x2="9.6" y2="10.7" stroke="#1A1A1A" stroke-width="1.2"/></svg>
+        Share this event
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PROFILE SCREEN
+═══════════════════════════════════════════════════ -->
+<div id="profileScreen">
+  <div class="profile-header">
+    <div class="profile-header-title">My Profile</div>
+    <div class="profile-header-sub" id="profileHeaderSub"></div>
+  </div>
+  <div class="profile-body">
+    <div class="profile-section">
+      <div class="profile-section-header"><div class="ps-title">My details</div><div class="ps-edit">Edit</div></div>
+      <div class="profile-row"><span class="pr-label">Name</span><span class="pr-value" id="profileName">—</span></div>
+      <div class="profile-row"><span class="pr-label">Phone</span><span class="pr-value" id="profilePhone">—</span></div>
+      <div class="profile-row"><span class="pr-label">ZIP code</span><span class="pr-value" id="profileZip">—</span></div>
+      <div class="profile-row">
+        <span class="pr-label">Kids' ages</span>
+        <div class="pr-pills" id="profileAges"><span class="pr-notset">Not set</span></div>
+      </div>
+    </div>
+    <div class="profile-section">
+      <div class="profile-section-header"><div class="ps-title">My default filters</div><div class="ps-edit" onclick="showSaveToast()">Edit</div></div>
+      <div class="profile-row"><span class="pr-label">Location</span><div class="pr-pills" id="defaultLocation"><span class="pr-notset">Not set</span></div></div>
+      <div class="profile-row"><span class="pr-label">Day</span><div class="pr-pills" id="defaultDay"><span class="pr-notset">Not set</span></div></div>
+      <div class="profile-row"><span class="pr-label">Time</span><div class="pr-pills" id="defaultTime"><span class="pr-notset">Not set</span></div></div>
+      <div class="profile-row"><span class="pr-label">Age</span><div class="pr-pills" id="defaultAge"><span class="pr-notset">Not set</span></div></div>
+      <div class="profile-row"><span class="pr-label">Cost</span><div class="pr-pills" id="defaultCost"><span class="pr-notset">Not set</span></div></div>
+    </div>
+    <div class="profile-section">
+      <div class="profile-section-header"><div class="ps-title">Saved events</div></div>
+      <div id="savedEventsList"><div class="no-saved">No saved events yet. Tap the heart on any event to save it.</div></div>
+    </div>
+    <div class="profile-section">
+      <div class="profile-section-header"><div class="ps-title">Membership</div></div>
+      <div class="profile-row"><span class="pr-label">Plan</span><span class="pr-value" style="color:#085041;font-weight:600">Beta member ✓</span></div>
+      <div class="profile-row"><span class="pr-label">Member since</span><span class="pr-value" id="profileSince">—</span></div>
+    </div>
+    <button class="signout-btn" onclick="signOut()">Sign out</button>
+  </div>
+  <nav class="bottom-nav">
+    <button class="nav-item" onclick="showScreen('app')">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="7" x2="15" y2="7" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="13" x2="11" y2="13" stroke="currentColor" stroke-width="1.2"/></svg>
+      Events
+    </button>
+    <button class="nav-item active">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Profile
+    </button>
+    <button class="nav-item" onclick="showScreen('settings')">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Settings
+    </button>
+  </nav>
+</div>
+
+<!-- Share sheet -->
+<div class="overlay" id="overlay" onclick="closeShare()"></div>
+<div class="share-sheet" id="shareSheet">
+  <div class="share-handle"></div>
+  <div class="share-title">Share this event</div>
+  <div class="share-options">
+    <div class="share-option"><div class="share-option-icon" style="background:#E8F5E9"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 4L12 12M20 4H14M20 4V10" stroke="#2E7D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 6H5C4.4 6 4 6.4 4 7v12c0 .6.4 1 1 1h12c.6 0 1-.4 1-1v-4" stroke="#2E7D32" stroke-width="2" stroke-linecap="round"/></svg></div><div class="share-option-label">Messages</div></div>
+    <div class="share-option"><div class="share-option-icon" style="background:#E3F2FD"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#1565C0" stroke-width="2"/><path d="M3 8l9 6 9-6" stroke="#1565C0" stroke-width="2" stroke-linecap="round"/></svg></div><div class="share-option-label">Email</div></div>
+    <div class="share-option"><div class="share-option-icon" style="background:#F3E5F5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#6A1B9A" stroke-width="2"/><path d="M15.5 8H14a2 2 0 0 0-2 2v1h3.5l-.5 3H12v6h-3v-6H7v-3h2v-1a5 5 0 0 1 5-5h1.5V8z" stroke="#6A1B9A" stroke-width="1.5"/></svg></div><div class="share-option-label">Facebook</div></div>
+    <div class="share-option"><div class="share-option-icon" style="background:#FFF3E0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#E65100" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="#E65100" stroke-width="2" stroke-linecap="round"/></svg></div><div class="share-option-label">More…</div></div>
+  </div>
+  <div class="share-link-row">
+    <span class="share-link-text" id="shareLinkText">outandaboutmarin.com/events/</span>
+    <span class="share-copy-btn" id="copyBtn" onclick="copyLink()">Copy link</span>
+  </div>
+</div>
+
+<!-- Save filters toast -->
+<div class="save-toast" id="saveToast">
+  <div class="toast-title">Save these as your defaults?</div>
+  <div class="toast-sub">Next time you open the app, your feed will automatically show these filters.</div>
+  <div class="toast-pills" id="toastPills"></div>
+  <div class="toast-btns">
+    <button class="toast-save" onclick="saveDefaults()">Save defaults</button>
+    <button class="toast-skip" onclick="dismissToast()">Not now</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// DATA & STATE
+// ═══════════════════════════════════════════
+
+let allEvents = [];
+let currentUser = null;
+let currentEventId = null;
+let activeDropdown = null;
+let toastShown = false;
+let userHasInteracted = false;
+
+const filterDefaults = { type: 'Type', location: 'Location', day: 'Day', time: 'Time', age: 'Age', cost: 'Cost' };
+const selections = { type: new Set(), location: new Set(), day: new Set(), time: new Set(), age: new Set(), cost: new Set() };
+let defaultFilters = { type: new Set(), location: new Set(), day: new Set(), time: new Set(), age: new Set(), cost: new Set() };
+
+const typeOptions = [
+  { value: 'Library', dot: '#378ADD' },
+  { value: 'Kids Programs', dot: '#D85A30' },
+  { value: 'Fitness', dot: '#1D9E75' },
+  { value: 'Festival', dot: '#BA7517' },
+  { value: 'Farmers Market', dot: '#639922' },
+  { value: 'Community Event', dot: '#D4537E' }
+];
+const dayOptions = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const timeOptions = ['Morning (before noon)','Afternoon (noon–5 pm)','Evening (after 5 pm)'];
+const ageOptions = ['Babies (0–12 months)','Toddlers (1–3 yrs)','Preschool (3–5 yrs)','Kids (5–12 yrs)','Families (all ages)'];
+const costOptions = ['Free','Paid'];
+
+const typeTagClass = {
+  'Library': 'tag-library', 'Kids Programs': 'tag-kids',
+  'Fitness': 'tag-fitness', 'Festival': 'tag-festival',
+  'Farmers Market': 'tag-market', 'Community Event': 'tag-community'
+};
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildDropdowns();
+  const saved = localStorage.getItem('oaam_user');
+  if (saved) {
+    currentUser = JSON.parse(saved);
+    loadDefaultFilters();
+    showScreen('app');
+    loadEvents();
+  }
+});
+
+function loadEvents() {
+  fetch('events.json')
+    .then(r => r.json())
+    .then(data => {
+      allEvents = data.events || [];
+      buildLocationOptions();
+      renderCards();
+      renderComingUp();
+    })
+    .catch(() => {
+      document.getElementById('resultsCount').textContent = 'Could not load events — check your connection';
+    });
+}
+
+// ═══════════════════════════════════════════
+// AUTH
+// ═══════════════════════════════════════════
+
+function showLoginForm() {
+  document.getElementById('loginForm').style.display = 'block';
+  document.getElementById('signupForm1').style.display = 'none';
+}
+
+function showSignupStep1() {
+  document.getElementById('loginForm').style.display = 'none';
+  document.getElementById('signupForm1').style.display = 'block';
+}
+
+function goToSignupStep2() {
+  const name = document.getElementById('signupName').value.trim();
+  const phone = document.getElementById('signupPhone').value.trim();
+  const pin = document.getElementById('signupPin').value.trim();
+  const zip = document.getElementById('signupZip').value.trim();
+  const err = document.getElementById('signupError1');
+
+  if (!name) { err.style.display = 'block'; err.textContent = 'Please enter your first name.'; return; }
+  if (!phone) { err.style.display = 'block'; err.textContent = 'Please enter your phone number.'; return; }
+  if (!pin || pin.length !== 4) { err.style.display = 'block'; err.textContent = 'Please create a 4-digit PIN.'; return; }
+  if (!zip || zip.length !== 5) { err.style.display = 'block'; err.textContent = 'Please enter your 5-digit ZIP code.'; return; }
+  err.style.display = 'none';
+
+  sessionStorage.setItem('oaam_signup_name', name);
+  sessionStorage.setItem('oaam_signup_phone', phone);
+  sessionStorage.setItem('oaam_signup_pin', pin);
+  sessionStorage.setItem('oaam_signup_zip', zip);
+
+  document.getElementById('loginScreen').style.display = 'none';
+  const s2 = document.getElementById('signupScreen2');
+  s2.style.display = 'flex';
+}
+
+function showLogin() {
+  document.getElementById('signupScreen2').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'flex';
+  showLoginForm();
+}
+
+function toggleAge(el) { el.classList.toggle('selected'); }
+
+function completeSignup() {
+  const name = sessionStorage.getItem('oaam_signup_name') || '';
+  const phone = sessionStorage.getItem('oaam_signup_phone') || '';
+  const pin = sessionStorage.getItem('oaam_signup_pin') || '';
+  const zip = sessionStorage.getItem('oaam_signup_zip') || '';
+  const ages = [...document.querySelectorAll('.age-chip.selected')].map(c => c.dataset.age);
+  const referral = document.getElementById('referralSource').value;
+
+  if (!phone || !pin) { alert('Please go back and enter your phone number and PIN.'); showLogin(); return; }
+
+  currentUser = {
+    name, phone, pin, zip,
+    ages, referral,
+    savedEvents: [],
+    defaultFilters: {},
+    memberSince: new Date().toISOString().split('T')[0],
+    plan: 'beta'
+  };
+  localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+  document.getElementById('signupScreen2').style.display = 'none';
+  showScreen('app');
+  loadEvents();
+}
+
+function handleLogin() {
+  const phone = document.getElementById('loginPhone').value.trim();
+  const pin = document.getElementById('loginPin').value.trim();
+  const err = document.getElementById('loginError');
+
+  if (!phone || !pin) { err.style.display = 'block'; err.textContent = 'Please enter your phone number and PIN.'; return; }
+
+  const saved = localStorage.getItem('oaam_user');
+  if (saved) {
+    const u = JSON.parse(saved);
+    if (u.phone === phone && u.pin === pin) {
+      currentUser = u;
+      err.style.display = 'none';
+      loadDefaultFilters();
+      showScreen('app');
+      loadEvents();
+      return;
+    }
+  }
+  // Unrecognized — show error
+  err.style.display = 'block';
+  err.textContent = 'Phone number or PIN not recognized. Try again or create an account.';
+}
+
+function signOut() {
+  localStorage.removeItem('oaam_user');
+  currentUser = null;
+  location.reload();
+}
+
+// ═══════════════════════════════════════════
+// SCREEN NAVIGATION
+// ═══════════════════════════════════════════
+
+function showScreen(screen) {
+  document.getElementById('appScreen').style.display = 'none';
+  document.getElementById('profileScreen').style.display = 'none';
+  document.getElementById('detailScreen').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('signupScreen2').style.display = 'none';
+
+  if (screen === 'app') {
+    document.getElementById('appScreen').style.display = 'flex';
+    document.getElementById('appScreen').style.flexDirection = 'column';
+  } else if (screen === 'profile') {
+    document.getElementById('profileScreen').style.display = 'flex';
+    document.getElementById('profileScreen').style.flexDirection = 'column';
+    renderProfile();
+  } else if (screen === 'settings') {
+    showScreen('profile'); // For now settings goes to profile
+  }
+}
+
+// ═══════════════════════════════════════════
+// DROPDOWNS
+// ═══════════════════════════════════════════
+
+function buildDropdowns() {
+  buildFilterOptions('type', typeOptions.map(t => ({ value: t.value, dot: t.dot })));
+  buildFilterOptions('day', dayOptions.map(v => ({ value: v })));
+  buildFilterOptions('time', timeOptions.map(v => ({ value: v })));
+  buildFilterOptions('age', ageOptions.map(v => ({ value: v })));
+  buildFilterOptions('cost', costOptions.map(v => ({ value: v })));
+}
+
+function buildLocationOptions() {
+  const towns = [...new Set(allEvents.map(e => e.town))].sort();
+  buildFilterOptions('location', towns.map(v => ({ value: v })));
+}
+
+function buildFilterOptions(filterId, options) {
+  const inner = document.getElementById(`dd-${filterId}-inner`);
+  if (!inner) return;
+  inner.innerHTML = options.map(opt => `
+    <div class="dd-option" onclick="toggleFilter('${filterId}','${opt.value}')">
+      <span class="dd-label">
+        ${opt.dot ? `<span class="type-dot" style="background:${opt.dot}"></span>` : ''}
+        ${opt.value}
+      </span>
+      <span class="dd-checkbox"></span>
+    </div>`).join('');
+}
+
+function toggleDropdown(id) {
+  if (activeDropdown && activeDropdown !== id) {
+    document.getElementById(`dd-${activeDropdown}`).classList.remove('open');
+  }
+  const panel = document.getElementById(`dd-${id}`);
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  activeDropdown = !isOpen ? id : null;
+}
+
+document.addEventListener('click', e => {
+  if (activeDropdown && !e.target.closest('.filter-pill') && !e.target.closest('.dropdown-panel')) {
+    document.getElementById(`dd-${activeDropdown}`).classList.remove('open');
+    activeDropdown = null;
+  }
+});
+
+// ═══════════════════════════════════════════
+// FILTERS
+// ═══════════════════════════════════════════
+
+function toggleFilter(filterId, value) {
+  userHasInteracted = true;
+  const s = selections[filterId];
+  s.has(value) ? s.delete(value) : s.add(value);
+  syncCheckboxes(filterId);
+  updatePill(filterId);
+  renderCards();
+  // Show save toast after user has actively set 2+ filters manually
+  const totalActive = Object.values(selections).reduce((n, s) => n + s.size, 0);
+  if (totalActive >= 2 && !toastShown) { toastShown = true; setTimeout(showSaveToast, 1500); }
+}
+
+function syncCheckboxes(filterId) {
+  const s = selections[filterId];
+  const inner = document.getElementById(`dd-${filterId}-inner`);
+  if (!inner) return;
+  inner.querySelectorAll('.dd-option').forEach(opt => {
+    const label = opt.querySelector('.dd-label').textContent.trim();
+    opt.classList.toggle('selected', s.has(label));
+  });
+}
+
+function updatePill(filterId) {
+  const s = selections[filterId];
+  const pill = document.getElementById(`pill-${filterId}`);
+  const lbl = document.getElementById(`lbl-${filterId}`);
+  let badge = pill.querySelector('.pill-badge');
+  if (!badge) {
+    badge = document.createElement('span');
+    badge.className = 'pill-badge';
+    pill.insertBefore(badge, pill.querySelector('.filter-arrow'));
+  }
+  if (s.size === 0) {
+    lbl.textContent = filterDefaults[filterId];
+    pill.classList.remove('active');
+    badge.style.display = 'none';
+  } else {
+    const first = [...s][0];
+    lbl.textContent = first.length > 9 ? first.substring(0, 8) + '…' : first;
+    pill.classList.add('active');
+    if (s.size > 1) { badge.textContent = s.size; badge.style.display = 'inline-block'; }
+    else { badge.style.display = 'none'; }
+  }
+}
+
+function clearFilter(filterId) {
+  selections[filterId].clear();
+  updatePill(filterId);
+  syncCheckboxes(filterId);
+  renderCards();
+}
+
+function clearAllFilters() {
+  Object.keys(selections).forEach(id => { selections[id].clear(); updatePill(id); syncCheckboxes(id); });
+  renderCards();
+}
+
+// ═══════════════════════════════════════════
+// RENDER CARDS
+// ═══════════════════════════════════════════
+
+function getFilteredEvents() {
+  const today = new Date();
+  return allEvents.filter(e => {
+    // Hide expired events
+    if (e.expires) { const exp = new Date(e.expires); if (exp < today) return false; }
+    // Hide seasonal events outside their season
+    if (e.cadence === 'Seasonal' && e.season_start && e.season_end) {
+      const start = new Date(e.season_start + '/' + today.getFullYear());
+      const end = new Date(e.season_end + '/' + today.getFullYear());
+      if (today < start || today > end) return false;
+    }
+    // Apply filters
+    if (selections.type.size > 0 && !selections.type.has(e.type)) return false;
+    if (selections.location.size > 0 && !selections.location.has(e.town)) return false;
+    if (selections.day.size > 0 && !selections.day.has(e.day)) return false;
+    if (selections.time.size > 0) {
+      const tod = e.time_of_day;
+      let match = false;
+      selections.time.forEach(t => {
+        if (t.startsWith('Morning') && tod === 'Morning') match = true;
+        if (t.startsWith('Afternoon') && tod === 'Afternoon') match = true;
+        if (t.startsWith('Evening') && tod === 'Evening') match = true;
+      });
+      if (!match) return false;
+    }
+    if (selections.age.size > 0) {
+      let match = false;
+      selections.age.forEach(a => {
+        if (a.startsWith('Babies') && e.ages.includes('0-12')) match = true;
+        if (a.startsWith('Toddlers') && (e.ages.includes('1-3') || e.ages.includes('1-5'))) match = true;
+        if (a.startsWith('Preschool') && (e.ages.includes('3-5') || e.ages.includes('0-5'))) match = true;
+        if (a.startsWith('Kids') && (e.ages.includes('5-') || e.ages.includes('0-9'))) match = true;
+        if (a.startsWith('Families') && e.ages.includes('All')) match = true;
+      });
+      if (!match) return false;
+    }
+    if (selections.cost.size > 0 && !selections.cost.has(e.cost)) return false;
+    return true;
+  });
+}
+
+const dayOrder = { Monday:0, Tuesday:1, Wednesday:2, Thursday:3, Friday:4, Saturday:5, Sunday:6 };
+
+function renderCards() {
+  const filtered = getFilteredEvents();
+  const body = document.getElementById('cardsBody');
+  const empty = document.getElementById('emptyState');
+  const total = Object.values(selections).reduce((n,s) => n+s.size, 0);
+  const countEl = document.getElementById('resultsCount');
+
+  countEl.textContent = total === 0
+    ? `${filtered.length} event${filtered.length !== 1 ? 's' : ''} · ${new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}`
+    : `${filtered.length} event${filtered.length !== 1 ? 's' : ''} shown · ${total} filter${total !== 1 ? 's' : ''} active`;
+
+  document.getElementById('headerSub').textContent =
+    `${filtered.length} event${filtered.length !== 1 ? 's' : ''} this week`;
+
+  if (filtered.length === 0) {
+    body.innerHTML = '';
+    empty.classList.add('visible');
+    return;
+  }
+  empty.classList.remove('visible');
+
+  // Group by day
+  const grouped = {};
+  filtered.forEach(e => {
+    const key = e.cadence === 'One-off' ? (e.event_date || e.day) : e.day;
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(e);
+  });
+
+  const sortedDays = Object.keys(grouped).sort((a, b) => (dayOrder[a] ?? 99) - (dayOrder[b] ?? 99));
+
+  body.innerHTML = sortedDays.map(day => `
+    <div class="section-day-label">${day}</div>
+    ${grouped[day].map(e => cardHTML(e)).join('')}
+  `).join('');
+}
+
+function cardHTML(e) {
+  const typeClass = typeTagClass[e.type] || 'tag-library';
+  const dayShort = e.day ? e.day.substring(0, 3) : '';
+  const isClosed = e.status === 'Temp. closed';
+  return `
+    <div class="event-card ${e.featured ? 'featured' : ''}" onclick="openDetail(${e.id})">
+      <div class="card-left">
+        ${e.featured ? '<div class="featured-badge">Featured</div>' : ''}
+        <div class="card-title">${e.event_name}</div>
+        <div class="card-venue">${e.venue}${e.town ? ' · ' + e.town : ''}</div>
+        <div class="card-meta">
+          <span class="tag ${typeClass}">${e.type}</span>
+          <span class="tag tag-age">${e.ages}</span>
+          <span class="tag ${e.cost === 'Free' ? 'tag-free' : 'tag-paid'}">${e.cost}</span>
+          ${isClosed ? '<span class="tag tag-closed">Temp. closed</span>' : ''}
+        </div>
+      </div>
+      <div class="card-right">
+        <span class="day-pill day-${e.day}">${dayShort}</span>
+        <span class="card-time">${e.time}</span>
+      </div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════
+// COMING UP SECTION
+// ═══════════════════════════════════════════
+
+function renderComingUp() {
+  const today = new Date();
+  const in30 = new Date(today); in30.setDate(today.getDate() + 30);
+  const upcoming = allEvents.filter(e => {
+    if (!e.event_date) return false;
+    const d = new Date(e.event_date);
+    return d >= today && d <= in30;
+  }).sort((a, b) => new Date(a.event_date) - new Date(b.event_date));
+
+  const section = document.getElementById('comingUpSection');
+  const scroll = document.getElementById('comingUpScroll');
+
+  if (upcoming.length === 0) { section.style.display = 'none'; return; }
+  section.style.display = 'block';
+
+  scroll.innerHTML = upcoming.map(e => {
+    const d = new Date(e.event_date);
+    const diff = Math.ceil((d - today) / (1000*60*60*24));
+    const when = diff === 0 ? 'Today' : diff === 1 ? 'Tomorrow' : diff <= 7 ? 'This week' : 'Coming up';
+    return `
+      <div class="coming-card" onclick="openDetail(${e.id})">
+        <div class="coming-date">${when} · ${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}</div>
+        <div class="coming-title">${e.event_name}</div>
+        <div class="coming-loc">${e.venue}</div>
+      </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════
+// DETAIL SCREEN
+// ═══════════════════════════════════════════
+
+function openDetail(id) {
+  const e = allEvents.find(ev => ev.id === id);
+  if (!e) return;
+  currentEventId = id;
+
+  document.getElementById('detailTypeBadge').textContent = e.type;
+  document.getElementById('detailTitle').textContent = e.event_name;
+  document.getElementById('detailOrg').textContent = e.organization + (e.organization !== e.venue ? ' · ' + e.venue : '');
+  document.getElementById('detailDayTime').textContent = `${e.day}s · ${e.time}`;
+  document.getElementById('detailCadence').textContent = e.cadence + (e.season_start ? ` · ${e.season_start} – ${e.season_end}` : '');
+  document.getElementById('detailVenue').textContent = e.venue;
+  document.getElementById('detailAddress').textContent = e.address;
+  document.getElementById('detailDescription').textContent = e.description;
+  document.getElementById('detailAges').textContent = e.ages;
+  document.getElementById('detailReg').textContent = e.registration;
+
+  const notesEl = document.getElementById('detailNotes');
+  if (e.notes) { notesEl.textContent = '⚠ ' + e.notes; notesEl.style.display = 'block'; }
+  else { notesEl.style.display = 'none'; }
+
+  // Tags
+  const tags = document.getElementById('detailTags');
+  const typeClass = typeTagClass[e.type] || 'tag-library';
+  tags.innerHTML = `
+    <span class="detail-tag ${typeClass}">${e.type}</span>
+    <span class="detail-tag ${e.cost === 'Free' ? 'tag-free' : 'tag-paid'}">${e.cost}</span>
+    <span class="detail-tag" style="background:#E6F1FB;color:#0C447C">${e.indoor_outdoor}</span>
+    <span class="detail-tag" style="background:#EEEDFE;color:#3C3489">${e.active_sedentary}</span>
+    <span class="detail-tag" style="background:#E1F5EE;color:#085041">${e.cadence}</span>
+  `;
+
+  // Maps link
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.address)}`;
+  document.getElementById('mapsBtn').href = mapsUrl;
+  document.getElementById('websiteBtn').href = e.website;
+
+  // Share link
+  const slug = e.event_name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  document.getElementById('shareLinkText').textContent = `outandaboutmarin.com/events/${slug}`;
+
+  // Save state
+  updateSaveButton();
+
+  // Show detail screen
+  document.getElementById('appScreen').style.display = 'none';
+  const ds = document.getElementById('detailScreen');
+  ds.style.display = 'flex';
+  ds.style.flexDirection = 'column';
+  ds.scrollTop = 0;
+}
+
+function closeDetail() {
+  document.getElementById('detailScreen').style.display = 'none';
+  document.getElementById('appScreen').style.display = 'flex';
+  document.getElementById('appScreen').style.flexDirection = 'column';
+}
+
+// ═══════════════════════════════════════════
+// SAVE / HEART
+// ═══════════════════════════════════════════
+
+function toggleSave() {
+  if (!currentUser || !currentEventId) return;
+  const idx = currentUser.savedEvents.indexOf(currentEventId);
+  if (idx > -1) currentUser.savedEvents.splice(idx, 1);
+  else currentUser.savedEvents.push(currentEventId);
+  localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+  updateSaveButton();
+}
+
+function updateSaveButton() {
+  if (!currentUser) return;
+  const saved = currentUser.savedEvents.includes(currentEventId);
+  const btn = document.getElementById('saveBtn');
+  const lbl = document.getElementById('saveLabel');
+  const icon = document.getElementById('heartIcon');
+  if (saved) {
+    btn.classList.add('saved');
+    lbl.textContent = 'Saved to my list';
+    icon.innerHTML = '<path d="M7 12S1 8 1 4.5A3.5 3.5 0 0 1 7 3a3.5 3.5 0 0 1 6 1.5C13 8 7 12 7 12z" fill="#D4537E" stroke="#D4537E" stroke-width="1.2"/>';
+  } else {
+    btn.classList.remove('saved');
+    lbl.textContent = 'Save to my list';
+    icon.innerHTML = '<path d="M7 12S1 8 1 4.5A3.5 3.5 0 0 1 7 3a3.5 3.5 0 0 1 6 1.5C13 8 7 12 7 12z" stroke="#1A1A1A" stroke-width="1.2"/>';
+  }
+}
+
+// ═══════════════════════════════════════════
+// SHARE
+// ═══════════════════════════════════════════
+
+function openShare() {
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('shareSheet').classList.add('open');
+}
+function closeShare() {
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('shareSheet').classList.remove('open');
+}
+function copyLink() {
+  const text = document.getElementById('shareLinkText').textContent;
+  navigator.clipboard.writeText(text).catch(() => {});
+  const btn = document.getElementById('copyBtn');
+  btn.textContent = 'Copied!';
+  btn.style.color = '#085041';
+  setTimeout(() => { btn.textContent = 'Copy link'; btn.style.color = ''; }, 2000);
+}
+
+// ═══════════════════════════════════════════
+// SAVE FILTERS TOAST
+// ═══════════════════════════════════════════
+
+function showSaveToast() {
+  const total = Object.values(selections).reduce((n,s) => n+s.size, 0);
+  if (total === 0) return;
+  toastShown = true;
+  const pills = document.getElementById('toastPills');
+  const activeFilters = [];
+  Object.entries(selections).forEach(([k, s]) => s.forEach(v => activeFilters.push(v)));
+  pills.innerHTML = activeFilters.map(f => `<span class="toast-pill">${f}</span>`).join('');
+  document.getElementById('saveToast').classList.add('show');
+}
+function dismissToast() { document.getElementById('saveToast').classList.remove('show'); }
+function saveDefaults() {
+  Object.keys(selections).forEach(k => { defaultFilters[k] = new Set(selections[k]); });
+  if (currentUser) {
+    currentUser.defaultFilters = {};
+    Object.keys(defaultFilters).forEach(k => { currentUser.defaultFilters[k] = [...defaultFilters[k]]; });
+    localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+  }
+  dismissToast();
+  renderProfile();
+}
+function loadDefaultFilters() {
+  if (currentUser && currentUser.defaultFilters) {
+    Object.keys(currentUser.defaultFilters).forEach(k => {
+      selections[k] = new Set(currentUser.defaultFilters[k]);
+      defaultFilters[k] = new Set(currentUser.defaultFilters[k]);
+      updatePill(k);
+      syncCheckboxes(k);
+    });
+  }
+}
+
+// ═══════════════════════════════════════════
+// PROFILE
+// ═══════════════════════════════════════════
+
+function renderProfile() {
+  if (!currentUser) return;
+  document.getElementById('profileHeaderSub').textContent = `${currentUser.name || 'Welcome'} · ${currentUser.zip || ''}`;
+  document.getElementById('profileName').textContent = currentUser.name || '—';
+  document.getElementById('profilePhone').textContent = currentUser.phone || '—';
+  document.getElementById('profileZip').textContent = currentUser.zip || '—';
+  document.getElementById('profileSince').textContent = currentUser.memberSince || '—';
+
+  const agesEl = document.getElementById('profileAges');
+  if (currentUser.ages && currentUser.ages.length > 0) {
+    agesEl.innerHTML = currentUser.ages.map(a => `<span class="pr-pill">${a}</span>`).join('');
+  } else { agesEl.innerHTML = '<span class="pr-notset">Not set</span>'; }
+
+  // Default filters
+  ['location','day','time','age','cost'].forEach(k => {
+    const el = document.getElementById(`default${k.charAt(0).toUpperCase()+k.slice(1)}`);
+    if (!el) return;
+    const vals = currentUser.defaultFilters && currentUser.defaultFilters[k] ? currentUser.defaultFilters[k] : [];
+    if (vals.length > 0) {
+      el.innerHTML = vals.map(v => `<span class="pr-pill">${v}</span>`).join('');
+    } else { el.innerHTML = '<span class="pr-notset">Not set</span>'; }
+  });
+
+  // Saved events
+  const savedList = document.getElementById('savedEventsList');
+  if (!currentUser.savedEvents || currentUser.savedEvents.length === 0) {
+    savedList.innerHTML = '<div class="no-saved">No saved events yet. Tap the heart on any event to save it.</div>';
+  } else {
+    const saved = allEvents.filter(e => currentUser.savedEvents.includes(e.id));
+    savedList.innerHTML = saved.map(e => `
+      <div class="saved-event-card" onclick="openDetail(${e.id});showScreen('app')">
+        <div class="card-left">
+          <div class="card-title">${e.event_name}</div>
+          <div class="card-venue">${e.venue} · ${e.town}</div>
+        </div>
+        <div class="card-right">
+          <span class="day-pill day-${e.day}">${e.day.substring(0,3)}</span>
+        </div>
+      </div>`).join('');
+  }
+}
+</script>
+</body>
+</html>
