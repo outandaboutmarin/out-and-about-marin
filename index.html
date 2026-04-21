@@ -711,6 +711,14 @@
     .save-toast.show { transform: translateX(-50%) translateY(0); }
   }
 </style>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://yszyptpwgzjvdrwprlpg.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_fuKwJAQhnLh5BqptgE8CYg_pJklGCNv';
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+</script>
 </head>
 <body>
 
@@ -1246,7 +1254,7 @@ function showLogin() {
 
 function toggleAge(el) { el.classList.toggle('selected'); }
 
-function completeSignup() {
+async function completeSignup() {
   const name = sessionStorage.getItem('oaam_signup_name') || '';
   const phone = sessionStorage.getItem('oaam_signup_phone') || '';
   const pin = sessionStorage.getItem('oaam_signup_pin') || '';
@@ -1258,25 +1266,43 @@ function completeSignup() {
 
   currentUser = {
     name, phone, pin, zip,
-    ages, referral,
-    savedEvents: [],
-    defaultFilters: {},
-    memberSince: new Date().toISOString().split('T')[0],
+    ages: JSON.stringify(ages),
+    referral,
+    saved_events: JSON.stringify([]),
+    default_filters: JSON.stringify({}),
+    member_since: new Date().toISOString().split('T')[0],
     plan: 'beta'
   };
+
+  // Save to Supabase
+  try {
+    const { error } = await supabase.from('users').insert([currentUser]);
+    if (error) {
+      if (error.code === '23505') {
+        alert('An account with this phone number already exists. Please sign in instead.');
+        showLogin(); return;
+      }
+      console.error('Supabase error:', error);
+    }
+  } catch(e) { console.error('Could not save to database:', e); }
+
+  // Also save locally as backup
+  currentUser.savedEvents = [];
+  currentUser.defaultFilters = {};
   localStorage.setItem('oaam_user', JSON.stringify(currentUser));
   document.getElementById('signupScreen2').style.display = 'none';
   showScreen('app');
   loadEvents();
 }
 
-function handleLogin() {
+async function handleLogin() {
   const phone = document.getElementById('loginPhone').value.trim();
   const pin = document.getElementById('loginPin').value.trim();
   const err = document.getElementById('loginError');
 
   if (!phone || !pin) { err.style.display = 'block'; err.textContent = 'Please enter your phone number and PIN.'; return; }
 
+  // First check local storage for fast login
   const saved = localStorage.getItem('oaam_user');
   if (saved) {
     const u = JSON.parse(saved);
@@ -1289,9 +1315,45 @@ function handleLogin() {
       return;
     }
   }
-  // Unrecognized — show error
-  err.style.display = 'block';
-  err.textContent = 'Phone number or PIN not recognized. Try again or create an account.';
+
+  // Check Supabase database
+  try {
+    const { data, error } = await supabase
+      .from('users')
+      .select('*')
+      .eq('phone', phone)
+      .eq('pin', pin)
+      .single();
+
+    if (error || !data) {
+      err.style.display = 'block';
+      err.textContent = 'Phone number or PIN not recognized. Try again or create an account.';
+      return;
+    }
+
+    // Found in database — load user
+    currentUser = {
+      name: data.name || '',
+      phone: data.phone,
+      pin: data.pin,
+      zip: data.zip || '',
+      ages: JSON.parse(data.ages || '[]'),
+      savedEvents: JSON.parse(data.saved_events || '[]'),
+      defaultFilters: JSON.parse(data.default_filters || '{}'),
+      memberSince: data.member_since || '',
+      plan: data.plan || 'beta'
+    };
+    localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+    err.style.display = 'none';
+    loadDefaultFilters();
+    showScreen('app');
+    loadEvents();
+
+  } catch(e) {
+    console.error('Login error:', e);
+    err.style.display = 'block';
+    err.textContent = 'Connection error. Please try again.';
+  }
 }
 
 function signOut() {
