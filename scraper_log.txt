@@ -1,0 +1,30 @@
+Out AND About Marin — Scraper Run Report
+Date: 2026-04-21
+Time: 17:38:26
+
+Total events in events.json: 29
+Active events: 28
+Temp. closed: 1
+
+Events by type:
+  Library: 29
+
+Events by town:
+  Corte Madera: 1
+  Fairfax: 1
+  Larkspur: 1
+  Marin City: 1
+  Mill Valley: 4
+  Novato: 3
+  Point Reyes Station: 1
+  Ross: 1
+  San Anselmo: 3
+  San Rafael: 6
+  Sausalito: 2
+  Tiburon: 5
+
+Sites needing manual review:
+  ✗ San Rafael Public Library: <urlopen error timed out>
+  ✗ Sausalito Public Library: HTTP Error 403: Forbidden
+
+Next run: tomorrow at 6:00 AM PT
