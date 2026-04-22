@@ -29,8 +29,8 @@
     --card-bg: #ffffff;
     --card-border: #E2DED6;
     --text-primary: #1A1A1A;
-    --text-secondary: #666666;
-    --text-muted: #999999;
+    --text-secondary: #444444;
+    --text-muted: #666666;
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Jost', sans-serif;
     --radius-sm: 8px;
@@ -281,7 +281,7 @@
     margin: 0 2px;
     opacity: 0.75;
   }
-  .header-sub { font-size: 0.6rem; color: #7A8AB0; margin-top: 2px; font-weight: 300; letter-spacing: 0.05em; }
+  .header-sub { font-size: 0.65rem; color: #B0BDD4; margin-top: 2px; font-weight: 400; letter-spacing: 0.05em; }
   .search-btn {
     width: 30px; height: 30px;
     background: rgba(255,255,255,0.1);
@@ -441,7 +441,7 @@
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .card-venue {
-    font-size: 0.625rem; color: var(--text-muted);
+    font-size: 0.7rem; color: #555555;
     margin-top: 2px;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
@@ -473,7 +473,7 @@
   .day-Friday { background: var(--fri-bg); color: var(--fri-text); }
   .day-Saturday { background: var(--sat-bg); color: var(--sat-text); }
   .day-Sunday { background: var(--sun-bg); color: var(--sun-text); }
-  .card-time { font-size: 0.625rem; color: var(--text-muted); font-weight: 300; white-space: nowrap; }
+  .card-time { font-size: 0.7rem; color: #555555; font-weight: 400; white-space: nowrap; }
 
   /* Empty state */
   .empty-state {
@@ -622,13 +622,15 @@
 
   /* Save toast */
   .save-toast {
-    position: fixed; bottom: 75px; left: 0.625rem; right: 0.625rem;
+    position: fixed; bottom: 80px; left: 0.625rem; right: 0.625rem;
     background: var(--white);
     border-radius: var(--radius-md);
     border: 0.5px solid var(--card-border);
     padding: 0.875rem;
     box-shadow: 0 4px 20px rgba(0,0,0,0.12);
     z-index: 150;
+    max-height: 70vh;
+    overflow-y: auto;
     transform: translateY(120%);
     transition: transform 0.3s ease;
   }
@@ -658,12 +660,12 @@
   .ps-edit { font-size: 0.65rem; font-weight: 500; color: var(--navy); cursor: pointer; }
   .profile-row { padding: 0.6rem 0.875rem; border-bottom: 0.5px solid #EDEAE4; display: flex; justify-content: space-between; align-items: center; }
   .profile-row:last-child { border-bottom: none; }
-  .pr-label { font-size: 0.7rem; color: var(--text-muted); }
+  .pr-label { font-size: 0.75rem; color: #555555; }
   .pr-value { font-size: 0.7rem; color: var(--text-primary); font-weight: 500; text-align: right; max-width: 60%; }
   .pr-pills { display: flex; flex-wrap: wrap; gap: 3px; justify-content: flex-end; }
   .pr-pill { font-size: 0.6rem; font-weight: 500; padding: 2px 7px; border-radius: var(--radius-pill); background: var(--library-bg); color: var(--library-text); }
-  .pr-notset { font-size: 0.7rem; color: #BBB; font-style: italic; }
-  .signout-btn { width: 100%; background: transparent; border: 1px solid #E2E0D8; color: var(--text-muted); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.75rem; font-family: var(--font-sans); cursor: pointer; margin-top: 0.5rem; }
+  .pr-notset { font-size: 0.7rem; color: #888888; font-style: italic; }
+  .signout-btn { width: 100%; background: transparent; border: 1px solid #C8C4BA; color: #444444; border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.8rem; font-family: var(--font-sans); cursor: pointer; margin-top: 0.5rem; font-weight: 500; }
 
   /* Saved events section */
   .saved-event-card {
@@ -691,6 +693,42 @@
   }
   .nav-item.active { color: var(--navy); }
   .nav-icon { width: 18px; height: 18px; }
+
+
+  /* Edit details modal */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 400; display: none;
+    align-items: flex-end;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-sheet {
+    background: var(--white);
+    border-radius: 16px 16px 0 0;
+    padding: 1.25rem 1.25rem 2rem;
+    width: 100%;
+  }
+  .modal-title {
+    font-family: var(--font-serif);
+    font-size: 1rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 1rem;
+    text-align: center;
+  }
+  .modal-handle { width: 32px; height: 3px; background: #DDD; border-radius: 2px; margin: 0 auto 1rem; }
+  .modal-save {
+    width: 100%; background: var(--navy); color: white;
+    border: none; border-radius: var(--radius-sm);
+    padding: 0.875rem; font-size: 0.8rem; font-weight: 500;
+    font-family: var(--font-sans); cursor: pointer;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-top: 1rem;
+  }
+  .modal-cancel {
+    width: 100%; background: transparent; color: var(--text-muted);
+    border: none; font-size: 0.75rem; font-family: var(--font-sans);
+    cursor: pointer; margin-top: 0.5rem; padding: 0.5rem;
+  }
 
   /* Desktop layout */
   @media (min-width: 768px) {
@@ -743,7 +781,7 @@
       </div>
       <div class="field-group">
         <label class="field-label" for="loginPin">4-Digit PIN</label>
-        <input class="field-input" type="password" id="loginPin" placeholder="••••" maxlength="4" inputmode="numeric" autocomplete="current-password">
+        <input class="field-input" type="password" id="loginPin" placeholder="••••" style="color:#0D1B3E;font-size:1.2rem;letter-spacing:0.3em" maxlength="4" inputmode="numeric" autocomplete="current-password">
       </div>
       <div class="login-error" id="loginError">Phone number or PIN not recognized. Please try again.</div>
       <button class="btn-primary" onclick="handleLogin()">Sign In</button>
@@ -771,7 +809,7 @@
       </div>
       <div class="field-group">
         <label class="field-label" for="signupPin">Create a 4-Digit PIN</label>
-        <input class="field-input" type="password" id="signupPin" placeholder="••••" maxlength="4" inputmode="numeric" autocomplete="new-password">
+        <input class="field-input" type="password" id="signupPin" placeholder="••••" style="color:#0D1B3E;font-size:1.2rem;letter-spacing:0.3em" maxlength="4" inputmode="numeric" autocomplete="new-password">
       </div>
       <div class="field-group">
         <label class="field-label" for="signupZip">ZIP Code</label>
@@ -799,7 +837,7 @@
   </div>
   <div class="signup-body">
     <div class="field-group">
-      <label class="field-label">How old are your kids? <span style="text-transform:none;letter-spacing:0;font-weight:300;color:#BBB">(optional — select all that apply)</span></label>
+      <label class="field-label">How old are your kids? <span style="text-transform:none;letter-spacing:0;font-weight:400;color:#777777">(optional — select all that apply)</span></label>
       <div class="age-chips">
         <div class="age-chip" onclick="toggleAge(this)" data-age="0-12 months">Under 1</div>
         <div class="age-chip" onclick="toggleAge(this)" data-age="1-3 yrs">1–3 yrs</div>
@@ -811,7 +849,7 @@
     </div>
     <div class="field-divider"></div>
     <div class="field-group">
-      <label class="field-label">How did you hear about us? <span style="text-transform:none;letter-spacing:0;font-weight:300;color:#BBB">(optional)</span></label>
+      <label class="field-label">How did you hear about us? <span style="text-transform:none;letter-spacing:0;font-weight:400;color:#777777">(optional)</span></label>
       <select class="referral-select" id="referralSource">
         <option value="">Select one…</option>
         <option value="friend">A friend or family member</option>
@@ -846,9 +884,18 @@
         <div class="header-sub" id="headerSub">Loading events…</div>
       </div>
     </div>
-    <div class="search-btn">
+    <div class="search-btn" onclick="toggleSearch()">
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4" stroke="white" stroke-width="1.5"/><line x1="9.5" y1="9.5" x2="13" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
     </div>
+  </div>
+
+
+  <!-- Search bar (hidden by default) -->
+  <div id="searchBar" style="display:none;background:#0D1B3E;padding:0 0.75rem 0.625rem">
+    <input type="text" id="searchInput" placeholder="Search events…"
+      style="width:100%;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:var(--radius-pill);padding:0.4rem 0.875rem;font-size:0.8rem;font-family:var(--font-sans);color:white;outline:none"
+      oninput="searchEvents(this.value)"
+      placeholder="Search events…">
   </div>
 
   <!-- Filter pills -->
@@ -1067,7 +1114,7 @@
   </div>
   <div class="profile-body">
     <div class="profile-section">
-      <div class="profile-section-header"><div class="ps-title">My details</div><div class="ps-edit">Edit</div></div>
+      <div class="profile-section-header"><div class="ps-title">My details</div><div class="ps-edit" onclick="openEditModal()">Edit</div></div>
       <div class="profile-row"><span class="pr-label">Name</span><span class="pr-value" id="profileName">—</span></div>
       <div class="profile-row"><span class="pr-label">Phone</span><span class="pr-value" id="profilePhone">—</span></div>
       <div class="profile-row"><span class="pr-label">ZIP code</span><span class="pr-value" id="profileZip">—</span></div>
@@ -1091,6 +1138,7 @@
     <div class="profile-section">
       <div class="profile-section-header"><div class="ps-title">Membership</div></div>
       <div class="profile-row"><span class="pr-label">Plan</span><span class="pr-value" style="color:#085041;font-weight:600">Beta member ✓</span></div>
+      <div class="profile-row"><span class="pr-label">PIN</span><span class="pr-value" style="color:#0D1B3E;font-weight:500;cursor:pointer" onclick="openPinModal()">Change PIN →</span></div>
       <div class="profile-row"><span class="pr-label">Member since</span><span class="pr-value" id="profileSince">—</span></div>
     </div>
     <button class="signout-btn" onclick="signOut()">Sign out</button>
@@ -1267,6 +1315,7 @@ function completeSignup() {
     plan: 'beta'
   };
   localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+  checkDisclaimer();
   document.getElementById('signupScreen2').style.display = 'none';
   showScreen('app');
   loadEvents();
@@ -1765,6 +1814,212 @@ function renderProfile() {
       </div>`).join('');
   }
 }
+
+// ═══════════════════════════════════════════
+// SEARCH
+// ═══════════════════════════════════════════
+
+let searchActive = false;
+
+function toggleSearch() {
+  const bar = document.getElementById('searchBar');
+  searchActive = !searchActive;
+  bar.style.display = searchActive ? 'block' : 'none';
+  if (searchActive) {
+    document.getElementById('searchInput').focus();
+  } else {
+    document.getElementById('searchInput').value = '';
+    renderCards();
+  }
+}
+
+function searchEvents(query) {
+  const q = query.toLowerCase().trim();
+  const body = document.getElementById('cardsBody');
+  const empty = document.getElementById('emptyState');
+
+  if (!q) { renderCards(); return; }
+
+  const results = allEvents.filter(e =>
+    e.event_name.toLowerCase().includes(q) ||
+    e.venue.toLowerCase().includes(q) ||
+    e.town.toLowerCase().includes(q) ||
+    e.type.toLowerCase().includes(q) ||
+    (e.description && e.description.toLowerCase().includes(q))
+  );
+
+  document.getElementById('resultsCount').textContent = `${results.length} result${results.length !== 1 ? 's' : ''} for "${query}"`;
+
+  if (results.length === 0) {
+    body.innerHTML = '';
+    empty.classList.add('visible');
+    return;
+  }
+  empty.classList.remove('visible');
+  body.innerHTML = results.map(e => cardHTML(e)).join('');
+}
+
+// ═══════════════════════════════════════════
+// EDIT DETAILS MODAL
+// ═══════════════════════════════════════════
+
+function openEditModal() {
+  if (!currentUser) return;
+  document.getElementById('editName').value = currentUser.name || '';
+  document.getElementById('editZip').value = currentUser.zip || '';
+  // Pre-select age chips
+  const ages = currentUser.ages || [];
+  document.querySelectorAll('#editModal .age-chip').forEach(chip => {
+    chip.classList.toggle('selected', ages.includes(chip.dataset.age));
+  });
+  document.getElementById('editModal').classList.add('open');
+}
+
+function closeEditModal(e) {
+  if (!e || e.target === document.getElementById('editModal')) {
+    document.getElementById('editModal').classList.remove('open');
+  }
+}
+
+function toggleEditAge(el) { el.classList.toggle('selected'); }
+
+function saveEditDetails() {
+  if (!currentUser) return;
+  currentUser.name = document.getElementById('editName').value.trim();
+  currentUser.zip = document.getElementById('editZip').value.trim();
+  currentUser.ages = [...document.querySelectorAll('#editModal .age-chip.selected')].map(c => c.dataset.age);
+  localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+  document.getElementById('editModal').classList.remove('open');
+  renderProfile();
+}
+
+// ═══════════════════════════════════════════
+// CHANGE PIN MODAL
+// ═══════════════════════════════════════════
+
+function openPinModal() {
+  document.getElementById('currentPin').value = '';
+  document.getElementById('newPin').value = '';
+  document.getElementById('confirmPin').value = '';
+  document.getElementById('pinError').style.display = 'none';
+  document.getElementById('pinModal').classList.add('open');
+}
+
+function closePinModal(e) {
+  if (!e || e.target === document.getElementById('pinModal')) {
+    document.getElementById('pinModal').classList.remove('open');
+  }
+}
+
+function saveNewPin() {
+  const current = document.getElementById('currentPin').value.trim();
+  const newPin = document.getElementById('newPin').value.trim();
+  const confirm = document.getElementById('confirmPin').value.trim();
+  const err = document.getElementById('pinError');
+
+  if (current !== currentUser.pin) {
+    err.textContent = 'Current PIN is incorrect.';
+    err.style.display = 'block'; return;
+  }
+  if (newPin.length !== 4) {
+    err.textContent = 'New PIN must be 4 digits.';
+    err.style.display = 'block'; return;
+  }
+  if (newPin !== confirm) {
+    err.textContent = 'PINs do not match.';
+    err.style.display = 'block'; return;
+  }
+  currentUser.pin = newPin;
+  localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+  document.getElementById('pinModal').classList.remove('open');
+  alert('PIN updated successfully!');
+}
+
+// ═══════════════════════════════════════════
+// ACCURACY DISCLAIMER (every 10 logins)
+// ═══════════════════════════════════════════
+
+function checkDisclaimer() {
+  const count = parseInt(localStorage.getItem('oaam_login_count') || '0') + 1;
+  localStorage.setItem('oaam_login_count', count);
+  if (count % 10 === 1) { // Show on 1st, 11th, 21st login etc
+    setTimeout(() => {
+      document.getElementById('disclaimerModal').classList.add('open');
+    }, 1500);
+  }
+}
+
+function dismissDisclaimer() {
+  document.getElementById('disclaimerModal').classList.remove('open');
+}
+
 </script>
+
+<!-- Edit Details Modal -->
+<div class="modal-overlay" id="editModal" onclick="closeEditModal(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Edit My Details</div>
+    <div class="field-group">
+      <label class="field-label">First Name</label>
+      <input class="field-input" type="text" id="editName" placeholder="Your first name">
+    </div>
+    <div class="field-group" style="margin-top:0.75rem">
+      <label class="field-label">ZIP Code</label>
+      <input class="field-input" type="text" id="editZip" placeholder="94901" maxlength="5" inputmode="numeric">
+    </div>
+    <div class="field-group" style="margin-top:0.75rem">
+      <label class="field-label">Kids ages <span style="text-transform:none;letter-spacing:0;font-weight:400;color:#777777">(select all that apply)</span></label>
+      <div class="age-chips" style="margin-top:0.4rem">
+        <div class="age-chip" onclick="toggleEditAge(this)" data-age="0-12 months">Under 1</div>
+        <div class="age-chip" onclick="toggleEditAge(this)" data-age="1-3 yrs">1–3 yrs</div>
+        <div class="age-chip" onclick="toggleEditAge(this)" data-age="3-5 yrs">3–5 yrs</div>
+        <div class="age-chip" onclick="toggleEditAge(this)" data-age="5-8 yrs">5–8 yrs</div>
+        <div class="age-chip" onclick="toggleEditAge(this)" data-age="8-12 yrs">8–12 yrs</div>
+        <div class="age-chip" onclick="toggleEditAge(this)" data-age="No kids yet">No kids yet</div>
+      </div>
+    </div>
+    <button class="modal-save" onclick="saveEditDetails()">Save changes</button>
+    <button class="modal-cancel" onclick="closeEditModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- Change PIN Modal -->
+<div class="modal-overlay" id="pinModal" onclick="closePinModal(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Change PIN</div>
+    <div class="field-group">
+      <label class="field-label">Current PIN</label>
+      <input class="field-input" type="password" id="currentPin" placeholder="••••" maxlength="4" inputmode="numeric">
+    </div>
+    <div class="field-group" style="margin-top:0.75rem">
+      <label class="field-label">New PIN</label>
+      <input class="field-input" type="password" id="newPin" placeholder="••••" maxlength="4" inputmode="numeric">
+    </div>
+    <div class="field-group" style="margin-top:0.75rem">
+      <label class="field-label">Confirm New PIN</label>
+      <input class="field-input" type="password" id="confirmPin" placeholder="••••" maxlength="4" inputmode="numeric">
+    </div>
+    <div style="font-size:0.7rem;color:#A32D2D;margin-top:0.5rem;display:none" id="pinError"></div>
+    <button class="modal-save" onclick="saveNewPin()">Update PIN</button>
+    <button class="modal-cancel" onclick="closePinModal()">Cancel</button>
+  </div>
+</div>
+
+
+<!-- Accuracy disclaimer popup -->
+<div class="modal-overlay" id="disclaimerModal">
+  <div class="modal-sheet" style="text-align:center">
+    <div class="modal-handle"></div>
+    <div style="font-size:1.5rem;margin-bottom:0.75rem">📋</div>
+    <div class="modal-title">A quick reminder</div>
+    <p style="font-size:0.8rem;color:#555;line-height:1.65;font-family:'Jost',sans-serif;margin-bottom:1.25rem">
+      While we aim for accuracy, event details sometimes change. Please consider double-checking on the event website before attending.
+    </p>
+    <button class="modal-save" onclick="dismissDisclaimer()">Got it!</button>
+  </div>
+</div>
+
 </body>
 </html>
