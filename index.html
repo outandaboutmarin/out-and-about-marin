@@ -713,13 +713,13 @@
 </style>
 
 <!-- Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const SUPABASE_URL = 'https://yszyptpwgzjvdrwprlpg.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_fuKwJAQhnLh5BqptgE8CYg_pJklGCNv';
-  let supabase;
-  try {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+
     console.log('Supabase connected successfully');
   } catch(e) {
     console.error('Supabase init error:', e);
@@ -1281,7 +1281,7 @@ async function completeSignup() {
   };
 
   // Save to Supabase
-  try {
+
     const { error } = await supabaseClient.from('users').insert([currentUser]);
     if (error) {
       if (error.code === '23505') {
@@ -1323,7 +1323,7 @@ async function handleLogin() {
   }
 
   // Check Supabase database
-  try {
+
     const { data, error } = await supabaseClient
       .from('users')
       .select('*')
