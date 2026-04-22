@@ -1,6 +1,6 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-04-21
-Time: 17:38:26
+Date: 2026-04-22
+Time: 17:35:52
 
 Total events in events.json: 29
 Active events: 28
@@ -24,7 +24,6 @@ Events by town:
   Tiburon: 5
 
 Sites needing manual review:
-  ✗ San Rafael Public Library: <urlopen error timed out>
   ✗ Sausalito Public Library: HTTP Error 403: Forbidden
 
 Next run: tomorrow at 6:00 AM PT
