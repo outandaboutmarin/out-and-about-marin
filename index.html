@@ -712,13 +712,22 @@
   }
 </style>
 
-<!-- Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Supabase placeholder - configured separately -->
 <script>
   const SUPABASE_URL = 'https://yszyptpwgzjvdrwprlpg.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_fuKwJAQhnLh5BqptgE8CYg_pJklGCNv';
-  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  // Supabase client initialized after library loads
+  let supabaseClient = null;
+  window.addEventListener('load', function() {
+    try {
+      if (window.supabase) {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        console.log('Supabase ready');
+      }
+    } catch(e) { console.log('Supabase not available:', e); }
+  });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
