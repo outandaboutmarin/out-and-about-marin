@@ -991,7 +991,7 @@
   <!-- Main content -->
   <div id="mainContent">
     <!-- Coming up section -->
-    <div class="coming-up-section" id="comingUpSection" style="display:none">
+    <div class="coming-up-section" id="comingUpSection" style="display:none!important">
       <div class="coming-up-title">Coming up soon</div>
       <div class="coming-up-scroll" id="comingUpScroll"></div>
     </div>
@@ -1263,7 +1263,7 @@ function loadEvents() {
       allEvents = data.events || [];
       buildLocationOptions();
       renderCards();
-      renderComingUp();
+      // renderComingUp(); // disabled
     })
     .catch(() => {
       document.getElementById('resultsCount').textContent = 'Could not load events — check your connection';
