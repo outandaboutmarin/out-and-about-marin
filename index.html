@@ -907,15 +907,7 @@
   </div>
 
 
-  <!-- Search bar (hidden by default) -->
-  <div id="searchBar" style="display:none;background:#0D1B3E;padding:0 0.75rem 0.625rem">
-    <div style="display:grid;grid-template-columns:1fr auto;gap:0.5rem;align-items:center">
-      <input type="text" id="searchInput" placeholder="Search events…"
-        style="background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:var(--radius-pill);padding:0.4rem 0.875rem;font-size:0.8rem;font-family:var(--font-sans);color:white;outline:none;width:100%;min-width:0"
-        oninput="searchEvents(this.value)">
-      <button onclick="toggleSearch()" style="color:rgba(255,255,255,0.9);font-size:0.72rem;font-family:var(--font-sans);cursor:pointer;white-space:nowrap;font-weight:600;padding:0.3rem 0.625rem;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:var(--radius-pill);flex-shrink:0">✕ Close</button>
-    </div>
-  </div>
+
 
   <!-- Filter pills -->
   <div class="filter-bar">
@@ -1853,23 +1845,23 @@ function renderProfile() {
 let searchActive = false;
 
 function toggleSearch() {
-  const bar = document.getElementById('searchBar');
   searchActive = !searchActive;
-  bar.style.display = searchActive ? 'block' : 'none';
+  const overlay = document.getElementById('searchOverlay');
+  overlay.style.display = searchActive ? 'block' : 'none';
   if (searchActive) {
-    document.getElementById('searchInput').focus();
+    setTimeout(() => document.getElementById('searchInput').focus(), 100);
   } else {
     document.getElementById('searchInput').value = '';
+    document.getElementById('searchResults').innerHTML = '';
     renderCards();
   }
 }
 
 function searchEvents(query) {
   const q = query.toLowerCase().trim();
-  const body = document.getElementById('cardsBody');
-  const empty = document.getElementById('emptyState');
+  const resultsDiv = document.getElementById('searchResults');
 
-  if (!q) { renderCards(); return; }
+  if (!q) { resultsDiv.innerHTML = ''; return; }
 
   const results = allEvents.filter(e =>
     e.event_name.toLowerCase().includes(q) ||
@@ -1879,15 +1871,17 @@ function searchEvents(query) {
     (e.description && e.description.toLowerCase().includes(q))
   );
 
-  document.getElementById('resultsCount').textContent = `${results.length} result${results.length !== 1 ? 's' : ''} for "${query}"`;
-
   if (results.length === 0) {
-    body.innerHTML = '';
-    empty.classList.add('visible');
+    resultsDiv.innerHTML = '<div style="padding:2rem;text-align:center;font-family:Jost,sans-serif;color:#999">No events found</div>';
     return;
   }
-  empty.classList.remove('visible');
-  body.innerHTML = results.map(e => cardHTML(e)).join('');
+
+  resultsDiv.innerHTML = '<div style="padding:0.5rem 0.75rem;font-size:0.7rem;color:#999;font-family:Jost,sans-serif">' + results.length + ' result' + (results.length !== 1 ? 's' : '') + '</div>' +
+    results.map(e => `<div onclick="toggleSearch();openDetail(${e.id})" style="padding:0.625rem 0.75rem;border-bottom:0.5px solid #EEE;cursor:pointer">
+      <div style="font-family:'Playfair Display',serif;font-size:0.875rem;font-weight:600;color:#0D1B3E">${e.event_name}</div>
+      <div style="font-size:0.72rem;color:#555;margin-top:2px">${e.venue} · ${e.town}</div>
+      <div style="font-size:0.65rem;color:#888;margin-top:2px">${e.day} · ${e.time}</div>
+    </div>`).join('');
 }
 
 // ═══════════════════════════════════════════
@@ -2077,5 +2071,19 @@ function normalizePhone(phone) {
   </div>
 </div>
 
+
+<!-- Search overlay (fixed, always fits screen) -->
+<div id="searchOverlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:500">
+  <div style="background:#0D1B3E;padding:0.75rem 1rem;display:flex;align-items:center;gap:0.75rem">
+    <input type="text" id="searchInput" placeholder="Search events…"
+      style="flex:1;min-width:0;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:999px;padding:0.5rem 1rem;font-size:0.9rem;font-family:'Jost',sans-serif;color:white;outline:none;-webkit-appearance:none"
+      oninput="searchEvents(this.value)">
+    <button onclick="toggleSearch()"
+      style="flex-shrink:0;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:999px;padding:0.5rem 0.875rem;color:white;font-size:0.8rem;font-weight:600;font-family:'Jost',sans-serif;cursor:pointer;white-space:nowrap">
+      Close
+    </button>
+  </div>
+  <div id="searchResults" style="background:white;overflow-y:auto;max-height:calc(100vh - 60px);padding:0.5rem"></div>
+</div>
 </body>
 </html>
