@@ -103,43 +103,60 @@ def fetch_bibliocommons_events():
 
 def check_library_websites():
     """
-    Check individual library websites for schedule changes.
-    Logs any sites that return errors so you know to check manually.
+    Check all library program pages for changes using the
+    library_review.py hash-based detection system.
+    Returns list of sites with issues for the run report.
     """
-    print("\n── Individual Library Health Check ──")
-    
-    libraries = [
-        ("Belvedere-Tiburon Library", "https://beltiblibrary.org"),
-        ("Larkspur Library", "https://ci.larkspur.ca.us"),
-        ("Mill Valley Public Library", "https://millvalleylibrary.org"),
-        ("Ross Library", "https://rosslibrary.org"),
-        ("San Anselmo Library", "https://townofsananselmo.org"),
-        ("San Rafael Public Library", "https://srpubliclibrary.org"),
-        ("Sausalito Public Library", "https://sausalito.gov/library"),
-    ]
-    
-    issues = []
-    for name, url in libraries:
-        try:
-            req = urllib.request.Request(
-                url,
-                headers={"User-Agent": "OutAndAboutMarin/1.0 (checking for updates)"}
-            )
-            with urllib.request.urlopen(req, timeout=10) as response:
-                status = response.status
-            if status == 200:
-                print(f"  ✓ {name} — OK")
-            else:
-                issues.append(f"{name} returned status {status}")
-                print(f"  ⚠ {name} — status {status}")
-        except Exception as e:
-            issues.append(f"{name}: {str(e)[:60]}")
-            print(f"  ✗ {name} — {str(e)[:60]}")
-    
-    if issues:
-        print(f"\n  ⚠ {len(issues)} site(s) need manual review")
-    
-    return issues
+    print("\n── Library Page Change Detection ──")
+
+    try:
+        import importlib.util, sys, hashlib
+        spec = importlib.util.spec_from_file_location(
+            "library_review",
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "library_review.py")
+        )
+        lr = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(lr)
+
+        prev_hashes = lr.load_hashes()
+        changed, new_hashes = lr.check_for_page_changes(lr.LIBRARIES, prev_hashes)
+        lr.save_hashes(new_hashes)
+
+        # Check for upcoming reopenings
+        reopening_soon = lr.check_upcoming_reopenings(EVENTS_FILE)
+        if reopening_soon:
+            print("\n  🔔 UPCOMING REOPENINGS:")
+            for r in reopening_soon:
+                days_str = "TODAY" if r["days"] == 0 else f"in {r['days']} day(s)"
+                print(f"  • {r['event']} at {r['venue']} — reopens {r['reopens']} ({days_str})")
+
+        if changed:
+            print(f"\n  🔔 {len(changed)} library page(s) changed — review recommended:")
+            for lib in changed:
+                print(f"     • {lib['name']}")
+            return [f"PAGE CHANGED: {lib['name']}" for lib in changed]
+        else:
+            print("  ✓ All library pages unchanged since last run")
+            return []
+
+    except Exception as e:
+        print(f"  ⚠ library_review.py not found or failed: {e}")
+        print("  ℹ Falling back to basic health check")
+        issues = []
+        for url, name in [
+            ("https://beltiblibrary.org", "Belvedere-Tiburon"),
+            ("https://srpubliclibrary.org", "San Rafael"),
+            ("https://sausalitolibrary.org", "Sausalito"),
+            ("https://marinlibrary.org", "MCFL"),
+        ]:
+            try:
+                req = urllib.request.Request(url, headers={"User-Agent": "OutAndAboutMarin/1.0"})
+                with urllib.request.urlopen(req, timeout=10) as r:
+                    if r.status != 200:
+                        issues.append(f"{name}: status {r.status}")
+            except Exception as ex:
+                issues.append(f"{name}: {str(ex)[:50]}")
+        return issues
 
 def generate_run_report(events, issues):
     """Write a simple log file summarising what happened this run."""
