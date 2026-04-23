@@ -1544,8 +1544,31 @@ function getFilteredEvents() {
 
 const dayOrder = { Monday:0, Tuesday:1, Wednesday:2, Thursday:3, Friday:4, Saturday:5, Sunday:6 };
 
+function shouldShowEvent(e) {
+  if (e.status === 'Active') return 'show';
+  if (e.status !== 'Temp. closed') return 'show'; // unknown status, show anyway
+
+  // Extract reopening date from notes field (format: "Reopening Month DD" or "Reopens Month DD")
+  const reopenMatch = e.notes && e.notes.match(/[Rr]eopen(?:ing|s)\s+([A-Z][a-z]+\s+\d{1,2}(?:,\s*\d{4})?)/);
+  if (!reopenMatch) return 'badge'; // no date found, show with badge
+
+  const reopenDate = new Date(reopenMatch[1] + (reopenMatch[1].includes(',') ? '' : ', 2026'));
+  const today = new Date();
+  const daysUntilReopen = Math.ceil((reopenDate - today) / (1000 * 60 * 60 * 24));
+
+  if (daysUntilReopen <= 0) return 'show'; // already reopened, show normally
+  if (daysUntilReopen <= 30) return 'badge'; // within 30 days, show with badge
+  return 'hide'; // more than 30 days out, hide completely
+}
+
+function getReopenLabel(e) {
+  const reopenMatch = e.notes && e.notes.match(/[Rr]eopen(?:ing|s)\s+([A-Z][a-z]+\s+\d{1,2}(?:,\s*\d{4})?)/);
+  if (!reopenMatch) return 'Temp. closed';
+  return `Closed · Reopens ${reopenMatch[1]}`;
+}
+
 function renderCards() {
-  const filtered = getFilteredEvents();
+  const filtered = getFilteredEvents().filter(e => shouldShowEvent(e) !== 'hide');
   const body = document.getElementById('cardsBody');
   const empty = document.getElementById('emptyState');
   const total = Object.values(selections).reduce((n,s) => n+s.size, 0);
@@ -1595,7 +1618,7 @@ function cardHTML(e) {
           <span class="tag ${typeClass}">${e.type}</span>
           <span class="tag tag-age">${e.ages}</span>
           <span class="tag ${e.cost === 'Free' ? 'tag-free' : 'tag-paid'}">${e.cost}</span>
-          ${isClosed ? '<span class="tag tag-closed">Temp. closed</span>' : ''}
+          ${isClosed ? `<span class="tag tag-closed">${getReopenLabel(e)}</span>` : ''}
         </div>
       </div>
       <div class="card-right">
