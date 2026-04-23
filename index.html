@@ -625,17 +625,34 @@
 
   /* Save toast */
   .save-toast {
-    position: fixed; bottom: calc(80px + env(safe-area-inset-bottom)); left: 0.5rem; right: 0.5rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: calc(100% - 2rem);
+    max-width: 380px;
     background: var(--white);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     border: 0.5px solid var(--card-border);
-    padding: 0.75rem;
-    box-shadow: 0 -2px 20px rgba(0,0,0,0.15);
+    padding: 1.25rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.2);
     z-index: 350;
-    transform: translateY(120%);
-    transition: transform 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
   }
-  .save-toast.show { transform: translateY(0); }
+  .save-toast.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: all;
+  }
+  .toast-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 349;
+    display: none;
+  }
+  .toast-overlay.show { display: block; }
   .toast-title { font-family: var(--font-serif); font-size: 0.8rem; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
   .toast-sub { font-size: 0.65rem; color: var(--text-muted); margin-bottom: 0.625rem; line-height: 1.5; }
   .toast-pills { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 0.625rem; }
@@ -746,8 +763,7 @@
     .dropdown-panel { max-width: 480px; left: 50%; transform: translateX(-50%); }
     .share-sheet { max-width: 480px; left: 50%; transform: translateX(-50%) translateY(100%); }
     .share-sheet.open { transform: translateX(-50%) translateY(0); }
-    .save-toast { max-width: 460px; left: 50%; transform: translateX(-50%) translateY(120%); }
-    .save-toast.show { transform: translateX(-50%) translateY(0); }
+    .save-toast { max-width: 420px; }
   }
 </style>
 
@@ -1180,6 +1196,7 @@
 </div>
 
 <!-- Save filters toast -->
+<div class="toast-overlay" id="toastOverlay" onclick="dismissToast()"></div>
 <div class="save-toast" id="saveToast">
   <div class="toast-title">Save these as your defaults?</div>
   <div class="toast-sub">Next time you open the app, your feed will automatically show these filters.</div>
@@ -1751,8 +1768,12 @@ function showSaveToast() {
   Object.entries(selections).forEach(([k, s]) => s.forEach(v => activeFilters.push(v)));
   pills.innerHTML = activeFilters.map(f => `<span class="toast-pill">${f}</span>`).join('');
   document.getElementById('saveToast').classList.add('show');
+  document.getElementById('toastOverlay').classList.add('show');
 }
-function dismissToast() { document.getElementById('saveToast').classList.remove('show'); }
+function dismissToast() {
+  document.getElementById('saveToast').classList.remove('show');
+  document.getElementById('toastOverlay').classList.remove('show');
+}
 function saveDefaults() {
   Object.keys(selections).forEach(k => { defaultFilters[k] = new Set(selections[k]); });
   if (currentUser) {
@@ -1760,7 +1781,8 @@ function saveDefaults() {
     Object.keys(defaultFilters).forEach(k => { currentUser.defaultFilters[k] = [...defaultFilters[k]]; });
     localStorage.setItem('oaam_user', JSON.stringify(currentUser));
   }
-  dismissToast();
+  document.getElementById('saveToast').classList.remove('show');
+  document.getElementById('toastOverlay').classList.remove('show');
   renderProfile();
 }
 function loadDefaultFilters() {
