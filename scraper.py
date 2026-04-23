@@ -130,14 +130,22 @@ def check_library_websites():
                 days_str = "TODAY" if r["days"] == 0 else f"in {r['days']} day(s)"
                 print(f"  • {r['event']} at {r['venue']} — reopens {r['reopens']} ({days_str})")
 
+        # Check unpredictable events for missing one-off dates
+        needs_lookup = lr.check_unpredictable_events(EVENTS_FILE)
+
+        issues = []
         if changed:
             print(f"\n  🔔 {len(changed)} library page(s) changed — review recommended:")
             for lib in changed:
                 print(f"     • {lib['name']}")
-            return [f"PAGE CHANGED: {lib['name']}" for lib in changed]
+            issues += [f"PAGE CHANGED: {lib['name']}" for lib in changed]
         else:
             print("  ✓ All library pages unchanged since last run")
-            return []
+
+        if needs_lookup:
+            issues += [f"NEEDS ONE-OFF DATE: {e['name']}" for e in needs_lookup]
+
+        return issues
 
     except Exception as e:
         print(f"  ⚠ library_review.py not found or failed: {e}")
@@ -192,12 +200,24 @@ def generate_run_report(events, issues):
     for town, count in sorted(town_counts.items()):
         lines.append(f"  {town}: {count}")
     
-    if issues:
-        lines += ["", "Sites needing manual review:"]
-        for issue in issues:
-            lines.append(f"  ✗ {issue}")
+    page_changes = [i for i in issues if i.startswith("PAGE CHANGED")]
+    date_lookups = [i for i in issues if i.startswith("NEEDS ONE-OFF DATE")]
+
+    if page_changes:
+        lines += ["", "Library pages changed — review recommended:"]
+        for issue in page_changes:
+            lines.append(f"  🔔 {issue}")
     else:
-        lines += ["", "All library sites responding normally."]
+        lines += ["", "All library pages unchanged since last run."]
+
+    if date_lookups:
+        lines += ["", "Unpredictable events needing one-off dates added:"]
+        for issue in date_lookups:
+            lines.append(f"  🔔 {issue}")
+        lines.append("  → Open a chat with Claude and say:")
+        lines.append("  → \"Please look up upcoming dates for unpredictable events and add them to events.json\"")
+    else:
+        lines += ["", "All unpredictable events have upcoming dates loaded. ✓"]
     
     lines.append(f"\nNext run: tomorrow at 6:00 AM PT")
     

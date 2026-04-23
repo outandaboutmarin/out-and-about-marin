@@ -269,6 +269,204 @@ LIBRARIES = [
 ]
 
 # ─────────────────────────────────────────────────────────────────
+# UNPREDICTABLE EVENTS REGISTRY
+# Events with no fixed week-of-month pattern whose specific dates
+# must be looked up each month and added as one-offs to events.json.
+# The daily scraper checks these URLs for new dates and logs them.
+# ─────────────────────────────────────────────────────────────────
+
+UNPREDICTABLE_EVENTS = [
+    {
+        "name": "Read to a Dog — San Rafael Downtown",
+        "event_id": 26,
+        "organization": "San Rafael Public Library",
+        "venue": "San Rafael Public Library - Downtown",
+        "town": "San Rafael",
+        "address": "1100 E Street, San Rafael, CA 94901",
+        "day_of_week": "Saturday",
+        "time": "11:00 AM",
+        "ages": "5+ yrs",
+        "type": "Kids Programs",
+        "lookup_url": "https://srpubliclibrary.org/events/",
+        "lookup_note": "Search 'read to a dog' on SRPL events page. Date varies each month — not a fixed Saturday.",
+        "template": {
+            "organization": "San Rafael Public Library",
+            "venue": "San Rafael Public Library - Downtown",
+            "event_name": "Read to a Dog",
+            "type": "Kids Programs",
+            "time": "11:00 AM",
+            "time_of_day": "Afternoon",
+            "town": "San Rafael",
+            "address": "1100 E Street, San Rafael, CA 94901",
+            "ages": "5+ yrs",
+            "cost": "Free",
+            "indoor_outdoor": "Indoor",
+            "active_sedentary": "Sedentary",
+            "cadence": "One-off",
+            "status": "Active",
+            "featured": False,
+            "description": "Practice reading aloud to friendly therapy dogs from the Marin Humane Society SHARE a Book program. Emerging readers grades 1-3. Sign up at children's desk morning of event. Limited spots.",
+            "registration": "Not required — sign up at children's desk day-of",
+            "website": "https://srpubliclibrary.org",
+            "notes": "Date varies monthly — check srpubliclibrary.org/events for next date.",
+        }
+    },
+    {
+        "name": "Family Storytime — Belvedere-Tiburon (Sunday bi-monthly)",
+        "event_id": 31,
+        "organization": "Belvedere-Tiburon Library",
+        "venue": "Belvedere-Tiburon Library",
+        "town": "Tiburon",
+        "address": "1501 Tiburon Blvd, Tiburon, CA 94920",
+        "day_of_week": "Sunday",
+        "time": "11:00 AM",
+        "ages": "All ages",
+        "type": "Library",
+        "lookup_url": "https://www.beltiblibrary.org/events",
+        "lookup_note": "Search 'Family Storytime' on BelTib events page. Bi-monthly on select Sundays — dates not predictable.",
+        "template": {
+            "organization": "Belvedere-Tiburon Library",
+            "venue": "Belvedere-Tiburon Library",
+            "event_name": "Family Storytime",
+            "type": "Library",
+            "time": "11:00 AM",
+            "time_of_day": "Morning",
+            "town": "Tiburon",
+            "address": "1501 Tiburon Blvd, Tiburon, CA 94920",
+            "ages": "All ages",
+            "cost": "Free",
+            "indoor_outdoor": "Indoor",
+            "active_sedentary": "Sedentary",
+            "cadence": "One-off",
+            "status": "Active",
+            "featured": False,
+            "description": "Stories and songs the whole family will enjoy together. Bi-monthly on select Sundays.",
+            "registration": "Not required",
+            "website": "https://beltiblibrary.org",
+            "notes": "Bi-monthly — check beltiblibrary.org/events for specific dates.",
+        }
+    },
+    {
+        "name": "Read to a Dog with Stinson — Corte Madera (monthly Sunday)",
+        "event_id": 43,
+        "organization": "Marin County Free Library",
+        "venue": "Corte Madera Library",
+        "town": "Corte Madera",
+        "address": "707 Meadowsweet Drive, Corte Madera, CA 94925",
+        "day_of_week": "Sunday",
+        "time": "2:30 PM",
+        "ages": "5-12 yrs",
+        "type": "Kids Programs",
+        "lookup_url": "https://marinlibrary.bibliocommons.com/v2/events",
+        "lookup_note": "Filter BiblioCommons by Corte Madera location and search 'Read to a Dog'. Monthly on a Sunday — specific date varies. NOTE: Corte Madera Library closed for Refresh early May–mid-June 2026.",
+        "template": {
+            "organization": "Marin County Free Library",
+            "venue": "Corte Madera Library",
+            "event_name": "Read to a Dog with Stinson",
+            "type": "Kids Programs",
+            "time": "2:30 PM",
+            "time_of_day": "Afternoon",
+            "town": "Corte Madera",
+            "address": "707 Meadowsweet Drive, Corte Madera, CA 94925",
+            "ages": "5-12 yrs",
+            "cost": "Free",
+            "indoor_outdoor": "Indoor",
+            "active_sedentary": "Sedentary",
+            "cadence": "One-off",
+            "status": "Active",
+            "featured": False,
+            "description": "Practice reading aloud to Stinson, a therapy dog trained to read with kids. Kindergarten and up welcome.",
+            "registration": "Not required",
+            "website": "https://marinlibrary.org",
+            "notes": "Monthly on a Sunday — date varies. Check marinlibrary.bibliocommons.com for next date.",
+        }
+    },
+]
+
+
+def check_unpredictable_events(events_file="events.json"):
+    """
+    For each unpredictable event, check whether we have upcoming one-off
+    dates already loaded in events.json. If any are missing for the next
+    60 days, log them as needing manual lookup.
+    """
+    print("\n── Unpredictable Events — One-off Date Check ──")
+
+    if not os.path.exists(events_file):
+        print("  ⚠ events.json not found")
+        return []
+
+    with open(events_file) as f:
+        data = json.load(f)
+
+    today = date.today()
+    in_60 = date(today.year, today.month, today.day)
+    # 60 days out
+    from datetime import timedelta
+    in_60 = today + timedelta(days=60)
+
+    existing_oneoffs = {
+        e["event_name"] + "|" + e.get("event_date","")
+        for e in data.get("events", [])
+        if e.get("cadence") == "One-off" and e.get("event_date")
+    }
+
+    needs_lookup = []
+
+    for ue in UNPREDICTABLE_EVENTS:
+        # Find any active one-offs for this event within next 60 days
+        upcoming = [
+            e for e in data.get("events", [])
+            if e.get("cadence") == "One-off"
+            and e.get("event_name") == ue["template"]["event_name"]
+            and e.get("venue") == ue["template"]["venue"]
+            and e.get("event_date")
+            and today <= date.fromisoformat(e["event_date"]) <= in_60
+        ]
+
+        if upcoming:
+            dates_str = ", ".join(e["event_date"] for e in upcoming)
+            print(f"  ✓ {ue['name']}")
+            print(f"    → Upcoming date(s) loaded: {dates_str}")
+        else:
+            print(f"  🔔 {ue['name']}")
+            print(f"    → NO upcoming dates in next 60 days — needs lookup!")
+            print(f"    → Check: {ue['lookup_url']}")
+            print(f"    → Note: {ue['lookup_note']}")
+            needs_lookup.append(ue)
+
+    if needs_lookup:
+        print(f"\n  ⚠ {len(needs_lookup)} event(s) need one-off dates added to events.json")
+        print("  ℹ To add: open a chat with Claude and say:")
+        print('  ℹ "Please look up upcoming dates for unpredictable events and add them to events.json"')
+
+    return needs_lookup
+
+
+def generate_oneoff_entry(template, event_date_str, expires_str=None):
+    """
+    Helper to generate a complete one-off event entry from a template.
+    Call this when you have a confirmed date to add.
+
+    Args:
+        template: dict from UNPREDICTABLE_EVENTS[n]["template"]
+        event_date_str: "YYYY-MM-DD"
+        expires_str: "YYYY-MM-DD" (defaults to event_date)
+    """
+    import calendar as cal
+    d = date.fromisoformat(event_date_str)
+    day_name = d.strftime("%A")
+
+    entry = dict(template)
+    entry["day"] = day_name
+    entry["event_date"] = event_date_str
+    entry["expires"] = expires_str or event_date_str
+    entry["season_start"] = ""
+    entry["season_end"] = ""
+    return entry
+
+
+# ─────────────────────────────────────────────────────────────────
 # AUTOMATED: PAGE HASH CHECKER
 # Detects when a library's programs page has changed since last run
 # ─────────────────────────────────────────────────────────────────
@@ -437,6 +635,9 @@ def main():
     print("Out AND About Marin — Library Review Script")
     print(f"Running: {date.today().strftime('%B %d, %Y')}")
     print("═" * 60)
+
+    # Check unpredictable events for missing one-off dates
+    check_unpredictable_events()
 
     # Check for upcoming reopenings
     reopening_soon = check_upcoming_reopenings()

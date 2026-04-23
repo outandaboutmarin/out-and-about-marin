@@ -329,7 +329,7 @@
   /* Dropdowns */
   .dropdown-panel {
     position: fixed;
-    top: 130px;
+    top: 0;
     left: 0; right: 0;
     background: var(--white);
     border-bottom: 1px solid #E5E2DA;
@@ -1428,6 +1428,14 @@ function toggleDropdown(id) {
   }
   const panel = document.getElementById(`dd-${id}`);
   const isOpen = panel.classList.contains('open');
+
+  // Position dropdown dynamically below the filter bar
+  const filterBar = document.querySelector('.filter-bar');
+  if (filterBar) {
+    const rect = filterBar.getBoundingClientRect();
+    panel.style.top = Math.round(rect.bottom) + 'px';
+  }
+
   panel.classList.toggle('open', !isOpen);
   activeDropdown = !isOpen ? id : null;
 }
@@ -1537,6 +1545,106 @@ function getWeekRange(offset) {
   return { start, end };
 }
 
+// Parse week-of-month occurrence from notes field
+// e.g. "Every 1st Friday" -> {nth: 1}
+// "2nd, 4th, and 5th Wednesdays" -> {nths: [2,4,5]}
+// "1st and 3rd Wednesdays" -> {nths: [1,3]}
+// "Last Wednesday" -> {last: true}
+// "Second Saturday" -> {nth: 2}
+function parseOccurrenceRule(notes) {
+  if (!notes) return null;
+  const n = notes.toLowerCase();
+
+  // Events with no predictable occurrence rule — hide from feed
+  if (n.includes('check') && n.includes('calendar') && !n.match(/\b(1st|2nd|3rd|4th|5th|first|second|third|fourth|fifth|last)\b/)) {
+    return { unpredictable: true };
+  }
+
+  // "last wednesday/friday/etc"
+  if (/\blast\b/.test(n)) return { last: true };
+
+  // Extract all ordinal numbers mentioned
+  const ordinals = { 'first':1,'1st':1,'second':2,'2nd':2,'third':3,'3rd':3,'fourth':4,'4th':4,'fifth':5,'5th':5 };
+  const found = [];
+  for (const [word, num] of Object.entries(ordinals)) {
+    // Use word boundary to avoid "4th" matching inside longer words
+    const re = new RegExp('\\b' + word + '\\b');
+    if (re.test(n)) found.push(num);
+  }
+  if (found.length === 0) return null;
+  if (found.length === 1) return { nth: found[0] };
+  return { nths: [...new Set(found)].sort() };
+}
+
+// Get the nth occurrence of a weekday in a given month
+// e.g. 2nd Friday of April 2026
+function getNthWeekdayOfMonth(nth, dayIndex, year, month) {
+  // dayIndex: 0=Sun,1=Mon,...,6=Sat
+  let count = 0;
+  for (let day = 1; day <= 31; day++) {
+    const d = new Date(year, month, day);
+    if (d.getMonth() !== month) break;
+    if (d.getDay() === dayIndex) {
+      count++;
+      if (count === nth) return d;
+    }
+  }
+  return null;
+}
+
+// Get the last occurrence of a weekday in a given month
+function getLastWeekdayOfMonth(dayIndex, year, month) {
+  let last = null;
+  for (let day = 1; day <= 31; day++) {
+    const d = new Date(year, month, day);
+    if (d.getMonth() !== month) break;
+    if (d.getDay() === dayIndex) last = d;
+  }
+  return last;
+}
+
+function doesEventOccurOnDate(e, date) {
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const eventDays = e.day.includes('/') ? e.day.split('/').map(d => d.trim()) : [e.day];
+  const dateDayName = dayNames[date.getDay()];
+
+  if (!eventDays.includes(dateDayName)) return false;
+  if (e.cadence === 'Weekly') return true;
+
+  const rule = parseOccurrenceRule(e.notes);
+  if (!rule) {
+    // No rule found — for Monthly events hide from feed (unpredictable)
+    // For Bi-weekly with no rule, show every matching day as fallback
+    if (e.cadence === 'Monthly') return false;
+    return true;
+  }
+  if (rule.unpredictable) return false; // hide from feed
+
+  const dayIndex = date.getDay();
+  const year = date.getFullYear();
+  const month = date.getMonth();
+
+  if (rule.last) {
+    const lastOcc = getLastWeekdayOfMonth(dayIndex, year, month);
+    return lastOcc && lastOcc.toDateString() === date.toDateString();
+  }
+
+  if (rule.nth) {
+    const occ = getNthWeekdayOfMonth(rule.nth, dayIndex, year, month);
+    return occ && occ.toDateString() === date.toDateString();
+  }
+
+  if (rule.nths) {
+    for (const nth of rule.nths) {
+      const occ = getNthWeekdayOfMonth(nth, dayIndex, year, month);
+      if (occ && occ.toDateString() === date.toDateString()) return true;
+    }
+    return false;
+  }
+
+  return true;
+}
+
 function isEventInWeek(e, weekStart, weekEnd) {
   const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   if (e.cadence === 'One-off') {
@@ -1544,22 +1652,21 @@ function isEventInWeek(e, weekStart, weekEnd) {
     const d = new Date(e.event_date);
     return d >= weekStart && d <= weekEnd;
   }
-  // For recurring events, check if any day in the week range matches
-  const eventDays = e.day.includes('/') ? e.day.split('/').map(d => d.trim()) : [e.day];
+  // Check each day in the week range
   for (let d = new Date(weekStart); d <= weekEnd; d.setDate(d.getDate() + 1)) {
-    if (eventDays.includes(dayNames[d.getDay()])) return true;
+    if (doesEventOccurOnDate(e, d)) return true;
   }
   return false;
 }
 
-function getWeekDaysInRange(day, weekStart, weekEnd) {
-  // Returns array of actual dates (as day names) that fall in range for this event's day(s)
+function getWeekDaysInRange(e, weekStart, weekEnd) {
+  // Returns array of day names when this event actually occurs in the week range
   const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const eventDays = day.includes('/') ? day.split('/').map(d => d.trim()) : [day];
   const result = [];
   for (let d = new Date(weekStart); d <= weekEnd; d.setDate(d.getDate() + 1)) {
-    if (eventDays.includes(dayNames[d.getDay()])) {
-      result.push(dayNames[d.getDay()]);
+    if (doesEventOccurOnDate(e, d)) {
+      const name = dayNames[d.getDay()];
+      if (!result.includes(name)) result.push(name);
     }
   }
   return result;
@@ -1699,7 +1806,7 @@ function renderCards() {
       if (!grouped[key]) grouped[key] = [];
       grouped[key].push({ ...e, _displayDay: e.day });
     } else {
-      const daysInRange = getWeekDaysInRange(e.day, wStart2, wEnd2);
+      const daysInRange = getWeekDaysInRange(e, wStart2, wEnd2);
       daysInRange.forEach(day => {
         if (!grouped[day]) grouped[day] = [];
         grouped[day].push({ ...e, _displayDay: day });
