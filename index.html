@@ -794,7 +794,7 @@
     <div id="loginForm">
       <div class="field-group">
         <label class="field-label" for="loginPhone">Phone Number</label>
-        <input class="field-input" type="tel" id="loginPhone" placeholder="(415) 555–0000" autocomplete="tel">
+        <input class="field-input" type="tel" id="loginPhone" placeholder="415-555-0000" autocomplete="tel" oninput="formatPhone(this)" maxlength="12">
       </div>
       <div class="field-group">
         <label class="field-label" for="loginPin">4-Digit PIN</label>
@@ -822,7 +822,7 @@
       </div>
       <div class="field-group">
         <label class="field-label" for="signupPhone">Phone Number</label>
-        <input class="field-input" type="tel" id="signupPhone" placeholder="(415) 555–0000" autocomplete="tel">
+        <input class="field-input" type="tel" id="signupPhone" placeholder="415-555-0000" autocomplete="tel" oninput="formatPhone(this)" maxlength="12">
       </div>
       <div class="field-group">
         <label class="field-label" for="signupPin">Create a 4-Digit PIN</label>
@@ -908,12 +908,12 @@
 
 
   <!-- Search bar (hidden by default) -->
-  <div id="searchBar" style="display:none;background:#0D1B3E;padding:0 0.75rem 0.625rem;box-sizing:border-box;width:100%;max-width:100%;overflow:hidden">
-    <div style="display:flex;align-items:center;gap:0.5rem;width:100%;box-sizing:border-box">
+  <div id="searchBar" style="display:none;background:#0D1B3E;padding:0 0.75rem 0.625rem">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:0.5rem;align-items:center">
       <input type="text" id="searchInput" placeholder="Search events…"
-        style="flex:1;min-width:0;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:var(--radius-pill);padding:0.4rem 0.875rem;font-size:0.8rem;font-family:var(--font-sans);color:white;outline:none;width:100%;box-sizing:border-box"
+        style="background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:var(--radius-pill);padding:0.4rem 0.875rem;font-size:0.8rem;font-family:var(--font-sans);color:white;outline:none;width:100%;min-width:0"
         oninput="searchEvents(this.value)">
-      <button onclick="toggleSearch()" style="flex-shrink:0;color:rgba(255,255,255,0.9);font-size:0.72rem;font-family:var(--font-sans);cursor:pointer;white-space:nowrap;font-weight:600;padding:0.3rem 0.625rem;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:var(--radius-pill)">✕ Close</button>
+      <button onclick="toggleSearch()" style="color:rgba(255,255,255,0.9);font-size:0.72rem;font-family:var(--font-sans);cursor:pointer;white-space:nowrap;font-weight:600;padding:0.3rem 0.625rem;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:var(--radius-pill);flex-shrink:0">✕ Close</button>
     </div>
   </div>
 
@@ -1299,7 +1299,7 @@ function goToSignupStep2() {
   err.style.display = 'none';
 
   sessionStorage.setItem('oaam_signup_name', name);
-  sessionStorage.setItem('oaam_signup_phone', phone);
+  sessionStorage.setItem('oaam_signup_phone', normalizePhone(phone));
   sessionStorage.setItem('oaam_signup_pin', pin);
   sessionStorage.setItem('oaam_signup_zip', zip);
 
@@ -1318,7 +1318,7 @@ function toggleAge(el) { el.classList.toggle('selected'); }
 
 function completeSignup() {
   const name = sessionStorage.getItem('oaam_signup_name') || '';
-  const phone = sessionStorage.getItem('oaam_signup_phone') || '';
+  const phone = normalizePhone(sessionStorage.getItem('oaam_signup_phone') || '');
   const pin = sessionStorage.getItem('oaam_signup_pin') || '';
   const zip = sessionStorage.getItem('oaam_signup_zip') || '';
   const ages = [...document.querySelectorAll('.age-chip.selected')].map(c => c.dataset.age);
@@ -1342,7 +1342,7 @@ function completeSignup() {
 }
 
 function handleLogin() {
-  const phone = document.getElementById('loginPhone').value.trim();
+  const phone = normalizePhone(document.getElementById('loginPhone').value.trim());
   const pin = document.getElementById('loginPin').value.trim();
   const err = document.getElementById('loginError');
 
@@ -1453,7 +1453,11 @@ function toggleFilter(filterId, value) {
   renderCards();
   // Show save toast after user has actively set 2+ filters manually
   const totalActive = Object.values(selections).reduce((n, s) => n + s.size, 0);
-  if (totalActive >= 2 && !toastShown && document.getElementById("detailScreen").style.display === "none") { toastShown = true; setTimeout(showSaveToast, 1500); }
+  const hasDefaults = currentUser && currentUser.defaultFilters && Object.values(currentUser.defaultFilters).some(a => a.length > 0);
+  if (totalActive >= 2 && !toastShown && !hasDefaults && document.getElementById("detailScreen").style.display === "none") {
+    toastShown = true;
+    setTimeout(showSaveToast, 1500);
+  }
 }
 
 function syncCheckboxes(filterId) {
@@ -1978,6 +1982,31 @@ function checkDisclaimer() {
 
 function dismissDisclaimer() {
   document.getElementById('disclaimerModal').classList.remove('open');
+}
+
+
+// ═══════════════════════════════════════════
+// PHONE NUMBER FORMATTING
+// ═══════════════════════════════════════════
+
+function formatPhone(input) {
+  // Strip everything except digits
+  let digits = input.value.replace(/\D/g, '');
+  // Limit to 10 digits
+  digits = digits.substring(0, 10);
+  // Format as xxx-xxx-xxxx
+  if (digits.length >= 7) {
+    input.value = digits.substring(0,3) + '-' + digits.substring(3,6) + '-' + digits.substring(6);
+  } else if (digits.length >= 4) {
+    input.value = digits.substring(0,3) + '-' + digits.substring(3);
+  } else {
+    input.value = digits;
+  }
+}
+
+function normalizePhone(phone) {
+  // Strip formatting for storage/comparison - store as digits only
+  return phone.replace(/\D/g, '');
 }
 
 </script>
