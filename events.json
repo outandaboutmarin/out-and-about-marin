@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-20",
+  "last_updated": "2026-04-23",
   "events": [
     {
       "id": 1,
@@ -161,7 +161,7 @@
       "description": "Stories, songs, rhymes, and movement followed by Stay & Play. No registration required.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Civic Center Library closed for Refresh project April 20 \u2013 June 10, 2026. Reopening June 11."
+      "notes": "Civic Center Library closed for Refresh project April 20 – June 10, 2026. Reopening June 11."
     },
     {
       "id": 7,
@@ -188,7 +188,7 @@
       "description": "Stories, songs, rhymes, and movement followed by Stay & Play. No registration required.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Civic Center Library closed for Refresh project April 20 \u2013 June 10, 2026. Reopening June 11."
+      "notes": "Civic Center Library closed for Refresh project April 20 – June 10, 2026. Reopening June 11."
     },
     {
       "id": 8,
@@ -215,7 +215,7 @@
       "description": "Stories, movement, songs, and rhymes for young children and their caregivers.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Corte Madera Library closed for Refresh early May \u2013 mid-June 2026."
+      "notes": "Corte Madera Library closed for Refresh early May – mid-June 2026."
     },
     {
       "id": 9,
@@ -239,10 +239,10 @@
       "expires": "",
       "status": "Temp. closed",
       "featured": false,
-      "description": "Bilingual Spanish/English music, movement, and storytime for kids 0-5. Runs twice Tuesday morning at 9:30 AM and 10:15 AM \u2014 attend only one session. Also runs Thursdays.",
+      "description": "Bilingual Spanish/English music, movement, and storytime for kids 0-5. Runs twice Tuesday morning at 9:30 AM and 10:15 AM — attend only one session. Also runs Thursdays.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Fairfax Library closed for Refresh mid-April \u2013 end of April 2026."
+      "notes": "Fairfax Library closed for Refresh mid-April – end of April 2026."
     },
     {
       "id": 10,
@@ -377,7 +377,7 @@
       "description": "Bilingual-friendly storytime for children of all ages with Mr. Brian.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Branch closed for refresh \u2014 check website for reopening date"
+      "notes": "Branch closed for refresh — check website for reopening date"
     },
     {
       "id": 15,
@@ -512,7 +512,7 @@
       "description": "Songs, rhymes, and a story for babies and toddlers. Held outdoors on the Town Plaza or Library Lawn, weather permitting.",
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
-      "notes": "Weather permitting \u2014 moves indoors if needed"
+      "notes": "Weather permitting — moves indoors if needed"
     },
     {
       "id": 22,
@@ -539,7 +539,7 @@
       "description": "Songs, rhymes, and a story for babies and toddlers. Held outdoors on the Town Plaza or Library Lawn, weather permitting.",
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
-      "notes": "Weather permitting \u2014 moves indoors if needed"
+      "notes": "Weather permitting — moves indoors if needed"
     },
     {
       "id": 23,
@@ -566,7 +566,7 @@
       "description": "Songs, rhymes, and a story for babies and toddlers. Held outdoors on the Town Plaza or Library Lawn, weather permitting.",
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
-      "notes": "Weather permitting \u2014 moves indoors if needed"
+      "notes": "Weather permitting — moves indoors if needed"
     },
     {
       "id": 24,
@@ -647,7 +647,7 @@
       "description": "Practice reading aloud to friendly therapy dogs from the Marin Humane Society SHARE a Book program. A comforting and confidence-building experience for emerging readers in grades 1-3. Sign up at the children's desk the morning of the event. Limited spots available.",
       "registration": "Not required",
       "website": "https://srpubliclibrary.org",
-      "notes": "Monthly \u2014 date varies, check srpubliclibrary.org/events for next date. Sign up at children's desk morning of event."
+      "notes": "Monthly — date varies, check srpubliclibrary.org/events for next date. Sign up at children's desk morning of event."
     },
     {
       "id": 27,
@@ -753,9 +753,9 @@
       "status": "Active",
       "featured": false,
       "description": "Bouncy rhymes and songs for babies and their caregivers. After storytime, stay for sensory play with toys. Children older than 18 months welcome with a caregiver/infant pair.",
-      "registration": "Required \u2014 limited capacity",
+      "registration": "Required — limited capacity",
       "website": "https://beltiblibrary.org",
-      "notes": "Space is limited \u2014 check website to register"
+      "notes": "Space is limited — check website to register"
     },
     {
       "id": 31,
@@ -779,10 +779,10 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "description": "Stories and songs the whole family will enjoy together. Held on select Sundays \u2014 check library website for dates.",
+      "description": "Stories and songs the whole family will enjoy together. Held on select Sundays — check library website for dates.",
       "registration": "Not required",
       "website": "https://beltiblibrary.org",
-      "notes": "Bi-monthly on select Sundays \u2014 check beltiblibrary.org for specific dates"
+      "notes": "Bi-monthly on select Sundays — check beltiblibrary.org for specific dates"
     },
     {
       "id": 32,
@@ -836,7 +836,7 @@
       "description": "Songs, rhymes, and a story in Spanish and English for young children. Held on the first Wednesday of each month on the Town Plaza or Library Lawn, weather permitting.",
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
-      "notes": "First Wednesday of each month. Weather permitting \u2014 moves to Council Chambers in inclement weather."
+      "notes": "First Wednesday of each month. Weather permitting — moves to Council Chambers in inclement weather."
     },
     {
       "id": 34,
@@ -887,10 +887,10 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "description": "Soul4Kidz performs live music in the park for babies, toddlers, preschoolers, and families. Soulful twists on children's favorites \u2014 sing along and dance! Great for ages 0\u20135.",
+      "description": "Soul4Kidz performs live music in the park for babies, toddlers, preschoolers, and families. Soulful twists on children's favorites — sing along and dance! Great for ages 0–5.",
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
-      "notes": "Every 1st Friday of the month. Weather permitting \u2014 may be cancelled if raining or poor air quality."
+      "notes": "Every 1st Friday of the month. Weather permitting — may be cancelled if raining or poor air quality."
     },
     {
       "id": 36,
@@ -917,7 +917,7 @@
       "description": "In Harmony Music brings free family music classes to the park! Singing, dancing, clapping, and bouncing for babies, toddlers, and preschoolers and their caregivers. Fosters developmental benefits through music and movement.",
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
-      "notes": "Every 3rd Friday of the month. Weather permitting \u2014 may be cancelled if raining or poor air quality."
+      "notes": "Every 3rd Friday of the month. Weather permitting — may be cancelled if raining or poor air quality."
     },
     {
       "id": 37,
@@ -968,10 +968,10 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "description": "The same great storytime experience in a neighborhood park setting. Books, songs, and stories building early literacy skills. Rotates between Boyle and Hauke Park \u2014 check library schedule for location.",
+      "description": "The same great storytime experience in a neighborhood park setting. Books, songs, and stories building early literacy skills. Rotates between Boyle and Hauke Park — check library schedule for location.",
       "registration": "Not required",
       "website": "https://millvalleylibrary.org",
-      "notes": "Location rotates between Boyle Park and Hauke Park \u2014 check cityofmillvalley.gov for schedule"
+      "notes": "Location rotates between Boyle Park and Hauke Park — check cityofmillvalley.gov for schedule"
     },
     {
       "id": 39,
@@ -1022,16 +1022,16 @@
       "expires": "",
       "status": "Temp. closed",
       "featured": false,
-      "description": "Songs, books, rhymes and movement for babies and toddlers with Librarian Iris. Held outside under the giant oak trees, weather permitting \u2014 moves to community room in bad weather.",
+      "description": "Songs, books, rhymes and movement for babies and toddlers with Librarian Iris. Held outside under the giant oak trees, weather permitting — moves to community room in bad weather.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Outdoor under oak trees, weather permitting Fairfax Library closed for Refresh mid-April \u2013 end of April 2026."
+      "notes": "Outdoor under oak trees, weather permitting Fairfax Library closed for Refresh mid-April – end of April 2026."
     },
     {
       "id": 41,
       "organization": "Marin County Free Library",
       "venue": "South Novato Library",
-      "event_name": "M\u00fasica y Movimiento with Ingrid",
+      "event_name": "Música y Movimiento with Ingrid",
       "type": "Library",
       "day": "Wednesday",
       "time": "11:00 AM",
@@ -1049,7 +1049,7 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "description": "Music, movement, and stories with Ingrid \u2014 singing, dancing, and surprises for babies, toddlers, and caregivers. Held on the 2nd, 4th, and 5th Wednesdays of each month.",
+      "description": "Music, movement, and stories with Ingrid — singing, dancing, and surprises for babies, toddlers, and caregivers. Held on the 2nd, 4th, and 5th Wednesdays of each month.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "2nd, 4th, and 5th Wednesdays of the month"
@@ -1079,7 +1079,7 @@
       "description": "Drop-in free LEGO building and play for kids ages 5-12. Explore, build, create, and have fun! Meets on the 1st and 3rd Wednesdays of each month.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "1st and 3rd Wednesdays of each month Corte Madera Library closed for Refresh early May \u2013 mid-June 2026."
+      "notes": "1st and 3rd Wednesdays of each month Corte Madera Library closed for Refresh early May – mid-June 2026."
     },
     {
       "id": 43,
@@ -1106,7 +1106,7 @@
       "description": "Practice reading aloud to Stinson, a working therapy dog trained to read with kids. Readers in kindergarten and up are welcome. Check library calendar for specific Sunday dates.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Monthly on a Sunday \u2014 check marinlibrary.org calendar for specific date each month Corte Madera Library closed for Refresh early May \u2013 mid-June 2026."
+      "notes": "Monthly on a Sunday — check marinlibrary.org calendar for specific date each month Corte Madera Library closed for Refresh early May – mid-June 2026."
     },
     {
       "id": 44,
@@ -1130,10 +1130,10 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "description": "Marin Humane Society SHARE A Book program \u2014 kids in kindergarten and up sign up for a 15-minute slot to read to a friendly therapy dog. Builds reading confidence in a relaxed, judgment-free setting.",
-      "registration": "Required \u2014 call (415) 258-4656 or email library@sananselmo.gov",
+      "description": "Marin Humane Society SHARE A Book program — kids in kindergarten and up sign up for a 15-minute slot to read to a friendly therapy dog. Builds reading confidence in a relaxed, judgment-free setting.",
+      "registration": "Required — call (415) 258-4656 or email library@sananselmo.gov",
       "website": "https://townofsananselmo.org",
-      "notes": "Monthly \u2014 3rd Wednesday. Registration required, call to book 15-min slot."
+      "notes": "Monthly — 3rd Wednesday. Registration required, call to book 15-min slot."
     },
     {
       "id": 45,
@@ -1160,7 +1160,7 @@
       "description": "Drop-in craft session for children and caregivers to create together. New theme each month, all materials provided.",
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
-      "notes": "Monthly \u2014 last Wednesday of the month"
+      "notes": "Monthly — last Wednesday of the month"
     },
     {
       "id": 46,
@@ -1187,7 +1187,7 @@
       "description": "Weekly drop-in Lego building fun for ages 5-14. No registration required. Made possible by the Friends of the Civic Center Library.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Civic Center Library closed for Refresh April 20 \u2013 June 10, 2026. Resuming June 11."
+      "notes": "Civic Center Library closed for Refresh April 20 – June 10, 2026. Resuming June 11."
     },
     {
       "id": 47,
@@ -1214,7 +1214,7 @@
       "description": "Practice reading aloud to Stinson, a therapy dog trained to read with kids. Kindergarten and up welcome.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Confirm with library \u2014 Corte Madera may be closed for Refresh around this date."
+      "notes": "Confirm with library — Corte Madera may be closed for Refresh around this date."
     }
   ]
 }
