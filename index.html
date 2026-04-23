@@ -899,6 +899,13 @@
       <div>
         <div class="header-title">Out <span class="and">AND</span> About Marin</div>
         <div class="header-sub" id="headerSub">Loading events…</div>
+        <div id="weekNav" style="display:flex;align-items:center;gap:0.5rem;margin-top:0.25rem">
+          <button onclick="changeWeek(-1)" id="weekPrev"
+            style="background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:50%;width:22px;height:22px;color:white;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0">‹</button>
+          <span id="weekLabel" style="font-size:0.65rem;color:rgba(255,255,255,0.8);font-family:var(--font-sans);letter-spacing:0.03em"></span>
+          <button onclick="changeWeek(1)"
+            style="background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:50%;width:22px;height:22px;color:white;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0">›</button>
+        </div>
       </div>
     </div>
     <div class="search-btn" onclick="toggleSearch()">
@@ -1135,7 +1142,7 @@
       </div>
     </div>
     <div class="profile-section">
-      <div class="profile-section-header"><div class="ps-title">My default filters</div><div class="ps-edit" onclick="showSaveToast()">Edit</div></div>
+      <div class="profile-section-header"><div class="ps-title">My default filters</div><div class="ps-edit" onclick="editDefaultFilters()">Edit</div></div>
       <div class="profile-row"><span class="pr-label">Location</span><div class="pr-pills" id="defaultLocation"><span class="pr-notset">Not set</span></div></div>
       <div class="profile-row"><span class="pr-label">Day</span><div class="pr-pills" id="defaultDay"><span class="pr-notset">Not set</span></div></div>
       <div class="profile-row"><span class="pr-label">Time</span><div class="pr-pills" id="defaultTime"><span class="pr-notset">Not set</span></div></div>
@@ -1501,8 +1508,74 @@ function clearAllFilters() {
 // RENDER CARDS
 // ═══════════════════════════════════════════
 
+// ═══════════════════════════════════════════
+// WEEK NAVIGATOR STATE
+// ═══════════════════════════════════════════
+let currentWeekOffset = 0; // 0 = this week, 1 = next week, etc.
+
+function getWeekRange(offset) {
+  const today = new Date();
+  const todayDay = today.getDay(); // 0=Sun,1=Mon,...
+  // Start week from today (not Monday) for offset=0, Monday for future weeks
+  let start, end;
+  if (offset === 0) {
+    start = new Date(today);
+    end = new Date(today);
+    // End of current week = coming Sunday
+    const daysUntilSunday = 7 - (todayDay === 0 ? 7 : todayDay);
+    end.setDate(today.getDate() + daysUntilSunday);
+  } else {
+    // Future weeks: Mon-Sun
+    const daysUntilNextMon = ((8 - todayDay) % 7) || 7;
+    start = new Date(today);
+    start.setDate(today.getDate() + daysUntilNextMon + (offset - 1) * 7);
+    end = new Date(start);
+    end.setDate(start.getDate() + 6);
+  }
+  start.setHours(0,0,0,0);
+  end.setHours(23,59,59,999);
+  return { start, end };
+}
+
+function isEventInWeek(e, weekStart, weekEnd) {
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  if (e.cadence === 'One-off') {
+    if (!e.event_date) return false;
+    const d = new Date(e.event_date);
+    return d >= weekStart && d <= weekEnd;
+  }
+  // For recurring events, check if any day in the week range matches
+  const eventDays = e.day.includes('/') ? e.day.split('/').map(d => d.trim()) : [e.day];
+  for (let d = new Date(weekStart); d <= weekEnd; d.setDate(d.getDate() + 1)) {
+    if (eventDays.includes(dayNames[d.getDay()])) return true;
+  }
+  return false;
+}
+
+function getWeekDaysInRange(day, weekStart, weekEnd) {
+  // Returns array of actual dates (as day names) that fall in range for this event's day(s)
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const eventDays = day.includes('/') ? day.split('/').map(d => d.trim()) : [day];
+  const result = [];
+  for (let d = new Date(weekStart); d <= weekEnd; d.setDate(d.getDate() + 1)) {
+    if (eventDays.includes(dayNames[d.getDay()])) {
+      result.push(dayNames[d.getDay()]);
+    }
+  }
+  return result;
+}
+
+function getWeekLabel(offset) {
+  const { start, end } = getWeekRange(offset);
+  const fmt = d => `${d.getMonth()+1}/${d.getDate()}`;
+  if (offset === 0) return `This week (${fmt(start)}–${fmt(end)})`;
+  if (offset === 1) return `Next week (${fmt(start)}–${fmt(end)})`;
+  return `Week of ${fmt(start)}–${fmt(end)}`;
+}
+
 function getFilteredEvents() {
   const today = new Date();
+  const { start: weekStart, end: weekEnd } = getWeekRange(currentWeekOffset);
   return allEvents.filter(e => {
     // Hide expired events
     if (e.expires) { const exp = new Date(e.expires); if (exp < today) return false; }
@@ -1512,6 +1585,8 @@ function getFilteredEvents() {
       const end = new Date(e.season_end + '/' + today.getFullYear());
       if (today < start || today > end) return false;
     }
+    // Only show events that occur in the selected week
+    if (!isEventInWeek(e, weekStart, weekEnd)) return false;
     // Apply filters
     if (selections.type.size > 0 && !selections.type.has(e.type)) return false;
     if (selections.location.size > 0 && !selections.location.has(e.town)) return false;
@@ -1567,6 +1642,26 @@ function getReopenLabel(e) {
   return `Closed · Reopens ${reopenMatch[1]}`;
 }
 
+function changeWeek(dir) {
+  if (currentWeekOffset + dir < 0) return; // don't go before current week
+  currentWeekOffset += dir;
+  // Update prev button state
+  const prev = document.getElementById('weekPrev');
+  if (prev) prev.style.opacity = currentWeekOffset === 0 ? '0.3' : '1';
+  renderCards();
+}
+
+function editDefaultFilters() {
+  // Navigate to main app screen and open the filter bar
+  showScreen('app');
+  setTimeout(() => {
+    // Show a helpful toast message pointing to filters
+    const toast = document.getElementById('saveToast');
+    document.getElementById('toastOverlay').classList.add('show');
+    toast.classList.add('show');
+  }, 300);
+}
+
 function renderCards() {
   const filtered = getFilteredEvents().filter(e => shouldShowEvent(e) !== 'hide');
   const body = document.getElementById('cardsBody');
@@ -1574,12 +1669,19 @@ function renderCards() {
   const total = Object.values(selections).reduce((n,s) => n+s.size, 0);
   const countEl = document.getElementById('resultsCount');
 
+  const { start: wStart, end: wEnd } = getWeekRange(currentWeekOffset);
+  const weekLabel = getWeekLabel(currentWeekOffset);
   countEl.textContent = total === 0
     ? `${filtered.length} event${filtered.length !== 1 ? 's' : ''} · ${new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}`
     : `${filtered.length} event${filtered.length !== 1 ? 's' : ''} shown · ${total} filter${total !== 1 ? 's' : ''} active`;
 
+  // Update week nav label
+  document.getElementById('weekLabel').textContent = getWeekLabel(currentWeekOffset);
+  const prev = document.getElementById('weekPrev');
+  if (prev) prev.style.opacity = currentWeekOffset === 0 ? '0.3' : '1';
+
   document.getElementById('headerSub').textContent =
-    `${filtered.length} event${filtered.length !== 1 ? 's' : ''} this week`;
+    `${filtered.length} event${filtered.length !== 1 ? 's' : ''} · ${weekLabel}`;
 
   if (filtered.length === 0) {
     body.innerHTML = '';
@@ -1588,12 +1690,21 @@ function renderCards() {
   }
   empty.classList.remove('visible');
 
-  // Group by day
+  // Group by day — split multi-day events (e.g. Tuesday/Thursday) into separate cards
+  const { start: wStart2, end: wEnd2 } = getWeekRange(currentWeekOffset);
   const grouped = {};
   filtered.forEach(e => {
-    const key = e.cadence === 'One-off' ? (e.event_date || e.day) : e.day;
-    if (!grouped[key]) grouped[key] = [];
-    grouped[key].push(e);
+    if (e.cadence === 'One-off') {
+      const key = e.event_date || e.day;
+      if (!grouped[key]) grouped[key] = [];
+      grouped[key].push({ ...e, _displayDay: e.day });
+    } else {
+      const daysInRange = getWeekDaysInRange(e.day, wStart2, wEnd2);
+      daysInRange.forEach(day => {
+        if (!grouped[day]) grouped[day] = [];
+        grouped[day].push({ ...e, _displayDay: day });
+      });
+    }
   });
 
   const sortedDays = Object.keys(grouped).sort((a, b) => (dayOrder[a] ?? 99) - (dayOrder[b] ?? 99));
@@ -1606,7 +1717,7 @@ function renderCards() {
 
 function cardHTML(e) {
   const typeClass = typeTagClass[e.type] || 'tag-library';
-  const dayShort = e.day ? e.day.substring(0, 3) : '';
+  const dayShort = (e._displayDay || e.day || '').substring(0, 3);
   const isClosed = e.status === 'Temp. closed';
   return `
     <div class="event-card ${e.featured ? 'featured' : ''}" onclick="openDetail(${e.id})">
