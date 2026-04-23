@@ -625,13 +625,13 @@
 
   /* Save toast */
   .save-toast {
-    position: fixed; bottom: 90px; left: 0.5rem; right: 0.5rem;
+    position: fixed; bottom: calc(80px + env(safe-area-inset-bottom)); left: 0.5rem; right: 0.5rem;
     background: var(--white);
     border-radius: var(--radius-md);
     border: 0.5px solid var(--card-border);
     padding: 0.75rem;
     box-shadow: 0 -2px 20px rgba(0,0,0,0.15);
-    z-index: 50;
+    z-index: 350;
     transform: translateY(120%);
     transition: transform 0.3s ease;
   }
@@ -1436,7 +1436,7 @@ function toggleFilter(filterId, value) {
   renderCards();
   // Show save toast after user has actively set 2+ filters manually
   const totalActive = Object.values(selections).reduce((n, s) => n + s.size, 0);
-  if (totalActive >= 2 && !toastShown) { toastShown = true; setTimeout(showSaveToast, 1500); }
+  if (totalActive >= 2 && !toastShown && document.getElementById("detailScreen").style.display === "none") { toastShown = true; setTimeout(showSaveToast, 1500); }
 }
 
 function syncCheckboxes(filterId) {
@@ -1671,6 +1671,8 @@ function openDetail(id) {
   // Save state
   updateSaveButton();
 
+  // Dismiss save toast if showing
+  document.getElementById('saveToast').classList.remove('show');
   // Show detail screen
   document.getElementById('appScreen').style.display = 'none';
   const ds = document.getElementById('detailScreen');
