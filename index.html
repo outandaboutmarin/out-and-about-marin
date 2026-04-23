@@ -329,7 +329,7 @@
   /* Dropdowns */
   .dropdown-panel {
     position: fixed;
-    top: 116px;
+    top: 118px;
     left: 0; right: 0;
     background: var(--white);
     border-bottom: 1px solid #E5E2DA;
@@ -341,13 +341,14 @@
   }
   .dropdown-panel.open { max-height: 260px; }
   .dropdown-header {
-    padding: 0.625rem 1rem 0.5rem;
+    padding: 0.75rem 1rem 0.625rem;
     display: flex; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid #EDEAE4;
+    border-bottom: 2px solid #E5E2DA;
     position: sticky; top: 0; background: var(--white);
     z-index: 2;
+    min-height: 44px;
   }
-  .dropdown-clear { font-size: 0.75rem; font-weight: 600; color: var(--navy); cursor: pointer; padding: 0.25rem 0.5rem; background: #EEF2F8; border-radius: var(--radius-pill); }
+  .dropdown-clear { font-size: 0.75rem; font-weight: 600; color: var(--navy); cursor: pointer; padding: 0.3rem 0.75rem; background: #EEF2F8; border-radius: var(--radius-pill); border: 0.5px solid #C5D0E8; }
   .dropdown-header-label { font-size: 0.7rem; font-weight: 600; color: #444; letter-spacing: 0.06em; text-transform: uppercase; }
 
   .dd-option {
@@ -624,7 +625,7 @@
 
   /* Save toast */
   .save-toast {
-    position: fixed; bottom: 70px; left: 0.5rem; right: 0.5rem;
+    position: fixed; bottom: 90px; left: 0.5rem; right: 0.5rem;
     background: var(--white);
     border-radius: var(--radius-md);
     border: 0.5px solid var(--card-border);
@@ -665,7 +666,7 @@
   .pr-pills { display: flex; flex-wrap: wrap; gap: 3px; justify-content: flex-end; }
   .pr-pill { font-size: 0.6rem; font-weight: 500; padding: 2px 7px; border-radius: var(--radius-pill); background: var(--library-bg); color: var(--library-text); }
   .pr-notset { font-size: 0.7rem; color: #666666; font-style: italic; }
-  .signout-btn { width: 100%; background: #F8F3F3; border: 1px solid #D4B4B4; color: #8B2020; border-radius: var(--radius-sm); padding: 0.875rem; font-size: 0.82rem; font-family: var(--font-sans); cursor: pointer; margin-top: 0.75rem; font-weight: 500; letter-spacing: 0.03em; }
+  .signout-btn { width: 100%; background: #EEF2F8; border: 1px solid #C5D0E8; color: #1A3A6B; border-radius: var(--radius-sm); padding: 0.875rem; font-size: 0.82rem; font-family: var(--font-sans); cursor: pointer; margin-top: 0.75rem; font-weight: 500; letter-spacing: 0.03em; }
 
   /* Saved events section */
   .saved-event-card {
@@ -891,12 +892,12 @@
 
 
   <!-- Search bar (hidden by default) -->
-  <div id="searchBar" style="display:none;background:#0D1B3E;padding:0 0.75rem 0.625rem">
-    <div style="display:flex;align-items:center;gap:0.5rem">
+  <div id="searchBar" style="display:none;background:#0D1B3E;padding:0 0.75rem 0.625rem;box-sizing:border-box;width:100%;max-width:100%;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:0.5rem;width:100%;box-sizing:border-box">
       <input type="text" id="searchInput" placeholder="Search events…"
-        style="flex:1;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:var(--radius-pill);padding:0.4rem 0.875rem;font-size:0.8rem;font-family:var(--font-sans);color:white;outline:none"
+        style="flex:1;min-width:0;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:var(--radius-pill);padding:0.4rem 0.875rem;font-size:0.8rem;font-family:var(--font-sans);color:white;outline:none;width:100%;box-sizing:border-box"
         oninput="searchEvents(this.value)">
-      <span onclick="toggleSearch()" style="color:rgba(255,255,255,0.7);font-size:0.75rem;font-family:var(--font-sans);cursor:pointer;white-space:nowrap;font-weight:500;padding:0.25rem 0.5rem;background:rgba(255,255,255,0.1);border-radius:var(--radius-pill)">✕ Close</span>
+      <button onclick="toggleSearch()" style="flex-shrink:0;color:rgba(255,255,255,0.9);font-size:0.72rem;font-family:var(--font-sans);cursor:pointer;white-space:nowrap;font-weight:600;padding:0.3rem 0.625rem;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:var(--radius-pill)">✕ Close</button>
     </div>
   </div>
 
