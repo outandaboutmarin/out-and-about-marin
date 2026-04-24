@@ -1,18 +1,18 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-04-23
-Time: 18:01:28
+Date: 2026-04-24
+Time: 17:16:41
 
-Total events in events.json: 45
+Total events in events.json: 48
 Active events: 35
-Temp. closed: 10
+Temp. closed: 13
 
 Events by type:
   Kids Programs: 9
-  Library: 36
+  Library: 39
 
 Events by town:
   Corte Madera: 4
-  Fairfax: 2
+  Fairfax: 5
   Larkspur: 1
   Marin City: 1
   Mill Valley: 5
