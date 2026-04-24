@@ -2226,22 +2226,28 @@ function saveDefaults() {
   }
   document.getElementById('saveToast').classList.remove('show');
   document.getElementById('toastOverlay').classList.remove('show');
+  // Update pills and re-render feed
+  Object.keys(selections).forEach(k => { updatePill(k); syncCheckboxes(k); });
+  renderCards();
   renderProfile();
 }
 function loadDefaultFilters() {
   if (currentUser && currentUser.defaultFilters) {
     const validKeys = ['type','location','day','time','age','cost'];
+    let hasAny = false;
     Object.keys(currentUser.defaultFilters).forEach(k => {
-      if (!validKeys.includes(k)) return; // skip invalid keys
+      if (!validKeys.includes(k)) return;
       const vals = currentUser.defaultFilters[k];
-      // Ensure vals is a proper array
       const arr = Array.isArray(vals) ? vals : (vals ? Object.values(vals) : []);
+      if (arr.length === 0) return;
+      hasAny = true;
       selections[k] = new Set(arr);
       defaultFilters[k] = new Set(arr);
-      // Only update pills if the app screen is visible
       const pill = document.getElementById('pill-' + k);
       if (pill) { updatePill(k); syncCheckboxes(k); }
     });
+    // Re-render feed if defaults were loaded
+    if (hasAny) renderCards();
   }
 }
 
