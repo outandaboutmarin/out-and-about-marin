@@ -122,7 +122,7 @@ function mapDbUser(dbUser) {
     phone: dbUser.phone,
     pin: dbUser.pin,
     zip: dbUser.zip,
-    ages: dbUser.ages || [],
+    ages: Array.isArray(dbUser.ages) ? dbUser.ages : (dbUser.ages ? [dbUser.ages] : []),
     referral: dbUser.referral || '',
     savedEvents: dbUser.saved_events || [],
     defaultFilters: dbUser.default_filters || {},
@@ -504,6 +504,12 @@ function mapDbUser(dbUser) {
   }
   .results-count { font-size: 0.72rem; color: var(--text-muted); font-weight: 400; }
   .clear-all-btn { font-size: 0.72rem; color: var(--navy); font-weight: 600; cursor: pointer; }
+  .reset-defaults-btn {
+    font-size: 0.68rem; color: #666; font-weight: 500; cursor: pointer;
+    padding: 2px 8px; border: 0.5px solid #C5D0E8; border-radius: var(--radius-pill);
+    background: #EEF2F8; white-space: nowrap; display: none;
+  }
+  .results-bar-right { display: flex; align-items: center; gap: 0.5rem; }
 
   /* Coming up section */
   .coming-up-section { padding: 0.75rem 0.75rem 0; }
@@ -1108,7 +1114,10 @@ function mapDbUser(dbUser) {
   <!-- Results bar -->
   <div class="results-bar">
     <span class="results-count" id="resultsCount">Loading…</span>
-    <span class="clear-all-btn" onclick="clearAllFilters()">Clear all</span>
+    <div class="results-bar-right">
+      <span class="reset-defaults-btn" id="resetDefaultsBtn" onclick="resetToDefaults()">↩ My defaults</span>
+      <span class="clear-all-btn" onclick="clearAllFilters()">Clear all</span>
+    </div>
   </div>
 
   <!-- Main content -->
@@ -1951,12 +1960,52 @@ function editDefaultFilters() {
   }, 300);
 }
 
+
+function resetToDefaults() {
+  // Reapply saved default filters
+  if (!currentUser || !currentUser.defaultFilters) return;
+  // Clear all first
+  Object.keys(selections).forEach(k => selections[k].clear());
+  // Apply defaults
+  const validKeys = ['type','location','day','time','age','cost'];
+  Object.keys(currentUser.defaultFilters).forEach(k => {
+    if (!validKeys.includes(k)) return;
+    const arr = currentUser.defaultFilters[k];
+    if (Array.isArray(arr)) selections[k] = new Set(arr);
+  });
+  // Update pills and re-render
+  Object.keys(selections).forEach(k => { updatePill(k); syncCheckboxes(k); });
+  renderCards();
+}
+
+function hasDefaultFilters() {
+  if (!currentUser || !currentUser.defaultFilters) return false;
+  return Object.values(currentUser.defaultFilters).some(a => Array.isArray(a) && a.length > 0);
+}
+
+function filtersMatchDefaults() {
+  if (!currentUser || !currentUser.defaultFilters) return true;
+  const validKeys = ['type','location','day','time','age','cost'];
+  for (const k of validKeys) {
+    const defaults = new Set(currentUser.defaultFilters[k] || []);
+    const current = selections[k] || new Set();
+    if (defaults.size !== current.size) return false;
+    for (const v of defaults) { if (!current.has(v)) return false; }
+  }
+  return true;
+}
+
 function renderCards() {
   const filtered = getFilteredEvents().filter(e => shouldShowEvent(e) !== 'hide');
   const body = document.getElementById('cardsBody');
   const empty = document.getElementById('emptyState');
   const total = Object.values(selections).reduce((n,s) => n+s.size, 0);
   const countEl = document.getElementById('resultsCount');
+  // Show reset button only when defaults exist and current filters differ from them
+  const resetBtn = document.getElementById('resetDefaultsBtn');
+  if (resetBtn) {
+    resetBtn.style.display = (hasDefaultFilters() && !filtersMatchDefaults()) ? 'inline-block' : 'none';
+  }
 
   const { start: wStart, end: wEnd } = getWeekRange(currentWeekOffset);
   const weekLabel = getWeekLabel(currentWeekOffset);
@@ -2264,8 +2313,9 @@ function renderProfile() {
   document.getElementById('profileSince').textContent = currentUser.memberSince || '—';
 
   const agesEl = document.getElementById('profileAges');
-  if (currentUser.ages && currentUser.ages.length > 0) {
-    agesEl.innerHTML = currentUser.ages.map(a => `<span class="pr-pill">${a}</span>`).join('');
+  const agesArr = Array.isArray(currentUser.ages) ? currentUser.ages : (currentUser.ages ? [currentUser.ages] : []);
+  if (agesArr.length > 0) {
+    agesEl.innerHTML = agesArr.map(a => `<span class="pr-pill">${a}</span>`).join('');
   } else { agesEl.innerHTML = '<span class="pr-notset">Not set</span>'; }
 
   // Default filters
@@ -2352,7 +2402,7 @@ function openEditModal() {
   document.getElementById('editName').value = currentUser.name || '';
   document.getElementById('editZip').value = currentUser.zip || '';
   // Pre-select age chips
-  const ages = currentUser.ages || [];
+  const ages = Array.isArray(currentUser.ages) ? currentUser.ages : (currentUser.ages ? [currentUser.ages] : []);
   document.querySelectorAll('#editModal .age-chip').forEach(chip => {
     chip.classList.toggle('selected', ages.includes(chip.dataset.age));
   });
