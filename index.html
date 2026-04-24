@@ -1486,8 +1486,8 @@ async function handleLogin() {
     currentUser = mapDbUser(dbUser);
     localStorage.setItem('oaam_user', JSON.stringify(currentUser));
     if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
-    loadDefaultFilters();
     showScreen('app');
+    loadDefaultFilters();
     loadEvents();
     return;
   }
@@ -1506,8 +1506,8 @@ async function handleLogin() {
         }
       });
       if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
-      loadDefaultFilters();
       showScreen('app');
+      loadDefaultFilters();
       loadEvents();
       return;
     }
@@ -2184,8 +2184,9 @@ function loadDefaultFilters() {
     Object.keys(currentUser.defaultFilters).forEach(k => {
       selections[k] = new Set(currentUser.defaultFilters[k]);
       defaultFilters[k] = new Set(currentUser.defaultFilters[k]);
-      updatePill(k);
-      syncCheckboxes(k);
+      // Only update pills if the app screen is visible
+      const pill = document.getElementById('pill-' + k);
+      if (pill) { updatePill(k); syncCheckboxes(k); }
     });
   }
 }
