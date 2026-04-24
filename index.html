@@ -1967,9 +1967,14 @@ function renderCards() {
   const grouped = {};
   filtered.forEach(e => {
     if (e.cadence === 'One-off') {
-      const key = e.event_date || e.day;
-      if (!grouped[key]) grouped[key] = [];
-      grouped[key].push({ ...e, _displayDay: e.day });
+      // Convert event_date to actual day name for grouping and display
+      let dayName = e.day;
+      if (e.event_date) {
+        const d = new Date(e.event_date + 'T12:00:00');
+        dayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()];
+      }
+      if (!grouped[dayName]) grouped[dayName] = [];
+      grouped[dayName].push({ ...e, _displayDay: dayName });
     } else {
       const daysInRange = getWeekDaysInRange(e, wStart2, wEnd2);
       daysInRange.forEach(day => {
