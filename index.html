@@ -10,6 +10,92 @@
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZ7K1B0D6E"></script>
 <script>
+// ═══════════════════════════════════════════
+// SUPABASE CLIENT
+// ═══════════════════════════════════════════
+const SUPABASE_URL = 'https://yszyptpwgzjvdrwprlpg.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_fuKwJAQhnLh5BqptgE8CYg_pJklGCNv';
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// ── Supabase helpers ──
+
+async function dbGetUser(phone, pin) {
+  try {
+    const { data, error } = await db
+      .from('users')
+      .select('*')
+      .eq('phone', phone)
+      .eq('pin', pin)
+      .single();
+    if (error) { console.warn('Supabase login error:', error.message); return null; }
+    return data;
+  } catch(e) { console.warn('Supabase unavailable:', e); return null; }
+}
+
+async function dbCreateUser(user) {
+  try {
+    const { data, error } = await db
+      .from('users')
+      .insert([{
+        phone: user.phone,
+        pin: user.pin,
+        first_name: user.name,
+        zip: user.zip,
+        kids_ages: user.ages,
+        referral: user.referral,
+        saved_events: user.savedEvents || [],
+        default_filters: user.defaultFilters || {},
+        plan: user.plan || 'beta',
+        member_since: user.memberSince
+      }])
+      .select()
+      .single();
+    if (error) { console.warn('Supabase create error:', error.message); return null; }
+    return data;
+  } catch(e) { console.warn('Supabase unavailable:', e); return null; }
+}
+
+async function dbUpdateUser(phone, updates) {
+  try {
+    const { error } = await db
+      .from('users')
+      .update(updates)
+      .eq('phone', phone);
+    if (error) console.warn('Supabase update error:', error.message);
+  } catch(e) { console.warn('Supabase unavailable:', e); }
+}
+
+async function dbCheckPhoneExists(phone) {
+  try {
+    const { data, error } = await db
+      .from('users')
+      .select('phone')
+      .eq('phone', phone)
+      .single();
+    if (error && error.code === 'PGRST116') return false; // not found
+    if (error) return false;
+    return !!data;
+  } catch(e) { return false; }
+}
+
+function mapDbUser(dbUser) {
+  // Map Supabase column names to app's currentUser shape
+  return {
+    name: dbUser.first_name,
+    phone: dbUser.phone,
+    pin: dbUser.pin,
+    zip: dbUser.zip,
+    ages: dbUser.kids_ages || [],
+    referral: dbUser.referral || '',
+    savedEvents: dbUser.saved_events || [],
+    defaultFilters: dbUser.default_filters || {},
+    memberSince: dbUser.member_since,
+    plan: dbUser.plan || 'beta',
+    id: dbUser.id
+  };
+}
+
+
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -768,6 +854,7 @@
 </style>
 
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -1315,15 +1402,26 @@ function showLogin() {
 
 function toggleAge(el) { el.classList.toggle('selected'); }
 
-function completeSignup() {
+async function completeSignup() {
   const name = sessionStorage.getItem('oaam_signup_name') || '';
   const phone = normalizePhone(sessionStorage.getItem('oaam_signup_phone') || '');
   const pin = sessionStorage.getItem('oaam_signup_pin') || '';
   const zip = sessionStorage.getItem('oaam_signup_zip') || '';
   const ages = [...document.querySelectorAll('.age-chip.selected')].map(c => c.dataset.age);
   const referral = document.getElementById('referralSource').value;
+  const btn = document.querySelector('#signupScreen2 .btn-primary');
 
   if (!phone || !pin) { alert('Please go back and enter your phone number and PIN.'); showLogin(); return; }
+
+  // Check if phone already registered
+  if (btn) { btn.textContent = 'Setting up…'; btn.disabled = true; }
+  const exists = await dbCheckPhoneExists(phone);
+  if (exists) {
+    if (btn) { btn.textContent = "Let's go →"; btn.disabled = false; }
+    alert('This phone number is already registered. Please sign in instead.');
+    showLogin();
+    return;
+  }
 
   currentUser = {
     name, phone, pin, zip,
@@ -1333,32 +1431,70 @@ function completeSignup() {
     memberSince: new Date().toISOString().split('T')[0],
     plan: 'beta'
   };
+
+  // Save to Supabase
+  const dbResult = await dbCreateUser(currentUser);
+  if (dbResult) {
+    currentUser.id = dbResult.id;
+    console.log('User saved to Supabase ✓');
+  } else {
+    console.warn('Supabase save failed — using localStorage only');
+  }
+
   localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+  if (btn) { btn.textContent = "Let's go →"; btn.disabled = false; }
   checkDisclaimer();
   document.getElementById('signupScreen2').style.display = 'none';
   showScreen('app');
   loadEvents();
 }
 
-function handleLogin() {
+async function handleLogin() {
   const phone = normalizePhone(document.getElementById('loginPhone').value.trim());
   const pin = document.getElementById('loginPin').value.trim();
   const err = document.getElementById('loginError');
+  const btn = document.querySelector('#loginScreen .btn-primary');
 
   if (!phone || !pin) { err.style.display = 'block'; err.textContent = 'Please enter your phone number and PIN.'; return; }
 
+  // Show loading state
+  if (btn) { btn.textContent = 'Signing in…'; btn.disabled = true; }
+  err.style.display = 'none';
+
+  // 1. Try Supabase first
+  const dbUser = await dbGetUser(phone, pin);
+  if (dbUser) {
+    currentUser = mapDbUser(dbUser);
+    localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+    if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
+    loadDefaultFilters();
+    showScreen('app');
+    loadEvents();
+    return;
+  }
+
+  // 2. Fall back to localStorage (for users created before Supabase)
   const saved = localStorage.getItem('oaam_user');
   if (saved) {
     const u = JSON.parse(saved);
     if (u.phone === phone && u.pin === pin) {
       currentUser = u;
-      err.style.display = 'none';
+      // Migrate this user to Supabase silently
+      dbCreateUser(u).then(dbResult => {
+        if (dbResult) {
+          currentUser.id = dbResult.id;
+          localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+        }
+      });
+      if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
       loadDefaultFilters();
       showScreen('app');
       loadEvents();
       return;
     }
   }
+
+  if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
   err.style.display = 'block';
   err.textContent = 'Phone number or PIN not recognized. Try again or create an account.';
 }
@@ -1951,6 +2087,7 @@ function toggleSave() {
   if (idx > -1) currentUser.savedEvents.splice(idx, 1);
   else currentUser.savedEvents.push(currentEventId);
   localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+  dbUpdateUser(currentUser.phone, { saved_events: currentUser.savedEvents });
   updateSaveButton();
 }
 
@@ -2017,6 +2154,7 @@ function saveDefaults() {
     currentUser.defaultFilters = {};
     Object.keys(defaultFilters).forEach(k => { currentUser.defaultFilters[k] = [...defaultFilters[k]]; });
     localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+    dbUpdateUser(currentUser.phone, { default_filters: currentUser.defaultFilters });
   }
   document.getElementById('saveToast').classList.remove('show');
   document.getElementById('toastOverlay').classList.remove('show');
@@ -2155,6 +2293,11 @@ function saveEditDetails() {
   currentUser.zip = document.getElementById('editZip').value.trim();
   currentUser.ages = [...document.querySelectorAll('#editModal .age-chip.selected')].map(c => c.dataset.age);
   localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+  dbUpdateUser(currentUser.phone, {
+    first_name: currentUser.name,
+    zip: currentUser.zip,
+    kids_ages: currentUser.ages
+  });
   document.getElementById('editModal').classList.remove('open');
   renderProfile();
 }
@@ -2197,6 +2340,8 @@ function saveNewPin() {
   }
   currentUser.pin = newPin;
   localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+  // Sync to Supabase
+  dbUpdateUser(currentUser.phone, { pin: newPin });
   document.getElementById('pinModal').classList.remove('open');
   alert('PIN updated successfully!');
 }
