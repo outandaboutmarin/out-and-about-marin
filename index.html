@@ -2198,9 +2198,14 @@ function saveDefaults() {
 }
 function loadDefaultFilters() {
   if (currentUser && currentUser.defaultFilters) {
+    const validKeys = ['type','location','day','time','age','cost'];
     Object.keys(currentUser.defaultFilters).forEach(k => {
-      selections[k] = new Set(currentUser.defaultFilters[k]);
-      defaultFilters[k] = new Set(currentUser.defaultFilters[k]);
+      if (!validKeys.includes(k)) return; // skip invalid keys
+      const vals = currentUser.defaultFilters[k];
+      // Ensure vals is a proper array
+      const arr = Array.isArray(vals) ? vals : (vals ? Object.values(vals) : []);
+      selections[k] = new Set(arr);
+      defaultFilters[k] = new Set(arr);
       // Only update pills if the app screen is visible
       const pill = document.getElementById('pill-' + k);
       if (pill) { updatePill(k); syncCheckboxes(k); }
