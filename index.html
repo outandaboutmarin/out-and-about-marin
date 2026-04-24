@@ -33,6 +33,15 @@
 const SUPABASE_URL = 'https://yszyptpwgzjvdrwprlpg.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlzenlwdHB3Z3pqdmRyd3BybHBnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MjgyMDEsImV4cCI6MjA5MjMwNDIwMX0.k_31vi-cz9PvkIL3q1O8WGgE7jJP-cO623GSWLXWXoQ';
 let db = null;
+
+async function hashPin(pin) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(pin);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 function initSupabase() {
   db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   console.log('Supabase client initialized ✓');
@@ -43,11 +52,12 @@ function initSupabase() {
 async function dbGetUser(phone, pin) {
   try {
     console.log('Supabase: attempting login for phone', phone);
+    const hashedPin = await hashPin(pin);
     const { data, error } = await db
       .from('users')
       .select('*')
       .eq('phone', phone)
-      .eq('pin', pin)
+      .eq('pin', hashedPin)
       .single();
     if (error) {
       console.error('Supabase login error:', error.message, error.code, error.details);
@@ -64,11 +74,12 @@ async function dbGetUser(phone, pin) {
 async function dbCreateUser(user) {
   try {
     console.log('Supabase: attempting to create user for phone', user.phone);
+    const hashedPin = await hashPin(user.pin);
     const { data, error } = await db
       .from('users')
       .insert([{
         phone: user.phone,
-        pin: user.pin,
+        pin: hashedPin,
         name: user.name,
         zip: user.zip,
         ages: user.ages,
@@ -505,10 +516,11 @@ function mapDbUser(dbUser) {
   .results-count { font-size: 0.72rem; color: var(--text-muted); font-weight: 400; }
   .clear-all-btn { font-size: 0.72rem; color: var(--navy); font-weight: 600; cursor: pointer; }
   .reset-defaults-btn {
-    font-size: 0.68rem; color: #666; font-weight: 500; cursor: pointer;
-    padding: 2px 8px; border: 0.5px solid #C5D0E8; border-radius: var(--radius-pill);
-    background: #EEF2F8; white-space: nowrap; display: none;
+    font-size: 0.68rem; color: var(--navy); font-weight: 600; cursor: pointer;
+    padding: 3px 10px; border: 1.5px solid var(--navy); border-radius: var(--radius-pill);
+    background: white; white-space: nowrap; display: none; letter-spacing: 0.02em;
   }
+  .reset-defaults-btn:hover { background: var(--navy); color: white; }
   .results-bar-right { display: flex; align-items: center; gap: 0.5rem; }
 
   /* Coming up section */
@@ -2470,8 +2482,8 @@ function saveNewPin() {
   }
   currentUser.pin = newPin;
   localStorage.setItem('oaam_user', JSON.stringify(currentUser));
-  // Sync to Supabase
-  dbUpdateUser(currentUser.phone, { pin: newPin });
+  // Sync hashed PIN to Supabase
+  hashPin(newPin).then(hashed => dbUpdateUser(currentUser.phone, { pin: hashed }));
   document.getElementById('pinModal').classList.remove('open');
   alert('PIN updated successfully!');
 }
