@@ -1,29 +1,34 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-04-22
-Time: 17:35:52
+Date: 2026-04-23
+Time: 18:01:28
 
-Total events in events.json: 29
-Active events: 28
-Temp. closed: 1
+Total events in events.json: 45
+Active events: 35
+Temp. closed: 10
 
 Events by type:
-  Library: 29
+  Kids Programs: 9
+  Library: 36
 
 Events by town:
-  Corte Madera: 1
-  Fairfax: 1
+  Corte Madera: 4
+  Fairfax: 2
   Larkspur: 1
   Marin City: 1
-  Mill Valley: 4
-  Novato: 3
+  Mill Valley: 5
+  Novato: 4
   Point Reyes Station: 1
-  Ross: 1
-  San Anselmo: 3
-  San Rafael: 6
-  Sausalito: 2
-  Tiburon: 5
+  San Anselmo: 6
+  San Rafael: 8
+  Sausalito: 5
+  Tiburon: 8
 
-Sites needing manual review:
-  ✗ Sausalito Public Library: HTTP Error 403: Forbidden
+All library pages unchanged since last run.
+
+Unpredictable events needing one-off dates added:
+  🔔 NEEDS ONE-OFF DATE: Read to a Dog — San Rafael Downtown
+  🔔 NEEDS ONE-OFF DATE: Family Storytime — Belvedere-Tiburon (Sunday bi-monthly)
+  → Open a chat with Claude and say:
+  → "Please look up upcoming dates for unpredictable events and add them to events.json"
 
 Next run: tomorrow at 6:00 AM PT
