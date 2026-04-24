@@ -15,25 +15,38 @@
 // ═══════════════════════════════════════════
 const SUPABASE_URL = 'https://yszyptpwgzjvdrwprlpg.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlzenlwdHB3Z3pqdmRyd3BybHBnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MjgyMDEsImV4cCI6MjA5MjMwNDIwMX0.k_31vi-cz9PvkIL3q1O8WGgE7jJP-cO623GSWLXWXoQ';
-const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+let db = null;
+function initSupabase() {
+  db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  console.log('Supabase client initialized ✓');
+}
 
 // ── Supabase helpers ──
 
 async function dbGetUser(phone, pin) {
   try {
+    console.log('Supabase: attempting login for phone', phone);
     const { data, error } = await db
       .from('users')
       .select('*')
       .eq('phone', phone)
       .eq('pin', pin)
       .single();
-    if (error) { console.warn('Supabase login error:', error.message); return null; }
+    if (error) {
+      console.error('Supabase login error:', error.message, error.code, error.details);
+      return null;
+    }
+    console.log('Supabase: login success', data);
     return data;
-  } catch(e) { console.warn('Supabase unavailable:', e); return null; }
+  } catch(e) {
+    console.error('Supabase login exception:', e);
+    return null;
+  }
 }
 
 async function dbCreateUser(user) {
   try {
+    console.log('Supabase: attempting to create user for phone', user.phone);
     const { data, error } = await db
       .from('users')
       .insert([{
@@ -50,9 +63,16 @@ async function dbCreateUser(user) {
       }])
       .select()
       .single();
-    if (error) { console.warn('Supabase create error:', error.message); return null; }
+    if (error) {
+      console.error('Supabase create error:', error.message, error.code, error.details, error.hint);
+      return null;
+    }
+    console.log('Supabase: user created successfully', data);
     return data;
-  } catch(e) { console.warn('Supabase unavailable:', e); return null; }
+  } catch(e) {
+    console.error('Supabase exception:', e);
+    return null;
+  }
 }
 
 async function dbUpdateUser(phone, updates) {
@@ -854,7 +874,6 @@ function mapDbUser(dbUser) {
 </style>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -2471,5 +2490,6 @@ function normalizePhone(phone) {
   </div>
   <div id="searchResults" style="background:white;overflow-y:auto;max-height:calc(100vh - 60px);padding:0.5rem"></div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onload="initSupabase()"></script>
 </body>
 </html>
