@@ -52,9 +52,9 @@ async function dbCreateUser(user) {
       .insert([{
         phone: user.phone,
         pin: user.pin,
-        first_name: user.name,
+        name: user.name,
         zip: user.zip,
-        kids_ages: user.ages,
+        ages: user.ages,
         referral: user.referral,
         saved_events: user.savedEvents || [],
         default_filters: user.defaultFilters || {},
@@ -101,11 +101,11 @@ async function dbCheckPhoneExists(phone) {
 function mapDbUser(dbUser) {
   // Map Supabase column names to app's currentUser shape
   return {
-    name: dbUser.first_name,
+    name: dbUser.name,
     phone: dbUser.phone,
     pin: dbUser.pin,
     zip: dbUser.zip,
-    ages: dbUser.kids_ages || [],
+    ages: dbUser.ages || [],
     referral: dbUser.referral || '',
     savedEvents: dbUser.saved_events || [],
     defaultFilters: dbUser.default_filters || {},
@@ -2313,9 +2313,9 @@ function saveEditDetails() {
   currentUser.ages = [...document.querySelectorAll('#editModal .age-chip.selected')].map(c => c.dataset.age);
   localStorage.setItem('oaam_user', JSON.stringify(currentUser));
   dbUpdateUser(currentUser.phone, {
-    first_name: currentUser.name,
+    name: currentUser.name,
     zip: currentUser.zip,
-    kids_ages: currentUser.ages
+    ages: currentUser.ages
   });
   document.getElementById('editModal').classList.remove('open');
   renderProfile();
