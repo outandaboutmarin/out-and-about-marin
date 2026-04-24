@@ -904,7 +904,7 @@ function mapDbUser(dbUser) {
       </div>
       <div class="field-group">
         <label class="field-label" for="loginPin">4-Digit PIN</label>
-        <input class="field-input" type="password" id="loginPin" placeholder="••••" style="color:#0D1B3E;font-size:1.4rem;letter-spacing:0.4em;-webkit-text-security:disc" maxlength="4" inputmode="numeric" autocomplete="current-password">
+        <input class="field-input" type="password" id="loginPin" placeholder="••••" style="color:#0D1B3E;font-size:2rem;letter-spacing:0.5em;-webkit-text-security:disc" maxlength="4" inputmode="numeric" autocomplete="current-password">
       </div>
       <div class="login-error" id="loginError">Phone number or PIN not recognized. Please try again.</div>
       <button class="btn-primary" onclick="handleLogin()">Sign In</button>
@@ -1970,6 +1970,23 @@ function renderCards() {
   });
 
   const sortedDays = Object.keys(grouped).sort((a, b) => (dayOrder[a] ?? 99) - (dayOrder[b] ?? 99));
+
+  // Sort events within each day by time ascending
+  function parseTime(timeStr) {
+    if (!timeStr) return 9999;
+    const match = timeStr.match(/(\d+)(?::(\d+))? ?(AM|PM)/i);
+    if (!match) return 9999;
+    let h = parseInt(match[1]);
+    const m = parseInt(match[2] || 0);
+    const period = match[3].toUpperCase();
+    if (period === 'PM' && h !== 12) h += 12;
+    if (period === 'AM' && h === 12) h = 0;
+    return h * 60 + m;
+  }
+
+  Object.keys(grouped).forEach(day => {
+    grouped[day].sort((a, b) => parseTime(a.time) - parseTime(b.time));
+  });
 
   body.innerHTML = sortedDays.map(day => `
     <div class="section-day-label">${day}</div>
