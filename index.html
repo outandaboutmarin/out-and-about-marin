@@ -1560,8 +1560,8 @@ function buildDropdowns() {
 }
 
 function buildLocationOptions() {
-  const towns = [...new Set(allEvents.map(e => e.town))].sort();
-  buildFilterOptions('location', towns.map(v => ({ value: v })));
+  const groups = [...new Set(allEvents.map(e => e.location_group || e.town))].sort();
+  buildFilterOptions('location', groups.map(v => ({ value: v })));
 }
 
 function buildFilterOptions(filterId, options) {
@@ -1842,16 +1842,26 @@ function getFilteredEvents() {
     // Hide expired events
     if (e.expires) { const exp = new Date(e.expires); if (exp < today) return false; }
     // Hide seasonal events outside their season
-    if (e.cadence === 'Seasonal' && e.season_start && e.season_end) {
-      const start = new Date(e.season_start + '/' + today.getFullYear());
-      const end = new Date(e.season_end + '/' + today.getFullYear());
+    // Works for both "MM/DD" format and month-name format (e.g. "May", "October")
+    if (e.season_start && e.season_end) {
+      const monthNames = {January:1,February:2,March:3,April:4,May:5,June:6,July:7,August:8,September:9,October:10,November:11,December:12};
+      const parseSeasonDate = (s, isEnd) => {
+        if (monthNames[s]) {
+          const m = monthNames[s];
+          const d = isEnd ? new Date(today.getFullYear(), m - 1 + 1, 0) : new Date(today.getFullYear(), m - 1, 1);
+          return d;
+        }
+        return new Date(s + '/' + today.getFullYear());
+      };
+      const start = parseSeasonDate(e.season_start, false);
+      const end = parseSeasonDate(e.season_end, true);
       if (today < start || today > end) return false;
     }
     // Only show events that occur in the selected week
     if (!isEventInWeek(e, weekStart, weekEnd)) return false;
     // Apply filters
     if (selections.type.size > 0 && !selections.type.has(e.type)) return false;
-    if (selections.location.size > 0 && !selections.location.has(e.town)) return false;
+    if (selections.location.size > 0 && !selections.location.has(e.location_group || e.town)) return false;
     if (selections.day.size > 0 && !selections.day.has(e.day)) return false;
     if (selections.time.size > 0) {
       const tod = e.time_of_day;
@@ -1999,9 +2009,9 @@ function cardHTML(e) {
   const dayShort = (e._displayDay || e.day || '').substring(0, 3);
   const isClosed = e.status === 'Temp. closed';
   return `
-    <div class="event-card ${e.featured ? 'featured' : ''}" onclick="openDetail(${e.id})">
+    <div class="event-card" onclick="openDetail(${e.id})">
       <div class="card-left">
-        ${e.featured ? '<div class="featured-badge">Featured</div>' : ''}
+        
         <div class="card-title">${e.event_name}</div>
         <div class="card-venue">${e.venue}${e.town ? ' · ' + e.town : ''}</div>
         <div class="card-meta">
@@ -2287,7 +2297,7 @@ function searchEvents(query) {
   const results = allEvents.filter(e =>
     e.event_name.toLowerCase().includes(q) ||
     e.venue.toLowerCase().includes(q) ||
-    e.town.toLowerCase().includes(q) ||
+    e.town.toLowerCase().includes(q) || (e.location_group || '').toLowerCase().includes(q) ||
     e.type.toLowerCase().includes(q) ||
     (e.description && e.description.toLowerCase().includes(q))
   );

@@ -269,6 +269,94 @@ LIBRARIES = [
 ]
 
 # ─────────────────────────────────────────────────────────────────
+# ADDITIONAL EVENT SOURCES
+# Community blogs, rec centers, and event aggregators to check
+# weekly for new one-off children's events
+# ─────────────────────────────────────────────────────────────────
+
+ADDITIONAL_SOURCES = [
+    {
+        "name": "Marin Mommies Calendar",
+        "url": "https://www.marinmommies.com/calendar",
+        "notes": "Community-submitted family events calendar. Check weekly for Marin-specific children's events. Filter for Marin County only.",
+    },
+    {
+        "name": "Strawberry Recreation District — Junior Berries",
+        "url": "https://strawberry.marin.org/recreation_early",
+        "notes": "Early childhood programs ages 2-6. Mostly paid session-based. Check for drop-in options and new seasonal programs.",
+    },
+    {
+        "name": "Mill Valley Community Center — Special Events",
+        "url": "https://www.cityofmillvalley.gov/289/Special-Events",
+        "notes": "One-off community events in Mill Valley. Check monthly for family-friendly daytime events.",
+    },
+    {
+        "name": "Sausalito City Events",
+        "url": "https://www.sausalito.org/events",
+        "notes": "City of Sausalito events calendar. Check monthly for family-friendly events.",
+    },
+    {
+        "name": "Enjoy Mill Valley Blog",
+        "url": "https://enjoymillvalley.com/enjoy-mill-valley-blog/",
+        "notes": "Mill Valley community blog with local event roundups. Check weekly.",
+    },
+    {
+        "name": "Marin Buzz Newsletter",
+        "url": "https://marinbuzz.com/",
+        "notes": "Marin County community newsletter. Check weekly for family events and announcements.",
+    },
+    {
+        "name": "Ronnie's Awesome List",
+        "url": "https://www.ronniesawesomelist.com/",
+        "notes": "Weekly kids event roundup for Marin and Bay Area. Excellent source for one-off children's events. Check every Thursday when newsletter drops.",
+    },
+    {
+        "name": "Sweetwater Music Hall — Family Events",
+        "url": "https://sweetwatermusichall.org/events/",
+        "notes": "Check monthly for daytime all-ages children's events. Filter for: Sing & Stompers, School of Rock, Rock and Roll Playhouse, and any daytime shows.",
+    },
+    {
+        "name": "Marin Country Mart Events",
+        "url": "https://www.marincountrymart.com/events",
+        "notes": "Check monthly for special Mart Littles events and seasonal programming beyond the regular weekly schedule.",
+    },
+    {
+        "name": "Osher Marin JCC — Tot Pool Party & Family Programs",
+        "url": "https://www.marinjcc.org/preschool/tot-pool-party/",
+        "notes": "Monthly Tot Pool Party runs May–October on specific Fridays 3:30–5 PM. Check JCC website each month for exact date. Also check for any new JBaby or family programs. Members free, non-members $15/$20.",
+    },
+]
+
+def check_additional_sources(previous_hashes):
+    """Check additional event sources for page changes."""
+    print("\n── Additional Event Sources — Change Detection ──")
+    changed = []
+    new_hashes = dict(previous_hashes)
+
+    for source in ADDITIONAL_SOURCES:
+        url = source["url"]
+        name = source["name"]
+        current_hash = fetch_page_hash(url)
+
+        if current_hash is None:
+            print(f"  ⚠ {name} — could not fetch")
+            continue
+
+        prev_hash = previous_hashes.get(url)
+        if prev_hash is None:
+            print(f"  🆕 {name} — baseline recorded")
+            new_hashes[url] = current_hash
+        elif current_hash != prev_hash:
+            print(f"  🔔 {name} — PAGE CHANGED")
+            changed.append(source)
+            new_hashes[url] = current_hash
+        else:
+            print(f"  ✓ {name} — no change")
+
+    return changed, new_hashes
+
+
+# ─────────────────────────────────────────────────────────────────
 # UNPREDICTABLE EVENTS REGISTRY
 # Events with no fixed week-of-month pattern whose specific dates
 # must be looked up each month and added as one-offs to events.json.
@@ -639,6 +727,14 @@ def main():
     # Check unpredictable events for missing one-off dates
     check_unpredictable_events()
 
+    # Check additional event sources
+    add_changed, new_hashes = check_additional_sources(new_hashes)
+    if add_changed:
+        print(f"\n  🔔 {len(add_changed)} additional source(s) changed:")
+        for s in add_changed:
+            print(f"     • {s['name']}")
+            print(f"       Note: {s['notes']}")
+
     # Check for upcoming reopenings
     reopening_soon = check_upcoming_reopenings()
     if reopening_soon:
@@ -675,5 +771,321 @@ def main():
         for lib in changed_libs:
             print(f"   • {lib['name']}")
 
+# ─────────────────────────────────────────────────────────────────
+# WEEKLY EVENT SWEEP
+# Produces a consolidated review report of suggested new events
+# for approval. The actual fetching of Marin Mommies and other
+# sources is done by Claude in chat using web_fetch tools.
+#
+# To trigger: open a chat with Claude and say:
+# "Please run the weekly event sweep"
+#
+# Claude will:
+#   1. Fetch Marin Mommies calendar for next 14 days
+#   2. Check Sweetwater for new family events
+#   3. Check Strawberry Rec calendar
+#   4. Check all other sources in ADDITIONAL_SOURCES
+#   5. Filter for Marin-specific family events
+#   6. Produce a consolidated list for your approval
+#
+# This file contains the filter logic and known events list
+# so Claude knows what to look for and what to skip.
+# ─────────────────────────────────────────────────────────────────
+
+# Towns we care about — filter out non-Marin events
+MARIN_TOWNS = [
+    "tiburon", "belvedere", "mill valley", "sausalito", "corte madera",
+    "larkspur", "san anselmo", "san rafael", "fairfax", "novato",
+    "marin city", "point reyes", "inverness", "bolinas", "stinson beach",
+    "muir beach", "nicasio", "woodacre", "san geronimo", "kentfield",
+    "greenbrae", "ross", "strawberry", "tomales", "marshall", "olema",
+    "west marin", "marin", "marinwood"
+]
+
+# Keywords that suggest a children/family event
+FAMILY_KEYWORDS = [
+    "kids", "children", "child", "family", "families", "toddler", "baby",
+    "babies", "preschool", "storytime", "story time", "playgroup", "play group",
+    "music", "craft", "arts", "sing", "dance", "puppet", "nature", "farm",
+    "animals", "outdoor", "festival", "fair", "carnival", "halloween",
+    "holiday", "camp", "movie", "film", "pool", "swim", "splash",
+    "ages 0", "ages 1", "ages 2", "ages 3", "ages 4", "ages 5",
+    "all ages", "0-5", "0-3", "0-12", "little ones", "little one",
+    "drop-in", "drop in", "free"
+]
+
+# Events we already have — avoid duplicates
+KNOWN_EVENT_NAMES = [
+    "baby bounce", "toddler storytime", "family storytime", "sing and stomp",
+    "sing & stomp", "cuentos con ritmo", "musica y movimiento", "soul4kidz",
+    "in harmony", "mart littles", "jymbabies", "shabbat shababies",
+    "jumping jacks", "rainbow playgroup", "lego", "read to a dog",
+    "crafternoon", "wiggles and wonder", "stories & rhyme", "canta conmigo",
+    "farmers market", "marin country mart farmers", "marin civic center farmers",
+    "strawberry village farmers", "corte madera town center farmers",
+    "mill valley certified farmers", "sausalito farmers", "fairfax community farmers",
+    "novato farmers", "point reyes farmers", "san rafael summer night",
+    "san rafael downtown thursday", "tomales farmers",
+    "sing and stompers", "school of rock", "rock and roll playhouse",
+    "fishing in the city", "marin bluegrass sessions",
+    "outdoor movie night", "splash bash", "strawberry community night",
+    "scary at the berry", "jymbabies"
+]
+
+
+def is_marin_event(text):
+    """Check if event text mentions a Marin town."""
+    text_lower = text.lower()
+    return any(town in text_lower for town in MARIN_TOWNS)
+
+
+def is_family_event(text):
+    """Check if event text suggests a children/family event."""
+    text_lower = text.lower()
+    return any(kw in text_lower for kw in FAMILY_KEYWORDS)
+
+
+def is_already_known(text):
+    """Check if we already have this event."""
+    text_lower = text.lower()
+    return any(name in text_lower for name in KNOWN_EVENT_NAMES)
+
+
+def fetch_marin_mommies_day(date_str):
+    """
+    Fetch Marin Mommies calendar for a specific date.
+    Returns list of (title, time, location, description) tuples.
+    """
+    url = f"https://www.marinmommies.com/calendar/{date_str}"
+    try:
+        req = urllib.request.Request(
+            url,
+            headers={"User-Agent": "OutAndAboutMarin/1.0 (weekly event sweep)"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            html = resp.read().decode('utf-8', errors='replace')
+
+        events = []
+        # Parse event blocks — look for h4 titles, bold times, bold locations
+        import re
+        # Find event title + time + location patterns
+        pattern = re.compile(
+            r'<h4[^>]*>\s*<a[^>]*>([^<]+)</a>\s*</h4>\s*'
+            r'<strong>([^<]+)</strong>\s*'
+            r'<strong>([^<]+)</strong>',
+            re.DOTALL
+        )
+        for m in pattern.finditer(html):
+            title = m.group(1).strip()
+            time = m.group(2).strip()
+            location = m.group(3).strip()
+            events.append((title, time, location))
+
+        return events
+    except Exception as e:
+        return []
+
+
+def fetch_strawberry_rec_events():
+    """Fetch upcoming events from Strawberry Rec calendar."""
+    url = "https://strawberry.marin.org/calendar/"
+    try:
+        req = urllib.request.Request(
+            url,
+            headers={"User-Agent": "OutAndAboutMarin/1.0"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            html = resp.read().decode('utf-8', errors='replace')
+
+        import re
+        events = []
+        # Extract event titles and dates
+        pattern = re.compile(
+            r'<h4[^>]*>\s*<a[^>]*href="([^"]+)"[^>]*>([^<]+)</a>\s*</h4>',
+            re.DOTALL
+        )
+        date_pattern = re.compile(r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}')
+
+        for m in pattern.finditer(html):
+            title = m.group(2).strip()
+            events.append(title)
+
+        return events
+    except Exception as e:
+        return []
+
+
+def fetch_sweetwater_kids_events():
+    """Fetch upcoming children's events from Sweetwater Music Hall."""
+    url = "https://sweetwatermusichall.org/events/"
+    try:
+        req = urllib.request.Request(
+            url,
+            headers={"User-Agent": "OutAndAboutMarin/1.0"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            html = resp.read().decode('utf-8', errors='replace')
+
+        import re
+        events = []
+        pattern = re.compile(
+            r'<h2[^>]*class="tribe-events-list-event-title"[^>]*>.*?<a[^>]*>([^<]+)</a>',
+            re.DOTALL
+        )
+        for m in pattern.finditer(html):
+            title = m.group(1).strip()
+            if is_family_event(title):
+                events.append(title)
+
+        return events
+    except Exception as e:
+        return []
+
+
+def run_weekly_sweep(events_file="events.json"):
+    """
+    Full weekly sweep of all event sources.
+    Produces a consolidated report of suggested new events for review.
+    """
+    from datetime import timedelta
+    import time as time_module
+
+    today = date.today()
+    print("\n" + "═" * 60)
+    print("OUT AND ABOUT MARIN — WEEKLY EVENT SWEEP")
+    print(f"Sweeping next 14 days: {today} → {today + timedelta(days=14)}")
+    print("═" * 60)
+
+    suggested = []  # List of suggested events to review
+
+    # ── 1. MARIN MOMMIES — next 14 days ──────────────────────────
+    print("\n── Marin Mommies Calendar (next 14 days) ──")
+    for i in range(14):
+        sweep_date = today + timedelta(days=i)
+        date_str = sweep_date.strftime("%Y-%m-%d")
+        day_label = sweep_date.strftime("%A, %B %-d")
+
+        events = fetch_marin_mommies_day(date_str)
+        day_suggestions = []
+
+        for title, time_str, location in events:
+            if not is_marin_event(location) and not is_marin_event(title):
+                continue  # Skip non-Marin events
+            if not is_family_event(title) and not is_family_event(location):
+                continue  # Skip non-family events
+            if is_already_known(title):
+                continue  # Skip events we already have
+
+            day_suggestions.append({
+                "date": date_str,
+                "day_label": day_label,
+                "title": title,
+                "time": time_str,
+                "location": location,
+                "source": "Marin Mommies"
+            })
+
+        if day_suggestions:
+            print(f"\n  📅 {day_label}:")
+            for s in day_suggestions:
+                print(f"     • {s['title']} — {s['time']} @ {s['location']}")
+            suggested.extend(day_suggestions)
+        else:
+            print(f"  ✓ {day_label} — nothing new")
+
+        # Rate limit — be polite to Marin Mommies
+        time_module.sleep(1.5)
+
+    # ── 2. MARIN MOMMIES WEEKEND POST ────────────────────────────
+    print("\n── Marin Mommies Weekend Post ──")
+    # Find this week's weekend post URL
+    # Format: marinmommies.com/marin-weekend-family-fun-[month]-[d1]%E2%80%93[d2]
+    # Claude fetches this manually in chat each Monday
+    print("  ℹ Fetch this week's weekend post manually:")
+    next_sat = today + timedelta(days=(5 - today.weekday()) % 7)
+    next_sun = next_sat + timedelta(days=1)
+    month_name = next_sat.strftime("%B").lower()
+    print(f"  → Expected URL pattern: marinmommies.com/marin-weekend-family-fun-{month_name}-{next_sat.day}%E2%80%93{next_sun.day}")
+    print("  → Filter for Marin-only events not already in our app")
+    print("  → Add approved events as one-offs with specific dates")
+
+    # ── 3. STRAWBERRY REC ─────────────────────────────────────────
+    print("\n── Strawberry Recreation District ──")
+    srd_events = fetch_strawberry_rec_events()
+    srd_new = [e for e in srd_events if not is_already_known(e)]
+    if srd_new:
+        print(f"  🔔 {len(srd_new)} possible new event(s):")
+        for e in srd_new:
+            print(f"     • {e}")
+            suggested.append({
+                "date": "TBD",
+                "day_label": "Check calendar",
+                "title": e,
+                "time": "See website",
+                "location": "Strawberry Recreation District, Mill Valley",
+                "source": "Strawberry Rec"
+            })
+    else:
+        print("  ✓ No new events beyond what we already have")
+
+    # ── 3. SWEETWATER ─────────────────────────────────────────────
+    print("\n── Sweetwater Music Hall (family events) ──")
+    sw_events = fetch_sweetwater_kids_events()
+    sw_new = [e for e in sw_events if not is_already_known(e)]
+    if sw_new:
+        print(f"  🔔 {len(sw_new)} possible new family event(s):")
+        for e in sw_new:
+            print(f"     • {e}")
+            suggested.append({
+                "date": "TBD",
+                "day_label": "Check calendar",
+                "title": e,
+                "time": "See website",
+                "location": "Sweetwater Music Hall, Mill Valley",
+                "source": "Sweetwater"
+            })
+    else:
+        print("  ✓ No new family events beyond what we already have")
+
+    # ── CONSOLIDATED REPORT ───────────────────────────────────────
+    print("\n" + "═" * 60)
+    print("CONSOLIDATED SUGGESTED EVENTS FOR REVIEW")
+    print("═" * 60)
+
+    if not suggested:
+        print("\n✓ No new events found this week — all sources are up to date!")
+    else:
+        print(f"\n{len(suggested)} suggested event(s) to review:\n")
+        print("For each event, tell Claude: APPROVE, SKIP, or MORE INFO\n")
+
+        for i, s in enumerate(suggested, 1):
+            print(f"[{i}] {s['title']}")
+            print(f"     📅 {s['day_label']}  ⏰ {s['time']}")
+            print(f"     📍 {s['location']}")
+            print(f"     🔗 Source: {s['source']}")
+            print()
+
+    print("═" * 60)
+    print("TO ADD APPROVED EVENTS:")
+    print("Open a chat with Claude and say:")
+    print('"Please add events [1], [3], [5] from the weekly sweep report"')
+    print("═" * 60)
+
+    # Save report to file for reference
+    report = {
+        "sweep_date": str(today),
+        "suggested_events": suggested
+    }
+    with open("weekly_sweep_report.json", "w") as f:
+        json.dump(report, f, indent=2)
+    print(f"\n✓ Report saved to weekly_sweep_report.json")
+
+    return suggested
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--weekly-sweep" in sys.argv:
+        run_weekly_sweep()
+    else:
+        main()

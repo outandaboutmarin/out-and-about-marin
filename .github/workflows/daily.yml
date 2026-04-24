@@ -2,10 +2,17 @@ name: Daily Event Scraper
 
 on:
   schedule:
-    # Runs every morning at 6:00 AM Pacific Time (14:00 UTC)
+    # Daily scraper: runs every morning at 6:00 AM Pacific Time (14:00 UTC)
     - cron: '0 14 * * *'
+    # Weekly sweep: runs every Monday at 7:00 AM Pacific Time (15:00 UTC)
+    - cron: '0 15 * * 1'
   # Also allows you to run it manually from GitHub if needed
   workflow_dispatch:
+    inputs:
+      run_weekly_sweep:
+        description: 'Run weekly event sweep'
+        required: false
+        default: 'false'
 
 jobs:
   update-events:
@@ -25,17 +32,22 @@ jobs:
         with:
           python-version: '3.12'
 
-      # Step 3: Run the scraper
+      # Step 3: Run the daily scraper
       - name: Run daily scraper
         env:
           BIBLIOCOMMONS_API_KEY: ${{ secrets.BIBLIOCOMMONS_API_KEY }}
         run: python scraper.py
 
-      # Step 4: Commit and push any changes back to GitHub
-      - name: Commit updated events
+      # Step 4: Run weekly event sweep on Mondays
+      - name: Run weekly event sweep
+        if: github.event.schedule == '0 15 * * 1' || github.event.inputs.run_weekly_sweep == 'true'
+        run: python library_review.py --weekly-sweep
+
+      # Step 5: Commit and push any changes back to GitHub
+      - name: Commit updated files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Out AND About Marin Bot"
-          git add events.json scraper_log.txt
+          git add events.json scraper_log.txt library_page_hashes.json weekly_sweep_report.json || true
           git diff --staged --quiet || git commit -m "Daily update: events refreshed $(date +'%Y-%m-%d')"
           git push
