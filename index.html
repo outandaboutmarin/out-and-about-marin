@@ -1762,9 +1762,8 @@ function getWeekRange(offset) {
   if (offset === 0) {
     start = new Date(today);
     end = new Date(today);
-    // End of current week = coming Sunday
-    const daysUntilSunday = 7 - (todayDay === 0 ? 7 : todayDay);
-    end.setDate(today.getDate() + daysUntilSunday);
+    // Show next 7 days from today
+    end.setDate(today.getDate() + 6);
   } else {
     // Future weeks: Mon-Sun
     const daysUntilNextMon = ((8 - todayDay) % 7) || 7;
@@ -1908,7 +1907,7 @@ function getWeekDaysInRange(e, weekStart, weekEnd) {
 function getWeekLabel(offset) {
   const { start, end } = getWeekRange(offset);
   const fmt = d => `${d.getMonth()+1}/${d.getDate()}`;
-  if (offset === 0) return `This week (${fmt(start)}–${fmt(end)})`;
+  if (offset === 0) return `Next 7 days (${fmt(start)}–${fmt(end)})`;
   if (offset === 1) return `Next week (${fmt(start)}–${fmt(end)})`;
   return `Week of ${fmt(start)}–${fmt(end)}`;
 }
