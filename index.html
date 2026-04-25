@@ -1842,7 +1842,7 @@ function isEventInWeek(e, weekStart, weekEnd) {
   const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   if (e.cadence === 'One-off') {
     if (!e.event_date) return false;
-    const d = new Date(e.event_date + 'T12:00:00');
+    const d = new Date(e.event_date + 'T00:00:00');
     return d >= weekStart && d <= weekEnd;
   }
   // Check each day in the week range
@@ -2048,7 +2048,7 @@ function renderCards() {
       // Convert event_date to actual day name for grouping and display
       let dayName = e.day;
       if (e.event_date) {
-        const d = new Date(e.event_date + 'T12:00:00');
+        const d = new Date(e.event_date + 'T00:00:00');
         dayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()];
       }
       if (!grouped[dayName]) grouped[dayName] = [];
@@ -2120,7 +2120,7 @@ function renderComingUp() {
   const in30 = new Date(today); in30.setDate(today.getDate() + 30);
   const upcoming = allEvents.filter(e => {
     if (!e.event_date) return false;
-    const d = new Date(e.event_date + 'T12:00:00');
+    const d = new Date(e.event_date + 'T00:00:00');
     return d >= today && d <= in30;
   }).sort((a, b) => new Date(a.event_date + 'T12:00:00') - new Date(b.event_date + 'T12:00:00'));
 
@@ -2131,7 +2131,7 @@ function renderComingUp() {
   section.style.display = 'block';
 
   scroll.innerHTML = upcoming.map(e => {
-    const d = new Date(e.event_date + 'T12:00:00');
+    const d = new Date(e.event_date + 'T00:00:00');
     const diff = Math.ceil((d - today) / (1000*60*60*24));
     const when = diff === 0 ? 'Today' : diff === 1 ? 'Tomorrow' : diff <= 7 ? 'This week' : 'Coming up';
     return `
