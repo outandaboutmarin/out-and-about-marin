@@ -2101,7 +2101,16 @@ function renderCards() {
     }
   });
 
-  const sortedDays = Object.keys(grouped).sort((a, b) => (dayOrder[a] ?? 99) - (dayOrder[b] ?? 99));
+  // Sort days by actual date order starting from today
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const { start: sortStart } = getWeekRange(currentWeekOffset);
+  const dayDateMap = {};
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(sortStart);
+    d.setDate(sortStart.getDate() + i);
+    dayDateMap[dayNames[d.getDay()]] = i;
+  }
+  const sortedDays = Object.keys(grouped).sort((a, b) => (dayDateMap[a] ?? 99) - (dayDateMap[b] ?? 99));
 
   // Sort events within each day by time ascending
   function parseTime(timeStr) {
