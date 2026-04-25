@@ -1842,7 +1842,7 @@ function isEventInWeek(e, weekStart, weekEnd) {
   const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   if (e.cadence === 'One-off') {
     if (!e.event_date) return false;
-    const d = new Date(e.event_date);
+    const d = new Date(e.event_date + 'T12:00:00');
     return d >= weekStart && d <= weekEnd;
   }
   // Check each day in the week range
