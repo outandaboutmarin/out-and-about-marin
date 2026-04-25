@@ -824,6 +824,35 @@ function mapDbUser(dbUser) {
   .pr-pills { display: flex; flex-wrap: wrap; gap: 3px; justify-content: flex-end; }
   .pr-pill { font-size: 0.6rem; font-weight: 500; padding: 2px 7px; border-radius: var(--radius-pill); background: var(--library-bg); color: var(--library-text); }
   .pr-notset { font-size: 0.7rem; color: #666666; font-style: italic; }
+  .about-section {
+    margin: 1.25rem 0.75rem;
+    padding: 1.25rem;
+    background: #F8F9FC;
+    border-radius: var(--radius-card);
+    border: 0.5px solid #E0E6F0;
+  }
+  .about-title {
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .about-text {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: #444;
+    line-height: 1.65;
+  }
+  .about-text p { margin: 0 0 0.65rem 0; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-sig {
+    font-family: var(--font-serif);
+    font-size: 0.8rem;
+    color: var(--navy);
+    margin-top: 0.75rem;
+    font-style: italic;
+  }
   .signout-btn { width: 100%; background: #EEF2F8; border: 1px solid #C5D0E8; color: #1A3A6B; border-radius: var(--radius-sm); padding: 0.875rem; font-size: 0.82rem; font-family: var(--font-sans); cursor: pointer; margin-top: 0.75rem; font-weight: 500; letter-spacing: 0.03em; }
 
   /* Saved events section */
@@ -1302,6 +1331,17 @@ function mapDbUser(dbUser) {
       <div class="profile-row"><span class="pr-label">Plan</span><span class="pr-value" style="color:#085041;font-weight:600">Beta member ✓</span></div>
       <div class="profile-row"><span class="pr-label">PIN</span><span class="pr-value" style="color:#0D1B3E;font-weight:500;cursor:pointer" onclick="openPinModal()">Change PIN →</span></div>
       <div class="profile-row"><span class="pr-label">Member since</span><span class="pr-value" id="profileSince">—</span></div>
+    </div>
+    <div class="about-section">
+      <div class="about-title">About Out AND About Marin</div>
+      <div class="about-text">
+        <p><em>Out AND About Marin was built by a Marin County mom who was tired of spending more time searching for things to do than actually doing them.</em></p>
+        <p>Every week I found myself bouncing between library websites, rec center calendars, neighborhood Facebook groups, and community newsletters — just trying to figure out what was happening for families in our own backyard. There had to be a better way.</p>
+        <p>So I built one.</p>
+        <p>Out AND About Marin is a labor of love — hand-curated, locally verified, and updated weekly. Every event is researched and reviewed before it goes live. I check the library calendars, the community centers, the farmers markets, and the local blogs so you don't have to.</p>
+        <p>This is a beta app, which means it's growing and improving every week. If something is missing, wrong, or could be better — I genuinely want to know. Tap the Feedback button and tell me. This app belongs to the Marin community, and I'm building it for us.</p>
+        <div class="about-sig">— Alexandra</div>
+      </div>
     </div>
     <button class="signout-btn" onclick="signOut()">Sign out</button>
   </div>
@@ -2155,7 +2195,32 @@ function openDetail(id) {
   document.getElementById('detailTypeBadge').textContent = e.type;
   document.getElementById('detailTitle').textContent = e.event_name;
   document.getElementById('detailOrg').textContent = e.organization + (e.organization !== e.venue ? ' · ' + e.venue : '');
-  document.getElementById('detailDayTime').textContent = `${e.day}s · ${e.time}`;
+  // Show actual date for one-off events; for recurring show next occurrence
+  let dayTimeText;
+  if (e.cadence === 'One-off' && e.event_date) {
+    const d = new Date(e.event_date + 'T00:00:00');
+    const dateStr = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    dayTimeText = `${dateStr} · ${e.time}`;
+  } else {
+    // Find next occurrence of this day within the current week range
+    const { start, end } = getWeekRange(currentWeekOffset);
+    const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const eventDays = e.day.includes('/') ? e.day.split('/').map(d => d.trim()) : [e.day];
+    let nextDate = null;
+    for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+      if (eventDays.includes(dayNames[d.getDay()])) {
+        nextDate = new Date(d);
+        break;
+      }
+    }
+    if (nextDate) {
+      const dateStr = nextDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      dayTimeText = `${dateStr} · ${e.time}`;
+    } else {
+      dayTimeText = `${e.day}s · ${e.time}`;
+    }
+  }
+  document.getElementById('detailDayTime').textContent = dayTimeText;
   document.getElementById('detailCadence').textContent = e.cadence + (e.season_start ? ` · ${e.season_start} – ${e.season_end}` : '');
   document.getElementById('detailVenue').textContent = e.venue;
   document.getElementById('detailAddress').textContent = e.address;
