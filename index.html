@@ -1916,8 +1916,8 @@ function getFilteredEvents() {
   const today = new Date();
   const { start: weekStart, end: weekEnd } = getWeekRange(currentWeekOffset);
   return allEvents.filter(e => {
-    // Hide expired events
-    if (e.expires) { const exp = new Date(e.expires); if (exp < today) return false; }
+    // Hide expired events — hide only after the event date has fully passed
+    if (e.expires) { const exp = new Date(e.expires + 'T23:59:59'); if (exp < today) return false; }
     // Hide seasonal events outside their season
     // Works for both "MM/DD" format and month-name format (e.g. "May", "October")
     if (e.season_start && e.season_end) {
