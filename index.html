@@ -310,7 +310,6 @@ function setLanguage(lang) {
 }
 
 function applyLanguage() {
-  // Translate day section labels in feed
   const dayNames = {
     en: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
     es: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado']
@@ -535,16 +534,16 @@ function applyLanguage() {
   }
 
   // ── Header sub & results count ──
-  const headerSub = document.getElementById('headerSub');
+  const headerSubEl = document.getElementById('headerSub');
   if (headerSub) {
-    headerSub.textContent = headerSub.textContent
+    headerSubEl.textContent = headerSubEl.textContent
       .replace(/\bevents\b/g, currentLang === 'es' ? 'eventos' : 'events')
       .replace('Next 7 days', currentLang === 'es' ? 'Próximos 7 días' : 'Next 7 days')
       .replace('Next week', currentLang === 'es' ? 'Próxima semana' : 'Next week');
   }
-  const weekLabel = document.getElementById('weekLabel');
-  if (weekLabel) {
-    weekLabel.textContent = weekLabel.textContent
+  const weekLabelEl = document.getElementById('weekLabel');
+  if (weekLabelEl) {
+    weekLabelEl.textContent = weekLabelEl.textContent
       .replace('Next 7 days', currentLang === 'es' ? 'Próximos 7 días' : 'Next 7 days')
       .replace('Next week', currentLang === 'es' ? 'Próxima semana' : 'Next week')
       .replace('Week of', currentLang === 'es' ? 'Semana del' : 'Week of');
