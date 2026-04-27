@@ -310,6 +310,115 @@ function setLanguage(lang) {
 }
 
 function applyLanguage() {
+  // Translate day section labels in feed
+  const dayNames = {
+    en: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+    es: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado']
+  };
+  document.querySelectorAll('.section-day-label').forEach(el => {
+    const enDay = dayNames.en.find(d => d === el.textContent);
+    if (enDay) {
+      el.textContent = currentLang === 'es' ? dayNames.es[dayNames.en.indexOf(enDay)] : enDay;
+    }
+  });
+
+  // Translate results count bar
+  const countEl = document.getElementById('resultsCount');
+  if (countEl) {
+    const text = countEl.textContent;
+    if (currentLang === 'es') {
+      countEl.textContent = text
+        .replace('events shown', 'eventos mostrados')
+        .replace('event shown', 'evento mostrado')
+        .replace('events', 'eventos')
+        .replace('filters active', 'filtros activos')
+        .replace('filter active', 'filtro activo')
+        .replace('Saturday,', 'Sábado,')
+        .replace('Sunday,', 'Domingo,')
+        .replace('Monday,', 'Lunes,')
+        .replace('Tuesday,', 'Martes,')
+        .replace('Wednesday,', 'Miércoles,')
+        .replace('Thursday,', 'Jueves,')
+        .replace('Friday,', 'Viernes,')
+        .replace('January', 'enero').replace('February', 'febrero')
+        .replace('March', 'marzo').replace('April', 'abril')
+        .replace('May', 'mayo').replace('June', 'junio')
+        .replace('July', 'julio').replace('August', 'agosto')
+        .replace('September', 'septiembre').replace('October', 'octubre')
+        .replace('November', 'noviembre').replace('December', 'diciembre');
+    }
+  }
+
+  // Translate week label
+  const weekLabel = document.getElementById('weekLabel');
+  if (weekLabel) {
+    weekLabel.textContent = weekLabel.textContent
+      .replace('Next 7 days', currentLang === 'es' ? 'Próximos 7 días' : 'Next 7 days')
+      .replace('Next week', currentLang === 'es' ? 'Próxima semana' : 'Next week')
+      .replace('Week of', currentLang === 'es' ? 'Semana del' : 'Week of');
+  }
+
+  // Translate header sub (event count)
+  const headerSub = document.getElementById('headerSub');
+  if (headerSub) {
+    headerSub.textContent = headerSub.textContent
+      .replace('events', currentLang === 'es' ? 'eventos' : 'events')
+      .replace('Next 7 days', currentLang === 'es' ? 'Próximos 7 días' : 'Next 7 days')
+      .replace('Next week', currentLang === 'es' ? 'Próxima semana' : 'Next week');
+  }
+
+  // Translate profile section titles
+  const profileSections = {
+    'My details': 'Mis datos',
+    'My default filters': 'Mis filtros predeterminados',
+    'Saved events': 'Eventos guardados',
+    'Membership': 'Membresía',
+    'Language': 'Idioma',
+  };
+  document.querySelectorAll('.ps-title').forEach(el => {
+    if (currentLang === 'es' && profileSections[el.textContent]) {
+      el.textContent = profileSections[el.textContent];
+    } else if (currentLang === 'en') {
+      const enKey = Object.keys(profileSections).find(k => profileSections[k] === el.textContent);
+      if (enKey) el.textContent = enKey;
+    }
+  });
+
+  // Translate edit buttons
+  document.querySelectorAll('.ps-edit').forEach(el => {
+    if (el.textContent === 'Edit' || el.textContent === 'Editar') {
+      el.textContent = currentLang === 'es' ? 'Editar' : 'Edit';
+    }
+  });
+
+  // Translate sign out button
+  const signoutBtn = document.querySelector('.signout-btn');
+  if (signoutBtn) signoutBtn.textContent = currentLang === 'es' ? 'Cerrar sesión' : 'Sign out';
+
+  // Translate about/drive-thru titles
+  document.querySelectorAll('.about-title').forEach(el => {
+    if (el.textContent.includes('About Out AND About Marin') || el.textContent.includes('Acerca de')) {
+      el.textContent = currentLang === 'es' ? 'Acerca de Out AND About Marin' : 'About Out AND About Marin';
+    }
+    if (el.textContent.includes('Drive-Thrus') || el.textContent.includes('Autoservicios')) {
+      el.textContent = currentLang === 'es'
+        ? '🚗 Autoservicios en el Condado de Marin (¿Bebé dormido en el carro? Yo te ayudo.)'
+        : '🚗 Drive-Thrus in Marin County (Nap trapped? I got you.)';
+    }
+  });
+
+  // Translate membership plan labels
+  const membershipEl = document.getElementById('profilePlan');
+  if (membershipEl) {
+    membershipEl.textContent = membershipEl.textContent
+      .replace('Beta member since', currentLang === 'es' ? 'Miembro beta desde' : 'Beta member since')
+      .replace('Member since', currentLang === 'es' ? 'Miembro desde' : 'Member since');
+  }
+
+  // Translate language label
+  const langLabel = document.getElementById('langLabel');
+  if (langLabel) langLabel.textContent = currentLang === 'es' ? 'Idioma' : 'Language';
+
   // Nav labels
   const navLabels = {
     'nav-events': t('navEvents'),
@@ -1775,8 +1884,6 @@ function mapDbUser(dbUser) {
         <p style="margin:0;line-height:1.5">• Cable Car Coffee · <a href="https://maps.google.com/?q=Cable+Car+Coffee+773+Redwood+Hwy+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">773 Redwood Hwy</a></p>
         <p style="margin:0;line-height:1.5">• Buckeye Joe · <a href="https://maps.google.com/?q=Buckeye+Joe+15+Shoreline+Hwy+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">15 Shoreline Hwy</a> (walk up window)</p>
 
-        <p style="font-weight:600;color:var(--navy);margin-top:0.5rem;margin-bottom:0.2rem">Larkspur</p>
-        <p style="margin:0;line-height:1.5">• Starbucks · <a href="https://maps.google.com/?q=Starbucks%201801%20Larkspur%20Landing%20Cir%20Larkspur%20CA" target="_blank" style="color:var(--navy);text-decoration:underline">1801 Larkspur Landing Cir</a> (Marin Country Mart)</p>
 
         <p style="font-weight:600;color:var(--navy);margin-top:0.5rem;margin-bottom:0.2rem">Corte Madera</p>
         <p style="margin:0;line-height:1.5">• Super Duper Burgers · <a href="https://maps.google.com/?q=Super+Duper+Burgers+1618+Redwood+Hwy+Corte+Madera+CA" target="_blank" style="color:var(--navy);text-decoration:underline">1618 Redwood Hwy</a></p>
@@ -2596,8 +2703,12 @@ function renderCards() {
     grouped[day].sort((a, b) => parseTime(a.time) - parseTime(b.time));
   });
 
+  // Translate day names in sorted list
+  const dayNamesEN = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const dayNamesES = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+
   body.innerHTML = sortedDays.map(day => `
-    <div class="section-day-label">${day}</div>
+    <div class="section-day-label">${currentLang === 'es' ? (() => { const i = dayNamesEN.indexOf(day); return i >= 0 ? dayNamesES[i] : day; })() : day}</div>
     ${grouped[day].map(e => cardHTML(e)).join('')}
   `).join('');
 }
@@ -2696,6 +2807,41 @@ function openDetail(id) {
     }
   }
   document.getElementById('detailDayTime').textContent = dayTimeText;
+
+  // Translate detail screen labels
+  const detailLabels = {
+    'detailWhenLabel': { en: 'When', es: 'Cuándo' },
+    'detailWhereLabel': { en: 'Where', es: 'Dónde' },
+    'detailAgesLabel': { en: 'Ages', es: 'Edades' },
+    'detailCostLabel': { en: 'Cost', es: 'Costo' },
+    'detailRegLabel': { en: 'Registration', es: 'Inscripción' },
+    'detailStatusLabel': { en: 'Status', es: 'Estado' },
+  };
+  Object.entries(detailLabels).forEach(([id, translations]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = translations[currentLang] || translations.en;
+  });
+
+  // Translate save button
+  const saveBtn = document.getElementById('detailSaveBtn');
+  if (saveBtn) {
+    const isSaved = currentUser && currentUser.savedEvents && currentUser.savedEvents.includes(e.id);
+    saveBtn.textContent = isSaved
+      ? (currentLang === 'es' ? 'Guardado ✓' : 'Saved ✓')
+      : (currentLang === 'es' ? 'Guardar evento' : 'Save event');
+  }
+
+  // Translate more info button
+  const moreBtn = document.getElementById('detailMoreInfo');
+  if (moreBtn) moreBtn.textContent = currentLang === 'es' ? 'Más información →' : 'More info →';
+
+  // Translate status
+  const statusEl = document.getElementById('detailStatus');
+  if (statusEl) {
+    statusEl.textContent = statusEl.textContent
+      .replace('Active', currentLang === 'es' ? 'Activo' : 'Active')
+      .replace('Temp. closed', currentLang === 'es' ? 'Cerrado temporalmente' : 'Temp. closed');
+  }
   document.getElementById('detailCadence').textContent = e.cadence + (e.season_start ? ` · ${e.season_start} – ${e.season_end}` : '');
   document.getElementById('detailVenue').textContent = e.venue;
   document.getElementById('detailAddress').textContent = e.address;
