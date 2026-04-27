@@ -305,6 +305,11 @@ function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem('oaam_lang', lang);
   applyLanguage();
+  buildDayOptions();
+  buildTimeOptions();
+  buildCostOptions();
+  buildTypeOptions();
+  buildLocationOptions();
   renderCards();
   if (currentUser) renderProfile();
 }
@@ -2306,6 +2311,27 @@ function buildLocationOptions() {
   buildFilterOptions('location', groups.map(v => ({ value: v })));
 }
 
+// Filter option translations
+const filterOptionTranslations = {
+  // Days
+  'Monday': 'Lunes', 'Tuesday': 'Martes', 'Wednesday': 'Miércoles',
+  'Thursday': 'Jueves', 'Friday': 'Viernes', 'Saturday': 'Sábado', 'Sunday': 'Domingo',
+  // Times
+  'Morning': 'Mañana', 'Afternoon': 'Tarde', 'Evening': 'Noche',
+  // Cost
+  'Free': 'Gratis', 'Paid': 'De pago',
+  '$10 drop-in': '$10 entrada', '$15 drop-in': '$15 entrada', '$20 drop-in': '$20 entrada',
+  // Types
+  'Library': 'Biblioteca', 'Kids Programs': 'Programas infantiles',
+  'Community Event': 'Evento comunitario', 'Farmers Market': 'Mercado agricultores',
+  'Festival': 'Festival', 'Fitness': 'Ejercicio',
+};
+
+function translateOption(val) {
+  if (currentLang === 'es') return filterOptionTranslations[val] || val;
+  return val;
+}
+
 function buildFilterOptions(filterId, options) {
   const inner = document.getElementById(`dd-${filterId}-inner`);
   if (!inner) return;
@@ -2824,7 +2850,7 @@ function cardHTML(e) {
     <div class="event-card" onclick="openDetail(${e.id})">
       <div class="card-left">
         
-        <div class="card-title">${e.event_name}</div>
+        <div class="card-title">${currentLang === "es" ? (e.event_name_es || e.event_name) : e.event_name}</div>
         <div class="card-venue">${e.venue}${e.town ? ' · ' + e.town : ''}</div>
         <div class="card-meta">
           <span class="tag ${typeClass}">${currentLang === "es" ? ({"Library":"Biblioteca","Kids Programs":"Programas infantiles","Community Event":"Evento comunitario","Farmers Market":"Mercado agricultores","Festival":"Festival","Fitness":"Ejercicio"}[e.type] || e.type) : e.type}</span>
@@ -2888,7 +2914,7 @@ function openDetail(id) {
     'Festival': 'Festival', 'Fitness': 'Ejercicio'
   };
   document.getElementById('detailTypeBadge').textContent = currentLang === 'es' ? (typeTranslations[e.type] || e.type) : e.type;
-  document.getElementById('detailTitle').textContent = e.event_name;
+  document.getElementById('detailTitle').textContent = currentLang === 'es' ? (e.event_name_es || e.event_name) : e.event_name;
   document.getElementById('detailOrg').textContent = e.organization + (e.organization !== e.venue ? ' · ' + e.venue : '');
 
   // Date/time with locale
@@ -2957,7 +2983,7 @@ function openDetail(id) {
   document.getElementById('detailCadence').textContent = cadenceText + (e.season_start ? ` · ${e.season_start} – ${e.season_end}` : '');
   document.getElementById('detailVenue').textContent = e.venue;
   document.getElementById('detailAddress').textContent = e.address;
-  document.getElementById('detailDescription').textContent = e.description;
+  document.getElementById('detailDescription').textContent = currentLang === 'es' ? (e.description_es || e.description) : e.description;
   document.getElementById('detailAges').textContent = e.ages;
   document.getElementById('detailReg').textContent = e.registration;
 
@@ -3155,7 +3181,7 @@ function renderProfile() {
     savedList.innerHTML = saved.map(e => `
       <div class="saved-event-card" onclick="openDetail(${e.id});showScreen('app')">
         <div class="card-left">
-          <div class="card-title">${e.event_name}</div>
+          <div class="card-title">${currentLang === "es" ? (e.event_name_es || e.event_name) : e.event_name}</div>
           <div class="card-venue">${e.venue} · ${e.town}</div>
         </div>
         <div class="card-right">

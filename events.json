@@ -27,7 +27,9 @@
       "registration": "Not required",
       "website": "https://beltiblibrary.org",
       "notes": "",
-      "location_group": "Tiburon"
+      "location_group": "Tiburon",
+      "event_name_es": "Baby Bounce",
+      "description_es": "Canciones, rimas, movimiento y juegos de dedos para beb\u00e9s en desarrollo y sus cuidadores. Una clase suave y divertida para estimular el desarrollo temprano."
     },
     {
       "id": 2,
@@ -55,7 +57,9 @@
       "registration": "Not required",
       "website": "https://beltiblibrary.org",
       "notes": "",
-      "location_group": "Tiburon"
+      "location_group": "Tiburon",
+      "event_name_es": "Tuesday Toddler Storytime",
+      "description_es": "Canciones interactivas, movimiento, cuentos y juego para ni\u00f1os peque\u00f1os y sus cuidadores. Una experiencia enriquecedora para los m\u00e1s peque\u00f1os."
     },
     {
       "id": 3,
@@ -83,7 +87,9 @@
       "registration": "Not required",
       "website": "https://beltiblibrary.org",
       "notes": "",
-      "location_group": "Tiburon"
+      "location_group": "Tiburon",
+      "event_name_es": "Preschool Storytime",
+      "description_es": "Cuentos divertidos, interactivos y alegres con canciones, baile y juego para preescolares. \u00a1Perfecto para los ni\u00f1os de 3 a 5 a\u00f1os!"
     },
     {
       "id": 4,
@@ -111,7 +117,9 @@
       "registration": "Not required",
       "website": "https://beltiblibrary.org",
       "notes": "",
-      "location_group": "Tiburon"
+      "location_group": "Tiburon",
+      "event_name_es": "Bilingual Storytime with Arlette",
+      "description_es": "Cuentos biling\u00fces en ingl\u00e9s y espa\u00f1ol con canciones y rimas. Una experiencia maravillosa para familias hispanohablantes y biling\u00fces."
     },
     {
       "id": 5,
@@ -139,7 +147,9 @@
       "registration": "Not required",
       "website": "https://beltiblibrary.org",
       "notes": "",
-      "location_group": "Tiburon"
+      "location_group": "Tiburon",
+      "event_name_es": "Friday Toddler Storytime",
+      "description_es": "Canciones interactivas, movimiento, cuentos y juego para ni\u00f1os peque\u00f1os y sus cuidadores los viernes por la ma\u00f1ana."
     },
     {
       "id": 6,
@@ -167,7 +177,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "Civic Center Library closed for Refresh project April 20 \u2013 June 10, 2026. Reopening June 11.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Preschool & Family Storytime",
+      "description_es": "Cuentos, canciones y actividades para preescolares y familias. Programa gratuito en la Biblioteca del Centro C\u00edvico."
     },
     {
       "id": 7,
@@ -195,7 +207,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "Civic Center Library closed for Refresh project April 20 \u2013 June 10, 2026. Reopening June 11.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Preschool & Family Storytime",
+      "description_es": "Cuentos, canciones y actividades para preescolares y familias. Programa gratuito en la Biblioteca del Centro C\u00edvico."
     },
     {
       "id": 8,
@@ -223,7 +237,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "Corte Madera Library closed for Refresh early May \u2013 mid-June 2026.",
-      "location_group": "Corte Madera"
+      "location_group": "Corte Madera",
+      "event_name_es": "Family Storytime",
+      "description_es": "Cuentos, canciones y rimas para toda la familia. Gratuito y abierto a todos en la Biblioteca de Corte Madera."
     },
     {
       "id": 10,
@@ -251,7 +267,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "",
-      "location_group": "Marin City"
+      "location_group": "Marin City",
+      "event_name_es": "Wiggles & Wonder Storytime",
+      "description_es": "Cuentos multiling\u00fces, canciones y movimiento para ni\u00f1os peque\u00f1os y sus familias en Marin City."
     },
     {
       "id": 11,
@@ -279,7 +297,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "",
-      "location_group": "Novato"
+      "location_group": "Novato",
+      "event_name_es": "Stories & Rhyme Wiggle Time",
+      "description_es": "Canciones, rimas y movimiento para ni\u00f1os de 1 a 5 a\u00f1os en la Biblioteca de Novato. \u00a1Ven a bailar y divertirte!"
     },
     {
       "id": 12,
@@ -307,7 +327,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "Bilingual Spanish music and movement program with Colors of Spanish.",
-      "location_group": "Novato"
+      "location_group": "Novato",
+      "event_name_es": "Musica y Movimiento",
+      "description_es": "Programa biling\u00fce de m\u00fasica y movimiento en espa\u00f1ol para ni\u00f1os de 0 a 5 a\u00f1os en la Biblioteca de Novato."
     },
     {
       "id": 13,
@@ -335,7 +357,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "",
-      "location_group": "West Marin"
+      "location_group": "West Marin",
+      "event_name_es": "Canta Conmigo!",
+      "description_es": "Canciones en espa\u00f1ol, movimiento y juego para ni\u00f1os de 0 a 3 a\u00f1os y sus cuidadores en Point Reyes. \u00a1Ven a cantar con nosotros!"
     },
     {
       "id": 14,
@@ -363,7 +387,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "Branch closed for refresh \u2014 check website for reopening date",
-      "location_group": "Novato"
+      "location_group": "Novato",
+      "event_name_es": "Story Time with Mr. Brian",
+      "description_es": "Cuentos semanales con el Sr. Brian para ni\u00f1os de todas las edades los s\u00e1bados por la ma\u00f1ana en South Novato."
     },
     {
       "id": 15,
@@ -391,7 +417,9 @@
       "registration": "Not required",
       "website": "https://ci.larkspur.ca.us",
       "notes": "Storytime on hiatus in April 2026 during library move to new location. Check website for resumption date.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur",
+      "event_name_es": "Storytime",
+      "description_es": "Cuentos semanales para ni\u00f1os de 0 a 5 a\u00f1os los viernes por la ma\u00f1ana en la Biblioteca de Larkspur."
     },
     {
       "id": 16,
@@ -419,7 +447,9 @@
       "registration": "Not required",
       "website": "https://millvalleylibrary.org",
       "notes": "",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Cuentos con Ritmo",
+      "description_es": "Cuentos con ritmo, canciones y movimiento al aire libre en el Anfiteatro del Parque Old Mill. \u00a1En espa\u00f1ol!"
     },
     {
       "id": 17,
@@ -447,7 +477,9 @@
       "registration": "Not required",
       "website": "https://millvalleylibrary.org",
       "notes": "",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Sing & Stomp",
+      "description_es": "Canciones, movimiento y cuentos al aire libre en el Anfiteatro del Parque Old Mill con la m\u00fasica de Emily Bonn."
     },
     {
       "id": 18,
@@ -475,7 +507,9 @@
       "registration": "Not required",
       "website": "https://millvalleylibrary.org",
       "notes": "",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Family Storytime",
+      "description_es": "Cuentos semanales para toda la familia los s\u00e1bados por la tarde en la Biblioteca de Mill Valley. Ambiente c\u00e1lido y acogedor."
     },
     {
       "id": 21,
@@ -503,7 +537,9 @@
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
       "notes": "Weather permitting \u2014 moves indoors if needed",
-      "location_group": "San Anselmo"
+      "location_group": "San Anselmo",
+      "event_name_es": "Storytime for Babies & Toddlers",
+      "description_es": "Cuentos, canciones y rimas al aire libre para beb\u00e9s y ni\u00f1os peque\u00f1os los lunes con sus cuidadores en San Anselmo."
     },
     {
       "id": 22,
@@ -531,7 +567,9 @@
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
       "notes": "Weather permitting \u2014 moves indoors if needed",
-      "location_group": "San Anselmo"
+      "location_group": "San Anselmo",
+      "event_name_es": "Storytime for Babies & Toddlers",
+      "description_es": "Cuentos, canciones y rimas al aire libre para beb\u00e9s y ni\u00f1os peque\u00f1os los mi\u00e9rcoles con sus cuidadores en San Anselmo."
     },
     {
       "id": 23,
@@ -559,7 +597,9 @@
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
       "notes": "Weather permitting \u2014 moves indoors if needed",
-      "location_group": "San Anselmo"
+      "location_group": "San Anselmo",
+      "event_name_es": "Storytime for Babies & Toddlers",
+      "description_es": "Cuentos, canciones y rimas al aire libre para beb\u00e9s y ni\u00f1os peque\u00f1os los viernes con sus cuidadores en San Anselmo."
     },
     {
       "id": 24,
@@ -587,7 +627,9 @@
       "registration": "Not required",
       "website": "https://srpubliclibrary.org",
       "notes": "",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Downtown Storytime / Hora de Cuentos",
+      "description_es": "Cuentos biling\u00fces semanales en ingl\u00e9s y espa\u00f1ol para ni\u00f1os de 0 a 5 a\u00f1os los viernes en la Biblioteca Central de San Rafael."
     },
     {
       "id": 25,
@@ -615,7 +657,9 @@
       "registration": "Not required",
       "website": "https://srpubliclibrary.org",
       "notes": "2nd and 4th Saturdays of each month",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Lego Saturdays / Sabados de Lego",
+      "description_es": "\u00a1Construye con LEGO los s\u00e1bados en la Biblioteca Northgate de San Rafael! Abierto a todas las edades. Gratis, sin inscripci\u00f3n."
     },
     {
       "id": 26,
@@ -643,7 +687,9 @@
       "registration": "Not required",
       "website": "https://srpubliclibrary.org",
       "notes": "Monthly \u2014 date varies, check srpubliclibrary.org/events for next date. Sign up at children's desk morning of event.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Read to a Dog",
+      "description_es": "Practica la lectura leyendo en voz alta a un perro de terapia amigable. Para lectores emergentes de primaria. Reg\u00edstrate en la mesa de ni\u00f1os."
     },
     {
       "id": 27,
@@ -671,7 +717,9 @@
       "registration": "Not required",
       "website": "https://srpubliclibrary.org",
       "notes": "",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Northgate Storytime",
+      "description_es": "Cuentos semanales para ni\u00f1os de 0 a 5 a\u00f1os los lunes en la Biblioteca Northgate de San Rafael."
     },
     {
       "id": 28,
@@ -699,7 +747,9 @@
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
       "notes": "Weather permitting",
-      "location_group": "Sausalito"
+      "location_group": "Sausalito",
+      "event_name_es": "Storytime in the Park (with Riva)",
+      "description_es": "Cuentos semanales al aire libre en el Parque Robin Sweeny en Sausalito con Riva los martes."
     },
     {
       "id": 29,
@@ -727,7 +777,9 @@
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
       "notes": "Weather permitting",
-      "location_group": "Sausalito"
+      "location_group": "Sausalito",
+      "event_name_es": "Spanish Storytime (with Ingrid)",
+      "description_es": "Cuentos en espa\u00f1ol al aire libre en el Parque Robin Sweeny en Sausalito con Ingrid los jueves."
     },
     {
       "id": 30,
@@ -755,7 +807,9 @@
       "registration": "Required \u2014 limited capacity",
       "website": "https://beltiblibrary.org",
       "notes": "Space is limited \u2014 check website to register",
-      "location_group": "Tiburon"
+      "location_group": "Tiburon",
+      "event_name_es": "Sunday Baby Bounce",
+      "description_es": "Rimas y canciones para beb\u00e9s y sus cuidadores. Despu\u00e9s de los cuentos, qu\u00e9date para juego sensorial con juguetes. Bienvenidos ni\u00f1os mayores de 18 meses con un adulto."
     },
     {
       "id": 31,
@@ -783,7 +837,9 @@
       "registration": "Not required",
       "website": "https://beltiblibrary.org",
       "notes": "Bi-monthly on select Sundays \u2014 check beltiblibrary.org for specific dates",
-      "location_group": "Tiburon"
+      "location_group": "Tiburon",
+      "event_name_es": "Family Storytime (Sunday)",
+      "description_es": "Cuentos y canciones para toda la familia los domingos seleccionados en la Biblioteca de Belvedere-Tiburon."
     },
     {
       "id": 32,
@@ -811,7 +867,9 @@
       "registration": "Not required",
       "website": "https://srpubliclibrary.org",
       "notes": "",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Pickleweed Storytime",
+      "description_es": "Cuentos biling\u00fces semanales en ingl\u00e9s y espa\u00f1ol para ni\u00f1os de 0 a 5 a\u00f1os los jueves en la Biblioteca Pickleweed de San Rafael."
     },
     {
       "id": 33,
@@ -839,7 +897,9 @@
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
       "notes": "First Wednesday of each month. Weather permitting \u2014 moves to Council Chambers in inclement weather.",
-      "location_group": "San Anselmo"
+      "location_group": "San Anselmo",
+      "event_name_es": "Bilingual Spanish Storytime",
+      "description_es": "Cuentos biling\u00fces en espa\u00f1ol e ingl\u00e9s el primer mi\u00e9rcoles de cada mes al aire libre en San Anselmo."
     },
     {
       "id": 34,
@@ -867,7 +927,9 @@
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
       "notes": "Second Saturday of each month",
-      "location_group": "Sausalito"
+      "location_group": "Sausalito",
+      "event_name_es": "Family Storytime & Art",
+      "description_es": "Cuentos y arte para toda la familia el segundo s\u00e1bado de cada mes en la Biblioteca de Sausalito."
     },
     {
       "id": 35,
@@ -895,7 +957,9 @@
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
       "notes": "Every 1st Friday of the month. Weather permitting \u2014 may be cancelled if raining or poor air quality.",
-      "location_group": "Sausalito"
+      "location_group": "Sausalito",
+      "event_name_es": "Soul4Kidz Music in the Park",
+      "description_es": "M\u00fasica en vivo para ni\u00f1os el primer viernes de cada mes en el Parque Robin Sweeny en Sausalito. \u00a1Gratis y al aire libre!"
     },
     {
       "id": 36,
@@ -923,7 +987,9 @@
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
       "notes": "Every 3rd Friday of the month. Weather permitting \u2014 may be cancelled if raining or poor air quality.",
-      "location_group": "Sausalito"
+      "location_group": "Sausalito",
+      "event_name_es": "In Harmony Music & Movement",
+      "description_es": "M\u00fasica y movimiento para ni\u00f1os el tercer viernes de cada mes en el Parque Robin Sweeny en Sausalito."
     },
     {
       "id": 37,
@@ -951,7 +1017,9 @@
       "registration": "Not required",
       "website": "https://millvalleylibrary.org",
       "notes": "Outdoor at Old Mill Park Amphitheater",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Toddler Storytime with Miranda",
+      "description_es": "Cuentos para ni\u00f1os peque\u00f1os al aire libre en el Anfiteatro del Parque Old Mill los mi\u00e9rcoles con Miranda."
     },
     {
       "id": 38,
@@ -979,7 +1047,9 @@
       "registration": "Not required",
       "website": "https://millvalleylibrary.org",
       "notes": "Location rotates between Boyle Park and Hauke Park \u2014 check cityofmillvalley.gov for schedule",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Pop-up Storytime in the Parks",
+      "description_es": "Cuentos al aire libre en los parques de Mill Valley los viernes por la ma\u00f1ana. La ubicaci\u00f3n rota entre el Parque Boyle y el Parque Hauke."
     },
     {
       "id": 39,
@@ -1007,7 +1077,9 @@
       "registration": "Not required",
       "website": "https://beltiblibrary.org",
       "notes": "School-age focused (grades K-5)",
-      "location_group": "Tiburon"
+      "location_group": "Tiburon",
+      "event_name_es": "Tuesday Crafternoon",
+      "description_es": "Manualidades para ni\u00f1os de 5 a 12 a\u00f1os los martes por la tarde en la Biblioteca de Belvedere-Tiburon. \u00a1Gratis, sin inscripci\u00f3n!"
     },
     {
       "id": 40,
@@ -1035,7 +1107,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "Outdoor under oak trees, weather permitting Fairfax Library closed for Refresh mid-April \u2013 end of April 2026.",
-      "location_group": "Fairfax"
+      "location_group": "Fairfax",
+      "event_name_es": "Storytime with Iris",
+      "description_es": "Cuentos al aire libre bajo los robles con Iris los jueves en la Biblioteca de Fairfax para ni\u00f1os de 0 a 3 a\u00f1os."
     },
     {
       "id": 41,
@@ -1063,7 +1137,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "2nd, 4th, and 5th Wednesdays of the month",
-      "location_group": "Novato"
+      "location_group": "Novato",
+      "event_name_es": "M\u00fasica y Movimiento with Ingrid",
+      "description_es": "M\u00fasica y movimiento biling\u00fce con Ingrid el 2do, 4to y 5to mi\u00e9rcoles de cada mes en South Novato para ni\u00f1os de 0 a 5 a\u00f1os."
     },
     {
       "id": 42,
@@ -1091,7 +1167,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "1st and 3rd Wednesdays of each month Corte Madera Library closed for Refresh early May \u2013 mid-June 2026.",
-      "location_group": "Corte Madera"
+      "location_group": "Corte Madera",
+      "event_name_es": "LEGO Club",
+      "description_es": "Club de LEGO los mi\u00e9rcoles 1ro y 3ro de cada mes para ni\u00f1os de 5 a 12 a\u00f1os en la Biblioteca de Corte Madera. \u00a1Gratis!"
     },
     {
       "id": 43,
@@ -1119,7 +1197,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "Monthly on a Sunday \u2014 check marinlibrary.org calendar for specific date each month Corte Madera Library closed for Refresh early May \u2013 mid-June 2026.",
-      "location_group": "Corte Madera"
+      "location_group": "Corte Madera",
+      "event_name_es": "Read to a Dog with Stinson (recurring)",
+      "description_es": "Practica la lectura leyendo en voz alta a Stinson, un perro de terapia. Para ni\u00f1os de kindergarten en adelante. Consulta el calendario."
     },
     {
       "id": 44,
@@ -1147,7 +1227,9 @@
       "registration": "Required \u2014 call (415) 258-4656 or email library@sananselmo.gov",
       "website": "https://townofsananselmo.org",
       "notes": "Monthly \u2014 3rd Wednesday. Registration required, call to book 15-min slot.",
-      "location_group": "San Anselmo"
+      "location_group": "San Anselmo",
+      "event_name_es": "Read to a Dog",
+      "description_es": "Programa SHARE A Book de la Sociedad Humanitaria de Marin \u2014 los ni\u00f1os se registran para una sesi\u00f3n de 15 minutos leyendo a un perro de terapia. El 3er mi\u00e9rcoles de cada mes."
     },
     {
       "id": 45,
@@ -1175,7 +1257,9 @@
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
       "notes": "Monthly \u2014 last Wednesday of the month",
-      "location_group": "San Anselmo"
+      "location_group": "San Anselmo",
+      "event_name_es": "Crafternoon",
+      "description_es": "Manualidades para soltar la creatividad el \u00faltimo mi\u00e9rcoles de cada mes en la Biblioteca de San Anselmo. Todos los materiales incluidos."
     },
     {
       "id": 46,
@@ -1203,7 +1287,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "Civic Center Library closed for Refresh April 20 \u2013 June 10, 2026. Resuming June 11.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Wednesday Kids' Lego Club",
+      "description_es": "Club de LEGO los mi\u00e9rcoles para ni\u00f1os de 5 a 14 a\u00f1os en la Biblioteca del Centro C\u00edvico. Hecho posible por los Amigos de la Biblioteca."
     },
     {
       "id": 47,
@@ -1231,7 +1317,9 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "Confirm with library \u2014 Corte Madera may be closed for Refresh around this date.",
-      "location_group": "Corte Madera"
+      "location_group": "Corte Madera",
+      "event_name_es": "Read to a Dog with Stinson (May 17)",
+      "description_es": "Practica la lectura leyendo en voz alta a Stinson, un perro de terapia entrenado para leer con ni\u00f1os. Kindergarten en adelante, bienvenidos."
     },
     {
       "organization": "Marin County Free Library",
@@ -1259,7 +1347,9 @@
       "id": 48,
       "day": "Tuesday",
       "time": "9:30 AM",
-      "location_group": "Fairfax"
+      "location_group": "Fairfax",
+      "event_name_es": "Bilingual Storytime (Tue 9:30)",
+      "description_es": "Cuentos biling\u00fce en espa\u00f1ol e ingl\u00e9s para ni\u00f1os de 0 a 5 a\u00f1os los martes a las 9:30 AM en la Biblioteca de Fairfax."
     },
     {
       "organization": "Marin County Free Library",
@@ -1287,7 +1377,9 @@
       "id": 49,
       "day": "Tuesday",
       "time": "10:15 AM",
-      "location_group": "Fairfax"
+      "location_group": "Fairfax",
+      "event_name_es": "Bilingual Storytime (Tue 10:15)",
+      "description_es": "Cuentos biling\u00fce en espa\u00f1ol e ingl\u00e9s para ni\u00f1os de 0 a 5 a\u00f1os los martes a las 10:15 AM en la Biblioteca de Fairfax."
     },
     {
       "organization": "Marin County Free Library",
@@ -1315,7 +1407,9 @@
       "id": 50,
       "day": "Thursday",
       "time": "9:30 AM",
-      "location_group": "Fairfax"
+      "location_group": "Fairfax",
+      "event_name_es": "Bilingual Storytime (Thu 9:30)",
+      "description_es": "Cuentos biling\u00fce en espa\u00f1ol e ingl\u00e9s para ni\u00f1os de 0 a 5 a\u00f1os los jueves a las 9:30 AM en la Biblioteca de Fairfax."
     },
     {
       "organization": "Marin County Free Library",
@@ -1343,7 +1437,9 @@
       "id": 51,
       "day": "Thursday",
       "time": "10:15 AM",
-      "location_group": "Fairfax"
+      "location_group": "Fairfax",
+      "event_name_es": "Bilingual Storytime (Thu 10:15)",
+      "description_es": "Cuentos biling\u00fce en espa\u00f1ol e ingl\u00e9s para ni\u00f1os de 0 a 5 a\u00f1os los jueves a las 10:15 AM en la Biblioteca de Fairfax."
     },
     {
       "id": 52,
@@ -1371,7 +1467,9 @@
       "registration": "Required \u2014 register at cityofsanrafael.org/recreation or call (415) 485-3333",
       "website": "https://www.cityofsanrafael.org/recreation",
       "notes": "Series fee: $54-$96 for 12 classes. Drop-in: $10. Check current session dates at registration.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Jumping Jacks \u2014 Crawlers",
+      "description_es": "Jumping Jacks es una clase de una hora que fomenta el movimiento creativo, el equilibrio y la coordinaci\u00f3n mano-ojo en un ambiente lleno de energ\u00eda. La primera mitad es juego libre con los padres. La segunda mitad es tiempo en grupo con pa\u00f1uelos, paraca\u00eddas y burbujas. Para beb\u00e9s gateadores hasta 26 meses."
     },
     {
       "id": 53,
@@ -1399,7 +1497,9 @@
       "registration": "Required \u2014 register at cityofsanrafael.org/recreation or call (415) 485-3333",
       "website": "https://www.cityofsanrafael.org/recreation",
       "notes": "Series fee: $54-$96 for 12 classes. Drop-in: $10. Check current session dates at registration.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Jumping Jacks \u2014 Toddlers",
+      "description_es": "Jumping Jacks es una clase de una hora que fomenta el movimiento creativo, el equilibrio y la coordinaci\u00f3n mano-ojo. La primera mitad es juego libre con los padres. La segunda mitad es tiempo en grupo con pa\u00f1uelos, paraca\u00eddas y burbujas. Para ni\u00f1os de 26 meses a 4 a\u00f1os."
     },
     {
       "id": 54,
@@ -1427,7 +1527,9 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Moves to Big Tent in rain.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur",
+      "event_name_es": "Mart Littles: Music with Mr. Christopher",
+      "description_es": "\u00a1Ven a disfrutar m\u00fasica con Mr. Christopher frente a la tienda Poppy en Marin Country Mart todos los mi\u00e9rcoles! Gratis, sin inscripci\u00f3n. Se mueve a la Carpa Grande si llueve."
     },
     {
       "id": 55,
@@ -1455,7 +1557,9 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Outdoor at the big log in front of Copperfield's Books. Moves indoors in bad weather.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur",
+      "event_name_es": "Mart Littles Storytime at Copperfield's Books",
+      "description_es": "Cuentos para ni\u00f1os todos los jueves frente a Copperfield's Books en Marin Country Mart. Al aire libre, clima permisible."
     },
     {
       "id": 56,
@@ -1483,7 +1587,9 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Part of the Saturday Farmers Market. Rain or shine.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur",
+      "event_name_es": "Mart Littles Music",
+      "description_es": "M\u00fasica infantil gratuita en el Mercado de Agricultores de Marin Country Mart todos los s\u00e1bados por la ma\u00f1ana. \u00a1Ven de compras mientras los ni\u00f1os disfrutan m\u00fasica en vivo!"
     },
     {
       "id": 57,
@@ -1511,7 +1617,9 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Part of the Saturday Farmers Market. Runs 10:30 AM \u2013 1:30 PM. Rain or shine.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur",
+      "event_name_es": "Mart Littles Crafts",
+      "description_es": "Manualidades gratuitas para ni\u00f1os en el Mercado de Agricultores de Marin Country Mart todos los s\u00e1bados de 10:30 AM a 1:30 PM."
     },
     {
       "id": 58,
@@ -1539,7 +1647,9 @@
       "registration": "Not required \u2014 drop in or pre-register online",
       "website": "https://www.marinjcc.org/preschool/jym-babies/",
       "notes": "No class April 8. $135 for 9 classes + 1 free credit also available.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "JymBabies Indoor Play",
+      "description_es": "Espacio de juego interior de 90 minutos para ni\u00f1os de nacimiento a 30 meses en el JCC de Marin. Equipo de gimnasio apropiado para la edad. No se requiere membres\u00eda. $15 por visita."
     },
     {
       "id": 59,
@@ -1567,7 +1677,9 @@
       "registration": "Not required \u2014 drop in",
       "website": "https://www.marinjcc.org/preschool/jym-babies/",
       "notes": "No class April 6 or May 25. Cash or exact change only at Mill Valley location.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "JymBabies Indoor Play",
+      "description_es": "Espacio de juego interior de 90 minutos para ni\u00f1os de nacimiento a 30 meses en el JCC South en Mill Valley. No se requiere membres\u00eda. $20 por visita."
     },
     {
       "id": 60,
@@ -1595,7 +1707,9 @@
       "registration": "Required \u2014 register at marinjcc.org",
       "website": "https://www.marinjcc.org/preschool/shabbat-shababies/",
       "notes": "Registration required. In partnership with Congregation Rodef Sholom and Brandeis Marin.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Shabbat ShaBabies",
+      "description_es": "Celebraci\u00f3n mensual de Shabat para familias con beb\u00e9s y ni\u00f1os peque\u00f1os en el JCC de Marin. Una hora de celebraci\u00f3n de Shabat seguida de caf\u00e9, bagels, juego interior y comunidad. Gratis."
     },
     {
       "id": 61,
@@ -1623,7 +1737,9 @@
       "registration": "Required \u2014 register at marinjcc.org",
       "website": "https://www.marinjcc.org/preschool/shabbat-shababies/",
       "notes": "Registration required. In partnership with Congregation Rodef Sholom and Brandeis Marin.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Shabbat ShaBabies",
+      "description_es": "Celebraci\u00f3n mensual de Shabat para familias con beb\u00e9s y ni\u00f1os peque\u00f1os en el JCC de Marin. Una hora de celebraci\u00f3n de Shabat seguida de caf\u00e9, bagels, juego interior y comunidad. Gratis."
     },
     {
       "id": 62,
@@ -1651,7 +1767,9 @@
       "registration": "Required \u2014 register at marinjcc.org",
       "website": "https://www.marinjcc.org/preschool/shabbat-shababies/",
       "notes": "Registration required. In partnership with Congregation Rodef Sholom and Brandeis Marin.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Shabbat ShaBabies",
+      "description_es": "Celebraci\u00f3n mensual de Shabat para familias con beb\u00e9s y ni\u00f1os peque\u00f1os en el JCC de Marin. Una hora de celebraci\u00f3n de Shabat seguida de caf\u00e9, bagels, juego interior y comunidad. Gratis."
     },
     {
       "id": 63,
@@ -1679,7 +1797,9 @@
       "registration": "Required \u2014 register at marinjcc.org",
       "website": "https://www.marinjcc.org/preschool/shabbat-shababies/",
       "notes": "Registration required. In partnership with Congregation Kol Shofar.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Shabbat ShaBabies \u2014 Mill Valley",
+      "description_es": "Celebraci\u00f3n mensual de Shabat para familias con beb\u00e9s y ni\u00f1os peque\u00f1os en el JCC South. Una hora de celebraci\u00f3n de Shabat seguida de caf\u00e9, bagels, juego interior y comunidad. Gratis."
     },
     {
       "id": 64,
@@ -1707,7 +1827,9 @@
       "registration": "Not required",
       "website": "https://www.agriculturalinstitute.org/sunday-marin",
       "notes": "Year-round, rain or shine. Third largest weekly market in California.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Marin Farmers Market \u2014 Sunday",
+      "description_es": "Uno de los mercados de agricultores m\u00e1s grandes de California con casi 200 vendedores. Productos org\u00e1nicos frescos, carnes, mariscos, productos horneados, artesan\u00edas y comida preparada. Llueva o brille. Se aceptan EBT/SNAP y WIC."
     },
     {
       "id": 65,
@@ -1735,7 +1857,9 @@
       "registration": "Not required",
       "website": "https://www.agriculturalinstitute.org",
       "notes": "Year-round, rain or shine.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Marin Farmers Market \u2014 Thursday",
+      "description_es": "Mercado de agricultores certificado semanal con productos locales frescos, alimentos artesanales y vendedores especializados. Llueva o brille. Se aceptan EBT/SNAP y WIC."
     },
     {
       "id": 66,
@@ -1763,7 +1887,9 @@
       "registration": "Not required",
       "website": "https://www.marincountrymart.com/farmers-market",
       "notes": "Year-round. Includes Mart Littles children's programming \u2014 music 9:30 AM and crafts 10:30 AM.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur",
+      "event_name_es": "Marin Country Mart Farmers Market",
+      "description_es": "Mercado de agricultores familiar los s\u00e1bados con productos frescos, alimentos artesanales, m\u00fasica infantil en vivo y manualidades. De 9 AM a 2 PM."
     },
     {
       "id": 67,
@@ -1791,7 +1917,9 @@
       "registration": "Not required",
       "website": "https://www.agriculturalinstitute.org",
       "notes": "Year-round, rain or shine.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Mill Valley Certified Farmers Market",
+      "description_es": "Mercado de agricultores certificado con productos locales frescos, alimentos artesanales y vendedores especializados. Hasta las 2:30 PM."
     },
     {
       "id": 68,
@@ -1819,7 +1947,9 @@
       "registration": "Not required",
       "website": "https://www.visitmarin.org/culinary/foodie-resources/farmer-s-markets-in-marin/",
       "notes": "Year-round.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Strawberry Village Farmers Market",
+      "description_es": "Mercado de agricultores semanal con productos frescos, alimentos especializados y vendedores locales. Hasta las 2:30 PM."
     },
     {
       "id": 69,
@@ -1847,7 +1977,9 @@
       "registration": "Not required",
       "website": "https://www.marincounty.gov/departments/awm/farmers-markets-marin",
       "notes": "Year-round. Contact: Lynn Bagley (415) 382-7846.",
-      "location_group": "Corte Madera"
+      "location_group": "Corte Madera",
+      "event_name_es": "Corte Madera Town Center Farmers Market",
+      "description_es": "Mercado de agricultores de mitad de semana en el Centro Comercial de Corte Madera con productos locales frescos y alimentos artesanales. Hasta las 5 PM."
     },
     {
       "id": 70,
@@ -1875,7 +2007,9 @@
       "registration": "Not required",
       "website": "https://www.marincounty.gov/departments/awm/farmers-markets-marin",
       "notes": "Every 4th Saturday of the month, year-round. Contact: Ed Zawada (925) 605-6119.",
-      "location_group": "Sausalito"
+      "location_group": "Sausalito",
+      "event_name_es": "Sausalito Farmers Market",
+      "description_es": "Mercado de agricultores mensual en el paseo mar\u00edtimo de Sausalito con productos locales, art\u00edculos artesanales y alimentos especializados. Hasta las 5 PM."
     },
     {
       "id": 71,
@@ -1903,7 +2037,9 @@
       "registration": "Not required",
       "website": "https://communityfarmersmarkets.com",
       "notes": "Seasonal: May\u2013October only.",
-      "location_group": "Fairfax"
+      "location_group": "Fairfax",
+      "event_name_es": "Fairfax Community Farmers Market",
+      "description_es": "Mercado de agricultores vespertino en el Parque Bolinas en Fairfax con productos locales frescos y alimentos artesanales. Hasta las 8 PM. Temporada: mayo a octubre."
     },
     {
       "id": 72,
@@ -1931,7 +2067,9 @@
       "registration": "Not required",
       "website": "https://communityfarmersmarkets.com",
       "notes": "Seasonal: May\u2013October only.",
-      "location_group": "Novato"
+      "location_group": "Novato",
+      "event_name_es": "Downtown Novato Farmers Market",
+      "description_es": "Mercado de agricultores vespertino en el centro de Novato con productos frescos, alimentos artesanales y vendedores locales. Hasta las 8 PM. Temporada: mayo a octubre."
     },
     {
       "id": 73,
@@ -1959,7 +2097,9 @@
       "registration": "Not required",
       "website": "https://www.pointreyesfarmersmarket.org",
       "notes": "Seasonal: June\u2013November only.",
-      "location_group": "West Marin"
+      "location_group": "West Marin",
+      "event_name_es": "Point Reyes Farmers Market",
+      "description_es": "Amado mercado de agricultores del oeste de Marin en el ic\u00f3nico Toby's Feed Barn. Productos locales, alimentos artesanales y la experiencia quintaesencial de Point Reyes. Hasta las 2 PM."
     },
     {
       "id": 74,
@@ -1987,7 +2127,9 @@
       "registration": "Not required",
       "website": "https://www.agriculturalinstitute.org",
       "notes": "Monthly \u2014 2nd Friday of the month. May\u2013September 2026 dates: May 15, Jun 12, Jul 10, Aug 14, Sep 11.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "San Rafael Summer Night Market",
+      "description_es": "Mercado de verano mensual por la noche en la Calle 4ta en el centro de San Rafael. Productos frescos, comida callejera, artesanos y entretenimiento en vivo. Hasta las 9 PM."
     },
     {
       "id": 75,
@@ -2015,7 +2157,9 @@
       "registration": "Not required",
       "website": "https://www.sanrafaelmarket.org",
       "notes": "Seasonal: June\u2013September only.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "San Rafael Downtown Thursday Market",
+      "description_es": "Mercado de verano los jueves por la noche en la Calle 4ta en el centro de San Rafael con productos frescos, comida callejera, artesanos y entretenimiento en vivo. Hasta las 9 PM."
     },
     {
       "id": 76,
@@ -2043,7 +2187,9 @@
       "registration": "Not required",
       "website": "https://www.agriculturalinstitute.org",
       "notes": "Seasonal: May\u2013October. Small community market.",
-      "location_group": "West Marin"
+      "location_group": "West Marin",
+      "event_name_es": "Tomales Farmers Market",
+      "description_es": "Peque\u00f1o mercado comunitario en el coraz\u00f3n del oeste de Marin con productos locales y art\u00edculos artesanales. Temporada: mayo a octubre."
     },
     {
       "id": 77,
@@ -2071,7 +2217,9 @@
       "registration": "Required \u2014 register at millvalleylibrary.libcal.com. 120 seats available.",
       "website": "https://millvalleylibrary.libcal.com/event/15997600",
       "notes": "Stroller parking extremely limited \u2014 consider leaving stroller at home.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Sing & Stompers at Sweetwater Music Hall",
+      "description_es": "\u00a1Una actuaci\u00f3n especial de Sing & Stomp en el legendario Sweetwater Music Hall! La m\u00fasica de Emily Bonn y su banda traen m\u00fasica bluegrass llena de energ\u00eda, movimiento juguet\u00f3n y mucha diversi\u00f3n para todas las edades."
     },
     {
       "id": 78,
@@ -2099,7 +2247,9 @@
       "registration": "Required \u2014 tickets at etix.com",
       "website": "https://sweetwatermusichall.org/event/school-of-rock-19/",
       "notes": "Doors 9:30 AM, Show 10 AM. Tickets required.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "School of Rock at Sweetwater",
+      "description_es": "\u00a1Los estudiantes locales de School of Rock act\u00faan en el legendario Sweetwater Music Hall! Un espect\u00e1culo divertido durante el d\u00eda para toda la familia."
     },
     {
       "id": 79,
@@ -2127,7 +2277,9 @@
       "registration": "Required \u2014 tickets at etix.com",
       "website": "https://sweetwatermusichall.org/event/the-rock-and-roll-playhouse-plays-music-of-grateful-dead-for-kids-more-grateful-dads-fathers-day-weekend-bash/",
       "notes": "Doors 11 AM, Show 11:30 AM. Father's Day Weekend. Tickets required.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Rock and Roll Playhouse: Grateful Dead for Kids",
+      "description_es": "El Rock and Roll Playhouse presenta M\u00fasica del Grateful Dead para ni\u00f1os \u2014 una experiencia de concierto familiar perfecta para el Fin de Semana del D\u00eda del Padre."
     },
     {
       "id": 80,
@@ -2155,7 +2307,9 @@
       "registration": "Not required",
       "website": "https://www.sgvcc.org/our-programs/youth-programs",
       "notes": "Runs until 12 PM. For more info email Perla at perladelossantos@parentservices.org. Learning Bus visits every other Tuesday 10:30\u201311:15 AM.",
-      "location_group": "Nicasio / San Geronimo"
+      "location_group": "Nicasio / San Geronimo",
+      "event_name_es": "Rainbow Playgroup",
+      "description_es": "Un grupo de juego gratuito y acogedor para cuidadores y sus peque\u00f1os de 0 a 5 a\u00f1os los martes. Un lugar seguro para jugar, socializar y conectar con otras familias. El Autob\u00fas de Aprendizaje de la Biblioteca visita un martes s\u00ed y uno no."
     },
     {
       "id": 81,
@@ -2183,7 +2337,9 @@
       "registration": "Not required",
       "website": "https://www.sgvcc.org/our-programs/youth-programs",
       "notes": "Runs until 12 PM. For more info email Perla at perladelossantos@parentservices.org.",
-      "location_group": "Nicasio / San Geronimo"
+      "location_group": "Nicasio / San Geronimo",
+      "event_name_es": "Rainbow Playgroup",
+      "description_es": "Un grupo de juego gratuito y acogedor para cuidadores y sus peque\u00f1os de 0 a 5 a\u00f1os los viernes. Un lugar seguro para jugar, socializar y conectar con otras familias."
     },
     {
       "id": 82,
@@ -2211,7 +2367,9 @@
       "registration": "Not required",
       "website": "https://www.sananselmo.gov/624/Storytime-Programs",
       "notes": "Outdoor on Town Plaza or Library Lawn. Moves to Council Chambers in inclement weather.",
-      "location_group": "San Anselmo"
+      "location_group": "San Anselmo",
+      "event_name_es": "Sing & Stomp with Emily Bonn",
+      "description_es": "\u00a1Canta, baila, salta y juega con la m\u00fasica de Emily Bonn en este grupo de m\u00fasica y movimiento! Bienvenidos a sentarse, pero las melod\u00edas de Emily te har\u00e1n levantarte a bailar. Para ni\u00f1os de 0 a 5 a\u00f1os."
     },
     {
       "id": 83,
@@ -2239,7 +2397,9 @@
       "registration": "Not required",
       "website": "https://www.marinmommies.com/calendar",
       "notes": "Bring a picnic to enjoy overlooking Richardson Bay. Free street parking.",
-      "location_group": "Tiburon"
+      "location_group": "Tiburon",
+      "event_name_es": "Family Nature Day",
+      "description_es": "Un D\u00eda de la Naturaleza Familiar en el Centro Audubon de Richardson Bay en Tiburon. Actividades de naturaleza, educaci\u00f3n sobre vida silvestre y un picnic con vista a la Bah\u00eda de Richardson. Estacionamiento gratuito en la calle."
     },
     {
       "id": 84,
@@ -2267,7 +2427,9 @@
       "registration": "Not required",
       "website": "https://enjoymillvalley.com",
       "notes": "Runs until 3 PM. Sponsored by City of Mill Valley, County of Marin, MCE, and Sustainable Marin.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Earth Day Marin",
+      "description_es": "Evento comunitario gratuito para todas las edades con m\u00e1s de 50 stands informativos, m\u00fasica, arte, baile y juegos. Aprende sobre energ\u00eda limpia, alimentaci\u00f3n saludable y comunidades resilientes."
     },
     {
       "id": 85,
@@ -2295,7 +2457,9 @@
       "registration": "Required \u2014 register at strawberry.marin.org",
       "website": "https://strawberry.marin.org/calendar",
       "notes": "Runs until 10 PM. Food vendor on site. Bring blankets and chairs. Registration required \u2014 free.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Outdoor Movie Night",
+      "description_es": "Noche de cine al aire libre bajo las estrellas en el Distrito Recreativo Strawberry. Proveedor de comida Benny's en el lugar. Trae cobijas y sillas. Registro requerido \u2014 gratis."
     },
     {
       "id": 86,
@@ -2323,7 +2487,9 @@
       "registration": "Required \u2014 register at millvalleylibrary.libcal.com",
       "website": "https://millvalleylibrary.libcal.com",
       "notes": "Runs until 11:30 AM. Registration recommended.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Hawaiian Hula & Musical Performance",
+      "description_es": "Una actuaci\u00f3n especial de hula hawaiano y m\u00fasica en la Biblioteca de Mill Valley. Una maravillosa experiencia cultural para toda la familia. Gratis y abierto a todos."
     },
     {
       "id": 87,
@@ -2351,7 +2517,9 @@
       "registration": "Not required",
       "website": "https://millvalleylibrary.libcal.com",
       "notes": "Already occurred April 10, 2026. Kept for reference \u2014 Mill Valley Library does periodic free movie screenings. Watch for future dates.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Movie Screening: Pixar's Elio",
+      "description_es": "Proyecci\u00f3n gratuita de Elio de Pixar en la Sala Creekside de la Biblioteca de Mill Valley. \u00a1Palomitas gratis incluidas!"
     },
     {
       "id": 88,
@@ -2379,7 +2547,9 @@
       "registration": "Required \u2014 register at strawberry.marin.org",
       "website": "https://strawberry.marin.org/calendar",
       "notes": "Pre-registration required. Limited space. 90s themed \u2014 dress up encouraged!",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Splash Bash \u2014 90s Themed Pool Party",
+      "description_es": "\u00a1Fiesta en la piscina con tema de los a\u00f1os 90 en el Distrito Recreativo Strawberry! Disfruta m\u00fasica de los 90 y diversi\u00f3n familiar en la piscina. Espacio limitado \u2014 inscripci\u00f3n previa requerida."
     },
     {
       "id": 89,
@@ -2407,7 +2577,9 @@
       "registration": "Not required",
       "website": "https://strawberry.marin.org/calendar",
       "notes": "Free to attend. Food vendors on site.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Strawberry Community Night",
+      "description_es": "Celebraci\u00f3n anual de la comunidad \u2014 \u00a1ven a comer, jugar y comprar! Proveedores de comida, juegos, vendedores locales y diversi\u00f3n comunitaria para toda la familia. Hasta las 8 PM."
     },
     {
       "id": 90,
@@ -2435,7 +2607,9 @@
       "registration": "Required \u2014 register at strawberry.marin.org",
       "website": "https://strawberry.marin.org/calendar",
       "notes": "Registration required. Paid event \u2014 check website for ticket prices.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Scary at the Berry \u2014 Halloween Event",
+      "description_es": "Evento anual de Halloween del Distrito Recreativo Strawberry. \u00a1Se anima a venir disfrazado! Hasta las 8 PM. Consulta el sitio web para precios de entradas y actividades."
     },
     {
       "id": 91,
@@ -2463,7 +2637,9 @@
       "registration": "Not required \u2014 drop in",
       "website": "https://strawberry.marin.org/calendar",
       "notes": "Drop-in, free to attend.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Holiday Cheer \u2014 Photos with Santa",
+      "description_es": "Evento anual de Navidad en el Distrito Recreativo Strawberry. \u00a1Ven a celebrar las fiestas y tomarte fotos con Santa Claus! Hasta las 7:30 PM."
     },
     {
       "id": 92,
@@ -2491,7 +2667,9 @@
       "registration": "Not required",
       "website": "https://enjoymillvalley.com/special-events/",
       "notes": "Pancake Breakfast 7\u201311 AM at City Hall. Parade 10:30 AM from Old Mill Park through downtown.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Mill Valley Memorial Day Parade & Pancake Breakfast",
+      "description_es": "La amada celebraci\u00f3n anual del D\u00eda de los Ca\u00eddos en Mill Valley. Desayuno de panqueques de los Bomberos Voluntarios en el Ayuntamiento de 7 a 11 AM. El desfile comienza a las 10:30 AM desde el Parque Old Mill."
     },
     {
       "id": 93,
@@ -2519,7 +2697,9 @@
       "registration": "Not required",
       "website": "https://enjoymillvalley.com/special-events/",
       "notes": "Approximately 500 families attend each night.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Miller Avenue Nights",
+      "description_es": "Festival de verano familiar en Miller Avenue. Restaurantes al aire libre, manualidades para ni\u00f1os, casa inflable, mercado pop-up con comercios de Mill Valley, DJ y conexi\u00f3n comunitaria. Gratis y abierto a todos."
     },
     {
       "id": 94,
@@ -2547,7 +2727,9 @@
       "registration": "Not required",
       "website": "https://enjoymillvalley.com/special-events/",
       "notes": "Approximately 500 families attend each night.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Miller Avenue Nights",
+      "description_es": "Festival de verano familiar en Miller Avenue. Restaurantes al aire libre, manualidades para ni\u00f1os, casa inflable, mercado pop-up con comercios de Mill Valley, DJ y conexi\u00f3n comunitaria. Gratis y abierto a todos."
     },
     {
       "id": 95,
@@ -2575,7 +2757,9 @@
       "registration": "Not required",
       "website": "https://www.millvalleyrecreation.org/953/Freedom-Festival",
       "notes": "Juneteenth commemorates June 19, 1865. Free and open to all.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Juneteenth Freedom Festival",
+      "description_es": "Festival anual de Juneteenth que celebra la historia y cultura afroamericana. Entretenimiento en vivo, proveedores de comida local, manualidades, actividades interactivas para ni\u00f1os y organizaciones comunitarias. Hasta las 3 PM."
     },
     {
       "id": 96,
@@ -2603,7 +2787,9 @@
       "registration": "Required \u2014 register at MyMVR.org",
       "website": "https://www.cityofmillvalley.gov/839/Community-Campout",
       "notes": "Children 3 & under free. Register at MyMVR.org. Date estimated \u2014 confirm at cityofmillvalley.gov.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Community Campout",
+      "description_es": "Campamento familiar anual en el Centro Comunitario de Mill Valley. El precio incluye espacio de campamento, cena y desayuno, juegos y actividades familiares, entretenimiento alrededor de la fogata. Ni\u00f1os de 3 a\u00f1os o menos, gratis."
     },
     {
       "id": 97,
@@ -2631,7 +2817,9 @@
       "registration": "Not required",
       "website": "https://www.sausalito.org/events",
       "notes": "Every 4th Saturday. 2026 dates: May 23, Jun 27, Jul 25, Aug 22, Sep 26, Oct 24, Nov 28, Dec 26.",
-      "location_group": "Sausalito"
+      "location_group": "Sausalito",
+      "event_name_es": "Sausalito Art & Harbor Days",
+      "description_es": "Celebraci\u00f3n comunitaria mensual en el paseo mar\u00edtimo de Sausalito. M\u00fasica en vivo, exhibiciones de arte local, diversi\u00f3n familiar, ventas en las aceras y precios especiales en restaurantes. \u00a1Explora el car\u00e1cter creativo de Sausalito!"
     },
     {
       "id": 98,
@@ -2659,7 +2847,9 @@
       "registration": "Not required for attending. Junior competition entry at marin.fairwire.com (small fee).",
       "website": "https://www.marinfair.org",
       "notes": "July 1\u20135, 2026. Junior Division entry deadline June 17. Entry fees $2\u2013$6 for competitions.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "Marin County Fair",
+      "description_es": "\u00a1La amada feria anual del condado de Marin! Atracciones, entretenimiento en vivo, animales de granja, comida y competencias de la Divisi\u00f3n Junior para ni\u00f1os de 5 a 18 a\u00f1os. Tema 2026: Stars, Stripes & Stories."
     },
     {
       "id": 99,
@@ -2687,7 +2877,9 @@
       "registration": "Not required",
       "website": "https://enjoymillvalley.com/special-events/",
       "notes": "32nd Annual Winterfest. Check enjoymillvalley.com for exact times closer to date.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Winterfest",
+      "description_es": "La mayor celebraci\u00f3n anual de fiestas de Mill Valley con aproximadamente 2,500 asistentes. Tren el\u00e9ctrico para ni\u00f1os, actuaciones festivas en vivo y esp\u00edritu comunitario. Una tradici\u00f3n amada de Mill Valley."
     },
     {
       "id": 100,
@@ -2715,7 +2907,9 @@
       "registration": "Required \u2014 check enjoymillvalley.com for tickets",
       "website": "https://enjoymillvalley.com/special-events/",
       "notes": "Sold out in debut season \u2014 register early. Venue and time TBD \u2014 check website closer to date.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Gingerbread House Decorating Party",
+      "description_es": "Experiencia \u00edntima y festiva de decoraci\u00f3n de casas de pan de jengibre para familias. \u00a1Se agot\u00f3 en su temporada de debut \u2014 inscr\u00edbete temprano! Organizado por la C\u00e1mara de Comercio de Mill Valley."
     },
     {
       "id": 101,
@@ -2743,7 +2937,9 @@
       "registration": "Not required for most events \u2014 check pointreyesbirdingfestival.org",
       "website": "https://www.pointreyesbirdingfestival.org/",
       "notes": "Multi-day festival Fri\u2013Sun. Various locations throughout Point Reyes. Some walks require registration.",
-      "location_group": "West Marin"
+      "location_group": "West Marin",
+      "event_name_es": "Point Reyes Birding & Nature Festival",
+      "description_es": "Celebraci\u00f3n anual de aves y vida silvestre en Point Reyes National Seashore. Caminatas guiadas de observaci\u00f3n de aves, actividades de naturaleza, presentaciones sobre vida silvestre y programas familiares durante todo el fin de semana."
     },
     {
       "id": 102,
@@ -2771,7 +2967,9 @@
       "registration": "Required \u2014 tickets at slideranch.org",
       "website": "https://www.slideranch.org/spring-fling-2026",
       "notes": "Annual spring event. Check slideranch.org for tickets and details.",
-      "location_group": "West Marin"
+      "location_group": "West Marin",
+      "event_name_es": "Slide Ranch Spring Fling",
+      "description_es": "Una celebraci\u00f3n de un d\u00eda en la hermosa granja costera de Slide Ranch. Encuentros con animales, m\u00fasica en vivo, exploraci\u00f3n de la naturaleza, demostraciones de cocina y m\u00e1s. Una experiencia m\u00e1gica familiar en la costa de Marin."
     },
     {
       "id": 103,
@@ -2799,7 +2997,9 @@
       "registration": "Not required",
       "website": "https://callofthesea.org/special-events-celebration/",
       "notes": "Annual spring event. Runs 10 AM\u20132 PM.",
-      "location_group": "Sausalito"
+      "location_group": "Sausalito",
+      "event_name_es": "Tall Ship Celebration",
+      "description_es": "Tours gratuitos de barcos hist\u00f3ricos en el paseo mar\u00edtimo de Sausalito. Entretenimiento en vivo y actividades familiares. Una maravillosa experiencia mar\u00edtima para ni\u00f1os y familias."
     },
     {
       "id": 104,
@@ -2827,7 +3027,9 @@
       "registration": "Not required",
       "website": "https://www.tamcsd.org/earth-day/",
       "notes": "Annual Earth Day event. Runs 10 AM\u20133 PM.",
-      "location_group": "Mill Valley"
+      "location_group": "Mill Valley",
+      "event_name_es": "Tam Valley Earth Day Festival",
+      "description_es": "Festival de D\u00eda de la Tierra familiar en el Centro Comunitario de Tam Valley. Actividades ecol\u00f3gicas, exhibiciones ambientales, m\u00fasica y diversi\u00f3n comunitaria celebrando nuestro planeta."
     },
     {
       "id": 105,
@@ -2855,7 +3057,9 @@
       "registration": "Required \u2014 register at givebutter.com",
       "website": "https://givebutter.com/earth-day-celebration-r6hpmp",
       "notes": "Annual Earth Day event. Register in advance.",
-      "location_group": "Nicasio / San Geronimo"
+      "location_group": "Nicasio / San Geronimo",
+      "event_name_es": "Earth Day Celebration with Rescued Animals",
+      "description_es": "Pasa el d\u00eda con animales rescatados en el santuario Rancho Compasi\u00f3n en Nicasio. M\u00fasica en vivo con Charity y la JAMBand. Una experiencia especial del oeste de Marin para familias."
     },
     {
       "id": 106,
@@ -2883,7 +3087,9 @@
       "registration": "Not required",
       "website": "https://www.presidioridingclub.org/",
       "notes": "Annual spring event in the Marin Headlands.",
-      "location_group": "Sausalito"
+      "location_group": "Sausalito",
+      "event_name_es": "Presidio Riding Club Family Day",
+      "description_es": "Un d\u00eda familiar en los establos del Presidio Riding Club en los Headlands de Marin. Conoce los caballos, mira una demostraci\u00f3n de lazo a las 11 AM, disfruta manualidades y una venta de reposter\u00eda."
     },
     {
       "id": 107,
@@ -2911,7 +3117,9 @@
       "registration": "Not required",
       "website": "https://www.headsupsr.org/carnival",
       "notes": "Annual spring community event.",
-      "location_group": "San Rafael"
+      "location_group": "San Rafael",
+      "event_name_es": "HeadsUp Carnival",
+      "description_es": "Carnaval comunitario anual que re\u00fane a todas las escuelas de San Rafael. Juegos, actividades, comida y diversi\u00f3n familiar celebrando todo lo grandioso de la comunidad. Beneficia los programas educativos de HeadsUp."
     },
     {
       "id": 108,
@@ -2939,7 +3147,9 @@
       "registration": "Not required",
       "website": "https://www.olompali.org/",
       "notes": "Part of the Elizabeth Terwilliger Nature Education legacy.",
-      "location_group": "Novato"
+      "location_group": "Novato",
+      "event_name_es": "Discovery Hike with WildCare Terwilliger Nature Guide",
+      "description_es": "Sum\u00e9rgete en la naturaleza en Olompali con una caminata de descubrimiento dirigida por un Gu\u00eda de Naturaleza Terwilliger de WildCare. Aprende sobre la vida silvestre local, plantas e historia natural de este hermoso parque de Marin."
     },
     {
       "id": 109,
@@ -2966,7 +3176,9 @@
       "description": "Monthly drop-in pool party in the JCC's outdoor warm-water toddler pool \u2014 just one foot deep and perfect for little ones. Includes age-appropriate pool toys, tunes, towels, and a bounce house. Family lane open in the big pool for older siblings. Bring a picnic dinner! Members free. Non-members $15 for one-child family, $20 for two or more children.",
       "registration": "Not required \u2014 pay at the door",
       "website": "https://www.marinjcc.org/preschool/tot-pool-party/",
-      "notes": "Seasonal May\u2013October only. Monthly \u2014 check marinjcc.org for specific Friday dates each month. Members free."
+      "notes": "Seasonal May\u2013October only. Monthly \u2014 check marinjcc.org for specific Friday dates each month. Members free.",
+      "event_name_es": "Drop-In Tot Pool Party",
+      "description_es": "Fiesta mensual en la piscina en la c\u00e1lida piscina para ni\u00f1os peque\u00f1os del JCC \u2014 solo un pie de profundidad, perfecta para los m\u00e1s peque\u00f1os. Incluye juguetes de piscina apropiados para la edad, m\u00fasica, toallas y una casa inflable. Carril familiar abierto en la piscina grande para hermanos mayores. \u00a1Trae una cena de picnic! Miembros gratis. No miembros $15 para un hijo, $20 para dos o m\u00e1s hijos."
     }
   ]
 }
