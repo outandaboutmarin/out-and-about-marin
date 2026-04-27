@@ -98,6 +98,272 @@ async function submitFeedback() {
   btn.disabled = false;
 }
 
+
+// ═══════════════════════════════════════════
+// LANGUAGE SYSTEM
+// ═══════════════════════════════════════════
+let currentLang = localStorage.getItem('oaam_lang') || 'en';
+
+const T = {
+  en: {
+    // Header
+    eventsThisWeek: (n, label) => `${n} events · ${label}`,
+    // Nav
+    navEvents: 'Events',
+    navSaved: 'Saved',
+    navProfile: 'Profile',
+    navFeedback: 'Feedback',
+    // Filters
+    filterType: 'Type',
+    filterLocation: 'Location',
+    filterDay: 'Day',
+    filterTime: 'Time',
+    filterAge: 'Age',
+    filterCost: 'Cost',
+    clearAll: 'Clear all',
+    myDefaults: '↩ My defaults',
+    // Filter options - Type
+    library: 'Library',
+    kidsPrograms: 'Kids Programs',
+    communityEvent: 'Community Event',
+    farmersMarket: 'Farmers Market',
+    festival: 'Festival',
+    fitness: 'Fitness',
+    // Filter options - Time
+    morning: 'Morning',
+    afternoon: 'Afternoon',
+    evening: 'Evening',
+    // Filter options - Cost
+    free: 'Free',
+    paid: 'Paid',
+    // Days
+    monday: 'Monday',
+    tuesday: 'Tuesday',
+    wednesday: 'Wednesday',
+    thursday: 'Thursday',
+    friday: 'Friday',
+    saturday: 'Saturday',
+    sunday: 'Sunday',
+    // Day shorts
+    mon: 'Mon', tue: 'Tue', wed: 'Wed', thu: 'Thu',
+    fri: 'Fri', sat: 'Sat', sun: 'Sun',
+    // Detail screen
+    when: 'When',
+    where: 'Where',
+    ages: 'Ages',
+    cost: 'Cost',
+    registration: 'Registration',
+    status: 'Status',
+    saveEvent: 'Save event',
+    savedEvent: 'Saved ✓',
+    moreInfo: 'More info →',
+    // Profile
+    myProfile: 'My Profile',
+    myDetails: 'My details',
+    myDefaultFilters: 'My default filters',
+    savedEvents: 'Saved events',
+    membership: 'Membership',
+    edit: 'Edit',
+    signOut: 'Sign out',
+    noSavedEvents: 'No saved events yet',
+    // Login
+    phoneNumber: 'PHONE NUMBER',
+    fourDigitPin: '4-DIGIT PIN',
+    signIn: 'Sign In',
+    newHere: 'NEW HERE?',
+    createAccount: 'Create an account →',
+    // Signup
+    createYourAccount: 'Create your account',
+    firstName: 'FIRST NAME',
+    zipCode: 'ZIP CODE',
+    next: 'Next →',
+    back: '← Back',
+    kidsAges: "YOUR KIDS' AGES",
+    howDidYouHear: 'HOW DID YOU HEAR ABOUT US?',
+    letsGo: "Let's go →",
+    // Search
+    searchPlaceholder: 'Search events, venues, towns…',
+    close: 'Close',
+    noResults: 'No results found',
+    // About
+    aboutTitle: 'About Out AND About Marin',
+    driveThruTitle: '🚗 Drive-Thrus in Marin County (Nap trapped? I got you.)',
+    // Save defaults
+    saveAsDefaults: 'Save as my defaults',
+    saveDefaultsBtn: 'Save defaults',
+    cancelBtn: 'Cancel',
+    // Week nav
+    nextSevenDays: (s, e) => `Next 7 days (${s}–${e})`,
+    nextWeek: (s, e) => `Next week (${s}–${e})`,
+    weekOf: (s, e) => `Week of ${s}–${e}`,
+    // Language toggle
+    language: 'Language',
+  },
+  es: {
+    // Header
+    eventsThisWeek: (n, label) => `${n} eventos · ${label}`,
+    // Nav
+    navEvents: 'Eventos',
+    navSaved: 'Guardados',
+    navProfile: 'Perfil',
+    navFeedback: 'Comentarios',
+    // Filters
+    filterType: 'Tipo',
+    filterLocation: 'Lugar',
+    filterDay: 'Día',
+    filterTime: 'Hora',
+    filterAge: 'Edad',
+    filterCost: 'Costo',
+    clearAll: 'Borrar todo',
+    myDefaults: '↩ Mis preferencias',
+    // Filter options - Type
+    library: 'Biblioteca',
+    kidsPrograms: 'Programas infantiles',
+    communityEvent: 'Evento comunitario',
+    farmersMarket: 'Mercado de agricultores',
+    festival: 'Festival',
+    fitness: 'Ejercicio',
+    // Filter options - Time
+    morning: 'Mañana',
+    afternoon: 'Tarde',
+    evening: 'Noche',
+    // Filter options - Cost
+    free: 'Gratis',
+    paid: 'De pago',
+    // Days
+    monday: 'Lunes',
+    tuesday: 'Martes',
+    wednesday: 'Miércoles',
+    thursday: 'Jueves',
+    friday: 'Viernes',
+    saturday: 'Sábado',
+    sunday: 'Domingo',
+    // Day shorts
+    mon: 'Lun', tue: 'Mar', wed: 'Mié', thu: 'Jue',
+    fri: 'Vie', sat: 'Sáb', sun: 'Dom',
+    // Detail screen
+    when: 'Cuándo',
+    where: 'Dónde',
+    ages: 'Edades',
+    cost: 'Costo',
+    registration: 'Inscripción',
+    status: 'Estado',
+    saveEvent: 'Guardar evento',
+    savedEvent: 'Guardado ✓',
+    moreInfo: 'Más información →',
+    // Profile
+    myProfile: 'Mi perfil',
+    myDetails: 'Mis datos',
+    myDefaultFilters: 'Mis filtros predeterminados',
+    savedEvents: 'Eventos guardados',
+    membership: 'Membresía',
+    edit: 'Editar',
+    signOut: 'Cerrar sesión',
+    noSavedEvents: 'Aún no hay eventos guardados',
+    // Login
+    phoneNumber: 'NÚMERO DE TELÉFONO',
+    fourDigitPin: 'PIN DE 4 DÍGITOS',
+    signIn: 'Iniciar sesión',
+    newHere: '¿ERES NUEVO?',
+    createAccount: 'Crear una cuenta →',
+    // Signup
+    createYourAccount: 'Crea tu cuenta',
+    firstName: 'NOMBRE',
+    zipCode: 'CÓDIGO POSTAL',
+    next: 'Siguiente →',
+    back: '← Atrás',
+    kidsAges: 'EDADES DE TUS HIJOS',
+    howDidYouHear: '¿CÓMO NOS CONOCISTE?',
+    letsGo: '¡Vamos! →',
+    // Search
+    searchPlaceholder: 'Buscar eventos, lugares, ciudades…',
+    close: 'Cerrar',
+    noResults: 'No se encontraron resultados',
+    // About
+    aboutTitle: 'Acerca de Out AND About Marin',
+    driveThruTitle: '🚗 Autoservicios en el Condado de Marin',
+    // Save defaults
+    saveAsDefaults: 'Guardar como mis preferencias',
+    saveDefaultsBtn: 'Guardar preferencias',
+    cancelBtn: 'Cancelar',
+    // Week nav
+    nextSevenDays: (s, e) => `Próximos 7 días (${s}–${e})`,
+    nextWeek: (s, e) => `Próxima semana (${s}–${e})`,
+    weekOf: (s, e) => `Semana del ${s}–${e}`,
+    // Language toggle
+    language: 'Idioma',
+  }
+};
+
+function t(key, ...args) {
+  const val = T[currentLang][key] || T['en'][key];
+  if (typeof val === 'function') return val(...args);
+  return val || key;
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('oaam_lang', lang);
+  applyLanguage();
+  renderCards();
+  if (currentUser) renderProfile();
+}
+
+function applyLanguage() {
+  // Nav labels
+  const navLabels = {
+    'nav-events': t('navEvents'),
+    'nav-saved': t('navSaved'),
+    'nav-profile': t('navProfile'),
+    'nav-feedback': t('navFeedback'),
+  };
+  Object.entries(navLabels).forEach(([id, label]) => {
+    const el = document.getElementById(id);
+    if (el) el.querySelector('span') && (el.querySelector('span').textContent = label);
+  });
+
+  // Filter pills
+  const pills = {
+    'lbl-type': t('filterType'),
+    'lbl-location': t('filterLocation'),
+    'lbl-day': t('filterDay'),
+    'lbl-time': t('filterTime'),
+    'lbl-age': t('filterAge'),
+    'lbl-cost': t('filterCost'),
+  };
+  Object.entries(pills).forEach(([id, label]) => {
+    const el = document.getElementById(id);
+    if (el && !el.dataset.active) el.textContent = label;
+  });
+
+  // Clear all / reset defaults buttons
+  const clearBtn = document.querySelector('.clear-all-btn');
+  if (clearBtn) clearBtn.textContent = t('clearAll');
+  const resetBtn = document.getElementById('resetDefaultsBtn');
+  if (resetBtn) resetBtn.textContent = t('myDefaults');
+
+  // Search placeholder
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) searchInput.placeholder = t('searchPlaceholder');
+
+  // Login screen
+  const loginPhoneLabel = document.getElementById('loginPhoneLabel');
+  if (loginPhoneLabel) loginPhoneLabel.textContent = t('phoneNumber');
+  const loginPinLabel = document.getElementById('loginPinLabel');
+  if (loginPinLabel) loginPinLabel.textContent = t('fourDigitPin');
+  const loginBtn = document.querySelector('#loginScreen .btn-primary');
+  if (loginBtn) loginBtn.textContent = t('signIn');
+  const newHereEl = document.getElementById('newHereLabel');
+  if (newHereEl) newHereEl.textContent = t('newHere');
+  const createAcctEl = document.getElementById('createAccountBtn');
+  if (createAcctEl) createAcctEl.textContent = t('createAccount');
+
+  // Language toggle buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === currentLang);
+  });
+}
+
 function initSupabase() {
   db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   console.log('Supabase client initialized ✓');
@@ -952,6 +1218,35 @@ function mapDbUser(dbUser) {
   }
   .feedback-success .check { font-size: 2.5rem; margin-bottom: 0.5rem; }
   .feedback-success p { font-size: 0.85rem; color: #444; margin: 0; }
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-bottom: 0.5px solid #EEE;
+  }
+  .lang-toggle-label {
+    font-family: var(--font-serif);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--navy);
+    flex: 1;
+  }
+  .lang-btn {
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--navy);
+    border-radius: 99px;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    cursor: pointer;
+    background: white;
+    color: var(--navy);
+  }
+  .lang-btn.active {
+    background: var(--navy);
+    color: white;
+  }
   .about-section {
     margin: 1.25rem 0.75rem;
     padding: 1.25rem;
@@ -1433,6 +1728,11 @@ function mapDbUser(dbUser) {
   </div>
   <div class="profile-body">
     <div class="profile-section">
+      <div class="lang-toggle">
+        <div class="lang-toggle-label" id="langLabel">Language</div>
+        <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+      </div>
       <div class="profile-section-header"><div class="ps-title">My details</div><div class="ps-edit" onclick="openEditModal()">Edit</div></div>
       <div class="profile-row"><span class="pr-label">Name</span><span class="pr-value" id="profileName">—</span></div>
       <div class="profile-row"><span class="pr-label">Phone</span><span class="pr-value" id="profilePhone">—</span></div>
@@ -1461,7 +1761,7 @@ function mapDbUser(dbUser) {
       <div class="profile-row"><span class="pr-label">Member since</span><span class="pr-value" id="profileSince">—</span></div>
     </div>
     <div class="about-section" style="margin-bottom:0.75rem">
-      <div class="about-title">🚗 Drive-Thrus in Marin County</div>
+      <div class="about-title">🚗 Drive-Thrus in Marin County (Nap trapped? I got you.)</div>
       <div class="about-text">
 
         <p style="font-weight:600;color:var(--navy);margin-bottom:0.2rem">Marin City / Sausalito</p>
@@ -1472,8 +1772,8 @@ function mapDbUser(dbUser) {
         <p style="font-weight:600;color:var(--navy);margin-top:0.5rem;margin-bottom:0.2rem">Mill Valley</p>
         <p style="margin:0;line-height:1.5">• Super Duper Burgers · <a href="https://maps.google.com/?q=Super+Duper+Burgers+430+Miller+Ave+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">430 Miller Ave</a></p>
         <p style="margin:0;line-height:1.5">• McDonald's · <a href="https://maps.google.com/?q=McDonald's+600+Redwood+Hwy+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">600 Redwood Hwy</a></p>
-        <p style="margin:0;line-height:1.5">• Cable Car Coffee · <a href="https://maps.google.com/?q=Cable+Car+Coffee+773+Redwood+Hwy+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">773 Redwood Hwy</a> (opens 4:30 AM 🐕)</p>
-        <p style="margin:0;line-height:1.5">• Buckeye Joe · <a href="https://maps.google.com/?q=Buckeye+Joe+15+Shoreline+Hwy+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">15 Shoreline Hwy</a></p>
+        <p style="margin:0;line-height:1.5">• Cable Car Coffee · <a href="https://maps.google.com/?q=Cable+Car+Coffee+773+Redwood+Hwy+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">773 Redwood Hwy</a></p>
+        <p style="margin:0;line-height:1.5">• Buckeye Joe · <a href="https://maps.google.com/?q=Buckeye+Joe+15+Shoreline+Hwy+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">15 Shoreline Hwy</a> (walk up window)</p>
 
         <p style="font-weight:600;color:var(--navy);margin-top:0.5rem;margin-bottom:0.2rem">Larkspur</p>
         <p style="margin:0;line-height:1.5">• Starbucks · <a href="https://maps.google.com/?q=Starbucks%201801%20Larkspur%20Landing%20Cir%20Larkspur%20CA" target="_blank" style="color:var(--navy);text-decoration:underline">1801 Larkspur Landing Cir</a> (Marin Country Mart)</p>
@@ -1507,7 +1807,7 @@ function mapDbUser(dbUser) {
       <div class="about-title">About Out AND About Marin</div>
       <div class="about-text">
         <p>Out AND About Marin was built by a Marin County mom who was tired of spending more time searching for things to do than actually doing them. Every week I found myself bouncing between library websites, rec center calendars, neighborhood Facebook groups, and community newsletters — just trying to figure out what was happening for families in our own backyard. There had to be a better way. So I built one.</p>
-        <p>This is a beta app, which means it's growing and improving every week. If something is missing, wrong, or could be better — I genuinely want to know. Tap the Feedback button and tell me. This app belongs to the Marin community, and I'm building it for us.</p>
+        <p>This is a beta app, which means it's growing and improving every week. If something is missing, wrong, or could be better — I genuinely want to know. Tap the Feedback button and tell me.</p>
       </div>
     </div>
     <button class="signout-btn" onclick="signOut()">Sign out</button>
@@ -1603,7 +1903,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentUser = JSON.parse(saved);
     loadDefaultFilters();
     showScreen('app');
-    loadEvents();
+    loadEvents(); applyLanguage();
   }
 });
 
