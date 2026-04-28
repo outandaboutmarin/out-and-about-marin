@@ -471,6 +471,18 @@ function applyLanguage() {
   const createAcctEl = document.getElementById('createAccountBtn');
   if (createAcctEl) createAcctEl.textContent = t('createAccount');
 
+  // Share button
+  const shareBtn = document.getElementById('detailShareBtn');
+  if (shareBtn) {
+    const shareText = currentLang === 'es' ? 'Compartir' : 'Share';
+    shareBtn.querySelector('svg').nextSibling && (shareBtn.lastChild.textContent = shareText);
+  }
+  // Share toast
+  const shareToast = document.getElementById('shareToast');
+  if (shareToast && shareToast.classList.contains('show')) {
+    shareToast.textContent = currentLang === 'es' ? '¡Enlace copiado!' : 'Link copied!';
+  }
+
   // Language toggle buttons
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === currentLang);
@@ -565,6 +577,71 @@ function applyLanguage() {
       .replace('Next 7 days', currentLang === 'es' ? 'Próximos 7 días' : 'Next 7 days')
       .replace('Next week', currentLang === 'es' ? 'Próxima semana' : 'Next week')
       .replace('Week of', currentLang === 'es' ? 'Semana del' : 'Week of');
+  }
+}
+
+
+// ═══════════════════════════════════════════
+// SHARE & DEEP LINKS
+// ═══════════════════════════════════════════
+function shareEvent() {
+  if (!currentEventId) return;
+  const url = `${window.location.origin}/?event=${currentEventId}`;
+  
+  if (navigator.share) {
+    // Native share sheet on mobile
+    const e = allEvents.find(ev => ev.id === currentEventId);
+    navigator.share({
+      title: e ? e.event_name : 'Out AND About Marin',
+      text: e ? `Check out ${e.event_name} on Out AND About Marin!` : 'Check out this event!',
+      url: url
+    }).catch(() => copyShareLink(url));
+  } else {
+    copyShareLink(url);
+  }
+}
+
+function copyShareLink(url) {
+  navigator.clipboard.writeText(url).then(() => {
+    showShareToast('Link copied!');
+  }).catch(() => {
+    // Fallback for older browsers
+    const el = document.createElement('textarea');
+    el.value = url;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    showShareToast('Link copied!');
+  });
+}
+
+function showShareToast(msg) {
+  const toast = document.getElementById('shareToast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+function handleDeepLink() {
+  // Check if URL has ?event=ID parameter
+  const params = new URLSearchParams(window.location.search);
+  const eventId = params.get('event');
+  if (eventId) {
+    // Wait for events to load then open the detail
+    const checkAndOpen = () => {
+      if (allEvents.length > 0) {
+        const id = parseInt(eventId);
+        const e = allEvents.find(ev => ev.id === id);
+        if (e) {
+          showScreen('app');
+          openDetail(id);
+        }
+      } else {
+        setTimeout(checkAndOpen, 200);
+      }
+    };
+    checkAndOpen();
   }
 }
 
@@ -1164,6 +1241,44 @@ function mapDbUser(dbUser) {
     background: var(--navy);
     padding: 0.875rem 1rem 1.25rem;
     position: sticky; top: 0; z-index: 100;
+  }
+  .share-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.9rem;
+    background: white;
+    border: 1px solid var(--navy);
+    border-radius: 99px;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+    margin-left: auto;
+  }
+  .share-btn:active { background: var(--navy); color: white; }
+  .share-toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0D1B3E;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 99px;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .share-toast.show { opacity: 1; }
+  .detail-back-row {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
   }
   .detail-back {
     display: flex; align-items: center; gap: 5px;
@@ -1827,7 +1942,13 @@ function mapDbUser(dbUser) {
 ═══════════════════════════════════════════════════ -->
 <div id="detailScreen">
   <div class="detail-header">
-    <button class="detail-back" id="detailBackBtn" onclick="closeDetail()">‹ Back to events</button>
+    <div class="detail-back-row">
+      <button class="detail-back" id="detailBackBtn" onclick="closeDetail()">‹ Back to events</button>
+      <button class="share-btn" id="detailShareBtn" onclick="shareEvent()">
+        <svg width="13" height="13" viewBox="0 0 20 20" fill="none"><circle cx="16" cy="4" r="2.5" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="2.5" stroke="currentColor" stroke-width="1.5"/><circle cx="4" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.3" y1="11.2" x2="13.7" y2="15" stroke="currentColor" stroke-width="1.5"/><line x1="6.3" y1="8.8" x2="13.7" y2="5" stroke="currentColor" stroke-width="1.5"/></svg>
+        Share
+      </button>
+    </div>
     <div class="detail-type-badge" id="detailTypeBadge"></div>
     <div class="detail-title" id="detailTitle"></div>
     <div class="detail-org" id="detailOrg"></div>
@@ -2103,7 +2224,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentUser = JSON.parse(saved);
     loadDefaultFilters();
     showScreen('app');
-    loadEvents(); applyLanguage();
+    loadEvents(); applyLanguage(); handleDeepLink();
   }
 });
 
@@ -3479,5 +3600,6 @@ function normalizePhone(phone) {
       </div>
     </div>
   </div>
+  <div class="share-toast" id="shareToast">Link copied!</div>
 </body>
 </html>
