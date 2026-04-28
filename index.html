@@ -2654,7 +2654,14 @@ function getFilteredEvents() {
       });
       if (!match) return false;
     }
-    if (selections.cost.size > 0 && !selections.cost.has(e.cost)) return false;
+    if (selections.cost.size > 0) {
+      const isFree = e.cost === 'Free' || e.cost === 'Free to attend';
+      const isPaid = !isFree;
+      const wantsFree = selections.cost.has('Free');
+      const wantsPaid = selections.cost.has('Paid');
+      if (wantsFree && !wantsPaid && !isFree) return false;
+      if (wantsPaid && !wantsFree && !isPaid) return false;
+    }
     return true;
   });
 }
@@ -2801,6 +2808,8 @@ function renderCards() {
     } else {
       const daysInRange = getWeekDaysInRange(e, wStart2, wEnd2);
       daysInRange.forEach(day => {
+        // If day filter is active, only show days that match the filter
+        if (selections.day.size > 0 && !selections.day.has(day)) return;
         if (!grouped[day]) grouped[day] = [];
         grouped[day].push({ ...e, _displayDay: day });
       });
