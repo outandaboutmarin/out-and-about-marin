@@ -1,10 +1,10 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-04-27
-Time: 19:56:32
+Date: 2026-04-28
+Time: 19:12:05
 
 Total events in events.json: 94
-Active events: 81
-Temp. closed: 13
+Active events: 82
+Temp. closed: 12
 
 Events by type:
   Community Event: 16
@@ -28,7 +28,18 @@ Events by town:
   Tiburon: 9
   Tomales: 1
 
-All library pages unchanged since last run.
+Library pages changed — review recommended:
+  🔔 PAGE CHANGED: Belvedere-Tiburon Library
+  🔔 PAGE CHANGED: MCFL — Civic Center Library
+  🔔 PAGE CHANGED: MCFL — Corte Madera Library
+  🔔 PAGE CHANGED: MCFL — Fairfax Library
+  🔔 PAGE CHANGED: MCFL — Marin City Library
+  🔔 PAGE CHANGED: MCFL — Novato Library
+  🔔 PAGE CHANGED: MCFL — Point Reyes Library
+  🔔 PAGE CHANGED: MCFL — South Novato Library
+  🔔 PAGE CHANGED: MCFL — Bolinas Library
+  🔔 PAGE CHANGED: MCFL — Inverness Library
+  🔔 PAGE CHANGED: MCFL — Stinson Beach Library
 
 Unpredictable events needing one-off dates added:
   🔔 NEEDS ONE-OFF DATE: Read to a Dog — San Rafael Downtown
