@@ -636,6 +636,8 @@ function handleDeepLink() {
         if (e) {
           showScreen('app');
           openDetail(id);
+          // Clear the ?event= param from URL so refreshing doesn't reopen it
+          window.history.replaceState({}, document.title, window.location.pathname);
         }
       } else {
         setTimeout(checkAndOpen, 200);
