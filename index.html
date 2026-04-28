@@ -2627,7 +2627,12 @@ function getFilteredEvents() {
     // Apply filters
     if (selections.type.size > 0 && !selections.type.has(e.type)) return false;
     if (selections.location.size > 0 && !selections.location.has(e.location_group || e.town)) return false;
-    if (selections.day.size > 0 && !selections.day.has(e.day)) return false;
+    if (selections.day.size > 0) {
+      // Handle multi-day events like "Tuesday / Thursday"
+      const eventDays = e.day.includes('/') ? e.day.split('/').map(d => d.trim()) : [e.day];
+      const hasMatch = [...selections.day].some(d => eventDays.includes(d));
+      if (!hasMatch) return false;
+    }
     if (selections.time.size > 0) {
       const tod = e.time_of_day;
       let match = false;
