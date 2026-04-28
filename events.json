@@ -3179,6 +3179,35 @@
       "notes": "Seasonal May\u2013October only. Monthly \u2014 check marinjcc.org for specific Friday dates each month. Members free.",
       "event_name_es": "Drop-In Tot Pool Party",
       "description_es": "Fiesta mensual en la piscina en la c\u00e1lida piscina para ni\u00f1os peque\u00f1os del JCC \u2014 solo un pie de profundidad, perfecta para los m\u00e1s peque\u00f1os. Incluye juguetes de piscina apropiados para la edad, m\u00fasica, toallas y una casa inflable. Carril familiar abierto en la piscina grande para hermanos mayores. \u00a1Trae una cena de picnic! Miembros gratis. No miembros $15 para un hijo, $20 para dos o m\u00e1s hijos."
+    },
+    {
+      "id": 110,
+      "organization": "Happy Baby Signs / Children's Council",
+      "venue": "Zoom (Virtual)",
+      "event_name": "Baby Sign Language Virtual Playgroup",
+      "event_name_es": "Grupo de Juego Virtual de Lenguaje de Se\u00f1as para Beb\u00e9s",
+      "type": "Kids Programs",
+      "day": "Tuesday",
+      "time": "10:30 AM",
+      "time_of_day": "Morning",
+      "town": "Online",
+      "address": "Zoom \u2014 link provided upon registration",
+      "ages": "0-5 yrs",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "Monthly",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "",
+      "expires": "",
+      "status": "Active",
+      "featured": false,
+      "description": "Join Teacher Bill White from Happy Baby Signs for a free monthly Baby Sign Language Virtual Playgroup on Zoom! A fun, engaging American Sign Language session for babies, toddlers, and their parents and caregivers. Includes resources and ideas you can use at home. All languages welcome. Drop-ins always welcome \u2014 no commitment required.",
+      "description_es": "\u00a1\u00danete a Teacher Bill White de Happy Baby Signs para un grupo de juego virtual gratuito de lenguaje de se\u00f1as para beb\u00e9s en Zoom! Una sesi\u00f3n divertida y atractiva de Lenguaje Americano de Se\u00f1as para beb\u00e9s, ni\u00f1os peque\u00f1os y sus padres y cuidadores. Incluye recursos e ideas que puedes usar en casa. Todos los idiomas son bienvenidos. \u00a1Las visitas sin cita previa siempre son bienvenidas!",
+      "registration": "Required \u2014 free registration at Eventbrite",
+      "website": "https://www.eventbrite.com/e/family-event-tuesday-playgroup-virtual-202401-202612-tickets-781123751167",
+      "notes": "Last Tuesday of each month. Runs until 11:30 AM. Virtual via Zoom \u2014 link provided after Eventbrite registration. All languages welcome."
     }
   ]
 }
