@@ -543,11 +543,11 @@ function applyLanguage() {
     if (currentLang === 'es') {
       aboutText.innerHTML = `
         <p><em>Out AND About Marin fue creada por una mamá del Condado de Marin que estaba cansada de pasar más tiempo buscando actividades que disfrutándolas. Cada semana me encontraba revisando sitios web de bibliotecas, calendarios de centros recreativos, grupos de Facebook y boletines comunitarios — solo tratando de encontrar qué estaba pasando para las familias en nuestro vecindario. Tenía que haber una mejor manera. Así que la construí.</em></p>
-        <p>Esta es una aplicación en versión beta, lo que significa que está creciendo y mejorando cada semana. Si algo falta, está mal, o podría ser mejor — genuinamente quiero saberlo. Toca el botón de Comentarios y dímelo.</p>`;
+        <p>Esta aplicación es nueva y está creciendo y mejorando cada semana. Si algo falta, está mal, o podría ser mejor — genuinamente quiero saberlo. Toca el botón de Comentarios y dímelo.</p>`;
     } else {
       aboutText.innerHTML = `
         <p><em>Out AND About Marin was built by a Marin County mom who was tired of spending more time searching for things to do than actually doing them. Every week I found myself bouncing between library websites, rec center calendars, neighborhood Facebook groups, and community newsletters — just trying to figure out what was happening for families in our own backyard. There had to be a better way. So I built one.</em></p>
-        <p>This is a beta app, which means it's growing and improving every week. If something is missing, wrong, or could be better — I genuinely want to know. Tap the Feedback button and tell me.</p>`;
+        <p>This app is new, and growing and improving every week. If something is missing, wrong, or could be better — I genuinely want to know. Tap the Feedback button and tell me.</p>`;
     }
   }
 
@@ -1969,7 +1969,6 @@ function mapDbUser(dbUser) {
       <div class="about-text">
 
         <p style="font-weight:600;color:var(--navy);margin-bottom:0.2rem">Marin City / Sausalito</p>
-        <p style="margin:0;line-height:1.5">• Taco Bell · <a href="https://maps.google.com/?q=Taco%20Bell%20555%20Second%20St%20San%20Rafael%20CA" target="_blank" style="color:var(--navy);text-decoration:underline">555 Second St</a></p>
         <p style="margin:0;line-height:1.5">• Panda Express · <a href="https://maps.google.com/?q=Panda+Express+100+Donahue+St+Sausalito+CA" target="_blank" style="color:var(--navy);text-decoration:underline">100 Donahue St</a></p>
         <p style="margin:0;line-height:1.5">• Starbucks · <a href="https://maps.google.com/?q=Starbucks+110+Donahue+St+Sausalito+CA" target="_blank" style="color:var(--navy);text-decoration:underline">110 Donahue St</a></p>
 
@@ -1998,7 +1997,6 @@ function mapDbUser(dbUser) {
         <p style="margin:0;line-height:1.5">• Taco Bell · <a href="https://maps.google.com/?q=Taco+Bell+930+Seventh+St+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">930 Seventh St</a></p>
         <p style="margin:0;line-height:1.5">• Jack in the Box · <a href="https://maps.google.com/?q=Jack+in+the+Box+7135+Redwood+Blvd+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">7135 Redwood Blvd</a></p>
         <p style="margin:0;line-height:1.5">• Burger King · <a href="https://maps.google.com/?q=Burger+King+220+Alameda+Del+Prado+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">220 Alameda Del Prado</a></p>
-        <p style="margin:0;line-height:1.5">• Taco Bell · <a href="https://maps.google.com/?q=Taco%20Bell%20555%20Second%20St%20San%20Rafael%20CA" target="_blank" style="color:var(--navy);text-decoration:underline">555 Second St</a></p>
         <p style="margin:0;line-height:1.5">• Panda Express · <a href="https://maps.google.com/?q=Panda+Express+975+Diablo+Ave+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">975 Diablo Ave</a></p>
         <p style="margin:0;line-height:1.5">• Starbucks · <a href="https://maps.google.com/?q=Starbucks+5800+Nave+Dr+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">5800 Nave Dr</a></p>
 
@@ -2009,7 +2007,7 @@ function mapDbUser(dbUser) {
       <div class="about-title" id="aboutTitle">About Out AND About Marin</div>
       <div class="about-text" id="aboutText">
         <p>Out AND About Marin was built by a Marin County mom who was tired of spending more time searching for things to do than actually doing them. Every week I found myself bouncing between library websites, rec center calendars, neighborhood Facebook groups, and community newsletters — just trying to figure out what was happening for families in our own backyard. There had to be a better way. So I built one.</p>
-        <p>This is a beta app, which means it's growing and improving every week. If something is missing, wrong, or could be better — I genuinely want to know. Tap the Feedback button and tell me.</p>
+        <p>This app is new, and growing and improving every week. If something is missing, wrong, or could be better — I genuinely want to know. Tap the Feedback button and tell me.</p>
       </div>
     </div>
     <button class="signout-btn" onclick="signOut()">Sign out</button>
@@ -3325,9 +3323,12 @@ function saveNewPin() {
 // ═══════════════════════════════════════════
 
 function checkDisclaimer() {
-  const count = parseInt(localStorage.getItem('oaam_login_count') || '0') + 1;
-  localStorage.setItem('oaam_login_count', count);
-  if (count % 10 === 1) { // Show on 1st, 11th, 21st login etc
+  const now = Date.now();
+  const lastShown = parseInt(localStorage.getItem('oaam_disclaimer_last') || '0');
+  const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
+  // Show on first time ever OR if 7 days have passed since last shown
+  if (lastShown === 0 || (now - lastShown) >= SEVEN_DAYS) {
+    localStorage.setItem('oaam_disclaimer_last', String(now));
     setTimeout(() => {
       document.getElementById('disclaimerModal').classList.add('open');
     }, 1500);
