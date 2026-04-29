@@ -1,16 +1,16 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-04-28
-Time: 19:12:05
+Date: 2026-04-29
+Time: 18:58:13
 
-Total events in events.json: 94
-Active events: 82
+Total events in events.json: 95
+Active events: 83
 Temp. closed: 12
 
 Events by type:
   Community Event: 16
   Farmers Market: 13
   Festival: 2
-  Kids Programs: 23
+  Kids Programs: 24
   Library: 40
 
 Events by town:
@@ -27,6 +27,7 @@ Events by town:
   Sausalito: 7
   Tiburon: 9
   Tomales: 1
+  Virtual: 1
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
