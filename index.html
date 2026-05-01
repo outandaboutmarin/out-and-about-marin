@@ -741,7 +741,14 @@ function mapDbUser(dbUser) {
     ages: Array.isArray(dbUser.ages) ? dbUser.ages : (dbUser.ages ? [dbUser.ages] : []),
     referral: dbUser.referral || '',
     savedEvents: dbUser.saved_events || [],
-    defaultFilters: dbUser.default_filters || {},
+    defaultFilters: (() => {
+      const df = dbUser.default_filters;
+      if (!df) return {};
+      if (typeof df === 'string') {
+        try { return JSON.parse(df); } catch(e) { return {}; }
+      }
+      return df;
+    })(),
     memberSince: dbUser.member_since,
     plan: dbUser.plan || 'beta',
     id: dbUser.id
