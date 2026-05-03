@@ -2247,6 +2247,11 @@ function showSignupStep1() {
 function goToSignupStep2() {
   const name = document.getElementById('signupName').value.trim();
   const phone = document.getElementById('signupPhone').value.trim();
+  const phoneValidation = validatePhone(phone);
+  if (!phoneValidation.valid) {
+    alert(phoneValidation.error);
+    return;
+  }
   const pin = document.getElementById('signupPin').value.trim();
   const zip = document.getElementById('signupZip').value.trim();
   const err = document.getElementById('signupError1');
@@ -2323,7 +2328,13 @@ async function completeSignup() {
 }
 
 async function handleLogin() {
-  const phone = normalizePhone(document.getElementById('loginPhone').value.trim());
+  const rawPhone = document.getElementById('loginPhone').value.trim();
+  const loginPhoneValidation = validatePhone(rawPhone);
+  if (!loginPhoneValidation.valid) {
+    alert(loginPhoneValidation.error);
+    return;
+  }
+  const phone = normalizePhone(rawPhone);
   const pin = document.getElementById('loginPin').value.trim();
   const err = document.getElementById('loginError');
   const btn = document.querySelector('#loginScreen .btn-primary');
@@ -3469,6 +3480,8 @@ function dismissDisclaimer() {
 function formatPhone(input) {
   // Strip everything except digits
   let digits = input.value.replace(/\D/g, '');
+  // Do not allow number to start with 1
+  if (digits.startsWith('1')) digits = digits.substring(1);
   // Limit to 10 digits
   digits = digits.substring(0, 10);
   // Format as xxx-xxx-xxxx
@@ -3479,6 +3492,13 @@ function formatPhone(input) {
   } else {
     input.value = digits;
   }
+}
+
+function validatePhone(phone) {
+  const digits = phone.replace(/\D/g, '');
+  if (digits.length !== 10) return { valid: false, error: 'Please enter a 10-digit phone number.' };
+  if (digits.startsWith('1')) return { valid: false, error: 'Phone number cannot start with 1. Please enter your 10-digit local number.' };
+  return { valid: true };
 }
 
 function normalizePhone(phone) {
