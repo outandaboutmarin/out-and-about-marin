@@ -367,6 +367,7 @@ UNPREDICTABLE_EVENTS = [
     {
         "name": "Read to a Dog — San Rafael Downtown",
         "event_id": 26,
+        "disabled": True,  # Marked resolved 2026-05-03 — program no longer listed on SRPL Monthly Programs page; revisit if it returns
         "organization": "San Rafael Public Library",
         "venue": "San Rafael Public Library - Downtown",
         "town": "San Rafael",
@@ -402,6 +403,7 @@ UNPREDICTABLE_EVENTS = [
     {
         "name": "Family Storytime — Belvedere-Tiburon (Sunday bi-monthly)",
         "event_id": 31,
+        "disabled": True,  # Marked resolved 2026-05-03 — bi-monthly schedule too sporadic to track; revisit if cadence stabilizes
         "organization": "Belvedere-Tiburon Library",
         "venue": "Belvedere-Tiburon Library",
         "town": "Tiburon",
@@ -502,6 +504,11 @@ def check_unpredictable_events(events_file="events.json"):
     needs_lookup = []
 
     for ue in UNPREDICTABLE_EVENTS:
+        # Skip entries marked as resolved/disabled
+        if ue.get("disabled"):
+            print(f"  ⊘ {ue['name']} — skipped (disabled)")
+            continue
+
         # Find any active one-offs for this event within next 60 days
         upcoming = [
             e for e in data.get("events", [])
