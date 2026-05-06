@@ -1,37 +1,39 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-05-04
-Time: 18:05:27
+Date: 2026-05-05
+Time: 18:02:20
 
-Total events in events.json: 97
-Active events: 85
+Total events in events.json: 113
+Active events: 101
 Temp. closed: 12
 
 Events by type:
-  Community Event: 17
+  Community Event: 26
   Farmers Market: 13
-  Festival: 3
-  Kids Programs: 24
-  Library: 40
+  Festival: 5
+  Kids Programs: 28
+  Library: 41
 
 Events by town:
   Corte Madera: 5
   Fairfax: 6
-  Larkspur: 6
+  Larkspur: 12
   Marin City: 1
-  Mill Valley: 24
+  Mill Valley: 28
   Novato: 5
   Point Reyes Station: 2
   San Anselmo: 7
   San Geronimo: 2
-  San Rafael: 20
+  San Rafael: 24
   Sausalito: 9
-  Tiburon: 8
+  Tiburon: 9
   Tomales: 1
   Virtual: 1
+  West Marin: 1
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
   🔔 PAGE CHANGED: Mill Valley Public Library
+  🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library
