@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-05",
+  "last_updated": "2026-05-06",
   "events": [
     {
       "id": 1,
@@ -5370,6 +5370,36 @@
       "location_group": "Larkspur",
       "event_name_es": "Desfile y Festival del 4 de Julio de Corte Madera / Larkspur",
       "description_es": "Desfile y festival anual del 4 de julio por el centro de Corte Madera y Larkspur. Una querida tradición comunitaria de Marin con carrozas, bandas de música y diversión familiar para todas las edades."
+    },
+    {
+      "id": 188,
+      "organization": "The Redwoods Senior Living Center",
+      "venue": "The Redwoods Senior Living Center — Auditorium",
+      "event_name": "Oldies Music at The Redwoods Senior Living Center",
+      "type": "Community Event",
+      "day": "Wednesday",
+      "time": "2:30 PM – 4:30 PM",
+      "time_of_day": "Afternoon",
+      "town": "Mill Valley",
+      "address": "40 Camino Alto, Mill Valley, CA 94941",
+      "ages": "All Ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "Weekly",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "",
+      "expires": "",
+      "status": "Active",
+      "featured": false,
+      "description": "Croon along with the residents of The Redwoods Senior Living Center to tunes from the '60s and '70s sung by a live band. A warm, intergenerational community experience held every Wednesday in the Auditorium. All ages welcome.",
+      "registration": "Not required",
+      "website": "https://maps.app.goo.gl/8821xfQ6LXJ28sfq8",
+      "notes": "Located in the Auditorium. Every Wednesday year-round.",
+      "location_group": "Mill Valley",
+      "event_name_es": "Música Oldies en The Redwoods Senior Living Center",
+      "description_es": "Canta junto a los residentes de The Redwoods Senior Living Center con canciones de los años 60 y 70 interpretadas por una banda en vivo. Una cálida experiencia comunitaria intergeneracional todos los miércoles en el Auditorio. Todas las edades bienvenidas."
     }
   ]
 }
