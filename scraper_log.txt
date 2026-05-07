@@ -1,31 +1,32 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-05-05
-Time: 18:02:20
+Date: 2026-05-06
+Time: 18:06:06
 
-Total events in events.json: 113
-Active events: 101
+Total events in events.json: 163
+Active events: 151
 Temp. closed: 12
 
 Events by type:
-  Community Event: 26
+  Community Event: 29
   Farmers Market: 13
-  Festival: 5
+  Festival: 6
   Kids Programs: 28
-  Library: 41
+  Library: 87
 
 Events by town:
+  Bolinas: 2
   Corte Madera: 5
   Fairfax: 6
-  Larkspur: 12
+  Larkspur: 18
   Marin City: 1
-  Mill Valley: 28
+  Mill Valley: 65
   Novato: 5
   Point Reyes Station: 2
   San Anselmo: 7
   San Geronimo: 2
   San Rafael: 24
   Sausalito: 9
-  Tiburon: 9
+  Tiburon: 14
   Tomales: 1
   Virtual: 1
   West Marin: 1
