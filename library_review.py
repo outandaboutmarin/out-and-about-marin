@@ -41,7 +41,8 @@ LIBRARIES = [
         "type": "independent",
         "programs_url": "https://www.beltiblibrary.org/kids",
         "events_url": "https://www.beltiblibrary.org/events",
-        "notes": "Check kids page for recurring programs. Events page for one-offs. Registration required for storytime — check RSVP form.",
+        "filtered_events_url": "https://www.beltiblibrary.org/events?ages=Infants+%26+Toddlers%2CSchool+age",
+        "notes": "Check kids page for recurring programs. Events page for one-offs. Registration required for storytime — check RSVP form. Auto-fetched via fetch_belvedere_tiburon_events() in weekly sweep.",
         "known_programs": [
             "Baby Bounce — Monday 10:30 AM (weekly)",
             "Tuesday Toddler Storytime — Tuesday 10:15 AM (weekly)",
@@ -61,6 +62,7 @@ LIBRARIES = [
         "type": "independent",
         "programs_url": "https://www.cityoflarkspur.org/333/Story-Times",
         "events_url": "https://cityoflarkspur.org/calendar.aspx?CID=24",
+        "ical_url": "https://www.ci.larkspur.ca.us/common/modules/iCalendar/iCalendar.aspx?catID=24&feed=calendar",
         "notes": "Currently temp closed (location move). Watch for reopening and new storytime schedule. Check calendar for one-off events.",
         "known_programs": [
             "Storytime — Friday 10:00 AM (weekly, TEMP CLOSED Apr 2026)",
@@ -861,8 +863,16 @@ def is_already_known(text):
 def fetch_marin_mommies_day(date_str):
     """
     Fetch Marin Mommies calendar for a specific date.
-    Returns list of (title, time, location, description) tuples.
+    URL pattern: marinmommies.com/calendar/YYYY-MM-DD
+    Hardcoded so it runs automatically in GitHub Actions without needing
+    a prior URL appearance. Returns list of (title, time, location) tuples.
     """
+    import re
+    try:
+        from html import unescape
+    except ImportError:
+        unescape = lambda x: x
+
     url = f"https://www.marinmommies.com/calendar/{date_str}"
     try:
         req = urllib.request.Request(
@@ -872,24 +882,22 @@ def fetch_marin_mommies_day(date_str):
         with urllib.request.urlopen(req, timeout=15) as resp:
             html = resp.read().decode('utf-8', errors='replace')
 
-        events = []
-        # Parse event blocks — look for h4 titles, bold times, bold locations
-        import re
-        # Find event title + time + location patterns
+        # Parse event blocks: h4 title + two strong tags (time, location)
         pattern = re.compile(
             r'<h4[^>]*>\s*<a[^>]*>([^<]+)</a>\s*</h4>\s*'
             r'<strong>([^<]+)</strong>\s*'
             r'<strong>([^<]+)</strong>',
             re.DOTALL
         )
+        events = []
         for m in pattern.finditer(html):
-            title = m.group(1).strip()
-            time = m.group(2).strip()
-            location = m.group(3).strip()
-            events.append((title, time, location))
+            title = unescape(m.group(1).strip())
+            time_str = unescape(m.group(2).strip())
+            location = unescape(m.group(3).strip())
+            events.append((title, time_str, location))
 
         return events
-    except Exception as e:
+    except Exception:
         return []
 
 
@@ -949,6 +957,273 @@ def fetch_sweetwater_kids_events():
         return []
 
 
+def fetch_larkspur_ical():
+    """
+    Fetch the Larkspur Library iCal feed and return a list of upcoming events.
+    URL is hardcoded so it runs automatically every sweep without manual input.
+    Filters out past events and 'No Storytime' notices.
+    """
+    LARKSPUR_ICAL_URL = "https://www.ci.larkspur.ca.us/common/modules/iCalendar/iCalendar.aspx?catID=24&feed=calendar"
+
+    try:
+        import urllib.request
+        from datetime import datetime, timedelta
+        import re
+
+        req = urllib.request.Request(
+            LARKSPUR_ICAL_URL,
+            headers={"User-Agent": "OutAndAboutMarin/1.0"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as response:
+            raw = response.read().decode("utf-8", errors="replace")
+
+        today = date.today()
+        events = []
+
+        for block in raw.split("BEGIN:VEVENT")[1:]:
+            summary_m = re.search(r"SUMMARY:(.+?)(?:\r?\n[A-Z])", block, re.DOTALL)
+            dtstart_m = re.search(r"DTSTART[^:]*:(\d+T\d+)", block)
+            desc_m = re.search(r"DESCRIPTION:(.+?)(?:\r?\n[A-Z])", block, re.DOTALL)
+            uid_m = re.search(r"UID:(\S+)", block)
+
+            if not summary_m or not dtstart_m:
+                continue
+
+            summary = re.sub(r"\r?\n[ \t]", "", summary_m.group(1)).strip()
+            desc = re.sub(r"\r?\n[ \t]", "", desc_m.group(1)).strip() if desc_m else ""
+            uid = uid_m.group(1).strip() if uid_m else ""
+
+            # Parse date
+            try:
+                dt = datetime.strptime(dtstart_m.group(1)[:8], "%Y%m%d").date()
+            except ValueError:
+                continue
+
+            # Skip past events
+            if dt < today:
+                continue
+
+            # Skip 'No Storytime' notices
+            if "no storytime" in summary.lower():
+                continue
+
+            # Skip if already in our known events (basic title match)
+            if is_already_known(summary):
+                continue
+
+            events.append({
+                "date": dt.isoformat(),
+                "day": dt.strftime("%A"),
+                "title": summary,
+                "time": "See website",
+                "location": "Larkspur Library",
+                "description": desc.replace("\\,", ",").replace("\\n", " "),
+                "source": "Larkspur Library iCal",
+                "uid": uid,
+                "website": f"https://www.ci.larkspur.ca.us/calendar.aspx?EID={uid}" if uid else "https://www.ci.larkspur.ca.us/calendar.aspx?CID=24",
+            })
+
+        return events
+
+    except Exception as e:
+        print(f"  ✗ Larkspur iCal fetch failed: {e}")
+        return []
+
+
+def fetch_belvedere_tiburon_events():
+    """
+    Fetch the Belvedere-Tiburon Library events page filtered for
+    Infants & Toddlers + School Age audiences, looking 6 months ahead.
+    URL is hardcoded so it runs automatically in GitHub Actions.
+    Parses event titles, dates, and times from the WordPress event listing.
+    """
+    import re
+    from datetime import timedelta
+
+    BASE_URL = "https://www.beltiblibrary.org/events"
+    today = date.today()
+    start_str = today.strftime("%Y-%m-%d")
+    url = f"{BASE_URL}?start={start_str}&ages=Infants+%26+Toddlers%2CSchool+age"
+
+    # Known recurring programs already in app — skip these
+    KNOWN_RECURRING = [
+        'baby bounce', 'toddler storytime', 'preschool storytime',
+        'bilingual storytime', 'friday toddler', 'sunday baby bounce',
+        'family storytunes', 'crafternoon', 'tuesday crafternoon',
+        'read to a dog', 'craft challenge', 'game day', 'mosaic monday',
+    ]
+
+    try:
+        req = urllib.request.Request(
+            url,
+            headers={"User-Agent": "OutAndAboutMarin/1.0"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            html = resp.read().decode('utf-8', errors='replace')
+
+        try:
+            from html import unescape
+        except ImportError:
+            unescape = lambda x: x
+
+        cutoff = today + timedelta(days=180)
+        events = []
+
+        # Parse event blocks: title in h3/h4 anchor, date in time or span
+        # BelTib uses WordPress with The Events Calendar plugin
+        # Pattern: event article blocks with title + datetime
+        title_pattern = re.compile(
+            r'<h3[^>]*class="[^"]*tribe-events-list-event-title[^"]*"[^>]*>'
+            r'\s*<a[^>]*>([^<]+)</a>',
+            re.DOTALL
+        )
+        # Also try simpler h2/h3/h4 anchor pattern as fallback
+        title_pattern2 = re.compile(
+            r'<(?:h2|h3|h4)[^>]*>\s*<a[^>]*href="([^"]*)"[^>]*>([^<]+)</a>\s*</(?:h2|h3|h4)>',
+            re.DOTALL
+        )
+        date_pattern = re.compile(
+            r'<abbr[^>]*class="[^"]*tribe-events-abbr[^"]*"[^>]*title="([^"]+)"',
+            re.DOTALL
+        )
+        time_pattern = re.compile(
+            r'<div[^>]*class="[^"]*tribe-events-schedule[^"]*"[^>]*>(.*?)</div>',
+            re.DOTALL
+        )
+
+        # Try primary pattern
+        titles = [(m.group(1).strip(), '') for m in title_pattern.finditer(html)]
+
+        # Fallback to simpler pattern
+        if not titles:
+            titles = [(unescape(m.group(2).strip()), m.group(1)) for m in title_pattern2.finditer(html)]
+
+        dates = [m.group(1).strip() for m in date_pattern.finditer(html)]
+
+        for i, (title, href) in enumerate(titles):
+            title = unescape(title)
+
+            # Skip known recurring programs
+            if any(k in title.lower() for k in KNOWN_RECURRING):
+                continue
+
+            # Skip if already known
+            if is_already_known(title):
+                continue
+
+            # Try to get date
+            event_date_str = dates[i] if i < len(dates) else ""
+            event_date = None
+            for fmt in ('%Y-%m-%d', '%B %d, %Y', '%b %d, %Y'):
+                try:
+                    event_date = datetime.strptime(event_date_str[:10], fmt[:len(event_date_str[:10])]).date()
+                    break
+                except (ValueError, TypeError):
+                    pass
+
+            if event_date and (event_date < today or event_date > cutoff):
+                continue
+
+            events.append({
+                "date": event_date.isoformat() if event_date else "TBD",
+                "day": event_date.strftime("%A") if event_date else "TBD",
+                "title": title,
+                "time": "See website",
+                "location": "Belvedere Tiburon Library",
+                "source": "Belvedere-Tiburon Library events page",
+                "website": href if href else BASE_URL,
+            })
+
+        return events
+
+    except Exception as e:
+        print(f"  ✗ Belvedere-Tiburon events fetch failed: {e}")
+        return []
+
+
+def fetch_marin_parks_ical():
+    """
+    Fetch the Marin County Parks Trumba iCal feed and return upcoming family events.
+    URL: https://www.trumba.com/calendars/marin-parks-open-space.ics
+    Filters out admin/commission meetings and past events.
+    """
+    MARIN_PARKS_ICAL_URL = "https://www.trumba.com/calendars/marin-parks-open-space.ics"
+    SKIP_KEYWORDS = ['commission', 'ipm', 'board meeting', 'staff meeting']
+
+    try:
+        import urllib.request
+        from datetime import timedelta
+        import re as re_mod
+
+        req = urllib.request.Request(
+            MARIN_PARKS_ICAL_URL,
+            headers={"User-Agent": "OutAndAboutMarin/1.0"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as response:
+            raw = response.read().decode("utf-8", errors="replace")
+
+        today = date.today()
+        cutoff = today + timedelta(days=180)
+        events = []
+
+        for block in raw.split("BEGIN:VEVENT")[1:]:
+            def get_field(b, field):
+                m = re_mod.search(
+                    rf'{field}[^:]*:(.+?)(?:\r?\nBEGIN|\r?\nEND|\r?\n[A-Z][A-Z0-9\-]*[;:])',
+                    b, re_mod.DOTALL
+                )
+                if m:
+                    return re_mod.sub(r'\r?\n[ \t]', '', m.group(1)).replace('\\,', ',').replace('\\n', ' ').replace('&#39;', "'").strip()
+                return ''
+
+            summary = get_field(block, 'SUMMARY')
+            dtstart = get_field(block, 'DTSTART')
+            location = get_field(block, 'LOCATION')
+            desc = get_field(block, 'DESCRIPTION')
+
+            if not summary or not dtstart:
+                continue
+
+            # Skip admin meetings
+            if any(kw in summary.lower() for kw in SKIP_KEYWORDS):
+                continue
+
+            # Parse date/time
+            try:
+                if 'T' in dtstart:
+                    dt = datetime.strptime(dtstart[:15], '%Y%m%dT%H%M%S')
+                    event_date = dt.date()
+                    time_str = dt.strftime('%-I:%M %p')
+                else:
+                    event_date = datetime.strptime(dtstart[:8], '%Y%m%d').date()
+                    time_str = 'TBD'
+            except (ValueError, KeyError):
+                continue
+
+            if event_date < today or event_date > cutoff:
+                continue
+
+            if is_already_known(summary):
+                continue
+
+            events.append({
+                "date": event_date.isoformat(),
+                "day": event_date.strftime("%A"),
+                "time": time_str,
+                "title": summary,
+                "location": location or "Marin County Parks",
+                "description": desc[:200],
+                "source": "Marin County Parks (Trumba iCal)",
+                "website": "https://parks.marincounty.gov/discoverlearn/events-calendar",
+            })
+
+        return events
+
+    except Exception as e:
+        print(f"  ✗ Marin Parks iCal fetch failed: {e}")
+        return []
+
+
 def run_weekly_sweep(events_file="events.json"):
     """
     Full weekly sweep of all event sources.
@@ -966,6 +1241,12 @@ def run_weekly_sweep(events_file="events.json"):
     suggested = []  # List of suggested events to review
 
     # ── 1. MARIN MOMMIES — next 14 days ──────────────────────────
+    # Note: marinmommies.com/calendar/YYYY-MM-DD is hardcoded — runs
+    # automatically in GitHub Actions without needing prior URL fetch.
+    # Rate limited to 1.5s per page to be polite to their server.
+    # We fetch 14 days (the meaningful near-term window) rather than
+    # 6 months — Marin Mommies calendar only shows confirmed upcoming
+    # events, so 14 days gives reliable coverage without hammering them.
     print("\n── Marin Mommies Calendar (next 14 days) ──")
     for i in range(14):
         sweep_date = today + timedelta(days=i)
@@ -1006,15 +1287,48 @@ def run_weekly_sweep(events_file="events.json"):
     # ── 2. MARIN MOMMIES WEEKEND POST ────────────────────────────
     print("\n── Marin Mommies Weekend Post ──")
     # Find this week's weekend post URL
-    # Format: marinmommies.com/marin-weekend-family-fun-[month]-[d1]%E2%80%93[d2]
-    # Claude fetches this manually in chat each Monday
-    print("  ℹ Fetch this week's weekend post manually:")
-    next_sat = today + timedelta(days=(5 - today.weekday()) % 7)
-    next_sun = next_sat + timedelta(days=1)
-    month_name = next_sat.strftime("%B").lower()
-    print(f"  → Expected URL pattern: marinmommies.com/marin-weekend-family-fun-{month_name}-{next_sat.day}%E2%80%93{next_sun.day}")
-    print("  → Filter for Marin-only events not already in our app")
-    print("  → Add approved events as one-offs with specific dates")
+    # Auto-fetch homepage to find the current weekend post URL.
+    # Marin Mommies changed their URL pattern — now uses:
+    #   marin-bay-area-weekend-family-fun-may-8-10 (hyphen, "bay area" in title)
+    # Older pattern was:
+    #   marin-weekend-family-fun-may-8%E2%80%9310 (en dash, no "bay area")
+    # We fetch the homepage and extract the actual URL to handle either pattern.
+    print("  ℹ Fetching Marin Mommies homepage to find current weekend post URL...")
+    weekend_post_url = None
+    try:
+        req = urllib.request.Request(
+            "https://www.marinmommies.com/",
+            headers={"User-Agent": "OutAndAboutMarin/1.0"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            hp_html = resp.read().decode('utf-8', errors='replace')
+
+        import re as _re
+        # Look for weekend family fun post links (both URL patterns)
+        patterns = [
+            r'href="(https?://www\.marinmommies\.com/marin(?:-bay-area)?-weekend-family-fun-[a-z]+-\d+[^"]*)"',
+        ]
+        for pat in patterns:
+            m = _re.search(pat, hp_html)
+            if m:
+                weekend_post_url = m.group(1)
+                break
+
+        if weekend_post_url:
+            print(f"  → Found weekend post: {weekend_post_url}")
+            print("  → Claude: please fetch this URL, filter for Marin-only events,")
+            print("    and add new ones to the sweep Excel for approval.")
+        else:
+            next_sat = today + timedelta(days=(5 - today.weekday()) % 7)
+            next_sun = next_sat + timedelta(days=1)
+            month_name = next_sat.strftime("%B").lower()
+            print(f"  ⚠ Could not auto-detect weekend post URL.")
+            print(f"  → Try these patterns manually:")
+            print(f"     marinmommies.com/marin-bay-area-weekend-family-fun-{month_name}-{next_sat.day}-{next_sun.day}")
+            print(f"     marinmommies.com/marin-weekend-family-fun-{month_name}-{next_sat.day}%E2%80%93{next_sun.day}")
+    except Exception as e:
+        print(f"  ✗ Homepage fetch failed: {e}")
+        print("  → Fetch marinmommies.com manually to find the weekend post.")
 
     # ── 3. STRAWBERRY REC ─────────────────────────────────────────
     print("\n── Strawberry Recreation District ──")
@@ -1053,6 +1367,67 @@ def run_weekly_sweep(events_file="events.json"):
             })
     else:
         print("  ✓ No new family events beyond what we already have")
+
+    # ── 4. LARKSPUR LIBRARY iCAL ──────────────────────────────────
+    print("\n── Larkspur Library iCal Feed ──")
+    larkspur_events = fetch_larkspur_ical()
+    if larkspur_events:
+        print(f"  🔔 {len(larkspur_events)} new event(s) found at Larkspur Library:")
+        for e in larkspur_events:
+            print(f"     • {e['date']} {e['day']} — {e['title']}")
+            suggested.append({
+                "date": e["date"],
+                "day_label": f"{e['day']}, {e['date']}",
+                "title": e["title"],
+                "time": e["time"],
+                "location": e["location"],
+                "description": e.get("description", ""),
+                "source": e["source"],
+                "website": e.get("website", ""),
+            })
+    else:
+        print("  ✓ No new Larkspur Library events beyond what we already have")
+
+    # ── 5. MARIN COUNTY PARKS iCAL ───────────────────────────────
+    print("\n── Marin County Parks Events (Trumba iCal) ──")
+    parks_events = fetch_marin_parks_ical()
+    if parks_events:
+        print(f"  🔔 {len(parks_events)} new Marin Parks event(s) found:")
+        for e in parks_events:
+            print(f"     • {e['date']} {e['day']} {e['time']} — {e['title']}")
+            print(f"       📍 {e['location']}")
+            suggested.append({
+                "date": e["date"],
+                "day_label": f"{e['day']}, {e['date']}",
+                "title": e["title"],
+                "time": e["time"],
+                "location": e["location"],
+                "description": e.get("description", ""),
+                "source": e["source"],
+                "website": e.get("website", ""),
+            })
+    else:
+        print("  ✓ No new Marin Parks events beyond what we already have")
+
+    # ── 6. BELVEDERE-TIBURON LIBRARY ─────────────────────────────
+    print("\n── Belvedere-Tiburon Library Events ──")
+    beltib_events = fetch_belvedere_tiburon_events()
+    if beltib_events:
+        print(f"  🔔 {len(beltib_events)} new Belvedere-Tiburon event(s) found:")
+        for e in beltib_events:
+            print(f"     • {e['date']} {e['day']} — {e['title']}")
+            suggested.append({
+                "date": e["date"],
+                "day_label": f"{e['day']}, {e['date']}",
+                "title": e["title"],
+                "time": e["time"],
+                "location": e["location"],
+                "description": e.get("description", ""),
+                "source": e["source"],
+                "website": e.get("website", ""),
+            })
+    else:
+        print("  ✓ No new Belvedere-Tiburon events beyond what we already have")
 
     # ── CONSOLIDATED REPORT ───────────────────────────────────────
     print("\n" + "═" * 60)
