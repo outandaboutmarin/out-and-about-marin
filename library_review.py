@@ -1465,9 +1465,265 @@ def run_weekly_sweep(events_file="events.json"):
     return suggested
 
 
+def fetch_sausalito_programs():
+    """
+    Fetch the Sausalito Library Kids & Teens Programs page.
+    URL: sausalitolibrary.org/kids-teens/children-s-and-teen-programs
+    Plain HTML — fully fetchable without JavaScript.
+    Used for both weekly sweep (new programs) and monthly audit (verify existing).
+    Returns page content as string.
+    """
+    SAUSALITO_PROGRAMS_URL = "https://www.sausalitolibrary.org/kids-teens/children-s-and-teen-programs"
+    try:
+        req = urllib.request.Request(
+            SAUSALITO_PROGRAMS_URL,
+            headers={"User-Agent": "OutAndAboutMarin/1.0"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            return resp.read().decode("utf-8", errors="replace")
+    except Exception as e:
+        print(f"  ✗ Sausalito Library programs fetch failed: {e}")
+        return None
+
+
+def fetch_srpl_programs():
+    """
+    Fetch San Rafael Public Library events page.
+    Used for monthly audit of IDs 6, 7, 24, 25, 26, 27, 32, 46.
+    """
+    SRPL_URL = "https://srpubliclibrary.org/events/"
+    try:
+        req = urllib.request.Request(SRPL_URL, headers={"User-Agent": "OutAndAboutMarin/1.0"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            return resp.read().decode("utf-8", errors="replace")
+    except Exception as e:
+        print(f"  ✗ SRPL fetch failed: {e}")
+        return None
+
+
+def fetch_mcfl_branch(branch_code, branch_name):
+    """
+    Fetch MCFL branch page from marinlibrary.org.
+    branch_code: e.g. 'mn' (Novato), 'mc' (Marin City), 'mb' (Bolinas),
+                 'mm' (Corte Madera), 'mf' (Fairfax), 'mp' (Point Reyes),
+                 'mi' (Inverness), 'ms' (Stinson Beach)
+    Returns page content or None.
+    """
+    url = f"https://marinlibrary.org/locations/{branch_code}/"
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "OutAndAboutMarin/1.0"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            return resp.read().decode("utf-8", errors="replace")
+    except Exception as e:
+        print(f"  ✗ MCFL {branch_name} fetch failed: {e}")
+        return None
+
+
+def fetch_sananselmo_programs():
+    """
+    Fetch San Anselmo Library storytime programs page.
+    Used for monthly audit of IDs 21, 33, 44, 45, 82.
+    """
+    SA_URL = "https://www.sananselmo.gov/624/Storytime-Programs"
+    try:
+        req = urllib.request.Request(SA_URL, headers={"User-Agent": "OutAndAboutMarin/1.0"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            return resp.read().decode("utf-8", errors="replace")
+    except Exception as e:
+        print(f"  ✗ San Anselmo fetch failed: {e}")
+        return None
+
+
+def run_monthly_audit(events_file="events.json"):
+    """
+    Monthly audit of all recurring events in events.json.
+    Runs on the first Monday of each month via daily.yml.
+    For each Weekly/Monthly event, checks whether it still appears
+    on its source calendar. Flags events that can't be confirmed.
+    NEVER auto-deletes — outputs a report for human review only.
+    """
+    import re as re_mod
+    from datetime import timedelta
+
+    print("\n" + "═" * 60)
+    print("MONTHLY RECURRING EVENTS AUDIT")
+    print(f"Run date: {date.today()}")
+    print("═" * 60)
+
+    with open(events_file) as f:
+        data = json.load(f)
+
+    recurring = [e for e in data["events"]
+                 if e.get("cadence") in ("Weekly", "Monthly", "Bi-weekly")
+                 and e.get("status") not in ("Inactive",)]
+
+    print(f"\nAuditing {len(recurring)} recurring events...\n")
+
+    confirmed = []
+    not_found = []
+    manual_check = []
+    fetch_failed = []
+
+    # Source fetch cache — avoid re-fetching same URL
+    fetch_cache = {}
+
+    def fetch_source(url, label):
+        if url in fetch_cache:
+            return fetch_cache[url]
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "OutAndAboutMarin/1.0"})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                content = resp.read().decode("utf-8", errors="replace")
+            fetch_cache[url] = content
+            return content
+        except Exception as e:
+            fetch_cache[url] = None
+            print(f"  ✗ Could not fetch {label}: {e}")
+            return None
+
+    # Source routing — map each event to the right audit source URL
+    # MCFL branch codes: mn=Novato, mc=Marin City, mb=Bolinas, mm=Corte Madera,
+    #                    mf=Fairfax, mp=Point Reyes, mi=Inverness, ms=Stinson Beach
+    MCFL_BRANCH_MAP = {
+        'novato': 'mn', 'marin city': 'mc', 'bolinas': 'mb',
+        'corte madera': 'mm', 'fairfax': 'mf', 'point reyes': 'mp',
+        'inverness': 'mi', 'stinson beach': 'ms',
+    }
+
+    def get_source_url(event):
+        venue = event.get("venue", "").lower()
+        town = event.get("town", "").lower()
+        name = event.get("event_name", "").lower()
+        org = event.get("organization", "").lower()
+        website = event.get("website", "").lower()
+
+        # Belvedere-Tiburon Library
+        if "belvedere" in venue or "tiburon" in venue or town == "tiburon":
+            return ("https://www.beltiblibrary.org/events", "Belvedere-Tiburon Library")
+        # Mill Valley Library
+        if "mill valley" in venue and "library" in venue:
+            return ("https://millvalleylibrary.libcal.com/ical_subscribe.php?src=p&cid=17002&aud=5670,5671", "Mill Valley Library iCal")
+        # Larkspur Library
+        if "larkspur" in venue and "library" in venue:
+            return ("https://www.ci.larkspur.ca.us/common/modules/iCalendar/iCalendar.aspx?catID=24&feed=calendar", "Larkspur Library iCal")
+        # Sausalito Library / Robin Sweeny Park programs
+        if ("sausalito" in venue and "library" in venue) or "robin sweeny" in venue:
+            return ("https://www.sausalitolibrary.org/kids-teens/children-s-and-teen-programs", "Sausalito Library Programs")
+        # San Anselmo Library
+        if "san anselmo" in venue or town == "san anselmo":
+            return ("https://www.sananselmo.gov/624/Storytime-Programs", "San Anselmo Library")
+        # SRPL — San Rafael Public Library
+        if "srpubliclibrary" in website or any(x in venue for x in ["downtown", "northgate", "pickleweed"]):
+            return ("https://srpubliclibrary.org/events/", "SRPL Events")
+        # MCFL branches by town
+        for branch_town, branch_code in MCFL_BRANCH_MAP.items():
+            if branch_town in town or branch_town in venue:
+                return (f"https://marinlibrary.org/locations/{branch_code}/", f"MCFL {branch_town.title()}")
+        # MCFL Civic Center (San Rafael)
+        if "civic center" in venue or ("marinlibrary" in website and "san rafael" in town):
+            return ("https://marinlibrary.org/locations/mb/", "MCFL Civic Center")
+        # Marin Country Mart
+        if "marin country mart" in venue or "marincountrymart" in website:
+            return ("https://marincountrymart.com/events", "Marin Country Mart")
+        # Goodman Building Supply / Goodie's Kids Club
+        if "goodman" in venue or "goodie" in name:
+            return ("https://goodmanbuildingsupply.net/goodies-kids-club/", "Goodman Building Supply")
+        # Parks Conservancy (Nike Missile, Battery Townsley)
+        if "parksconservancy" in website or "missile" in name or "townsley" in name:
+            return ("https://www.parksconservancy.org/events", "Parks Conservancy")
+        # JymBabies / Marin JCC
+        if "jymbabies" in name or "marinjcc" in website:
+            return ("https://www.marinjcc.org/preschool/jym-babies/", "Marin JCC")
+        # MarinMOCA
+        if "marinmoca" in name or "marinmoca" in website:
+            return ("https://www.marinmoca.org/family", "MarinMOCA")
+        # San Geronimo Valley Community Center
+        if "sgvcc" in website or "san geronimo" in town:
+            return ("https://www.sgvcc.org/our-programs/youth-programs", "SGVCC")
+        # The Redwoods Senior Living
+        if "redwoods senior" in venue or "redwoods" in org:
+            return (None, "MANUAL — The Redwoods Senior Living (no online calendar)")
+        # Sweetwater Music Hall
+        if "sweetwater" in venue:
+            return (None, "MANUAL — Sweetwater Music Hall (variable schedule)")
+        # Strawberry Rec
+        if "strawberry" in venue or "strawberry" in org:
+            return (None, "MANUAL — Strawberry Rec (check strawberryrec.com)")
+        # Farmers Markets — stable, manual annual spot-check
+        if "farmers market" in name:
+            return (None, "MANUAL — Farmers Market (check market website annually)")
+        # Default
+        return (None, f"MANUAL — no auto-fetch configured (website: {event.get('website','none')})")
+
+    for e in recurring:
+        name = e["event_name"]
+        eid = e["id"]
+        url, source_label = get_source_url(e)
+
+        if url is None:
+            manual_check.append((eid, name, source_label))
+            continue
+
+        content = fetch_source(url, source_label)
+        if content is None:
+            fetch_failed.append((eid, name, source_label, url))
+            continue
+
+        # Check if event name (or key words) appear in fetched content
+        search_terms = [w for w in name.lower().split() if len(w) > 4][:3]
+        found = sum(1 for term in search_terms if term in content.lower())
+
+        if found >= 2:
+            confirmed.append((eid, name, source_label))
+        else:
+            not_found.append((eid, name, source_label, url))
+
+    # ── Print report ──
+    print(f"✅ CONFIRMED ({len(confirmed)} events):")
+    for eid, name, source in confirmed:
+        print(f"   ID {eid}: {name} [{source}]")
+
+    print(f"\n⚠  NOT CONFIRMED — NEEDS REVIEW ({len(not_found)} events):")
+    for eid, name, source, url in not_found:
+        print(f"   ID {eid}: {name}")
+        print(f"   Source: {source} — {url}")
+        print(f"   Action: verify at source URL and update/remove if no longer running")
+
+    print(f"\n🔍 MANUAL CHECK REQUIRED ({len(manual_check)} events):")
+    for eid, name, source in manual_check:
+        print(f"   ID {eid}: {name} — {source}")
+
+    print(f"\n❌ SOURCE FETCH FAILED ({len(fetch_failed)} events):")
+    for eid, name, source, url in fetch_failed:
+        print(f"   ID {eid}: {name} — {source}")
+        print(f"   URL: {url} — try again or check manually")
+
+    # Save audit report
+    report = {
+        "audit_date": str(date.today()),
+        "total_audited": len(recurring),
+        "confirmed": [{"id": e[0], "name": e[1]} for e in confirmed],
+        "not_found": [{"id": e[0], "name": e[1], "source": e[2], "url": e[3]} for e in not_found],
+        "manual_check": [{"id": e[0], "name": e[1], "reason": e[2]} for e in manual_check],
+        "fetch_failed": [{"id": e[0], "name": e[1], "source": e[2]} for e in fetch_failed],
+    }
+    with open("monthly_audit_report.json", "w") as f:
+        json.dump(report, f, indent=2)
+
+    print("\n" + "═" * 60)
+    print(f"Audit complete. Report saved to monthly_audit_report.json")
+    print(f"✅ {len(confirmed)} confirmed  ⚠ {len(not_found)} need review  "
+          f"🔍 {len(manual_check)} manual  ❌ {len(fetch_failed)} failed")
+    print("═" * 60)
+
+    return report
+
+
 if __name__ == "__main__":
     import sys
     if "--weekly-sweep" in sys.argv:
         run_weekly_sweep()
+    elif "--monthly-audit" in sys.argv:
+        run_monthly_audit()
     else:
         main()
