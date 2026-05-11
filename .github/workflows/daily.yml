@@ -59,7 +59,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Out AND About Marin Bot"
+          git pull --rebase origin main
           git add events.json scraper_log.txt library_page_hashes.json weekly_sweep_report.json monthly_audit_report.json || true
           git diff --staged --quiet || git commit -m "Daily update: events refreshed $(date +'%Y-%m-%d')"
-          git pull --rebase origin main
           git push
