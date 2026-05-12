@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-11",
+  "last_updated": "2026-05-12",
   "events": [
     {
       "id": 1,
@@ -6300,6 +6300,36 @@
       "location_group": "West Marin",
       "event_name_es": "Bus del Aprendizaje de la Biblioteca \u2014 Point Reyes Dance Palace",
       "description_es": "El Bus del Aprendizaje de la MCFL visita Point Reyes Dance Palace en Point Reyes Station el Tuesday, 26 de May, de 10:00 AM a 11:15 AM. Programa preescolar biling\u00fce (ingl\u00e9s/espa\u00f1ol) gratuito de entrada libre para ni\u00f1os de 0 a 5 a\u00f1os y sus cuidadores. Las actividades incluyen juego, cuentos, exploraci\u00f3n y arte. No se requiere registro. El horario est\u00e1 sujeto a cambios \u2014 llame o env\u00ede un mensaje al (415) 497-1666 para confirmar."
+    },
+    {
+      "id": 255,
+      "organization": "Marin Hiking Moms",
+      "venue": "King Mountain Loop Trail",
+      "event_name": "Marin Hiking Moms \u2014 Monthly Hike",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "Morning",
+      "time_of_day": "Morning",
+      "town": "Larkspur",
+      "address": "King Mountain Loop Trail, Larkspur, CA 94939",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "Monthly",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "",
+      "expires": "",
+      "status": "Active",
+      "featured": false,
+      "description": "Marin Hiking Moms is a community group for women and their children who want to disconnect from the noise and reconnect \u2014 with nature and with other women. One Saturday morning each month, the group meets at King Mountain Loop Trail in Larkspur for an easy, scenic hike followed by coffee. All fitness levels welcome. Come solo, bring a friend, bring a baby (carrier friendly) and/or a dog. Come once or come often. Join the WhatsApp group for the latest details and to connect with the group: https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t. Follow on Instagram: @marinhikingmoms.",
+      "registration": "None",
+      "website": "https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t",
+      "notes": "2nd Saturday of each month. King Mountain Loop Trail, Larkspur. Join WhatsApp group for meeting time and any updates: https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t",
+      "location_group": "Larkspur",
+      "event_name_es": "Caminatas Mensuales de Marin Hiking Moms",
+      "description_es": "Marin Hiking Moms es un grupo comunitario para mujeres y sus hijos que quieren desconectarse del ruido y reconectarse con la naturaleza y con otras mujeres. Un sabado por la manana cada mes, el grupo se reune en King Mountain Loop Trail en Larkspur para una caminata facil y pintoresca seguida de cafe. Todos los niveles de condicion fisica son bienvenidos. Venga solo, traiga un amigo, traiga a su bebe (apto para portabebes) y/o un perro. Venga una vez o venga seguido. Unase al grupo de WhatsApp para los ultimos detalles y para conectarse con el grupo: https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t. Siganos en Instagram: @marinhikingmoms."
     }
   ]
 }
