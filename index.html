@@ -3156,15 +3156,15 @@ function openDetail(id) {
   // Dismiss save toast if showing
   document.getElementById('saveToast').classList.remove('show');
   // Save scroll position before switching to detail screen
-  const appScreen = document.getElementById('appScreen');
-  window._savedScrollTop = appScreen.scrollTop;
+  window._savedScrollTop = window.scrollY || document.documentElement.scrollTop;
 
   // Show detail screen
-  appScreen.style.display = 'none';
+  document.getElementById('appScreen').style.display = 'none';
   const ds = document.getElementById('detailScreen');
   ds.style.display = 'flex';
   ds.style.flexDirection = 'column';
   ds.scrollTop = 0;
+  window.scrollTo(0, 0);
 }
 
 function closeDetail() {
@@ -3173,9 +3173,9 @@ function closeDetail() {
   appScreen.style.display = 'flex';
   appScreen.style.flexDirection = 'column';
   // Restore scroll position
-  if (window._savedScrollTop !== undefined) {
-    appScreen.scrollTop = window._savedScrollTop;
-  }
+  requestAnimationFrame(() => {
+    window.scrollTo(0, window._savedScrollTop || 0);
+  });
 }
 
 // ═══════════════════════════════════════════
