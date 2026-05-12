@@ -3155,8 +3155,12 @@ function openDetail(id) {
 
   // Dismiss save toast if showing
   document.getElementById('saveToast').classList.remove('show');
+  // Save scroll position before switching to detail screen
+  const appScreen = document.getElementById('appScreen');
+  window._savedScrollTop = appScreen.scrollTop;
+
   // Show detail screen
-  document.getElementById('appScreen').style.display = 'none';
+  appScreen.style.display = 'none';
   const ds = document.getElementById('detailScreen');
   ds.style.display = 'flex';
   ds.style.flexDirection = 'column';
@@ -3165,8 +3169,13 @@ function openDetail(id) {
 
 function closeDetail() {
   document.getElementById('detailScreen').style.display = 'none';
-  document.getElementById('appScreen').style.display = 'flex';
-  document.getElementById('appScreen').style.flexDirection = 'column';
+  const appScreen = document.getElementById('appScreen');
+  appScreen.style.display = 'flex';
+  appScreen.style.flexDirection = 'column';
+  // Restore scroll position
+  if (window._savedScrollTop !== undefined) {
+    appScreen.scrollTop = window._savedScrollTop;
+  }
 }
 
 // ═══════════════════════════════════════════
