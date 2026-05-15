@@ -1231,6 +1231,7 @@ def build_sweep_excel(suggested_events, sweep_date):
         import openpyxl
         from openpyxl.styles import Font, PatternFill, Alignment
     except ImportError:
+        print("  -- openpyxl not installed -- skipping Excel export")
         return None
 
     C_TITLE, C_HDR, C_DEC, C_W, C_S = '0D1B3E','1A6B5A','FFF9E6','FFFFFF','F5F7FA'
@@ -1245,16 +1246,17 @@ def build_sweep_excel(suggested_events, sweep_date):
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Weekly Sweep"
-    for c, w in zip('ABCDEFGHIJ', [16,36,12,10,10,30,56,36,36,14]):
+    for c, w in zip('ABCDEFGHIJ', [16,38,12,12,16,34,52,38,40,14]):
         ws.column_dimensions[c].width = w
 
     n_auto = sum(1 for e in suggested_events if e.get('source_type') == 'AUTO')
     n_semi = len(suggested_events) - n_auto
+
     ws.merge_cells('A1:J1')
     xs(ws['A1'],
        f'OUT AND ABOUT MARIN -- Weekly Sweep | {sweep_date} | '
        f'{len(suggested_events)} candidate(s): {n_auto} AUTO + {n_semi} SEMI | '
-       f'Fill DECISION: APPROVE or SKIP | Upload back to Claude',
+       f'Fill DECISION: APPROVE or SKIP | Upload back to Claude to process',
        bold=True, sz=9, col='FFFFFF', bg=C_TITLE)
     ws.row_dimensions[1].height = 18
 
@@ -1305,16 +1307,13 @@ def build_sweep_excel(suggested_events, sweep_date):
 
 
 def fetch_mill_valley_ical():
-    """
-    Fetch Mill Valley Public Library iCal feed (kids & family events).
-    URL: millvalleylibrary.libcal.com/ical_subscribe.php?src=p&cid=17002&aud=5670,5671
-    aud=5670=Children, aud=5671=Families. Returns list of dicts.
-    """
-    MVL_ICAL_URL = ("https://millvalleylibrary.libcal.com/ical_subscribe.php"
-                    "?src=p&cid=17002&aud=5670,5671")
+    """Fetch Mill Valley Public Library iCal feed (children & families)."""
+    import re as _re
+    MVL_URL = ("https://millvalleylibrary.libcal.com/ical_subscribe.php"
+               "?src=p&cid=17002&aud=5670,5671")
     headers = {"User-Agent": "OutAndAboutMarin/1.0"}
     try:
-        req = urllib.request.Request(MVL_ICAL_URL, headers=headers)
+        req = urllib.request.Request(MVL_URL, headers=headers)
         with urllib.request.urlopen(req, timeout=20) as resp:
             raw = resp.read().decode("utf-8", errors="replace")
     except Exception as e:
@@ -1329,22 +1328,21 @@ def fetch_mill_valley_ical():
         if end == -1:
             continue
         block = block[:end]
-        import re as _re
         def _get(field, text):
             text_unfolded = _re.sub(r'\r?\n[ \t]', '', text)
             m = _re.search(rf'^{field}[^:]*:(.+)$', text_unfolded, _re.MULTILINE)
             return m.group(1).strip() if m else ""
-        summary = _get("SUMMARY", block)
-        dtstart = _get("DTSTART", block)
+        summary  = _get("SUMMARY", block)
+        dtstart  = _get("DTSTART", block)
         location = _get("LOCATION", block)
         description = _get("DESCRIPTION", block)
-        url = _get("URL", block)
+        url      = _get("URL", block)
         if not summary or not dtstart:
             continue
         try:
-            dtstart_clean = dtstart.replace("Z","").split("T")
-            dp = dtstart_clean[0]
-            tp = dtstart_clean[1] if len(dtstart_clean) > 1 else "000000"
+            dtclean = dtstart.replace("Z","").split("T")
+            dp = dtclean[0]
+            tp = dtclean[1] if len(dtclean) > 1 else "000000"
             from datetime import datetime as _dt
             dt = _dt.strptime(dp + tp[:6], "%Y%m%d%H%M%S")
             if dt.date() < date.today():
@@ -1356,21 +1354,16 @@ def fetch_mill_valley_ical():
             continue
         description = description.replace("\\n"," ").replace("\\,",",").strip()
         events.append({"name": summary, "date": event_date, "day": event_day,
-                        "time": event_time, "location": location or "Mill Valley Public Library",
-                        "description": description[:300], "source": url or MVL_ICAL_URL})
+                        "time": event_time,
+                        "location": location or "Mill Valley Public Library",
+                        "description": description[:300],
+                        "source": url or MVL_URL})
     print(f"  + Mill Valley Library iCal: {len(events)} upcoming kids/family events")
     return events
 
 
 def fetch_mcfl_bibliocommons(location_code=None, audiences=None, max_pages=10):
-    """
-    Fetch MCFL events from marinlibrary.bibliocommons.com/v2/events.
-    Works from GitHub Actions (not blocked there). Parses rendered HTML for
-    event names, dates, times, and locations.
-    location_code: e.g. 'NOVATO', 'MARIN_CITY', 'CIVIC_CENTER', 'CORTE_MADERA',
-                   'FAIRFAX', 'POINT_REYES', 'SOUTH_NOVATO', 'BOLINAS'. None=all.
-    audiences: list, defaults to kids/family. max_pages: how far out to look.
-    """
+    """Fetch MCFL kids/family events from marinlibrary.bibliocommons.com/v2/events."""
     import re as _re
     if audiences is None:
         audiences = ['BABIES','TODDLERS','PRESCHOOLERS','KIDS','TWEENS','FAMILIES']
@@ -1395,36 +1388,26 @@ def fetch_mcfl_bibliocommons(location_code=None, audiences=None, max_pages=10):
             with urllib.request.urlopen(req, timeout=20) as resp:
                 html = resp.read().decode("utf-8", errors="replace")
         except Exception as e:
-            print(f"  -- MCFL BiblioCommons fetch page {page}: {e}")
+            print(f"  -- MCFL BiblioCommons page {page}: {e}")
             break
-        found = 0
         name_pat = _re.compile(r'View all dates for:\s*([^\n<]{5,80})')
         date_pat = _re.compile(r'(\w+day,\s+\w+\s+\d+).*?(\d{4})')
-        for m in pat.finditer(html):
-            name = m.group(5).strip()
-            name = _re.sub(r'\s+', ' ', name)
+        found = 0
+        for m in name_pat.finditer(html):
+            name = _re.sub(r'\s+', ' ', m.group(1)).strip()
             if not name or name in seen:
                 continue
-            ctx = html[max(0,m.start()-300):m.end()+300]
+            ctx = html[max(0,m.start()-500):m.end()+200]
             loc_m = _re.search(r'(?:Novato|Marin City|Fairfax|Corte Madera|Civic Center|'
-                                r'Point Reyes|South Novato|Bolinas|Inverness|Stinson Beach)',
-                                ctx, _re.IGNORECASE)
+                               r'Point Reyes|South Novato|Bolinas|Inverness|Stinson Beach)',
+                               ctx, _re.IGNORECASE)
             loc = loc_m.group(0) if loc_m else (location_code or "MCFL")
+            dm = date_pat.search(ctx)
+            date_str = f"{dm.group(1).strip()}, {dm.group(2)}" if dm else ""
             seen.add(name)
-            all_events.append({"name": name,
-                                "date_str": f"{m.group(1).strip()}, {m.group(2)}",
-                                "time_str": f"{m.group(3)}–{m.group(4)}",
-                                "location": loc, "url": url})
+            all_events.append({"name": name, "date_str": date_str,
+                                "time_str": "", "location": loc, "url": url})
             found += 1
-        if found == 0:
-            names = _re.findall(r'View all dates for:\s*([^\n<]{5,80})', html)
-            for n in names:
-                n = n.strip()
-                if n and n not in seen:
-                    seen.add(n)
-                    all_events.append({"name": n, "date_str": "", "time_str": "",
-                                       "location": location_code or "MCFL", "url": url})
-                    found += 1
         if found == 0:
             break
         time.sleep(1.0)
@@ -1432,12 +1415,12 @@ def fetch_mcfl_bibliocommons(location_code=None, audiences=None, max_pages=10):
 
 
 def fetch_mcfl_all_branches_kids():
-    """Fetch kids/family events from all MCFL branches via BiblioCommons (10 pages ~3 months)."""
+    """Fetch kids/family events from all MCFL branches via BiblioCommons (10 pages)."""
     print("  Fetching MCFL BiblioCommons (all branches, kids/family, 10 pages)...")
-    events = fetch_mcfl_bibliocommons(location_code=None,
-                                       audiences=['BABIES','TODDLERS','PRESCHOOLERS',
-                                                  'KIDS','TWEENS','FAMILIES'],
-                                       max_pages=10)
+    events = fetch_mcfl_bibliocommons(
+        location_code=None,
+        audiences=['BABIES','TODDLERS','PRESCHOOLERS','KIDS','TWEENS','FAMILIES'],
+        max_pages=10)
     by_branch = {}
     for e in events:
         by_branch.setdefault(e.get("location","Unknown"), []).append(e)
@@ -1663,54 +1646,39 @@ def run_weekly_sweep(events_file="events.json"):
                 "description": e.get("description", ""),
                 "source": e["source"],
                 "website": e.get("website", ""),
-                "source_type": "AUTO",
             })
     else:
         print("  ✓ No new Belvedere-Tiburon events beyond what we already have")
 
     # ── 7. MILL VALLEY PUBLIC LIBRARY iCal ───────────────────────
-    print("\n── Mill Valley Public Library (iCal — automated) ──")
+    print("\n── Mill Valley Public Library (iCal) ──")
     mvl_events = fetch_mill_valley_ical()
     existing_mvl = set(e.get("event_name","").lower() for e in data.get("events",[])
-                       if "millvalleylibrary" in e.get("website","").lower()
-                       or ("mill valley" in e.get("venue","").lower() and "library" in e.get("venue","").lower()))
-    new_mvl = 0
+                       if "mill valley" in e.get("venue","").lower() and "library" in e.get("venue","").lower())
     for e in mvl_events:
         nl = e["name"].lower().strip()
         if any(nl in ex or ex in nl for ex in existing_mvl):
             continue
-        new_mvl += 1
         suggested.append({"date": e["date"], "day_label": f"{e['day']}, {e['date']}",
                            "title": e["name"], "time": e["time"], "location": e["location"],
                            "description": e.get("description",""), "source": e["source"],
                            "website": e["source"], "source_type": "AUTO"})
-    if new_mvl == 0:
-        print("  + No new Mill Valley Library events beyond what we already have")
 
     # ── 8. MCFL BiblioCommons — All Branches ─────────────────────
-    print("\n── MCFL BiblioCommons (all branches, ~3 months) ──")
+    print("\n── MCFL BiblioCommons (all branches) ──")
     mcfl_by_branch = fetch_mcfl_all_branches_kids()
-    existing_mcfl = set(e.get("event_name","").lower() for e in data.get("events",[])
-                        if "marin county free library" in e.get("organization","").lower()
-                        or "mcfl" in e.get("organization","").lower())
-    new_mcfl = 0
+    existing_mcfl = set(e.get("event_name","").lower() for e in data.get("events",[]))
     for branch, evts in sorted(mcfl_by_branch.items()):
         for e in evts:
             nl = e["name"].lower().strip()
             if any(nl in ex or ex in nl for ex in existing_mcfl):
                 continue
-            aud = [a.lower() for a in e.get("audiences",[])]
-            if aud and not any(a in aud for a in ["babies","toddlers","preschoolers","kids","tweens","families"]):
-                continue
-            new_mcfl += 1
             suggested.append({"date": e.get("date_str",""), "day_label": e.get("date_str",""),
                                "title": f"[MCFL {branch}] {e['name']}", "time": e.get("time_str",""),
                                "location": f"MCFL — {branch} Library",
                                "description": "", "source": e.get("url","https://marinlibrary.bibliocommons.com/v2/events"),
                                "website": "https://marinlibrary.bibliocommons.com/v2/events",
                                "source_type": "AUTO"})
-    if new_mcfl == 0:
-        print("  + No new MCFL kids/family events beyond what we already have")
 
     # ── CONSOLIDATED REPORT ───────────────────────────────────────
     print("\n" + "═" * 60)
@@ -1749,7 +1717,6 @@ def run_weekly_sweep(events_file="events.json"):
     excel_path = build_sweep_excel(suggested, str(today))
     if excel_path:
         print(f"+ Sweep Excel saved: {excel_path}")
-        print(f"  Download from GitHub, fill APPROVE/SKIP, upload back to Claude.")
 
     return suggested
 
@@ -1876,7 +1843,7 @@ def run_monthly_audit(events_file="events.json"):
     MCFL_BRANCH_MAP = {
         'novato': 'mn', 'marin city': 'mc', 'bolinas': 'mb',
         'corte madera': 'mm', 'fairfax': 'mf', 'point reyes': 'mp',
-        'inverness': 'mi', 'stinson beach': 'ms', 'south novato': 'mh',
+        'inverness': 'mi', 'stinson beach': 'ms',
     }
 
     def get_source_url(event):
@@ -1910,7 +1877,7 @@ def run_monthly_audit(events_file="events.json"):
                 return (f"https://marinlibrary.org/locations/{branch_code}/", f"MCFL {branch_town.title()}")
         # MCFL Civic Center (San Rafael)
         if "civic center" in venue or ("marinlibrary" in website and "san rafael" in town):
-            return ("https://marinlibrary.org/locations/MC/", "MCFL Civic Center")
+            return ("https://marinlibrary.org/locations/mb/", "MCFL Civic Center")
         # Marin Country Mart
         if "marin country mart" in venue or "marincountrymart" in website:
             return ("https://marincountrymart.com/events", "Marin Country Mart")

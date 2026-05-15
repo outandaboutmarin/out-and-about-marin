@@ -2,12 +2,10 @@ name: Daily Event Scraper
 
 on:
   schedule:
-    # Daily scraper: runs every morning at 6:00 AM Pacific Time (14:00 UTC)
-    - cron: '0 13 * * *'  # 6:00 AM PDT (UTC-7 summer) / 5:00 AM PST (UTC-8 winter)
-    # Weekly sweep: runs every Monday & Friday at 6:00 AM Pacific Time
-    - cron: '0 13 * * 1,5'  # 6:00 AM PDT Monday & Friday — weekly sweep
-    # Monthly audit: runs on the 1st of each month at 6:00 AM Pacific Time
-    - cron: '0 13 1 * *'  # 6:00 AM PDT on the 1st of every month
+    # Full daily sweep: every morning at 6:00 AM Pacific Time (13:00 UTC)
+    - cron: '0 13 * * *'
+    # Monthly audit: 1st of each month at 6:00 AM Pacific Time
+    - cron: '0 13 1 * *'
   # Also allows you to run it manually from GitHub if needed
   workflow_dispatch:
     inputs:
@@ -38,23 +36,27 @@ jobs:
         with:
           python-version: '3.12'
 
-      # Step 3: Run the daily scraper
+      # Step 3: Install dependencies
+      - name: Install Python dependencies
+        run: pip install openpyxl
+
+      # Step 4: Run the daily scraper
       - name: Run daily scraper
         env:
           BIBLIOCOMMONS_API_KEY: ${{ secrets.BIBLIOCOMMONS_API_KEY }}
         run: python scraper.py
 
-      # Step 4: Run weekly event sweep on Mondays & Fridays
+      # Step 5: Run full event sweep (every morning)
       - name: Run weekly event sweep
-        if: github.event.schedule == '0 13 * * 1,5' || github.event.inputs.run_weekly_sweep == 'true'
+        if: github.event.schedule == '0 13 * * *' || github.event.inputs.run_weekly_sweep == 'true'
         run: python library_review.py --weekly-sweep
 
-      # Step 5: Run monthly audit on the 1st of each month
+      # Step 6: Run monthly audit on the 1st of each month
       - name: Run monthly recurring events audit
         if: github.event.schedule == '0 13 1 * *' || github.event.inputs.run_monthly_audit == 'true'
         run: python library_review.py --monthly-audit
 
-      # Step 6: Commit and push any changes back to GitHub
+      # Step 7: Commit and push any changes back to GitHub
       - name: Commit updated files
         run: |
           git config --local user.email "action@github.com"
@@ -62,6 +64,6 @@ jobs:
           git stash --include-untracked || true
           git pull --rebase origin main
           git stash pop || true
-          git add events.json scraper_log.txt library_page_hashes.json weekly_sweep_report.json monthly_audit_report.json || true
+          git add events.json scraper_log.txt library_page_hashes.json weekly_sweep_report.json "weekly_sweep_*_review.xlsx" monthly_audit_report.json || true
           git diff --staged --quiet || git commit -m "Daily update: events refreshed $(date +'%Y-%m-%d')"
           git push
