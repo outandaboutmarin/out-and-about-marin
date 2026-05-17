@@ -129,6 +129,7 @@ const T = {
     farmersMarket: 'Farmers Market',
     festival: 'Festival',
     fitness: 'Fitness',
+    music: 'Music',
     // Filter options - Time
     morning: 'Morning',
     afternoon: 'Afternoon',
@@ -223,6 +224,7 @@ const T = {
     farmersMarket: 'Mercado de agricultores',
     festival: 'Festival',
     fitness: 'Ejercicio',
+    music: 'Música',
     // Filter options - Time
     morning: 'Mañana',
     afternoon: 'Tarde',
@@ -790,6 +792,7 @@ function mapDbUser(dbUser) {
     --festival-bg: #FAEEDA; --festival-text: #633806;
     --market-bg: #EAF3DE; --market-text: #3B6D11;
     --community-bg: #FBEAF0; --community-text: #72243E;
+    --music-bg: #EFE7FA; --music-text: #4B2E83;
     /* Day colors */
     --mon-bg: #E6F1FB; --mon-text: #0C447C;
     --tue-bg: #EEEDFE; --tue-text: #3C3489;
@@ -1213,6 +1216,7 @@ function mapDbUser(dbUser) {
   .tag-festival { background: var(--festival-bg); color: var(--festival-text); }
   .tag-market { background: var(--market-bg); color: var(--market-text); }
   .tag-community { background: var(--community-bg); color: var(--community-text); }
+  .tag-music { background: var(--music-bg); color: var(--music-text); }
   .tag-free { background: #E1F5EE; color: #085041; }
   .tag-paid { background: #FAEEDA; color: #633806; }
   .tag-age { background: #EEEDFE; color: #3C3489; }
@@ -2185,6 +2189,7 @@ let defaultFilters = { type: new Set(), location: new Set(), day: new Set(), tim
 const typeOptions = [
   { value: 'Library', dot: '#378ADD' },
   { value: 'Kids Programs', dot: '#D85A30' },
+  { value: 'Music', dot: '#7B4BC0' },
   { value: 'Fitness', dot: '#1D9E75' },
   { value: 'Festival', dot: '#BA7517' },
   { value: 'Farmers Market', dot: '#639922' },
@@ -2198,7 +2203,8 @@ const costOptions = ['Free','Paid'];
 const typeTagClass = {
   'Library': 'tag-library', 'Kids Programs': 'tag-kids',
   'Fitness': 'tag-fitness', 'Festival': 'tag-festival',
-  'Farmers Market': 'tag-market', 'Community Event': 'tag-community'
+  'Farmers Market': 'tag-market', 'Community Event': 'tag-community',
+  'Music': 'tag-music'
 };
 
 // ═══════════════════════════════════════════
@@ -2442,7 +2448,7 @@ const filterOptionTranslations = {
   // Types
   'Library': 'Biblioteca', 'Kids Programs': 'Programas infantiles',
   'Community Event': 'Evento comunitario', 'Farmers Market': 'Mercado agricultores',
-  'Festival': 'Festival', 'Fitness': 'Ejercicio',
+  'Festival': 'Festival', 'Fitness': 'Ejercicio', 'Music': 'Música',
 };
 
 function translateOption(val) {
@@ -2985,7 +2991,7 @@ function cardHTML(e) {
         <div class="card-title">${currentLang === "es" ? (e.event_name_es || e.event_name) : e.event_name}</div>
         <div class="card-venue">${e.venue}${e.town ? ' · ' + e.town : ''}</div>
         <div class="card-meta">
-          <span class="tag ${typeClass}">${currentLang === "es" ? ({"Library":"Biblioteca","Kids Programs":"Programas infantiles","Community Event":"Evento comunitario","Farmers Market":"Mercado agricultores","Festival":"Festival","Fitness":"Ejercicio"}[e.type] || e.type) : e.type}</span>
+          <span class="tag ${typeClass}">${currentLang === "es" ? ({"Library":"Biblioteca","Kids Programs":"Programas infantiles","Community Event":"Evento comunitario","Farmers Market":"Mercado agricultores","Festival":"Festival","Fitness":"Ejercicio","Music":"Música"}[e.type] || e.type) : e.type}</span>
           <span class="tag tag-age">${e.ages}</span>
           <span class="tag ${e.cost === 'Free' ? 'tag-free' : 'tag-paid'}">${e.cost}</span>
           ${isClosed ? `<span class="tag tag-closed">${getReopenLabel(e)}</span>` : ''}
@@ -3043,7 +3049,7 @@ function openDetail(id) {
   const typeTranslations = {
     'Library': 'Biblioteca', 'Kids Programs': 'Programas infantiles',
     'Community Event': 'Evento comunitario', 'Farmers Market': 'Mercado agricultores',
-    'Festival': 'Festival', 'Fitness': 'Ejercicio'
+    'Festival': 'Festival', 'Fitness': 'Ejercicio', 'Music': 'Música'
   };
   document.getElementById('detailTypeBadge').textContent = currentLang === 'es' ? (typeTranslations[e.type] || e.type) : e.type;
   document.getElementById('detailTitle').textContent = currentLang === 'es' ? (e.event_name_es || e.event_name) : e.event_name;
