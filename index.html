@@ -317,6 +317,9 @@ function setLanguage(lang) {
 }
 
 function applyLanguage() {
+  // Rebuild dropdown option labels in the current language
+  buildDropdowns();
+
   const dayNames = {
     en: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
     es: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado']
@@ -2442,9 +2445,18 @@ const filterOptionTranslations = {
   'Thursday': 'Jueves', 'Friday': 'Viernes', 'Saturday': 'Sábado', 'Sunday': 'Domingo',
   // Times
   'Morning': 'Mañana', 'Afternoon': 'Tarde', 'Evening': 'Noche',
+  'Morning (before noon)': 'Mañana (antes del mediodía)',
+  'Afternoon (noon–5 pm)': 'Tarde (mediodía–5 pm)',
+  'Evening (after 5 pm)': 'Noche (después de las 5 pm)',
   // Cost
   'Free': 'Gratis', 'Paid': 'De pago',
   '$10 drop-in': '$10 entrada', '$15 drop-in': '$15 entrada', '$20 drop-in': '$20 entrada',
+  // Ages
+  'Babies (0–12 months)': 'Bebés (0–12 meses)',
+  'Toddlers (1–3 yrs)': 'Pequeños (1–3 años)',
+  'Preschool (3–5 yrs)': 'Preescolar (3–5 años)',
+  'Kids (5–12 yrs)': 'Niños (5–12 años)',
+  'Families (all ages)': 'Familias (todas las edades)',
   // Types
   'Library': 'Biblioteca', 'Kids Programs': 'Programas infantiles',
   'Community Event': 'Evento comunitario', 'Farmers Market': 'Mercado agricultores',
@@ -2463,7 +2475,7 @@ function buildFilterOptions(filterId, options) {
     <div class="dd-option" onclick="toggleFilter('${filterId}','${opt.value}')">
       <span class="dd-label">
         ${opt.dot ? `<span class="type-dot" style="background:${opt.dot}"></span>` : ''}
-        ${opt.value}
+        ${translateOption(opt.value)}
       </span>
       <span class="dd-checkbox"></span>
     </div>`).join('');
