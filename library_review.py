@@ -1445,6 +1445,15 @@ def run_weekly_sweep(events_file="events.json"):
 
     suggested = []  # List of suggested events to review
 
+    # Load existing events for dedup checks
+    data = {"events": []}
+    if os.path.exists(events_file):
+        try:
+            with open(events_file) as f:
+                data = json.load(f)
+        except Exception:
+            pass
+
     # Merge any AUTO results already saved by GitHub Actions today
     _rpt = "weekly_sweep_report.json"
     if os.path.exists(_rpt):
