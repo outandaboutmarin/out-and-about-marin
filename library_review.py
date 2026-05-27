@@ -1365,6 +1365,7 @@ def fetch_mill_valley_ical():
 def fetch_mcfl_bibliocommons(location_code=None, audiences=None, max_pages=10):
     """Fetch MCFL kids/family events from marinlibrary.bibliocommons.com/v2/events."""
     import re as _re
+    import time
     if audiences is None:
         audiences = ['BABIES','TODDLERS','PRESCHOOLERS','KIDS','TWEENS','FAMILIES']
     base = "https://marinlibrary.bibliocommons.com/v2/events"
@@ -1444,15 +1445,6 @@ def run_weekly_sweep(events_file="events.json"):
     print("═" * 60)
 
     suggested = []  # List of suggested events to review
-
-    # Load existing events for dedup checks
-    data = {"events": []}
-    if os.path.exists(events_file):
-        try:
-            with open(events_file) as f:
-                data = json.load(f)
-        except Exception:
-            pass
 
     # Merge any AUTO results already saved by GitHub Actions today
     _rpt = "weekly_sweep_report.json"
