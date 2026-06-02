@@ -64,43 +64,6 @@ def check_seasonal_status(events):
                 pass
     return events
 
-def fetch_bibliocommons_events():
-    """
-    Fetch events from Marin County Free Library BiblioCommons calendar.
-    This is the main automated source — covers all MCFL branches.
-    Returns a list of new/updated events to merge.
-    
-    NOTE: BiblioCommons requires an API key for full access.
-    Until you obtain one from marinlibrary.org, this function
-    logs a reminder and skips the fetch gracefully.
-    """
-    print("\n── BiblioCommons (Marin County Free Library) ──")
-    
-    # PLACEHOLDER: Replace with your BiblioCommons API key when obtained
-    API_KEY = os.environ.get("BIBLIOCOMMONS_API_KEY", "")
-    
-    if not API_KEY:
-        print("  ℹ No BiblioCommons API key found.")
-        print("  ℹ To enable automatic library updates:")
-        print("  ℹ 1. Contact marinlibrary.org to request a BiblioCommons API key")
-        print("  ℹ 2. Add it as a GitHub Secret named BIBLIOCOMMONS_API_KEY")
-        print("  ℹ Manual events.json data will be used until then.")
-        return []
-    
-    try:
-        url = f"https://api.bibliocommons.com/v2/events?library=marinlibrary&key={API_KEY}&limit=100"
-        req = urllib.request.Request(url, headers={"User-Agent": "OutAndAboutMarin/1.0"})
-        with urllib.request.urlopen(req, timeout=15) as response:
-            raw = json.loads(response.read().decode("utf-8"))
-        
-        events = raw.get("events", [])
-        print(f"  ✓ Fetched {len(events)} events from BiblioCommons")
-        return events
-    
-    except Exception as e:
-        print(f"  ✗ BiblioCommons fetch failed: {e}")
-        return []
-
 def check_library_websites():
     """
     Check all library program pages for changes using the
@@ -245,18 +208,15 @@ def main():
     print("\n── Checking seasonal event status ──")
     events = check_seasonal_status(events)
     
-    # Step 3: Try to fetch from BiblioCommons (needs API key)
-    fetch_bibliocommons_events()
-    
-    # Step 4: Health check on individual library sites
+    # Step 3: Health check on individual library sites
     issues = check_library_websites()
     
-    # Step 5: Save updated events
+    # Step 4: Save updated events
     print("\n── Saving ──")
     data["events"] = events
     save_events(data)
     
-    # Step 6: Write run report
+    # Step 5: Write run report
     generate_run_report(events, issues)
     
     print("\n" + "=" * 50)

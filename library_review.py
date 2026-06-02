@@ -737,7 +737,7 @@ def main():
     check_unpredictable_events()
 
     # Check additional event sources
-    add_changed, new_hashes = check_additional_sources(new_hashes)
+    add_changed, new_hashes = check_additional_sources(load_hashes())
     if add_changed:
         print(f"\n  🔔 {len(add_changed)} additional source(s) changed:")
         for s in add_changed:
@@ -1445,6 +1445,14 @@ def run_weekly_sweep(events_file="events.json"):
     print("═" * 60)
 
     suggested = []  # List of suggested events to review
+
+    # Load current events.json once, for dedup against existing events
+    if not os.path.exists(events_file):
+        print("  ⚠ events.json not found — cannot dedup against existing events")
+        data = {"events": []}
+    else:
+        with open(events_file) as f:
+            data = json.load(f)
 
     # Merge any AUTO results already saved by GitHub Actions today
     _rpt = "weekly_sweep_report.json"
