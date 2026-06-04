@@ -43,6 +43,10 @@ async function hashPin(pin) {
 }
 
 
+function openResources() {
+  alert(currentLang === 'es' ? 'Recursos \u2014 pr\u00f3ximamente.' : 'Resources \u2014 coming soon!');
+}
+
 function openFeedback() {
   document.getElementById('feedbackModal').classList.add('open');
   document.getElementById('feedbackForm').style.display = 'block';
@@ -426,6 +430,9 @@ function applyLanguage() {
   const langLabel = document.getElementById('langLabel');
   if (langLabel) langLabel.textContent = currentLang === 'es' ? 'Idioma' : 'Language';
 
+  const pfb = document.getElementById('profileFeedbackLabel');
+  if (pfb) pfb.textContent = currentLang === 'es' ? 'Enviar comentarios' : 'Send Feedback';
+
   // Nav labels
   const navLabels = {
     'nav-events': t('navEvents'),
@@ -558,11 +565,11 @@ function applyLanguage() {
     if (currentLang === 'es') {
       aboutText.innerHTML = `
         <p><em>Out AND About Marin fue creada por una mamá del Condado de Marin que estaba cansada de pasar más tiempo buscando actividades que disfrutándolas. Cada semana me encontraba revisando sitios web de bibliotecas, calendarios de centros recreativos, grupos de Facebook y boletines comunitarios — solo tratando de encontrar qué estaba pasando para las familias en nuestro vecindario. Tenía que haber una mejor manera. Así que la construí.</em></p>
-        <p>Esta aplicación es nueva y está creciendo y mejorando cada semana. Si algo falta, está mal, o podría ser mejor — genuinamente quiero saberlo. Toca el botón de Comentarios y dímelo.</p>`;
+        <p>Esta aplicación es nueva y está creciendo y mejorando cada semana. Si algo falta, está mal, o podría ser mejor — genuinamente quiero saberlo. Usa el botón Enviar comentarios de abajo y dímelo.</p>`;
     } else {
       aboutText.innerHTML = `
         <p><em>Out AND About Marin was built by a Marin County mom who was tired of spending more time searching for things to do than actually doing them. Every week I found myself bouncing between library websites, rec center calendars, neighborhood Facebook groups, and community newsletters — just trying to figure out what was happening for families in our own backyard. There had to be a better way. So I built one.</em></p>
-        <p>This app is new, and growing and improving every week. If something is missing, wrong, or could be better — I genuinely want to know. So tap the Feedback button (below right) or <a href="https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">join the WhatsApp group</a> and tell me.</p>`;
+        <p>This app is new, and growing and improving every week. If something is missing, wrong, or could be better — I genuinely want to know. So use the Feedback button below or <a href="https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">join the WhatsApp group</a> and tell me.</p>`;
     }
   }
 
@@ -734,6 +741,12 @@ async function dbCheckPhoneExists(phone) {
   } catch(e) { return false; }
 }
 
+function normalizeSavedEvents(list) {
+  if (typeof list === 'string') { try { list = JSON.parse(list); } catch (e) { list = []; } }
+  if (!Array.isArray(list)) list = [];
+  return list.map(Number).filter(n => Number.isFinite(n));
+}
+
 function mapDbUser(dbUser) {
   // Map Supabase column names to app's currentUser shape
   return {
@@ -743,7 +756,7 @@ function mapDbUser(dbUser) {
     zip: dbUser.zip,
     ages: Array.isArray(dbUser.ages) ? dbUser.ages : (dbUser.ages ? [dbUser.ages] : []),
     referral: dbUser.referral || '',
-    savedEvents: dbUser.saved_events || [],
+    savedEvents: normalizeSavedEvents(dbUser.saved_events),
     defaultFilters: (() => {
       const df = dbUser.default_filters;
       if (!df) return {};
@@ -1965,9 +1978,9 @@ function mapDbUser(dbUser) {
       <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       Profile
     </button>
-    <button class="nav-item" onclick="openFeedback()">
-      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l8 5 8-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      Feedback
+    <button class="nav-item" onclick="openResources()">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H15a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H5.5A1.5 1.5 0 0 0 4 17.5V4.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="7" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="1.2"/></svg>
+      Resources
     </button>
   </nav>
 </div>
@@ -2158,9 +2171,16 @@ function mapDbUser(dbUser) {
       <div class="about-title" id="aboutTitle">About Out AND About Marin</div>
       <div class="about-text" id="aboutText">
         <p>Out AND About Marin was built by a Marin County mom who was tired of spending more time searching for things to do than actually doing them. Every week I found myself bouncing between library websites, rec center calendars, neighborhood Facebook groups, and community newsletters — just trying to figure out what was happening for families in our own backyard. There had to be a better way. So I built one.</p>
-        <p>This app is new, and growing and improving every week. If something is missing, wrong, or could be better — I genuinely want to know. So tap the Feedback button (below right) or <a href="https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">join the WhatsApp group</a> and tell me.</p>
+        <p>This app is new, and growing and improving every week. If something is missing, wrong, or could be better — I genuinely want to know. So use the Feedback button below or <a href="https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">join the WhatsApp group</a> and tell me.</p>
       </div>
     </div>
+    <button onclick="openFeedback()"
+       style="display:flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;cursor:pointer;
+              padding:0.75rem;margin-top:0.75rem;font-family:inherit;
+              background:var(--navy);border:none;border-radius:var(--radius-sm);color:#fff;font-size:0.85rem;font-weight:600;">
+      <svg viewBox="0 0 20 20" fill="none" width="16" height="16" style="flex-shrink:0"><rect x="2" y="5" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l8 5 8-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span id="profileFeedbackLabel">Send Feedback</span>
+    </button>
     <a href="https://www.instagram.com/outandaboutmarin" target="_blank" rel="noopener"
        style="display:flex;align-items:center;justify-content:center;gap:0.5rem;
               padding:0.75rem;margin-top:0.75rem;text-decoration:none;
@@ -2183,9 +2203,9 @@ function mapDbUser(dbUser) {
       <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       Profile
     </button>
-    <button class="nav-item" onclick="openFeedback()">
-      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l8 5 8-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      Feedback
+    <button class="nav-item" onclick="openResources()">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H15a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H5.5A1.5 1.5 0 0 0 4 17.5V4.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="7" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="1.2"/></svg>
+      Resources
     </button>
   </nav>
 </div>
@@ -2251,6 +2271,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('oaam_user');
   if (saved) {
     currentUser = JSON.parse(saved);
+    currentUser.savedEvents = normalizeSavedEvents(currentUser.savedEvents);
     loadDefaultFilters();
     showScreen('app');
     loadEvents(); applyLanguage(); handleDeepLink();
@@ -3307,17 +3328,23 @@ function closeDetail() {
 // ═══════════════════════════════════════════
 
 function toggleSave() {
-  if (!currentUser || !currentEventId) return;
+  if (!currentEventId) return;
+  if (!currentUser) {
+    alert(currentLang === 'es' ? 'Inicia sesi\u00f3n para guardar eventos.' : 'Please sign in to save events.');
+    return;
+  }
+  currentUser.savedEvents = normalizeSavedEvents(currentUser.savedEvents);
   const idx = currentUser.savedEvents.indexOf(currentEventId);
   if (idx > -1) currentUser.savedEvents.splice(idx, 1);
   else currentUser.savedEvents.push(currentEventId);
-  localStorage.setItem('oaam_user', JSON.stringify(currentUser));
-  dbUpdateUser(currentUser.phone, { saved_events: currentUser.savedEvents });
-  updateSaveButton();
+  updateSaveButton(); // repaint FIRST so the heart always responds instantly
+  try { localStorage.setItem('oaam_user', JSON.stringify(currentUser)); } catch (e) { console.warn('localStorage unavailable:', e); }
+  try { dbUpdateUser(currentUser.phone, { saved_events: currentUser.savedEvents }); } catch (e) { console.warn('save sync failed:', e); }
 }
 
 function updateSaveButton() {
   if (!currentUser) return;
+  currentUser.savedEvents = normalizeSavedEvents(currentUser.savedEvents);
   const saved = currentUser.savedEvents.includes(currentEventId);
   const btn = document.getElementById('saveBtn');
   const lbl = document.getElementById('saveLabel');
@@ -3438,6 +3465,7 @@ function renderProfile() {
 
   // Saved events
   const savedList = document.getElementById('savedEventsList');
+  currentUser.savedEvents = normalizeSavedEvents(currentUser.savedEvents);
   if (!currentUser.savedEvents || currentUser.savedEvents.length === 0) {
     savedList.innerHTML = '<div class="no-saved">No saved events yet. Tap the heart on any event to save it.</div>';
   } else {
