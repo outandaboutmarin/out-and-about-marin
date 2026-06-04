@@ -3471,7 +3471,7 @@ function renderProfile() {
   } else {
     const saved = allEvents.filter(e => currentUser.savedEvents.includes(e.id));
     savedList.innerHTML = saved.map(e => `
-      <div class="saved-event-card" onclick="openDetail(${e.id});showScreen('app')">
+      <div class="saved-event-card" onclick="showScreen('app');openDetail(${e.id})">
         <div class="card-left">
           <div class="card-title">${currentLang === "es" ? (e.event_name_es || e.event_name) : e.event_name}</div>
           <div class="card-venue">${e.venue} · ${e.town}</div>
