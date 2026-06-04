@@ -433,6 +433,12 @@ function applyLanguage() {
   const pfb = document.getElementById('profileFeedbackLabel');
   if (pfb) pfb.textContent = currentLang === 'es' ? 'Enviar comentarios' : 'Send Feedback';
 
+  const calL = document.getElementById('calLabel'); if (calL) calL.textContent = currentLang === 'es' ? 'Calendario' : 'Calendar';
+  const shBL = document.getElementById('shareBtnLabel'); if (shBL) shBL.textContent = currentLang === 'es' ? 'Compartir' : 'Share';
+  const cT = document.getElementById('calSheetTitle'); if (cT) cT.textContent = currentLang === 'es' ? 'A\u00f1adir al calendario' : 'Add to calendar';
+  const cO = document.getElementById('calOptOther'); if (cO) cO.textContent = currentLang === 'es' ? 'Otro (descargar .ics)' : 'Other (download .ics)';
+  const cC = document.getElementById('calCancel'); if (cC) cC.textContent = currentLang === 'es' ? 'Cancelar' : 'Cancel';
+
   // Nav labels
   const navLabels = {
     'nav-events': t('navEvents'),
@@ -1454,6 +1460,24 @@ function mapDbUser(dbUser) {
   .share-copy-btn { font-size: 0.65rem; font-weight: 600; color: var(--navy); cursor: pointer; white-space: nowrap; }
 
   /* Save toast */
+  .cal-overlay {
+    position: fixed; inset: 0; background: rgba(13,27,62,0.4);
+    z-index: 360; display: none; align-items: center; justify-content: center;
+  }
+  .cal-overlay.show { display: flex; }
+  .cal-sheet {
+    background: #fff; border-radius: 14px; padding: 1rem;
+    width: min(320px, 88vw); display: flex; flex-direction: column; gap: 0.5rem;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  }
+  .cal-sheet-title { font-weight: 700; color: #152747; font-size: 0.95rem; text-align: center; margin-bottom: 0.25rem; }
+  .cal-opt {
+    min-height: 44px; touch-action: manipulation; cursor: pointer; font-family: inherit;
+    border: 1px solid #152747; background: #fff; color: #152747;
+    border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600;
+  }
+  .cal-opt:active { background: #FAF5E8; }
+  .cal-cancel { min-height: 40px; cursor: pointer; font-family: inherit; border: none; background: none; color: #777; font-size: 0.8rem; }
   .save-toast {
     position: fixed;
     top: 50%;
@@ -2075,11 +2099,15 @@ function mapDbUser(dbUser) {
     <div class="secondary-row">
       <div class="action-btn secondary-btn" id="saveBtn" onclick="toggleSave()">
         <svg width="13" height="13" viewBox="0 0 14 14" fill="none" id="heartIcon"><path d="M7 12S1 8 1 4.5A3.5 3.5 0 0 1 7 3a3.5 3.5 0 0 1 6 1.5C13 8 7 12 7 12z" stroke="#1A1A1A" stroke-width="1.2"/></svg>
-        <span id="saveLabel">Save to my list</span>
+        <span id="saveLabel">Save</span>
+      </div>
+      <div class="action-btn secondary-btn" id="calBtn" onclick="openCalendarMenu()">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="10" rx="1.5" stroke="#1A1A1A" stroke-width="1.2"/><line x1="1.5" y1="5.5" x2="12.5" y2="5.5" stroke="#1A1A1A" stroke-width="1.2"/><line x1="4.5" y1="1" x2="4.5" y2="3.5" stroke="#1A1A1A" stroke-width="1.2"/><line x1="9.5" y1="1" x2="9.5" y2="3.5" stroke="#1A1A1A" stroke-width="1.2"/></svg>
+        <span id="calLabel">Calendar</span>
       </div>
       <div class="action-btn secondary-btn" onclick="shareEvent()">
         <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="11" cy="2.5" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="11" cy="11.5" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="3" cy="7" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><line x1="4.4" y1="6.2" x2="9.6" y2="3.3" stroke="#1A1A1A" stroke-width="1.2"/><line x1="4.4" y1="7.8" x2="9.6" y2="10.7" stroke="#1A1A1A" stroke-width="1.2"/></svg>
-        Share this event
+        <span id="shareBtnLabel">Share</span>
       </div>
 
     </div>
@@ -2213,6 +2241,15 @@ function mapDbUser(dbUser) {
 
 <!-- Save filters toast -->
 <div class="toast-overlay" id="toastOverlay" onclick="dismissToast()"></div>
+<div class="cal-overlay" id="calOverlay" onclick="if(event.target===this)closeCalendarMenu()">
+  <div class="cal-sheet">
+    <div class="cal-sheet-title" id="calSheetTitle">Add to calendar</div>
+    <button class="cal-opt" onclick="addToCalendar('google')">Google Calendar</button>
+    <button class="cal-opt" onclick="addToCalendar('apple')">Apple Calendar (iCal)</button>
+    <button class="cal-opt" id="calOptOther" onclick="addToCalendar('ics')">Other (download .ics)</button>
+    <button class="cal-cancel" id="calCancel" onclick="closeCalendarMenu()">Cancel</button>
+  </div>
+</div>
 <div class="save-toast" id="saveToast">
   <div class="toast-title">Save these as your defaults?</div>
   <div class="toast-sub">Next time you open the app, your feed will automatically show these filters.</div>
@@ -3327,6 +3364,107 @@ function closeDetail() {
 // SAVE / HEART
 // ═══════════════════════════════════════════
 
+function calPad(n){ return String(n).padStart(2,'0'); }
+
+function parseEventTimes(str){
+  str=str||'';
+  const out=[]; const idx=[]; const re=/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/gi; let m;
+  while((m=re.exec(str)) && out.length<2){
+    let h=parseInt(m[1],10)%12; if(/pm/i.test(m[3])) h+=12;
+    out.push({h:h, mi:m[2]?parseInt(m[2],10):0}); idx.push(m.index);
+  }
+  if(out.length===1){
+    // handle shared-meridiem ranges like "9:30-11:30 AM": bare time + dash right before the match
+    const before=str.slice(0,idx[0]);
+    const bm=before.match(/(\d{1,2})(?::(\d{2}))?\s*[\u2013\u2014-]\s*$/);
+    if(bm){
+      const mer = out[0].h>=12 ? 12 : 0;
+      const first={h:(parseInt(bm[1],10)%12)+mer, mi:bm[2]?parseInt(bm[2],10):0};
+      if(first.h>out[0].h || (first.h===out[0].h && first.mi>=out[0].mi)) first.h=(first.h+12)%24;
+      out.unshift(first);
+    }
+  }
+  return out.slice(0,2);
+}
+
+function nextOccurrenceDate(dayStr){
+  const names={sunday:0,monday:1,tuesday:2,wednesday:3,thursday:4,friday:5,saturday:6};
+  const first=(dayStr||'').split(/[\/,&]| y /)[0].trim().toLowerCase();
+  if(!(first in names)) return null;
+  const d=new Date(); d.setHours(0,0,0,0);
+  d.setDate(d.getDate() + ((names[first]-d.getDay()+7)%7));
+  return d;
+}
+
+function getCalendarPayload(){
+  const e=(allEvents||[]).find(x=>x.id===currentEventId);
+  if(!e) return null;
+  let base=null;
+  if(e.event_date){ const parts=e.event_date.split('-').map(Number); base=new Date(parts[0],parts[1]-1,parts[2]); }
+  else base=nextOccurrenceDate(e.day);
+  if(!base || isNaN(base)) return null;
+  const times=parseEventTimes(e.time);
+  let start,end,allDay=false;
+  if(times.length){
+    start=new Date(base); start.setHours(times[0].h,times[0].mi,0,0);
+    if(times.length>1){
+      end=new Date(base); end.setHours(times[1].h,times[1].mi,0,0);
+      if(end<=start) end=new Date(start.getTime()+3600000);
+    } else end=new Date(start.getTime()+3600000);
+  } else { allDay=true; start=new Date(base); end=new Date(base.getTime()+86400000); }
+  const loc=[e.venue,e.address].filter(Boolean).join(', ');
+  let details=(e.time?('Time: '+e.time+'\n'):'')+(e.description||'');
+  if(!e.event_date && e.cadence){
+    details=(currentLang==='es'?('Se repite: '+e.cadence+' \u2014 '+e.day+'.\n'):('Repeats '+String(e.cadence).toLowerCase()+' on '+e.day+'.\n'))+details;
+  }
+  if(e.website) details+='\n'+e.website;
+  details+='\nVia www.outandaboutmarin.com';
+  return {id:e.id, title:e.event_name, start:start, end:end, allDay:allDay, loc:loc, details:details};
+}
+
+function calFmtUTC(d){ return d.getUTCFullYear()+calPad(d.getUTCMonth()+1)+calPad(d.getUTCDate())+'T'+calPad(d.getUTCHours())+calPad(d.getUTCMinutes())+'00Z'; }
+function calFmtDate(d){ return ''+d.getFullYear()+calPad(d.getMonth()+1)+calPad(d.getDate()); }
+
+function buildGoogleCalUrl(p){
+  const dates = p.allDay ? (calFmtDate(p.start)+'/'+calFmtDate(p.end)) : (calFmtUTC(p.start)+'/'+calFmtUTC(p.end));
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    +'&text='+encodeURIComponent(p.title)
+    +'&dates='+dates
+    +'&location='+encodeURIComponent(p.loc)
+    +'&details='+encodeURIComponent(p.details);
+}
+
+function icsEscape(s){ return String(s||'').replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\n/g,'\\n'); }
+
+function buildICSText(p){
+  const L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Out AND About Marin//EN','BEGIN:VEVENT',
+    'UID:oaam-'+p.id+'-'+Date.now()+'@outandaboutmarin.com','DTSTAMP:'+calFmtUTC(new Date())];
+  if(p.allDay){ L.push('DTSTART;VALUE=DATE:'+calFmtDate(p.start)); L.push('DTEND;VALUE=DATE:'+calFmtDate(p.end)); }
+  else { L.push('DTSTART:'+calFmtUTC(p.start)); L.push('DTEND:'+calFmtUTC(p.end)); }
+  L.push('SUMMARY:'+icsEscape(p.title)); L.push('LOCATION:'+icsEscape(p.loc)); L.push('DESCRIPTION:'+icsEscape(p.details));
+  L.push('END:VEVENT','END:VCALENDAR');
+  return L.join('\r\n');
+}
+
+function openCalendarMenu(){
+  if(!currentEventId) return;
+  document.getElementById('calOverlay').classList.add('show');
+}
+function closeCalendarMenu(){ document.getElementById('calOverlay').classList.remove('show'); }
+
+function addToCalendar(kind){
+  const p=getCalendarPayload();
+  closeCalendarMenu();
+  if(!p){ alert(currentLang==='es'?'No se pudo crear la invitaci\u00f3n.':'Could not build the calendar invite.'); return; }
+  if(kind==='google'){ window.open(buildGoogleCalUrl(p),'_blank'); return; }
+  const blob=new Blob([buildICSText(p)],{type:'text/calendar;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download=String(p.title||'event').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')+'.ics';
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 500);
+}
+
 function toggleSave() {
   if (!currentEventId) return;
   if (!currentUser) {
@@ -3351,11 +3489,11 @@ function updateSaveButton() {
   const icon = document.getElementById('heartIcon');
   if (saved) {
     btn.classList.add('saved');
-    lbl.textContent = 'Saved to my list';
+    lbl.textContent = currentLang === 'es' ? 'Guardado' : 'Saved';
     icon.innerHTML = '<path d="M7 12S1 8 1 4.5A3.5 3.5 0 0 1 7 3a3.5 3.5 0 0 1 6 1.5C13 8 7 12 7 12z" fill="#D4537E" stroke="#D4537E" stroke-width="1.2"/>';
   } else {
     btn.classList.remove('saved');
-    lbl.textContent = 'Save to my list';
+    lbl.textContent = currentLang === 'es' ? 'Guardar' : 'Save';
     icon.innerHTML = '<path d="M7 12S1 8 1 4.5A3.5 3.5 0 0 1 7 3a3.5 3.5 0 0 1 6 1.5C13 8 7 12 7 12z" stroke="#1A1A1A" stroke-width="1.2"/>';
   }
 }
