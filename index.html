@@ -1261,6 +1261,16 @@ function mapDbUser(dbUser) {
   .tag-paid { background: #FAEEDA; color: #633806; }
   .tag-age { background: #EEEDFE; color: #3C3489; }
   .tag-closed { background: #FCEBEB; color: #791F1F; }
+  .tag-ended { background: #F1EFE8; color: #5F5E5A; }
+  .tag-now { background: #152747; color: #FAF5E8; }
+  .card-ended { opacity: 0.55; }
+  .earlier-bar { display: flex; align-items: center; gap: 8px; width: 100%;
+    background: rgba(21,39,71,0.05); border: 1px dashed rgba(21,39,71,0.3);
+    border-radius: 12px; padding: 10px 14px; margin: 2px 0 10px;
+    font-size: 0.8125rem; color: #152747; cursor: pointer; font-weight: 600; }
+  .earlier-bar .eb-hint { margin-left: auto; font-weight: 400; font-size: 0.6875rem; color: rgba(21,39,71,0.55); }
+  .earlier-bar .eb-chev { transition: transform .15s; display: inline-block; }
+  .earlier-bar.open .eb-chev { transform: rotate(90deg); }
   .day-pill {
     font-size: 0.625rem; font-weight: 500;
     padding: 3px 8px; border-radius: var(--radius-pill);
@@ -3177,20 +3187,62 @@ function renderCards() {
       ? (() => { const i = dayNamesEN.indexOf(day); return i >= 0 ? dayNamesES[i] : day; })()
       : day;
 
+    const nowD = new Date();
+    const isTodayGroup = dayDate.getFullYear() === nowD.getFullYear() && dayDate.getMonth() === nowD.getMonth() && dayDate.getDate() === nowD.getDate();
+    let cardsHtml;
+    if (isTodayGroup) {
+      const nowMin = nowD.getHours() * 60 + nowD.getMinutes();
+      const earlier = [], current = [];
+      grouped[day].forEach(e => {
+        const st = eventTimeStatus(e, nowMin);
+        if (st === 'ended') earlier.push(e); else current.push({ ev: e, st: st });
+      });
+      const ebLabel = earlierTodayOpen
+        ? (currentLang === 'es' ? 'Ocultar eventos anteriores' : 'Hide earlier today')
+        : (currentLang === 'es'
+            ? earlier.length + (earlier.length === 1 ? ' evento anterior hoy' : ' eventos anteriores hoy')
+            : earlier.length + (earlier.length === 1 ? ' earlier event today' : ' earlier today'));
+      const ebHint = earlierTodayOpen
+        ? (currentLang === 'es' ? 'toca para ocultar' : 'tap to hide')
+        : (currentLang === 'es' ? 'toca para ver' : 'tap to show');
+      const earlierBar = earlier.length ? `
+        <div class="earlier-bar${earlierTodayOpen ? ' open' : ''}" onclick="toggleEarlierToday()">
+          <span class="eb-chev">▸</span><span>${ebLabel}</span><span class="eb-hint">${ebHint}</span>
+        </div>` : '';
+      const earlierCards = (earlierTodayOpen && earlier.length) ? earlier.map(e => cardHTML(e, 'ended')).join('') : '';
+      cardsHtml = earlierBar + earlierCards + current.map(o => cardHTML(o.ev, o.st === 'now' ? 'now' : '')).join('');
+    } else {
+      cardsHtml = grouped[day].map(e => cardHTML(e)).join('');
+    }
     return `
       <div class="section-day-label">${dayLabel}</div>
       ${noticeBanner}
-      ${grouped[day].map(e => cardHTML(e)).join('')}
+      ${cardsHtml}
     `;
   }).join('');
 }
 
-function cardHTML(e) {
+let earlierTodayOpen = false;
+function toggleEarlierToday() { earlierTodayOpen = !earlierTodayOpen; renderCards(); }
+
+function eventTimeStatus(e, nowMin) {
+  // 'ended' | 'now' | 'upcoming' | 'unknown' — unknown/unparseable times are never hidden
+  const times = parseEventTimes(e.time);
+  if (!times.length) return 'unknown';
+  const start = times[0].h * 60 + times[0].mi;
+  let end = times.length > 1 ? times[1].h * 60 + times[1].mi : start + 60;
+  if (end <= start) end = start + 60;
+  if (nowMin >= end) return 'ended';
+  if (nowMin >= start) return 'now';
+  return 'upcoming';
+}
+
+function cardHTML(e, timeStatus) {
   const typeClass = typeTagClass[e.type] || 'tag-library';
   const dayShort = (e._displayDay || e.day || '').substring(0, 3);
   const isClosed = e.status === 'Temp. closed';
   return `
-    <div class="event-card" onclick="openDetail(${e.id})">
+    <div class="event-card${timeStatus === 'ended' ? ' card-ended' : ''}" onclick="openDetail(${e.id})">
       <div class="card-left">
         
         <div class="card-title">${currentLang === "es" ? (e.event_name_es || e.event_name) : e.event_name}</div>
@@ -3199,6 +3251,8 @@ function cardHTML(e) {
           <span class="tag ${typeClass}">${currentLang === "es" ? ({"Library":"Biblioteca","Kids Programs":"Programas infantiles","Community Event":"Evento comunitario","Farmers Market":"Mercado agricultores","Festival":"Festival","Fitness":"Ejercicio","Music":"Música"}[e.type] || e.type) : e.type}</span>
           <span class="tag tag-age">${e.ages}</span>
           <span class="tag ${e.cost === 'Free' ? 'tag-free' : 'tag-paid'}">${e.cost}</span>
+          ${timeStatus === 'ended' ? `<span class="tag tag-ended">${currentLang === 'es' ? 'Terminado' : 'Ended'}</span>` : ''}
+          ${timeStatus === 'now' ? `<span class="tag tag-now">${currentLang === 'es' ? 'Ahora mismo' : 'Happening now'}</span>` : ''}
           ${isClosed ? `<span class="tag tag-closed">${getReopenLabel(e)}</span>` : ''}
         </div>
       </div>
