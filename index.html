@@ -1053,7 +1053,9 @@ function mapDbUser(dbUser) {
     margin: 0 2px;
     opacity: 0.75;
   }
-  .header-sub { font-size: 0.65rem; color: #C5D0E4; margin-top: 2px; font-weight: 400; letter-spacing: 0.05em; }
+  .header-sub { font-size: 0.65rem; color: #C5D0E4; margin-top: 2px; font-weight: 400; letter-spacing: 0.05em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px; }
+  .header-sub strong { color: #fff; font-weight: 600; }
+  .header-sub .wk-range { opacity: 0.7; }
   .search-btn {
     width: 30px; height: 30px;
     background: rgba(255,255,255,0.1);
@@ -1067,7 +1069,7 @@ function mapDbUser(dbUser) {
   .filter-bar {
     background: var(--navy);
     padding: 0 0.75rem 0.625rem;
-    display: flex; flex-wrap: wrap; gap: 5px;
+    display: flex; flex-wrap: nowrap; gap: 5px; overflow-x: auto; scrollbar-width: none;
     position: sticky; top: 60px; z-index: 99;
   }
   .filter-pill {
@@ -1187,6 +1189,16 @@ function mapDbUser(dbUser) {
 
   /* Event cards */
   .cards-body { padding: 0.5rem 0.5rem 5rem; display: flex; flex-direction: column; gap: 5px; }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .results-bar { display: none; }
+  .featured-wrap { padding: 0.4rem 0.5rem 0; }
+  .featured-head { font-size: 0.82rem; font-weight: 600; color: var(--navy); padding: 0.25rem 0.25rem 0; }
+  .featured-row { display: flex; gap: 10px; overflow-x: auto; padding: 0.4rem 0.25rem 0.55rem; scrollbar-width: none; }
+  .featured-row::-webkit-scrollbar { display: none; }
+  .feat-card { flex: 0 0 138px; cursor: pointer; }
+  .feat-thumb { height: 82px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
+  .feat-name { font-size: 0.78rem; font-weight: 500; color: var(--navy); margin-top: 5px; line-height: 1.2; }
+  .feat-meta { font-size: 0.66rem; color: var(--text-muted); margin-top: 1px; }
   .section-day-label {
     font-size: 0.68rem;
     font-weight: 600;
@@ -1990,6 +2002,10 @@ function mapDbUser(dbUser) {
 
   <!-- Main content -->
   <div id="mainContent">
+    <div class="featured-wrap" id="featuredWrap" style="display:none">
+      <div class="featured-head" id="featuredHead">Featured</div>
+      <div class="featured-row" id="featuredRow"></div>
+    </div>
     <!-- Coming up section -->
     <div class="coming-up-section" id="comingUpSection" style="display:none!important">
       <div class="coming-up-title">Coming up soon</div>
@@ -3057,9 +3073,9 @@ function renderCards() {
 
   const todayLocale = new Date().toLocaleDateString(currentLang === 'es' ? 'es-MX' : 'en-US', {weekday:'long',month:'long',day:'numeric'});
 
-  countEl.textContent = total === 0
-    ? `${filtered.length} ${filtered.length !== 1 ? evtWordPlural : evtWord} · ${todayLocale}`
-    : `${filtered.length} ${filtered.length !== 1 ? evtWordPlural : evtWord} ${shownWord} · ${total} ${total !== 1 ? filterWordPlural : filterWord} ${activeWord}`;
+  const __rb = document.querySelector('.results-bar');
+  if (__rb) __rb.style.display = total > 0 ? 'flex' : 'none';
+  countEl.textContent = `${total} ${total !== 1 ? filterWordPlural : filterWord} ${activeWord}`;
 
   // Update week nav label
   const weekLabelText = getWeekLabel(currentWeekOffset)
@@ -3071,7 +3087,12 @@ function renderCards() {
   if (prev) prev.style.opacity = currentWeekOffset === 0 ? '0.3' : '1';
 
   const headerSubText = `${filtered.length} ${filtered.length !== 1 ? evtWordPlural : evtWord} · ${weekLabelText}`;
-  document.getElementById('headerSub').textContent = headerSubText;
+  const __wk = getWeekRange(currentWeekOffset);
+  const __fmtD = d => `${d.getMonth()+1}/${d.getDate()}/${String(d.getFullYear()).slice(2)}`;
+  const __hs = document.getElementById('headerSub');
+  const __wl = weekLabelText.replace(/\s*\([^)]*\)\s*$/, "");
+  if (__hs) __hs.innerHTML = `<strong>${filtered.length} ${filtered.length !== 1 ? evtWordPlural : evtWord}</strong> · ${__wl} <span class="wk-range">(${__fmtD(__wk.start)}–${__fmtD(__wk.end)})</span>`;
+  renderFeatured();
 
   if (filtered.length === 0) {
     body.innerHTML = '';
@@ -3237,6 +3258,31 @@ function eventTimeStatus(e, nowMin) {
   return 'upcoming';
 }
 
+function featTint(t){return {Festival:'#FAEEDA',Music:'#E1F5EE','Community Event':'#FBEAF0','Kids Programs':'#EAF3DE',Library:'#E6F1FB'}[t]||'#F1EFE8';}
+function featEmoji(e){var n=(e.event_name||'').toLowerCase();var map=[['pride','\U0001F308'],['juneteenth','\u270A'],['parade','\U0001F3C7'],['western weekend','\U0001F920'],['mountain play','\U0001F3AD'],['theatre','\U0001F3AD'],['fair','\U0001F3A1'],['fourth of july','\U0001F386'],['4th of july','\U0001F386'],['july 4','\U0001F386'],['brits','\U0001F697'],['car show','\U0001F697'],['plein air','\U0001F3A8'],['art','\U0001F3A8'],['birds','\U0001F426'],['nature','\U0001F33F'],['bbq','\U0001F354'],['movie','\U0001F3AC'],['film','\U0001F3AC'],['jazz','\U0001F3B7'],['concert','\U0001F3A4'],['music','\U0001F3B5'],['festival','\U0001F3AA'],['storytime','\U0001F4D6'],['camp','\u26FA'],['swim','\U0001F3CA'],['cooking','\U0001F373']];for(var i=0;i<map.length;i++){if(n.indexOf(map[i][0])>=0)return map[i][1];}return {Festival:'\U0001F3AA',Music:'\U0001F3B5','Community Event':'\U0001F389','Kids Programs':'\U0001F9F8',Library:'\U0001F4DA'}[e.type]||'\u2B50';}
+function featDateStr(d){return d.toLocaleDateString(currentLang==='es'?'es-MX':'en-US',{weekday:'short',month:'short',day:'numeric'});}
+function selectFeatured(){
+  var WD={Sunday:0,Monday:1,Tuesday:2,Wednesday:3,Thursday:4,Friday:5,Saturday:6};
+  var BOOST=['festival','fair','parade','pride','mountain play','juneteenth','western weekend'];
+  var DEM=['fundraiser','garage sale','popsicle','rummage','yard sale'];
+  function pd(x){if(!x)return null;var p=x.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function elig(e){var n=e.event_name||'';if(n.indexOf('Learning Bus')>=0)return false;if(e.type==='Farmers Market')return false;if(e.type==='Library'&&['Weekly','Bi-weekly','Daily'].indexOf(e.cadence)>=0)return false;return ['Festival','Music','Community Event','Kids Programs','Library'].indexOf(e.type)>=0;}
+  function occ(e,lo,hi){if(e.cadence==='One-off'){var d=pd(e.event_date);return (d&&d>=lo&&d<=hi)?d:null;}var day=(e.day||'').split('/')[0].trim();if(!(day in WD))return null;var c=new Date(lo);while(c<=hi){if(c.getDay()===WD[day])return new Date(c);c.setDate(c.getDate()+1);}return null;}
+  function score(e){var n=(e.event_name||'').toLowerCase();var s=({Festival:5,Music:3,'Community Event':3,'Kids Programs':3,Library:2}[e.type])||1;if(e.type==='Festival'&&e.expires&&e.expires!==e.event_date)s+=2;if(e.cadence==='One-off')s+=1;if(BOOST.some(function(b){return n.indexOf(b)>=0;}))s+=2;if(DEM.some(function(x){return n.indexOf(x)>=0;}))s-=5;if(e.featured===true)s+=10;return s;}
+  function skey(e){return (e.event_name||'').split(':')[0].replace(/\s*[\u2014-]\s*.*$/,'').trim().toLowerCase();}
+  var today=new Date();today.setHours(0,0,0,0);
+  function pick(days){var hi=new Date(today);hi.setDate(hi.getDate()+days);var c=[];(allEvents||[]).forEach(function(e){if(!elig(e))return;var d=occ(e,today,hi);var sc=score(e);if(d&&sc>0)c.push({sc:sc,d:d,e:e});});c.sort(function(a,b){return b.sc-a.sc||a.d-b.d;});var out=[],seen={},tc={};for(var i=0;i<c.length;i++){var k=skey(c[i].e),tw=c[i].e.town||'';if(seen[k]||(tc[tw]||0)>=3)continue;out.push(c[i]);seen[k]=1;tc[tw]=(tc[tw]||0)+1;if(out.length>=9)break;}return out;}
+  var sel=pick(6),ext=0;while(sel.length<9&&ext<8){ext++;sel=pick(6+7*ext);}return sel;}
+function renderFeatured(){
+  var wrap=document.getElementById('featuredWrap'),row=document.getElementById('featuredRow');if(!wrap||!row)return;
+  var head=document.getElementById('featuredHead');if(head)head.textContent=currentLang==='es'?'Destacados':'Featured';
+  var sel=selectFeatured();
+  if(!sel.length){wrap.style.display='none';return;}
+  wrap.style.display='block';
+  row.innerHTML=sel.map(function(o){var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
+    return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-thumb" style="background:'+featTint(e.type)+'">'+featEmoji(e)+'</div><div class="feat-name">'+name+'</div><div class="feat-meta">'+featDateStr(o.d)+(e.town?' \u00B7 '+e.town:'')+'</div></div>';
+  }).join('');
+}
 function cardHTML(e, timeStatus) {
   const typeClass = typeTagClass[e.type] || 'tag-library';
   const dayShort = (e._displayDay || e.day || '').substring(0, 3);
