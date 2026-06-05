@@ -1030,9 +1030,8 @@ function mapDbUser(dbUser) {
   /* Header */
   .app-header {
     background: var(--navy);
-    padding: 0.875rem 1rem 0.7rem;
+    padding: 0.6rem 1rem 0.55rem;
     display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 100;
   }
   .header-left { display: flex; align-items: center; gap: 0.625rem; }
   .header-title {
@@ -1055,6 +1054,9 @@ function mapDbUser(dbUser) {
   }
   .header-sub { font-size: 0.65rem; color: #C5D0E4; margin-top: 2px; font-weight: 400; letter-spacing: 0.05em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px; }
   .header-sub strong { color: #fff; font-weight: 600; }
+  .header-sub-row { display: flex; align-items: center; gap: 0.45rem; margin-top: 3px; }
+  .wk-arrow { background: rgba(255,255,255,0.15); border: 0.5px solid rgba(255,255,255,0.3); border-radius: 50%; width: 20px; height: 20px; color: #fff; font-size: 0.8rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; flex: 0 0 auto; }
+  #topCluster { position: sticky; top: 0; z-index: 100; }
   .header-sub .wk-range { opacity: 0.7; }
   .search-btn {
     width: 30px; height: 30px;
@@ -1070,7 +1072,6 @@ function mapDbUser(dbUser) {
     background: var(--navy);
     padding: 0 0.75rem 0.625rem;
     display: flex; flex-wrap: nowrap; gap: 5px; overflow-x: auto; scrollbar-width: none;
-    position: sticky; top: 60px; z-index: 99;
   }
   .filter-pill {
     display: flex; align-items: center; gap: 3px;
@@ -1193,12 +1194,17 @@ function mapDbUser(dbUser) {
   .results-bar { display: none; }
   .featured-wrap { padding: 0.4rem 0.5rem 0; }
   .featured-head { font-size: 0.82rem; font-weight: 600; color: var(--navy); padding: 0.25rem 0.25rem 0; }
-  .featured-row { display: flex; gap: 10px; overflow-x: auto; padding: 0.4rem 0.25rem 0.55rem; scrollbar-width: none; }
+  .featured-scroller { position: relative; }
+  .featured-row { display: flex; gap: 10px; overflow-x: auto; padding: 0.4rem 0.25rem 0.55rem; scrollbar-width: none; scroll-behavior: smooth; }
   .featured-row::-webkit-scrollbar { display: none; }
-  .feat-card { flex: 0 0 138px; cursor: pointer; }
-  .feat-thumb { height: 82px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
-  .feat-name { font-size: 0.78rem; font-weight: 500; color: var(--navy); margin-top: 5px; line-height: 1.2; }
-  .feat-meta { font-size: 0.66rem; color: var(--text-muted); margin-top: 1px; }
+  .feat-card { flex: 0 0 152px; cursor: pointer; }
+  .feat-tile { height: 116px; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+  .ft-name { font-size: 0.85rem; font-weight: 600; color: var(--navy); line-height: 1.22; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .ft-meta { font-size: 0.7rem; color: rgba(21,39,71,0.72); margin-top: 6px; }
+  .feat-arrow { position: absolute; top: calc(50% - 8px); transform: translateY(-50%); z-index: 5; width: 32px; height: 32px; border-radius: 50%; border: 0.5px solid rgba(21,39,71,0.18); background: rgba(255,255,255,0.97); color: var(--navy); font-size: 1.15rem; line-height: 1; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 1px 5px rgba(0,0,0,0.14); padding: 0; }
+  .feat-arrow-left { left: -3px; }
+  .feat-arrow-right { right: -3px; }
+  .feat-arrow.show { display: flex; }
   .section-day-label {
     font-size: 0.68rem;
     font-weight: 600;
@@ -1896,6 +1902,7 @@ function mapDbUser(dbUser) {
 ═══════════════════════════════════════════════════ -->
 <div id="appScreen">
 
+  <div id="topCluster">
   <!-- Header -->
   <div class="app-header">
     <div class="header-left">
@@ -1907,13 +1914,11 @@ function mapDbUser(dbUser) {
       </svg>
       <div>
         <div class="header-title">Out <span class="and">AND</span> About Marin</div>
-        <div class="header-sub" id="headerSub">Loading events…</div>
-        <div id="weekNav" style="display:flex;align-items:center;gap:0.5rem;margin-top:0.25rem">
-          <button onclick="changeWeek(-1)" id="weekPrev"
-            style="background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:50%;width:22px;height:22px;color:white;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0">‹</button>
-          <span id="weekLabel" style="font-size:0.65rem;color:rgba(255,255,255,0.8);font-family:var(--font-sans);letter-spacing:0.03em"></span>
-          <button onclick="changeWeek(1)"
-            style="background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:50%;width:22px;height:22px;color:white;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0">›</button>
+        <div class="header-sub-row">
+          <div class="header-sub" id="headerSub">Loading events…</div>
+          <button onclick="changeWeek(-1)" id="weekPrev" class="wk-arrow">‹</button>
+          <div class="header-sub" id="weekSubLabel"></div>
+          <button onclick="changeWeek(1)" class="wk-arrow">›</button>
         </div>
       </div>
     </div>
@@ -1946,6 +1951,8 @@ function mapDbUser(dbUser) {
       <span class="filter-pill-label" id="lbl-cost">Cost</span>&nbsp;<span class="filter-arrow">▼</span>
     </div>
   </div>
+
+  </div><!-- /topCluster -->
 
   <!-- Dropdowns -->
   <div class="dropdown-panel" id="dd-type">
@@ -2004,7 +2011,11 @@ function mapDbUser(dbUser) {
   <div id="mainContent">
     <div class="featured-wrap" id="featuredWrap" style="display:none">
       <div class="featured-head" id="featuredHead">Featured</div>
-      <div class="featured-row" id="featuredRow"></div>
+      <div class="featured-scroller">
+        <button class="feat-arrow feat-arrow-left" id="featArrowL" onclick="scrollFeatured(-1)" aria-label="Scroll left">‹</button>
+        <div class="featured-row" id="featuredRow"></div>
+        <button class="feat-arrow feat-arrow-right" id="featArrowR" onclick="scrollFeatured(1)" aria-label="Scroll right">›</button>
+      </div>
     </div>
     <!-- Coming up section -->
     <div class="coming-up-section" id="comingUpSection" style="display:none!important">
@@ -3074,15 +3085,15 @@ function renderCards() {
   const todayLocale = new Date().toLocaleDateString(currentLang === 'es' ? 'es-MX' : 'en-US', {weekday:'long',month:'long',day:'numeric'});
 
   const __rb = document.querySelector('.results-bar');
-  if (__rb) __rb.style.display = total > 0 ? 'flex' : 'none';
-  countEl.textContent = `${total} ${total !== 1 ? filterWordPlural : filterWord} ${activeWord}`;
+  const __defAvail = hasDefaultFilters() && !filtersMatchDefaults();
+  if (__rb) __rb.style.display = (total > 0 || __defAvail) ? 'flex' : 'none';
+  countEl.textContent = total > 0 ? `${total} ${total !== 1 ? filterWordPlural : filterWord} ${activeWord}` : '';
 
   // Update week nav label
   const weekLabelText = getWeekLabel(currentWeekOffset)
     .replace('Next 7 days', currentLang === 'es' ? 'Próximos 7 días' : 'Next 7 days')
     .replace('Next week', currentLang === 'es' ? 'Próxima semana' : 'Next week')
     .replace('Week of', currentLang === 'es' ? 'Semana del' : 'Week of');
-  document.getElementById('weekLabel').textContent = weekLabelText;
   const prev = document.getElementById('weekPrev');
   if (prev) prev.style.opacity = currentWeekOffset === 0 ? '0.3' : '1';
 
@@ -3091,7 +3102,9 @@ function renderCards() {
   const __fmtD = d => `${d.getMonth()+1}/${d.getDate()}/${String(d.getFullYear()).slice(2)}`;
   const __hs = document.getElementById('headerSub');
   const __wl = weekLabelText.replace(/\s*\([^)]*\)\s*$/, "");
-  if (__hs) __hs.innerHTML = `<strong>${filtered.length} ${filtered.length !== 1 ? evtWordPlural : evtWord}</strong> · ${__wl} <span class="wk-range">(${__fmtD(__wk.start)}–${__fmtD(__wk.end)})</span>`;
+  if (__hs) __hs.innerHTML = `<strong>${filtered.length} ${filtered.length !== 1 ? evtWordPlural : evtWord}</strong> ·`;
+  const __wsl = document.getElementById('weekSubLabel');
+  if (__wsl) __wsl.innerHTML = `${__wl} <span class="wk-range">(${__fmtD(__wk.start)}–${__fmtD(__wk.end)})</span>`;
   renderFeatured();
 
   if (filtered.length === 0) {
@@ -3258,7 +3271,7 @@ function eventTimeStatus(e, nowMin) {
   return 'upcoming';
 }
 
-function featTint(t){return {Festival:'#FAEEDA',Music:'#E1F5EE','Community Event':'#FBEAF0','Kids Programs':'#EAF3DE',Library:'#E6F1FB'}[t]||'#F1EFE8';}
+function featTint(t){return {Festival:'#C7D3E3',Music:'#DDE4EE','Community Event':'#D3DAE3','Kids Programs':'#E4E8EE',Library:'#CCD7E4'}[t]||'#E6E9EE';}
 function featEmoji(e){var n=(e.event_name||'').toLowerCase();var map=[['pride','\U0001F308'],['juneteenth','\u270A'],['parade','\U0001F3C7'],['western weekend','\U0001F920'],['mountain play','\U0001F3AD'],['theatre','\U0001F3AD'],['fair','\U0001F3A1'],['fourth of july','\U0001F386'],['4th of july','\U0001F386'],['july 4','\U0001F386'],['brits','\U0001F697'],['car show','\U0001F697'],['plein air','\U0001F3A8'],['art','\U0001F3A8'],['birds','\U0001F426'],['nature','\U0001F33F'],['bbq','\U0001F354'],['movie','\U0001F3AC'],['film','\U0001F3AC'],['jazz','\U0001F3B7'],['concert','\U0001F3A4'],['music','\U0001F3B5'],['festival','\U0001F3AA'],['storytime','\U0001F4D6'],['camp','\u26FA'],['swim','\U0001F3CA'],['cooking','\U0001F373']];for(var i=0;i<map.length;i++){if(n.indexOf(map[i][0])>=0)return map[i][1];}return {Festival:'\U0001F3AA',Music:'\U0001F3B5','Community Event':'\U0001F389','Kids Programs':'\U0001F9F8',Library:'\U0001F4DA'}[e.type]||'\u2B50';}
 function featDateStr(d){return d.toLocaleDateString(currentLang==='es'?'es-MX':'en-US',{weekday:'short',month:'short',day:'numeric'});}
 function selectFeatured(){
@@ -3273,6 +3286,9 @@ function selectFeatured(){
   var today=new Date();today.setHours(0,0,0,0);
   function pick(days){var hi=new Date(today);hi.setDate(hi.getDate()+days);var c=[];(allEvents||[]).forEach(function(e){if(!elig(e))return;var d=occ(e,today,hi);var sc=score(e);if(d&&sc>0)c.push({sc:sc,d:d,e:e});});c.sort(function(a,b){return b.sc-a.sc||a.d-b.d;});var out=[],seen={},tc={};for(var i=0;i<c.length;i++){var k=skey(c[i].e),tw=c[i].e.town||'';if(seen[k]||(tc[tw]||0)>=3)continue;out.push(c[i]);seen[k]=1;tc[tw]=(tc[tw]||0)+1;if(out.length>=9)break;}return out;}
   var sel=pick(6),ext=0;while(sel.length<9&&ext<8){ext++;sel=pick(6+7*ext);}return sel;}
+function scrollFeatured(dir){var row=document.getElementById('featuredRow');if(!row)return;var dx=dir*320;if(typeof row.scrollBy==='function'){row.scrollBy({left:dx,behavior:'smooth'});}else{row.scrollLeft+=dx;}setTimeout(updateFeatArrows,360);}
+function updateFeatArrows(){var row=document.getElementById('featuredRow');var L=document.getElementById('featArrowL'),Rg=document.getElementById('featArrowR');if(!row||!L||!Rg)return;var max=row.scrollWidth-row.clientWidth-2;L.classList.toggle('show',row.scrollLeft>4);Rg.classList.toggle('show',max>2&&row.scrollLeft<max);}
+window.addEventListener('resize',function(){if(typeof updateFeatArrows==='function')updateFeatArrows();});
 function renderFeatured(){
   var wrap=document.getElementById('featuredWrap'),row=document.getElementById('featuredRow');if(!wrap||!row)return;
   var head=document.getElementById('featuredHead');if(head)head.textContent=currentLang==='es'?'Destacados':'Featured';
@@ -3280,8 +3296,10 @@ function renderFeatured(){
   if(!sel.length){wrap.style.display='none';return;}
   wrap.style.display='block';
   row.innerHTML=sel.map(function(o){var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
-    return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-thumb" style="background:'+featTint(e.type)+'">'+featEmoji(e)+'</div><div class="feat-name">'+name+'</div><div class="feat-meta">'+featDateStr(o.d)+(e.town?' \u00B7 '+e.town:'')+'</div></div>';
+    return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile" style="background:'+featTint(e.type)+'"><div class="ft-name">'+name+'</div><div class="ft-meta">'+featDateStr(o.d)+(e.town?' \u00B7 '+e.town:'')+'</div></div></div>';
   }).join('');
+  row.onscroll=updateFeatArrows;
+  setTimeout(updateFeatArrows,0);
 }
 function cardHTML(e, timeStatus) {
   const typeClass = typeTagClass[e.type] || 'tag-library';
