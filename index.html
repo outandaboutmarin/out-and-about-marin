@@ -1031,8 +1031,9 @@ function mapDbUser(dbUser) {
   .app-header {
     background: var(--navy);
     padding: 0.6rem 1rem 0.55rem;
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; flex-direction: column; align-items: stretch; gap: 2px;
   }
+  .header-top-row { display: flex; align-items: center; justify-content: space-between; }
   .header-left { display: flex; align-items: center; gap: 0.625rem; }
   .header-title {
     font-family: var(--font-serif);
@@ -1189,13 +1190,13 @@ function mapDbUser(dbUser) {
   .coming-loc { font-size: 0.6rem; color: rgba(255,255,255,0.55); }
 
   /* Event cards */
-  .cards-body { padding: 0.5rem 0.5rem 5rem; display: flex; flex-direction: column; gap: 5px; }
+  .cards-body { padding: 0.2rem 0.5rem 5rem; display: flex; flex-direction: column; gap: 5px; }
   .filter-bar::-webkit-scrollbar { display: none; }
   .results-bar { display: none; }
-  .featured-wrap { padding: 0.4rem 0.5rem 0; }
-  .featured-head { font-size: 0.82rem; font-weight: 600; color: var(--navy); padding: 0.25rem 0.25rem 0; }
+  .featured-wrap { padding: 0.05rem 0.5rem 0; }
+  .featured-head { font-size: 0.82rem; font-weight: 600; color: var(--navy); padding: 0.1rem 0.25rem 0.15rem; }
   .featured-scroller { position: relative; }
-  .featured-row { display: flex; gap: 10px; overflow-x: auto; padding: 0.4rem 0.25rem 0.55rem; scrollbar-width: none; scroll-behavior: smooth; }
+  .featured-row { display: flex; gap: 10px; overflow-x: auto; padding: 0.4rem 0.25rem 0.2rem; scrollbar-width: none; scroll-behavior: smooth; }
   .featured-row::-webkit-scrollbar { display: none; }
   .feat-card { flex: 0 0 152px; cursor: pointer; }
   .feat-tile { height: 116px; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
@@ -1905,6 +1906,7 @@ function mapDbUser(dbUser) {
   <div id="topCluster">
   <!-- Header -->
   <div class="app-header">
+    <div class="header-top-row">
     <div class="header-left">
       <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
         <path d="M30 44L28 42L30 39L29 36L31 34L33 31L33 28L35 25L36 22L38 20L38 17L36 15L34 14L33 12L31 11L28 10L25 10L22 11L19 12L16 11L13 10L10 10L8 11L7 13L7 15L8 17L9 19L8 21L6 22L4 21L3 22L3 24L5 26L7 26L9 27L10 29L10 31L11 33L13 34L14 36L15 38L17 40L19 41L21 42L23 43L26 44Z" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
@@ -1912,18 +1914,17 @@ function mapDbUser(dbUser) {
         <path d="M7 15L10 17L13 18L14 20L13 22" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
         <path d="M30 39L32 40L34 41L35 43L33 44L31 44" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
       </svg>
-      <div>
-        <div class="header-title">Out <span class="and">AND</span> About Marin</div>
-        <div class="header-sub-row">
-          <div class="header-sub" id="headerSub">Loading events…</div>
-          <button onclick="changeWeek(-1)" id="weekPrev" class="wk-arrow">‹</button>
-          <div class="header-sub" id="weekSubLabel"></div>
-          <button onclick="changeWeek(1)" class="wk-arrow">›</button>
-        </div>
-      </div>
+      <div class="header-title">Out <span class="and">AND</span> About Marin</div>
     </div>
     <div class="search-btn" onclick="toggleSearch()">
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4" stroke="white" stroke-width="1.5"/><line x1="9.5" y1="9.5" x2="13" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </div>
+    </div>
+    <div class="header-sub-row">
+      <div class="header-sub" id="headerSub">Loading events…</div>
+      <button onclick="changeWeek(-1)" id="weekPrev" class="wk-arrow">‹</button>
+      <div class="header-sub" id="weekSubLabel"></div>
+      <button onclick="changeWeek(1)" class="wk-arrow">›</button>
     </div>
   </div>
 
@@ -3271,7 +3272,7 @@ function eventTimeStatus(e, nowMin) {
   return 'upcoming';
 }
 
-function featTint(t){return {Festival:'#C7D3E3',Music:'#DDE4EE','Community Event':'#D3DAE3','Kids Programs':'#E4E8EE',Library:'#CCD7E4'}[t]||'#E6E9EE';}
+function featTint(i){var p=['#B7C6DD','#D8DCE1','#9DB1CC','#E3E6EA','#C5D4E8','#ABB6C4','#A6BBD7','#DBDFE5','#BFC9D4'];return p[i%p.length];}
 function featEmoji(e){var n=(e.event_name||'').toLowerCase();var map=[['pride','\U0001F308'],['juneteenth','\u270A'],['parade','\U0001F3C7'],['western weekend','\U0001F920'],['mountain play','\U0001F3AD'],['theatre','\U0001F3AD'],['fair','\U0001F3A1'],['fourth of july','\U0001F386'],['4th of july','\U0001F386'],['july 4','\U0001F386'],['brits','\U0001F697'],['car show','\U0001F697'],['plein air','\U0001F3A8'],['art','\U0001F3A8'],['birds','\U0001F426'],['nature','\U0001F33F'],['bbq','\U0001F354'],['movie','\U0001F3AC'],['film','\U0001F3AC'],['jazz','\U0001F3B7'],['concert','\U0001F3A4'],['music','\U0001F3B5'],['festival','\U0001F3AA'],['storytime','\U0001F4D6'],['camp','\u26FA'],['swim','\U0001F3CA'],['cooking','\U0001F373']];for(var i=0;i<map.length;i++){if(n.indexOf(map[i][0])>=0)return map[i][1];}return {Festival:'\U0001F3AA',Music:'\U0001F3B5','Community Event':'\U0001F389','Kids Programs':'\U0001F9F8',Library:'\U0001F4DA'}[e.type]||'\u2B50';}
 function featDateStr(d){return d.toLocaleDateString(currentLang==='es'?'es-MX':'en-US',{weekday:'short',month:'short',day:'numeric'});}
 function selectFeatured(){
@@ -3295,8 +3296,8 @@ function renderFeatured(){
   var sel=selectFeatured();
   if(!sel.length){wrap.style.display='none';return;}
   wrap.style.display='block';
-  row.innerHTML=sel.map(function(o){var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
-    return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile" style="background:'+featTint(e.type)+'"><div class="ft-name">'+name+'</div><div class="ft-meta">'+featDateStr(o.d)+(e.town?' \u00B7 '+e.town:'')+'</div></div></div>';
+  row.innerHTML=sel.map(function(o,i){var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
+    return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile" style="background:'+featTint(i)+'"><div class="ft-name">'+name+'</div><div class="ft-meta">'+featDateStr(o.d)+(e.town?' \u00B7 '+e.town:'')+'</div></div></div>';
   }).join('');
   row.onscroll=updateFeatArrows;
   setTimeout(updateFeatArrows,0);
