@@ -3277,15 +3277,33 @@ function featEmoji(e){var n=(e.event_name||'').toLowerCase();var map=[['pride','
 function featDateStr(d){return d.toLocaleDateString(currentLang==='es'?'es-MX':'en-US',{weekday:'short',month:'short',day:'numeric'});}
 function selectFeatured(){
   var WD={Sunday:0,Monday:1,Tuesday:2,Wednesday:3,Thursday:4,Friday:5,Saturday:6};
-  var BOOST=['festival','fair','parade','pride','mountain play','juneteenth','western weekend'];
+  var BOOST=['festival','fair','parade','pride','mountain play','juneteenth','western weekend','father'];
   var DEM=['fundraiser','garage sale','popsicle','rummage','yard sale'];
   function pd(x){if(!x)return null;var p=x.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
   function elig(e){var n=e.event_name||'';if(n.indexOf('Learning Bus')>=0)return false;if(e.type==='Farmers Market')return false;if(e.type==='Library'&&['Weekly','Bi-weekly','Daily'].indexOf(e.cadence)>=0)return false;return ['Festival','Music','Community Event','Kids Programs','Library'].indexOf(e.type)>=0;}
-  function occ(e,lo,hi){if(e.cadence==='One-off'){var d=pd(e.event_date);return (d&&d>=lo&&d<=hi)?d:null;}var day=(e.day||'').split('/')[0].trim();if(!(day in WD))return null;var c=new Date(lo);while(c<=hi){if(c.getDay()===WD[day])return new Date(c);c.setDate(c.getDate()+1);}return null;}
-  function score(e){var n=(e.event_name||'').toLowerCase();var s=({Festival:5,Music:3,'Community Event':3,'Kids Programs':3,Library:2}[e.type])||1;if(e.type==='Festival'&&e.expires&&e.expires!==e.event_date)s+=2;if(e.cadence==='One-off')s+=1;if(BOOST.some(function(b){return n.indexOf(b)>=0;}))s+=2;if(DEM.some(function(x){return n.indexOf(x)>=0;}))s-=5;if(e.featured===true)s+=10;return s;}
+  function occ(e,lo,hi){if(e.cadence==='One-off'){var d=pd(e.event_date);return (d&&d>=lo&&d<=hi)?d:null;}var c=new Date(lo);while(c<=hi){if(typeof doesEventOccurOnDate==='function'&&doesEventOccurOnDate(e,new Date(c)))return new Date(c);c.setDate(c.getDate()+1);}return null;}
+  function isLibHi(e){var o=(e.organization||'').toLowerCase();return e.type==='Library'&&e.cadence==='One-off'&&(o.indexOf('mill valley public library')>=0||o.indexOf('sausalito public library')>=0);}
+  function score(e){var n=(e.event_name||'').toLowerCase();var s=({Festival:5,Music:3,'Community Event':3,'Kids Programs':3,Library:2}[e.type])||1;if(e.type==='Festival'&&e.expires&&e.expires!==e.event_date)s+=2;if(e.cadence==='One-off')s+=1;if(BOOST.some(function(b){return n.indexOf(b)>=0;}))s+=2;if(DEM.some(function(x){return n.indexOf(x)>=0;}))s-=5;if(isLibHi(e))s+=2;if(e.featured===true)s+=10;return s;}
   function skey(e){return (e.event_name||'').split(':')[0].replace(/\s*[\u2014-]\s*.*$/,'').trim().toLowerCase();}
   var today=new Date();today.setHours(0,0,0,0);
-  function pick(days){var hi=new Date(today);hi.setDate(hi.getDate()+days);var c=[];(allEvents||[]).forEach(function(e){if(!elig(e))return;var d=occ(e,today,hi);var sc=score(e);if(d&&sc>0)c.push({sc:sc,d:d,e:e});});c.sort(function(a,b){return b.sc-a.sc||a.d-b.d;});var out=[],seen={},tc={};for(var i=0;i<c.length;i++){var k=skey(c[i].e),tw=c[i].e.town||'';if(seen[k]||(tc[tw]||0)>=3)continue;out.push(c[i]);seen[k]=1;tc[tw]=(tc[tw]||0)+1;if(out.length>=9)break;}return out;}
+  function pick(days){
+    var hi=new Date(today);hi.setDate(hi.getDate()+days);
+    var c=[];(allEvents||[]).forEach(function(e){if(!elig(e))return;var d=occ(e,today,hi);var sc=score(e);if(d&&sc>0)c.push({sc:sc,d:d,e:e});});
+    c.sort(function(a,b){return b.sc-a.sc||a.d-b.d;});
+    var out=[],seen={},tc={};
+    function tryAdd(it,bypass){var e=it.e,k=skey(e),tw=e.town||'';if(seen[k])return false;if(!bypass&&(tc[tw]||0)>=3)return false;out.push(it);seen[k]=1;tc[tw]=(tc[tw]||0)+1;return true;}
+    var lib=c.filter(function(x){return isLibHi(x.e);}),reserved=[];
+    ['mill valley public library','sausalito public library'].forEach(function(org){
+      if(reserved.length>=2)return;
+      for(var i=0;i<lib.length;i++){if(reserved.indexOf(lib[i])<0&&(lib[i].e.organization||'').toLowerCase().indexOf(org)>=0){reserved.push(lib[i]);break;}}
+    });
+    for(var i=0;i<lib.length&&reserved.length<2;i++){if(reserved.indexOf(lib[i])<0)reserved.push(lib[i]);}
+    var ws=c.filter(function(x){var e=x.e;return e.featured===true&&e.cadence==='Monthly'&&e.type==='Kids Programs';});
+    for(var i=0;i<ws.length&&reserved.length<4;i++){if(reserved.indexOf(ws[i])<0)reserved.push(ws[i]);}
+    reserved.forEach(function(it){if(out.length<9)tryAdd(it,true);});
+    for(var i=0;i<c.length&&out.length<9;i++)tryAdd(c[i],false);
+    return out;
+  }
   var sel=pick(6),ext=0;while(sel.length<9&&ext<8){ext++;sel=pick(6+7*ext);}return sel;}
 function scrollFeatured(dir){var row=document.getElementById('featuredRow');if(!row)return;var dx=dir*320;if(typeof row.scrollBy==='function'){row.scrollBy({left:dx,behavior:'smooth'});}else{row.scrollLeft+=dx;}setTimeout(updateFeatArrows,360);}
 function updateFeatArrows(){var row=document.getElementById('featuredRow');var L=document.getElementById('featArrowL'),Rg=document.getElementById('featArrowR');if(!row||!L||!Rg)return;var max=row.scrollWidth-row.clientWidth-2;L.classList.toggle('show',row.scrollLeft>4);Rg.classList.toggle('show',max>2&&row.scrollLeft<max);}
