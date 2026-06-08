@@ -1055,8 +1055,9 @@ function mapDbUser(dbUser) {
   }
   .header-sub { font-size: 0.65rem; color: #C5D0E4; margin-top: 2px; font-weight: 400; letter-spacing: 0.05em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px; }
   .header-sub strong { color: #fff; font-weight: 600; }
-  .header-sub-row { display: flex; align-items: center; gap: 0.45rem; margin-top: 3px; }
-  .wk-arrow { background: rgba(255,255,255,0.15); border: 0.5px solid rgba(255,255,255,0.3); border-radius: 50%; width: 20px; height: 20px; color: #fff; font-size: 0.8rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; flex: 0 0 auto; }
+  .header-sub-row { display: flex; align-items: center; gap: 0.55rem; margin-top: 3px; }
+  .wk-nav { display: flex; align-items: center; gap: 0.3rem; }
+  .wk-arrow { background: none; border: none; color: #FAF5E8; font-size: 1.45rem; line-height: 1; cursor: pointer; padding: 0 2px; flex: 0 0 auto; font-weight: 300; opacity: 0.92; }
   #topCluster { position: sticky; top: 0; z-index: 100; }
   .header-sub .wk-range { opacity: 0.7; }
   .search-btn {
@@ -1198,10 +1199,12 @@ function mapDbUser(dbUser) {
   .featured-scroller { position: relative; }
   .featured-row { display: flex; gap: 10px; overflow-x: auto; padding: 0.4rem 0.25rem 0.2rem; scrollbar-width: none; scroll-behavior: smooth; }
   .featured-row::-webkit-scrollbar { display: none; }
-  .feat-card { flex: 0 0 152px; cursor: pointer; }
-  .feat-tile { height: 116px; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
-  .ft-name { font-size: 0.85rem; font-weight: 600; color: var(--navy); line-height: 1.22; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .ft-meta { font-size: 0.7rem; color: rgba(21,39,71,0.72); margin-top: 6px; }
+  .feat-card { flex: 0 0 156px; cursor: pointer; }
+  .feat-tile { height: 124px; border-radius: var(--radius-md); padding: 12px 12px 11px; display: flex; flex-direction: column; overflow: hidden; background: var(--white); border: 1px solid var(--card-border); box-shadow: 0 3px 12px rgba(13,27,62,0.08); }
+  .ft-kicker { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #9AA6BD; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ft-name { font-size: 0.85rem; font-weight: 600; color: var(--navy); line-height: 1.24; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .ft-meta { font-size: 0.7rem; color: var(--text-muted); margin-top: auto; }
+  .ft-meta b { font-weight: 600; color: #3D4A63; }
   .feat-arrow { position: absolute; top: calc(50% - 8px); transform: translateY(-50%); z-index: 5; width: 32px; height: 32px; border-radius: 50%; border: 0.5px solid rgba(21,39,71,0.18); background: rgba(255,255,255,0.97); color: var(--navy); font-size: 1.15rem; line-height: 1; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 1px 5px rgba(0,0,0,0.14); padding: 0; }
   .feat-arrow-left { left: -3px; }
   .feat-arrow-right { right: -3px; }
@@ -1249,16 +1252,18 @@ function mapDbUser(dbUser) {
   .card-meta { display: flex; gap: 3px; margin-top: 4px; flex-wrap: nowrap; align-items: center; }
   .tag {
     font-size: 0.65rem; font-weight: 500;
-    padding: 2px 7px; border-radius: var(--radius-pill);
-    white-space: nowrap; display: inline-block;
+    padding: 2px 8px; border-radius: var(--radius-pill);
+    white-space: nowrap; display: inline-flex; align-items: center; gap: 5px;
+    background: var(--white); border: 1px solid var(--card-border);
   }
-  .tag-library { background: var(--library-bg); color: var(--library-text); }
-  .tag-kids { background: var(--kids-bg); color: var(--kids-text); }
-  .tag-fitness { background: var(--fitness-bg); color: var(--fitness-text); }
-  .tag-festival { background: var(--festival-bg); color: var(--festival-text); }
-  .tag-market { background: var(--market-bg); color: var(--market-text); }
-  .tag-community { background: var(--community-bg); color: var(--community-text); }
-  .tag-music { background: var(--music-bg); color: var(--music-text); }
+  .tag::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex: 0 0 auto; }
+  .tag-library { color: var(--library-text); border-color: color-mix(in srgb, var(--library-text) 34%, #fff); }
+  .tag-kids { color: var(--kids-text); border-color: color-mix(in srgb, var(--kids-text) 34%, #fff); }
+  .tag-fitness { color: var(--fitness-text); border-color: color-mix(in srgb, var(--fitness-text) 34%, #fff); }
+  .tag-festival { color: var(--festival-text); border-color: color-mix(in srgb, var(--festival-text) 34%, #fff); }
+  .tag-market { color: var(--market-text); border-color: color-mix(in srgb, var(--market-text) 34%, #fff); }
+  .tag-community { color: var(--community-text); border-color: color-mix(in srgb, var(--community-text) 34%, #fff); }
+  .tag-music { color: var(--music-text); border-color: color-mix(in srgb, var(--music-text) 34%, #fff); }
 
   /* Holiday notice banner */
   .holiday-notice {
@@ -1276,17 +1281,18 @@ function mapDbUser(dbUser) {
   }
   .holiday-notice-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.05rem; }
   .holiday-notice strong { font-weight: 700; }
-  .tag-free { background: #E1F5EE; color: #085041; }
-  .tag-paid { background: #FAEEDA; color: #633806; }
-  .tag-age { background: #EEEDFE; color: #3C3489; }
-  .tag-closed { background: #FCEBEB; color: #791F1F; }
-  .tag-ended { background: #F1EFE8; color: #5F5E5A; }
-  .tag-now { background: #152747; color: #FAF5E8; }
+  .tag-free { color: #085041; border-color: color-mix(in srgb, #085041 32%, #fff); }
+  .tag-paid { color: #633806; border-color: color-mix(in srgb, #633806 32%, #fff); }
+  .tag-age { color: #3C3489; border-color: color-mix(in srgb, #3C3489 30%, #fff); }
+  .tag-closed { background: #FCEBEB; color: #791F1F; border-color: #F0CFCF; }
+  .tag-ended { background: #F1EFE8; color: #5F5E5A; border-color: #E2DED6; }
+  .tag-now { background: #152747; color: #FAF5E8; border-color: #152747; }
+  .tag-closed::before, .tag-ended::before, .tag-now::before { display: none; }
   .card-ended { opacity: 0.55; }
   .earlier-bar { display: flex; align-items: center; gap: 8px; width: 100%;
-    background: rgba(21,39,71,0.05); border: 1px dashed rgba(21,39,71,0.3);
-    border-radius: 12px; padding: 10px 14px; margin: 2px 0 10px;
-    font-size: 0.8125rem; color: #152747; cursor: pointer; font-weight: 600; }
+    background: var(--white); border: 1px solid var(--card-border);
+    border-radius: var(--radius-md); padding: 10px 14px; margin: 2px 0 10px;
+    font-size: 0.8125rem; color: #3D4A63; cursor: pointer; font-weight: 500; }
   .earlier-bar .eb-hint { margin-left: auto; font-weight: 400; font-size: 0.6875rem; color: rgba(21,39,71,0.55); }
   .earlier-bar .eb-chev { transition: transform .15s; display: inline-block; }
   .earlier-bar.open .eb-chev { transform: rotate(90deg); }
@@ -1922,9 +1928,11 @@ function mapDbUser(dbUser) {
     </div>
     <div class="header-sub-row">
       <div class="header-sub" id="headerSub">Loading events…</div>
-      <button onclick="changeWeek(-1)" id="weekPrev" class="wk-arrow">‹</button>
-      <div class="header-sub" id="weekSubLabel"></div>
-      <button onclick="changeWeek(1)" class="wk-arrow">›</button>
+      <div class="wk-nav">
+        <button onclick="changeWeek(-1)" id="weekPrev" class="wk-arrow">‹</button>
+        <div class="header-sub" id="weekSubLabel"></div>
+        <button onclick="changeWeek(1)" class="wk-arrow">›</button>
+      </div>
     </div>
   </div>
 
@@ -3235,8 +3243,8 @@ function renderCards() {
       const ebLabel = earlierTodayOpen
         ? (currentLang === 'es' ? 'Ocultar eventos anteriores' : 'Hide earlier today')
         : (currentLang === 'es'
-            ? earlier.length + (earlier.length === 1 ? ' evento anterior hoy' : ' eventos anteriores hoy')
-            : earlier.length + (earlier.length === 1 ? ' earlier event today' : ' earlier today'));
+            ? 'Ver ' + earlier.length + (earlier.length === 1 ? ' evento anterior' : ' anteriores')
+            : 'Show ' + earlier.length + ' earlier');
       const ebHint = earlierTodayOpen
         ? (currentLang === 'es' ? 'toca para ocultar' : 'tap to hide')
         : (currentLang === 'es' ? 'toca para ver' : 'tap to show');
@@ -3273,6 +3281,7 @@ function eventTimeStatus(e, nowMin) {
 }
 
 function featTint(i){var p=['#B7C6DD','#D8DCE1','#9DB1CC','#E3E6EA','#C5D4E8','#ABB6C4','#A6BBD7','#DBDFE5','#BFC9D4'];return p[i%p.length];}
+function featKicker(e){var t=(e&&e.type)||'';var m={'Kids Programs':'Kids','Community Event':'Community','Farmers Market':'Market'};return m[t]||t;}
 function featEmoji(e){var n=(e.event_name||'').toLowerCase();var map=[['pride','\U0001F308'],['juneteenth','\u270A'],['parade','\U0001F3C7'],['western weekend','\U0001F920'],['mountain play','\U0001F3AD'],['theatre','\U0001F3AD'],['fair','\U0001F3A1'],['fourth of july','\U0001F386'],['4th of july','\U0001F386'],['july 4','\U0001F386'],['brits','\U0001F697'],['car show','\U0001F697'],['plein air','\U0001F3A8'],['art','\U0001F3A8'],['birds','\U0001F426'],['nature','\U0001F33F'],['bbq','\U0001F354'],['movie','\U0001F3AC'],['film','\U0001F3AC'],['jazz','\U0001F3B7'],['concert','\U0001F3A4'],['music','\U0001F3B5'],['festival','\U0001F3AA'],['storytime','\U0001F4D6'],['camp','\u26FA'],['swim','\U0001F3CA'],['cooking','\U0001F373']];for(var i=0;i<map.length;i++){if(n.indexOf(map[i][0])>=0)return map[i][1];}return {Festival:'\U0001F3AA',Music:'\U0001F3B5','Community Event':'\U0001F389','Kids Programs':'\U0001F9F8',Library:'\U0001F4DA'}[e.type]||'\u2B50';}
 function featDateStr(d){return d.toLocaleDateString(currentLang==='es'?'es-MX':'en-US',{weekday:'short',month:'short',day:'numeric'});}
 function selectFeatured(){
@@ -3315,7 +3324,7 @@ function renderFeatured(){
   if(!sel.length){wrap.style.display='none';return;}
   wrap.style.display='block';
   row.innerHTML=sel.map(function(o,i){var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
-    return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile" style="background:'+featTint(i)+'"><div class="ft-name">'+name+'</div><div class="ft-meta">'+featDateStr(o.d)+(e.town?' \u00B7 '+e.town:'')+'</div></div></div>';
+    return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile"><div class="ft-kicker">'+featKicker(e)+'</div><div class="ft-name">'+name+'</div><div class="ft-meta"><b>'+featDateStr(o.d)+'</b>'+(e.town?' \u00B7 '+e.town:'')+'</div></div></div>';
   }).join('');
   row.onscroll=updateFeatArrows;
   setTimeout(updateFeatArrows,0);
