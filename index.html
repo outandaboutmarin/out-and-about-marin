@@ -69,7 +69,7 @@ function closeFeedbackIfOutside(e) {
 async function submitFeedback() {
   const name = document.getElementById('feedbackName').value.trim();
   const message = document.getElementById('feedbackMessage').value.trim();
-  if (!message) { alert('Please enter your feedback before sending.'); return; }
+  if (!message) { alert(currentLang==='es' ? 'Escribe tu comentario antes de enviar.' : 'Please enter your feedback before sending.'); return; }
 
   const btn = document.querySelector('.feedback-submit');
   btn.textContent = 'Sending…';
@@ -92,10 +92,10 @@ async function submitFeedback() {
       document.getElementById('feedbackSuccess').style.display = 'block';
       setTimeout(closeFeedback, 2500);
     } else {
-      alert('Something went wrong. Please try again.');
+      alert(currentLang==='es' ? 'Algo salió mal. Inténtalo de nuevo.' : 'Something went wrong. Please try again.');
     }
   } catch(e) {
-    alert('Something went wrong. Please try again.');
+    alert(currentLang==='es' ? 'Algo salió mal. Inténtalo de nuevo.' : 'Something went wrong. Please try again.');
   }
 
   btn.textContent = 'Send Feedback';
@@ -133,7 +133,7 @@ const T = {
     farmersMarket: 'Farmers Market',
     festival: 'Festival',
     fitness: 'Fitness',
-    music: 'Music',
+    music: 'Music and Movies',
     // Filter options - Time
     morning: 'Morning',
     afternoon: 'Afternoon',
@@ -228,7 +228,7 @@ const T = {
     farmersMarket: 'Mercado de agricultores',
     festival: 'Festival',
     fitness: 'Ejercicio',
-    music: 'Música',
+    music: 'Música y Películas',
     // Filter options - Time
     morning: 'Mañana',
     afternoon: 'Tarde',
@@ -442,6 +442,12 @@ function applyLanguage() {
   const rT = document.getElementById('resourcesHeaderTitle'); if (rT) rT.textContent = currentLang === 'es' ? 'Recursos' : 'Resources';
   const rS = document.getElementById('resourcesHeaderSub'); if (rS) rS.textContent = currentLang === 'es' ? 'Cosas \u00fatiles para padres de Marin' : 'Handy stuff for Marin parents';
 
+  // Generic [data-es] toggle for static bilingual content (Resources sections, etc.)
+  document.querySelectorAll('[data-es]').forEach(function(el){
+    if (el.getAttribute('data-en-html') === null) el.setAttribute('data-en-html', el.innerHTML);
+    el.innerHTML = (currentLang === 'es') ? el.getAttribute('data-es') : el.getAttribute('data-en-html');
+  });
+
   // Nav labels
   const navLabels = {
     'nav-events': t('navEvents'),
@@ -477,6 +483,9 @@ function applyLanguage() {
   // Search placeholder
   const searchInput = document.getElementById('searchInput');
   if (searchInput) searchInput.placeholder = t('searchPlaceholder');
+  var _en=document.getElementById('editName'); if(_en) _en.placeholder = currentLang==='es' ? 'Tu nombre' : 'Your first name';
+  var _fn=document.getElementById('feedbackName'); if(_fn) _fn.placeholder = currentLang==='es' ? 'Tu nombre (opcional)' : 'Your name (optional)';
+  var _fm=document.getElementById('feedbackMessage'); if(_fm) _fm.placeholder = currentLang==='es' ? 'Tu comentario…' : 'Your feedback…';
 
   // Login screen
   const loginPhoneLabel = document.getElementById('loginPhoneLabel');
@@ -1966,42 +1975,42 @@ function mapDbUser(dbUser) {
   <!-- Dropdowns -->
   <div class="dropdown-panel" id="dd-type">
     <div class="dropdown-header">
-      <span class="dropdown-header-label">Type of event</span>
+      <span class="dropdown-header-label" data-es="Tipo de evento">Type of event</span>
       <span class="dropdown-clear" onclick="clearFilter('type')">Clear</span>
     </div>
     <div id="dd-type-inner"></div>
   </div>
   <div class="dropdown-panel" id="dd-location">
     <div class="dropdown-header">
-      <span class="dropdown-header-label">Location</span>
+      <span class="dropdown-header-label" data-es="Ubicación">Location</span>
       <span class="dropdown-clear" onclick="clearFilter('location')">Clear</span>
     </div>
     <div id="dd-location-inner"></div>
   </div>
   <div class="dropdown-panel" id="dd-day">
     <div class="dropdown-header">
-      <span class="dropdown-header-label">Day of week</span>
+      <span class="dropdown-header-label" data-es="Día de la semana">Day of week</span>
       <span class="dropdown-clear" onclick="clearFilter('day')">Clear</span>
     </div>
     <div id="dd-day-inner"></div>
   </div>
   <div class="dropdown-panel" id="dd-time">
     <div class="dropdown-header">
-      <span class="dropdown-header-label">Time of day</span>
+      <span class="dropdown-header-label" data-es="Hora del día">Time of day</span>
       <span class="dropdown-clear" onclick="clearFilter('time')">Clear</span>
     </div>
     <div id="dd-time-inner"></div>
   </div>
   <div class="dropdown-panel" id="dd-age">
     <div class="dropdown-header">
-      <span class="dropdown-header-label">Age group</span>
+      <span class="dropdown-header-label" data-es="Grupo de edad">Age group</span>
       <span class="dropdown-clear" onclick="clearFilter('age')">Clear</span>
     </div>
     <div id="dd-age-inner"></div>
   </div>
   <div class="dropdown-panel" id="dd-cost">
     <div class="dropdown-header">
-      <span class="dropdown-header-label">Cost</span>
+      <span class="dropdown-header-label" data-es="Costo">Cost</span>
       <span class="dropdown-clear" onclick="clearFilter('cost')">Clear</span>
     </div>
     <div id="dd-cost-inner"></div>
@@ -2184,7 +2193,7 @@ function mapDbUser(dbUser) {
         <p style="margin:0;line-height:1.5">• Super Duper Burgers · <a href="https://maps.google.com/?q=Super+Duper+Burgers+430+Miller+Ave+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">430 Miller Ave</a></p>
         <p style="margin:0;line-height:1.5">• McDonald's · <a href="https://maps.google.com/?q=McDonald's+600+Redwood+Hwy+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">600 Redwood Hwy</a></p>
         <p style="margin:0;line-height:1.5">• Cable Car Coffee · <a href="https://maps.google.com/?q=Cable+Car+Coffee+773+Redwood+Hwy+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">773 Redwood Hwy</a></p>
-        <p style="margin:0;line-height:1.5">• Buckeye Joe · <a href="https://maps.google.com/?q=Buckeye+Joe+15+Shoreline+Hwy+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">15 Shoreline Hwy</a> (walk up window)</p>
+        <p style="margin:0;line-height:1.5">• Buckeye Joe · <a href="https://maps.google.com/?q=Buckeye+Joe+15+Shoreline+Hwy+Mill+Valley+CA" target="_blank" style="color:var(--navy);text-decoration:underline">15 Shoreline Hwy</a> (<span data-es="ventanilla de pie">walk up window</span>)</p>
 
 
         <p style="font-weight:600;color:var(--navy);margin-top:0.5rem;margin-bottom:0.2rem">Corte Madera</p>
@@ -2201,7 +2210,7 @@ function mapDbUser(dbUser) {
         <p style="font-weight:600;color:var(--navy);margin-top:0.5rem;margin-bottom:0.2rem">Novato</p>
         <p style="margin:0;line-height:1.5">• McDonald's · <a href="https://maps.google.com/?q=McDonald's+5600+Nave+Dr+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">5600 Nave Dr</a></p>
         <p style="margin:0;line-height:1.5">• In-N-Out Burger · <a href="https://maps.google.com/?q=In-N-Out+Burger+250+Vintage+Way+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">250 Vintage Way</a></p>
-        <p style="margin:0;line-height:1.5">• Chick-fil-A · <a href="https://maps.google.com/?q=Chick-fil-A+160+Vintage+Way+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">160 Vintage Way</a> (closed Sundays)</p>
+        <p style="margin:0;line-height:1.5">• Chick-fil-A · <a href="https://maps.google.com/?q=Chick-fil-A+160+Vintage+Way+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">160 Vintage Way</a> (<span data-es="cerrado los domingos">closed Sundays</span>)</p>
         <p style="margin:0;line-height:1.5">• Taco Bell · <a href="https://maps.google.com/?q=Taco+Bell+930+Seventh+St+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">930 Seventh St</a></p>
         <p style="margin:0;line-height:1.5">• Jack in the Box · <a href="https://maps.google.com/?q=Jack+in+the+Box+7135+Redwood+Blvd+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">7135 Redwood Blvd</a></p>
         <p style="margin:0;line-height:1.5">• Burger King · <a href="https://maps.google.com/?q=Burger+King+220+Alameda+Del+Prado+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">220 Alameda Del Prado</a></p>
@@ -2211,20 +2220,20 @@ function mapDbUser(dbUser) {
       </div>
     </div>
     <div class="about-section" style="margin-bottom:0.75rem">
-      <div class="about-title">📦 Donate Baby Essentials — Postpartum Support Center</div>
+      <div class="about-title" data-es="📦 Dona Artículos Esenciales para Bebés — Centro de Apoyo Posparto">📦 Donate Baby Essentials — Postpartum Support Center</div>
       <div class="about-text">
-        <p style="margin:0 0 0.5rem;line-height:1.5">The Postpartum Support Center accepts donated baby essentials at two drop-off locations:</p>
+        <p style="margin:0 0 0.5rem;line-height:1.5" data-es="El Centro de Apoyo Posparto acepta donaciones de artículos esenciales para bebés en dos lugares de entrega:">The Postpartum Support Center accepts donated baby essentials at two drop-off locations:</p>
 
-        <p style="font-weight:600;color:var(--navy);margin-bottom:0.2rem">🍼 Postpartum Support Center · San Rafael</p>
+        <p style="font-weight:600;color:var(--navy);margin-bottom:0.2rem" data-es="🍼 Centro de Apoyo Posparto · San Rafael">🍼 Postpartum Support Center · San Rafael</p>
         <p style="margin:0;line-height:1.5"><a href="https://maps.google.com/?q=4162+Redwood+Hwy+San+Rafael+CA+94903" target="_blank" style="color:var(--navy);text-decoration:underline">4162 Redwood Hwy, San Rafael</a></p>
-        <p style="margin:0 0 0.55rem;line-height:1.5">Mon, Tue, Thu, Fri 10 AM–4 PM · Wed 4–7 PM</p>
+        <p style="margin:0 0 0.55rem;line-height:1.5" data-es="Lun, Mar, Jue, Vie 10 a. m.–4 p. m. · Mié 4–7 p. m.">Mon, Tue, Thu, Fri 10 AM–4 PM · Wed 4–7 PM</p>
 
-        <p style="font-weight:600;color:var(--navy);margin-bottom:0.2rem">🧸 Church of Our Saviour · Mill Valley</p>
+        <p style="font-weight:600;color:var(--navy);margin-bottom:0.2rem" data-es="🧸 Church of Our Saviour · Mill Valley">🧸 Church of Our Saviour · Mill Valley</p>
         <p style="margin:0;line-height:1.5"><a href="https://maps.google.com/?q=10+Old+Mill+St+Mill+Valley+CA+94941" target="_blank" style="color:var(--navy);text-decoration:underline">10 Old Mill St, Mill Valley</a></p>
-        <p style="margin:0;line-height:1.5">Mon–Fri 9:30 AM–3 PM · Sun 7:30 AM–12:30 PM</p>
-        <p style="margin:0 0 0.55rem;line-height:1.5">Accepts diapers, wipes, formula, and clothes &amp; shoes (up to age 5).</p>
+        <p style="margin:0;line-height:1.5" data-es="Lun–Vie 9:30 a. m.–3 p. m. · Dom 7:30 a. m.–12:30 p. m.">Mon–Fri 9:30 AM–3 PM · Sun 7:30 AM–12:30 PM</p>
+        <p style="margin:0 0 0.55rem;line-height:1.5" data-es="Acepta pañales, toallitas, fórmula, y ropa y zapatos (hasta los 5 años).">Accepts diapers, wipes, formula, and clothes &amp; shoes (up to age 5).</p>
 
-        <p style="margin:0;line-height:1.5">Questions? <a href="mailto:info@postpartumsc.org" style="color:var(--navy);text-decoration:underline">info@postpartumsc.org</a> · call/text <a href="tel:+14153206707" style="color:var(--navy);text-decoration:underline">415-320-6707</a></p>
+        <p style="margin:0;line-height:1.5"><span data-es="¿Preguntas?">Questions?</span> <a href="mailto:info@postpartumsc.org" style="color:var(--navy);text-decoration:underline">info@postpartumsc.org</a> · <span data-es="llamar/textear">call/text</span> <a href="tel:+14153206707" style="color:var(--navy);text-decoration:underline">415-320-6707</a></p>
       </div>
     </div>
   </div>
@@ -2369,7 +2378,7 @@ let defaultFilters = { type: new Set(), location: new Set(), day: new Set(), tim
 const typeOptions = [
   { value: 'Library', dot: '#378ADD' },
   { value: 'Kids Programs', dot: '#D85A30' },
-  { value: 'Music', dot: '#7B4BC0' },
+  { value: 'Music and Movies', dot: '#7B4BC0' },
   { value: 'Fitness', dot: '#1D9E75' },
   { value: 'Festival', dot: '#BA7517' },
   { value: 'Farmers Market', dot: '#639922' },
@@ -2384,7 +2393,7 @@ const typeTagClass = {
   'Library': 'tag-library', 'Kids Programs': 'tag-kids',
   'Fitness': 'tag-fitness', 'Festival': 'tag-festival',
   'Farmers Market': 'tag-market', 'Community Event': 'tag-community',
-  'Music': 'tag-music'
+  'Music and Movies': 'tag-music'
 };
 
 // ═══════════════════════════════════════════
@@ -2476,14 +2485,14 @@ async function completeSignup() {
   const referral = document.getElementById('referralSource').value;
   const btn = document.querySelector('#signupScreen2 .btn-primary');
 
-  if (!phone || !pin) { alert('Please go back and enter your phone number and PIN.'); showLogin(); return; }
+  if (!phone || !pin) { alert(currentLang==='es' ? 'Vuelve e ingresa tu número y PIN.' : 'Please go back and enter your phone number and PIN.'); showLogin(); return; }
 
   // Check if phone already registered
   if (btn) { btn.textContent = 'Setting up…'; btn.disabled = true; }
   const exists = await dbCheckPhoneExists(phone);
   if (exists) {
     if (btn) { btn.textContent = "Let's go →"; btn.disabled = false; }
-    alert('This phone number is already registered. Please sign in instead.');
+    alert(currentLang==='es' ? 'Este número ya está registrado. Inicia sesión.' : 'This phone number is already registered. Please sign in instead.');
     showLogin();
     return;
   }
@@ -2636,7 +2645,7 @@ const filterOptionTranslations = {
   // Types
   'Library': 'Biblioteca', 'Kids Programs': 'Programas infantiles',
   'Community Event': 'Evento comunitario', 'Farmers Market': 'Mercado agricultores',
-  'Festival': 'Festival', 'Fitness': 'Ejercicio', 'Music': 'Música',
+  'Festival': 'Festival', 'Fitness': 'Ejercicio', 'Music and Movies': 'Música y Películas',
   // Ages
   'Babies (0–12 months)': 'Bebés (0–12 meses)',
   'Toddlers (1–3 yrs)': 'Pequeños (1–3 años)',
@@ -3299,17 +3308,17 @@ function eventTimeStatus(e, nowMin) {
 
 function featTint(i){var p=['#B7C6DD','#D8DCE1','#9DB1CC','#E3E6EA','#C5D4E8','#ABB6C4','#A6BBD7','#DBDFE5','#BFC9D4'];return p[i%p.length];}
 function featKicker(e){var t=(e&&e.type)||'';var m={'Kids Programs':'Kids','Community Event':'Community','Farmers Market':'Market'};return m[t]||t;}
-function featEmoji(e){var n=(e.event_name||'').toLowerCase();var map=[['pride','\U0001F308'],['juneteenth','\u270A'],['parade','\U0001F3C7'],['western weekend','\U0001F920'],['mountain play','\U0001F3AD'],['theatre','\U0001F3AD'],['fair','\U0001F3A1'],['fourth of july','\U0001F386'],['4th of july','\U0001F386'],['july 4','\U0001F386'],['brits','\U0001F697'],['car show','\U0001F697'],['plein air','\U0001F3A8'],['art','\U0001F3A8'],['birds','\U0001F426'],['nature','\U0001F33F'],['bbq','\U0001F354'],['movie','\U0001F3AC'],['film','\U0001F3AC'],['jazz','\U0001F3B7'],['concert','\U0001F3A4'],['music','\U0001F3B5'],['festival','\U0001F3AA'],['storytime','\U0001F4D6'],['camp','\u26FA'],['swim','\U0001F3CA'],['cooking','\U0001F373']];for(var i=0;i<map.length;i++){if(n.indexOf(map[i][0])>=0)return map[i][1];}return {Festival:'\U0001F3AA',Music:'\U0001F3B5','Community Event':'\U0001F389','Kids Programs':'\U0001F9F8',Library:'\U0001F4DA'}[e.type]||'\u2B50';}
+function featEmoji(e){var n=(e.event_name||'').toLowerCase();var map=[['pride','\U0001F308'],['juneteenth','\u270A'],['parade','\U0001F3C7'],['western weekend','\U0001F920'],['mountain play','\U0001F3AD'],['theatre','\U0001F3AD'],['fair','\U0001F3A1'],['fourth of july','\U0001F386'],['4th of july','\U0001F386'],['july 4','\U0001F386'],['brits','\U0001F697'],['car show','\U0001F697'],['plein air','\U0001F3A8'],['art','\U0001F3A8'],['birds','\U0001F426'],['nature','\U0001F33F'],['bbq','\U0001F354'],['movie','\U0001F3AC'],['film','\U0001F3AC'],['jazz','\U0001F3B7'],['concert','\U0001F3A4'],['music','\U0001F3B5'],['festival','\U0001F3AA'],['storytime','\U0001F4D6'],['camp','\u26FA'],['swim','\U0001F3CA'],['cooking','\U0001F373']];for(var i=0;i<map.length;i++){if(n.indexOf(map[i][0])>=0)return map[i][1];}return {Festival:'\U0001F3AA','Music and Movies':'\U0001F3B5','Community Event':'\U0001F389','Kids Programs':'\U0001F9F8',Library:'\U0001F4DA'}[e.type]||'\u2B50';}
 function featDateStr(d){return d.toLocaleDateString(currentLang==='es'?'es-MX':'en-US',{weekday:'short',month:'short',day:'numeric'});}
 function selectFeatured(){
   var WD={Sunday:0,Monday:1,Tuesday:2,Wednesday:3,Thursday:4,Friday:5,Saturday:6};
   var BOOST=['festival','fair','parade','pride','mountain play','juneteenth','western weekend','father'];
   var DEM=['fundraiser','garage sale','popsicle','rummage','yard sale'];
   function pd(x){if(!x)return null;var p=x.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
-  function elig(e){var n=e.event_name||'';if(n.indexOf('Learning Bus')>=0)return false;if(e.type==='Farmers Market')return false;if(e.type==='Library'&&['Weekly','Bi-weekly','Daily'].indexOf(e.cadence)>=0)return false;return ['Festival','Music','Community Event','Kids Programs','Library'].indexOf(e.type)>=0;}
+  function elig(e){var n=e.event_name||'';if(n.indexOf('Learning Bus')>=0)return false;if(e.type==='Farmers Market')return false;if(e.type==='Library'&&['Weekly','Bi-weekly','Daily'].indexOf(e.cadence)>=0)return false;return ['Festival','Music and Movies','Community Event','Kids Programs','Library'].indexOf(e.type)>=0;}
   function occ(e,lo,hi){if(e.cadence==='One-off'){var d=pd(e.event_date);return (d&&d>=lo&&d<=hi)?d:null;}var c=new Date(lo);while(c<=hi){if(typeof doesEventOccurOnDate==='function'&&doesEventOccurOnDate(e,new Date(c)))return new Date(c);c.setDate(c.getDate()+1);}return null;}
   function isLibHi(e){var o=(e.organization||'').toLowerCase();return e.type==='Library'&&e.cadence==='One-off'&&(o.indexOf('mill valley public library')>=0||o.indexOf('sausalito public library')>=0);}
-  function score(e){var n=(e.event_name||'').toLowerCase();var s=({Festival:5,Music:3,'Community Event':3,'Kids Programs':3,Library:2}[e.type])||1;if(e.type==='Festival'&&e.expires&&e.expires!==e.event_date)s+=2;if(e.cadence==='One-off')s+=1;if(BOOST.some(function(b){return n.indexOf(b)>=0;}))s+=2;if(DEM.some(function(x){return n.indexOf(x)>=0;}))s-=5;if(isLibHi(e))s+=2;if(e.featured===true)s+=10;return s;}
+  function score(e){var n=(e.event_name||'').toLowerCase();var s=({Festival:5,'Music and Movies':3,'Community Event':3,'Kids Programs':3,Library:2}[e.type])||1;if(e.type==='Festival'&&e.expires&&e.expires!==e.event_date)s+=2;if(e.cadence==='One-off')s+=1;if(BOOST.some(function(b){return n.indexOf(b)>=0;}))s+=2;if(DEM.some(function(x){return n.indexOf(x)>=0;}))s-=5;if(isLibHi(e))s+=2;if(e.featured===true)s+=10;return s;}
   function skey(e){return (e.event_name||'').split(':')[0].replace(/\s*[\u2014-]\s*.*$/,'').trim().toLowerCase();}
   var today=new Date();today.setHours(0,0,0,0);
   function pick(days){
@@ -3357,7 +3366,7 @@ function cardHTML(e, timeStatus) {
         <div class="card-title">${currentLang === "es" ? (e.event_name_es || e.event_name) : e.event_name}</div>
         <div class="card-venue">${e.venue}${e.town ? ' · ' + e.town : ''}</div>
         <div class="card-meta">
-          <span class="tag ${typeClass}">${currentLang === "es" ? ({"Library":"Biblioteca","Kids Programs":"Programas infantiles","Community Event":"Evento comunitario","Farmers Market":"Mercado agricultores","Festival":"Festival","Fitness":"Ejercicio","Music":"Música"}[e.type] || e.type) : e.type}</span>
+          <span class="tag ${typeClass}">${currentLang === "es" ? ({"Library":"Biblioteca","Kids Programs":"Programas infantiles","Community Event":"Evento comunitario","Farmers Market":"Mercado agricultores","Festival":"Festival","Fitness":"Ejercicio","Music and Movies":"Música y Películas"}[e.type] || e.type) : e.type}</span>
           <span class="tag tag-age">${e.ages}</span>
           <span class="tag ${e.cost === 'Free' ? 'tag-free' : 'tag-paid'}">${e.cost}</span>
           ${timeStatus === 'ended' ? `<span class="tag tag-ended">${currentLang === 'es' ? 'Terminado' : 'Ended'}</span>` : ''}
@@ -3417,7 +3426,7 @@ function openDetail(id) {
   const typeTranslations = {
     'Library': 'Biblioteca', 'Kids Programs': 'Programas infantiles',
     'Community Event': 'Evento comunitario', 'Farmers Market': 'Mercado agricultores',
-    'Festival': 'Festival', 'Fitness': 'Ejercicio', 'Music': 'Música'
+    'Festival': 'Festival', 'Fitness': 'Ejercicio', 'Music and Movies': 'Música y Películas'
   };
   document.getElementById('detailTypeBadge').textContent = currentLang === 'es' ? (typeTranslations[e.type] || e.type) : e.type;
   document.getElementById('detailTitle').textContent = currentLang === 'es' ? (e.event_name_es || e.event_name) : e.event_name;
@@ -3939,7 +3948,7 @@ function saveNewPin() {
   // Sync hashed PIN to Supabase
   hashPin(newPin).then(hashed => dbUpdateUser(currentUser.phone, { pin: hashed }));
   document.getElementById('pinModal').classList.remove('open');
-  alert('PIN updated successfully!');
+  alert(currentLang==='es' ? '¡PIN actualizado!' : 'PIN updated successfully!');
 }
 
 // ═══════════════════════════════════════════
