@@ -447,6 +447,7 @@ function applyLanguage() {
     if (el.getAttribute('data-en-html') === null) el.setAttribute('data-en-html', el.innerHTML);
     el.innerHTML = (currentLang === 'es') ? el.getAttribute('data-es') : el.getAttribute('data-en-html');
   });
+  if (typeof _tideData !== 'undefined' && _tideData) renderTides();
 
   // Nav labels
   const navLabels = {
@@ -1707,6 +1708,30 @@ function mapDbUser(dbUser) {
   }
   .about-text p { margin: 0 0 0.65rem 0; }
   .about-text p:last-child { margin-bottom: 0; }
+  /* ── Tides (Resources) ── */
+  .tide-nav { display:flex; align-items:center; justify-content:center; gap:0.85rem; margin:0.2rem 0 0.45rem; }
+  .tide-arrow { width:34px; height:34px; border-radius:50%; border:1px solid #C5D0E8; background:#EEF2F8;
+    color:var(--navy); font-size:1.25rem; line-height:1; cursor:pointer; font-family:inherit;
+    display:flex; align-items:center; justify-content:center; padding:0; }
+  .tide-arrow:active { background:#dde6f5; }
+  .tide-date { min-width:168px; text-align:center; font-weight:600; color:var(--navy); font-size:0.84rem; }
+  .tide-today-btn { background:none; border:none; color:#3a5a9c; font-size:0.72rem; font-weight:600;
+    cursor:pointer; text-decoration:underline; font-family:inherit; padding:0; }
+  .tide-wrap { overflow-x:auto; border:1px solid #E2E8F2; border-radius:var(--radius-sm); background:#fff; }
+  .tide-grid { border-collapse:collapse; width:100%; table-layout:fixed; font-size:0.76rem; }
+  .tide-grid th, .tide-grid td { padding:0.42rem 0.35rem; text-align:center; border-bottom:1px solid #EEF2F8; }
+  .tide-grid thead th { font-size:0.7rem; font-weight:600; color:var(--navy); background:#F1F5FB; border-bottom:1px solid #DCE4F0; line-height:1.2; }
+  .tide-grid .trl { position:sticky; left:0; background:#F8F9FC; text-align:left; font-weight:600; font-size:0.66rem; white-space:nowrap; border-right:1px solid #DCE4F0; z-index:1; width:78px; }
+  .tide-grid thead .trl { background:#EDF1F8; }
+  .tide-grid .trl.hi { color:#1b5e9c; } .tide-grid .trl.lo { color:#9c6b1b; }
+  .tide-ht { font-weight:700; font-size:0.8rem; color:var(--navy); }
+  .tide-tm { font-size:0.64rem; color:#6b7791; margin-top:1px; }
+  .tide-grid td.flood { background:#FBDDDD; }
+  .tide-grid td.flood .tide-ht { color:#9B1C1C; }
+  .tide-grid td.flood .tide-tm { color:#b35a5a; }
+  .tide-legend { margin-top:0.45rem; font-size:0.64rem; color:#9aa7c0; display:flex; align-items:center; gap:6px; }
+  .tide-legend .sw { background:#FBDDDD; color:#9B1C1C; font-weight:700; padding:1px 6px; border-radius:4px; }
+  .tide-loading { font-size:0.78rem; color:#9aa7c0; padding:0.3rem 0; }
   .about-sig {
     font-family: var(--font-serif);
     font-size: 0.8rem;
@@ -2181,6 +2206,25 @@ function mapDbUser(dbUser) {
     <div class="profile-header-sub" id="resourcesHeaderSub">Handy stuff for Marin parents</div>
   </div>
   <div class="profile-body">
+    <div class="about-section" style="margin-bottom:0.75rem" id="tidesSection">
+      <div class="about-title">🌊 <span data-es="Mareas y carreteras en Marin">Tides &amp; Driving in Marin</span></div>
+      <div class="about-text">
+        <div class="tide-nav">
+          <button class="tide-arrow" onclick="tideStep(-1)" aria-label="Previous day">&#8249;</button>
+          <div class="tide-date" id="tideDateLabel">—</div>
+          <button class="tide-arrow" onclick="tideStep(1)" aria-label="Next day">&#8250;</button>
+        </div>
+        <div style="text-align:center;margin:-0.15rem 0 0.5rem">
+          <button class="tide-today-btn" id="tideTodayBtn" onclick="tideToday()" style="display:none">Today</button>
+        </div>
+        <div class="tide-wrap"><table class="tide-grid"><thead id="tideHead"></thead><tbody id="tideBody"><tr><td class="tide-loading">Loading tides…</td></tr></tbody></table></div>
+        <div class="tide-legend" id="tideLegend" style="display:none"><span class="sw">6.4 ft</span><span data-es="= marea alta sobre 6 ft">= high tide over 6 ft</span></div>
+        <p id="tideSampleNote" style="display:none;margin:0.5rem 0 0;font-size:0.7rem;color:#b08900;font-style:italic"></p>
+        <p style="margin:0.5rem 0 0;font-size:0.66rem;color:#9aa7c0;line-height:1.4">
+          <span data-es="Predicciones de mareas de NOAA (datum MLLW, en pies).">NOAA tide predictions (MLLW datum, feet).</span>
+        </p>
+      </div>
+    </div>
     <div class="about-section" style="margin-bottom:0.75rem">
       <div class="about-title">🚗 Drive-Thrus in Marin County (Nap trapped? I got you.)</div>
       <div class="about-text">
@@ -2589,6 +2633,70 @@ function signOut() {
 // SCREEN NAVIGATION
 // ═══════════════════════════════════════════
 
+// ═══════════════════════════════════════════
+// TIDES (Resources page)
+// ═══════════════════════════════════════════
+let _tideData = null, _tideOffset = 0, _tideLoading = false;
+function _tideYmd(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function ensureTides(){
+  if (_tideData) { renderTides(); return; }
+  if (_tideLoading) return;
+  _tideLoading = true;
+  fetch('tides.json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){ _tideData = d; _tideLoading = false; renderTides(); })
+    .catch(function(){ _tideLoading = false; var b = document.getElementById('tideBody');
+      if (b) b.innerHTML = '<tr><td class="tide-loading">' + (currentLang==='es'?'No se pudieron cargar las mareas.':'Couldn’t load tides.') + '</td></tr>'; });
+}
+function tideStep(n){ _tideOffset += n; renderTides(); }
+function tideToday(){ _tideOffset = 0; renderTides(); }
+function _tideFmt12(hhmm){ var p = hhmm.split(':'), h = +p[0]; var ap = h < 12 ? 'AM' : 'PM'; var h12 = h % 12; if (h12 === 0) h12 = 12; return h12 + ':' + p[1] + ' ' + ap; }
+function _tideCell(slot){
+  if (!slot) return '<span style="color:#c2cad8">—</span>';
+  return '<div class="tide-ht">'+Number(slot[2]).toFixed(1)+' ft</div><div class="tide-tm">'+_tideFmt12(slot[0])+'</div>';
+}
+function renderTides(){
+  if (!_tideData) return;
+  var es = currentLang === 'es';
+  var base = new Date(); base.setHours(0,0,0,0); base.setDate(base.getDate() + _tideOffset);
+  var key = _tideYmd(base);
+  var wd = es ? ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'] : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var mo = es ? ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'] : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var rel = _tideOffset===0 ? (es?'Hoy':'Today') : _tideOffset===1 ? (es?'Mañana':'Tomorrow') : _tideOffset===-1 ? (es?'Ayer':'Yesterday') : '';
+  var dl = document.getElementById('tideDateLabel');
+  if (dl) dl.textContent = (rel ? rel + ' · ' : '') + wd[base.getDay()] + ', ' + mo[base.getMonth()] + ' ' + base.getDate();
+  var tb = document.getElementById('tideTodayBtn');
+  if (tb){ tb.style.display = _tideOffset===0 ? 'none' : 'inline-block'; tb.textContent = es ? 'Hoy' : 'Today'; }
+  var sn = document.getElementById('tideSampleNote');
+  if (sn){ if (_tideData.sample){ sn.style.display='block'; sn.textContent = es ? '⚠ Datos de muestra' : '⚠ Sample data'; } else sn.style.display='none'; }
+  var lg = document.getElementById('tideLegend'); if (lg) lg.style.display = 'flex';
+  var sts = _tideData.stations || [];
+  var head = '<tr><th class="trl">'+(es?'Marea':'Tide')+'</th>';
+  sts.forEach(function(st){ head += '<th>'+st.short+'</th>'; }); head += '</tr>';
+  var hd = document.getElementById('tideHead'); if (hd) hd.innerHTML = head;
+  var cols = sts.map(function(st){
+    var rows = ((_tideData.tides||{})[st.key]||{})[key] || [];
+    return { H: rows.filter(function(r){ return r[1]==='H'; }), L: rows.filter(function(r){ return r[1]==='L'; }) };
+  });
+  var defs = [
+    { lab: es?'Marea 1 · Alta':'Tide 1 · High', cls:'hi', hi:true,  get:function(c){ return c.H[0]; } },
+    { lab: es?'Marea 1 · Baja':'Tide 1 · Low',  cls:'lo', hi:false, get:function(c){ return c.L[0]; } },
+    { lab: es?'Marea 2 · Alta':'Tide 2 · High', cls:'hi', hi:true,  get:function(c){ return c.H[1]; } },
+    { lab: es?'Marea 2 · Baja':'Tide 2 · Low',  cls:'lo', hi:false, get:function(c){ return c.L[1]; } }
+  ];
+  var body = '';
+  defs.forEach(function(rdef){
+    body += '<tr><td class="trl '+rdef.cls+'">'+(rdef.cls==='hi'?'▲ ':'▼ ')+rdef.lab+'</td>';
+    cols.forEach(function(c){
+      var slot = rdef.get(c);
+      var flood = rdef.hi && slot && Number(slot[2]) > 6;
+      body += '<td'+(flood?' class="flood"':'')+'>'+_tideCell(slot)+'</td>';
+    });
+    body += '</tr>';
+  });
+  var bd = document.getElementById('tideBody'); if (bd) bd.innerHTML = body;
+}
+
 function showScreen(screen) {
   document.getElementById('appScreen').style.display = 'none';
   document.getElementById('profileScreen').style.display = 'none';
@@ -2607,6 +2715,7 @@ function showScreen(screen) {
   } else if (screen === 'resources') {
     document.getElementById('resourcesScreen').style.display = 'flex';
     document.getElementById('resourcesScreen').style.flexDirection = 'column';
+    ensureTides();
   } else if (screen === 'settings') {
     showScreen('profile'); // For now settings goes to profile
   }
