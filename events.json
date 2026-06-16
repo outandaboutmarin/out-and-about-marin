@@ -267,7 +267,7 @@
       "registration": "Not required",
       "website": "https://marinlibrary.org",
       "notes": "",
-      "location_group": "Marin City",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Wiggles & Wonder Storytime",
       "description_es": "Cuentos multilingües, canciones y movimiento para niños pequeños y sus familias en Marin City."
     },
@@ -417,7 +417,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/333/Story-Times",
       "notes": "Weekly Friday storytime, 0-5 yrs. New location: 10 Rose Lane (moved from Doherty Drive). Special themed weeks (bilingual, puppet shows etc.) added as separate one-off entries.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Storytime",
       "description_es": "Cuentos semanales para niños de 0 a 5 años los viernes por la mañana en la Biblioteca de Larkspur."
     },
@@ -687,7 +687,7 @@
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
       "notes": "Weather permitting",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Storytime in the Park (with Riva)",
       "description_es": "Cuentos semanales al aire libre en el Parque Robin Sweeny en Sausalito con Riva los martes."
     },
@@ -717,7 +717,7 @@
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
       "notes": "Weather permitting",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Spanish Storytime (with Ingrid)",
       "description_es": "Cuentos en español al aire libre en el Parque Robin Sweeny en Sausalito con Ingrid los jueves."
     },
@@ -837,7 +837,7 @@
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
       "notes": "Second Saturday of each month",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Family Storytime & Art",
       "description_es": "Cuentos y arte para toda la familia el segundo sábado de cada mes en la Biblioteca de Sausalito."
     },
@@ -867,7 +867,7 @@
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
       "notes": "Every 1st Friday of the month. Weather permitting — may be cancelled if raining or poor air quality.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Soul4Kidz Music in the Park",
       "description_es": "Música en vivo para niños el primer viernes de cada mes en el Parque Robin Sweeny en Sausalito. ¡Gratis y al aire libre!"
     },
@@ -897,7 +897,7 @@
       "registration": "Not required",
       "website": "https://sausalito.gov/library",
       "notes": "Every 3rd Friday of the month. Weather permitting — may be cancelled if raining or poor air quality.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "In Harmony Music & Movement",
       "description_es": "Música y movimiento para niños el tercer viernes de cada mes en el Parque Robin Sweeny en Sausalito."
     },
@@ -1377,7 +1377,7 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Moves to Big Tent in rain.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Mart Littles: Music with Mr. Christopher",
       "description_es": "¡Ven a disfrutar música con Mr. Christopher frente a la tienda Poppy en Marin Country Mart todos los miércoles! Gratis, sin inscripción. Se mueve a la Carpa Grande si llueve."
     },
@@ -1407,7 +1407,7 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Outdoor at the big log in front of Copperfield's Books. Moves indoors in bad weather.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Mart Littles Storytime at Copperfield's Books",
       "description_es": "Cuentos para niños todos los jueves frente a Copperfield's Books en Marin Country Mart. Al aire libre, clima permisible."
     },
@@ -1437,7 +1437,7 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Part of the Saturday Farmers Market. Rain or shine.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Mart Littles Music",
       "description_es": "Música infantil gratuita en el Mercado de Agricultores de Marin Country Mart todos los sábados por la mañana. ¡Ven de compras mientras los niños disfrutan música en vivo!"
     },
@@ -1467,7 +1467,7 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Part of the Saturday Farmers Market. Runs 10:30 AM – 1:30 PM. Rain or shine.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Mart Littles Crafts",
       "description_es": "Manualidades gratuitas para niños en el Mercado de Agricultores de Marin Country Mart todos los sábados de 10:30 AM a 1:30 PM."
     },
@@ -1707,7 +1707,7 @@
       "registration": "Not required",
       "website": "https://www.marincountrymart.com/farmers-market",
       "notes": "Year-round. Includes Mart Littles children's programming — music 9:30 AM and crafts 10:30 AM.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Marin Country Mart Farmers Market",
       "description_es": "Mercado de agricultores familiar los sábados con productos frescos, alimentos artesanales, música infantil en vivo y manualidades. De 9 AM a 2 PM."
     },
@@ -1827,7 +1827,7 @@
       "registration": "Not required",
       "website": "https://www.marincounty.gov/departments/awm/farmers-markets-marin",
       "notes": "Every 4th Saturday of the month, year-round. Contact: Ed Zawada (925) 605-6119.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Sausalito Farmers Market",
       "description_es": "Mercado de agricultores mensual en el paseo marítimo de Sausalito con productos locales, artículos artesanales y alimentos especializados. Hasta las 5 PM."
     },
@@ -2397,7 +2397,7 @@
       "registration": "Not required",
       "website": "https://www.sausalito.org/events",
       "notes": "Every 4th Saturday. 2026 dates: May 23, Jun 27, Jul 25, Aug 22, Sep 26, Oct 24, Nov 28, Dec 26.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Sausalito Art & Harbor Days",
       "description_es": "Celebración comunitaria mensual en el paseo marítimo de Sausalito. Música en vivo, exhibiciones de arte local, diversión familiar, ventas en las aceras y precios especiales en restaurantes. ¡Explora el carácter creativo de Sausalito!"
     },
@@ -2514,7 +2514,7 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "description": "Tour the Cold War-era Nike Missile Site in the Marin Headlands with veterans who served there. Kids can explore the underground missile storage area, launcher, and control buildings. A fascinating piece of local Cold War history right in our backyard. Free. Runs until 3 PM.",
       "description_es": "Visita el sitio de misiles Nike de la Guerra Fría en los Marin Headlands con veteranos que sirvieron allí. Los niños pueden explorar el área de almacenamiento subterráneo, el lanzador y los edificios de control. Historia fascinante de la Guerra Fría. Gratis. Hasta las 3 PM.",
       "registration": "Not required",
@@ -2544,7 +2544,7 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "description": "Explore the World War II-era Battery Townsley in the Marin Headlands at its monthly open house. Kids can explore the tunnels, gun batteries, and learn about WWII coastal defense. A fascinating free adventure right in Marin. Runs until 4 PM.",
       "description_es": "Explora la Battery Townsley de la época de la Segunda Guerra Mundial en los Marin Headlands. Los niños pueden explorar los túneles y las baterías de artillería. Una aventura gratuita fascinante en Marin. Hasta las 4 PM.",
       "registration": "Not required",
@@ -2607,7 +2607,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/774/Events",
       "notes": "Likely first in a summer concert series — confirm if recurring.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Música en el Parque",
       "description_es": "Evento musical al aire libre para toda la familia en Piper Park, Larkspur."
     },
@@ -2667,7 +2667,7 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Behind Rustic Bakery. Every Sunday through year-end.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Domingos a Caballo — Paseos en Poni",
       "description_es": "Paseos en poni todos los domingos de 11 am a 3 pm detrás de Rustic Bakery en Marin Country Mart. Una pequeña aventura para los jinetes jóvenes — sin reservaciones, solo ven."
     },
@@ -2697,7 +2697,7 @@
       "registration": "Not required for open play — lessons may require sign-up on-site",
       "website": "https://marincountrymart.com/events/mahjong-at-the-mart",
       "notes": "Every Sunday summer 2026. Lessons 11am–noon (free or small fee). Free open play noon–3pm. Under the Big Tent.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Mahjong en el Mart — Sesiones de los Domingos (Lección Gratis 11 AM)",
       "description_es": "Todos los domingos este verano, únete a la comunidad para jugar Mahjong bajo la Gran Carpa de Marin Country Mart. Inscríbete para una lección de una hora para principiantes (11 am–12 pm), luego quédate para juego libre gratuito hasta las 3 pm."
     },
@@ -2727,7 +2727,7 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Fridays May 8, 15, 22, 29 only. Along the Outerknown–Cynthia Benjamin corridor.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Serie de Primavera los Viernes — Música en Vivo",
       "description_es": "Música en vivo, bebidas botánicas y paseo por las tiendas todos los viernes de mayo en Marin Country Mart. Gratis para todas las edades. 8, 15, 22 y 29 de mayo."
     },
@@ -4107,7 +4107,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/calendar.aspx?EID=4021",
       "notes": "New Larkspur Library location on Rose Lane.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Cuentos con Ritmo con Colors of Spanish",
       "description_es": "Programa bilingüe de música y movimiento para niños pequeños de Colors of Spanish. Canciones, rimas y movimiento en español e inglés — bienvenidos todos los niveles de experiencia en español."
     },
@@ -4137,7 +4137,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/calendar.aspx?EID=4024",
       "notes": "New Larkspur Library location on Rose Lane.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "¡Todo el Mundo Toca el Tambor! — Biblioteca de Larkspur",
       "description_es": "Un programa de percusión y tambores divertido, interactivo y lleno de energía para niños y familias en la Biblioteca de Larkspur. ¡Prepárate para tocar tambores y moverte al ritmo!"
     },
@@ -4167,7 +4167,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/calendar.aspx?EID=4025",
       "notes": "New Larkspur Library location on Rose Lane.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Teatro de Títeres: La Aventura Pirata de Tommy",
       "description_es": "Únete al Puppet Art Theater para 'La Aventura Pirata de Tommy' — una obra de títeres en vivo para niños y familias en la Biblioteca de Larkspur. ¡Una aventura de piratas llena de diversión y sorpresas!"
     },
@@ -4197,7 +4197,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/calendar.aspx?EID=4022",
       "notes": "New Larkspur Library location on Rose Lane.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Cuentos con Ritmo con Colors of Spanish",
       "description_es": "Programa bilingüe de música y movimiento para niños pequeños de Colors of Spanish. Canciones, rimas y movimiento en español e inglés — bienvenidos todos los niveles de experiencia en español."
     },
@@ -4227,7 +4227,7 @@
       "registration": "Not required",
       "website": "https://www.friendsoflarkspurlibrary.org/events/",
       "notes": "Annual May event.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Festival de Bon Air",
       "description_es": "Festival comunitario anual en el Centro Bon Air en Larkspur. Familiar con vendedores comunitarios, actividades y diversión para todas las edades. Organizado con los Amigos de la Biblioteca de Larkspur."
     },
@@ -4257,7 +4257,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/calendar.aspx?CID=24",
       "notes": "Confirm exact time at ci.larkspur.ca.us closer to July 4.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Desfile y Festival del 4 de Julio de Corte Madera / Larkspur",
       "description_es": "Desfile y festival anual del 4 de julio por el centro de Corte Madera y Larkspur. Una querida tradición comunitaria de Marin con carrozas, bandas de música y diversión familiar para todas las edades."
     },
@@ -4497,7 +4497,7 @@
       "registration": "Tickets required",
       "website": "https://www.schooner-freda-b.com",
       "notes": "Confirm time and tickets at website.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Navegación al Atardecer del Día de los Caídos — Sausalito",
       "description_es": "Navegación vespertina por la Bahía de San Francisco a bordo de la histórica Goleta Freda B en el Día de los Caídos, disfrutando de las vistas icónicas de la bahía desde el agua."
     },
@@ -4707,7 +4707,7 @@
       "registration": "None",
       "website": "https://marincountrymart.com/events",
       "notes": "Free to watch. Fun family-friendly event.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Concurso de Cocina para Niños en Marin Country Mart",
       "description_es": "Competencia de cocina para niños bajo la Gran Carpa de Marin Country Mart. Los jóvenes chefs muestran su creatividad y habilidades culinarias. Premios otorgados; juzgado por la chef Veronica Salazar de El Huarache Loco. Entrada gratuita."
     },
@@ -4797,7 +4797,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/our-city/local-events/special-events",
       "notes": "Fridays Jun 5–Sep 25, no show Jul 3. Free. Bring low chair.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Serie de conciertos gratuitos de jazz y blues al aire libre en el Parque Gabrielson de Sausalito. Todos los viernes del 5 de junio al 25 de septiembre (sin función el 3 de julio). Vistas espectaculares de la bahía; traiga una silla baja. De 6:30 a 8 pm."
     },
@@ -5277,7 +5277,7 @@
       "registration": "None",
       "website": "https://marinlibrary.org/learning-bus/",
       "notes": "Schedule subject to change. Call/text (415) 497-1666 to confirm. May 2026 stop.",
-      "location_group": "Marin City",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Bus del Aprendizaje de la Biblioteca — Golden Gate Village",
       "description_es": "El Bus del Aprendizaje de la MCFL visita Golden Gate Village en Marin City el Wednesday, 6 de May, de 2:45 PM a 4:00 PM. Programa preescolar bilingüe (inglés/español) gratuito de entrada libre para niños de 0 a 5 años y sus cuidadores. Las actividades incluyen juego, cuentos, exploración y arte. No se requiere registro. El horario está sujeto a cambios — llame o envíe un mensaje al (415) 497-1666 para confirmar."
     },
@@ -5577,7 +5577,7 @@
       "registration": "None",
       "website": "https://marinlibrary.org/learning-bus/",
       "notes": "Schedule subject to change. Call/text (415) 497-1666 to confirm. May 2026 stop.",
-      "location_group": "Marin City",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Bus del Aprendizaje de la Biblioteca — Golden Gate Village",
       "description_es": "El Bus del Aprendizaje de la MCFL visita Golden Gate Village en Marin City el Wednesday, 13 de May, de 2:45 PM a 4:00 PM. Programa preescolar bilingüe (inglés/español) gratuito de entrada libre para niños de 0 a 5 años y sus cuidadores. Las actividades incluyen juego, cuentos, exploración y arte. No se requiere registro. El horario está sujeto a cambios — llame o envíe un mensaje al (415) 497-1666 para confirmar."
     },
@@ -5877,7 +5877,7 @@
       "registration": "None",
       "website": "https://marinlibrary.org/learning-bus/",
       "notes": "Schedule subject to change. Call/text (415) 497-1666 to confirm. May 2026 stop.",
-      "location_group": "Marin City",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Bus del Aprendizaje de la Biblioteca — Golden Gate Village",
       "description_es": "El Bus del Aprendizaje de la MCFL visita Golden Gate Village en Marin City el Wednesday, 20 de May, de 2:45 PM a 4:00 PM. Programa preescolar bilingüe (inglés/español) gratuito de entrada libre para niños de 0 a 5 años y sus cuidadores. Las actividades incluyen juego, cuentos, exploración y arte. No se requiere registro. El horario está sujeto a cambios — llame o envíe un mensaje al (415) 497-1666 para confirmar."
     },
@@ -5997,7 +5997,7 @@
       "registration": "None",
       "website": "https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t",
       "notes": "Second Sunday of each month. Next hike: Sunday, June 14, 2026 at 9:30 AM — back to the full King Mountain scenic loop (a longer, more scenic route than the previous shorter outing). Meet point: https://maps.app.goo.gl/7ADgHvyadBYa2PGj8. Day and route can vary month to month — join the WhatsApp group for each meetup’s exact details.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Caminatas Mensuales de Marin Hiking Moms",
       "description_es": "Marin Hiking Moms es un grupo comunitario para mujeres y sus hijos que quieren desconectarse del ruido y reconectarse con la naturaleza y con otras mujeres. Un sabado por la manana cada mes, el grupo se reune en King Mountain Loop Trail en Larkspur para una caminata facil y pintoresca seguida de cafe. Todos los niveles de condicion fisica son bienvenidos. Venga solo, traiga un amigo, traiga a su bebe (apto para portabebes) y/o un perro. Venga una vez o venga seguido. Unase al grupo de WhatsApp para los ultimos detalles y para conectarse con el grupo: https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t. Siganos en Instagram: @marinhikingmoms."
     },
@@ -6867,7 +6867,7 @@
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events",
       "notes": "2nd Wednesday monthly. DrawBridge nonprofit arts program. Drop-in.",
-      "location_group": "Marin City",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Programa de Arte DrawBridge en MCFL — Marin City",
       "description_es": "Programa de artes expresivas gratuito para niños de DrawBridge. Sin inscripción. Todos los meses el 2° miércoles, de 4 a 5 pm."
     },
@@ -6927,7 +6927,7 @@
       "registration": "Not required",
       "website": "https://www.sausalitocommunityboating.org/",
       "notes": "12 pm sailing demo. Light lunch served. Great intro to sailing for families.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Día de Navegación Comunitaria — SCBC",
       "description_es": "Jornada de puertas abiertas gratuita en el Centro de Navegación Comunitaria de Sausalito. Paseos en bote y remo, demostración de vela a las 12 pm y almuerzo ligero. Sin experiencia necesaria. Todas las edades. De 11 am a 2 pm."
     },
@@ -7317,7 +7317,7 @@
       "registration": "None",
       "website": "https://www.ci.larkspur.ca.us/774/Events",
       "notes": "One-off 2026-05-29. Part of Music in the Park series May 22–Jun 19.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Música en el Parque — Larkspur",
       "description_es": "Música en vivo gratuita al aire libre en Piper Park, Larkspur. De 6 a 8 pm. Bebidas y bocadillos disponibles para comprar."
     },
@@ -7347,7 +7347,7 @@
       "registration": "None",
       "website": "https://www.ci.larkspur.ca.us/774/Events",
       "notes": "One-off 2026-06-05. Part of Music in the Park series May 22–Jun 19.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Música en el Parque — Larkspur",
       "description_es": "Música en vivo gratuita al aire libre en Piper Park, Larkspur. De 6 a 8 pm. Bebidas y bocadillos disponibles para comprar."
     },
@@ -7377,7 +7377,7 @@
       "registration": "None",
       "website": "https://www.ci.larkspur.ca.us/774/Events",
       "notes": "One-off 2026-06-12. Part of Music in the Park series May 22–Jun 19.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Música en el Parque — Larkspur",
       "description_es": "Música en vivo gratuita al aire libre en Piper Park, Larkspur. De 6 a 8 pm. Bebidas y bocadillos disponibles para comprar."
     },
@@ -7407,7 +7407,7 @@
       "registration": "None",
       "website": "https://www.ci.larkspur.ca.us/774/Events",
       "notes": "One-off 2026-06-19. Part of Music in the Park series May 22–Jun 19.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Música en el Parque — Larkspur",
       "description_es": "Música en vivo gratuita al aire libre en Piper Park, Larkspur. De 6 a 8 pm. Bebidas y bocadillos disponibles para comprar."
     },
@@ -7737,7 +7737,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-06-12. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -7767,7 +7767,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-06-19. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -7797,7 +7797,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-06-26. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -7827,7 +7827,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-07-03. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -7857,7 +7857,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-07-10. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -7887,7 +7887,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-07-17. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -7917,7 +7917,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-07-24. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -7947,7 +7947,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-07-31. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -7977,7 +7977,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-08-07. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -8007,7 +8007,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-08-14. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -8037,7 +8037,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-08-21. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -8067,7 +8067,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-08-28. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
     },
@@ -8097,7 +8097,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-09-04. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos."
     },
@@ -8127,7 +8127,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-09-11. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos."
     },
@@ -8157,7 +8157,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-09-18. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos."
     },
@@ -8187,7 +8187,7 @@
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
       "notes": "One-off 2026-09-25. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
       "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos."
     },
@@ -8727,7 +8727,7 @@
       "registration": "RSVP recommended — Venmo @PresidioRidingClub",
       "website": "https://www.presidioridingclub.org",
       "notes": "One-off May 31. Suggested donation ~$20/child via Venmo. Space limited — RSVP.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Día Familiar en el Club de Equitación Presidio",
       "description_es": "Día familiar en los establos históricos del Presidio Riding Club en el Marin Headlands. Conoce los caballos, explora los establos, trepa pacas de heno y haz manualidades. Donación sugerida ~$20 por niño."
     },
@@ -8847,7 +8847,7 @@
       "registration": "Required — register at lovestoryyoga.com",
       "website": "https://lovestoryyoga.com/schedule-larkspur",
       "notes": "Week-long camp Jun 22–26. Ages 3–6. 8–11 am daily; optional aftercare noon–3 pm. Paid. Space limited.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Campamento de Verano de Yoga para Niños — Love Story Yoga",
       "description_es": "El primer campamento de verano para niños de Love Story Yoga — una semana creativa y enriquecedora para niños de 3 a 6 años. Yoga, mindfulness, arte y juego al aire libre. De 8 a 11 am, lunes a viernes del 22 al 26 de junio. Cuidado opcional de mediodía a 3 pm."
     },
@@ -8877,7 +8877,7 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events/fathers-day-bbq-with-suppenkuche",
       "notes": "One-off Jun 16. Father's Day BBQ by Suppenkuche. Under the Big Tent. 11am–6pm.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "BBQ del Día del Padre en Marin Country Mart",
       "description_es": "BBQ anual del Día del Padre bajo la gran carpa con Suppenküche: costillas, bratwurst, hamburguesas, pretzels y más, además de música en vivo (11–2 y 3–5). Todas las edades."
     },
@@ -8939,7 +8939,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/333/Story-Times",
       "notes": "One-off 2026-06-12. Part of the returning Larkspur Library Friday storytime series.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur/Greenbrae"
     },
     {
       "id": 355,
@@ -8969,7 +8969,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/333/Story-Times",
       "notes": "One-off 2026-06-26. Part of the returning Larkspur Library Friday storytime series.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur/Greenbrae"
     },
     {
       "id": 356,
@@ -8999,7 +8999,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/333/Story-Times",
       "notes": "One-off 2026-07-03. Part of the returning Larkspur Library Friday storytime series.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur/Greenbrae"
     },
     {
       "id": 357,
@@ -9029,7 +9029,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/333/Story-Times",
       "notes": "One-off 2026-07-17. Part of the returning Larkspur Library Friday storytime series.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur/Greenbrae"
     },
     {
       "id": 358,
@@ -9059,7 +9059,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/333/Story-Times",
       "notes": "One-off 2026-07-24. Part of the returning Larkspur Library Friday storytime series.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur/Greenbrae"
     },
     {
       "id": 359,
@@ -9089,7 +9089,7 @@
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/333/Story-Times",
       "notes": "One-off 2026-07-31. Part of the returning Larkspur Library Friday storytime series.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur/Greenbrae"
     },
     {
       "id": 360,
@@ -9119,7 +9119,7 @@
       "registration": "Not required — drop in all day",
       "website": "https://www.phoenixusedbookshop.com",
       "notes": "Grand Opening — drop in all day May 16. Free goodies + $100 gift card giveaway. Kids/teens bookshop, ages 0-16. New store in Larkspur.",
-      "location_group": "Larkspur"
+      "location_group": "Larkspur/Greenbrae"
     },
     {
       "id": 361,
@@ -9419,7 +9419,7 @@
       "registration": "Not required — drop in",
       "website": "https://marinlibrary.org/learning-bus/",
       "notes": "Learning Bus June 2026. Schedule subject to change. Call/text (415) 497-1666 to confirm. Bus goes on summer break after Jun 11.",
-      "location_group": "Marin City"
+      "location_group": "Sausalito/Marin City"
     },
     {
       "id": 371,
@@ -9719,7 +9719,7 @@
       "registration": "Not required — drop in",
       "website": "https://marinlibrary.org/learning-bus/",
       "notes": "Learning Bus June 2026. Schedule subject to change. Call/text (415) 497-1666 to confirm. Bus goes on summer break after Jun 11.",
-      "location_group": "Marin City"
+      "location_group": "Sausalito/Marin City"
     },
     {
       "id": 381,
@@ -10377,7 +10377,7 @@
       "registration": "Not required",
       "website": "https://www.marinmommies.com/marin-4th-july-parades-fireworks-and-more",
       "notes": "July 4. Pairs with parade ID 187. Benefits Post 313 & Troop 43.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Desayuno de Panqueques del 4 de Julio de la Legión Americana — Larkspur",
       "description_es": "Desayuno de panqueques y puesto de Gin Fizz organizado por la Legión Americana Post 313 y la Tropa 43 de Boy Scouts en el centro de Larkspur, una gran parada antes del desfile de Corte Madera–Larkspur. Panqueques, salchichas, jugo y café."
     },
@@ -10557,7 +10557,7 @@
       "registration": "Not required",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/4th-of-july-festivities",
       "notes": "July 4. Parade morning + fireworks evening; consider splitting if desired.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Desfile y Espectáculo de Fuegos Artificiales del 4 de Julio de Sausalito",
       "description_es": "Desfile del Día de la Independencia de Sausalito por 2nd y Main, un picnic vespertino en Dunphy Park y un espectáculo nocturno de fuegos artificiales en Gabrielson Park con música en vivo de Top Shelf Classics (6:30–9 pm); los fuegos comienzan ~9:15 pm. Todas las edades. Gratis."
     },
@@ -10707,7 +10707,7 @@
       "registration": "Not required",
       "website": "https://sausalitolibrary.org",
       "notes": "Sausalito Public Library Free Summer Reading Events 2026 (from library flyer).",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Presentación de Fauna Nativa",
       "description_es": "Educadores del centro de rehabilitación Lindsay Wildlife Experience de Walnut Creek presentan embajadores animales vivos — un ave rapaz, un reptil y un animal misterioso sorpresa — y destacan las adaptaciones que les ayudan a prosperar en la naturaleza de California. Parte de los eventos gratuitos de lectura de verano de la Biblioteca de Sausalito. Todas las edades. Gratis."
     },
@@ -10737,7 +10737,7 @@
       "registration": "Not required",
       "website": "https://sausalitolibrary.org",
       "notes": "Sausalito Public Library Free Summer Reading Events 2026 (from library flyer).",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Show de Títeres y Magia de Dinosaurios",
       "description_es": "Un show de magia y títeres de dinosaurios lleno de energía, risas, sorpresas y trucos aptos para niños que encantará al público joven. Parte de los eventos gratuitos de lectura de verano de la Biblioteca de Sausalito. Todas las edades. Gratis."
     },
@@ -10767,7 +10767,7 @@
       "registration": "Not required",
       "website": "https://sausalitolibrary.org",
       "notes": "Sausalito Public Library Free Summer Reading Events 2026 (from library flyer).",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Duncan Playful Circus: El Verdadero Color de Amor",
       "description_es": "Una alegre actuación bilingüe de teatro circense musical — con chistes, malabares y un gran tablero magnético interactivo — que sigue a una niña en un viaje de descubrimiento hacia la naturaleza. Presentado por Duncan Playful Circus como parte de los eventos gratuitos de lectura de verano de la Biblioteca de Sausalito. Todas las edades. Gratis."
     },
@@ -10797,7 +10797,7 @@
       "registration": "Not required",
       "website": "https://sausalitolibrary.org",
       "notes": "Sausalito Public Library Free Summer Reading Events 2026 (from library flyer).",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Didgeridoo Down Under",
       "description_es": "Una presentación participativa y enérgica de música, cultura, arte, ciencia y risas australianas — ven a escuchar y aprender todo sobre los didgeridoos y crea tu propia música. Parte de los eventos gratuitos de lectura de verano de la Biblioteca de Sausalito. Todas las edades. Gratis."
     },
@@ -10827,7 +10827,7 @@
       "registration": "Not required",
       "website": "https://sausalitolibrary.org",
       "notes": "Sausalito Public Library Free Summer Reading Events 2026 (from library flyer).",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Reptiles con Jungle James Animal Adventures",
       "description_es": "Conoce de cerca a amigos reptiles vivos de todo el mundo y aprende sobre sus hábitats, costumbres y características únicas en esta presentación interactiva con Jungle James Animal Adventures. Parte de los eventos gratuitos de lectura de verano de la Biblioteca de Sausalito. Todas las edades. Gratis."
     },
@@ -10857,7 +10857,7 @@
       "registration": "Not required",
       "website": "https://sausalitolibrary.org",
       "notes": "Sausalito Public Library Free Summer Reading Events 2026 (from library flyer).",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Mike el Hombre de las Burbujas",
       "description_es": "Mike, el Hombre de las Burbujas de San Francisco, trae su fabuloso espectáculo de burbujas gigantes y la creación interactiva de burbujas al césped de Sweeny Park. Parte de los eventos gratuitos de lectura de verano de la Biblioteca de Sausalito. Todas las edades. Gratis."
     },
@@ -11217,7 +11217,7 @@
       "registration": "Not required",
       "website": "https://bonair.com/brits/",
       "notes": "",
-      "location_group": "Greenbrae",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Brits by the Bay — Exposición de Autos Clásicos Británicos",
       "description_es": "Pasea entre autos clásicos británicos en esta exposición gratuita y familiar en el césped de Bon Air Center."
     },
@@ -11277,7 +11277,7 @@
       "registration": "Required",
       "website": "https://beltib.libnet.info/event/16591049",
       "notes": "",
-      "location_group": "Tiburon",
+      "location_group": "Tiburon/Belvedere",
       "event_name_es": "Compañeros de Lectura — Lee con un Voluntario Adolescente",
       "description_es": "Niños que entran a primer grado en adelante leen con un voluntario adolescente en sesiones de 30 minutos durante el verano. Reserva una sesión por día por niño en el calendario de la biblioteca."
     },
@@ -11307,7 +11307,7 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Noches de Cine de los Viernes en el Mart",
       "description_es": "Noche de cine familiar al aire libre todos los viernes a las 6 pm en el césped de Marin Country Mart, del 19 de junio al 30 de octubre. Compra la cena en los restaurantes del Mart y acomódate."
     },
@@ -11337,7 +11337,7 @@
       "registration": "Required",
       "website": "https://www.thelarkspurchamber.org",
       "notes": "",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Batalla de las Bandas",
       "description_es": "2ª Batalla de las Bandas anual de la Cámara de Comercio de Larkspur: cinco horas de música en vivo con siete bandas, además de comida, bebidas, un mercado y una Zona Infantil gratuita todo el día a cargo de Andrews Camps. Entradas: $45 general, $20 menores de 20, gratis menores de 5 años. Estacionamiento gratuito en Piper Park, Redwood HS y el centro comercial Lucky."
     },
@@ -11397,7 +11397,7 @@
       "registration": "None",
       "website": "",
       "notes": "Weekly, every Wednesday. Meet 4:55 PM; on the trail 5–6 PM. About 2 miles round trip. Carrier- and stroller-friendly. Meet at the Rodeo Ave Trailhead, Sausalito.",
-      "location_group": "Sausalito",
+      "location_group": "Sausalito/Marin City",
       "event_name_es": "Wednesday Night Rodeo — Caminata para Mamás y Bebés",
       "description_es": "Caminata semanal de 2 millas (ida y vuelta) para mamás y bebés — trae un portabebés o un cochecito. Punto de encuentro a las 4:55 PM en el Rodeo Ave Trailhead en Sausalito; en el sendero de 5 a 6 PM. Todos los miércoles, llueva o truene."
     },
@@ -11427,7 +11427,7 @@
       "registration": "None",
       "website": "https://marincountrymart.com/",
       "notes": "Exact start time to confirm.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Picnic del 45º Aniversario de Copperfield's Books",
       "description_es": "Copperfield's Books celebra su 45º aniversario con un picnic comunitario con pastel en Marin Country Mart en Larkspur. Una celebración familiar con pastel y diversión comunitaria."
     },
@@ -11547,7 +11547,7 @@
       "registration": "None",
       "website": "http://tiburonclassiccarshow.com/",
       "notes": "",
-      "location_group": "Tiburon",
+      "location_group": "Tiburon/Belvedere",
       "event_name_es": "Exhibición de Autos Clásicos de Tiburon",
       "description_es": "La exhibición anual de autos clásicos de Tiburon trae automóviles antiguos y clásicos a Main Street, en el centro de Tiburon junto al agua, de 11 am a 4 pm. Entrada gratuita y diversión para toda la familia."
     },
@@ -11697,7 +11697,7 @@
       "registration": "None",
       "website": "https://www.ronniesawesomelist.com/free-music-marin",
       "notes": "Tuesdays, June–August. Exact start time to confirm (late morning before lunch).",
-      "location_group": "Greenbrae",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Música de Verano con Megan — Bon Air (Martes)",
       "description_es": "Clase de música de verano gratuita y semanal para los más pequeños (0–5 años) y sus cuidadores con la artista infantil Megan Schoenbohm — cantar, bailar y juego interactivo en Bon Air Center. Los martes, de junio a agosto."
     },
@@ -11727,7 +11727,7 @@
       "registration": "None",
       "website": "https://www.tiburonchamber.org/friday-night-on-main/",
       "notes": "2026 dates: Jun 12 & Aug 21. 5:30–8:30 pm.",
-      "location_group": "Tiburon",
+      "location_group": "Tiburon/Belvedere",
       "event_name_es": "Viernes por la Noche en Main — Tiburon",
       "description_es": "Fiesta callejera en el centro de Tiburon en Lower Main Street con comida y bebidas de restaurantes locales, música en vivo, juegos, fotomatón y pintacaras. De 5:30 a 8:30 pm. Una de dos fechas en 2026."
     },
@@ -11757,7 +11757,7 @@
       "registration": "None",
       "website": "https://www.larktheater.net/",
       "notes": "Paid admission (commercial cinema). Sat 9:15 am & Sun 3:25 pm showings.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Wendell & Wild — Película Familiar en el Lark",
       "description_es": "Proyección familiar de la película animada Wendell & Wild en el histórico Lark Theater en Larkspur."
     },
@@ -11787,7 +11787,7 @@
       "registration": "None",
       "website": "https://www.larktheater.net/",
       "notes": "Paid admission (commercial cinema). Sat 9:15 am & Sun 3:25 pm showings.",
-      "location_group": "Larkspur",
+      "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Wendell & Wild — Película Familiar en el Lark",
       "description_es": "Proyección familiar de la película animada Wendell & Wild en el histórico Lark Theater en Larkspur."
     },
@@ -12087,7 +12087,7 @@
       "registration": "None",
       "website": "https://www.tiburonchamber.org/friday-night-on-main/",
       "notes": "2026 dates: Jun 12 & Aug 21. 5:30–8:30 pm.",
-      "location_group": "Tiburon",
+      "location_group": "Tiburon/Belvedere",
       "event_name_es": "Viernes por la Noche en Main — Tiburon",
       "description_es": "Fiesta callejera en el centro de Tiburon en Lower Main Street con comida y bebidas de restaurantes locales, música en vivo, juegos, fotomatón y pintacaras. De 5:30 a 8:30 pm. Una de dos fechas en 2026."
     },
