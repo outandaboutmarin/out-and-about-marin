@@ -1747,6 +1747,16 @@ function mapDbUser(dbUser) {
     border: 0.5px solid var(--card-border); display: flex; align-items: center;
     gap: 0.625rem; cursor: pointer; margin: 0 0.875rem 0.5rem;
   }
+  .saved-event-remove {
+    flex-shrink: 0; width: 26px; height: 26px; padding: 0;
+    border: none; background: transparent; color: var(--text-muted);
+    font-size: 1.15rem; line-height: 1; cursor: pointer; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .saved-event-remove:hover, .saved-event-remove:focus-visible {
+    background: #FBEAF0; color: #72243E; outline: none;
+  }
   .no-saved { padding: 1.5rem; text-align: center; font-size: 0.75rem; color: var(--text-muted); }
 
   /* Bottom nav */
@@ -2218,11 +2228,7 @@ function mapDbUser(dbUser) {
           <button class="tide-today-btn" id="tideTodayBtn" onclick="tideToday()" style="display:none">Today</button>
         </div>
         <div class="tide-wrap"><table class="tide-grid"><thead id="tideHead"></thead><tbody id="tideBody"><tr><td class="tide-loading">Loading tides…</td></tr></tbody></table></div>
-        <div class="tide-legend" id="tideLegend" style="display:none"><span class="sw">6.4 ft</span><span data-es="= marea alta sobre 6 ft">= high tide over 6 ft</span></div>
         <p id="tideSampleNote" style="display:none;margin:0.5rem 0 0;font-size:0.7rem;color:#b08900;font-style:italic"></p>
-        <p style="margin:0.5rem 0 0;font-size:0.66rem;color:#9aa7c0;line-height:1.4">
-          <span data-es="Predicciones de mareas de NOAA (datum MLLW, en pies).">NOAA tide predictions (MLLW datum, feet).</span>
-        </p>
       </div>
     </div>
     <div class="about-section" style="margin-bottom:0.75rem">
@@ -2669,7 +2675,6 @@ function renderTides(){
   if (tb){ tb.style.display = _tideOffset===0 ? 'none' : 'inline-block'; tb.textContent = es ? 'Hoy' : 'Today'; }
   var sn = document.getElementById('tideSampleNote');
   if (sn){ if (_tideData.sample){ sn.style.display='block'; sn.textContent = es ? '⚠ Datos de muestra' : '⚠ Sample data'; } else sn.style.display='none'; }
-  var lg = document.getElementById('tideLegend'); if (lg) lg.style.display = 'flex';
   var sts = _tideData.stations || [];
   var head = '<tr><th class="trl">'+(es?'Marea':'Tide')+'</th>';
   sts.forEach(function(st){ head += '<th>'+st.short+'</th>'; }); head += '</tr>';
@@ -3320,6 +3325,10 @@ function renderCards() {
       en: '<strong>Mon May 25 is Memorial Day.</strong> Some recurring programs may not run on public holidays — please check with the venue before heading out.',
       es: '<strong>El lunes 25 de mayo es el Día de los Caídos.</strong> Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.'
     },
+    '2026-06-19': {
+      en: '<strong>Fri Jun 19 is Juneteenth.</strong> Some recurring programs may not run on public holidays — please check with the venue before heading out.',
+      es: '<strong>El viernes 19 de junio es Juneteenth (Día de la Emancipación).</strong> Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.'
+    },
     '2026-07-03': {
       en: '<strong>Fri Jul 3 is Independence Day (observed).</strong> Some recurring programs may not run on public holidays — please check with the venue before heading out.',
       es: '<strong>El viernes 3 de julio es el Día de la Independencia (observado).</strong> Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.'
@@ -3790,6 +3799,19 @@ function toggleSave() {
   try { dbUpdateUser(currentUser.phone, { saved_events: currentUser.savedEvents }); } catch (e) { console.warn('save sync failed:', e); }
 }
 
+// Remove a saved event from the profile "Saved events" list (the little × button)
+function removeSavedEvent(id, ev) {
+  if (ev) ev.stopPropagation(); // clicking × deletes, doesn't open the event detail
+  if (!currentUser) return;
+  currentUser.savedEvents = normalizeSavedEvents(currentUser.savedEvents);
+  const idx = currentUser.savedEvents.indexOf(Number(id));
+  if (idx === -1) return;
+  currentUser.savedEvents.splice(idx, 1);
+  try { localStorage.setItem('oaam_user', JSON.stringify(currentUser)); } catch (e) { console.warn('localStorage unavailable:', e); }
+  try { dbUpdateUser(currentUser.phone, { saved_events: currentUser.savedEvents }); } catch (e) { console.warn('save sync failed:', e); }
+  renderProfile(); // re-render; restores the empty-state message when the last one is removed
+}
+
 function updateSaveButton() {
   if (!currentUser) return;
   currentUser.savedEvents = normalizeSavedEvents(currentUser.savedEvents);
@@ -3927,6 +3949,7 @@ function renderProfile() {
         <div class="card-right">
           <span class="day-pill day-${e.day}">${e.day.substring(0,3)}</span>
         </div>
+        <button class="saved-event-remove" type="button" title="${currentLang === 'es' ? 'Quitar de guardados' : 'Remove from saved'}" aria-label="${currentLang === 'es' ? 'Quitar de guardados' : 'Remove from saved'}" onclick="removeSavedEvent(${e.id}, event)">&times;</button>
       </div>`).join('');
   }
 }
