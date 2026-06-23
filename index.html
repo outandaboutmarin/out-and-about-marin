@@ -1211,7 +1211,9 @@ function mapDbUser(dbUser) {
   .featured-row::-webkit-scrollbar { display: none; }
   .feat-card { flex: 0 0 156px; cursor: pointer; }
   .feat-tile { height: 124px; border-radius: var(--radius-md); padding: 12px 12px 11px; display: flex; flex-direction: column; overflow: hidden; background: var(--white); border: 1px solid var(--card-border); box-shadow: 0 3px 12px rgba(13,27,62,0.08); }
-  .ft-kicker { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #9AA6BD; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ft-top { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; }
+  .ft-icon { width: 27px; height: 27px; flex-shrink: 0; border-radius: 50%; background: rgba(13,27,62,0.06); color: var(--navy); display: flex; align-items: center; justify-content: center; }
+  .ft-kicker { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #9AA6BD; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; min-width: 0; margin: 0; }
   .ft-name { font-size: 0.85rem; font-weight: 600; color: var(--navy); line-height: 1.24; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .ft-meta { font-size: 0.7rem; color: var(--text-muted); margin-top: auto; }
   .ft-meta b { font-weight: 600; color: #3D4A63; }
@@ -1747,6 +1749,10 @@ function mapDbUser(dbUser) {
     border: 0.5px solid var(--card-border); display: flex; align-items: center;
     gap: 0.625rem; cursor: pointer; margin: 0 0.875rem 0.5rem;
   }
+  .link-btn { background:none; border:none; color:#0D1B3E; font-size:0.78rem; font-weight:500; cursor:pointer; padding:0.5rem; margin-top:0.15rem; text-decoration:underline; width:100%; font-family:inherit; }
+  .link-btn:hover { color:#72243E; }
+  .reset-help { font-size:0.8rem; color:var(--text-muted); line-height:1.45; margin:0 0 0.9rem; }
+  .reset-error { font-size:0.72rem; color:#A32D2D; margin-top:0.5rem; display:none; }
   .saved-event-remove {
     flex-shrink: 0; width: 26px; height: 26px; padding: 0;
     border: none; background: transparent; color: var(--text-muted);
@@ -1868,6 +1874,7 @@ function mapDbUser(dbUser) {
       </div>
       <div class="login-error" id="loginError">Phone number or PIN not recognized. Please try again.</div>
       <button class="btn-primary" onclick="handleLogin()">Sign In</button>
+      <button type="button" class="link-btn" onclick="openResetModal()">Forgot / Change PIN?</button>
       <div class="or-divider"><div class="or-line"></div><div class="or-text">New here</div><div class="or-line"></div></div>
       <button class="btn-secondary" onclick="showSignupStep1()">Create Account</button>
       <p class="privacy-note">Your phone number is used only to identify your account.<br>It will never be shared or sold.</p>
@@ -2339,7 +2346,7 @@ function mapDbUser(dbUser) {
     <div class="profile-section">
       <div class="profile-section-header"><div class="ps-title">Membership</div></div>
       <div class="profile-row"><span class="pr-label" id="labelPlan">Plan</span><span class="pr-value" style="color:#085041;font-weight:600">Beta member ✓</span></div>
-      <div class="profile-row"><span class="pr-label">PIN</span><span class="pr-value" style="color:#0D1B3E;font-weight:500;cursor:pointer" onclick="openPinModal()">Change PIN →</span></div>
+      <div class="profile-row"><span class="pr-label">PIN</span><span class="pr-value" style="color:var(--text-muted);font-weight:300">Reset from the sign-in screen</span></div>
       <div class="profile-row"><span class="pr-label" id="labelSince">Member since</span><span class="pr-value" id="profileSince">—</span></div>
     </div>
     <div class="about-section">
@@ -3320,40 +3327,50 @@ function renderCards() {
   const dayNamesES = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
 
   // Check if this week contains a public holiday that needs a notice
-  const holidayNotices = {
-    '2026-05-25': {
-      en: '<strong>Mon May 25 is Memorial Day.</strong> Some recurring programs may not run on public holidays — please check with the venue before heading out.',
-      es: '<strong>El lunes 25 de mayo es el Día de los Caídos.</strong> Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.'
-    },
-    '2026-06-19': {
-      en: '<strong>Fri Jun 19 is Juneteenth.</strong> Some recurring programs may not run on public holidays — please check with the venue before heading out.',
-      es: '<strong>El viernes 19 de junio es Juneteenth (Día de la Emancipación).</strong> Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.'
-    },
-    '2026-07-03': {
-      en: '<strong>Fri Jul 3 is Independence Day (observed).</strong> Some recurring programs may not run on public holidays — please check with the venue before heading out.',
-      es: '<strong>El viernes 3 de julio es el Día de la Independencia (observado).</strong> Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.'
-    },
-    '2026-09-07': {
-      en: '<strong>Mon Sep 7 is Labor Day.</strong> Some recurring programs may not run on public holidays — please check with the venue before heading out.',
-      es: '<strong>El lunes 7 de septiembre es el Día del Trabajo.</strong> Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.'
-    },
-    '2026-10-12': {
-      en: '<strong>Mon Oct 12 is Columbus Day.</strong> Some recurring programs may not run on public holidays — please check with the venue before heading out.',
-      es: '<strong>El lunes 12 de octubre es el Día de la Raza.</strong> Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.'
-    },
-    '2026-11-11': {
-      en: '<strong>Wed Nov 11 is Veterans Day.</strong> Some recurring programs may not run on public holidays — please check with the venue before heading out.',
-      es: '<strong>El miércoles 11 de noviembre es el Día de los Veteranos.</strong> Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.'
-    },
-    '2026-11-26': {
-      en: '<strong>Thu Nov 26 is Thanksgiving Day.</strong> Some recurring programs may not run on public holidays — please check with the venue before heading out.',
-      es: '<strong>El jueves 26 de noviembre es el Día de Acción de Gracias.</strong> Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.'
-    },
-    '2026-12-25': {
-      en: '<strong>Fri Dec 25 is Christmas Day.</strong> Some recurring programs may not run on public holidays — please check with the venue before heading out.',
-      es: '<strong>El viernes 25 de diciembre es el Día de Navidad.</strong> Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.'
+  // Rolling California holiday notices — dates are computed per year, so they roll over automatically.
+  const HOLIDAY_BODY_EN = 'Some recurring programs may not run on public holidays — please check with the venue before heading out.';
+  const HOLIDAY_BODY_ES = 'Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.';
+  const HOL_DOW_EN = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const HOL_MON_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const HOL_DOW_ES = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  const HOL_MON_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const holidayCache = {};
+  function holPad(n){ return (n < 10 ? '0' : '') + n; }
+  function holNth(y, m, wd, n){ const f = new Date(y, m-1, 1).getDay(); return 1 + ((wd - f + 7) % 7) + (n-1)*7; }
+  function holLast(y, m, wd){ const last = new Date(y, m, 0).getDate(); const ld = new Date(y, m-1, last).getDay(); return last - ((ld - wd + 7) % 7); }
+  function holObs(y, m, d){ const dow = new Date(y, m-1, d).getDay(); if (dow === 6){ const a = new Date(y, m-1, d-1); return { y:a.getFullYear(), m:a.getMonth()+1, d:a.getDate(), s:true }; } if (dow === 0){ const b = new Date(y, m-1, d+1); return { y:b.getFullYear(), m:b.getMonth()+1, d:b.getDate(), s:true }; } return { y:y, m:m, d:d, s:false }; }
+  function buildHolidays(year){
+    const H = {};
+    function put(o, en, es){
+      const dow = new Date(o.y, o.m-1, o.d).getDay();
+      const key = o.y + '-' + holPad(o.m) + '-' + holPad(o.d);
+      const enStr = '<strong>' + HOL_DOW_EN[dow] + ' ' + HOL_MON_EN[o.m-1] + ' ' + o.d + ' is ' + en + (o.s ? ' (observed)' : '') + '.</strong> ' + HOLIDAY_BODY_EN;
+      const esStr = '<strong>El ' + HOL_DOW_ES[dow] + ' ' + o.d + ' de ' + HOL_MON_ES[o.m-1] + ' es ' + es + (o.s ? ' (observado)' : '') + '.</strong> ' + HOLIDAY_BODY_ES;
+      H[key] = { en: enStr, es: esStr };
     }
-  };
+    const fx = (m, d) => holObs(year, m, d);
+    const nd = (m, wd, n) => ({ y: year, m: m, d: holNth(year, m, wd, n), s: false });
+    const ld = (m, wd) => ({ y: year, m: m, d: holLast(year, m, wd), s: false });
+    put(fx(1, 1),    "New Year's Day", 'el Día de Año Nuevo');
+    put(nd(1, 1, 3), 'Martin Luther King Jr. Day', 'el Día de Martin Luther King Jr.');
+    put(nd(2, 1, 3), "Presidents' Day", 'el Día de los Presidentes');
+    put(fx(3, 31),   'César Chávez Day', 'el Día de César Chávez');
+    put(ld(5, 1),    'Memorial Day', 'el Día de los Caídos');
+    put(fx(6, 19),   'Juneteenth', 'Juneteenth (Día de la Emancipación)');
+    put(fx(7, 4),    'Independence Day', 'el Día de la Independencia');
+    put(nd(9, 1, 1), 'Labor Day', 'el Día del Trabajo');
+    put(nd(9, 5, 4), 'Native American Day', 'el Día de los Nativos Americanos');
+    put(fx(11, 11),  'Veterans Day', 'el Día de los Veteranos');
+    const tx = nd(11, 4, 4); put(tx, 'Thanksgiving Day', 'el Día de Acción de Gracias');
+    const ta = new Date(year, 10, tx.d + 1); put({ y: ta.getFullYear(), m: ta.getMonth()+1, d: ta.getDate(), s: false }, 'the Day After Thanksgiving', 'el Día Después de Acción de Gracias');
+    put(fx(12, 25),  'Christmas Day', 'el Día de Navidad');
+    return H;
+  }
+  function getHolidayNotice(ds){
+    const y = parseInt(ds.slice(0, 4), 10);
+    if (!holidayCache[y]) holidayCache[y] = buildHolidays(y);
+    return holidayCache[y][ds] || null;
+  }
 
   body.innerHTML = sortedDays.map(day => {
     // Find the actual date for this day in the current week
@@ -3363,7 +3380,7 @@ function renderCards() {
     const dayDateStr = dayDate.toISOString().slice(0, 10);
 
     // Check if there's a holiday notice for this day
-    const notice = holidayNotices[dayDateStr];
+    const notice = getHolidayNotice(dayDateStr);
     const noticeBanner = notice ? `
       <div class="holiday-notice">
         <span class="holiday-notice-icon">⚠️</span>
@@ -3426,6 +3443,17 @@ function eventTimeStatus(e, nowMin) {
 
 function featTint(i){var p=['#B7C6DD','#D8DCE1','#9DB1CC','#E3E6EA','#C5D4E8','#ABB6C4','#A6BBD7','#DBDFE5','#BFC9D4'];return p[i%p.length];}
 function featKicker(e){var t=(e&&e.type)||'';var m={'Kids Programs':'Kids','Community Event':'Community','Farmers Market':'Market'};return m[t]||t;}
+var FEAT_ICONS={
+  'Library':'<path d="M12 6.2C10 5.3 6.6 5.3 4.6 6.1V18c2-.8 5.4-.8 7.4.2 2-1 5.4-1 7.4-.2V6.1C17.4 5.3 14 5.3 12 6.2z"/><path d="M12 6.2V18"/>',
+  'Kids Programs':'<rect x="4.3" y="12.6" width="7" height="6.6" rx="1.2"/><rect x="12.7" y="12.6" width="7" height="6.6" rx="1.2"/><rect x="8.5" y="4.8" width="7" height="6.6" rx="1.2"/>',
+  'Festival':'<path d="M12 4.2v3"/><path d="M12 7.2 4.5 19h15L12 7.2z"/><path d="M12 7.2V19"/><path d="M12 4.2h3v2h-3"/>',
+  'Music and Movies':'<circle cx="8" cy="16.6" r="2.4"/><circle cx="16.2" cy="14.8" r="2.4"/><path d="M10.4 16.6V6l8.2-2v8.8"/>',
+  'Farmers Market':'<path d="M12 8.4c-3 0-5 2.1-5 5.4S9 20 12 20s5-3.1 5-6.2-2-5.4-5-5.4z"/><path d="M12 8.4V5.6"/><path d="M12 6.6c1.1-1.4 3-1.4 3-1.4s.1 1.8-1.4 2.6"/>',
+  'Community Event':'<circle cx="9" cy="9" r="2.5"/><path d="M4.5 19c0-3 2-4.8 4.5-4.8S13.5 16 13.5 19"/><circle cx="16.5" cy="10" r="2"/><path d="M14.6 14.7c2.1-.5 4.5 1 4.5 4.3"/>',
+  'Fitness':'<path d="M3 12h3.5l2-5.5 3.2 11 2.3-7 1.6 3.5H21"/>',
+  '_default':'<path d="M12 4.5l2.2 4.9 5.3.5-4 3.5 1.2 5.2L12 15.9 7.3 18.6l1.2-5.2-4-3.5 5.3-.5z"/>'
+};
+function featIcon(e){var p=FEAT_ICONS[(e&&e.type)]||FEAT_ICONS._default;return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>';}
 function featEmoji(e){var n=(e.event_name||'').toLowerCase();var map=[['pride','\U0001F308'],['juneteenth','\u270A'],['parade','\U0001F3C7'],['western weekend','\U0001F920'],['mountain play','\U0001F3AD'],['theatre','\U0001F3AD'],['fair','\U0001F3A1'],['fourth of july','\U0001F386'],['4th of july','\U0001F386'],['july 4','\U0001F386'],['brits','\U0001F697'],['car show','\U0001F697'],['plein air','\U0001F3A8'],['art','\U0001F3A8'],['birds','\U0001F426'],['nature','\U0001F33F'],['bbq','\U0001F354'],['movie','\U0001F3AC'],['film','\U0001F3AC'],['jazz','\U0001F3B7'],['concert','\U0001F3A4'],['music','\U0001F3B5'],['festival','\U0001F3AA'],['storytime','\U0001F4D6'],['camp','\u26FA'],['swim','\U0001F3CA'],['cooking','\U0001F373']];for(var i=0;i<map.length;i++){if(n.indexOf(map[i][0])>=0)return map[i][1];}return {Festival:'\U0001F3AA','Music and Movies':'\U0001F3B5','Community Event':'\U0001F389','Kids Programs':'\U0001F9F8',Library:'\U0001F4DA'}[e.type]||'\u2B50';}
 function featDateStr(d){return d.toLocaleDateString(currentLang==='es'?'es-MX':'en-US',{weekday:'short',month:'short',day:'numeric'});}
 function selectFeatured(){
@@ -3468,7 +3496,7 @@ function renderFeatured(){
   if(!sel.length){wrap.style.display='none';return;}
   wrap.style.display='block';
   row.innerHTML=sel.map(function(o,i){var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
-    return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile"><div class="ft-kicker">'+featKicker(e)+'</div><div class="ft-name">'+name+'</div><div class="ft-meta"><b>'+featDateStr(o.d)+'</b>'+(e.town?' \u00B7 '+e.town:'')+'</div></div></div>';
+    return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile"><div class="ft-top"><span class="ft-icon">'+featIcon(e)+'</span><div class="ft-kicker">'+featKicker(e)+'</div></div><div class="ft-name">'+name+'</div><div class="ft-meta"><b>'+featDateStr(o.d)+'</b>'+(e.town?' \u00B7 '+e.town:'')+'</div></div></div>';
   }).join('');
   row.onscroll=updateFeatArrows;
   setTimeout(updateFeatArrows,0);
@@ -4040,47 +4068,86 @@ function saveEditDetails() {
 }
 
 // ═══════════════════════════════════════════
-// CHANGE PIN MODAL
+// FORGOT / CHANGE PIN — SMS reset (calls the two Edge Functions)
 // ═══════════════════════════════════════════
 
-function openPinModal() {
-  document.getElementById('currentPin').value = '';
-  document.getElementById('newPin').value = '';
-  document.getElementById('confirmPin').value = '';
-  document.getElementById('pinError').style.display = 'none';
-  document.getElementById('pinModal').classList.add('open');
+function showResetStep(n) {
+  document.getElementById('resetStep1').style.display = n === 1 ? 'block' : 'none';
+  document.getElementById('resetStep2').style.display = n === 2 ? 'block' : 'none';
+  document.getElementById('resetStep3').style.display = n === 3 ? 'block' : 'none';
 }
 
-function closePinModal(e) {
-  if (!e || e.target === document.getElementById('pinModal')) {
-    document.getElementById('pinModal').classList.remove('open');
+function openResetModal() {
+  ['resetPhone','resetCode','resetNewPin','resetConfirmPin'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  document.getElementById('resetError1').style.display = 'none';
+  document.getElementById('resetError2').style.display = 'none';
+  // Prefill the phone if they already typed it on the login form
+  const lp = document.getElementById('loginPhone');
+  if (lp && lp.value.trim()) document.getElementById('resetPhone').value = lp.value.trim();
+  showResetStep(1);
+  document.getElementById('resetModal').classList.add('open');
+}
+
+function closeResetModal(e) {
+  if (!e || e.target === document.getElementById('resetModal')) {
+    document.getElementById('resetModal').classList.remove('open');
   }
 }
 
-function saveNewPin() {
-  const current = document.getElementById('currentPin').value.trim();
-  const newPin = document.getElementById('newPin').value.trim();
-  const confirm = document.getElementById('confirmPin').value.trim();
-  const err = document.getElementById('pinError');
+function resetBackToStep1() {
+  document.getElementById('resetError2').style.display = 'none';
+  showResetStep(1);
+}
 
-  if (current !== currentUser.pin) {
-    err.textContent = 'Current PIN is incorrect.';
+async function resetRequestCode() {
+  const err = document.getElementById('resetError1');
+  const btn = document.getElementById('resetSendBtn');
+  const phone = normalizePhone(document.getElementById('resetPhone').value.trim());
+  err.style.display = 'none';
+  if (!phone || phone.length !== 10) {
+    err.textContent = currentLang === 'es' ? 'Ingresa un número de teléfono válido de 10 dígitos.' : 'Please enter a valid 10-digit phone number.';
     err.style.display = 'block'; return;
   }
-  if (newPin.length !== 4) {
-    err.textContent = 'New PIN must be 4 digits.';
+  btn.textContent = currentLang === 'es' ? 'Enviando…' : 'Sending…'; btn.disabled = true;
+  try {
+    const { error } = await db.functions.invoke('request-pin-reset', { body: { phone } });
+    if (error) throw error;
+  } catch (e) {
+    console.warn('reset request error', e);
+    err.textContent = currentLang === 'es' ? 'No se pudo enviar el código. Inténtalo de nuevo.' : 'Could not send the code. Please try again.';
+    err.style.display = 'block';
+    btn.textContent = currentLang === 'es' ? 'Enviar código' : 'Send code'; btn.disabled = false;
+    return;
+  }
+  // The function returns a generic success even when no account exists (privacy).
+  document.getElementById('resetPhoneEcho').textContent = document.getElementById('resetPhone').value.trim();
+  btn.textContent = currentLang === 'es' ? 'Enviar código' : 'Send code'; btn.disabled = false;
+  showResetStep(2);
+}
+
+async function resetConfirm() {
+  const err = document.getElementById('resetError2');
+  const btn = document.getElementById('resetConfirmBtn');
+  const phone = normalizePhone(document.getElementById('resetPhone').value.trim());
+  const code = document.getElementById('resetCode').value.trim();
+  const newPin = document.getElementById('resetNewPin').value.trim();
+  const confirmPin = document.getElementById('resetConfirmPin').value.trim();
+  err.style.display = 'none';
+  if (!/^\d{6}$/.test(code)) { err.textContent = currentLang === 'es' ? 'Ingresa el código de 6 dígitos de tu mensaje.' : 'Enter the 6-digit code from your text.'; err.style.display = 'block'; return; }
+  if (!/^\d{4}$/.test(newPin)) { err.textContent = currentLang === 'es' ? 'Tu nuevo PIN debe tener 4 dígitos.' : 'Your new PIN must be 4 digits.'; err.style.display = 'block'; return; }
+  if (newPin !== confirmPin) { err.textContent = currentLang === 'es' ? 'Los PIN no coinciden.' : 'The PINs don\'t match.'; err.style.display = 'block'; return; }
+  btn.textContent = currentLang === 'es' ? 'Restableciendo…' : 'Resetting…'; btn.disabled = true;
+  let ok = false;
+  try {
+    const { data, error } = await db.functions.invoke('confirm-pin-reset', { body: { phone, code, newPin } });
+    ok = !error && data && data.ok === true;
+  } catch (e) { console.warn('reset confirm error', e); }
+  btn.textContent = currentLang === 'es' ? 'Restablecer PIN' : 'Reset PIN'; btn.disabled = false;
+  if (!ok) {
+    err.textContent = currentLang === 'es' ? 'Código incorrecto o expirado. Inténtalo de nuevo.' : 'Incorrect or expired code. Please try again.';
     err.style.display = 'block'; return;
   }
-  if (newPin !== confirm) {
-    err.textContent = 'PINs do not match.';
-    err.style.display = 'block'; return;
-  }
-  currentUser.pin = newPin;
-  localStorage.setItem('oaam_user', JSON.stringify(currentUser));
-  // Sync hashed PIN to Supabase
-  hashPin(newPin).then(hashed => dbUpdateUser(currentUser.phone, { pin: hashed }));
-  document.getElementById('pinModal').classList.remove('open');
-  alert(currentLang==='es' ? '¡PIN actualizado!' : 'PIN updated successfully!');
+  showResetStep(3);
 }
 
 // ═══════════════════════════════════════════
@@ -4169,26 +4236,49 @@ function normalizePhone(phone) {
   </div>
 </div>
 
-<!-- Change PIN Modal -->
-<div class="modal-overlay" id="pinModal" onclick="closePinModal(event)">
+<!-- Forgot / Change PIN Modal (SMS reset) -->
+<div class="modal-overlay" id="resetModal" onclick="closeResetModal(event)">
   <div class="modal-sheet">
     <div class="modal-handle"></div>
-    <div class="modal-title">Change PIN</div>
-    <div class="field-group">
-      <label class="field-label">Current PIN</label>
-      <input class="field-input" type="password" id="currentPin" placeholder="••••" maxlength="4" inputmode="numeric">
+    <div class="modal-title">Forgot / Change PIN</div>
+
+    <!-- Step 1: phone -->
+    <div id="resetStep1">
+      <p class="reset-help">Enter your phone number and we'll text you a 6-digit code to set a new PIN.</p>
+      <div class="field-group">
+        <label class="field-label" for="resetPhone">Phone Number</label>
+        <input class="field-input" type="tel" id="resetPhone" placeholder="415-555-0000" oninput="formatPhone(this)" maxlength="12" inputmode="numeric" autocomplete="tel">
+      </div>
+      <div class="reset-error" id="resetError1"></div>
+      <button class="modal-save" id="resetSendBtn" onclick="resetRequestCode()">Send code</button>
+      <button class="modal-cancel" onclick="closeResetModal()">Cancel</button>
     </div>
-    <div class="field-group" style="margin-top:0.75rem">
-      <label class="field-label">New PIN</label>
-      <input class="field-input" type="password" id="newPin" placeholder="••••" maxlength="4" inputmode="numeric">
+
+    <!-- Step 2: code + new PIN -->
+    <div id="resetStep2" style="display:none">
+      <p class="reset-help">We texted a 6-digit code to <strong id="resetPhoneEcho"></strong>. Enter it below and choose a new 4-digit PIN.</p>
+      <div class="field-group">
+        <label class="field-label" for="resetCode">6-Digit Code</label>
+        <input class="field-input" type="text" id="resetCode" placeholder="123456" maxlength="6" inputmode="numeric" autocomplete="one-time-code">
+      </div>
+      <div class="field-group" style="margin-top:0.75rem">
+        <label class="field-label" for="resetNewPin">New 4-Digit PIN</label>
+        <input class="field-input" type="password" id="resetNewPin" placeholder="••••" maxlength="4" inputmode="numeric">
+      </div>
+      <div class="field-group" style="margin-top:0.75rem">
+        <label class="field-label" for="resetConfirmPin">Confirm New PIN</label>
+        <input class="field-input" type="password" id="resetConfirmPin" placeholder="••••" maxlength="4" inputmode="numeric">
+      </div>
+      <div class="reset-error" id="resetError2"></div>
+      <button class="modal-save" id="resetConfirmBtn" onclick="resetConfirm()">Reset PIN</button>
+      <button class="modal-cancel" onclick="resetBackToStep1()">Back</button>
     </div>
-    <div class="field-group" style="margin-top:0.75rem">
-      <label class="field-label">Confirm New PIN</label>
-      <input class="field-input" type="password" id="confirmPin" placeholder="••••" maxlength="4" inputmode="numeric">
+
+    <!-- Step 3: success -->
+    <div id="resetStep3" style="display:none">
+      <p class="reset-help" style="text-align:center">✓ Your PIN has been reset. You can now sign in with your new PIN.</p>
+      <button class="modal-save" onclick="closeResetModal()">Done</button>
     </div>
-    <div style="font-size:0.7rem;color:#A32D2D;margin-top:0.5rem;display:none" id="pinError"></div>
-    <button class="modal-save" onclick="saveNewPin()">Update PIN</button>
-    <button class="modal-cancel" onclick="closePinModal()">Cancel</button>
   </div>
 </div>
 
