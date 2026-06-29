@@ -1784,6 +1784,43 @@ function mapDbUser(dbUser) {
   .nav-item.active { color: var(--navy); }
   .nav-icon { width: 18px; height: 18px; }
 
+  /* ── County Toggle ── */
+  .county-toggle-row {
+    display: flex;
+    justify-content: center;
+    padding: 0.45rem 0 0.5rem;
+    background: var(--navy);
+  }
+  .county-toggle {
+    display: inline-flex;
+    background: rgba(255,255,255,0.1);
+    border: 0.5px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-pill);
+    padding: 3px;
+    gap: 2px;
+  }
+  .county-btn {
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 5px 18px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    white-space: nowrap;
+  }
+  .county-btn.active {
+    background: var(--white);
+    color: var(--navy);
+  }
+  .county-btn:not(.active):hover {
+    color: #fff;
+    background: rgba(255,255,255,0.15);
+  }
 
   /* Edit details modal */
   .modal-overlay {
@@ -1989,6 +2026,14 @@ function mapDbUser(dbUser) {
 
 
 
+
+  <!-- County toggle -->
+  <div class="county-toggle-row">
+    <div class="county-toggle" role="group" aria-label="Choose county">
+      <button class="county-btn active" id="countyBtnMarin" onclick="setCounty('marin')">🌉 Marin County</button>
+      <button class="county-btn" id="countyBtnNapa" onclick="setCounty('napa')">🍇 Napa County</button>
+    </div>
+  </div>
 
   <!-- Filter pills -->
   <div class="filter-bar">
@@ -2425,6 +2470,7 @@ let currentEventId = null;
 let activeDropdown = null;
 let toastShown = false;
 let userHasInteracted = false;
+let activeCounty = localStorage.getItem('oaam_county') || 'marin'; // 'marin' | 'napa'
 
 const filterDefaultsEN = { type: 'Type', location: 'Location', day: 'Day', time: 'Time', age: 'Age', cost: 'Cost' };
 const filterDefaultsES = { type: 'Tipo', location: 'Lugar', day: 'Día', time: 'Hora', age: 'Edad', cost: 'Costo' };
@@ -2459,6 +2505,11 @@ const typeTagClass = {
 
 document.addEventListener('DOMContentLoaded', () => {
   buildDropdowns();
+  // Restore county toggle visual state
+  if (activeCounty === 'napa') {
+    document.getElementById('countyBtnMarin').classList.remove('active');
+    document.getElementById('countyBtnNapa').classList.add('active');
+  }
   const saved = localStorage.getItem('oaam_user');
   if (saved) {
     currentUser = JSON.parse(saved);
@@ -2746,7 +2797,10 @@ function buildDropdowns() {
 }
 
 function buildLocationOptions() {
-  const groups = [...new Set(allEvents.map(e => e.location_group || e.town))].sort();
+  const countyEvents = allEvents.filter(e =>
+    activeCounty === 'napa' ? e.county === 'Napa' : e.county !== 'Napa'
+  );
+  const groups = [...new Set(countyEvents.map(e => e.location_group || e.town))].sort();
   buildFilterOptions('location', groups.map(v => ({ value: v })));
 }
 
@@ -3072,6 +3126,10 @@ function getFilteredEvents() {
   const today = new Date();
   const { start: weekStart, end: weekEnd } = getWeekRange(currentWeekOffset);
   return allEvents.filter(e => {
+    // ── County filter ──
+    const isNapa = e.county === 'Napa';
+    if (activeCounty === 'napa' && !isNapa) return false;
+    if (activeCounty === 'marin' && isNapa) return false;
     // Hide expired events — hide only after the event date has fully passed
     if (e.expires) { const exp = new Date(e.expires + 'T23:59:59'); if (exp < today) return false; }
     // Hide seasonal events outside their season
@@ -3168,6 +3226,29 @@ function changeWeek(dir) {
   // Update prev button state
   const prev = document.getElementById('weekPrev');
   if (prev) prev.style.opacity = currentWeekOffset === 0 ? '0.3' : '1';
+  renderCards();
+}
+
+// ═══════════════════════════════════════════
+// COUNTY TOGGLE
+// ═══════════════════════════════════════════
+
+function setCounty(county) {
+  activeCounty = county;
+  localStorage.setItem('oaam_county', county);
+  // Update button states
+  document.getElementById('countyBtnMarin').classList.toggle('active', county === 'marin');
+  document.getElementById('countyBtnNapa').classList.toggle('active', county === 'napa');
+  // Reset location filter (towns differ between counties)
+  selections.location.clear();
+  // Rebuild location dropdown with county-appropriate towns
+  buildLocationOptions();
+  updatePill('location');
+  syncCheckboxes('location');
+  // Reset to current week and re-render
+  currentWeekOffset = 0;
+  const prev = document.getElementById('weekPrev');
+  if (prev) prev.style.opacity = '0.3';
   renderCards();
 }
 
