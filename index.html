@@ -1784,17 +1784,11 @@ function mapDbUser(dbUser) {
   .nav-item.active { color: var(--navy); }
   .nav-icon { width: 18px; height: 18px; }
 
-  /* ── County Toggle ── */
-  .county-toggle-row {
-    display: flex;
-    justify-content: center;
-    padding: 0.45rem 0 0.5rem;
-    background: var(--navy);
-  }
+  /* ── County Toggle (Profile screen) ── */
   .county-toggle {
     display: inline-flex;
-    background: rgba(255,255,255,0.1);
-    border: 0.5px solid rgba(255,255,255,0.2);
+    background: rgba(13,27,62,0.07);
+    border: 0.5px solid rgba(13,27,62,0.15);
     border-radius: var(--radius-pill);
     padding: 3px;
     gap: 2px;
@@ -1802,24 +1796,24 @@ function mapDbUser(dbUser) {
   .county-btn {
     border: none;
     border-radius: var(--radius-pill);
-    padding: 5px 18px;
-    font-size: 0.72rem;
+    padding: 5px 14px;
+    font-size: 0.7rem;
     font-weight: 600;
     font-family: var(--font-sans);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
     cursor: pointer;
     transition: background 0.18s, color 0.18s;
     background: transparent;
-    color: rgba(255,255,255,0.6);
+    color: var(--text-muted);
     white-space: nowrap;
   }
   .county-btn.active {
-    background: var(--white);
-    color: var(--navy);
+    background: var(--navy);
+    color: var(--white);
   }
   .county-btn:not(.active):hover {
-    color: #fff;
-    background: rgba(255,255,255,0.15);
+    color: var(--navy);
+    background: rgba(13,27,62,0.08);
   }
 
   /* Edit details modal */
@@ -2026,14 +2020,6 @@ function mapDbUser(dbUser) {
 
 
 
-
-  <!-- County toggle -->
-  <div class="county-toggle-row">
-    <div class="county-toggle" role="group" aria-label="Choose county">
-      <button class="county-btn active" id="countyBtnMarin" onclick="setCounty('marin')">🌉 Marin County</button>
-      <button class="county-btn" id="countyBtnNapa" onclick="setCounty('napa')">🍇 Napa County</button>
-    </div>
-  </div>
 
   <!-- Filter pills -->
   <div class="filter-bar">
@@ -2361,6 +2347,16 @@ function mapDbUser(dbUser) {
     <div class="profile-header-sub" id="profileHeaderSub"></div>
   </div>
   <div class="profile-body">
+    <!-- County toggle -->
+    <div class="profile-section" style="margin-bottom:0.625rem">
+      <div style="padding:0.75rem 0.875rem;display:flex;align-items:center;justify-content:space-between;gap:0.75rem">
+        <div style="font-family:var(--font-serif);font-size:0.8rem;font-weight:600;color:var(--navy)">County</div>
+        <div class="county-toggle" role="group" aria-label="Choose county">
+          <button class="county-btn active" id="countyBtnMarin" onclick="setCounty('marin')">🌉 Marin</button>
+          <button class="county-btn" id="countyBtnNapa" onclick="setCounty('napa')">🍇 Napa</button>
+        </div>
+      </div>
+    </div>
     <div class="profile-section">
       <div class="lang-toggle">
         <div class="lang-toggle-label" id="langLabel">Language</div>
