@@ -12569,7 +12569,7 @@
       "registration": "Not required",
       "website": "https://www.onetam.org/calendar/juice-ranger-6-27-2026",
       "notes": "Source: OneTam / Marin County Parks.",
-      "location_group": "Novato"
+      "location_group": "Marin County"
     },
     {
       "id": 478,
@@ -12599,7 +12599,7 @@
       "registration": "Not required",
       "website": "https://www.onetam.org/indian-tree-4",
       "notes": "Source: OneTam / Marin County Parks.",
-      "location_group": "Novato"
+      "location_group": "Marin County"
     },
     {
       "id": 479,
@@ -12629,7 +12629,7 @@
       "registration": "Not required",
       "website": "https://www.onetam.org/calendar/road-becoming-ranger-7-12-2026",
       "notes": "Source: OneTam / Marin County Parks.",
-      "location_group": "Novato"
+      "location_group": "Marin County"
     },
     {
       "id": 480,
@@ -14656,6 +14656,66 @@
       "notes": "Artists, food vendors and dates subject to change per Merryvale.",
       "event_name_es": "Música en la Terraza — Jason Movrich",
       "description_es": "Música en vivo en la terraza de Merryvale Vineyards con Jason Movrich y food truck Ray Ray's Tacos. Primeros y terceros viernes, mayo–septiembre, 5–7 PM."
+    },
+    {
+      "id": 548,
+      "organization": "San Rafael Police Department",
+      "venue": "San Rafael High School",
+      "event_name": "Touch-A-Truck — San Rafael Police Department",
+      "event_name_es": "Toca un Camión — Departamento de Policía de San Rafael",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "10:00 AM",
+      "time_of_day": "Morning",
+      "town": "San Rafael",
+      "address": "150 Third St, San Rafael, CA 94901",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-07-25",
+      "expires": "2026-07-25",
+      "status": "Active",
+      "featured": false,
+      "description": "See, touch, and explore awesome vehicles at the San Rafael Police Department's Touch-A-Truck event! Get up close with police cars, fire trucks, garbage trucks, dump trucks, and more. Family-friendly activities for all ages. Saturday July 25, 10 am–2 pm. Free.",
+      "description_es": "¡Mira, toca y explora vehículos increíbles en el evento Toca un Camión del Departamento de Policía de San Rafael! Acércate a patrullas, camiones de bomberos, camiones de basura, volquetes y más. Actividades familiares para todas las edades. Sábado 25 de julio, 10 am–2 pm. Gratis.",
+      "registration": "Not required",
+      "website": "https://www.instagram.com/sanrafaelpolice/",
+      "notes": "Source: @sanrafaelpolice Instagram. Presented by San Rafael Police Department.",
+      "location_group": "San Rafael"
+    },
+    {
+      "id": 549,
+      "organization": "Red Hill Shopping Center",
+      "venue": "Red Hill Shopping Center",
+      "event_name": "Classic Car Show — Red Hill Shopping Center",
+      "event_name_es": "Exposición de Autos Clásicos — Red Hill Shopping Center",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "10:00 AM",
+      "time_of_day": "Morning",
+      "town": "San Anselmo",
+      "address": "906 Sir Francis Drake Blvd, San Anselmo, CA 94960",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-08-08",
+      "expires": "2026-08-08",
+      "status": "Active",
+      "featured": false,
+      "description": "A free classic car show at the Red Hill Shopping Center in San Anselmo. Come admire a beautiful collection of classic cars in the heart of the Ross Valley. Saturday August 8, 10 am–1 pm. All ages welcome.",
+      "description_es": "Una exposición gratuita de autos clásicos en el Red Hill Shopping Center en San Anselmo. Ven a admirar una hermosa colección de autos clásicos en el corazón del Ross Valley. Sábado 8 de agosto, 10 am–1 pm. Todas las edades bienvenidas.",
+      "registration": "Not required",
+      "website": "https://redhillshoppingcenter.com",
+      "notes": "Source: Instagram (marin.dad feed). Venue confirmed: 906 Sir Francis Drake Blvd, San Anselmo.",
+      "location_group": "San Anselmo"
     }
   ]
 }
