@@ -2517,7 +2517,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function loadEvents() {
-  fetch('events.json')
+  fetch('events.json?v=' + Date.now())
     .then(r => r.json())
     .then(data => {
       allEvents = data.events || [];
