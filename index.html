@@ -3546,15 +3546,15 @@ var FEAT_ICONS={
 };
 function featIcon(e){var p=FEAT_ICONS[(e&&e.type)]||FEAT_ICONS._default;return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>';}
 var FEAT_IMAGES={
-  'Library':'https://images.unsplash.com/photo-1755963248051-38f1066a0f43?fm=jpg&q=60&w=600&auto=format&fit=crop',
+  'Library':'https://images.unsplash.com/photo-1782747248886-72549c6c0f8d?fm=jpg&q=60&w=600&auto=format&fit=crop',
   'Kids Programs':'https://images.unsplash.com/photo-1607211851821-8be3cd6146f0?fm=jpg&q=60&w=600&auto=format&fit=crop',
-  'Festival':'https://images.unsplash.com/photo-1760822400631-60ace12d6e87?fm=jpg&q=60&w=600&auto=format&fit=crop',
-  'Music and Movies':'https://images.unsplash.com/photo-1761926826313-a1787661b7b6?fm=jpg&q=60&w=600&auto=format&fit=crop',
-  'Music':'https://images.unsplash.com/photo-1761926826313-a1787661b7b6?fm=jpg&q=60&w=600&auto=format&fit=crop',
-  'Farmers Market':'https://images.unsplash.com/photo-1694892670435-c2596b34b19b?fm=jpg&q=60&w=600&auto=format&fit=crop',
-  'Community Event':'https://images.unsplash.com/photo-1758275557142-e4e5e7842d52?fm=jpg&q=60&w=600&auto=format&fit=crop',
-  'Fitness':'https://images.unsplash.com/photo-1758275557142-e4e5e7842d52?fm=jpg&q=60&w=600&auto=format&fit=crop',
-  '_default':'https://images.unsplash.com/photo-1758275557142-e4e5e7842d52?fm=jpg&q=60&w=600&auto=format&fit=crop'
+  'Festival':'https://images.unsplash.com/photo-1674789317870-2c412ef13b34?fm=jpg&q=60&w=600&auto=format&fit=crop',
+  'Music and Movies':'https://images.unsplash.com/photo-1770520871616-d7379585fc9a?fm=jpg&q=60&w=600&auto=format&fit=crop',
+  'Music':'https://images.unsplash.com/photo-1770520871616-d7379585fc9a?fm=jpg&q=60&w=600&auto=format&fit=crop',
+  'Farmers Market':'https://images.unsplash.com/photo-1485637701894-09ad422f6de6?fm=jpg&q=60&w=600&auto=format&fit=crop',
+  'Community Event':'https://images.unsplash.com/photo-1638132704795-6bb223151bf7?fm=jpg&q=60&w=600&auto=format&fit=crop',
+  'Fitness':'https://images.unsplash.com/photo-1638132704795-6bb223151bf7?fm=jpg&q=60&w=600&auto=format&fit=crop',
+  '_default':'https://images.unsplash.com/photo-1638132704795-6bb223151bf7?fm=jpg&q=60&w=600&auto=format&fit=crop'
 };
 function featImage(e){return FEAT_IMAGES[(e&&e.type)]||FEAT_IMAGES._default;}
 function featEmoji(e){var n=(e.event_name||'').toLowerCase();var map=[['pride','\U0001F308'],['juneteenth','\u270A'],['parade','\U0001F3C7'],['western weekend','\U0001F920'],['mountain play','\U0001F3AD'],['theatre','\U0001F3AD'],['fair','\U0001F3A1'],['fourth of july','\U0001F386'],['4th of july','\U0001F386'],['july 4','\U0001F386'],['brits','\U0001F697'],['car show','\U0001F697'],['plein air','\U0001F3A8'],['art','\U0001F3A8'],['birds','\U0001F426'],['nature','\U0001F33F'],['bbq','\U0001F354'],['movie','\U0001F3AC'],['film','\U0001F3AC'],['jazz','\U0001F3B7'],['concert','\U0001F3A4'],['music','\U0001F3B5'],['festival','\U0001F3AA'],['storytime','\U0001F4D6'],['camp','\u26FA'],['swim','\U0001F3CA'],['cooking','\U0001F373']];for(var i=0;i<map.length;i++){if(n.indexOf(map[i][0])>=0)return map[i][1];}return {Festival:'\U0001F3AA','Music and Movies':'\U0001F3B5','Community Event':'\U0001F389','Kids Programs':'\U0001F9F8',Library:'\U0001F4DA'}[e.type]||'\u2B50';}
