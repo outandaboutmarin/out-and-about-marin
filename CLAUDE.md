@@ -96,3 +96,4 @@ Alexandra runs this **on command**, in chat, not on a schedule — she says some
 - `location_group` values have drifted from what old docs claimed (see schema table above) — always check live values, don't hardcode a list.
 - `type` includes both legacy `Music` and current `Music and Movies` — new entries should use `Music and Movies`.
 - Napa-area events exist with no documented sweep process (see Napa note above) — flagged to Alexandra, awaiting direction.
+- **Bollywood Beats Dance Party** (Mill Valley Library, `millvalleylibrary.libcal.com/event/16544594`): WebFetch on this page reported additional dates (Jul 2/9/16/23/30) beyond the visible June 25 date, attributed to an "expandable date list." Alexandra checked the page directly and does not see those additional dates. Do not propose any Bollywood Beats date beyond the one already in the DB (id 149, June 25) unless Alexandra can independently confirm a specific new date from the source herself.
