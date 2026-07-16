@@ -760,6 +760,18 @@ async function dbCheckPhoneExists(phone) {
   } catch(e) { return false; }
 }
 
+async function logActivity(actionType, details = {}) {
+  if (!db) return;
+  try {
+    const { error } = await db.from('activity_log').insert([{
+      user_id: currentUser ? currentUser.id : null,
+      action_type: actionType,
+      ...details
+    }]);
+    if (error) console.warn('logActivity error:', error.message);
+  } catch(e) { console.warn('logActivity unavailable:', e); }
+}
+
 function normalizeSavedEvents(list) {
   if (typeof list === 'string') { try { list = JSON.parse(list); } catch (e) { list = []; } }
   if (!Array.isArray(list)) list = [];
@@ -2619,6 +2631,7 @@ async function completeSignup() {
     console.warn('Supabase save failed — using localStorage only');
   }
 
+  logActivity('login');
   localStorage.setItem('oaam_user', JSON.stringify(currentUser));
   if (btn) { btn.textContent = "Let's go →"; btn.disabled = false; }
   checkDisclaimer();
@@ -2650,6 +2663,7 @@ async function handleLogin() {
   if (dbUser) {
     currentUser = mapDbUser(dbUser);
     localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+    logActivity('login');
     if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
     showScreen('app');
     loadDefaultFilters();
@@ -2670,6 +2684,7 @@ async function handleLogin() {
           localStorage.setItem('oaam_user', JSON.stringify(currentUser));
         }
       });
+      logActivity('login');
       if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
       showScreen('app');
       loadDefaultFilters();
@@ -2892,7 +2907,9 @@ document.addEventListener('click', e => {
 function toggleFilter(filterId, value) {
   userHasInteracted = true;
   const s = selections[filterId];
+  const turningOn = !s.has(value);
   s.has(value) ? s.delete(value) : s.add(value);
+  if (turningOn) logActivity('filter_use', { filter_type: filterId, filter_value: value });
   syncCheckboxes(filterId);
   updatePill(filterId);
   renderCards();
@@ -3656,6 +3673,7 @@ function openDetail(id) {
   const e = allEvents.find(ev => ev.id === id);
   if (!e) return;
   currentEventId = id;
+  logActivity('event_click', { event_id: e.id, event_name: e.event_name });
 
   // Type badge translation
   const typeTranslations = {
