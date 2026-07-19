@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-17",
+  "last_updated": "2026-07-19",
   "events": [
     {
       "id": 1,
@@ -12569,7 +12569,7 @@
       "registration": "Not required",
       "website": "https://www.onetam.org/calendar/juice-ranger-6-27-2026",
       "notes": "Source: OneTam / Marin County Parks.",
-      "location_group": "Marin County"
+      "location_group": "Novato"
     },
     {
       "id": 478,
@@ -12599,7 +12599,7 @@
       "registration": "Not required",
       "website": "https://www.onetam.org/indian-tree-4",
       "notes": "Source: OneTam / Marin County Parks.",
-      "location_group": "Marin County"
+      "location_group": "Novato"
     },
     {
       "id": 479,
@@ -12629,7 +12629,7 @@
       "registration": "Not required",
       "website": "https://www.onetam.org/calendar/road-becoming-ranger-7-12-2026",
       "notes": "Source: OneTam / Marin County Parks.",
-      "location_group": "Marin County"
+      "location_group": "Novato"
     },
     {
       "id": 480,
@@ -15254,7 +15254,7 @@
       "registration": "Not required",
       "website": "https://www.onetam.org/calendar",
       "notes": "Source: OneTam / Marin County Parks calendar. Distinct from ID 478 (Jul 5 walk, different title/time on official calendar).",
-      "location_group": "Marin County",
+      "location_group": "Novato",
       "id": 567
     },
     {
@@ -17324,7 +17324,7 @@
       "registration": "Not required",
       "website": "https://onetam.org/calendar",
       "notes": "",
-      "location_group": "Marin County",
+      "location_group": "Fairfax",
       "id": 637
     },
     {
@@ -17534,7 +17534,7 @@
       "registration": "Required via communityscience@onetam.org",
       "website": "https://www.onetam.org/tamalpais-bee-lab",
       "notes": "Second date Aug 8 also approved.",
-      "location_group": "Marin County",
+      "location_group": "Fairfax",
       "id": 644
     },
     {
@@ -18044,7 +18044,7 @@
       "registration": "Required via communityscience@onetam.org",
       "website": "https://www.onetam.org/tamalpais-bee-lab",
       "notes": "",
-      "location_group": "Marin County",
+      "location_group": "Fairfax",
       "id": 661
     },
     {
@@ -18134,7 +18134,7 @@
       "registration": "Required — (415) 473-2816 to confirm 2 hrs before",
       "website": "https://www.marinmommies.com/calendar/sunset-hike",
       "notes": "No pets.",
-      "location_group": "Marin County",
+      "location_group": "West Marin",
       "id": 664
     },
     {
