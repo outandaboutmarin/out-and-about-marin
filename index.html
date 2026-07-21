@@ -2534,6 +2534,7 @@ function loadEvents() {
     .then(data => {
       allEvents = data.events || [];
       buildLocationOptions();
+      syncCheckboxes('location');
       renderCards();
       // renderComingUp(); // disabled
     })
