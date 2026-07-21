@@ -4022,21 +4022,56 @@ function saveDefaults() {
   renderCards();
   renderProfile();
 }
+// Maps retired location_group values (from before renames/cleanups) to their
+// current equivalent(s), so users who saved defaults before a rename don't
+// silently lose that town from their filters. Add an entry here any time a
+// location_group value is renamed or removed.
+const LOCATION_ALIAS_MAP = {
+  'Larkspur': ['Larkspur/Greenbrae'],
+  'Sausalito': ['Sausalito/Marin City'],
+  'Marin County': ['Novato', 'Fairfax', 'West Marin'],
+};
+
+function normalizeLocationFilters(arr) {
+  const out = new Set();
+  let changed = false;
+  arr.forEach(v => {
+    if (LOCATION_ALIAS_MAP[v]) {
+      LOCATION_ALIAS_MAP[v].forEach(x => out.add(x));
+      changed = true;
+    } else {
+      out.add(v);
+    }
+  });
+  return { values: [...out], changed };
+}
+
 function loadDefaultFilters() {
   if (currentUser && currentUser.defaultFilters) {
     const validKeys = ['type','location','day','time','age','cost'];
     let hasAny = false;
+    let locationFixed = false;
     Object.keys(currentUser.defaultFilters).forEach(k => {
       if (!validKeys.includes(k)) return;
       const vals = currentUser.defaultFilters[k];
-      const arr = Array.isArray(vals) ? vals : (vals ? Object.values(vals) : []);
+      let arr = Array.isArray(vals) ? vals : (vals ? Object.values(vals) : []);
       if (arr.length === 0) return;
+      if (k === 'location') {
+        const normalized = normalizeLocationFilters(arr);
+        arr = normalized.values;
+        if (normalized.changed) { locationFixed = true; currentUser.defaultFilters.location = arr; }
+      }
       hasAny = true;
       selections[k] = new Set(arr);
       defaultFilters[k] = new Set(arr);
       const pill = document.getElementById('pill-' + k);
       if (pill) { updatePill(k); syncCheckboxes(k); }
     });
+    // Persist the one-time fix so this doesn't need to re-heal every load
+    if (locationFixed) {
+      localStorage.setItem('oaam_user', JSON.stringify(currentUser));
+      if (currentUser.phone) dbUpdateUser(currentUser.phone, { default_filters: currentUser.defaultFilters });
+    }
     // Re-render feed if defaults were loaded
     if (hasAny) renderCards();
   }
