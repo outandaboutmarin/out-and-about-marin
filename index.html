@@ -317,6 +317,7 @@ function setLanguage(lang) {
   buildTypeOptions();
   buildAgeOptions();
   buildLocationOptions();
+  ['day','time','cost','type','age','location'].forEach(syncCheckboxes);
   renderCards();
   if (currentUser) renderProfile();
 }
