@@ -2494,8 +2494,11 @@ const typeOptions = [
   { value: 'Fitness', dot: '#1D9E75' },
   { value: 'Festival', dot: '#BA7517' },
   { value: 'Farmers Market', dot: '#639922' },
-  { value: 'Community Event', dot: '#D4537E' }
+  { value: 'Community Event', dot: '#D4537E' },
+  { value: 'Recurring', dot: '#52616B' }
 ];
+// Cadences treated as "Recurring" for the Recurring type-filter option.
+const RECURRING_CADENCES = ['Weekly', 'Bi-weekly', 'Monthly'];
 const dayOptions = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 const timeOptions = ['Morning (before noon)','Afternoon (noon–5 pm)','Evening (after 5 pm)'];
 const ageOptions = ['Babies (0–12 months)','Toddlers (1–3 yrs)','Preschool (3–5 yrs)','Kids (5–12 yrs)','Families (all ages)'];
@@ -3169,7 +3172,13 @@ function getFilteredEvents() {
     // Only show events that occur in the selected week
     if (!isEventInWeek(e, weekStart, weekEnd)) return false;
     // Apply filters
-    if (selections.type.size > 0 && !selections.type.has(e.type)) return false;
+    if (selections.type.size > 0) {
+      // "Recurring" is a virtual type: it matches any event on a recurring
+      // cadence (Weekly/Bi-weekly/Monthly), regardless of its actual type.
+      const typeMatch = selections.type.has(e.type);
+      const recurringMatch = selections.type.has('Recurring') && RECURRING_CADENCES.includes(e.cadence);
+      if (!typeMatch && !recurringMatch) return false;
+    }
     if (selections.location.size > 0 && !selections.location.has(e.location_group || e.town)) return false;
     if (selections.day.size > 0) {
       // Handle multi-day events like "Tuesday / Thursday"
