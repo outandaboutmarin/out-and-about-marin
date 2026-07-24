@@ -3,6 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+// Force HTTPS. Must run before anything else.
+// Over plain http:// the page is not a secure context, so window.crypto.subtle
+// is undefined — which makes hashPin() throw and silently breaks BOTH sign-in
+// and account creation (the user just sees "PIN not recognized", while the
+// phone-already-registered check still works because it needs no crypto).
+// Confirmed root cause of a real user lockout, 2026-07. Localhost is exempt so
+// local dev over http still works.
+(function () {
+  var h = location.hostname;
+  if (location.protocol === 'http:' && h !== 'localhost' && h !== '127.0.0.1' && h !== '[::1]') {
+    location.replace('https://' + location.host + location.pathname + location.search + location.hash);
+  }
+})();
+</script>
 <meta name="description" content="Out AND About Marin — family events and activities across Marin County, California">
 <title>Out AND About Marin</title>
 
