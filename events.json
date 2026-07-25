@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-23",
+  "last_updated": "2026-07-24",
   "events": [
     {
       "id": 1,
@@ -4057,7 +4057,7 @@
       "venue": "Belvedere Tiburon Library",
       "event_name": "Family StoryTUNES — Belvedere-Tiburon Library",
       "type": "Library",
-      "day": "Sunday",
+      "day": "Saturday",
       "time": "11:00 AM – 11:30 AM",
       "time_of_day": "Morning",
       "town": "Tiburon",
@@ -4073,13 +4073,13 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "description": "Fun and interactive Sunday morning of music, movement, and stories for young children and their families. A great way to start the week with singing, dancing, and storytime.",
+      "description": "Fun and interactive Saturday morning of music, movement, and stories for young children and their families. A great way to enjoy the weekend with singing, dancing, and storytime.",
       "registration": "Not required",
       "website": "https://www.beltiblibrary.org/event/?id=15904661",
-      "notes": "Weekly Sunday. Ages 0-5.",
+      "notes": "Weekly Saturday (switched from Sunday effective August 1, 2026, per Alexandra). Ages 0-5.",
       "location_group": "Tiburon/Belvedere",
       "event_name_es": "CuentoMELODÍAS Familiar — Biblioteca de Belvedere-Tiburon",
-      "description_es": "Una mañana dominical divertida e interactiva de música, movimiento e historias para niños pequeños y sus familias. Una gran manera de comenzar la semana con canciones, baile y cuentos."
+      "description_es": "Una mañana sabatina divertida e interactiva de música, movimiento e historias para niños pequeños y sus familias. Una gran manera de disfrutar el fin de semana con canciones, baile y cuentos."
     },
     {
       "id": 182,
