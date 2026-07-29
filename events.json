@@ -20566,6 +20566,36 @@
       "notes": "70+ bands across 20+ performance areas. Streets close at noon.",
       "location_group": "San Rafael",
       "id": 745
+    },
+    {
+      "organization": "The Gallery — Stinson Beach",
+      "venue": "The Gallery",
+      "event_name": "Summer Pop-Up Sale — Stinson Beach",
+      "event_name_es": "Venta Pop-Up de Verano — Stinson Beach",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "11:00 AM – 4:00 PM",
+      "time_of_day": "Morning",
+      "town": "Stinson Beach",
+      "address": "3445 Shoreline Highway, Stinson Beach, CA 94970",
+      "ages": "All ages",
+      "cost": "Free to attend",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-08-01",
+      "expires": "2026-08-01",
+      "status": "Active",
+      "featured": false,
+      "description": "Multi-seller pop-up sale at The Gallery in Stinson Beach featuring pre-loved women's clothing (tops, pants, jackets), purses, jewelry, and small home decor and furniture pieces. A variety of sizes and brands. Come browse and take home something you love.",
+      "description_es": "Venta pop-up con múltiples vendedores en The Gallery en Stinson Beach con ropa de mujer de segunda mano (blusas, pantalones, chaquetas), bolsos, joyería y artículos pequeños de decoración y muebles para el hogar. Variedad de tallas y marcas. Ven a explorar y llévate algo que te encante.",
+      "registration": "Not required",
+      "website": "",
+      "notes": "One-day multi-seller pre-loved goods sale. Source: flyer relayed by Alexandra.",
+      "location_group": "West Marin",
+      "id": 746
     }
   ]
 }
