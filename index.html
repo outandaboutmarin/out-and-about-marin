@@ -1879,8 +1879,13 @@ function mapDbUser(dbUser) {
     cursor: pointer; margin-top: 0.5rem; padding: 0.5rem;
   }
 
-  /* Desktop layout */
-  @media (min-width: 768px) {
+  /* Desktop layout.
+     Gated on hover+fine-pointer, not width alone: Chrome/Safari on iOS in
+     "Request Desktop Site" mode report a ~980px layout viewport, which used to
+     trigger these rules on a phone and squeeze the app into a 480px column
+     occupying half the screen. Touch devices report pointer:coarse/hover:none
+     even in desktop mode, so they now correctly keep the full-width layout. */
+  @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
     #loginScreen { background: var(--off-white); }
     .login-card {
       background: var(--white); border-radius: var(--radius-lg);
