@@ -3100,46 +3100,69 @@ function getLastWeekdayOfMonth(dayIndex, year, month) {
   return last;
 }
 
+// A recurring event's notes can call out a one-off skip with the word
+// "skip" directly before an ISO date, e.g. "skip: 2026-08-08" — used when a
+// specific computed occurrence shouldn't happen (its usual slot was moved to
+// a different date that month, added separately as a One-off record).
+// Requires the literal word so it can't misfire on an unrelated ISO date
+// elsewhere in the notes (e.g. a "corrected 2026-07-06" audit trail).
+function parseSkipDates(notes) {
+  const out = new Set();
+  if (!notes) return out;
+  const re = /\bskip\s*:?\s*(\d{4}-\d{2}-\d{2})/gi;
+  let m;
+  while ((m = re.exec(notes))) out.add(m[1]);
+  return out;
+}
+
 function doesEventOccurOnDate(e, date) {
   const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const eventDays = e.day.includes('/') ? e.day.split('/').map(d => d.trim()) : [e.day];
   const dateDayName = dayNames[date.getDay()];
 
   if (!eventDays.includes(dateDayName)) return false;
-  if (e.cadence === 'Weekly') return true;
 
-  const rule = parseOccurrenceRule(e.notes);
-  if (!rule) {
-    // No rule found — for Monthly events hide from feed (unpredictable)
-    // For Bi-weekly with no rule, show every matching day as fallback
-    if (e.cadence === 'Monthly') return false;
-    return true;
-  }
-  if (rule.unpredictable) return false; // hide from feed
+  let occurs;
+  if (e.cadence === 'Weekly') {
+    occurs = true;
+  } else {
+    const rule = parseOccurrenceRule(e.notes);
+    if (!rule) {
+      // No rule found — for Monthly events hide from feed (unpredictable)
+      // For Bi-weekly with no rule, show every matching day as fallback
+      occurs = e.cadence !== 'Monthly';
+    } else if (rule.unpredictable) {
+      occurs = false; // hide from feed
+    } else {
+      const dayIndex = date.getDay();
+      const year = date.getFullYear();
+      const month = date.getMonth();
 
-  const dayIndex = date.getDay();
-  const year = date.getFullYear();
-  const month = date.getMonth();
-
-  if (rule.last) {
-    const lastOcc = getLastWeekdayOfMonth(dayIndex, year, month);
-    return lastOcc && lastOcc.toDateString() === date.toDateString();
-  }
-
-  if (rule.nth) {
-    const occ = getNthWeekdayOfMonth(rule.nth, dayIndex, year, month);
-    return occ && occ.toDateString() === date.toDateString();
-  }
-
-  if (rule.nths) {
-    for (const nth of rule.nths) {
-      const occ = getNthWeekdayOfMonth(nth, dayIndex, year, month);
-      if (occ && occ.toDateString() === date.toDateString()) return true;
+      if (rule.last) {
+        const lastOcc = getLastWeekdayOfMonth(dayIndex, year, month);
+        occurs = !!(lastOcc && lastOcc.toDateString() === date.toDateString());
+      } else if (rule.nth) {
+        const occ = getNthWeekdayOfMonth(rule.nth, dayIndex, year, month);
+        occurs = !!(occ && occ.toDateString() === date.toDateString());
+      } else if (rule.nths) {
+        occurs = rule.nths.some(nth => {
+          const occ = getNthWeekdayOfMonth(nth, dayIndex, year, month);
+          return occ && occ.toDateString() === date.toDateString();
+        });
+      } else {
+        occurs = true;
+      }
     }
-    return false;
   }
 
-  return true;
+  if (occurs) {
+    const skip = parseSkipDates(e.notes);
+    if (skip.size) {
+      const iso = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0');
+      if (skip.has(iso)) occurs = false;
+    }
+  }
+  return occurs;
 }
 
 // Next real calendar date this event occurs on, for display where showing
