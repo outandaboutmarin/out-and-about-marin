@@ -3142,6 +3142,25 @@ function doesEventOccurOnDate(e, date) {
   return true;
 }
 
+// Next real calendar date this event occurs on, for display where showing
+// just "Saturday" is ambiguous (e.g. search results) — a recurring monthly
+// hike and a one-off hike on the same weekday otherwise look identical.
+function getNextOccurrenceLabel(e) {
+  let d;
+  if (e.event_date) {
+    d = new Date(e.event_date + 'T00:00:00');
+  } else {
+    d = null;
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    for (let i = 0; i < 120; i++) {
+      const cand = new Date(today); cand.setDate(today.getDate() + i);
+      if (doesEventOccurOnDate(e, cand)) { d = cand; break; }
+    }
+  }
+  if (!d || isNaN(d)) return null;
+  return d.toLocaleDateString(currentLang === 'es' ? 'es-MX' : 'en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+}
+
 function isEventInWeek(e, weekStart, weekEnd) {
   const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   if (e.cadence === 'One-off') {
@@ -4221,11 +4240,18 @@ function searchEvents(query) {
   }
 
   resultsDiv.innerHTML = '<div style="padding:0.5rem 0.75rem;font-size:0.7rem;color:#999;font-family:Jost,sans-serif">' + results.length + ' result' + (results.length !== 1 ? 's' : '') + '</div>' +
-    results.map(e => `<div onclick="toggleSearch();openDetail(${e.id})" style="padding:0.625rem 0.75rem;border-bottom:0.5px solid #EEE;cursor:pointer">
+    results.map(e => {
+      // Prefer the actual next occurrence date over the bare day name — two
+      // records both saying just "Saturday" (a recurring monthly hike and a
+      // one-off hike) are otherwise indistinguishable in this list.
+      const dateLabel = getNextOccurrenceLabel(e);
+      const whenLabel = dateLabel ? dateLabel : e.day;
+      return `<div onclick="toggleSearch();openDetail(${e.id})" style="padding:0.625rem 0.75rem;border-bottom:0.5px solid #EEE;cursor:pointer">
       <div style="font-family:'Playfair Display',serif;font-size:0.875rem;font-weight:600;color:#0D1B3E">${e.event_name}</div>
       <div style="font-size:0.72rem;color:#555;margin-top:2px">${e.venue} · ${e.town}</div>
-      <div style="font-size:0.65rem;color:#888;margin-top:2px">${e.day} · ${e.time}</div>
-    </div>`).join('');
+      <div style="font-size:0.65rem;color:#888;margin-top:2px">${whenLabel} · ${e.time}</div>
+    </div>`;
+    }).join('');
 }
 
 // ═══════════════════════════════════════════
