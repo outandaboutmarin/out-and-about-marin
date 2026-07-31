@@ -1110,8 +1110,10 @@ function mapDbUser(dbUser) {
   /* Filter bar */
   .filter-bar {
     background: var(--navy);
-    padding: 0 0.75rem 0.625rem;
+    /* 0.5rem top pad so the pills aren't flush against the date row above */
+    padding: 0.5rem 0.75rem 0.625rem;
     display: flex; flex-wrap: nowrap; gap: 5px; overflow-x: auto; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
   .filter-pill {
     display: flex; align-items: center; gap: 3px;
@@ -1289,12 +1291,23 @@ function mapDbUser(dbUser) {
     margin-top: 2px;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-  .card-meta { display: flex; gap: 3px; margin-top: 4px; flex-wrap: nowrap; align-items: center; }
+  /* Tags must wrap. With flex-wrap:nowrap a single long cost string (e.g.
+     "$30 adults ($33.95 with fees); kids 12 and under free") became one
+     unbreakable pill that pushed the whole page wider than the viewport,
+     causing horizontal scrolling, and overlapped the time in .card-right. */
+  .card-meta {
+    display: flex; gap: 3px; row-gap: 4px; margin-top: 4px;
+    flex-wrap: wrap; align-items: center; min-width: 0;
+  }
   .tag {
     font-size: 0.65rem; font-weight: 500;
     padding: 2px 8px; border-radius: var(--radius-pill);
-    white-space: nowrap; display: inline-flex; align-items: center; gap: 5px;
+    display: inline-flex; align-items: center; gap: 5px;
     background: var(--white); border: 1px solid var(--card-border);
+    /* Backstop: a tag longer than the card wraps inside its own pill rather
+       than overflowing. min-width:0 lets it shrink below its content width. */
+    max-width: 100%; min-width: 0;
+    white-space: normal; overflow-wrap: anywhere;
   }
   .tag::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex: 0 0 auto; }
   .tag-library { color: var(--library-text); border-color: color-mix(in srgb, var(--library-text) 34%, #fff); }
