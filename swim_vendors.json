@@ -1,0 +1,573 @@
+{
+  "last_updated": "2026-08-02",
+  "vendors": [
+    {
+      "id": "osher-marin-jcc",
+      "name": "Osher Marin JCC",
+      "facilityType": "JCC / YMCA",
+      "town": "San Rafael",
+      "towns": [
+        "San Rafael"
+      ],
+      "address": "200 N San Pedro Rd, San Rafael, CA 94903",
+      "phone": "(415) 444-8005",
+      "website": "https://marinjcc.org/fitness-aquatic-center/pool-aquatics/swimming-lessons",
+      "agesServed": {
+        "minMonths": 6,
+        "displayText": "6 months+ (parent/child); group lessons from age 3"
+      },
+      "classTypes": [
+        "Parent & Child",
+        "Group Lessons",
+        "Semi-Private Lessons",
+        "Private Lessons",
+        "Adult Lessons"
+      ],
+      "poolInfo": "Heated indoor pool, very warm",
+      "indoorOutdoor": "Both",
+      "hoursSeason": "Year-round; call swim hotline for current schedule",
+      "notes": "Swim hotline: 415.444.8005 or swimlessons@marinjcc.org. Member $25 / Public $35 for parent-child drop-in.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "marin-ymca",
+      "name": "Marin YMCA",
+      "facilityType": "JCC / YMCA",
+      "town": "San Rafael",
+      "towns": [
+        "San Rafael"
+      ],
+      "address": "1500 Los Gamos Drive, San Rafael, CA 94903",
+      "phone": "(415) 492-9622",
+      "website": "https://ymcasf.org/locations/marin-ymca",
+      "agesServed": {
+        "minMonths": 6,
+        "displayText": "6 months+ through adult"
+      },
+      "classTypes": [
+        "Parent & Child",
+        "Group Lessons",
+        "Private Lessons",
+        "Water Safety Classes",
+        "Swim Team"
+      ],
+      "poolInfo": "Indoor pool",
+      "indoorOutdoor": "Indoor",
+      "hoursSeason": "Year-round; holiday hours vary (check website)",
+      "notes": "Known for accessible/lower-cost lessons. Also offers free water safety classes and an intra-Y swim team (ages 4-18).",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "marinwood-swim-academy",
+      "name": "Marinwood Swim Academy",
+      "facilityType": "City/Public Recreation Pool",
+      "town": "San Rafael (Marinwood)",
+      "towns": [
+        "San Rafael"
+      ],
+      "address": "775 Miller Creek Road, San Rafael, CA 94903",
+      "phone": "(415) 479-2335",
+      "website": "https://marinwood.org/pool/swim-lessons",
+      "agesServed": {
+        "minMonths": 36,
+        "displayText": "3 years+ (Beginner 'Guppy' level) through advanced youth levels"
+      },
+      "classTypes": [
+        "Group Lessons"
+      ],
+      "poolInfo": "Outdoor community pool/membership available",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "Summer session-based (multiple 1-week sessions, mid-June through mid-August)",
+      "notes": "Levels reassessed throughout summer.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "terra-linda-community-pool",
+      "name": "Terra Linda Community Pool",
+      "facilityType": "City/Public Recreation Pool",
+      "town": "San Rafael (Terra Linda)",
+      "towns": [
+        "San Rafael"
+      ],
+      "address": "670 Del Ganado Road, San Rafael, CA 94903",
+      "phone": "(415) 485-3344",
+      "website": "https://cityofsanrafael.org/swim-lessons",
+      "agesServed": {
+        "minMonths": 6,
+        "displayText": "6 mo -12 yr"
+      },
+      "classTypes": [
+        "Group Lessons",
+        "Private Lessons"
+      ],
+      "poolInfo": "Outdoor pool",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "Seasonal (summer)",
+      "notes": "",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "rafael-racquet-club-aquatics",
+      "name": "Rafael Racquet Club Aquatics",
+      "facilityType": "Private Club (Membership)",
+      "town": "San Rafael",
+      "towns": [
+        "San Rafael"
+      ],
+      "address": "95 Racquet Club Drive, San Rafael, CA 94901",
+      "phone": "(415) 456-5522",
+      "website": "https://www.rafaelracquetclub.com/camps/lmss/",
+      "agesServed": {
+        "minMonths": 36,
+        "displayText": "3+"
+      },
+      "classTypes": [
+        "Group Lessons",
+        "Private Lessons"
+      ],
+      "poolInfo": "Club pool",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "Seasonal / call for hours",
+      "notes": "",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "miss-jean-swimming",
+      "name": "Miss Jean Swimming",
+      "facilityType": "Independent Instructor (Mobile/Multiple Locations)",
+      "town": "San Rafael (Northbridge Pool), also teaches at Marin JCC) & Mill Valley (Homestead Valley Pool)",
+      "towns": [
+        "San Rafael",
+        "Mill Valley"
+      ],
+      "address": "160 Madison Avenue, San Rafael, CA 94903 / 315 Montford Avenue, Mill Valley, CA 94941",
+      "phone": "",
+      "website": "https://missjeanswimming.org",
+      "agesServed": {
+        "minMonths": 0,
+        "displayText": "Infants through adults, depending on instructor"
+      },
+      "classTypes": [
+        "Group Lessons",
+        "Private Lessons"
+      ],
+      "poolInfo": "",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "Seasonal — call/check site to confirm",
+      "notes": "Teaches at private pools (locations vary by instructor).",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "la-petite-baleen-sf-presidio",
+      "name": "La Petite Baleen Swim School — San Francisco (Presidio)",
+      "facilityType": "Swim School (Established Business)",
+      "town": "SF Presidio/Crissy Field location",
+      "towns": [
+        "San Francisco"
+      ],
+      "address": "1049 Girard Rd, San Francisco, CA 94129",
+      "phone": "(415) 561-3939",
+      "website": "https://swimlpb.com/presidio",
+      "agesServed": {
+        "minMonths": 2,
+        "displayText": "2 months+ through adult"
+      },
+      "classTypes": [
+        "Parent & Child",
+        "Group Lessons",
+        "Semi-Private Lessons",
+        "Private Lessons"
+      ],
+      "poolInfo": "Indoor heated pool (~90°F)",
+      "indoorOutdoor": "Indoor",
+      "hoursSeason": "Year-round, 7 days/week, hours vary by day",
+      "notes": "NOT a Marin vendor — included per request as the closest La Petite Baleen location to Marin, roughly 20-30 minutes from southern Marin via the Golden Gate Bridge. 2MO - 6MO is free.",
+      "inMarin": false,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "la-petite-baleen-rohnert-park",
+      "name": "La Petite Baleen Swim School — Rohnert Park",
+      "facilityType": "Swim School (Established Business)",
+      "town": "Rohnert Park (Sonoma County)",
+      "towns": [
+        "Rohnert Park"
+      ],
+      "address": "1400 Valley House Dr, Rohnert Park, CA 94928",
+      "phone": "(707) 586-9979",
+      "website": "https://swimlpb.com/rohnertpark",
+      "agesServed": {
+        "minMonths": 2,
+        "displayText": "2 months+ through adult"
+      },
+      "classTypes": [
+        "Parent & Child",
+        "Group Lessons",
+        "Semi-Private Lessons",
+        "Private Lessons"
+      ],
+      "poolInfo": "Indoor heated pool (~90°F)",
+      "indoorOutdoor": "Indoor",
+      "hoursSeason": "Year-round, 7 days/week, hours vary by day",
+      "notes": "NOT a Marin vendor — included per request as the closest La Petite Baleen location to northern Marin, roughly 40 minutes from Novato via Highway 101. 2MO - 6MO is free.",
+      "inMarin": false,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "bay-club-rolling-hills",
+      "name": "Bay Club Rolling Hills",
+      "facilityType": "Private Club (Membership)",
+      "town": "Novato",
+      "towns": [
+        "Novato"
+      ],
+      "address": "351 San Andreas Drive, Novato, CA 94945",
+      "phone": "(415) 897-2185",
+      "website": "https://bayclubs.com",
+      "agesServed": {
+        "minMonths": 6,
+        "displayText": "6 months+ (parent-tot) through adult"
+      },
+      "classTypes": [
+        "Parent & Child",
+        "Group Lessons"
+      ],
+      "poolInfo": "Club pool(s)",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "Year-round, call for current schedule",
+      "notes": "Membership required for most programs — confirm guest/non-member policy.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "hamilton-community-pool",
+      "name": "Hamilton Community Pool",
+      "facilityType": "City/Public Recreation Pool",
+      "town": "Novato",
+      "towns": [
+        "Novato"
+      ],
+      "address": "203 El Bonito Drive, Novato, CA 94949",
+      "phone": "(415) 883-7126",
+      "website": "https://novato.gov/government/parks-recreation-community-services/aquatics-program-hamilton-pool",
+      "agesServed": {
+        "minMonths": 6,
+        "displayText": "6 months+ (parent & child) plus youth levels"
+      },
+      "classTypes": [
+        "Parent & Child",
+        "Group Lessons",
+        "Water Aerobics"
+      ],
+      "poolInfo": "Newly refurbished pool with water play structure & slide",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "Seasonal, open May–September",
+      "notes": "Also offers recreational swim, lap swim, and a Friday inflatable water obstacle course (June–Aug) for ages 15+.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "miwok-aquatic-fitness-center",
+      "name": "Miwok Aquatic & Fitness Center",
+      "facilityType": "City/Public Recreation Pool",
+      "town": "Novato",
+      "towns": [
+        "Novato"
+      ],
+      "address": "1800 Ignacio Blvd, Novato, CA 94949",
+      "phone": "(415) 883-2211",
+      "website": "https://www1.marin.edu/news/community-program-lap-swim-and-fitness-center",
+      "agesServed": {
+        "minMonths": 0,
+        "displayText": "All ages"
+      },
+      "classTypes": [
+        "Group Lessons",
+        "Water Aerobics",
+        "Lap Swim"
+      ],
+      "poolInfo": "Indoor community pool + fitness center",
+      "indoorOutdoor": "Indoor",
+      "hoursSeason": "Hours vary by season — check site",
+      "notes": "Combined pool + land-based fitness center. Distinct from College of Marin Indian Valley Campus Pool below — Miwok is a City of Novato park facility off Ignacio Blvd, while Indian Valley is the community college's own pool on its Indian Valley campus; different operators, different locations (~2 miles apart).",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "mill-valley-recreation-aquatics",
+      "name": "Mill Valley Recreation Aquatics & Fitness Center (Mill Valley Swim School)",
+      "facilityType": "City/Public Recreation Pool",
+      "town": "Mill Valley",
+      "towns": [
+        "Mill Valley"
+      ],
+      "address": "180 Camino Alto, Mill Valley, CA 94941",
+      "phone": "(415) 383-1370",
+      "website": "https://millvalleyrecreation.org/731/Swim-Lessons",
+      "agesServed": {
+        "minMonths": 6,
+        "displayText": "6-36 months (parent-child) through adult"
+      },
+      "classTypes": [
+        "Parent & Child",
+        "Group Lessons",
+        "Semi-Private Lessons",
+        "Private Lessons"
+      ],
+      "poolInfo": "Community center pool — indoor.  Can run cold!",
+      "indoorOutdoor": "Indoor",
+      "hoursSeason": "Year-round, check current session schedule",
+      "notes": "",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "scott-valley-swimming-tennis-club",
+      "name": "Scott Valley Swimming & Tennis Club",
+      "facilityType": "Private Club (Membership)",
+      "town": "Mill Valley",
+      "towns": [
+        "Mill Valley"
+      ],
+      "address": "50 Underhill Road, Mill Valley, CA 94941",
+      "phone": "(415) 383-3483",
+      "website": "https://svstc.com/swimming/private-lessons",
+      "agesServed": {
+        "minMonths": 6,
+        "displayText": "6 months+ (parent & me) through adult"
+      },
+      "classTypes": [
+        "Parent & Child",
+        "Group Lessons"
+      ],
+      "poolInfo": "Club pool",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "Seasonal, call for hours",
+      "notes": "Membership NOT required for swim lessons.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "strawberry-recreation-district",
+      "name": "Strawberry Recreation District",
+      "facilityType": "City/Public Recreation Pool",
+      "town": "Mill Valley (Strawberry)",
+      "towns": [
+        "Mill Valley"
+      ],
+      "address": "118 E. Strawberry Drive, Mill Valley, CA 94941",
+      "phone": "(415) 383-6494",
+      "website": "https://strawberry.marin.org/aquatics",
+      "agesServed": {
+        "minMonths": 6,
+        "displayText": "6 months+ (parent & me) through adult"
+      },
+      "classTypes": [
+        "Group Lessons"
+      ],
+      "poolInfo": "Community pool — runs warmer than most",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "Seasonal — confirm current hours",
+      "notes": "",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "infant-swimming-resource-marin",
+      "name": "Infant Swimming Resource (ISR) — Marin",
+      "facilityType": "Independent Instructor (Mobile/Multiple Locations)",
+      "town": "Mill Valley & San Rafael",
+      "towns": [
+        "Mill Valley",
+        "San Rafael"
+      ],
+      "address": "Private pools (locations vary by instructor)",
+      "phone": "(415) 578-0966",
+      "website": "https://infantswim.com",
+      "agesServed": {
+        "minMonths": 6,
+        "displayText": "6 months - 6 years"
+      },
+      "classTypes": [
+        "Private Lessons"
+      ],
+      "poolInfo": "Private residential pools",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "Year-round, by appointment",
+      "notes": "Focus is water-safety/self-rescue skill building rather than traditional strokes — good to flag for safety-focused parents.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "ac-swim-club",
+      "name": "AC Swim Club",
+      "facilityType": "Swim School (Established Business)",
+      "town": "San Rafael",
+      "towns": [
+        "San Rafael"
+      ],
+      "address": "25 Golden Hinde Blvd, San Rafael, CA 94903",
+      "phone": "(415) 479-9131",
+      "website": "https://acswimclub.com",
+      "agesServed": {
+        "minMonths": 18,
+        "displayText": "18 months+ (Parent & Pup); group lessons start at age 4"
+      },
+      "classTypes": [
+        "Group Lessons",
+        "Competitive-Track Lessons"
+      ],
+      "poolInfo": "Club pool",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "Year-round",
+      "notes": "Marin's oldest swim school (65+ years, est. 1959, formerly Ann Curtis School of Swimming), now owned by former Cal swimmers Nathan Adrian & Will Copeland. Strong reputation.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "protea-swim-company",
+      "name": "Protea Swim Company",
+      "facilityType": "Independent Instructor (Mobile/Multiple Locations)",
+      "town": "Mill Valley, San Rafael, Corte Madera, Sausalito, Terra Linda, Lucas Valley, Novato (mobile/private)",
+      "towns": [
+        "Mill Valley",
+        "San Rafael",
+        "Corte Madera",
+        "Sausalito",
+        "Novato"
+      ],
+      "address": "Mobile — comes to client's pool or designated lane",
+      "phone": "Check proteaswim.com",
+      "website": "https://proteaswim.com",
+      "agesServed": {
+        "minMonths": 0,
+        "displayText": "Infants through adults"
+      },
+      "classTypes": [
+        "Group Lessons",
+        "Semi-Private Lessons",
+        "Private Lessons"
+      ],
+      "poolInfo": "Client's home pool or designated public lane",
+      "indoorOutdoor": "Varies",
+      "hoursSeason": "By appointment, year-round",
+      "notes": "Serves a wide swath of Marin — good option for families wanting at-home lessons.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "bay-club-ross-valley",
+      "name": "Bay Club Ross Valley",
+      "facilityType": "Private Club (Membership)",
+      "town": "Kentfield",
+      "towns": [
+        "Kentfield"
+      ],
+      "address": "235 Bon Air Rd, Kentfield, CA 94904",
+      "phone": "(415) 461-5431",
+      "website": "https://bayclubs.com/clubs/rossvalley",
+      "agesServed": {
+        "minMonths": 6,
+        "displayText": "6 months+ (parent-tot) through adult; group lessons ages 3-10"
+      },
+      "classTypes": [
+        "Parent & Child",
+        "Group Lessons",
+        "Stroke Clinics",
+        "Adult Lessons"
+      ],
+      "poolInfo": "Two outdoor pools",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "Year-round, non-members can enroll (with member discount)",
+      "notes": "Long-running program — the 'Ross Valley Swim School' has taught swimmers since 1953. Open to members and non-members, though members save 25%.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "mt-tam-racquet-athletic-club",
+      "name": "Mt. Tam Racquet & Athletic Club",
+      "facilityType": "Private Club (Membership)",
+      "town": "Larkspur",
+      "towns": [
+        "Larkspur"
+      ],
+      "address": "One Larkspur Plaza Drive, Larkspur, CA 94939",
+      "phone": "(415) 924-6226",
+      "website": "https://mttamrc.com/swimming",
+      "agesServed": {
+        "minMonths": 0,
+        "displayText": "All ages; parent-child lessons for youngest swimmers"
+      },
+      "classTypes": [
+        "Parent & Child",
+        "Group Lessons",
+        "Stroke Clinics",
+        "Water Aerobics",
+        "Summer Camps"
+      ],
+      "poolInfo": "Indoor and outdoor heated pools — only indoor tennis/swim club in Marin",
+      "indoorOutdoor": "Both",
+      "hoursSeason": "",
+      "notes": "Email info@mttamrc.com to ask about lesson availability.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "belvedere-tennis-club",
+      "name": "Belvedere Tennis Club",
+      "facilityType": "Private Club (Membership)",
+      "town": "Tiburon",
+      "towns": [
+        "Tiburon"
+      ],
+      "address": "700 Tiburon Blvd, Tiburon, CA 94920",
+      "phone": "(415) 435-4792",
+      "website": "https://belvederetennisclub.com/swim-and-fitness",
+      "agesServed": {
+        "minMonths": 0,
+        "displayText": "All ages"
+      },
+      "classTypes": [
+        "Group Lessons",
+        "Private Lessons"
+      ],
+      "poolInfo": "Outdoor saline pool, heated year-round to 85°F, plus outdoor spa",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "",
+      "notes": "Confirm lessons are open to non-member families.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    },
+    {
+      "id": "tiburon-peninsula-club",
+      "name": "Tiburon Peninsula Club",
+      "facilityType": "Private Club (Membership)",
+      "town": "Tiburon",
+      "towns": [
+        "Tiburon"
+      ],
+      "address": "1600 Mar West Street, Tiburon, CA 94920",
+      "phone": "(415) 435-0968",
+      "website": "https://tiburonpc.org",
+      "agesServed": {
+        "minMonths": 0,
+        "displayText": "All ages"
+      },
+      "classTypes": [
+        "Group Lessons"
+      ],
+      "poolInfo": "Club pool",
+      "indoorOutdoor": "Outdoor",
+      "hoursSeason": "",
+      "notes": "Confirm lessons are open to non-member families.",
+      "inMarin": true,
+      "lastVerified": "2026-07-01"
+    }
+  ]
+}

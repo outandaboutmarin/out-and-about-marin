@@ -2361,6 +2361,13 @@ function mapDbUser(dbUser) {
       </div>
     </div>
     <div class="about-section" style="margin-bottom:0.75rem">
+      <div class="about-title" data-es="🏊‍♀️ Directorio de Clases de Natación en Marin">🏊‍♀️ Swim Lesson Vendor Directory</div>
+      <div class="about-text">
+        <p style="margin:0 0 0.5rem;line-height:1.5" data-es="Explora clases de natación en Marin por ciudad, edad, tipo de clase, instalación interior/exterior y tipo de instalación — pistas de natación municipales, clubes privados, escuelas de natación e instructores independientes.">Browse swim lesson providers across Marin by town, age, class type, indoor/outdoor, and facility type — public pools, private clubs, swim schools, and independent instructors.</p>
+        <p style="margin:0;line-height:1.5"><a href="javascript:void(0)" onclick="showScreen('swim')" style="color:var(--navy);text-decoration:underline;font-weight:600" data-es="Abrir el Directorio de Clases de Natación →">Open the Swim Lesson Directory →</a></p>
+      </div>
+    </div>
+    <div class="about-section" style="margin-bottom:0.75rem">
       <div class="about-title" data-es="📦 Dona Artículos Esenciales para Bebés — Centro de Apoyo Posparto">📦 Donate Baby Essentials — Postpartum Support Center</div>
       <div class="about-text">
         <p style="margin:0 0 0.5rem;line-height:1.5" data-es="El Centro de Apoyo Posparto acepta donaciones de artículos esenciales para bebés en su lugar de entrega:">The Postpartum Support Center accepts donated baby essentials at their drop-off location:</p>
@@ -2387,6 +2394,157 @@ function mapDbUser(dbUser) {
       Resources
     </button>
   </nav>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SWIM LESSON DIRECTORY (Resources sub-page)
+═══════════════════════════════════════════════════ -->
+<div id="swimScreen" style="display:none">
+  <div class="detail-header">
+    <button class="detail-back" onclick="showScreen('resources')">‹ Back to Resources</button>
+    <div class="detail-title">Swim Lesson Directory</div>
+    <div class="detail-org" id="swimHeaderSub">Swim lesson providers across Marin County</div>
+  </div>
+
+  <div class="filter-bar">
+    <div class="filter-pill" id="pill-swimTown" onclick="toggleSwimDropdown('town')">
+      <span class="filter-pill-label" id="lbl-swimTown">Town</span>&nbsp;<span class="filter-arrow">▼</span>
+    </div>
+    <div class="filter-pill" id="pill-swimClassType" onclick="toggleSwimDropdown('classType')">
+      <span class="filter-pill-label" id="lbl-swimClassType">Class Type</span>&nbsp;<span class="filter-arrow">▼</span>
+    </div>
+    <div class="filter-pill" id="pill-swimFacilityType" onclick="toggleSwimDropdown('facilityType')">
+      <span class="filter-pill-label" id="lbl-swimFacilityType">Facility</span>&nbsp;<span class="filter-arrow">▼</span>
+    </div>
+    <div class="filter-pill" id="pill-swimIndoorOutdoor" onclick="toggleSwimDropdown('indoorOutdoor')">
+      <span class="filter-pill-label" id="lbl-swimIndoorOutdoor">Indoor/Outdoor</span>&nbsp;<span class="filter-arrow">▼</span>
+    </div>
+  </div>
+
+  <div class="dropdown-panel" id="dd-swimTown">
+    <div class="dropdown-header">
+      <span class="dropdown-header-label">Town</span>
+      <span class="dropdown-clear" onclick="clearSwimFilter('town')">Clear</span>
+    </div>
+    <div id="dd-swimTown-inner"></div>
+  </div>
+  <div class="dropdown-panel" id="dd-swimClassType">
+    <div class="dropdown-header">
+      <span class="dropdown-header-label">Class type</span>
+      <span class="dropdown-clear" onclick="clearSwimFilter('classType')">Clear</span>
+    </div>
+    <div id="dd-swimClassType-inner"></div>
+  </div>
+  <div class="dropdown-panel" id="dd-swimFacilityType">
+    <div class="dropdown-header">
+      <span class="dropdown-header-label">Facility type</span>
+      <span class="dropdown-clear" onclick="clearSwimFilter('facilityType')">Clear</span>
+    </div>
+    <div id="dd-swimFacilityType-inner"></div>
+  </div>
+  <div class="dropdown-panel" id="dd-swimIndoorOutdoor">
+    <div class="dropdown-header">
+      <span class="dropdown-header-label">Indoor / Outdoor</span>
+      <span class="dropdown-clear" onclick="clearSwimFilter('indoorOutdoor')">Clear</span>
+    </div>
+    <div id="dd-swimIndoorOutdoor-inner"></div>
+  </div>
+
+  <div style="padding:0.6rem 0.75rem 0">
+    <div style="font-size:0.65rem;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.4rem">Child's age</div>
+    <div class="age-chips" id="swimAgeChips">
+      <div class="age-chip" onclick="toggleSwimAge(this)" data-band="0-12 months">Under 1</div>
+      <div class="age-chip" onclick="toggleSwimAge(this)" data-band="1-3 yrs">1–3 yrs</div>
+      <div class="age-chip" onclick="toggleSwimAge(this)" data-band="3-5 yrs">3–5 yrs</div>
+      <div class="age-chip" onclick="toggleSwimAge(this)" data-band="5-8 yrs">5–8 yrs</div>
+      <div class="age-chip" onclick="toggleSwimAge(this)" data-band="8-12 yrs">8–12 yrs</div>
+    </div>
+  </div>
+
+  <div class="results-bar" style="display:flex">
+    <span class="results-count" id="swimResultsCount">Loading…</span>
+    <div class="results-bar-right">
+      <span class="clear-all-btn" onclick="clearAllSwimFilters()">Clear all</span>
+    </div>
+  </div>
+
+  <div class="cards-body" id="swimCardsBody"></div>
+
+  <div class="empty-state" id="swimEmptyState">
+    <div class="empty-title">No vendors match</div>
+    <div class="empty-sub">Try adjusting your filters</div>
+    <div class="empty-clear" onclick="clearAllSwimFilters()">Clear all filters</div>
+  </div>
+</div>
+
+<!-- SWIM VENDOR DETAIL -->
+<div id="swimDetailScreen" style="display:none">
+  <div class="detail-header">
+    <button class="detail-back" onclick="closeSwimDetail()">‹ Back to directory</button>
+    <div class="detail-type-badge" id="swimDetailFacilityBadge"></div>
+    <div class="detail-title" id="swimDetailName"></div>
+    <div class="detail-org" id="swimDetailTownLine"></div>
+  </div>
+  <div class="detail-body">
+    <div class="detail-card">
+      <div class="detail-section" id="swimNotInMarinSection" style="display:none;background:#FFF8E7">
+        <div class="description-text" style="color:#7A5200;font-weight:500" id="swimNotInMarinText"></div>
+      </div>
+      <div class="detail-section">
+        <div class="section-label">Ages &amp; Class Types</div>
+        <div class="detail-tags" id="swimDetailTags"></div>
+        <div style="margin-top:0.625rem">
+          <div class="detail-row">
+            <div class="detail-row-content">
+              <div class="detail-row-label">Ages served</div>
+              <div class="detail-row-value" id="swimDetailAges"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="section-label">Pool &amp; Hours</div>
+        <div class="detail-row">
+          <div class="detail-row-content">
+            <div class="detail-row-label">Pool</div>
+            <div class="detail-row-value" id="swimDetailPoolInfo"></div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-row-content">
+            <div class="detail-row-label">Hours / season</div>
+            <div class="detail-row-value" id="swimDetailHours"></div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="section-label">Where</div>
+        <div class="detail-row">
+          <div class="detail-row-content">
+            <div class="detail-row-label">Address</div>
+            <div class="detail-row-value" id="swimDetailAddress"></div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-section" id="swimDetailNotesSection" style="display:none">
+        <div class="section-label">Notes</div>
+        <div class="description-text" id="swimDetailNotes"></div>
+      </div>
+      <div class="detail-section">
+        <div class="description-text" style="font-size:0.68rem;color:#999">Last verified <span id="swimDetailVerified"></span> · Info may change — call ahead to confirm.</div>
+      </div>
+    </div>
+    <div class="action-row">
+      <a class="action-btn btn-maps" id="swimCallBtn" href="#">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2.5 2.5c0-.5.4-1 1-1h1.2c.4 0 .8.3.9.7l.6 2c.1.4 0 .8-.3 1L5 6c.6 1.4 1.6 2.4 3 3l.8-.9c.3-.3.7-.4 1-.3l2 .6c.4.1.7.5.7.9v1.2c0 .6-.5 1-1 1C6.5 11.5 2.5 7.5 2.5 2.5z" stroke="#0D1B3E" stroke-width="1.1" stroke-linejoin="round"/></svg>
+        Call
+      </a>
+      <a class="action-btn btn-website" id="swimWebsiteBtn" href="#" target="_blank">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c-1.5 2-2 3.5-2 5.5s.5 3.5 2 5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c1.5 2 2 3.5 2 5.5s-.5 3.5-2 5.5" stroke="white" stroke-width="1.2"/><line x1="1.5" y1="7" x2="12.5" y2="7" stroke="white" stroke-width="1.2"/></svg>
+        Visit website
+      </a>
+    </div>
+  </div>
 </div>
 
 <div id="profileScreen">
@@ -2820,6 +2978,8 @@ function showScreen(screen) {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('signupScreen2').style.display = 'none';
   document.getElementById('resourcesScreen').style.display = 'none';
+  document.getElementById('swimScreen').style.display = 'none';
+  document.getElementById('swimDetailScreen').style.display = 'none';
 
   if (screen === 'app') {
     document.getElementById('appScreen').style.display = 'flex';
@@ -2832,6 +2992,10 @@ function showScreen(screen) {
     document.getElementById('resourcesScreen').style.display = 'flex';
     document.getElementById('resourcesScreen').style.flexDirection = 'column';
     ensureTides();
+  } else if (screen === 'swim') {
+    document.getElementById('swimScreen').style.display = 'flex';
+    document.getElementById('swimScreen').style.flexDirection = 'column';
+    ensureSwimVendors();
   } else if (screen === 'settings') {
     showScreen('profile'); // For now settings goes to profile
   }
@@ -4452,6 +4616,255 @@ function validatePhone(phone) {
 function normalizePhone(phone) {
   // Strip formatting for storage/comparison - store as digits only
   return phone.replace(/\D/g, '');
+}
+
+// ═══════════════════════════════════════════
+// SWIM LESSON DIRECTORY (Resources sub-page)
+//
+// Deliberately independent JS state (swimVendors/swimSelections/etc.),
+// not the shared allEvents/selections used by the main events feed --
+// same filter-pill/dropdown-panel/event-card CSS, but a separate state
+// machine so nothing here can affect the events filtering ~400 users
+// already depend on.
+// ═══════════════════════════════════════════
+
+let swimVendors = [];
+let swimVendorsLoaded = false;
+let swimSelections = { town: new Set(), classType: new Set(), facilityType: new Set(), indoorOutdoor: new Set() };
+let swimAgeSelections = new Set();
+let swimActiveDropdown = null;
+let currentSwimVendorId = null;
+
+const SWIM_AGE_BANDS = [
+  { key: '0-12 months', label: 'Under 1', maxMonths: 12 },
+  { key: '1-3 yrs', label: '1–3 yrs', maxMonths: 36 },
+  { key: '3-5 yrs', label: '3–5 yrs', maxMonths: 60 },
+  { key: '5-8 yrs', label: '5–8 yrs', maxMonths: 96 },
+  { key: '8-12 yrs', label: '8–12 yrs', maxMonths: 144 },
+];
+
+const swimFilterDefaults = { town: 'Town', classType: 'Class Type', facilityType: 'Facility', indoorOutdoor: 'Indoor/Outdoor' };
+
+function ensureSwimVendors() {
+  if (swimVendorsLoaded) { renderSwimCards(); return; }
+  document.getElementById('swimResultsCount').textContent = 'Loading…';
+  fetch('swim_vendors.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      swimVendors = data.vendors || [];
+      swimVendorsLoaded = true;
+      buildSwimFilterOptions('town', [...new Set(swimVendors.flatMap(v => v.towns))].sort());
+      buildSwimFilterOptions('classType', [...new Set(swimVendors.flatMap(v => v.classTypes))].sort());
+      buildSwimFilterOptions('facilityType', [...new Set(swimVendors.map(v => v.facilityType))].sort());
+      buildSwimFilterOptions('indoorOutdoor', [...new Set(swimVendors.map(v => v.indoorOutdoor))].sort());
+      document.getElementById('swimHeaderSub').textContent = swimVendors.length + ' swim lesson providers across Marin County';
+      renderSwimCards();
+    })
+    .catch(() => { document.getElementById('swimResultsCount').textContent = 'Could not load vendors — check your connection'; });
+}
+
+function buildSwimFilterOptions(filterId, values) {
+  const inner = document.getElementById(`dd-swim${filterId[0].toUpperCase()}${filterId.slice(1)}-inner`);
+  if (!inner) return;
+  inner.innerHTML = values.map(v => `
+    <div class="dd-option" onclick="toggleSwimFilter('${filterId}', ${JSON.stringify(v).replace(/"/g, '&quot;')})">
+      <span class="dd-label">${v}</span>
+      <span class="dd-checkbox"></span>
+    </div>`).join('');
+}
+
+function toggleSwimDropdown(id) {
+  const domId = `swim${id[0].toUpperCase()}${id.slice(1)}`;
+  if (swimActiveDropdown && swimActiveDropdown !== id) {
+    document.getElementById(`dd-swim${swimActiveDropdown[0].toUpperCase()}${swimActiveDropdown.slice(1)}`).classList.remove('open');
+  }
+  const panel = document.getElementById(`dd-${domId}`);
+  const isOpen = panel.classList.contains('open');
+  const filterBar = document.querySelector('#swimScreen .filter-bar');
+  if (filterBar) {
+    const rect = filterBar.getBoundingClientRect();
+    panel.style.top = Math.round(rect.bottom) + 'px';
+  }
+  panel.classList.toggle('open', !isOpen);
+  swimActiveDropdown = !isOpen ? id : null;
+}
+
+document.addEventListener('click', e => {
+  if (swimActiveDropdown && !e.target.closest('#swimScreen .filter-pill') && !e.target.closest('#swimScreen .dropdown-panel')) {
+    const domId = `swim${swimActiveDropdown[0].toUpperCase()}${swimActiveDropdown.slice(1)}`;
+    document.getElementById(`dd-${domId}`).classList.remove('open');
+    swimActiveDropdown = null;
+  }
+});
+
+function toggleSwimFilter(filterId, value) {
+  const s = swimSelections[filterId];
+  s.has(value) ? s.delete(value) : s.add(value);
+  syncSwimCheckboxes(filterId);
+  updateSwimPill(filterId);
+  renderSwimCards();
+}
+
+function syncSwimCheckboxes(filterId) {
+  const s = swimSelections[filterId];
+  const domId = `swim${filterId[0].toUpperCase()}${filterId.slice(1)}`;
+  const inner = document.getElementById(`dd-${domId}-inner`);
+  if (!inner) return;
+  inner.querySelectorAll('.dd-option').forEach(opt => {
+    const label = opt.querySelector('.dd-label').textContent.trim();
+    opt.classList.toggle('selected', s.has(label));
+  });
+}
+
+function updateSwimPill(filterId) {
+  const s = swimSelections[filterId];
+  const domId = `swim${filterId[0].toUpperCase()}${filterId.slice(1)}`;
+  const pill = document.getElementById(`pill-${domId}`);
+  const lbl = document.getElementById(`lbl-${domId}`);
+  let badge = pill.querySelector('.pill-badge');
+  if (!badge) {
+    badge = document.createElement('span');
+    badge.className = 'pill-badge';
+    pill.insertBefore(badge, pill.querySelector('.filter-arrow'));
+  }
+  if (s.size === 0) {
+    lbl.textContent = swimFilterDefaults[filterId];
+    pill.classList.remove('active');
+    badge.style.display = 'none';
+  } else {
+    const first = [...s][0];
+    lbl.textContent = first.length > 9 ? first.substring(0, 8) + '…' : first;
+    pill.classList.add('active');
+    if (s.size > 1) { badge.textContent = s.size; badge.style.display = 'inline-block'; } else { badge.style.display = 'none'; }
+  }
+}
+
+function clearSwimFilter(filterId) {
+  swimSelections[filterId].clear();
+  syncSwimCheckboxes(filterId);
+  updateSwimPill(filterId);
+  renderSwimCards();
+}
+
+function clearAllSwimFilters() {
+  Object.keys(swimSelections).forEach(k => { swimSelections[k].clear(); syncSwimCheckboxes(k); updateSwimPill(k); });
+  swimAgeSelections.clear();
+  document.querySelectorAll('#swimAgeChips .age-chip').forEach(c => c.classList.remove('selected'));
+  renderSwimCards();
+}
+
+function toggleSwimAge(el) {
+  const band = el.dataset.band;
+  el.classList.toggle('selected');
+  swimAgeSelections.has(band) ? swimAgeSelections.delete(band) : swimAgeSelections.add(band);
+  renderSwimCards();
+}
+
+function formatSwimAge(minMonths) {
+  if (minMonths === 0) return 'All ages';
+  if (minMonths < 12) return minMonths + ' mo+';
+  if (minMonths % 12 === 0) return (minMonths / 12) + ' yr+';
+  return Math.floor(minMonths / 12) + '.5 yr+';
+}
+
+function vendorMatchesSwimFilters(v) {
+  const s = swimSelections;
+  if (s.town.size && !v.towns.some(t => s.town.has(t))) return false;
+  if (s.classType.size && !v.classTypes.some(c => s.classType.has(c))) return false;
+  if (s.facilityType.size && !s.facilityType.has(v.facilityType)) return false;
+  if (s.indoorOutdoor.size && !s.indoorOutdoor.has(v.indoorOutdoor)) return false;
+  if (swimAgeSelections.size) {
+    const maxAllowed = Math.max(...[...swimAgeSelections].map(k => SWIM_AGE_BANDS.find(b => b.key === k).maxMonths));
+    if (v.agesServed.minMonths > maxAllowed) return false;
+  }
+  return true;
+}
+
+function renderSwimCards() {
+  if (!swimVendorsLoaded) return;
+  const results = swimVendors.filter(vendorMatchesSwimFilters)
+    .sort((a, b) => (a.inMarin === b.inMarin ? 0 : a.inMarin ? -1 : 1) || a.name.localeCompare(b.name));
+
+  document.getElementById('swimResultsCount').textContent = results.length + (results.length === 1 ? ' vendor' : ' vendors');
+  document.getElementById('swimCardsBody').innerHTML = results.map(swimCardHtml).join('');
+  document.getElementById('swimEmptyState').classList.toggle('visible', results.length === 0);
+}
+
+function swimCardHtml(v) {
+  const tags = [
+    `<span class="tag">${formatSwimAge(v.agesServed.minMonths)}</span>`,
+    `<span class="tag">${v.indoorOutdoor}</span>`,
+    ...v.classTypes.slice(0, 3).map(c => `<span class="tag">${c}</span>`),
+    v.classTypes.length > 3 ? `<span class="tag">+${v.classTypes.length - 3} more</span>` : '',
+    v.inMarin ? '' : `<span class="tag" style="color:#854F0B;border-color:#E6B84A">Not in Marin</span>`,
+  ].join('');
+  return `<div class="event-card" onclick="openSwimDetail('${v.id}')">
+    <div class="card-left">
+      <div class="card-title">${v.name}</div>
+      <div class="card-venue">${v.towns.join(', ')} · ${v.facilityType}</div>
+      <div class="card-meta">${tags}</div>
+    </div>
+  </div>`;
+}
+
+function openSwimDetail(id) {
+  const v = swimVendors.find(x => x.id === id);
+  if (!v) return;
+  currentSwimVendorId = id;
+
+  document.getElementById('swimDetailFacilityBadge').textContent = v.facilityType;
+  document.getElementById('swimDetailName').textContent = v.name;
+  document.getElementById('swimDetailTownLine').textContent = v.town;
+
+  const notInMarinSection = document.getElementById('swimNotInMarinSection');
+  if (!v.inMarin) {
+    document.getElementById('swimNotInMarinText').textContent = '⚠ Not located in Marin County — included as the closest option. Check the drive time before booking.';
+    notInMarinSection.style.display = 'block';
+  } else {
+    notInMarinSection.style.display = 'none';
+  }
+
+  document.getElementById('swimDetailTags').innerHTML = [v.indoorOutdoor, ...v.classTypes]
+    .map(t => `<span class="detail-tag" style="background:#E6F1FB;color:#0C447C">${t}</span>`).join('');
+  document.getElementById('swimDetailAges').textContent = v.agesServed.displayText;
+  document.getElementById('swimDetailPoolInfo').textContent = v.poolInfo || '—';
+  document.getElementById('swimDetailHours').textContent = v.hoursSeason || '—';
+  document.getElementById('swimDetailAddress').textContent = v.address || '—';
+  document.getElementById('swimDetailVerified').textContent = v.lastVerified;
+
+  const notesSection = document.getElementById('swimDetailNotesSection');
+  if (v.notes) {
+    document.getElementById('swimDetailNotes').textContent = v.notes;
+    notesSection.style.display = 'block';
+  } else {
+    notesSection.style.display = 'none';
+  }
+
+  const callBtn = document.getElementById('swimCallBtn');
+  const phoneDigits = (v.phone.match(/\d/g) || []).join('');
+  if (phoneDigits.length >= 10) {
+    callBtn.href = 'tel:+1' + phoneDigits;
+    callBtn.style.display = 'flex';
+  } else {
+    callBtn.style.display = 'none';
+  }
+
+  const websiteBtn = document.getElementById('swimWebsiteBtn');
+  if (v.website) { websiteBtn.href = v.website; websiteBtn.style.display = 'flex'; }
+  else { websiteBtn.style.display = 'none'; }
+
+  document.getElementById('swimScreen').style.display = 'none';
+  const ds = document.getElementById('swimDetailScreen');
+  ds.style.display = 'flex';
+  ds.style.flexDirection = 'column';
+  window.scrollTo(0, 0);
+}
+
+function closeSwimDetail() {
+  document.getElementById('swimDetailScreen').style.display = 'none';
+  const ss = document.getElementById('swimScreen');
+  ss.style.display = 'flex';
+  ss.style.flexDirection = 'column';
 }
 
 </script>
