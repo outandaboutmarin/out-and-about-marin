@@ -1914,6 +1914,156 @@ function mapDbUser(dbUser) {
     .share-sheet.open { transform: translateX(-50%) translateY(0); }
     .save-toast { max-width: 420px; }
   }
+
+  /* ── Swim Lesson Directory table (Resources sub-page) ──
+     Desktop-oriented by design, per Alexandra's explicit call after
+     reviewing a sandbox prototype through several rounds — no mobile
+     layout, no click-to-drill-down. Class names below (fc-*, chip*,
+     badge-*, cell-*, sort-*, resize-handle, col-frozen, .em) checked
+     against the rest of this file before use — none collide with the
+     shared event-list/filter components. */
+  .swim-toolbar {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--card-bg);
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    padding: 0.7rem 1rem;
+  }
+  .swim-toolbar-controls { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .fc-dropdown { position: relative; }
+  .fc-btn {
+    font-family: var(--font-sans); font-size: 0.76rem; font-weight: 500; color: var(--text-primary);
+    background: var(--off-white); border: 1px solid var(--card-border); border-radius: var(--radius-sm);
+    padding: 0.45rem 0.7rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;
+    transition: border-color 0.15s;
+  }
+  .fc-btn:hover { border-color: var(--navy); }
+  .fc-dropdown.open .fc-btn { border-color: var(--navy); background: #EEF2F8; }
+  .fc-btn-label { white-space: nowrap; }
+  .fc-btn-count {
+    background: var(--navy); color: #fff; font-size: 0.64rem; font-weight: 600;
+    border-radius: var(--radius-pill); padding: 0.05rem 0.4rem; display: none;
+  }
+  .fc-btn-count.show { display: inline-block; }
+  .fc-caret { font-size: 0.6rem; color: var(--text-muted); }
+  .fc-popover {
+    display: none; position: absolute; top: calc(100% + 6px); left: 0; z-index: 30;
+    background: #fff; border: 1px solid var(--card-border); border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(13,27,62,0.14); min-width: 220px; max-height: 320px; overflow-y: auto;
+    padding: 0.35rem 0;
+  }
+  .fc-dropdown.open .fc-popover { display: block; }
+  .fc-option {
+    display: flex; align-items: center; gap: 0.55rem; padding: 0.4rem 0.75rem; cursor: pointer;
+    font-size: 0.78rem; color: var(--text-primary);
+  }
+  .fc-option:hover { background: var(--off-white); }
+  .fc-checkbox {
+    width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid #C8C4BA; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .fc-option.selected .fc-checkbox { background: var(--navy); border-color: var(--navy); }
+  .fc-option.selected .fc-checkbox::after { content: '✓'; font-size: 9px; color: #fff; font-weight: 700; }
+  .fc-option.selected { font-weight: 500; }
+
+  .swim-toolbar-spacer { flex: 1; }
+  .swim-result-count { font-size: 0.76rem; color: var(--text-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .swim-clear-btn {
+    font-family: var(--font-sans); font-size: 0.74rem; font-weight: 600; color: var(--navy);
+    background: none; border: none; cursor: pointer; padding: 0.3rem 0.4rem; opacity: 0.35; pointer-events: none;
+  }
+  .swim-clear-btn.active { opacity: 1; pointer-events: auto; text-decoration: underline; }
+
+  .swim-active-chips { display: none; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.55rem; }
+  .swim-active-chips.show { display: flex; }
+  .swim-active-chip {
+    display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.7rem; color: var(--navy);
+    background: #EEF2F8; border: 1px solid #C5D0E8; border-radius: var(--radius-pill); padding: 0.22rem 0.55rem 0.22rem 0.65rem;
+    cursor: pointer;
+  }
+  .swim-active-chip:hover { background: #E0E9F5; }
+
+  /* Table: .swim-table-scroll is a BOUNDED box (max-height computed in JS
+     from remaining viewport space) with its own overflow:auto on both
+     axes. This is deliberate — once a container has overflow-x:auto,
+     browsers force overflow-y to computed 'auto' too, which makes that
+     container (not the page) the sticky containing block for any
+     position:sticky descendant. A bounded, internally-scrolling box with
+     thead sticky at top:0 of THAT box is the reliable, standard pattern
+     for a horizontally-scrollable table with a frozen header. */
+  .swim-table-wrap { padding: 0 1rem 1.25rem; max-width: 100%; }
+  .swim-h-scroll-top { overflow-x: auto; overflow-y: hidden; height: 16px; margin-bottom: 2px; }
+  .swim-h-scroll-top-inner { height: 1px; }
+  .swim-table-scroll {
+    overflow: auto; border: 1px solid var(--card-border); border-radius: var(--radius-md);
+    max-height: var(--swim-table-max-h, 560px);
+  }
+  table.swim-vendor-table { border-collapse: collapse; table-layout: fixed; background: var(--card-bg); }
+  .swim-vendor-table thead th {
+    position: sticky; top: 0; z-index: 5;
+    background: var(--navy); color: #fff; text-align: left;
+    font-family: var(--font-sans); font-weight: 600; font-size: 0.68rem;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 0.7rem 1.15rem 0.7rem 0.85rem; user-select: none;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  /* overflow stays visible on <th> itself so the absolutely-positioned
+     .sort-menu popover and .resize-handle (direct children) aren't
+     clipped — only the label text truncates. */
+  .swim-vendor-table thead th .th-inner { display: flex; align-items: center; gap: 0.3rem; overflow: hidden; }
+  .th-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sort-menu-btn {
+    flex-shrink: 0; background: rgba(255,255,255,0.12); border: none; border-radius: 4px;
+    color: #fff; font-size: 0.6rem; width: 16px; height: 16px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; padding: 0;
+  }
+  .sort-menu-btn:hover { background: rgba(255,255,255,0.25); }
+  .sort-caret { font-size: 0.62rem; opacity: 0; flex-shrink: 0; }
+  .swim-vendor-table thead th.sorted .sort-caret { opacity: 0.9; }
+  .resize-handle { position: absolute; top: 0; right: -3px; width: 6px; height: 100%; cursor: col-resize; z-index: 6; }
+  .resize-handle:hover, .resize-handle.active { background: rgba(255,255,255,0.3); }
+  .sort-menu {
+    display: none; position: absolute; top: 100%; left: 0.5rem; z-index: 30; margin-top: 2px;
+    background: #fff; border: 1px solid var(--card-border); border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(13,27,62,0.18); min-width: 150px; padding: 0.3rem 0;
+    text-transform: none; letter-spacing: normal; font-weight: 400;
+  }
+  .sort-menu.open { display: block; }
+  .sort-menu-item { padding: 0.45rem 0.8rem; font-size: 0.76rem; color: var(--text-primary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+  .sort-menu-item:hover { background: var(--off-white); }
+  .sort-menu-item.danger { color: var(--text-muted); border-top: 1px solid var(--card-border); margin-top: 0.2rem; }
+  .swim-vendor-table tbody td {
+    padding: 0.65rem 0.85rem; font-size: 0.79rem; color: var(--text-secondary);
+    border-bottom: 1px solid var(--card-border); vertical-align: top;
+  }
+  .swim-vendor-table tbody tr:nth-child(even) { background: var(--off-white); }
+  .swim-vendor-table tbody tr:hover { background: rgba(13,27,62,0.045); }
+
+  /* Frozen (pinned) left column — sticky needs an explicit opaque
+     background, since scrolled content from other columns would
+     otherwise show through underneath as the table scrolls horizontally. */
+  .col-frozen { position: sticky; left: 0; z-index: 2; box-shadow: 2px 0 5px rgba(13,27,62,0.09); }
+  .swim-vendor-table thead th.col-frozen { z-index: 8; }
+  .swim-vendor-table tbody tr:nth-child(odd) td.col-frozen { background: var(--card-bg); }
+  .swim-vendor-table tbody tr:nth-child(even) td.col-frozen { background: var(--off-white); }
+  .swim-vendor-table tbody tr:hover td.col-frozen { background: #E9EDF3; }
+
+  .cell-name { font-family: var(--font-serif); font-weight: 600; font-size: 0.86rem; color: var(--navy); }
+  /* Every column wraps its full text to fit the (resizable) column width,
+     rather than truncating — widen a column to show more per line. Row
+     height grows to fit whichever cell has the most text. */
+  .cell-wrap { display: block; white-space: normal; overflow-wrap: break-word; word-break: break-word; line-height: 1.4; }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chip { font-size: 0.66rem; font-weight: 500; padding: 2px 8px; border-radius: var(--radius-pill); white-space: nowrap; border: 1px solid; }
+  .chip-town { background: var(--off-white); color: var(--text-secondary); border-color: var(--card-border); }
+  .chip-class { background: #E6F1FB; color: #0C447C; border-color: #C7DEF3; }
+  .badge-marin { color: #2E7D4F; font-weight: 600; font-size: 0.85rem; }
+  .badge-not-marin {
+    display: inline-block; font-size: 0.66rem; font-weight: 600; color: #7A5200;
+    background: #FFF8E7; border: 1px solid #E6B84A; border-radius: var(--radius-pill); padding: 2px 8px; white-space: nowrap;
+  }
+  a.cell-link { color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 0.78rem; white-space: nowrap; }
+  .em { color: #B5B0A5; }
 </style>
 
 
@@ -2398,6 +2548,9 @@ function mapDbUser(dbUser) {
 
 <!-- ═══════════════════════════════════════════════════
      SWIM LESSON DIRECTORY (Resources sub-page)
+     Table view: sortable/resizable columns, a frozen name column, filters
+     as dropdowns in a toolbar. Desktop-oriented by design (Alexandra's
+     call, after reviewing a sandbox prototype) — no click-to-drill-down.
 ═══════════════════════════════════════════════════ -->
 <div id="swimScreen" style="display:none">
   <div class="detail-header">
@@ -2406,143 +2559,43 @@ function mapDbUser(dbUser) {
     <div class="detail-org" id="swimHeaderSub">Swim lesson providers across Marin County</div>
   </div>
 
-  <div class="filter-bar">
-    <div class="filter-pill" id="pill-swimTown" onclick="toggleSwimDropdown('town')">
-      <span class="filter-pill-label" id="lbl-swimTown">Town</span>&nbsp;<span class="filter-arrow">▼</span>
+  <div class="swim-toolbar" id="swimFilterToolbar">
+    <div class="swim-toolbar-controls">
+      <div class="fc-dropdown" data-swim-dim="town">
+        <button class="fc-btn" type="button"><span class="fc-btn-label">Town</span><span class="fc-btn-count"></span><span class="fc-caret">▾</span></button>
+        <div class="fc-popover"></div>
+      </div>
+      <div class="fc-dropdown" data-swim-dim="facilityType">
+        <button class="fc-btn" type="button"><span class="fc-btn-label">Facility Type</span><span class="fc-btn-count"></span><span class="fc-caret">▾</span></button>
+        <div class="fc-popover"></div>
+      </div>
+      <div class="fc-dropdown" data-swim-dim="indoorOutdoor">
+        <button class="fc-btn" type="button"><span class="fc-btn-label">Indoor/Outdoor</span><span class="fc-btn-count"></span><span class="fc-caret">▾</span></button>
+        <div class="fc-popover"></div>
+      </div>
+      <div class="fc-dropdown" data-swim-dim="classType">
+        <button class="fc-btn" type="button"><span class="fc-btn-label">Class Type</span><span class="fc-btn-count"></span><span class="fc-caret">▾</span></button>
+        <div class="fc-popover"></div>
+      </div>
+      <div class="fc-dropdown" data-swim-dim="age">
+        <button class="fc-btn" type="button"><span class="fc-btn-label">Age</span><span class="fc-btn-count"></span><span class="fc-caret">▾</span></button>
+        <div class="fc-popover" id="swimAgePopover"></div>
+      </div>
+      <div class="swim-toolbar-spacer"></div>
+      <div class="swim-result-count" id="swimResultsCount"></div>
+      <button class="swim-clear-btn" id="swimClearAllBtn" type="button">Clear all</button>
     </div>
-    <div class="filter-pill" id="pill-swimClassType" onclick="toggleSwimDropdown('classType')">
-      <span class="filter-pill-label" id="lbl-swimClassType">Class Type</span>&nbsp;<span class="filter-arrow">▼</span>
-    </div>
-    <div class="filter-pill" id="pill-swimFacilityType" onclick="toggleSwimDropdown('facilityType')">
-      <span class="filter-pill-label" id="lbl-swimFacilityType">Facility</span>&nbsp;<span class="filter-arrow">▼</span>
-    </div>
-    <div class="filter-pill" id="pill-swimIndoorOutdoor" onclick="toggleSwimDropdown('indoorOutdoor')">
-      <span class="filter-pill-label" id="lbl-swimIndoorOutdoor">Indoor/Outdoor</span>&nbsp;<span class="filter-arrow">▼</span>
-    </div>
+    <div class="swim-active-chips" id="swimActiveChips"></div>
   </div>
 
-  <div class="dropdown-panel" id="dd-swimTown">
-    <div class="dropdown-header">
-      <span class="dropdown-header-label">Town</span>
-      <span class="dropdown-clear" onclick="clearSwimFilter('town')">Clear</span>
-    </div>
-    <div id="dd-swimTown-inner"></div>
-  </div>
-  <div class="dropdown-panel" id="dd-swimClassType">
-    <div class="dropdown-header">
-      <span class="dropdown-header-label">Class type</span>
-      <span class="dropdown-clear" onclick="clearSwimFilter('classType')">Clear</span>
-    </div>
-    <div id="dd-swimClassType-inner"></div>
-  </div>
-  <div class="dropdown-panel" id="dd-swimFacilityType">
-    <div class="dropdown-header">
-      <span class="dropdown-header-label">Facility type</span>
-      <span class="dropdown-clear" onclick="clearSwimFilter('facilityType')">Clear</span>
-    </div>
-    <div id="dd-swimFacilityType-inner"></div>
-  </div>
-  <div class="dropdown-panel" id="dd-swimIndoorOutdoor">
-    <div class="dropdown-header">
-      <span class="dropdown-header-label">Indoor / Outdoor</span>
-      <span class="dropdown-clear" onclick="clearSwimFilter('indoorOutdoor')">Clear</span>
-    </div>
-    <div id="dd-swimIndoorOutdoor-inner"></div>
-  </div>
-
-  <div style="padding:0.6rem 0.75rem 0">
-    <div style="font-size:0.65rem;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.4rem">Child's age</div>
-    <div class="age-chips" id="swimAgeChips">
-      <div class="age-chip" onclick="toggleSwimAge(this)" data-band="0-12 months">Under 1</div>
-      <div class="age-chip" onclick="toggleSwimAge(this)" data-band="1-3 yrs">1–3 yrs</div>
-      <div class="age-chip" onclick="toggleSwimAge(this)" data-band="3-5 yrs">3–5 yrs</div>
-      <div class="age-chip" onclick="toggleSwimAge(this)" data-band="5-8 yrs">5–8 yrs</div>
-      <div class="age-chip" onclick="toggleSwimAge(this)" data-band="8-12 yrs">8–12 yrs</div>
-    </div>
-  </div>
-
-  <div class="results-bar" style="display:flex">
-    <span class="results-count" id="swimResultsCount">Loading…</span>
-    <div class="results-bar-right">
-      <span class="clear-all-btn" onclick="clearAllSwimFilters()">Clear all</span>
-    </div>
-  </div>
-
-  <div class="cards-body" id="swimCardsBody"></div>
-
-  <div class="empty-state" id="swimEmptyState">
-    <div class="empty-title">No vendors match</div>
-    <div class="empty-sub">Try adjusting your filters</div>
-    <div class="empty-clear" onclick="clearAllSwimFilters()">Clear all filters</div>
-  </div>
-</div>
-
-<!-- SWIM VENDOR DETAIL -->
-<div id="swimDetailScreen" style="display:none">
-  <div class="detail-header">
-    <button class="detail-back" onclick="closeSwimDetail()">‹ Back to directory</button>
-    <div class="detail-type-badge" id="swimDetailFacilityBadge"></div>
-    <div class="detail-title" id="swimDetailName"></div>
-    <div class="detail-org" id="swimDetailTownLine"></div>
-  </div>
-  <div class="detail-body">
-    <div class="detail-card">
-      <div class="detail-section" id="swimNotInMarinSection" style="display:none;background:#FFF8E7">
-        <div class="description-text" style="color:#7A5200;font-weight:500" id="swimNotInMarinText"></div>
-      </div>
-      <div class="detail-section">
-        <div class="section-label">Ages &amp; Class Types</div>
-        <div class="detail-tags" id="swimDetailTags"></div>
-        <div style="margin-top:0.625rem">
-          <div class="detail-row">
-            <div class="detail-row-content">
-              <div class="detail-row-label">Ages served</div>
-              <div class="detail-row-value" id="swimDetailAges"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="detail-section">
-        <div class="section-label">Pool &amp; Hours</div>
-        <div class="detail-row">
-          <div class="detail-row-content">
-            <div class="detail-row-label">Pool</div>
-            <div class="detail-row-value" id="swimDetailPoolInfo"></div>
-          </div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-row-content">
-            <div class="detail-row-label">Hours / season</div>
-            <div class="detail-row-value" id="swimDetailHours"></div>
-          </div>
-        </div>
-      </div>
-      <div class="detail-section">
-        <div class="section-label">Where</div>
-        <div class="detail-row">
-          <div class="detail-row-content">
-            <div class="detail-row-label">Address</div>
-            <div class="detail-row-value" id="swimDetailAddress"></div>
-          </div>
-        </div>
-      </div>
-      <div class="detail-section" id="swimDetailNotesSection" style="display:none">
-        <div class="section-label">Notes</div>
-        <div class="description-text" id="swimDetailNotes"></div>
-      </div>
-      <div class="detail-section">
-        <div class="description-text" style="font-size:0.68rem;color:#999">Last verified <span id="swimDetailVerified"></span> · Info may change — call ahead to confirm.</div>
-      </div>
-    </div>
-    <div class="action-row">
-      <a class="action-btn btn-maps" id="swimCallBtn" href="#">
-        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2.5 2.5c0-.5.4-1 1-1h1.2c.4 0 .8.3.9.7l.6 2c.1.4 0 .8-.3 1L5 6c.6 1.4 1.6 2.4 3 3l.8-.9c.3-.3.7-.4 1-.3l2 .6c.4.1.7.5.7.9v1.2c0 .6-.5 1-1 1C6.5 11.5 2.5 7.5 2.5 2.5z" stroke="#0D1B3E" stroke-width="1.1" stroke-linejoin="round"/></svg>
-        Call
-      </a>
-      <a class="action-btn btn-website" id="swimWebsiteBtn" href="#" target="_blank">
-        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c-1.5 2-2 3.5-2 5.5s.5 3.5 2 5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c1.5 2 2 3.5 2 5.5s-.5 3.5-2 5.5" stroke="white" stroke-width="1.2"/><line x1="1.5" y1="7" x2="12.5" y2="7" stroke="white" stroke-width="1.2"/></svg>
-        Visit website
-      </a>
+  <div class="swim-table-wrap" id="swimTableWrap">
+    <div class="swim-h-scroll-top" id="swimHScrollTop"><div class="swim-h-scroll-top-inner" id="swimHScrollTopInner"></div></div>
+    <div class="swim-table-scroll" id="swimTableScroll">
+      <table class="swim-vendor-table" id="swimVendorTable">
+        <colgroup id="swimColGroup"></colgroup>
+        <thead><tr id="swimTableHeadRow"></tr></thead>
+        <tbody id="swimTableBody"></tbody>
+      </table>
     </div>
   </div>
 </div>
@@ -2979,7 +3032,6 @@ function showScreen(screen) {
   document.getElementById('signupScreen2').style.display = 'none';
   document.getElementById('resourcesScreen').style.display = 'none';
   document.getElementById('swimScreen').style.display = 'none';
-  document.getElementById('swimDetailScreen').style.display = 'none';
 
   if (screen === 'app') {
     document.getElementById('appScreen').style.display = 'flex';
@@ -4621,153 +4673,175 @@ function normalizePhone(phone) {
 // ═══════════════════════════════════════════
 // SWIM LESSON DIRECTORY (Resources sub-page)
 //
-// Deliberately independent JS state (swimVendors/swimSelections/etc.),
-// not the shared allEvents/selections used by the main events feed --
-// same filter-pill/dropdown-panel/event-card CSS, but a separate state
-// machine so nothing here can affect the events filtering ~400 users
-// already depend on.
+// Table view — sortable/resizable columns, a frozen name column, filters
+// as dropdowns, wrap-text cells. Deliberately independent JS state
+// (swimVendors/swimSelections/etc.), not the shared allEvents/selections
+// the main events feed uses, so nothing here can affect the events
+// filtering ~400 users already depend on. Desktop-oriented by design —
+// see the CSS comment above .swim-toolbar for context.
 // ═══════════════════════════════════════════
 
 let swimVendors = [];
 let swimVendorsLoaded = false;
-let swimSelections = { town: new Set(), classType: new Set(), facilityType: new Set(), indoorOutdoor: new Set() };
+let swimSelections = { town: new Set(), facilityType: new Set(), indoorOutdoor: new Set(), classType: new Set() };
 let swimAgeSelections = new Set();
-let swimActiveDropdown = null;
-let currentSwimVendorId = null;
 
 const SWIM_AGE_BANDS = [
   { key: '0-12 months', label: 'Under 1', maxMonths: 12 },
-  { key: '1-3 yrs', label: '1–3 yrs', maxMonths: 36 },
-  { key: '3-5 yrs', label: '3–5 yrs', maxMonths: 60 },
-  { key: '5-8 yrs', label: '5–8 yrs', maxMonths: 96 },
-  { key: '8-12 yrs', label: '8–12 yrs', maxMonths: 144 },
+  { key: '1-3 yrs',     label: '1–3 yrs', maxMonths: 36 },
+  { key: '3-5 yrs',     label: '3–5 yrs', maxMonths: 60 },
+  { key: '5-8 yrs',     label: '5–8 yrs', maxMonths: 96 },
+  { key: '8-12 yrs',    label: '8–12 yrs', maxMonths: 144 },
 ];
 
-const swimFilterDefaults = { town: 'Town', classType: 'Class Type', facilityType: 'Facility', indoorOutdoor: 'Indoor/Outdoor' };
+const SWIM_DIMENSIONS = ['town', 'facilityType', 'indoorOutdoor', 'classType'];
+const SWIM_DIM_LABEL = { town: 'Town', facilityType: 'Facility Type', indoorOutdoor: 'Indoor/Outdoor', classType: 'Class Type' };
+const SWIM_AGE_BAND_LABEL = Object.fromEntries(SWIM_AGE_BANDS.map(b => [b.key, b.label]));
+
+let swimSortState = { key: null, dir: 'asc' };
+const SWIM_DEFAULT_SORT = { key: 'towns', dir: 'asc' };
+swimSortState = { ...SWIM_DEFAULT_SORT };
+
+function swimEsc(s) {
+  return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Columns (width = starting px, user-resizable via drag handle) ──
+const SWIM_COLUMNS = [
+  { key: 'name', label: 'Vendor Name', width: 210, frozen: true, sortKey: v => v.name,
+    render: v => `<span class="cell-name cell-wrap">${swimEsc(v.name)}</span>` },
+  { key: 'towns', label: 'Town(s)', width: 150, sortKey: v => v.towns.join(', '),
+    render: v => `<div class="chip-row">${v.towns.map(t => `<span class="chip chip-town">${swimEsc(t)}</span>`).join('')}</div>` },
+  { key: 'website', label: 'Website', width: 100, sortKey: v => v.website,
+    render: v => v.website ? `<a class="cell-link" href="${swimEsc(v.website)}" target="_blank" rel="noopener">Visit ↗</a>` : '<span class="em">—</span>' },
+  { key: 'indoorOutdoor', label: 'Indoor/Outdoor', width: 120, sortKey: v => v.indoorOutdoor,
+    render: v => `<span class="cell-wrap">${swimEsc(v.indoorOutdoor)}</span>` },
+  { key: 'ages', label: 'Ages Served', width: 230, sortKey: v => v.agesServed.minMonths, numeric: true,
+    render: v => `<span class="cell-wrap">${swimEsc(v.agesServed.displayText)}</span>` },
+  { key: 'notes', label: 'Notes', width: 260, sortKey: v => v.notes,
+    render: v => v.notes ? `<div class="cell-wrap" title="${swimEsc(v.notes)}">${swimEsc(v.notes)}</div>` : '<span class="em">—</span>' },
+  { key: 'facilityType', label: 'Facility Type', width: 200, sortKey: v => v.facilityType,
+    render: v => `<span class="cell-wrap">${swimEsc(v.facilityType)}</span>` },
+  { key: 'poolInfo', label: 'Pool Info', width: 190, sortKey: v => v.poolInfo,
+    render: v => v.poolInfo ? `<div class="cell-wrap" title="${swimEsc(v.poolInfo)}">${swimEsc(v.poolInfo)}</div>` : '<span class="em">—</span>' },
+  { key: 'hoursSeason', label: 'Hours / Season', width: 190, sortKey: v => v.hoursSeason,
+    render: v => v.hoursSeason ? `<div class="cell-wrap" title="${swimEsc(v.hoursSeason)}">${swimEsc(v.hoursSeason)}</div>` : '<span class="em">—</span>' },
+  { key: 'address', label: 'Address', width: 220, sortKey: v => v.address,
+    render: v => v.address ? `<div class="cell-wrap" title="${swimEsc(v.address)}">${swimEsc(v.address)}</div>` : '<span class="em">—</span>' },
+  { key: 'phone', label: 'Phone', width: 130, sortKey: v => v.phone,
+    render: v => v.phone ? `<span class="cell-wrap">${swimEsc(v.phone)}</span>` : '<span class="em">—</span>' },
+  { key: 'classTypes', label: 'Class Types', width: 230, sortKey: v => v.classTypes.join(', '),
+    render: v => `<div class="chip-row">${v.classTypes.map(c => `<span class="chip chip-class">${swimEsc(c)}</span>`).join('')}</div>` },
+  { key: 'inMarin', label: 'Marin?', width: 90, sortKey: v => v.inMarin ? '0' : '1',
+    render: v => v.inMarin ? '<span class="badge-marin">✓</span>' : '<span class="badge-not-marin">⚠ Not Marin</span>' },
+  { key: 'lastVerified', label: 'Last Verified', width: 110, sortKey: v => v.lastVerified,
+    render: v => `<span class="cell-wrap">${swimEsc(v.lastVerified)}</span>` },
+];
 
 function ensureSwimVendors() {
-  if (swimVendorsLoaded) { renderSwimCards(); return; }
+  if (swimVendorsLoaded) { swimRenderTable(); return; }
   document.getElementById('swimResultsCount').textContent = 'Loading…';
   fetch('swim_vendors.json?v=' + Date.now())
     .then(r => r.json())
     .then(data => {
       swimVendors = data.vendors || [];
       swimVendorsLoaded = true;
-      buildSwimFilterOptions('town', [...new Set(swimVendors.flatMap(v => v.towns))].sort());
-      buildSwimFilterOptions('classType', [...new Set(swimVendors.flatMap(v => v.classTypes))].sort());
-      buildSwimFilterOptions('facilityType', [...new Set(swimVendors.map(v => v.facilityType))].sort());
-      buildSwimFilterOptions('indoorOutdoor', [...new Set(swimVendors.map(v => v.indoorOutdoor))].sort());
       document.getElementById('swimHeaderSub').textContent = swimVendors.length + ' swim lesson providers across Marin County';
-      renderSwimCards();
+      swimBuildPopovers();
+      swimBuildHead();
+      swimInitTopScrollSync();
+      swimSyncFilterUI();
+      swimRenderTable();
     })
     .catch(() => { document.getElementById('swimResultsCount').textContent = 'Could not load vendors — check your connection'; });
 }
 
-function buildSwimFilterOptions(filterId, values) {
-  const inner = document.getElementById(`dd-swim${filterId[0].toUpperCase()}${filterId.slice(1)}-inner`);
-  if (!inner) return;
-  inner.innerHTML = values.map(v => `
-    <div class="dd-option" onclick="toggleSwimFilter('${filterId}', ${JSON.stringify(v).replace(/"/g, '&quot;')})">
-      <span class="dd-label">${v}</span>
-      <span class="dd-checkbox"></span>
+function swimDimValuesFor(dim) {
+  if (dim === 'town') return [...new Set(swimVendors.flatMap(v => v.towns))].sort();
+  if (dim === 'classType') return [...new Set(swimVendors.flatMap(v => v.classTypes))].sort();
+  if (dim === 'facilityType') return [...new Set(swimVendors.map(v => v.facilityType))].sort();
+  if (dim === 'indoorOutdoor') return [...new Set(swimVendors.map(v => v.indoorOutdoor))].sort();
+  return [];
+}
+
+// Age is a 5th dropdown, visually identical to the other four, but backed
+// by swimAgeSelections (matched via "vendor qualifies if minMonths <= the
+// oldest selected band" rather than simple set-membership) — so it gets
+// its own popover-building and click logic instead of forcing it through
+// swimDimValuesFor().
+function swimBuildPopovers() {
+  SWIM_DIMENSIONS.forEach(dim => {
+    const pop = document.querySelector(`.fc-dropdown[data-swim-dim="${dim}"] .fc-popover`);
+    pop.innerHTML = swimDimValuesFor(dim).map(val => `
+      <div class="fc-option" data-swim-dim="${dim}" data-val="${swimEsc(val)}">
+        <span class="fc-checkbox"></span><span>${swimEsc(val)}</span>
+      </div>`).join('');
+  });
+  document.getElementById('swimAgePopover').innerHTML = SWIM_AGE_BANDS.map(band => `
+    <div class="fc-option" data-swim-dim="age" data-val="${band.key}">
+      <span class="fc-checkbox"></span><span>${swimEsc(band.label)}</span>
     </div>`).join('');
-}
 
-function toggleSwimDropdown(id) {
-  const domId = `swim${id[0].toUpperCase()}${id.slice(1)}`;
-  if (swimActiveDropdown && swimActiveDropdown !== id) {
-    document.getElementById(`dd-swim${swimActiveDropdown[0].toUpperCase()}${swimActiveDropdown.slice(1)}`).classList.remove('open');
-  }
-  const panel = document.getElementById(`dd-${domId}`);
-  const isOpen = panel.classList.contains('open');
-  const filterBar = document.querySelector('#swimScreen .filter-bar');
-  if (filterBar) {
-    const rect = filterBar.getBoundingClientRect();
-    panel.style.top = Math.round(rect.bottom) + 'px';
-  }
-  panel.classList.toggle('open', !isOpen);
-  swimActiveDropdown = !isOpen ? id : null;
-}
-
-document.addEventListener('click', e => {
-  if (swimActiveDropdown && !e.target.closest('#swimScreen .filter-pill') && !e.target.closest('#swimScreen .dropdown-panel')) {
-    const domId = `swim${swimActiveDropdown[0].toUpperCase()}${swimActiveDropdown.slice(1)}`;
-    document.getElementById(`dd-${domId}`).classList.remove('open');
-    swimActiveDropdown = null;
-  }
-});
-
-function toggleSwimFilter(filterId, value) {
-  const s = swimSelections[filterId];
-  s.has(value) ? s.delete(value) : s.add(value);
-  syncSwimCheckboxes(filterId);
-  updateSwimPill(filterId);
-  renderSwimCards();
-}
-
-function syncSwimCheckboxes(filterId) {
-  const s = swimSelections[filterId];
-  const domId = `swim${filterId[0].toUpperCase()}${filterId.slice(1)}`;
-  const inner = document.getElementById(`dd-${domId}-inner`);
-  if (!inner) return;
-  inner.querySelectorAll('.dd-option').forEach(opt => {
-    const label = opt.querySelector('.dd-label').textContent.trim();
-    opt.classList.toggle('selected', s.has(label));
+  document.querySelectorAll('#swimFilterToolbar .fc-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const dim = opt.dataset.swimDim, val = opt.dataset.val;
+      if (dim === 'age') { swimAgeSelections.has(val) ? swimAgeSelections.delete(val) : swimAgeSelections.add(val); }
+      else { swimSelections[dim].has(val) ? swimSelections[dim].delete(val) : swimSelections[dim].add(val); }
+      swimSyncFilterUI();
+      swimRenderTable();
+    });
   });
 }
 
-function updateSwimPill(filterId) {
-  const s = swimSelections[filterId];
-  const domId = `swim${filterId[0].toUpperCase()}${filterId.slice(1)}`;
-  const pill = document.getElementById(`pill-${domId}`);
-  const lbl = document.getElementById(`lbl-${domId}`);
-  let badge = pill.querySelector('.pill-badge');
-  if (!badge) {
-    badge = document.createElement('span');
-    badge.className = 'pill-badge';
-    pill.insertBefore(badge, pill.querySelector('.filter-arrow'));
-  }
-  if (s.size === 0) {
-    lbl.textContent = swimFilterDefaults[filterId];
-    pill.classList.remove('active');
-    badge.style.display = 'none';
-  } else {
-    const first = [...s][0];
-    lbl.textContent = first.length > 9 ? first.substring(0, 8) + '…' : first;
-    pill.classList.add('active');
-    if (s.size > 1) { badge.textContent = s.size; badge.style.display = 'inline-block'; } else { badge.style.display = 'none'; }
-  }
+function swimSyncFilterUI() {
+  SWIM_DIMENSIONS.forEach(dim => {
+    const s = swimSelections[dim];
+    document.querySelectorAll(`#swimFilterToolbar .fc-option[data-swim-dim="${dim}"]`).forEach(opt => {
+      opt.classList.toggle('selected', s.has(opt.dataset.val));
+    });
+    const btn = document.querySelector(`.fc-dropdown[data-swim-dim="${dim}"] .fc-btn-count`);
+    if (s.size > 0) { btn.textContent = s.size; btn.classList.add('show'); }
+    else { btn.classList.remove('show'); }
+  });
+  document.querySelectorAll('#swimFilterToolbar .fc-option[data-swim-dim="age"]').forEach(opt => {
+    opt.classList.toggle('selected', swimAgeSelections.has(opt.dataset.val));
+  });
+  const ageBtn = document.querySelector('.fc-dropdown[data-swim-dim="age"] .fc-btn-count');
+  if (swimAgeSelections.size > 0) { ageBtn.textContent = swimAgeSelections.size; ageBtn.classList.add('show'); }
+  else { ageBtn.classList.remove('show'); }
+
+  const anyActive = SWIM_DIMENSIONS.some(d => swimSelections[d].size > 0) || swimAgeSelections.size > 0;
+  document.getElementById('swimClearAllBtn').classList.toggle('active', anyActive);
+  swimRenderActiveChips();
 }
 
-function clearSwimFilter(filterId) {
-  swimSelections[filterId].clear();
-  syncSwimCheckboxes(filterId);
-  updateSwimPill(filterId);
-  renderSwimCards();
+function swimRenderActiveChips() {
+  const wrap = document.getElementById('swimActiveChips');
+  const chips = [];
+  SWIM_DIMENSIONS.forEach(dim => {
+    swimSelections[dim].forEach(val => chips.push({ label: `${SWIM_DIM_LABEL[dim]}: ${val}`, dim, val }));
+  });
+  swimAgeSelections.forEach(key => chips.push({ label: `Age: ${SWIM_AGE_BAND_LABEL[key]}`, age: key }));
+  if (!chips.length) { wrap.classList.remove('show'); wrap.innerHTML = ''; return; }
+  wrap.classList.add('show');
+  wrap.innerHTML = chips.map(c => `<span class="swim-active-chip">${swimEsc(c.label)} ✕</span>`).join('');
+  [...wrap.children].forEach((el, i) => {
+    el.addEventListener('click', () => {
+      const c = chips[i];
+      if (c.age) swimAgeSelections.delete(c.age); else swimSelections[c.dim].delete(c.val);
+      swimSyncFilterUI(); swimRenderTable();
+    });
+  });
 }
 
-function clearAllSwimFilters() {
-  Object.keys(swimSelections).forEach(k => { swimSelections[k].clear(); syncSwimCheckboxes(k); updateSwimPill(k); });
+function swimClearAllFilters() {
+  SWIM_DIMENSIONS.forEach(d => swimSelections[d].clear());
   swimAgeSelections.clear();
-  document.querySelectorAll('#swimAgeChips .age-chip').forEach(c => c.classList.remove('selected'));
-  renderSwimCards();
+  swimSyncFilterUI();
+  swimRenderTable();
 }
 
-function toggleSwimAge(el) {
-  const band = el.dataset.band;
-  el.classList.toggle('selected');
-  swimAgeSelections.has(band) ? swimAgeSelections.delete(band) : swimAgeSelections.add(band);
-  renderSwimCards();
-}
-
-function formatSwimAge(minMonths) {
-  if (minMonths === 0) return 'All ages';
-  if (minMonths < 12) return minMonths + ' mo+';
-  if (minMonths % 12 === 0) return (minMonths / 12) + ' yr+';
-  return Math.floor(minMonths / 12) + '.5 yr+';
-}
-
-function vendorMatchesSwimFilters(v) {
+function swimVendorMatchesFilters(v) {
   const s = swimSelections;
   if (s.town.size && !v.towns.some(t => s.town.has(t))) return false;
   if (s.classType.size && !v.classTypes.some(c => s.classType.has(c))) return false;
@@ -4780,91 +4854,187 @@ function vendorMatchesSwimFilters(v) {
   return true;
 }
 
-function renderSwimCards() {
+// ── Column widths (resizable) ──
+// table-layout:fixed only honors <col> widths reliably if the <table>
+// itself has an explicit width (otherwise browsers redistribute space to
+// fill the container). SWIM_COLUMNS[].width is the one source of truth;
+// every resize updates both the <col> and the table's total width from
+// that same array, rather than re-measuring the DOM.
+function swimTotalColumnsWidth() {
+  return SWIM_COLUMNS.reduce((sum, c) => sum + c.width, 0);
+}
+function swimApplyTableWidth() {
+  document.getElementById('swimVendorTable').style.width = swimTotalColumnsWidth() + 'px';
+}
+function swimBuildColgroup() {
+  const cg = document.getElementById('swimColGroup');
+  cg.innerHTML = SWIM_COLUMNS.map(col => `<col data-key="${col.key}" style="width:${col.width}px">`).join('');
+  swimApplyTableWidth();
+}
+function swimSetColWidth(key, px) {
+  const colDef = SWIM_COLUMNS.find(c => c.key === key);
+  colDef.width = Math.max(60, Math.round(px));
+  const colEl = document.querySelector(`#swimColGroup col[data-key="${key}"]`);
+  if (colEl) colEl.style.width = colDef.width + 'px';
+  swimApplyTableWidth();
+}
+function swimInitColumnResize() {
+  let dragKey = null, startX = 0, startWidth = 0, handleEl = null;
+  document.querySelectorAll('#swimTableHeadRow .resize-handle').forEach(handle => {
+    handle.addEventListener('mousedown', (e) => {
+      e.preventDefault(); e.stopPropagation();
+      dragKey = handle.closest('th').dataset.key;
+      startX = e.clientX;
+      startWidth = SWIM_COLUMNS.find(c => c.key === dragKey).width;
+      handleEl = handle;
+      handleEl.classList.add('active');
+      document.body.style.cursor = 'col-resize';
+    });
+  });
+  document.addEventListener('mousemove', (e) => {
+    if (!dragKey) return;
+    swimSetColWidth(dragKey, startWidth + (e.clientX - startX));
+    swimSyncTopScrollWidth();
+  });
+  document.addEventListener('mouseup', () => {
+    if (!dragKey) return;
+    dragKey = null;
+    if (handleEl) handleEl.classList.remove('active');
+    document.body.style.cursor = '';
+  });
+}
+
+// ── Sort menu (dropdown arrow on each header) ──
+function swimBuildHead() {
+  const row = document.getElementById('swimTableHeadRow');
+  row.innerHTML = SWIM_COLUMNS.map(col => `
+    <th data-key="${col.key}" class="${col.frozen ? 'col-frozen' : ''}">
+      <div class="th-inner">
+        <span class="th-label" title="${swimEsc(col.label)}">${swimEsc(col.label)}</span>
+        <span class="sort-caret">▲</span>
+        <button class="sort-menu-btn" type="button" aria-label="Sort ${swimEsc(col.label)}">▾</button>
+      </div>
+      <div class="sort-menu">
+        <div class="sort-menu-item" data-action="asc">▲ Sort ascending</div>
+        <div class="sort-menu-item" data-action="desc">▼ Sort descending</div>
+        <div class="sort-menu-item danger" data-action="clear">Clear sort (default: Town)</div>
+      </div>
+      <div class="resize-handle"></div>
+    </th>
+  `).join('');
+
+  row.querySelectorAll('.sort-menu-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const menu = btn.closest('th').querySelector('.sort-menu');
+      const wasOpen = menu.classList.contains('open');
+      document.querySelectorAll('#swimTableHeadRow .sort-menu.open').forEach(m => m.classList.remove('open'));
+      if (!wasOpen) menu.classList.add('open');
+    });
+  });
+  row.querySelectorAll('.sort-menu-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const th = item.closest('th');
+      const key = th.dataset.key;
+      const action = item.dataset.action;
+      if (action === 'clear') { swimSortState = { ...SWIM_DEFAULT_SORT }; }
+      else { swimSortState = { key, dir: action }; }
+      item.closest('.sort-menu').classList.remove('open');
+      swimRenderTable();
+    });
+  });
+
+  swimBuildColgroup();
+  swimInitColumnResize();
+}
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.sort-menu-btn') && !e.target.closest('.sort-menu')) {
+    document.querySelectorAll('#swimTableHeadRow .sort-menu.open').forEach(m => m.classList.remove('open'));
+  }
+  if (!e.target.closest('#swimFilterToolbar .fc-dropdown')) {
+    document.querySelectorAll('#swimFilterToolbar .fc-dropdown.open').forEach(x => x.classList.remove('open'));
+  }
+});
+
+// These buttons exist in the static HTML from page load (unlike the
+// popovers/table rows, which only exist once ensureSwimVendors()'s fetch
+// resolves), so they can be wired directly here rather than waiting on
+// any load event — matches how the rest of this file wires up static
+// controls (e.g. clearAllBtn for the main events filters).
+document.querySelectorAll('#swimFilterToolbar .fc-dropdown > .fc-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const dd = btn.parentElement;
+    const wasOpen = dd.classList.contains('open');
+    document.querySelectorAll('#swimFilterToolbar .fc-dropdown.open').forEach(x => x.classList.remove('open'));
+    if (!wasOpen) dd.classList.add('open');
+  });
+});
+document.getElementById('swimClearAllBtn').addEventListener('click', swimClearAllFilters);
+
+function swimRenderTable() {
   if (!swimVendorsLoaded) return;
-  const results = swimVendors.filter(vendorMatchesSwimFilters)
-    .sort((a, b) => (a.inMarin === b.inMarin ? 0 : a.inMarin ? -1 : 1) || a.name.localeCompare(b.name));
+  let results = swimVendors.filter(swimVendorMatchesFilters);
 
-  document.getElementById('swimResultsCount').textContent = results.length + (results.length === 1 ? ' vendor' : ' vendors');
-  document.getElementById('swimCardsBody').innerHTML = results.map(swimCardHtml).join('');
-  document.getElementById('swimEmptyState').classList.toggle('visible', results.length === 0);
+  const col = SWIM_COLUMNS.find(c => c.key === swimSortState.key) || SWIM_COLUMNS.find(c => c.key === SWIM_DEFAULT_SORT.key);
+  results = results.slice().sort((a, b) => {
+    const av = col.sortKey(a), bv = col.sortKey(b);
+    const cmp = col.numeric ? (av - bv) : String(av).localeCompare(String(bv));
+    return swimSortState.dir === 'asc' ? cmp : -cmp;
+  });
+
+  document.getElementById('swimTableBody').innerHTML = results.map(v => `
+    <tr>${SWIM_COLUMNS.map(col => `<td class="${col.frozen ? 'col-frozen' : ''}">${col.render(v)}</td>`).join('')}</tr>
+  `).join('');
+
+  document.getElementById('swimResultsCount').textContent = `Showing ${results.length} of ${swimVendors.length} vendors`;
+
+  document.querySelectorAll('#swimTableHeadRow th').forEach(th => {
+    const active = th.dataset.key === swimSortState.key;
+    th.classList.toggle('sorted', active);
+    const caret = th.querySelector('.sort-caret');
+    caret.textContent = swimSortState.dir === 'desc' ? '▼' : '▲';
+  });
+
+  swimUpdateTableMaxHeight();
+  swimSyncTopScrollWidth();
 }
 
-function swimCardHtml(v) {
-  const tags = [
-    `<span class="tag">${formatSwimAge(v.agesServed.minMonths)}</span>`,
-    `<span class="tag">${v.indoorOutdoor}</span>`,
-    ...v.classTypes.slice(0, 3).map(c => `<span class="tag">${c}</span>`),
-    v.classTypes.length > 3 ? `<span class="tag">+${v.classTypes.length - 3} more</span>` : '',
-    v.inMarin ? '' : `<span class="tag" style="color:#854F0B;border-color:#E6B84A">Not in Marin</span>`,
-  ].join('');
-  return `<div class="event-card" onclick="openSwimDetail('${v.id}')">
-    <div class="card-left">
-      <div class="card-title">${v.name}</div>
-      <div class="card-venue">${v.towns.join(', ')} · ${v.facilityType}</div>
-      <div class="card-meta">${tags}</div>
-    </div>
-  </div>`;
+// Leaves room for the app header + Resources back-button header + sticky
+// toolbar above the table, so .swim-table-scroll's own bounded height (and
+// its internal vertical scrollbar, which is what makes the sticky thead
+// actually freeze) is never taller than the viewport minus whatever's
+// already on screen above it.
+function swimUpdateTableMaxHeight() {
+  const wrap = document.getElementById('swimTableWrap');
+  if (!wrap) return;
+  const top = wrap.getBoundingClientRect().top;
+  const maxH = Math.max(240, window.innerHeight - top - 20);
+  document.documentElement.style.setProperty('--swim-table-max-h', maxH + 'px');
 }
+window.addEventListener('resize', swimUpdateTableMaxHeight);
 
-function openSwimDetail(id) {
-  const v = swimVendors.find(x => x.id === id);
-  if (!v) return;
-  currentSwimVendorId = id;
-
-  document.getElementById('swimDetailFacilityBadge').textContent = v.facilityType;
-  document.getElementById('swimDetailName').textContent = v.name;
-  document.getElementById('swimDetailTownLine').textContent = v.town;
-
-  const notInMarinSection = document.getElementById('swimNotInMarinSection');
-  if (!v.inMarin) {
-    document.getElementById('swimNotInMarinText').textContent = '⚠ Not located in Marin County — included as the closest option. Check the drive time before booking.';
-    notInMarinSection.style.display = 'block';
-  } else {
-    notInMarinSection.style.display = 'none';
-  }
-
-  document.getElementById('swimDetailTags').innerHTML = [v.indoorOutdoor, ...v.classTypes]
-    .map(t => `<span class="detail-tag" style="background:#E6F1FB;color:#0C447C">${t}</span>`).join('');
-  document.getElementById('swimDetailAges').textContent = v.agesServed.displayText;
-  document.getElementById('swimDetailPoolInfo').textContent = v.poolInfo || '—';
-  document.getElementById('swimDetailHours').textContent = v.hoursSeason || '—';
-  document.getElementById('swimDetailAddress').textContent = v.address || '—';
-  document.getElementById('swimDetailVerified').textContent = v.lastVerified;
-
-  const notesSection = document.getElementById('swimDetailNotesSection');
-  if (v.notes) {
-    document.getElementById('swimDetailNotes').textContent = v.notes;
-    notesSection.style.display = 'block';
-  } else {
-    notesSection.style.display = 'none';
-  }
-
-  const callBtn = document.getElementById('swimCallBtn');
-  const phoneDigits = (v.phone.match(/\d/g) || []).join('');
-  if (phoneDigits.length >= 10) {
-    callBtn.href = 'tel:+1' + phoneDigits;
-    callBtn.style.display = 'flex';
-  } else {
-    callBtn.style.display = 'none';
-  }
-
-  const websiteBtn = document.getElementById('swimWebsiteBtn');
-  if (v.website) { websiteBtn.href = v.website; websiteBtn.style.display = 'flex'; }
-  else { websiteBtn.style.display = 'none'; }
-
-  document.getElementById('swimScreen').style.display = 'none';
-  const ds = document.getElementById('swimDetailScreen');
-  ds.style.display = 'flex';
-  ds.style.flexDirection = 'column';
-  window.scrollTo(0, 0);
+// ── Duplicate horizontal scrollbar above the table, synced to the real one ──
+function swimSyncTopScrollWidth() {
+  const table = document.getElementById('swimVendorTable');
+  document.getElementById('swimHScrollTopInner').style.width = table.scrollWidth + 'px';
 }
-
-function closeSwimDetail() {
-  document.getElementById('swimDetailScreen').style.display = 'none';
-  const ss = document.getElementById('swimScreen');
-  ss.style.display = 'flex';
-  ss.style.flexDirection = 'column';
+function swimInitTopScrollSync() {
+  const top = document.getElementById('swimHScrollTop');
+  const real = document.getElementById('swimTableScroll');
+  let syncing = false;
+  top.addEventListener('scroll', () => {
+    if (syncing) return; syncing = true;
+    real.scrollLeft = top.scrollLeft;
+    syncing = false;
+  });
+  real.addEventListener('scroll', () => {
+    if (syncing) return; syncing = true;
+    top.scrollLeft = real.scrollLeft;
+    syncing = false;
+  });
 }
 
 </script>
