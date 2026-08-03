@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-02",
+  "last_updated": "2026-08-03",
   "vendors": [
     {
       "id": "osher-marin-jcc",
@@ -373,7 +373,7 @@
       ],
       "poolInfo": "Community pool — runs warmer than most",
       "indoorOutdoor": "Outdoor",
-      "hoursSeason": "Seasonal — confirm current hours",
+      "hoursSeason": "Year-round, check current session schedule",
       "notes": "",
       "inMarin": true,
       "lastVerified": "2026-07-01"
