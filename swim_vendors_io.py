@@ -15,6 +15,16 @@ filter. Same reasoning for facilityType (mapped to the 7 canonical
 categories from the spreadsheet's own Notes sheet) and classTypes (mapped to
 the 12 standardized labels, stripping vendor-specific parenthetical detail
 which stays in `notes` instead).
+
+The per-vendor `*_override` / `*_append` keys (e.g. `hoursSeason_override`,
+`notes_append`) aren't just for the initial ambiguous-field assignments
+above — they're also how a factual correction gets made durable. If
+Alexandra flags something wrong (e.g. Strawberry Recreation District's
+hours), fix it here as an override rather than hand-editing
+swim_vendors.json directly: the JSON is regenerated wholesale from the raw
+spreadsheet cells on every run, so a fix only in the JSON output would
+silently get reverted the next time this script runs against an unchanged
+spreadsheet.
 """
 import json
 import os
@@ -28,6 +38,11 @@ OUT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "swim_vendor
 # indoorOutdoor is normalized to exactly one of: Indoor, Outdoor, Both, Varies
 # (the raw column mixes in parenthetical detail like "(private pools)" that
 # belongs in poolInfo/notes instead of a filter value).
+# towns is a hand-assigned canonical list, separate from the raw sheet `town`
+# text — index.html's swim directory (both the old cards and the current
+# table) filters and displays by `towns`, never by `town`. The raw column is
+# kept only as descriptive text, since it's sometimes long/multi-location
+# (e.g. a mobile instructor serving five towns) and unsuitable for a filter.
 OVERRIDES = [
     dict(id="osher-marin-jcc", minMonths=6, towns=["San Rafael"],
          facilityType="JCC / YMCA", indoorOutdoor="Both",
