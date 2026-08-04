@@ -1974,6 +1974,27 @@ function mapDbUser(dbUser) {
   }
   .swim-clear-btn.active { opacity: 1; pointer-events: auto; text-decoration: underline; }
 
+  .swim-mobile-note {
+    font-size: 0.66rem; color: #FFD9A0; margin-top: 0.3rem; line-height: 1.4;
+  }
+  .swim-toolbar-sep { width: 1px; height: 20px; background: var(--card-border); margin: 0 0.15rem; }
+  .swim-tool-btn {
+    font-family: var(--font-sans); font-size: 0.72rem; font-weight: 500; color: var(--text-primary);
+    background: var(--off-white); border: 1px solid var(--card-border); border-radius: var(--radius-sm);
+    padding: 0.4rem 0.65rem; cursor: pointer; white-space: nowrap;
+  }
+  .swim-tool-btn:hover { border-color: var(--navy); }
+  .swim-tool-btn.primary { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+  .swim-addcol-form { display: none; align-items: center; gap: 0.4rem; margin-top: 0.55rem; }
+  .swim-addcol-form.show { display: flex; }
+  .swim-addcol-form input {
+    font-family: var(--font-sans); font-size: 0.76rem; color: var(--text-primary);
+    border: 1px solid var(--card-border); border-radius: var(--radius-sm);
+    padding: 0.4rem 0.6rem; min-width: 200px;
+  }
+  .swim-addcol-form input:focus { outline: 2px solid var(--navy); outline-offset: -1px; }
+
   .swim-active-chips { display: none; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.55rem; }
   .swim-active-chips.show { display: flex; }
   .swim-active-chip {
@@ -2064,6 +2085,28 @@ function mapDbUser(dbUser) {
   }
   a.cell-link { color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 0.78rem; white-space: nowrap; }
   .em { color: #B5B0A5; }
+
+  /* Drag-to-reorder columns. The frozen Vendor Name column is deliberately
+     excluded (not draggable, no drop target) — it's position:sticky left:0,
+     so if it were moved to the middle it would still pin to the left edge
+     with other columns scrolling underneath it, which reads as broken. */
+  .swim-vendor-table thead th[draggable="true"] .th-label { cursor: grab; }
+  .swim-vendor-table thead th.drag-source { opacity: 0.4; }
+  .swim-vendor-table thead th.drag-over-left { box-shadow: inset 3px 0 0 0 #7FB2E5; }
+  .swim-vendor-table thead th.drag-over-right { box-shadow: inset -3px 0 0 0 #7FB2E5; }
+
+  /* Custom (user-added) columns: editable cells, saved per browser. */
+  .swim-custom-cell {
+    min-height: 1.2em; border-radius: 3px; padding: 1px 3px; margin: -1px -3px;
+    cursor: text;
+  }
+  .swim-custom-cell:hover { background: rgba(13,27,62,0.05); }
+  .swim-custom-cell:focus { outline: 2px solid var(--navy); outline-offset: 0; background: #fff; }
+  .swim-custom-cell:empty::before { content: attr(data-placeholder); color: #C4BFB4; }
+  .th-custom-badge {
+    font-size: 0.55rem; font-weight: 600; background: rgba(255,255,255,0.2);
+    border-radius: 3px; padding: 1px 4px; letter-spacing: 0.03em; flex-shrink: 0;
+  }
 </style>
 
 
@@ -2556,7 +2599,7 @@ function mapDbUser(dbUser) {
   <div class="detail-header">
     <button class="detail-back" onclick="showScreen('resources')">‹ Back to Resources</button>
     <div class="detail-title">Swim Lesson Directory</div>
-    <div class="detail-org" id="swimHeaderSub">Swim lesson providers across Marin County</div>
+    <div class="swim-mobile-note">⚠ This page is not mobile friendly and is best accessed via computer.</div>
   </div>
 
   <div class="swim-toolbar" id="swimFilterToolbar">
@@ -2584,6 +2627,14 @@ function mapDbUser(dbUser) {
       <div class="swim-toolbar-spacer"></div>
       <div class="swim-result-count" id="swimResultsCount"></div>
       <button class="swim-clear-btn" id="swimClearAllBtn" type="button">Clear all</button>
+      <span class="swim-toolbar-sep"></span>
+      <button class="swim-tool-btn" id="swimAddColBtn" type="button">+ Add column</button>
+      <button class="swim-tool-btn" id="swimDefaultOrderBtn" type="button">Default order</button>
+    </div>
+    <div class="swim-addcol-form" id="swimAddColForm">
+      <input type="text" id="swimAddColInput" placeholder="New column name" maxlength="40" autocomplete="off">
+      <button class="swim-tool-btn primary" id="swimAddColConfirm" type="button">Add</button>
+      <button class="swim-tool-btn" id="swimAddColCancel" type="button">Cancel</button>
     </div>
     <div class="swim-active-chips" id="swimActiveChips"></div>
   </div>
@@ -4698,9 +4749,38 @@ const SWIM_DIMENSIONS = ['town', 'facilityType', 'indoorOutdoor', 'classType'];
 const SWIM_DIM_LABEL = { town: 'Town', facilityType: 'Facility Type', indoorOutdoor: 'Indoor/Outdoor', classType: 'Class Type' };
 const SWIM_AGE_BAND_LABEL = Object.fromEntries(SWIM_AGE_BANDS.map(b => [b.key, b.label]));
 
-let swimSortState = { key: null, dir: 'asc' };
 const SWIM_DEFAULT_SORT = { key: 'towns', dir: 'asc' };
-swimSortState = { ...SWIM_DEFAULT_SORT };
+let swimSortState = { ...SWIM_DEFAULT_SORT };
+
+// Column layout preferences persist per browser (localStorage), like the
+// app's other user prefs (oaam_user / oaam_lang / oaam_county). These are
+// personal view settings, not shared site data — nothing here touches
+// swim_vendors.json.
+let swimColumnOrder = [];      // ordered keys, frozen column excluded
+let swimCustomColumns = [];    // [{key, label, width}]
+let swimCustomData = {};       // { vendorId: { customColKey: 'text' } }
+
+function swimLoadPrefs() {
+  try {
+    swimColumnOrder = JSON.parse(localStorage.getItem('oaam_swim_col_order') || '[]');
+    swimCustomColumns = JSON.parse(localStorage.getItem('oaam_swim_custom_cols') || '[]');
+    swimCustomData = JSON.parse(localStorage.getItem('oaam_swim_custom_data') || '{}');
+  } catch (e) {
+    console.warn('Swim column prefs unreadable, using defaults:', e);
+    swimColumnOrder = []; swimCustomColumns = []; swimCustomData = {};
+  }
+  if (!Array.isArray(swimColumnOrder)) swimColumnOrder = [];
+  if (!Array.isArray(swimCustomColumns)) swimCustomColumns = [];
+  if (!swimCustomData || typeof swimCustomData !== 'object') swimCustomData = {};
+}
+
+function swimSavePrefs() {
+  try {
+    localStorage.setItem('oaam_swim_col_order', JSON.stringify(swimColumnOrder));
+    localStorage.setItem('oaam_swim_custom_cols', JSON.stringify(swimCustomColumns));
+    localStorage.setItem('oaam_swim_custom_data', JSON.stringify(swimCustomData));
+  } catch (e) { console.warn('Could not save swim column prefs:', e); }
+}
 
 function swimEsc(s) {
   return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -4738,6 +4818,47 @@ const SWIM_COLUMNS = [
     render: v => `<span class="cell-wrap">${swimEsc(v.lastVerified)}</span>` },
 ];
 
+// A user-added column: same shape as a built-in one, but its cell is
+// editable and its value comes from swimCustomData rather than the vendor
+// record. Marked isCustom so the header can offer "Remove column".
+function swimCustomColDef(cc) {
+  return {
+    key: cc.key,
+    label: cc.label,
+    width: cc.width || 180,
+    isCustom: true,
+    sortKey: v => (swimCustomData[v.id] && swimCustomData[v.id][cc.key]) || '',
+    render: v => {
+      const val = (swimCustomData[v.id] && swimCustomData[v.id][cc.key]) || '';
+      return `<div class="cell-wrap swim-custom-cell" contenteditable="plaintext-only" `
+        + `data-vendor="${swimEsc(v.id)}" data-col="${swimEsc(cc.key)}" data-placeholder="—">${swimEsc(val)}</div>`;
+    },
+  };
+}
+
+// Resolves the display order. Built to be self-healing: keys in the stored
+// order that no longer exist are skipped, and any column missing from it
+// (a newly added custom column, or a built-in one on first run) is appended
+// in its natural position — so a stale localStorage value can never hide a
+// column or throw.
+function swimOrderedColumns() {
+  const all = [...SWIM_COLUMNS, ...swimCustomColumns.map(swimCustomColDef)];
+  const byKey = new Map(all.map(c => [c.key, c]));
+  const ordered = [];
+  const frozen = all.find(c => c.frozen);
+  if (frozen) { ordered.push(frozen); byKey.delete(frozen.key); }
+  swimColumnOrder.forEach(k => {
+    if (byKey.has(k)) { ordered.push(byKey.get(k)); byKey.delete(k); }
+  });
+  all.forEach(c => { if (byKey.has(c.key)) { ordered.push(c); byKey.delete(c.key); } });
+  return ordered;
+}
+
+function swimSetColumnOrderFrom(cols) {
+  swimColumnOrder = cols.filter(c => !c.frozen).map(c => c.key);
+  swimSavePrefs();
+}
+
 function ensureSwimVendors() {
   if (swimVendorsLoaded) { swimRenderTable(); return; }
   document.getElementById('swimResultsCount').textContent = 'Loading…';
@@ -4746,7 +4867,7 @@ function ensureSwimVendors() {
     .then(data => {
       swimVendors = data.vendors || [];
       swimVendorsLoaded = true;
-      document.getElementById('swimHeaderSub').textContent = swimVendors.length + ' swim lesson providers across Marin County';
+      swimLoadPrefs();
       swimBuildPopovers();
       swimBuildHead();
       swimInitTopScrollSync();
@@ -4861,34 +4982,45 @@ function swimVendorMatchesFilters(v) {
 // every resize updates both the <col> and the table's total width from
 // that same array, rather than re-measuring the DOM.
 function swimTotalColumnsWidth() {
-  return SWIM_COLUMNS.reduce((sum, c) => sum + c.width, 0);
+  return swimOrderedColumns().reduce((sum, c) => sum + c.width, 0);
 }
 function swimApplyTableWidth() {
   document.getElementById('swimVendorTable').style.width = swimTotalColumnsWidth() + 'px';
 }
 function swimBuildColgroup() {
   const cg = document.getElementById('swimColGroup');
-  cg.innerHTML = SWIM_COLUMNS.map(col => `<col data-key="${col.key}" style="width:${col.width}px">`).join('');
+  cg.innerHTML = swimOrderedColumns().map(col => `<col data-key="${col.key}" style="width:${col.width}px">`).join('');
   swimApplyTableWidth();
 }
+// Width lives on whichever def owns the key — a built-in in SWIM_COLUMNS,
+// or a custom column's persisted record.
+function swimWidthOwner(key) {
+  return SWIM_COLUMNS.find(c => c.key === key) || swimCustomColumns.find(c => c.key === key);
+}
 function swimSetColWidth(key, px) {
-  const colDef = SWIM_COLUMNS.find(c => c.key === key);
-  colDef.width = Math.max(60, Math.round(px));
+  const owner = swimWidthOwner(key);
+  if (!owner) return;
+  owner.width = Math.max(60, Math.round(px));
   const colEl = document.querySelector(`#swimColGroup col[data-key="${key}"]`);
-  if (colEl) colEl.style.width = colDef.width + 'px';
+  if (colEl) colEl.style.width = owner.width + 'px';
   swimApplyTableWidth();
 }
 function swimInitColumnResize() {
-  let dragKey = null, startX = 0, startWidth = 0, handleEl = null;
+  let dragKey = null, startX = 0, startWidth = 0, handleEl = null, sourceTh = null;
   document.querySelectorAll('#swimTableHeadRow .resize-handle').forEach(handle => {
     handle.addEventListener('mousedown', (e) => {
       e.preventDefault(); e.stopPropagation();
-      dragKey = handle.closest('th').dataset.key;
+      sourceTh = handle.closest('th');
+      dragKey = sourceTh.dataset.key;
       startX = e.clientX;
-      startWidth = SWIM_COLUMNS.find(c => c.key === dragKey).width;
+      const owner = swimWidthOwner(dragKey);
+      startWidth = owner ? owner.width : 150;
       handleEl = handle;
       handleEl.classList.add('active');
       document.body.style.cursor = 'col-resize';
+      // Suppress reorder-dragging for the duration of a resize, otherwise
+      // the browser starts an HTML5 drag mid-resize and the column jumps.
+      sourceTh.draggable = false;
     });
   });
   document.addEventListener('mousemove', (e) => {
@@ -4898,19 +5030,103 @@ function swimInitColumnResize() {
   });
   document.addEventListener('mouseup', () => {
     if (!dragKey) return;
-    dragKey = null;
+    if (sourceTh && !sourceTh.classList.contains('col-frozen')) sourceTh.draggable = true;
+    dragKey = null; sourceTh = null;
     if (handleEl) handleEl.classList.remove('active');
     document.body.style.cursor = '';
+    swimSavePrefs();
   });
+}
+
+// ── Drag-to-reorder columns ──
+function swimInitColumnReorder() {
+  let srcKey = null;
+  document.querySelectorAll('#swimTableHeadRow th').forEach(th => {
+    if (th.classList.contains('col-frozen')) return;  // pinned first, see CSS note
+    th.draggable = true;
+
+    th.addEventListener('dragstart', (e) => {
+      srcKey = th.dataset.key;
+      th.classList.add('drag-source');
+      e.dataTransfer.effectAllowed = 'move';
+      try { e.dataTransfer.setData('text/plain', srcKey); } catch (err) {}
+    });
+    th.addEventListener('dragend', () => {
+      srcKey = null;
+      document.querySelectorAll('#swimTableHeadRow th').forEach(x =>
+        x.classList.remove('drag-source', 'drag-over-left', 'drag-over-right'));
+    });
+    th.addEventListener('dragover', (e) => {
+      if (!srcKey || th.dataset.key === srcKey) return;
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      const r = th.getBoundingClientRect();
+      const after = (e.clientX - r.left) > r.width / 2;
+      th.classList.toggle('drag-over-right', after);
+      th.classList.toggle('drag-over-left', !after);
+    });
+    th.addEventListener('dragleave', () => {
+      th.classList.remove('drag-over-left', 'drag-over-right');
+    });
+    th.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const targetKey = th.dataset.key;
+      if (!srcKey || targetKey === srcKey) return;
+      const r = th.getBoundingClientRect();
+      const after = (e.clientX - r.left) > r.width / 2;
+
+      const cols = swimOrderedColumns();
+      const moving = cols.find(c => c.key === srcKey);
+      const rest = cols.filter(c => c.key !== srcKey);
+      let idx = rest.findIndex(c => c.key === targetKey);
+      if (after) idx += 1;
+      rest.splice(idx, 0, moving);
+
+      swimSetColumnOrderFrom(rest);
+      swimBuildHead();
+      swimRenderTable();
+    });
+  });
+}
+
+function swimResetColumnOrder() {
+  swimColumnOrder = [];
+  swimSavePrefs();
+  swimBuildHead();
+  swimRenderTable();
+}
+
+// ── Custom columns ──
+function swimAddCustomColumn(rawLabel) {
+  const label = (rawLabel || '').trim();
+  if (!label) return false;
+  const key = 'custom_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  swimCustomColumns.push({ key, label, width: 180 });
+  swimSavePrefs();
+  swimBuildHead();
+  swimRenderTable();
+  return true;
+}
+
+function swimRemoveCustomColumn(key) {
+  swimCustomColumns = swimCustomColumns.filter(c => c.key !== key);
+  swimColumnOrder = swimColumnOrder.filter(k => k !== key);
+  Object.keys(swimCustomData).forEach(vid => {
+    if (swimCustomData[vid]) delete swimCustomData[vid][key];
+  });
+  swimSavePrefs();
+  swimBuildHead();
+  swimRenderTable();
 }
 
 // ── Sort menu (dropdown arrow on each header) ──
 function swimBuildHead() {
   const row = document.getElementById('swimTableHeadRow');
-  row.innerHTML = SWIM_COLUMNS.map(col => `
+  row.innerHTML = swimOrderedColumns().map(col => `
     <th data-key="${col.key}" class="${col.frozen ? 'col-frozen' : ''}">
       <div class="th-inner">
-        <span class="th-label" title="${swimEsc(col.label)}">${swimEsc(col.label)}</span>
+        <span class="th-label" title="${swimEsc(col.label)}${col.frozen ? '' : ' — drag to reorder'}">${swimEsc(col.label)}</span>
+        ${col.isCustom ? '<span class="th-custom-badge">MINE</span>' : ''}
         <span class="sort-caret">▲</span>
         <button class="sort-menu-btn" type="button" aria-label="Sort ${swimEsc(col.label)}">▾</button>
       </div>
@@ -4918,6 +5134,7 @@ function swimBuildHead() {
         <div class="sort-menu-item" data-action="asc">▲ Sort ascending</div>
         <div class="sort-menu-item" data-action="desc">▼ Sort descending</div>
         <div class="sort-menu-item danger" data-action="clear">Clear sort (default: Town)</div>
+        ${col.isCustom ? '<div class="sort-menu-item danger" data-action="removecol">✕ Remove this column</div>' : ''}
       </div>
       <div class="resize-handle"></div>
     </th>
@@ -4938,15 +5155,17 @@ function swimBuildHead() {
       const th = item.closest('th');
       const key = th.dataset.key;
       const action = item.dataset.action;
+      item.closest('.sort-menu').classList.remove('open');
+      if (action === 'removecol') { swimRemoveCustomColumn(key); return; }
       if (action === 'clear') { swimSortState = { ...SWIM_DEFAULT_SORT }; }
       else { swimSortState = { key, dir: action }; }
-      item.closest('.sort-menu').classList.remove('open');
       swimRenderTable();
     });
   });
 
   swimBuildColgroup();
   swimInitColumnResize();
+  swimInitColumnReorder();
 }
 
 document.addEventListener('click', (e) => {
@@ -4973,12 +5192,44 @@ document.querySelectorAll('#swimFilterToolbar .fc-dropdown > .fc-btn').forEach(b
   });
 });
 document.getElementById('swimClearAllBtn').addEventListener('click', swimClearAllFilters);
+document.getElementById('swimDefaultOrderBtn').addEventListener('click', swimResetColumnOrder);
+
+// Add-column inline form
+(function () {
+  const form = document.getElementById('swimAddColForm');
+  const input = document.getElementById('swimAddColInput');
+  const openForm = () => { form.classList.add('show'); input.value = ''; input.focus(); swimUpdateTableMaxHeight(); };
+  const closeForm = () => { form.classList.remove('show'); swimUpdateTableMaxHeight(); };
+  const submit = () => { if (swimAddCustomColumn(input.value)) closeForm(); else input.focus(); };
+
+  document.getElementById('swimAddColBtn').addEventListener('click', openForm);
+  document.getElementById('swimAddColConfirm').addEventListener('click', submit);
+  document.getElementById('swimAddColCancel').addEventListener('click', closeForm);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); submit(); }
+    if (e.key === 'Escape') { e.preventDefault(); closeForm(); }
+  });
+})();
+
+// Editable custom cells. Delegated so it survives every re-render, and
+// saved on input (not blur) — a filter or sort click re-renders the table
+// and would destroy an un-committed edit otherwise. Reads textContent, so
+// pasted rich text is stored as plain text.
+document.getElementById('swimTableBody').addEventListener('input', (e) => {
+  const cell = e.target.closest('.swim-custom-cell');
+  if (!cell) return;
+  const vid = cell.dataset.vendor, key = cell.dataset.col;
+  if (!swimCustomData[vid]) swimCustomData[vid] = {};
+  swimCustomData[vid][key] = cell.textContent;
+  swimSavePrefs();
+});
 
 function swimRenderTable() {
   if (!swimVendorsLoaded) return;
   let results = swimVendors.filter(swimVendorMatchesFilters);
 
-  const col = SWIM_COLUMNS.find(c => c.key === swimSortState.key) || SWIM_COLUMNS.find(c => c.key === SWIM_DEFAULT_SORT.key);
+  const cols = swimOrderedColumns();
+  const col = cols.find(c => c.key === swimSortState.key) || cols.find(c => c.key === SWIM_DEFAULT_SORT.key);
   results = results.slice().sort((a, b) => {
     const av = col.sortKey(a), bv = col.sortKey(b);
     const cmp = col.numeric ? (av - bv) : String(av).localeCompare(String(bv));
@@ -4986,7 +5237,7 @@ function swimRenderTable() {
   });
 
   document.getElementById('swimTableBody').innerHTML = results.map(v => `
-    <tr>${SWIM_COLUMNS.map(col => `<td class="${col.frozen ? 'col-frozen' : ''}">${col.render(v)}</td>`).join('')}</tr>
+    <tr>${cols.map(c => `<td class="${c.frozen ? 'col-frozen' : ''}">${c.render(v)}</td>`).join('')}</tr>
   `).join('');
 
   document.getElementById('swimResultsCount').textContent = `Showing ${results.length} of ${swimVendors.length} vendors`;
