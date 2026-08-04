@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-03",
+  "last_updated": "2026-08-04",
   "events": [
     {
       "id": 1,
@@ -21976,6 +21976,36 @@
       "website": "https://www.tamcsd.org/event/game-night/",
       "notes": "",
       "location_group": "Mill Valley"
+    },
+    {
+      "id": 798,
+      "organization": "Town Center Corte Madera",
+      "venue": "Corte Madera Town Center",
+      "event_name": "Corte Madera Town Center Summer Music Series — August",
+      "event_name_es": "Serie de Música de Verano de Town Center Corte Madera — Agosto",
+      "type": "Music and Movies",
+      "day": "Thursday",
+      "time": "4:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Corte Madera",
+      "address": "770 Tamalpais Dr, Corte Madera, CA 94925",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-08-06",
+      "expires": "2026-08-06",
+      "status": "Active",
+      "featured": false,
+      "description": "Live local music, food, and shopping at Town Center — the final date of the 2026 summer series (First Thursdays, Jun-Aug), 4-6pm.",
+      "description_es": "Música local en vivo, comida y compras en Town Center — la última fecha de la serie de verano 2026 (primeros jueves, jun-ago), de 4 a 6pm.",
+      "registration": "Not required",
+      "website": "https://www.shoptowncenter.com/sms/",
+      "notes": "One-off for the final 2026 date of the recurring series (id 586), added because id 586 has no parseable ordinal rule in its notes and is Monthly-cadence with no season bounds, so it never renders. Series runs First Thursdays, Jun-Aug only -- see id 586 for the archived recurring record.",
+      "location_group": "Corte Madera"
     }
   ]
 }
