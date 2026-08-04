@@ -12,12 +12,12 @@ Read `CLAUDE.md` first for the event schema, data quality rules, and dedup rules
    - Do NOT report a source as done from assumption. If you could not complete a source, say so explicitly rather than silently skipping it.
 3. **If you cannot complete all sources in one session**, tell Alexandra upfront before starting, rather than silently presenting a partial sweep as complete.
 4. **Build the review workbook** with two sheets:
-   - **Sheet 1 "Attestation Log"**: one row per source (all 37) — columns: Source | Category (Event Source / Library / Learning Bus) | URL Fetched | Method | Result | # Current Items Reviewed | Newest Item Date Seen.
+   - **Sheet 1 "Attestation Log"**: one row per source (all 38) — columns: Source | Category (Event Source / Library / Learning Bus) | URL Fetched | Method | Result | # Current Items Reviewed | Newest Item Date Seen.
    - **Sheet 2 "Weekly Sweep"**: one row per genuinely new candidate — columns: Decision (blank, for Alexandra to fill Approve/Skip) | Event Name | Date | Day | Time | Venue | Town | Description | Source URL | Notes | Type | Location Filter | Ages | Cost | Indoor/Outdoor | Cadence. Flag anything genuinely uncertain with "⚠ POSSIBLE DUPE" in Notes rather than silently including or excluding it.
 5. **Save the workbook** to `C:\Users\AWalter\Documents\2. Claude-Work\PROJECTS\OAA Marin\OAA maintence and content\daily_sweep_YYYY-MM-DD_review.xlsx` (today's date). Do not save it inside this repo, and do not commit/push it.
 6. **Summarize in chat**: how many sources were fully checked, how many candidates were found, any sources you couldn't complete, and where the review file is. Tell Alexandra to fill in the Decision column and let you know when it's ready for `/process-sweep`.
 
-## Source checklist (37 total: 20 event sources + 16 libraries + Learning Bus)
+## Source checklist (38 total: 21 event sources + 16 libraries + Learning Bus)
 
 Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checklist — Marin-only, per CLAUDE.md.
 
@@ -46,8 +46,9 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
 21. **The Village at Corte Madera — Acoustic Weekends** — fetch villageatcortemadera.com/Events directly; confirm the recurring Sat/Sun series is still running and note any schedule changes (IDs 474/475 already cover the recurring slots — only add new entries for a specific named performer/special event).
 22. **Ross Valley Farm Walk** — no public website, sourced via Nextdoor Tamalpais Valley group. Confirm each summer sweep whether it's still running (Jun–Aug only) — no fetch route, flag to Alexandra if status is unclear.
 23. **San Rafael Library & Recreation — Annual Summer Programs PDF** — fetch srpubliclibrary.org/events/ to find the current summer PDF link, then fetch the PDF with text extraction. Once per summer (June), not every sweep. Read all 3 locations (Downtown, Northgate, Al Boro CC).
+24. **Slide Ranch** — fetch slideranch.org/events directly. **Added 2026-08-04 (open item 10)**: a West Marin nonprofit farm/nature venue running Family Farm Days (roughly monthly), campouts, and other family programs — 3 real events (ids 773, 777, 786) were pulled from it in the sweep before this became a standing source. Sliding-scale pricing funded by the West Marin Fund.
 
-(Note: list above has 23 numbered entries because the historical Excel's "20" count folds a few multi-part sources together — treat each numbered line as one checklist item; that's the working granularity.)
+(Note: list above has 24 numbered entries because the historical Excel's "20" count folds a few multi-part sources together — treat each numbered line as one checklist item; that's the working granularity.)
 
 ### Libraries (16) — every sweep, no exceptions, even though programs are "recurring/already in DB" — one-off guest performers and specials show up on these calendars constantly
 
