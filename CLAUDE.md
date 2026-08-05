@@ -61,9 +61,9 @@ As of 2026-07-02: 505 events, max ID 565. Next new event gets the next ID (max e
 | `website` | source URL |
 | `notes` | free text. Special parsed patterns: nth-weekday rules (e.g. `"2nd and 4th Saturdays of each month"`), reopening dates matched via regex `Reopen(?:ing|s)\s+([A-Z][a-z]+\s+\d{1,2}(?:,\s*\d{4})?)` (e.g. `"Reopens June 11"`) which drives the "Closed · Reopens {date}" badge, and the literal word `UNPREDICTABLE` (see Data Quality Rules below). |
 | `location_group` | **Do not assume the old fixed list from prior docs — it's drifted.** Live values as of 2026-07: `Mill Valley`, `Tiburon/Belvedere`, `San Rafael`, `Novato`, `San Anselmo`, `Larkspur/Greenbrae` (not `Larkspur`), `Corte Madera`, `Fairfax`, `Sausalito/Marin City` (not `Sausalito`), `West Marin`, `Nicasio/San Geronimo`, `Virtual`, plus Napa-area values (`Calistoga`, `St. Helena`, `Yountville` — see Napa note below). When adding a new event, match an existing value exactly — check current values in the file rather than trusting a hardcoded list here, since this has changed before. **Never use `"Marin County"`** — see rule 8 below (removed 2026-07-19; the 8 events that had it were reassigned to their real town's `location_group`). |
-| `county` | Only set on the Napa-area events (`"Napa"`). Not documented anywhere in the historical process docs — see Napa note below. Leave blank for Marin events (implicit default). |
+| `county` | Only set on the Napa-area events (`"Napa"`). Leave blank for Marin events (implicit default). See the Napa County Music section below for its own separate sweep process. |
 
-**⚠️ Napa scope note**: `events.json` contains events in Calistoga, St. Helena, and Yountville tagged `county: "Napa"`. There is no documented Napa sweep process anywhere in the historical Excel docs — everything below (the 37-source Weekly Sweep) is Marin-only. Until Alexandra says otherwise, treat Napa events as out of scope for the sweep — don't go looking for new Napa events, just don't break the existing ones.
+**Napa scope note**: `events.json` contains events in Calistoga, St. Helena, and Yountville tagged `county: "Napa"`, surfaced on the webapp via the 🍇 Napa County toggle on the Profile screen. This is a **separate process from the 37-source Marin Weekly Sweep below** — see "Napa County Music" section further down. Resolved 2026-08-05 (open item 18): the process was undocumented here until Alexandra supplied `napa_music_process.md` (originally maintained June 2026) — now integrated below.
 
 ## Data quality rules
 
@@ -102,6 +102,37 @@ Separate from the recurring Weekly Sweep: Alexandra sometimes hands over a curat
 - **Research each one before drafting it**: fetch any URL given (same "never assume, always verify" principle as rule 1). For screenshot-sourced events with no link, extract everything decipherable from the image itself — venue, date, time, cost — and flag anything illegible or ambiguous rather than guessing at it.
 - **Dedup check**: before treating anything as new, keyword-search `events.json` across `event_name` + `venue` + `organization` + `notes` for plausible matches — not just an exact-name check. A recurring series can already be in the DB under a different phrasing (e.g. "Marin Hiking Moms" vs. "Marin Moms' hike"), and a one-off date can collide with an existing recurring record's computed next-occurrence date. This is the concrete method for existing rule 6, below.
 - **When she asks to see them before posting**: draft full bilingual records matching the schema and present them as a list for her Approve/Skip — same shape as a sweep review, just for a handful of events instead of 37 sources. Don't write to `events.json` or push until she confirms, even though this isn't a schema/logic change (the kind of edit rule normally gates on) — the review-first ask itself is what gates it here.
+
+## Napa County Music — separate sweep process
+
+Covers live music in **Calistoga, St. Helena, and Yountville**, surfaced on the webapp via the 🍇 Napa County toggle on the Profile screen. This is entirely separate from the Marin Weekly Sweep above — different sources, different ID range, different cadence. Source of this section: `napa_music_process.md` (Alexandra, originally dated 2026-06-27), integrated here 2026-08-05. The full source tracker lives at `OAA maintence and content/Napa_Live_Music_Tracker_v2.xlsx` (4 tabs: Napa Live Music Tracker, Venues Reference, Weekly Sweep Log, Sources) — read it before making changes, same as `events.json`.
+
+**Schema specifics for Napa events** (on top of the standard schema above):
+- `county`: always `"Napa"`.
+- `id`: Napa IDs start at 500. As of 2026-08-05, current max is **547** (26 live events: 15 Calistoga, 8 St. Helena, 3 Yountville) — new events increment from **548**. Napa IDs share the same global sequence as Marin events in practice (`next_id()` in `events_io.py` already handles this correctly by taking the max across all events) — don't hand-roll a separate Napa-only counter.
+- `type`: always `"Music and Movies"` for Napa music events (not the legacy `"Music"` value).
+- `location_group`: must exactly match the town — `"Calistoga"`, `"St. Helena"`, or `"Yountville"`.
+- `cadence`: `"One-off"` for dated events, `"Weekly"` for recurring venue nights.
+- `event_date`/`expires`: for one-offs, both must be set to the *same* `YYYY-MM-DD` — a range will make the event display on every day in between. For `Weekly` recurring venues, leave both blank.
+- `featured`: `true` only for marquee events (park-series openers, major one-offs); default `false`.
+
+**Venues & known recurring series** (as of 2026-06-27 — reverify schedules each sweep, especially "check site"/TBA rows):
+
+*Calistoga* — Pioneer Park "Concerts in the Park" (Thu, Jun 18–Aug 20, 6:30–8:30 PM, free, visitcalistoga.com/concerts-in-the-park); Calistoga Inn & Brewery (Fri/Sat 6–9 PM, May–Oct); Buster's Southern BBQ (Sun 3–6 PM); Cami Art + Wine (Sat/Sun 3–5 PM); Hydro Bar & Grill (Sun 6–9 PM, The Tritones); Lincoln Avenue Brewery/LAB (varies); Pacífico Restaurante Mexicano (Fri steel drums 5:30 PM + DJ 10 PM / Sat acoustic 5:30 PM); Picayune Cellars (Fri 6–8 PM); Sam's Social Club at Indian Springs (Sun 10 AM–1 PM brunch); Fleetwood at Calistoga Motor Lodge (Thu 5–7 PM, May–Oct); Girard Winery (select Saturdays only — confirmed 2026: Jul 25, Aug 29, Sep 26, 12–2 PM).
+
+*St. Helena* — Lyman Park "Summer Concert Series" (Wed, Jun 17–Aug 12, 6–8 PM, free, cityofsthelena.gov/517); The Saint Napa Valley (Tue "Bluesy Tuesday" 3–9 PM / Fri 8–11 PM — **21+ only**); Farmstead at Long Meadow Ranch (Wed 4–7 PM, seasonal Jun–Sep); Merryvale Vineyards (1st & 3rd Fridays, May–Sep, 5–7 PM — **JS-rendered site, will not fetch programmatically; use the Chrome browser tools or call 877-887-7763**).
+
+*Yountville* — Veterans Memorial Park "Music in the Park" (select Sundays, 5–7 PM, free, townofyountville.com/648); Napa Valley Vine Trail Rest Stop "Music Moves You!" (one-off dates via festivalnapavalley.org); Kitchen at Priest Ranch "Thursday Night Live" (select Thursdays, Jul–Sep, 6–9 PM); RO Restaurant & Lounge (Fri 6:30–9:30 PM).
+
+**Excluded — do not add without a fresh confirmation call**: Freemark Abbey Winery (piano music only referenced in old travel guides, not on their current site — 707-302-3717) and Lucy Restaurant & Bar at Bardessono (mentioned in third-party sources only, not confirmed on lucyyountville.com or bardessono.com — 707-204-6030). Re-verify before ever adding either.
+
+**Sweep source checklist** — fetch every sweep, 8 weeks ahead of today, same "fetch don't snippet" and attestation rules as the Marin sweep:
+
+Every sweep: visitcalistoga.com/concerts-in-the-park/, visitcalistoga.com/events-calendar/ (catch-all), cityofsthelena.gov/517/2026-St-Helena-Summer-Concerts-Series, sthelena.com/events/category/st-helena-events/music/ (catch-all), townofyountville.com/648/Music-in-the-Park, thekitchenatpr.com/events/, longmeadowranch.com/farmstead-locals-night/, thesaintnapavalley.com/events, calistogainn.com/restaurant, busterssouthernbbq.com/, hydrogrillnapavalley.com/, lincolnavebrewerycalistoga.com/, pacificomexicanrestaurant.com/, picayunecellars.com/, indianspringscalistoga.com/samssocialclub, fleetwoodcalistoga.com/, girardwinery.com/events/, rorestaurantandlounge.com/, bardessono.com/dining.htm (monitor for a Lucy music announcement — see Excluded above), visitnapavalley.com/blog/post/outdoor-concerts-in-the-napa-valley/ (season overview), napavalleyregister.com/news/community-calendar-napa-valley-events/ (local paper), ronniesawesomelist.com/ronnies-awesome-list. **JS-rendered, needs the Chrome browser tools**: merryvale.com/events/.
+
+Monthly (not every sweep): napavintners.com/events/index.asp, festivalnapavalley.org/calendar/ (filter to admission-free), bandsintown.com/c/calistoga-ca, bandsintown.com/c/yountville-ca, yountville.com/events/special-events/.
+
+**Process**: same shape as the Marin sweep — fetch every source, dedupe against `events.json` (name + venue + date, same as rule 6 above), draft new candidates matching the schema, log the sweep in the Weekly Sweep Log tab of `Napa_Live_Music_Tracker_v2.xlsx`, and present the list to Alexandra for Approve/Skip before touching `events.json` or pushing anything live. Never delete a Napa event without her explicit approval.
 
 ## Known documentation-drift items (found 2026-07, not yet acted on)
 
