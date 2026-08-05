@@ -1338,9 +1338,10 @@ function mapDbUser(dbUser) {
   .tag-paid { color: #633806; border-color: color-mix(in srgb, #633806 32%, #fff); }
   .tag-age { color: #3C3489; border-color: color-mix(in srgb, #3C3489 30%, #fff); }
   .tag-closed { background: #FCEBEB; color: #791F1F; border-color: #F0CFCF; }
+  .tag-paused { background: #FCF3E3; color: #7A4B08; border-color: #F0DFC0; }
   .tag-ended { background: #F1EFE8; color: #5F5E5A; border-color: #E2DED6; }
   .tag-now { background: #152747; color: #FAF5E8; border-color: #152747; }
-  .tag-closed::before, .tag-ended::before, .tag-now::before { display: none; }
+  .tag-closed::before, .tag-paused::before, .tag-ended::before, .tag-now::before { display: none; }
   .card-ended { opacity: 0.55; }
   .earlier-bar { display: flex; align-items: center; gap: 8px; width: 100%;
     background: var(--white); border: 1px solid var(--card-border);
@@ -3570,6 +3571,7 @@ const dayOrder = { Monday:0, Tuesday:1, Wednesday:2, Thursday:3, Friday:4, Satur
 
 function shouldShowEvent(e) {
   if (e.status === 'Active') return 'show';
+  if (e.status === 'Temp. paused') return 'badge'; // no resume date tracked, always show with badge
   if (e.status !== 'Temp. closed') return 'show'; // unknown status, show anyway
 
   // Extract reopening date from notes field (format: "Reopening Month DD" or "Reopens Month DD")
@@ -3589,6 +3591,10 @@ function getReopenLabel(e) {
   const reopenMatch = e.notes && e.notes.match(/[Rr]eopen(?:ing|s)\s+([A-Z][a-z]+\s+\d{1,2}(?:,\s*\d{4})?)/);
   if (!reopenMatch) return 'Temp. closed';
   return `Closed · Reopens ${reopenMatch[1]}`;
+}
+
+function getPausedLabel(e) {
+  return currentLang === 'es' ? 'Pausado temporalmente' : 'Temporarily Paused';
 }
 
 function changeWeek(dir) {
@@ -3969,6 +3975,7 @@ function cardHTML(e, timeStatus) {
   const typeClass = typeTagClass[e.type] || 'tag-library';
   const dayShort = (e._displayDay || e.day || '').substring(0, 3);
   const isClosed = e.status === 'Temp. closed';
+  const isPaused = e.status === 'Temp. paused';
   return `
     <div class="event-card${timeStatus === 'ended' ? ' card-ended' : ''}" onclick="openDetail(${e.id})">
       <div class="card-left">
@@ -3982,6 +3989,7 @@ function cardHTML(e, timeStatus) {
           ${timeStatus === 'ended' ? `<span class="tag tag-ended">${currentLang === 'es' ? 'Terminado' : 'Ended'}</span>` : ''}
           ${timeStatus === 'now' ? `<span class="tag tag-now">${currentLang === 'es' ? 'Ahora mismo' : 'Happening now'}</span>` : ''}
           ${isClosed ? `<span class="tag tag-closed">${getReopenLabel(e)}</span>` : ''}
+          ${isPaused ? `<span class="tag tag-paused">${getPausedLabel(e)}</span>` : ''}
         </div>
       </div>
       <div class="card-right">
@@ -4099,7 +4107,8 @@ function openDetail(id) {
   if (statusEl) {
     statusEl.textContent = statusEl.textContent
       .replace('Active', currentLang === 'es' ? 'Activo' : 'Active')
-      .replace('Temp. closed', currentLang === 'es' ? 'Cerrado temporalmente' : 'Temp. closed');
+      .replace('Temp. closed', currentLang === 'es' ? 'Cerrado temporalmente' : 'Temp. closed')
+      .replace('Temp. paused', currentLang === 'es' ? 'Pausado temporalmente' : 'Temp. paused');
   }
   const cadenceTranslations = {
     'Weekly': 'Semanal', 'Bi-weekly': 'Quincenal', 'Monthly': 'Mensual',
