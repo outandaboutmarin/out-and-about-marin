@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-04",
+  "last_updated": "2026-08-05",
   "events": [
     {
       "id": 1,
@@ -536,7 +536,7 @@
       "description": "Songs, rhymes, and a story for babies and toddlers. Held outdoors on the Town Plaza or Library Lawn, weather permitting.",
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
-      "notes": "Weather permitting — moves indoors if needed",
+      "notes": "Weather permitting — moves indoors if needed | ALERT: On break for all of August 2026 — resumes Wednesday, September 2, 2026.",
       "location_group": "San Anselmo",
       "event_name_es": "Storytime for Babies & Toddlers",
       "description_es": "Cuentos, canciones y rimas al aire libre para bebés y niños pequeños los lunes con sus cuidadores en San Anselmo."
@@ -806,7 +806,7 @@
       "description": "Songs, rhymes, and a story in Spanish and English for young children. Held on the first Wednesday of each month on the Town Plaza or Library Lawn, weather permitting.",
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
-      "notes": "First Wednesday of each month. Weather permitting — moves to Council Chambers in inclement weather.",
+      "notes": "First Wednesday of each month. Weather permitting — moves to Council Chambers in inclement weather. | ALERT: On break for all of August 2026 — resumes Wednesday, September 2, 2026.",
       "location_group": "San Anselmo",
       "event_name_es": "Bilingual Spanish Storytime",
       "description_es": "Cuentos bilingües en español e inglés el primer miércoles de cada mes al aire libre en San Anselmo."
@@ -10262,6 +10262,36 @@
       "notes": "",
       "location_group": "Yountville",
       "county": "Napa"
+    },
+    {
+      "id": 808,
+      "organization": "Belly Deli",
+      "venue": "Violet's Ice Cream Parlor & Candy Shoppe",
+      "event_name": "Violet's Ice Cream Parlor & Candy Shoppe Grand Opening",
+      "event_name_es": "Gran Apertura de Violet's Ice Cream Parlor & Candy Shoppe",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "5:00 PM",
+      "time_of_day": "Evening",
+      "town": "San Rafael",
+      "address": "1304 2nd Street, San Rafael, CA 94901",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-08-15",
+      "expires": "2026-08-15",
+      "status": "Active",
+      "featured": false,
+      "description": "Grand opening celebration for Violet's Ice Cream Parlor & Candy Shoppe, presented by Belly Deli. An evening of live music, Straus Family Creamery soft serve, a candy shoppe, and family fun and activities. Kids welcome — runs from 5 PM until the ice cream melts.",
+      "description_es": "Celebracion de gran apertura de Violet's Ice Cream Parlor & Candy Shoppe, presentado por Belly Deli. Una noche de musica en vivo, helado suave de Straus Family Creamery, una tienda de dulces, y diversion familiar y actividades. Ninos bienvenidos, de 5 PM hasta que se derrita el helado.",
+      "registration": "Not required",
+      "website": "",
+      "notes": "Runs 5 PM until the ice cream melts. Source: Belly Deli Instagram flyer.",
+      "location_group": "San Rafael"
     }
   ]
 }

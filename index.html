@@ -1488,6 +1488,14 @@ function mapDbUser(dbUser) {
     background: #FAEEDA; border-radius: var(--radius-sm);
     padding: 0.5rem 0.75rem; margin-top: 0.5rem;
   }
+  .notes-text.notes-alert {
+    color: #791F1F; background: #FCEBEB;
+  }
+  .card-alert {
+    font-size: 0.7rem; color: #791F1F; font-weight: 600;
+    background: #FCEBEB; border-radius: var(--radius-sm);
+    padding: 0.35rem 0.6rem; margin-top: 0.4rem;
+  }
 
   /* Action buttons */
   .action-row { display: flex; gap: 0.5rem; padding: 0.5rem 0.625rem 0; }
@@ -3597,6 +3605,15 @@ function getPausedLabel(e) {
   return currentLang === 'es' ? 'Pausado temporalmente' : 'Temporarily Paused';
 }
 
+// Notes prefixed with "ALERT:" render as a red banner on the card and detail
+// screen instead of the normal amber notes styling — for schedule-affecting
+// callouts (cancellations, breaks) that need to stand out in the feed itself,
+// not just the detail view.
+function getAlertNote(e) {
+  const m = e.notes && e.notes.match(/ALERT:\s*([^|]+)/i);
+  return m ? m[1].trim() : null;
+}
+
 function changeWeek(dir) {
   if (currentWeekOffset + dir < 0) return; // don't go before current week
   currentWeekOffset += dir;
@@ -3976,6 +3993,7 @@ function cardHTML(e, timeStatus) {
   const dayShort = (e._displayDay || e.day || '').substring(0, 3);
   const isClosed = e.status === 'Temp. closed';
   const isPaused = e.status === 'Temp. paused';
+  const alertNote = getAlertNote(e);
   return `
     <div class="event-card${timeStatus === 'ended' ? ' card-ended' : ''}" onclick="openDetail(${e.id})">
       <div class="card-left">
@@ -3991,6 +4009,7 @@ function cardHTML(e, timeStatus) {
           ${isClosed ? `<span class="tag tag-closed">${getReopenLabel(e)}</span>` : ''}
           ${isPaused ? `<span class="tag tag-paused">${getPausedLabel(e)}</span>` : ''}
         </div>
+        ${alertNote ? `<div class="card-alert">⚠ ${alertNote}</div>` : ''}
       </div>
       <div class="card-right">
         <span class="day-pill day-${e.day}">${dayShort}</span>
@@ -4123,8 +4142,11 @@ function openDetail(id) {
   document.getElementById('detailReg').textContent = e.registration;
 
   const notesEl = document.getElementById('detailNotes');
-  if (e.notes) { notesEl.textContent = '⚠ ' + e.notes; notesEl.style.display = 'block'; }
-  else { notesEl.style.display = 'none'; }
+  if (e.notes) {
+    notesEl.textContent = '⚠ ' + e.notes;
+    notesEl.style.display = 'block';
+    notesEl.classList.toggle('notes-alert', !!getAlertNote(e));
+  } else { notesEl.style.display = 'none'; }
 
   // Tags
   const tags = document.getElementById('detailTags');
