@@ -8,6 +8,22 @@ Bilingual (English/Spanish) family events webapp for Marin County, CA. Shows rec
 
 This file is the living source of truth for how the app is built and maintained. It replaces a versioned Excel workbook (`daily_process_v1` through `v52`) that used to be re-uploaded to a fresh Claude Chat session every time. **Edit this file in place going forward — don't create versioned copies.** Git history is the version trail.
 
+## Where things live — read this first in a new session
+
+Claude Code sessions for this project run with the working directory set to **`C:\Users\AWalter\Documents\2. Claude-Work\PROJECTS\OAA Marin`** — *not* the repo. This is deliberate and has been the setup since the project moved out of Claude Chat on 2026-07-02. **Don't treat it as misconfiguration and don't propose restarting the session inside the repo folder** (asked and settled 2026-08-09).
+
+| What | Where |
+|---|---|
+| **The repo** — `index.html`, `events.json`, this file, `scraper.py`, `swim_vendors.json`, `.claude/commands/` | `C:\Users\AWalter\Desktop\out-and-about-marin` — the single local clone. Reach it by **absolute path**. |
+| **Working files** — `open_items.md`, sweep review workbooks, the Napa and swim trackers, process docs | `…\PROJECTS\OAA Marin\OAA maintence and content\` — inside the session's working directory. Never committed to the repo. |
+| Session transcripts + auto-loaded memory | `C:\Users\AWalter\.claude\projects\C--Users-AWalter-Documents-2--Claude-Work-PROJECTS-OAA-Marin\` |
+
+Three consequences of this split. All are normal; none need fixing:
+
+- **This file does not auto-load.** Because the working directory isn't the repo, `CLAUDE.md` is not injected into context at session start. **Read it from the Desktop path as the first action in a new session.** What *does* auto-load is `memory/MEMORY.md` in the path above, which carries a pointer here.
+- **`/run-sweep` and `/process-sweep` are not available as slash commands.** They live in the repo's `.claude/commands/` and only register when the repo is the working directory. Every sweep to date has been run by **reading `C:\Users\AWalter\Desktop\out-and-about-marin\.claude\commands\run-sweep.md` as a file and following it** — likewise `process-sweep.md`. That is the established method, not a workaround.
+- **`Glob` and `Grep` have failed in at least one session** on this machine (`Executable not found in $PATH`, 2026-08-09). If they error, fall back to PowerShell `Get-ChildItem -Recurse` and `Select-String -LiteralPath` — both work fine. Don't conclude a file is missing on the strength of a failed Glob.
+
 ## Tech stack
 
 - **Frontend**: `index.html` — single-page vanilla JS app, no framework, no build step. Hosted on GitHub Pages via custom domain (`CNAME`).
@@ -21,7 +37,7 @@ This file is the living source of truth for how the app is built and maintained.
 - Work happens directly in this repo — no more copying files in/out of chat.
 - **Routine changes** (adding events from a sweep, fixing a field, flipping a status, updating a reopening date): commit and push directly. Use a short, present-tense commit summary (e.g. "Add 12 events from Jul 2 sweep", matching the existing commit style — see `git log`).
 - **Bigger/riskier changes** (schema changes to `events.json`, major `index.html` rewrites or new features, batch deletions, edits to `scraper.py`/`library_review.py`/`daily.yml` logic): stop and confirm with Alexandra before pushing.
-- Always check `git status`/`git pull` state before starting work — this repo should stay the only local clone (a second stale clone under a Documents project folder was deleted 2026-07).
+- Always check `git status`/`git pull` state before starting work — this repo should stay the only local clone. A second stale clone under the Documents project folder was emptied 2026-07; the now-empty `…\PROJECTS\OAA Marin\out-and-about-marin\` folder is its leftover husk. It contains nothing and is not a git repo — **ignore it, and never write repo files there.**
 
 ## `events.json` schema
 
@@ -89,7 +105,7 @@ Always follow these when adding or editing events — they exist because of spec
 
 Alexandra runs this **on command**, in chat, not on a schedule — she says something like "run the sweep" and it happens in that session. It is the main thing this whole doc exists to support.
 
-**Slash commands**: `/run-sweep` (fetch everything, build a review file) and `/process-sweep` (apply her Approve/Skip decisions back to `events.json`). See `.claude/commands/`.
+**The two command files**: `run-sweep.md` (fetch everything, build a review file) and `process-sweep.md` (apply her Approve/Skip decisions back to `events.json`), both in the repo's `.claude/commands/`. As noted in "Where things live" above, these do **not** register as `/`-commands in a normal session — read the relevant file from its absolute Desktop path and follow it top to bottom.
 
 **Scope**: 20 distinct event sources + 16 libraries + the Learning Bus PDF = 37 total. Full list with fetch method lives in the commands themselves (kept there so the checklist and the fetch logic don't drift apart) — this doc just states the ground rules:
 
