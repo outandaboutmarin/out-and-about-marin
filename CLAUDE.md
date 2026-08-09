@@ -31,7 +31,7 @@ File is a JSON object, **not** a flat array:
 ```
 Always load/save through the pattern in `scraper.py` (`load_existing_events()` / `save_events()` — reuse `events_io.py`, see below) rather than hand-editing JSON text. The file has Spanish-accented characters — always read/write with `encoding="utf-8"` or you'll corrupt them (confirmed failure mode: default Windows `cp1252` encoding mangles é/í/ñ etc.).
 
-As of 2026-07-02: 505 events, max ID 565. Next new event gets the next ID (max existing ID + 1).
+As of 2026-08-09: **366 events, max ID 832.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 505 events / max 565 on 2026-07-02; the count dropped because 395 expired records were purged 2026-08-04 — see State of play.)
 
 **Fields on every event** (confirmed against actual `index.html` usage, not just assumed from old docs):
 
@@ -54,7 +54,7 @@ As of 2026-07-02: 505 events, max ID 565. Next new event gets the next ID (max e
 | `season_start`, `season_end` | **Seasonal only.** `MM/DD` with slashes — e.g. `"06/01"`. Never dashes; the date parser fails on dashes. |
 | `event_date` | **One-off only.** ISO `YYYY-MM-DD`. |
 | `expires` | **One-off only** (Seasonal/recurring leave blank). ISO `YYYY-MM-DD`. Event is removed by the daily scraper once this date passes. **Multi-day festival rule**: when a multi-day event has separate daily entries, set `expires` on ALL entries to the LAST day of the event, not each entry's own date — otherwise earlier days disappear from the app mid-festival. |
-| `status` | `Active` or `Temp. closed` (confirmed current live values — `Inactive`/`Seasonal - Inactive` also used by the scraper for seasonal events). |
+| `status` | `Active`, `Temp. closed`, or `Temp. paused` (`Inactive`/`Seasonal - Inactive` are also written by the scraper for seasonal events). **`Temp. paused`** (added 2026-08-05) is for a venue that still exists but has suspended a recurring program with no announced resume date — it renders an amber "Temporarily Paused" badge and the event stays visible, unlike `Temp. closed`, which can hide the event entirely when a reopening date is >30 days out. First use: id 509 (Buster's Southern BBQ, Napa) after the venue posted that live music was paused. Frontend pieces: `.tag-paused` CSS, `getPausedLabel()`, an `isPaused` branch in `cardHTML()`, and a `shouldShowEvent()` case returning `'badge'`. |
 | `featured` | boolean. `true` adds a manual scoring boost in the homepage Featured strip (~120 events currently featured). |
 | `description`, `description_es` | **both required on every event** |
 | `registration` | free text, e.g. `"Not required"` |
@@ -78,6 +78,10 @@ Always follow these when adding or editing events — they exist because of spec
 7. **Recurring programs are added once.** Don't re-add a storytime/class every sweep — only add a *new dated one-off instance* if the recurring program is already in the DB and the source publishes a specific date for a special/guest edition.
 8. **Never assign `location_group: "Marin County"`.** Every event must map to an actual city/town value (see the live-values list above) — the county-level catch-all was removed 2026-07-19 per Alexandra. If a new town doesn't cleanly match an existing `location_group` grouping (e.g. a one-off rural West Marin preserve), pick the closest existing town/grouping value rather than falling back to a county-wide bucket.
 9. **Never rewrite a `Monthly` event's `notes` without preserving its ordinal phrase.** For `cadence: Monthly` events, `index.html`'s `parseOccurrenceRule()` reads the ordinal wording out of the free-text `notes` field (e.g. `"Second Saturday of each month"`, `"1st and 3rd Wednesdays"`, `"Last Friday"`) to decide which calendar date the event lands on. If that phrase is edited away, the rule returns `null` and **the event silently vanishes from the feed entirely** — no error, it just stops rendering. Confirmed failure 2026-07-29: rewriting Marin Hiking Moms' (id 255) notes dropped "Second Saturday of each month" and the event disappeared. When a specific announced date differs from the ordinal rule (these community groups often shift week to week), add that date as a **separate `One-off` entry** rather than bending the recurring record — one-offs render off `event_date` and don't depend on notes parsing.
+
+   **9a. `parseOccurrenceRule()` scans the ENTIRE notes string — including prose that is only *describing* a rule.** Confirmed 2026-08-06 while correcting Battery Townsley (id 114) from "first Sunday" to "second Saturday": the replacement note explained the fix as *"previously stored as 'first Sunday', which was wrong"*, and the parser picked up that stray "first" and returned `{nths:[1,2]}`, so the event began matching BOTH the 1st and 2nd Saturday. **Never mention a superseded ordinal inside a corrected note.** Say "the earlier stored rule named the wrong weekday and week-of-month" instead of naming it. After any edit to a `Monthly` event's notes, verify with `parseOccurrenceRule(e.notes)` in the browser console and confirm it returns exactly the intended `{nth: N}`.
+
+   **9b. The reopening-date regex takes the FIRST match, so conflicting `Reopens …` strings render the wrong badge.** Confirmed 2026-08-06 on id 8 (Corte Madera Family Storytime), whose notes had accreted three closure statements across successive sweeps — "Reopens Aug 25", "Reopens Sep 3" and an older May–Jul closure. The badge showed **Aug 25**, which was wrong and user-facing. When a closure date changes, **replace** the old sentence rather than appending a new one; a notes field should never contain two reopening dates.
 11. **Teen-only events**: do not add events that are explicitly restricted to teens only (e.g. "Teens 13-18 only", "Grades 9-12"). If an event reads as borderline or could plausibly work for a broader family/all-ages audience even though it's teen-flavored or teen-skewed, don't silently exclude it either — include it as a candidate in the Weekly Sweep review file so Alexandra can decide. Resolved 2026-08-04 (open item 11).
 12. **`location_group` renames need a `LOCATION_ALIAS_MAP` entry in `index.html`.** Users' saved "My default filters" store raw `location_group` strings — if a value is ever renamed or merged (e.g. `Larkspur`→`Larkspur/Greenbrae`, `Sausalito`/`Marin City`→`Sausalito/Marin City`, `Tiburon`→`Tiburon/Belvedere`), anyone who saved defaults under the old name silently loses that town from both the checkbox display and actual event filtering — no error, just quietly fewer results. `loadDefaultFilters()` (~line 4025) auto-heals this via `LOCATION_ALIAS_MAP`, mapping old value(s) to current ones and persisting the fix back to the user's record on their next visit. **Any time a `location_group` value changes, add an entry to that map in the same commit**, or affected users will silently lose coverage for that town with no visible error.
 
@@ -134,6 +138,36 @@ Monthly (not every sweep): napavintners.com/events/index.asp, festivalnapavalley
 
 **Process**: same shape as the Marin sweep — fetch every source, dedupe against `events.json` (name + venue + date, same as rule 6 above), draft new candidates matching the schema, log the sweep in the Weekly Sweep Log tab of `Napa_Live_Music_Tracker_v2.xlsx`, and present the list to Alexandra for Approve/Skip before touching `events.json` or pushing anything live. Never delete a Napa event without her explicit approval.
 
+## Swim Lesson Directory (second dataset — not events)
+
+A separate reference dataset reachable from the Resources screen. **Not part of `events.json` and not touched by any sweep.**
+
+- **Data**: `swim_vendors.json` (21 Marin swim-lesson providers). Built from `Marin_Swim_Lesson_Vendor_Dashboard_v4.xlsx` (in `OAA maintence and content/`) by the converter `swim_vendors_io.py`.
+- **Corrections go in the converter, not the JSON.** `swim_vendors_io.py` holds an `OVERRIDES` dict keyed by vendor slug; a correction added there survives re-running the converter, whereas hand-editing `swim_vendors.json` is silently wiped on the next run. Example: `strawberry-recreation-district` carries `hoursSeason_override`.
+- **`towns` (plural) is what the UI reads** for display and filtering — not the raw `town` field. Populate both.
+- **UI** (in `index.html`, `#swimScreen`): a table, not cards. There is **no detail/drill-down screen** — a `#swimDetailScreen` existed and was deleted 2026-08-03. If you reintroduce one, note that `showScreen()` once kept a hard reference to it that threw on *every* screen change after deletion.
+- Features: sortable + resizable + wrap-text columns, a frozen Vendor Name column, dropdown filters (town / class type / facility type / indoor-outdoor / age), drag-to-reorder columns with a "Default order" reset, and a user-added custom column. Column order and custom columns persist in `localStorage` under the `oaam_swim_*` keys (`oaam_swim_col_order`, `oaam_swim_custom_cols`, `oaam_swim_custom_data`), matching the existing `oaam_*` convention (`oaam_user`, `oaam_lang`, `oaam_county`).
+- The page carries a "not mobile friendly, best on a computer" note by design — desktop-first was Alexandra's explicit call.
+- **CSS trap worth remembering**: a container with `overflow-x:auto` computes `overflow-y:auto` too, which makes it the containing block for `position:sticky` and silently kills page-level sticky headers. The table's sticky header works because `.swim-table-scroll` is a height-bounded box with `thead` sticky at `top:0` *inside* it.
+- `Swim_Dashboard_Integration_Spec.md` describes the original card-based design and is **superseded** — the header says so.
+
+## Open Items tracker (Alexandra's to-do list)
+
+- **Source of truth**: `OAA maintence and content/open_items.md` (her Documents project folder, **not** this repo). Grouped Infrastructure / Data Quality / Marketing, with a "Recently closed" section kept for reference. Edit it directly when she says to add, update, or close an item.
+- **"Show me the dashboard" / "open the open items list"** means render it as a formatted page. The generator is a scratchpad script (`build_dashboard.py`) that emits a self-contained HTML file published as an Artifact. Statuses: `open`, `waiting`, `scheduled`, `low`, `hold`.
+- **Keep the two in sync in the same edit.** They have drifted before (item 25 stayed open in the dashboard after being closed in the markdown). Closing an item means: remove from the open list in `open_items.md`, add a line to "Recently closed", remove the `dict(n=…)` from `build_dashboard.py`'s `ITEMS`, append to its `CLOSED`, regenerate, and republish the Artifact.
+- Items resolved by a **policy decision** should be encoded where the policy actually executes — e.g. item 9 (stale Megan Schoenbohm source) and item 10 (add Slide Ranch) were both written into `/run-sweep`'s source list so they enforce themselves every sweep, not just sit in a tracker.
+
+## Sweep review workbook format
+
+The file handed to Alexandra each sweep (`daily_sweep_YYYY-MM-DD_review.xlsx`, saved to `OAA maintence and content/`, never committed) now carries **three** sheets, in this order:
+
+1. **Weekly Sweep** — one row per new candidate, `Decision` column blank for her Approve/Skip. Flag genuine uncertainty with `⚠ POSSIBLE DUPE` in Notes rather than silently including or dropping it.
+2. **Questions** — anything needing her judgement, with columns: `#`, Category, Question, What I Found, My Recommendation, Affects, and a shaded **YOUR ANSWER** column. Added 2026-08-06 at her request; it works well and should be kept. Give a real recommendation in every row, not just the question.
+3. **Attestation Log** — one row per source, all 40.
+
+She fills `Decision` and `YOUR ANSWER` and hands it back for `/process-sweep`. Note she may also **append her own rows** to the Weekly Sweep sheet with extra asks (she added two on 2026-08-06 pointing at a Slide Ranch page and asking for a closer re-read of a roundup) — always read past the last candidate row.
+
 ## Known documentation-drift items (found 2026-07, not yet acted on)
 
 - `location_group` values have drifted from what old docs claimed (see schema table above) — always check live values, don't hardcode a list.
@@ -155,4 +189,33 @@ Monthly (not every sweep): napavintners.com/events/index.asp, festivalnapavalley
 - **Movie series are stored as per-film One-off records elsewhere in the DB** (Mill Valley Summer Movie Series ids 150/154/158/161/166/170; San Rafael Movies in the Park ids 451–454; Mill Valley Movies in the Park ids 588/788/789), because families choose by film title. id 433 (Marin Country Mart) is the one exception, deliberately left as a single Weekly record with the full lineup in its description — splitting it into 14 remaining per-film records is an open option for Alexandra, not an oversight.
 - **Creekside Unplugged (Tam Valley Cabin) has phantom calendar repeats.** `marinmommies.com` per-day pages render "Creekside Fridays" on Jul 31, Aug 14 and Aug 28 — these are NOT real events. The authoritative lineup is six dates only: Jun 19, Jul 10, Jul 24, Aug 7, Aug 21, Sep 4 (ids 304–309). Do not propose the phantom dates.
 - **Slide Ranch and touristclubsf.org publish dates with NO year.** Always confirm the year by weekday alignment before entering (e.g. "Aug 29, Saturday" is 2026; Aug 29 2025 was a Friday). Slide Ranch became a source in sweep 5 (2026-07-29) and runs Family Farm Days roughly monthly — worth converting to a recurring series if the pattern holds.
-- **Marin Mommies weekend roundup post is a REQUIRED primary source (corrected 2026-07-23).** Earlier documentation told sweeps to AVOID the "Weekend Family Fun for [dates]" blog-post URLs (over-correcting for a past stale-cache incident) and use only the per-day `/calendar/` pages. This caused real misses: the Jul 24–26 2026 roundup post listed Cricket & the Wren Circus (Sausalito), Lucky Break concert (Corte Madera), a China Camp Junior Ranger Nature Ramble, and an Inflatable Pool Obstacle Course (Novato) — none of which were on the per-day calendar pages or in the DB. The curated roundup contains editorially-selected events the raw calendar never shows. Fix applied in `/run-sweep` source #1: fetch the weekend roundup for every weekend in the window AND the per-day pages, using both; verify the printed year on each roundup page first (the slug-cache staleness risk is real, so gate on year before trusting it). Never revert to avoiding these pages.
+- **Marin Mommies weekend roundup post is a REQUIRED primary source (corrected 2026-07-23).** Earlier documentation told sweeps to AVOID the "Weekend Family Fun for [dates]" blog-post URLs (over-correcting for a past stale-cache incident) and use only the per-day `/calendar/` pages. This caused real misses: the Jul 24–26 2026 roundup post listed Cricket & the Wren Circus (Sausalito), Lucky Break concert (Corte Madera), a China Camp Junior Ranger Nature Ramble, and an Inflatable Pool Obstacle Course (Novato) — none of which were on the per-day calendar pages or in the DB. The curated roundup contains editorially-selected events the raw calendar never shows. Verify the printed year on the roundup page first (the slug-cache staleness risk is real, so gate on year before trusting it). Never revert to avoiding these pages. **Scope corrected 2026-08-09** — see the two Marin Mommies entries in `/run-sweep`: source #1 is the curated roundup for the **upcoming weekend only** (the posts publish ~2 days ahead, so asking for "every weekend in the window" guaranteed 404s), and source #2 is the per-day calendar for **all 14 days**, mandatory. The two no longer overlap. Also: **Marin Mommies' day-of-week labels are unreliable** — it labelled five Slide Ranch Family Farm Days as Thursday/Friday when all five are Saturdays. Always re-derive the weekday from the date.
+
+---
+
+## State of play — last updated 2026-08-09
+
+Where a new session should pick up.
+
+**Health**: `events.json` is 366 events / max id 832, all committed and pushed (`main` clean as of the last commit). Live site is current. No known user-facing breakage.
+
+**Closed this stretch** (open items 2, 3, 4, 6, 9, 10, 11, 13, 14, 16, 18, 25): the swim directory table redesign; the Napa music process integration + its first sweep; the expired-event purge (730 → 335 records, One-off only, recurring templates preserved); several fabricated/stale event records deleted or corrected.
+
+**Open items still live** — full list in `OAA maintence and content/open_items.md`, 8 open:
+- **1** — daily.yml scraper silently broken since May 8 (~110 "successful" runs, zero commits; a swallowed `git stash pop` conflict). Fix is drafted but **not pushed** — her standing rule is to see the diff first.
+- **5** — verify two Bolinas + one Inverness library programs (needs phone calls; both branches showed near-zero events again this sweep, so the records may be dead).
+- **7** — Novato library reopened Aug 19 but published **zero** children's programming; re-check.
+- **8** — Corte Madera library reopens **Sep 3**, no September programs published yet. Re-check after that date. Related: id 8's notes were just cleaned (see rule 9b).
+- **12** — **on hold**: Learning Bus has published no schedule since June. Alexandra texted (415) 497-1666 on 2026-08-04 and is awaiting a reply. Nothing to do until she hears back.
+- **17, 19–24** — preschool/daycare DB, Rebecca's feedback, marketing items, and **24 (users-table lockdown)**, which is a real security item: the site still talks to Supabase `users` with the public key, so phone numbers and hashed PINs are readable by anyone holding it. Full checklist in `table_lockdown_checklist.md`. Deferred, not started.
+
+**Known-flaky sweep sources** (all failed or partially failed on the 2026-08-06 sweep and will likely recur):
+- Mill Valley Community Center — CivicEngage grid returns nothing for the window; needs browser paging.
+- Belvedere-Tiburon Library — `/events` renders only ~6 of 25 pages.
+- Mill Valley Library libcal — renders empty, unresolved across several sweeps.
+- SRPL monthly newsletter PDF — served corrupted/binary; the `/events/` HTML is the reliable surface instead.
+- Sausalito city + library need the **Chrome browser** workaround (Akamai). This works reliably — use it, don't retry WebFetch.
+
+**Deliberately declined, do not silently redo**: Alexandra passed on backfilling the Marin Mommies 14-day gap from the 2026-08-06 sweep (Aug 10–19 went uncovered because only 5 out-of-range days were fetched), and on re-paging Belvedere-Tiburon. Both are known and accepted, not oversights to fix unprompted.
+
+**Working rhythm**: she runs the sweep on command, usually Wednesday or Thursday. Ad-hoc event batches arrive between sweeps (Instagram screenshots, links, plain text) — research each, dedup, and present for review before writing. She reviews in Excel and hands it back.
