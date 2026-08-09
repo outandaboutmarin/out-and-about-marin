@@ -37,7 +37,7 @@ Three consequences of this split. All are normal; none need fixing:
 - Work happens directly in this repo — no more copying files in/out of chat.
 - **Routine changes** (adding events from a sweep, fixing a field, flipping a status, updating a reopening date): commit and push directly. Use a short, present-tense commit summary (e.g. "Add 12 events from Jul 2 sweep", matching the existing commit style — see `git log`).
 - **Bigger/riskier changes** (schema changes to `events.json`, major `index.html` rewrites or new features, batch deletions, edits to `scraper.py`/`library_review.py`/`daily.yml` logic): stop and confirm with Alexandra before pushing.
-- Always check `git status`/`git pull` state before starting work — this repo should stay the only local clone. A second stale clone under the Documents project folder was emptied 2026-07; the now-empty `…\PROJECTS\OAA Marin\out-and-about-marin\` folder is its leftover husk. It contains nothing and is not a git repo — **ignore it, and never write repo files there.**
+- Always check `git status`/`git pull` state before starting work — the Desktop path is and should stay the **only** local clone. A second clone once lived at `…\PROJECTS\OAA Marin\out-and-about-marin\`; its contents were deleted 2026-07 and the leftover empty folder was removed 2026-08-09. **Never clone or copy repo files into the Documents project folder** — that folder is for working files only (see "Where things live"). Two clones with the same name is how edits get made to the wrong copy.
 
 ## `events.json` schema
 
