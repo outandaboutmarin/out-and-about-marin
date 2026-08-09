@@ -107,7 +107,7 @@ Alexandra runs this **on command**, in chat, not on a schedule — she says some
 
 **The two command files**: `run-sweep.md` (fetch everything, build a review file) and `process-sweep.md` (apply her Approve/Skip decisions back to `events.json`), both in the repo's `.claude/commands/`. As noted in "Where things live" above, these do **not** register as `/`-commands in a normal session — read the relevant file from its absolute Desktop path and follow it top to bottom.
 
-**Scope**: 20 distinct event sources + 16 libraries + the Learning Bus PDF = 37 total. Full list with fetch method lives in the commands themselves (kept there so the checklist and the fetch logic don't drift apart) — this doc just states the ground rules:
+**Scope**: 25 distinct event sources + 16 libraries + the Learning Bus PDF = 42 total. (Numbering in `/run-sweep` is contiguous 1–42 as of 2026-08-09 — it previously restarted at 24 for the libraries, so "#24" named two different sources.) Full list with fetch method lives in the commands themselves (kept there so the checklist and the fetch logic don't drift apart) — this doc just states the ground rules:
 
 - **"Fetch, don't snippet"**: a source only counts as checked once its actual live list/calendar page has been fetched and every current/upcoming event read off it. A search snippet is only for *locating* the fetch URL.
 - Several sources are JS-rendered or robots-blocked and need specific workarounds (documented in `/run-sweep`) — e.g. Sausalito's Granicus month-grid (`sausalitolibrary.org/kids/library-calendar`, paged via the "Next Month >" link), Mill Valley Library's `site:millvalleylibrary.libcal.com/event` search-around, Marin County Parks via `onetam.org/calendar` (not the JS Trumba widget), CivicEngage town calendars via `calendar.aspx?CID=NN`. Don't fall back to "JS-rendered, no list" as an acceptable result — there's a documented workaround for every source.
@@ -180,7 +180,7 @@ The file handed to Alexandra each sweep (`daily_sweep_YYYY-MM-DD_review.xlsx`, s
 
 1. **Weekly Sweep** — one row per new candidate, `Decision` column blank for her Approve/Skip. Flag genuine uncertainty with `⚠ POSSIBLE DUPE` in Notes rather than silently including or dropping it.
 2. **Questions** — anything needing her judgement, with columns: `#`, Category, Question, What I Found, My Recommendation, Affects, and a shaded **YOUR ANSWER** column. Added 2026-08-06 at her request; it works well and should be kept. Give a real recommendation in every row, not just the question.
-3. **Attestation Log** — one row per source, all 40.
+3. **Attestation Log** — one row per source, all 42.
 
 She fills `Decision` and `YOUR ANSWER` and hands it back for `/process-sweep`. Note she may also **append her own rows** to the Weekly Sweep sheet with extra asks (she added two on 2026-08-06 pointing at a Slide Ranch page and asking for a closer re-read of a roundup) — always read past the last candidate row.
 
