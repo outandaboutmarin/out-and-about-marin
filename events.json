@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-06",
+  "last_updated": "2026-08-09",
   "events": [
     {
       "id": 1,
@@ -514,7 +514,7 @@
     {
       "id": 21,
       "organization": "San Anselmo Library",
-      "venue": "San Anselmo Library",
+      "venue": "Imagination Park",
       "event_name": "Storytime for Babies & Toddlers",
       "type": "Library",
       "day": "Monday",
@@ -533,13 +533,13 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "description": "Songs, rhymes, and a story for babies and toddlers. Held outdoors on the Town Plaza or Library Lawn, weather permitting.",
+      "description": "Songs, rhymes, and a story for babies and toddlers. Held outside in Imagination Park, moving to Council Chambers in inclement weather.",
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
-      "notes": "Weather permitting — moves indoors if needed | ALERT: On break for all of August 2026 — resumes Wednesday, September 2, 2026.",
+      "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. Carpet squares provided for family groups; blankets welcome. | ALERT: On break for all of August 2026 — programs restart Wednesday, September 2, 2026; the Monday session resumes September 7, 2026 at 10:30 AM in Imagination Park.",
       "location_group": "San Anselmo",
       "event_name_es": "Storytime for Babies & Toddlers",
-      "description_es": "Cuentos, canciones y rimas al aire libre para bebés y niños pequeños los lunes con sus cuidadores en San Anselmo."
+      "description_es": "Cuentos, canciones y rimas al aire libre para bebés y niños pequeños los lunes con sus cuidadores en Imagination Park, San Anselmo."
     },
     {
       "id": 24,
@@ -784,7 +784,7 @@
     {
       "id": 33,
       "organization": "San Anselmo Library",
-      "venue": "San Anselmo Library",
+      "venue": "Imagination Park",
       "event_name": "Bilingual Spanish Storytime",
       "type": "Library",
       "day": "Wednesday",
@@ -803,13 +803,13 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "description": "Songs, rhymes, and a story in Spanish and English for young children. Held on the first Wednesday of each month on the Town Plaza or Library Lawn, weather permitting.",
+      "description": "Songs, rhymes, and a story in Spanish and English for young children. Held outside in Imagination Park, moving to Council Chambers in inclement weather.",
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
-      "notes": "First Wednesday of each month. Weather permitting — moves to Council Chambers in inclement weather. | ALERT: On break for all of August 2026 — resumes Wednesday, September 2, 2026.",
+      "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. | ALERT: On break for all of August 2026 — resumes Wednesday, September 2, 2026 at 10:30 AM in Imagination Park.",
       "location_group": "San Anselmo",
       "event_name_es": "Bilingual Spanish Storytime",
-      "description_es": "Cuentos bilingües en español e inglés el primer miércoles de cada mes al aire libre en San Anselmo."
+      "description_es": "Cuentos bilingües en español e inglés al aire libre en Imagination Park, San Anselmo."
     },
     {
       "id": 34,
@@ -1954,7 +1954,7 @@
     {
       "id": 82,
       "organization": "San Anselmo Library",
-      "venue": "San Anselmo Library — Town Plaza",
+      "venue": "Imagination Park",
       "event_name": "Sing & Stomp with Emily Bonn",
       "type": "Kids Programs",
       "day": "Friday",
@@ -1976,7 +1976,7 @@
       "description": "Sing, dance, jump and play with musician Emily Bonn in this drop-in music and movement group. You are welcome to sit, but Emily's tunes will have you up and on your feet in no time! Ages 0-5.",
       "registration": "Not required",
       "website": "https://www.sananselmo.gov/624/Storytime-Programs",
-      "notes": "Outdoor on Town Plaza or Library Lawn. Moves to Council Chambers in inclement weather.",
+      "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. | ALERT: On break for all of August 2026 — programs restart Wednesday, September 2, 2026; the Friday session resumes September 4, 2026 at 10:30 AM in Imagination Park.",
       "location_group": "San Anselmo",
       "event_name_es": "Sing & Stomp with Emily Bonn",
       "description_es": "¡Canta, baila, salta y juega con la música de Emily Bonn en este grupo de música y movimiento! Bienvenidos a sentarse, pero las melodías de Emily te harán levantarte a bailar. Para niños de 0 a 5 años."
