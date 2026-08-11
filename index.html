@@ -1364,6 +1364,33 @@ function mapDbUser(dbUser) {
   .day-Sunday { background: var(--sun-bg); color: var(--sun-text); }
   .card-time { font-size: 0.72rem; color: #444444; font-weight: 400; white-space: nowrap; }
 
+  /* ── Full-bleed mobile event rows ──
+     Rebecca's mobile feedback 2026-08-10: the card's own side padding plus
+     .cards-body's outer side padding left .card-right (day pill + time) no
+     room to breathe on narrow phones. Below the site's existing 768px
+     breakpoint (see the desktop app-boxing query further down), cards drop
+     their border/radius/outer side padding and run edge to edge; a 6px
+     strip of the page's own background separates rows instead of a card
+     boundary — the same technique the bordered card already uses (a 5px
+     flex gap), just without the border wrapping each row. Reclaims 8px of
+     width per side (16px total) versus the bordered card. Approved by
+     Alexandra 2026-08-10 after a side-by-side preview.
+     Tablet/desktop (≥768px) keep today's bordered tile unchanged — her
+     explicit call to keep tiles on larger viewports.
+     .event-card.featured (below) has never actually been applied by any
+     JS in this file — cardHTML() never adds a "featured" class, e.featured
+     only drives Featured-strip scoring — so there's no existing mobile
+     signal this change could lose. Left as-is/unused, matching the base
+     rule it was already inert alongside. */
+  @media (max-width: 767px) {
+    .cards-body { padding: 0.2rem 0 5rem; gap: 0; }
+    .event-card {
+      border: none; border-radius: 0; padding: 0.65rem 0.75rem;
+      margin-bottom: 6px;
+    }
+    .event-card:last-child { margin-bottom: 0; }
+  }
+
   /* Empty state */
   .empty-state {
     text-align: center; padding: 3rem 1.5rem;
