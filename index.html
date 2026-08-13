@@ -2972,6 +2972,14 @@ async function completeSignup() {
   }
 
   logActivity('login');
+  // GA4 sign-up conversion (no PII — never send phone/name/PIN)
+  if (typeof gtag === 'function') {
+    gtag('event', 'sign_up', {
+      method: 'phone_pin',
+      referral_source: referral || 'not_specified',
+      child_age_groups: ages.join(',') || 'none'
+    });
+  }
   localStorage.setItem('oaam_user', JSON.stringify(currentUser));
   if (btn) { btn.textContent = "Let's go →"; btn.disabled = false; }
   checkDisclaimer();
