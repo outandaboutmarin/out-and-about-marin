@@ -58,6 +58,23 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
 
 ### Libraries (16) — every sweep, no exceptions, even though programs are "recurring/already in DB" — one-off guest performers and specials show up on these calendars constantly
 
+> **MCFL SHORTCUT — do this FIRST, it covers sources 27–36 in one pass (added 2026-08-12).**
+> Fetch `marinlibrary.bibliocommons.com/v2/events?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD`
+> with the sweep window, then page with `&page=N` (20 per page; it reports the
+> total, e.g. "1 to 20 of 177"). This returns **every MCFL branch at once** with
+> branch labels, and — uniquely — marks **CANCELED** events, which appear nowhere else.
+> The per-branch `/locations/XX/` pages only show the next few days and **cannot**
+> answer a multi-week window; using them alone is how a sweep silently under-reports.
+> Keep the `/locations/XX/` fetch only for a branch's own closure/refresh notice.
+> Do NOT use `&audiences=` — the value is undocumented and silently returns zero
+> results; page unfiltered and filter by hand.
+> **Bolinas is absent from this calendar system entirely** — it is not in the
+> branch filter list and has no events in the feed. Source #34 must still be
+> fetched its own way.
+> **Day-of-week labels from WebFetch are unreliable** — on 2026-08-12 it called
+> Aug 13 both "Tuesday" and "Wednesday" (it is a Thursday). Always re-derive the
+> weekday from the date, same discipline as source #1.
+
 26. **Belvedere-Tiburon Library** — fetch beltiblibrary.org/kids/summer-reading (dated summer-performer lineup, best single page) AND beltiblibrary.org/events (paginated year-round list, page forward as needed). The Communico calendar and Eventbrite org page are JS-rendered — don't use those.
 27. **MCFL — Civic Center** (San Rafael) — fetch marinlibrary.org/locations/mc/. **CORRECTED 2026-07**: `/mb/` (previously documented here) actually resolves to Bolinas, not Civic Center — verified via marinlibrary.bibliocommons.com/v2/locations.
 28. **MCFL — Corte Madera** — fetch marinlibrary.org/locations/mm/. Check closure status (2nd Refresh closure Jul 6–Sep 2, 2026 — reopens Sep 3). During this closure, some programs relocate to Corte Madera Community Center (offsite) — check for relocated/temporary listings, not just a closure notice.
