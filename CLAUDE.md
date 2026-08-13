@@ -47,7 +47,7 @@ File is a JSON object, **not** a flat array:
 ```
 Always load/save through the pattern in `scraper.py` (`load_existing_events()` / `save_events()` — reuse `events_io.py`, see below) rather than hand-editing JSON text. The file has Spanish-accented characters — always read/write with `encoding="utf-8"` or you'll corrupt them (confirmed failure mode: default Windows `cp1252` encoding mangles é/í/ñ etc.).
 
-As of 2026-08-09: **366 events, max ID 832.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 505 events / max 565 on 2026-07-02; the count dropped because 395 expired records were purged 2026-08-04 — see State of play.)
+As of 2026-08-12: **345 events, max ID 834.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 505 events / max 565 on 2026-07-02; 366 on 2026-08-09. The count keeps dropping because expired one-offs are being purged by hand — 395 on 2026-08-04, 21 more on 2026-08-12 — while `daily.yml`, which is supposed to do this automatically, stays broken. See State of play.)
 
 **Fields on every event** (confirmed against actual `index.html` usage, not just assumed from old docs):
 
@@ -100,6 +100,8 @@ Always follow these when adding or editing events — they exist because of spec
    **9b. The reopening-date regex takes the FIRST match, so conflicting `Reopens …` strings render the wrong badge.** Confirmed 2026-08-06 on id 8 (Corte Madera Family Storytime), whose notes had accreted three closure statements across successive sweeps — "Reopens Aug 25", "Reopens Sep 3" and an older May–Jul closure. The badge showed **Aug 25**, which was wrong and user-facing. When a closure date changes, **replace** the old sentence rather than appending a new one; a notes field should never contain two reopening dates.
 11. **Teen-only events**: do not add events that are explicitly restricted to teens only (e.g. "Teens 13-18 only", "Grades 9-12"). If an event reads as borderline or could plausibly work for a broader family/all-ages audience even though it's teen-flavored or teen-skewed, don't silently exclude it either — include it as a candidate in the Weekly Sweep review file so Alexandra can decide. Resolved 2026-08-04 (open item 11).
 12. **`location_group` renames need a `LOCATION_ALIAS_MAP` entry in `index.html`.** Users' saved "My default filters" store raw `location_group` strings — if a value is ever renamed or merged (e.g. `Larkspur`→`Larkspur/Greenbrae`, `Sausalito`/`Marin City`→`Sausalito/Marin City`, `Tiburon`→`Tiburon/Belvedere`), anyone who saved defaults under the old name silently loses that town from both the checkbox display and actual event filtering — no error, just quietly fewer results. `loadDefaultFilters()` (~line 4025) auto-heals this via `LOCATION_ALIAS_MAP`, mapping old value(s) to current ones and persisting the fix back to the user's record on their next visit. **Any time a `location_group` value changes, add an entry to that map in the same commit**, or affected users will silently lose coverage for that town with no visible error.
+13. **Before adding a *replacement* record, search by date — `find_event()` will not catch a date collision.** `find_event()` matches on name substring + venue + town and **never compares `event_date`**, so adding a "corrected" one-off that lands on a date some other record already covers passes dedup silently. Confirmed 2026-08-12: the 2026-08-04 fix for "Music with Arlette" retired ids 600/601 (which carried impossible Aug 1/Aug 8 dates) and added ids 799–801 with the correct Aug 19/Aug 26 dates — but **ids 766/767 already held exactly those dates**. The event rendered twice on both days for eight days before the library audit caught it. Whenever you fix a record by adding a new one, first search `events.json` for `(event_name, venue, event_date)` directly, not just via `find_event()`. When two records do collide, keep the one with the better content and **merge the other's provenance notes into it** rather than deleting information — 766/767 had the fuller bilingual descriptions and the correct `type`, while 799/800 carried the newer verification note.
+14. **Never trust a fetched page's day-of-week label — always re-derive the weekday from the date.** This was previously documented only for Marin Mommies, but it is not source-specific: on 2026-08-12 WebFetch labelled the same date (Aug 13 2026, a **Thursday**) as "Tuesday" on one library page and "Wednesday" on another. The summarising layer invents weekdays that were never on the page. A wrong `day` value puts a recurring event on the wrong weekday in the feed, and for `Monthly` records feeds `parseOccurrenceRule()` a wrong answer. Compute it: `datetime.date.fromisoformat(d).strftime('%A')`.
 
 ## Weekly Sweep — the core recurring exercise
 
@@ -209,21 +211,25 @@ She fills `Decision` and `YOUR ANSWER` and hands it back for `/process-sweep`. N
 
 ---
 
-## State of play — last updated 2026-08-09
+## State of play — last updated 2026-08-12
 
 Where a new session should pick up.
 
-**Health**: `events.json` is 366 events / max id 832, all committed and pushed (`main` clean as of the last commit). Live site is current. No known user-facing breakage.
+**Health**: `events.json` is 345 events / max id 834, all committed and pushed. Live site is current. **One known user-facing problem**: 39 *non-library* expired one-offs are still rendering (see open item 1 below) — they were found during the library audit but left alone, since batch deletions need Alexandra's sign-off and they're outside that audit's scope.
+
+**IN PROGRESS — open item 28, the library audit.** Paused 2026-08-12 at 10 of 16 branches, resuming 2026-08-13. **Read `OAA maintence and content/library_audit_2026-08-12_progress.md` first** — it holds the full 177-event MCFL inventory, the six remaining branches with their blockers, method notes, and every finding already queued for the review workbook. Scope is all **124 library-hosted records**, not just the 94 typed `Library`. Window Aug 13 – Sep 20.
+
+Already shipped from it (`0870cab`): 21 expired one-offs deleted; ids 799/800 deleted as exact duplicates of 766/767 (Music with Arlette was rendering twice on Aug 19 and Aug 26 — see new rule 13); ids 42/43 fixed, each having held two conflicting `Reopens` dates so the badge showed Aug 25 instead of Sep 3 (**second occurrence of the rule 9b bug after id 8 — this failure mode recurs, check for it every sweep**); stale June reopening sentences cleared on ids 6, 7, 40, 48, 50.
 
 **Closed this stretch** (open items 2, 3, 4, 6, 9, 10, 11, 13, 14, 16, 18, 25): the swim directory table redesign; the Napa music process integration + its first sweep; the expired-event purge (730 → 335 records, One-off only, recurring templates preserved); several fabricated/stale event records deleted or corrected.
 
-**Open items still live** — full list in `OAA maintence and content/open_items.md`, 8 open:
-- **1** — daily.yml scraper silently broken since May 8 (~110 "successful" runs, zero commits; a swallowed `git stash pop` conflict). Fix is drafted but **not pushed** — her standing rule is to see the diff first.
-- **5** — verify two Bolinas + one Inverness library programs (needs phone calls; both branches showed near-zero events again this sweep, so the records may be dead).
-- **7** — Novato library reopened Aug 19 but published **zero** children's programming; re-check.
-- **8** — Corte Madera library reopens **Sep 3**, no September programs published yet. Re-check after that date. Related: id 8's notes were just cleaned (see rule 9b).
-- **12** — **on hold**: Learning Bus has published no schedule since June. Alexandra texted (415) 497-1666 on 2026-08-04 and is awaiting a reply. Nothing to do until she hears back.
-- **17, 19–24** — preschool/daycare DB, Rebecca's feedback, marketing items, and **24 (users-table lockdown)**, which is a real security item: the site still talks to Supabase `users` with the public key, so phone numbers and hashed PINs are readable by anyone holding it. Full checklist in `table_lockdown_checklist.md`. Deferred, not started.
+**Open items still live** — full list in `OAA maintence and content/open_items.md`:
+- **1** — daily.yml scraper silently broken since May 8 (~110 "successful" runs, zero commits; a swallowed `git stash pop` conflict). Fix is drafted but **not pushed** — her standing rule is to see the diff first. **This is now actively costing data quality**: expired one-offs accumulate at roughly 3/day, and everything purged by hand comes straight back. 21 were cleared 2026-08-12 and 39 more are already sitting there.
+- **5** — verify two Bolinas + one Inverness library programs. **Sharpened 2026-08-12**: Bolinas is absent from MCFL's bibliocommons calendar system entirely, so ids 175/176 cannot be verified online at all — the phone check is the only route. Inverness shows **no** children's programming in the Aug 13 – Sep 20 window, so id 284 is likely defunct.
+- **7** — **effectively answered 2026-08-12, pending write-up.** Novato has reopened and *is* running children's programming, but later than assumed: Stories & Rhyme Wiggle Time resumes **Sep 1** (not Aug 19), Música y Movimiento **Sep 2**. ids 11/12 still sit `Temp. closed` and id 486 (the temporary Pioneer Park listing) should retire. Queued in the audit workbook.
+- **8** — Corte Madera reopening **Sep 3 confirmed** from the branch page 2026-08-12 ("closed July 6 through September 2. Reopening September 3, 2026"). Still re-check after that date for new fall programming.
+- **12** — **on hold**: Learning Bus still running but with no firm timeline; the program told Alexandra 2026-08-12 to expect a resumption sometime in September. Nothing to do until a September PDF posts at marinlibrary.org/learning-bus/.
+- **17, 19–24, 26–28** — preschool/daycare DB, Rebecca's feedback (her mobile card report is now shipped), marketing items, the San Anselmo address fix scheduled for late August, the analytics work (item 27, mostly shipped), the library audit (28), and **24 (users-table lockdown)**, which is a real security item: the site still talks to Supabase `users` with the public key, so phone numbers and hashed PINs are readable by anyone holding it. Full checklist in `table_lockdown_checklist.md`. Deferred, not started.
 
 **Known-flaky sweep sources** (all failed or partially failed on the 2026-08-06 sweep and will likely recur):
 - Mill Valley Community Center — CivicEngage grid returns nothing for the window; needs browser paging.
@@ -231,6 +237,7 @@ Where a new session should pick up.
 - Mill Valley Library libcal — renders empty, unresolved across several sweeps.
 - SRPL monthly newsletter PDF — served corrupted/binary; the `/events/` HTML is the reliable surface instead.
 - Sausalito city + library need the **Chrome browser** workaround (Akamai). This works reliably — use it, don't retry WebFetch.
+- **SOLVED 2026-08-12 — the 10 MCFL branches.** They were never "flaky" so much as fetched the wrong way: the per-branch `/locations/XX/` pages only list the next few days, so any multi-week sweep window using them alone was structurally under-reporting and no attestation would reveal it. Use `marinlibrary.bibliocommons.com/v2/events?startDate=…&endDate=…` paged with `&page=N` — one surface, every branch, and the **only** place CANCELED events are marked. Written up as a shortcut block at the top of `/run-sweep`'s Libraries section. Keep `/locations/XX/` only for a branch's own closure notice.
 
 **Deliberately declined, do not silently redo**: Alexandra passed on backfilling the Marin Mommies 14-day gap from the 2026-08-06 sweep (Aug 10–19 went uncovered because only 5 out-of-range days were fetched), and on re-paging Belvedere-Tiburon. Both are known and accepted, not oversights to fix unprompted.
 
