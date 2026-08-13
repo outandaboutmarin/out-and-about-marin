@@ -3614,6 +3614,14 @@ const dayOrder = { Monday:0, Tuesday:1, Wednesday:2, Thursday:3, Friday:4, Satur
 
 function shouldShowEvent(e) {
   if (e.status === 'Active') return 'show';
+  /* Retired / out-of-season records must not render. Before 2026-08-13 this
+     function had no Inactive branch at all, so the catch-all below returned
+     'show' for them — meaning "retiring" a record by setting status Inactive
+     did nothing, and 11 records were rendering that shouldn't have been
+     (including id 50, marked Inactive on 2026-07-29 and visible ever since).
+     'Seasonal - Inactive' is the value scraper.py writes when a Seasonal event
+     falls outside its season_start/season_end window. */
+  if (e.status === 'Inactive' || e.status === 'Seasonal - Inactive') return 'hide';
   if (e.status === 'Temp. paused') return 'badge'; // no resume date tracked, always show with badge
   if (e.status !== 'Temp. closed') return 'show'; // unknown status, show anyway
 
