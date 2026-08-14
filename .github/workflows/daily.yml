@@ -18,10 +18,16 @@ on:
         required: false
         default: 'false'
 
+# Two schedules both fire at 13:00 UTC on the 1st of the month, which used to
+# mean two runs racing to push. Serialise instead of racing.
+concurrency:
+  group: daily-scraper
+  cancel-in-progress: false
+
 jobs:
   update-events:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: write
 
@@ -56,14 +62,98 @@ jobs:
         if: github.event.schedule == '0 13 1 * *' || github.event.inputs.run_monthly_audit == 'true'
         run: python library_review.py --monthly-audit
 
+      # Step 6b: Prove the scraper actually ran today. scraper.py rewrites
+      # scraper_log.txt with today's date on every successful run, so a stale
+      # date here means the Python failed quietly and there is nothing worth
+      # committing. Fail loudly rather than pushing a no-op.
+      - name: Verify the scraper produced fresh output
+        run: |
+          set -euo pipefail
+          today="$(date -u +'%Y-%m-%d')"
+          if ! grep -q "^Date: ${today}$" scraper_log.txt; then
+            echo "::error::scraper_log.txt is not dated ${today} — scraper.py did not complete."
+            echo "--- scraper_log.txt (head) ---"
+            head -5 scraper_log.txt || true
+            exit 1
+          fi
+          echo "scraper_log.txt is dated ${today}."
+
+      # Step 6c: Nightly duplicate check. Five duplicate pairs reached the live
+      # site in two days (2026-08-12/13), each showing the same event twice.
+      # This runs AFTER the scraper's purge, so it sees the same data the site
+      # will. Deliberately NON-BLOCKING: a duplicate is a data-quality problem
+      # for a human to judge, not a reason to abandon a purge that is already
+      # correct. It annotates the run instead, so the commit still lands.
+      - name: Check for duplicate events
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          if python check_duplicates.py; then
+            echo "Duplicate check clean."
+          else
+            echo "::warning::check_duplicates.py found possible duplicates — see the output above."
+          fi
+
       # Step 7: Commit and push any changes back to GitHub
+      #
+      # REWRITTEN 2026-08-13. The previous version did:
+      #     git stash --include-untracked || true
+      #     git pull --rebase origin main
+      #     git stash pop || true
+      #     git add ... || true
+      #     git diff --staged --quiet || git commit ...
+      #     git push
+      # actions/checkout gives a clean tree at current main, so there was
+      # nothing to stash *before* the scraper ran — the stash was only ever
+      # holding the scraper's own output. When the pull brought down commits
+      # touching events.json, `stash pop` conflicted, `|| true` swallowed it,
+      # nothing got staged, and the run still reported success. That is the
+      # bug: ~110 green runs with zero commits since 2026-05-08.
+      #
+      # Now: commit FIRST (no stash), then rebase that commit onto origin and
+      # push, retrying only for the genuine race where someone pushes in
+      # between. No `|| true` anywhere on the critical path.
       - name: Commit updated files
         run: |
+          set -euo pipefail
           git config --local user.email "action@github.com"
           git config --local user.name "Out AND About Marin Bot"
-          git stash --include-untracked || true
-          git pull --rebase origin main
-          git stash pop || true
-          git add events.json scraper_log.txt library_page_hashes.json weekly_sweep_report.json "weekly_sweep_*_review.xlsx" monthly_audit_report.json || true
-          git diff --staged --quiet || git commit -m "Daily update: events refreshed $(date +'%Y-%m-%d')"
-          git push
+
+          # Stage only the generated files that actually exist. `git add` on a
+          # missing pathspec is an error, which is what the old `|| true` was
+          # really masking. Review workbooks are deliberately NOT staged — per
+          # CLAUDE.md they live in Alexandra's Documents folder, never the repo.
+          for f in events.json scraper_log.txt library_page_hashes.json \
+                   weekly_sweep_report.json monthly_audit_report.json; do
+            if [ -f "$f" ]; then git add -- "$f"; fi
+          done
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit — nothing for the scraper to do today."
+            exit 0
+          fi
+
+          echo "--- staged changes ---"
+          git diff --staged --stat
+
+          git commit -m "Daily update: events refreshed $(date +'%Y-%m-%d')"
+
+          # Rebase our commit onto anything pushed since checkout, then push.
+          # Retries cover the real race; a rebase CONFLICT is not retried,
+          # because repeating it would not help and must surface to a human.
+          for attempt in 1 2 3; do
+            if ! git pull --rebase origin main; then
+              git rebase --abort || true
+              echo "::error::Rebase conflict against origin/main. Not retrying — needs a human."
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              echo "Pushed on attempt ${attempt}."
+              exit 0
+            fi
+            echo "Push attempt ${attempt} failed (likely a concurrent push). Retrying..."
+            sleep $((attempt * 5))
+          done
+
+          echo "::error::Could not push after 3 attempts."
+          exit 1
