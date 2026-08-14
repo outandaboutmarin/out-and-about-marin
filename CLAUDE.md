@@ -18,6 +18,14 @@ Claude Code sessions for this project run with the working directory set to **`C
 | **Working files** — `open_items.md`, sweep review workbooks, the Napa and swim trackers, process docs | `…\PROJECTS\OAA Marin\OAA maintence and content\` — inside the session's working directory. Never committed to the repo. |
 | Session transcripts + auto-loaded memory | `C:\Users\AWalter\.claude\projects\C--Users-AWalter-Documents-2--Claude-Work-PROJECTS-OAA-Marin\` |
 
+**Run the duplicate checker at the start of a session, and again after any batch write:**
+
+```
+python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py
+```
+
+Exits 0 when clean, 1 when it finds something (so it scripts). `--self-test` verifies its logic still matches `index.html`; `--all` adds the low-signal findings it suppresses by default. Written 2026-08-13 after **five** duplicate pairs were found live in two days — see rule 13 and the script's own header for what each of its four scans catches and which real pair motivated it.
+
 Three consequences of this split. All are normal; none need fixing:
 
 - **This file does not auto-load.** Because the working directory isn't the repo, `CLAUDE.md` is not injected into context at session start. **Read it from the Desktop path as the first action in a new session.** What *does* auto-load is `memory/MEMORY.md` in the path above, which carries a pointer here.
@@ -105,7 +113,13 @@ Always follow these when adding or editing events — they exist because of spec
     - **768/801** — same program, Aug 29, 2:00 PM, same location, but stored as `"Music with Arlette"` @ `"San Rafael Downtown Library"` vs `"Music with Arlette | Música con Arlette"` @ `"San Rafael Public Library - Downtown"`. **Different name AND different venue string.**
     - **34/627** — Sausalito's 2nd-Saturday storytime under two names, identical day/time/venue/cadence. Doubled on *every* second Saturday.
 
-    **An exact `(event_name, venue, event_date)` tuple check is NOT sufficient** — it catches 766/799 but sails straight past 768/801. Use a normalized scan instead: `(event_date, time, town.lower(), re.sub(r'[^a-z]','',event_name.lower())[:14])`. That collapses punctuation, bilingual `|` suffixes, and venue-string drift, and it is the check that actually found 768/801. For recurring records the equivalent key is `(day, time, venue-or-town, cadence)` — that is what surfaced 34/627. Run both scans after **any** batch add or record replacement.
+    - **572/573 vs 74** — the San Rafael Summer Market. id 74 is `Monthly`/2nd Friday and its notes already listed the real dates; 572 and 573 were dated one-offs sitting on two of them, with a wrong time. Both those dates rendered twice.
+
+    **Don't hand-roll these checks — run `python check_duplicates.py`** (repo root). It does all four scans, including the one no string comparison can do: a `One-off` landing on a date a recurring record *computes*. That last scan needs the app's occurrence logic, so the script ports `parseOccurrenceRule` / `parseSkipDates` / `doesEventOccurOnDate` from `index.html` — **if you change that logic, change the port too**, and run `--self-test`, which asserts the two still agree.
+
+    For reference, the keys it uses: exact `(event_name, venue, event_date)` catches 766/799 but sails straight past 768/801; the normalized `(event_date, time, town, name-prefix)` key catches that one; `(day, time, venue, cadence)` **plus a matching occurrence rule** catches 34/627 without flagging legitimate same-slot pairs like San Anselmo's 3rd-Wednesday and last-Wednesday programs. Same-venue/same-date/same-**time** is the shape every real collision had — differing times are almost always two separate programs and are suppressed unless you pass `--all`.
+
+    **When a one-off legitimately replaces a recurring occurrence** (a themed storytime standing in for the regular one), don't delete either — add `skip: YYYY-MM-DD` to the recurring record's notes. `parseSkipDates()` reads it and drops just that date.
 
     When two records do collide, keep the one with the better content and **merge the other's provenance into it** rather than deleting information: 766/767 had the fuller bilingual descriptions and correct `type`; 799/800 carried the newer verification note; 627 had the continuation confirmation that 34 lacked.
 14. **Never trust a fetched page's day-of-week label — always re-derive the weekday from the date.** This was previously documented only for Marin Mommies, but it is not source-specific: on 2026-08-12 WebFetch labelled the same date (Aug 13 2026, a **Thursday**) as "Tuesday" on one library page and "Wednesday" on another. The summarising layer invents weekdays that were never on the page. A wrong `day` value puts a recurring event on the wrong weekday in the feed, and for `Monthly` records feeds `parseOccurrenceRule()` a wrong answer. Compute it: `datetime.date.fromisoformat(d).strftime('%A')`.
