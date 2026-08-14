@@ -3614,14 +3614,23 @@ const dayOrder = { Monday:0, Tuesday:1, Wednesday:2, Thursday:3, Friday:4, Satur
 
 function shouldShowEvent(e) {
   if (e.status === 'Active') return 'show';
-  /* Retired / out-of-season records must not render. Before 2026-08-13 this
-     function had no Inactive branch at all, so the catch-all below returned
-     'show' for them — meaning "retiring" a record by setting status Inactive
-     did nothing, and 11 records were rendering that shouldn't have been
-     (including id 50, marked Inactive on 2026-07-29 and visible ever since).
-     'Seasonal - Inactive' is the value scraper.py writes when a Seasonal event
-     falls outside its season_start/season_end window. */
-  if (e.status === 'Inactive' || e.status === 'Seasonal - Inactive') return 'hide';
+  /* Retired records must not render. Before 2026-08-13 this function had no
+     Inactive branch at all, so the catch-all below returned 'show' for them —
+     meaning "retiring" a record by setting status Inactive did nothing, and 11
+     records were rendering that shouldn't have been (including id 50, marked
+     Inactive on 2026-07-29 and visible ever since).
+
+     'Seasonal - Inactive' is deliberately NOT hidden here. That value is set by
+     scraper.py from TODAY's date, whereas the season filter in
+     getFilteredEvents() (~line 3547) compares the season against the WEEK BEING
+     VIEWED — which is what lets a user navigate forward into an upcoming season
+     and see it. Hiding on the status too would override that and make a
+     not-yet-started season invisible even in its own week. Confirmed 2026-08-13
+     with id 493 (West End Block Party, season 08/21–10/16): on Aug 13 the
+     scraper marks it Seasonal - Inactive because the season hasn't begun, while
+     the week-aware filter correctly shows it in the week of Aug 17–23. The
+     week-aware filter owns seasonal visibility; this function owns retirement. */
+  if (e.status === 'Inactive') return 'hide';
   if (e.status === 'Temp. paused') return 'badge'; // no resume date tracked, always show with badge
   if (e.status !== 'Temp. closed') return 'show'; // unknown status, show anyway
 

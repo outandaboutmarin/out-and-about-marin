@@ -3,6 +3,8 @@ import urllib.request
 import urllib.parse
 from datetime import datetime, date
 import os
+import re
+import calendar
 
 # ─────────────────────────────────────────────
 # Out AND About Marin — Daily Event Scraper
@@ -40,29 +42,104 @@ def remove_expired_events(events):
         print(f"✓ Removed {removed} expired event(s)")
     return events
 
+MONTH_NAMES = {
+    "January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6,
+    "July": 7, "August": 8, "September": 9, "October": 10, "November": 11,
+    "December": 12,
+}
+
+
+def parse_season_date(value, year, is_end):
+    """
+    Parse a season_start/season_end value into a date.
+
+    Mirrors parseSeasonDate() in index.html (~line 3549) exactly, because the
+    frontend and this script MUST agree on what a season means:
+      - "MM/DD" (the documented format, e.g. "06/01")
+      - a bare month name ("May", "October"), which resolves to the FIRST day
+        of that month for a start and the LAST day for an end
+      - "MM-DD" is also accepted here as a forgiving extra; the frontend does
+        not accept it, so never write it into events.json.
+
+    Returns None if the value cannot be parsed at all.
+
+    WHY THIS EXISTS: the previous code did date.fromisoformat(f"{year}-{value}"),
+    which for the documented "06/01" builds "2026-06/01" - not valid ISO. That
+    raised ValueError, a bare `except (ValueError, KeyError): pass` swallowed
+    it, and the record was silently skipped. Confirmed 2026-08-13: ALL 12
+    Seasonal records failed this way, so no seasonal event has ever been
+    flipped by the scraper. index.html parsed them correctly the whole time,
+    which is why the bug stayed invisible - the display side worked.
+    """
+    if not value:
+        return None
+    value = str(value).strip()
+
+    if value in MONTH_NAMES:
+        m = MONTH_NAMES[value]
+        if is_end:
+            last_day = calendar.monthrange(year, m)[1]
+            return date(year, m, last_day)
+        return date(year, m, 1)
+
+    m = re.fullmatch(r"(\d{1,2})[/-](\d{1,2})", value)
+    if m:
+        month, day = int(m.group(1)), int(m.group(2))
+        try:
+            return date(year, month, day)
+        except ValueError:
+            return None
+    return None
+
+
 def check_seasonal_status(events):
     """
     Flag seasonal events as active or inactive based on today's date.
-    Does not remove them — just updates their status.
+    Does not remove them - just updates their status.
     """
     today = date.today()
+    unparsed = []
+
     for e in events:
-        if e.get("cadence") == "Seasonal" and e.get("season_start") and e.get("season_end"):
-            try:
-                year = today.year
-                start = date.fromisoformat(f"{year}-{e['season_start']}")
-                end = date.fromisoformat(f"{year}-{e['season_end']}")
-                if start <= today <= end:
-                    if e.get("status") == "Seasonal - Inactive":
-                        e["status"] = "Active"
-                        print(f"  → Season started: {e['event_name']}")
-                else:
-                    if e.get("status") == "Active" and e.get("cadence") == "Seasonal":
-                        e["status"] = "Seasonal - Inactive"
-                        print(f"  → Season ended: {e['event_name']}")
-            except (ValueError, KeyError):
-                pass
+        if e.get("cadence") != "Seasonal":
+            continue
+
+        raw_start, raw_end = e.get("season_start"), e.get("season_end")
+        if not raw_start or not raw_end:
+            continue
+
+        start = parse_season_date(raw_start, today.year, is_end=False)
+        end = parse_season_date(raw_end, today.year, is_end=True)
+
+        if start is None or end is None:
+            # Do NOT silently skip - an unparseable season means this record
+            # will never flip, which is exactly the failure this fix removes.
+            unparsed.append(
+                f"{e.get('event_name', '?')} (id {e.get('id')}): "
+                f"season_start={raw_start!r} season_end={raw_end!r}"
+            )
+            continue
+
+        # A season written "11/01"-"02/28" wraps the new year; treat any end
+        # earlier than its start as spanning into next year rather than as an
+        # empty window that would retire the event immediately.
+        in_season = (start <= today <= end) if start <= end else (today >= start or today <= end)
+
+        if in_season and e.get("status") == "Seasonal - Inactive":
+            e["status"] = "Active"
+            print(f"  \u2192 Season started: {e['event_name']}")
+        elif not in_season and e.get("status") == "Active":
+            e["status"] = "Seasonal - Inactive"
+            print(f"  \u2192 Season ended: {e['event_name']}")
+
+    if unparsed:
+        print(f"\n  \u26a0 {len(unparsed)} seasonal record(s) have an unparseable season "
+              f"and will NEVER flip - fix the data:")
+        for u in unparsed:
+            print(f"     \u2022 {u}")
+
     return events
+
 
 def check_library_websites():
     """
