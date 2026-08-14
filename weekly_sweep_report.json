@@ -1,37 +1,14 @@
 {
-  "sweep_date": "2026-05-01",
+  "sweep_date": "2026-08-14",
   "suggested_events": [
     {
       "date": "TBD",
       "day_label": "Check calendar",
-      "title": "Summer Swim Lesson Registration",
+      "title": "Fall Pool Membership Registration",
       "time": "See website",
       "location": "Strawberry Recreation District, Mill Valley",
-      "source": "Strawberry Rec"
-    },
-    {
-      "date": "TBD",
-      "day_label": "Check calendar",
-      "title": "Summer Pool Membership Registration",
-      "time": "See website",
-      "location": "Strawberry Recreation District, Mill Valley",
-      "source": "Strawberry Rec"
-    },
-    {
-      "date": "TBD",
-      "day_label": "Check calendar",
-      "title": "Summer Pool Pass Registration",
-      "time": "See website",
-      "location": "Strawberry Recreation District, Mill Valley",
-      "source": "Strawberry Rec"
-    },
-    {
-      "date": "TBD",
-      "day_label": "Check calendar",
-      "title": "Fall A Youth Afterschool Registration",
-      "time": "See website",
-      "location": "Strawberry Recreation District, Mill Valley",
-      "source": "Strawberry Rec"
+      "source": "Strawberry Rec",
+      "source_type": "AUTO"
     },
     {
       "date": "TBD",
@@ -39,7 +16,265 @@
       "title": "2026 Holiday Cheer",
       "time": "See website",
       "location": "Strawberry Recreation District, Mill Valley",
-      "source": "Strawberry Rec"
+      "source": "Strawberry Rec",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-08-18",
+      "day_label": "Tuesday, 2026-08-18",
+      "title": "Lake Lagunitas Spiders",
+      "time": "10:00 AM",
+      "location": "Marin Water District",
+      "description": "Directions: Meet at the Lake Lagunitas parking area. From Hwy 101 in Larkspur, take the exit for Sir Francis Drake Blvd west 5.3 miles to Fairfax. Turn left onto Pacheco Ave, immediate right onto Broa",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-08-22",
+      "day_label": "Saturday, 2026-08-22",
+      "title": "Kites n&#39\\; Kites",
+      "time": "3:00 PM",
+      "location": "Upton Beach",
+      "description": "Directions: <p dir=\"ltr\">Meet at the beach near the north parking lot at Stinson Beach. From Hwy 101 in Larkspur, take the exit for Sir Francis Drake Blvd west 20.4 miles to Olema. Turn left onto Hwy ",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-08-23",
+      "day_label": "Sunday, 2026-08-23",
+      "title": "Beach Volleyball Bonanza",
+      "time": "12:00 PM",
+      "location": "Upton Beach",
+      "description": "Directions: <p dir=\"ltr\">Meet at the beach near the north parking lot at Stinson Beach. From Hwy 101 in Larkspur, take the exit for Sir Francis Drake Blvd west 20.4 miles to Olema. Turn left onto Hwy ",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-08-26",
+      "day_label": "Wednesday, 2026-08-26",
+      "title": "Tennessee Valley",
+      "time": "10:00 AM",
+      "location": "Marin Headlands",
+      "description": "Directions: Meet at the Tennessee Valley Trailhead. From Hwy 101, take the Stintson Beach exit to Hwy I and follow .3 miles. Turn left onto Tennessee Valley Rd and follow to the parking area at the en",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-08-27",
+      "day_label": "Thursday, 2026-08-27",
+      "title": "Lunar Eclipse with Marin Stargazers",
+      "time": "8:00 PM",
+      "location": "Mount Burdell Preserve",
+      "description": "Directions: <p dir=\"ltr\">To be provided only upon successful RSVP.</p><br>Sponsor: Parks<br>Accommodation Information: If you are a person with a disability and require an accommodation to participate",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-08-28",
+      "day_label": "Friday, 2026-08-28",
+      "title": "Movie Night at Point Reyes Park",
+      "time": "7:30 PM",
+      "location": "Point Reyes Park",
+      "description": "Directions: Meet at Point Reyes Park in Point Reyes Station (2 Toby St, Point Reyes Station 94956). From Hwy 101 in Larkspur, take the exit for Sir Francis Drake Blvd west 20.4 miles to Olema. Turn ri",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-08-30",
+      "day_label": "Sunday, 2026-08-30",
+      "title": "Mount Burdell Plant Galls",
+      "time": "9:00 AM",
+      "location": "Mount Burdell Preserve",
+      "description": "Directions: Meet at the gate on San Andreas Dr in Novato. From Hwy 101 in Novato, take the exit for San Marin Dr west 2.3 miles. Turn right onto San Andreas Dr and follow approximately 0.5 miles. The ",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-08-14",
+      "day_label": "Friday, 2026-08-14",
+      "title": "Pop-up Storytime in the Parks: Hauke",
+      "time": "5:15 PM",
+      "location": "Hauke Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724287",
+      "website": "https://millvalleylibrary.libcal.com/event/16724287",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-08-21",
+      "day_label": "Friday, 2026-08-21",
+      "title": "Pop-up Storytime in the Parks: Boyle",
+      "time": "5:15 PM",
+      "location": "Boyle Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724252",
+      "website": "https://millvalleylibrary.libcal.com/event/16724252",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-08-28",
+      "day_label": "Friday, 2026-08-28",
+      "title": "Pop-up Storytime in the Parks: Hauke",
+      "time": "5:15 PM",
+      "location": "Hauke Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724288",
+      "website": "https://millvalleylibrary.libcal.com/event/16724288",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-09-04",
+      "day_label": "Friday, 2026-09-04",
+      "title": "Pop-up Storytime in the Parks: Boyle",
+      "time": "5:15 PM",
+      "location": "Boyle Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724253",
+      "website": "https://millvalleylibrary.libcal.com/event/16724253",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-09-08",
+      "day_label": "Tuesday, 2026-09-08",
+      "title": "Teen Advisory Board Orientation",
+      "time": "11:00 PM",
+      "location": "Creekside Room",
+      "description": "Join our TAB Orientation to learn all about teen volunteering in your library! TAB meetings will be in-person at the library\u2019s Creekside room, the 2nd Tuesday of every. More days will be added based on programs or outreach events teens are currently planning. Email Jasmyn, teen@cityofmillvalley.org ",
+      "source": "https://millvalleylibrary.libcal.com/event/17266810",
+      "website": "https://millvalleylibrary.libcal.com/event/17266810",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-09-11",
+      "day_label": "Friday, 2026-09-11",
+      "title": "Pop-up Storytime in the Parks: Hauke",
+      "time": "5:15 PM",
+      "location": "Hauke Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724289",
+      "website": "https://millvalleylibrary.libcal.com/event/16724289",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-09-18",
+      "day_label": "Friday, 2026-09-18",
+      "title": "Pop-up Storytime in the Parks: Boyle",
+      "time": "5:15 PM",
+      "location": "Boyle Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724254",
+      "website": "https://millvalleylibrary.libcal.com/event/16724254",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-09-24",
+      "day_label": "Thursday, 2026-09-24",
+      "title": "Plastic Detox: Screening & Discussion",
+      "time": "1:00 AM",
+      "location": "Creekside Room",
+      "description": "Join Plastic Free Marin for a screening of The Plastic Detox, a recently released Netflix documentary that explores the impacts of plastics and toxic chemicals on human health. The film examines how plastic pollution affects our bodies, communities, and environment, while pointing toward practical c",
+      "source": "https://millvalleylibrary.libcal.com/event/16970597",
+      "website": "https://millvalleylibrary.libcal.com/event/16970597",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-09-24",
+      "day_label": "Thursday, 2026-09-24",
+      "title": "Virtual Author Talk: Where the Paletero Man Goes with Lucky Diaz",
+      "time": "11:00 PM",
+      "location": "Mill Valley Public Library",
+      "description": "Grab a pocketful of change and get ready to dance down the street! Join us for an energetic online conversation as we celebrate the joy of community and summer fun with Latin GRAMMY-winning musician Lucky Diaz, author of the sensational bilingual picture book, Paletero Man.   What\u2019s the best way to ",
+      "source": "https://millvalleylibrary.libcal.com/event/17297105",
+      "website": "https://millvalleylibrary.libcal.com/event/17297105",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-09-25",
+      "day_label": "Friday, 2026-09-25",
+      "title": "Paletero Man: un viaje por el barrio\\, la m\u00fasica y el arte con Lucky Diaz",
+      "time": "All day",
+      "location": "Mill Valley Public Library",
+      "description": "Agarra un pu\u00f1ado de monedas y prep\u00e1rate para bailar por la calle. \u00danete a nosotros para una en\u00e9rgica conversaci\u00f3n mientras celebramos la alegr\u00eda de la comunidad y la diversi\u00f3n del verano con Lucky Diaz, m\u00fasico ganador del premio Latin GRAMMY y autor del sensacional libro ilustrado biling\u00fce, Paletero",
+      "source": "https://millvalleylibrary.libcal.com/event/17297129",
+      "website": "https://millvalleylibrary.libcal.com/event/17297129",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-09-25",
+      "day_label": "Friday, 2026-09-25",
+      "title": "Pop-up Storytime in the Parks: Hauke",
+      "time": "5:15 PM",
+      "location": "Hauke Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724290",
+      "website": "https://millvalleylibrary.libcal.com/event/16724290",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-10-02",
+      "day_label": "Friday, 2026-10-02",
+      "title": "Pop-up Storytime in the Parks: Boyle",
+      "time": "5:15 PM",
+      "location": "Boyle Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724255",
+      "website": "https://millvalleylibrary.libcal.com/event/16724255",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-10-09",
+      "day_label": "Friday, 2026-10-09",
+      "title": "Pop-up Storytime in the Parks: Hauke",
+      "time": "5:15 PM",
+      "location": "Hauke Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724291",
+      "website": "https://millvalleylibrary.libcal.com/event/16724291",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-10-16",
+      "day_label": "Friday, 2026-10-16",
+      "title": "Pop-up Storytime in the Parks: Boyle",
+      "time": "5:15 PM",
+      "location": "Boyle Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724256",
+      "website": "https://millvalleylibrary.libcal.com/event/16724256",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-10-23",
+      "day_label": "Friday, 2026-10-23",
+      "title": "Pop-up Storytime in the Parks: Hauke",
+      "time": "5:15 PM",
+      "location": "Hauke Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724292",
+      "website": "https://millvalleylibrary.libcal.com/event/16724292",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-10-30",
+      "day_label": "Friday, 2026-10-30",
+      "title": "Pop-up Storytime in the Parks: Boyle",
+      "time": "5:15 PM",
+      "location": "Boyle Park",
+      "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
+      "source": "https://millvalleylibrary.libcal.com/event/16724258",
+      "website": "https://millvalleylibrary.libcal.com/event/16724258",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "",
+      "day_label": "",
+      "title": "[MCFL MCFL] {eventTitle}\",\"sr_event_times\":\"{startTime} to {endTime}\",\"sr_event_date\":\"on {s",
+      "time": "",
+      "location": "MCFL \u2014 MCFL Library",
+      "description": "",
+      "source": "https://marinlibrary.bibliocommons.com/v2/events?audiences=BABIES,TODDLERS,PRESCHOOLERS,KIDS,TWEENS,FAMILIES",
+      "website": "https://marinlibrary.bibliocommons.com/v2/events",
+      "source_type": "AUTO"
     }
   ]
 }
