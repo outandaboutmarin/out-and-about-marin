@@ -1,39 +1,52 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-05-08
-Time: 16:58:26
+Date: 2026-08-14
+Time: 04:52:56
 
-Total events in events.json: 162
-Active events: 150
-Temp. closed: 12
+Total events in events.json: 305
+Active events: 286
+Temp. closed: 5
 
 Events by type:
-  Community Event: 30
+  Community Event: 59
   Farmers Market: 13
-  Festival: 6
-  Kids Programs: 28
-  Library: 85
+  Festival: 21
+  Kids Programs: 52
+  Library: 77
+  Music: 1
+  Music and Movies: 82
 
 Events by town:
+  Belvedere: 2
   Bolinas: 2
-  Corte Madera: 5
-  Fairfax: 6
-  Larkspur: 18
-  Marin City: 1
-  Mill Valley: 66
-  Novato: 5
-  Point Reyes Station: 2
-  San Anselmo: 5
+  Calistoga: 15
+  Corte Madera: 22
+  Fairfax: 13
+  Inverness: 1
+  Larkspur: 17
+  Marin City: 5
+  Marin County: 1
+  Mill Valley: 55
+  Muir Beach: 10
+  Nicasio/San Geronimo: 5
+  Novato: 19
+  Point Reyes Station: 6
+  Ross: 3
+  San Anselmo: 11
   San Geronimo: 2
-  San Rafael: 24
-  Sausalito: 9
-  Tiburon: 14
-  Tomales: 1
+  San Rafael: 49
+  Sausalito: 26
+  St. Helena: 6
+  Stinson Beach: 2
+  Tiburon: 24
+  Tomales: 2
   Virtual: 1
-  West Marin: 1
+  Yountville: 6
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
   🔔 PAGE CHANGED: Larkspur Library
+  🔔 PAGE CHANGED: Mill Valley Public Library
+  🔔 PAGE CHANGED: San Anselmo Library
   🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
@@ -46,6 +59,9 @@ Library pages changed — review recommended:
   🔔 PAGE CHANGED: MCFL — Inverness Library
   🔔 PAGE CHANGED: MCFL — Stinson Beach Library
 
-All unpredictable events have upcoming dates loaded. ✓
+Unpredictable events needing one-off dates added:
+  🔔 NEEDS ONE-OFF DATE: Read to a Dog with Stinson — Corte Madera (monthly Sunday)
+  → Open a chat with Claude and say:
+  → "Please look up upcoming dates for unpredictable events and add them to events.json"
 
 Next run: tomorrow at 6:00 AM PT
