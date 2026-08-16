@@ -1,5 +1,5 @@
 {
-  "sweep_date": "2026-08-15",
+  "sweep_date": "2026-08-16",
   "suggested_events": [
     {
       "date": "TBD",
@@ -86,6 +86,16 @@
       "time": "9:00 AM",
       "location": "Mount Burdell Preserve",
       "description": "Directions: Meet at the gate on San Andreas Dr in Novato. From Hwy 101 in Novato, take the exit for San Marin Dr west 2.3 miles. Turn right onto San Andreas Dr and follow approximately 0.5 miles. The ",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2027-02-11",
+      "day_label": "Thursday, 2027-02-11",
+      "title": "Measure A Community Oversight Committee",
+      "time": "2:00 PM",
+      "location": "Marin County Parks",
+      "description": "Documents: Agenda TBD<br>Sponsor: Parks<br>Link: https://www.marincountyparks.org/about-us/boards-and-commissions/measure-a-oversight-committee<br><br>The Measure A Community Oversight Committee revie",
       "source": "Marin County Parks (Trumba iCal)",
       "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
     },
@@ -200,6 +210,17 @@
       "source_type": "AUTO"
     },
     {
+      "date": "2026-09-26",
+      "day_label": "Saturday, 2026-09-26",
+      "title": "Read to a Dog!",
+      "time": "8:00 PM",
+      "location": "Children's Room",
+      "description": "Reading to a dog is fun and helps build confidence! Join us select Saturday's in the children's room. For kids ages 5 and up. Thanks to Marin Humane Society Share-a-Book dogs. No sign-up neccessary.",
+      "source": "https://millvalleylibrary.libcal.com/event/17370577",
+      "website": "https://millvalleylibrary.libcal.com/event/17370577",
+      "source_type": "AUTO"
+    },
+    {
       "date": "2026-10-02",
       "day_label": "Friday, 2026-10-02",
       "title": "Pop-up Storytime in the Parks: Boyle",
@@ -244,6 +265,17 @@
       "source_type": "AUTO"
     },
     {
+      "date": "2026-10-24",
+      "day_label": "Saturday, 2026-10-24",
+      "title": "Read to a Dog!",
+      "time": "8:00 PM",
+      "location": "Children's Room",
+      "description": "Reading to a dog is fun and helps build confidence! Join us select Saturday's in the children's room. For kids ages 5 and up. Thanks to Marin Humane Society Share-a-Book dogs. No sign-up neccessary.",
+      "source": "https://millvalleylibrary.libcal.com/event/17370578",
+      "website": "https://millvalleylibrary.libcal.com/event/17370578",
+      "source_type": "AUTO"
+    },
+    {
       "date": "2026-10-30",
       "day_label": "Friday, 2026-10-30",
       "title": "Pop-up Storytime in the Parks: Boyle",
@@ -252,6 +284,28 @@
       "description": "Join us every Friday at Boyle and Hauke Park for Pop-up storytimes in the park!",
       "source": "https://millvalleylibrary.libcal.com/event/16724258",
       "website": "https://millvalleylibrary.libcal.com/event/16724258",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-11-21",
+      "day_label": "Saturday, 2026-11-21",
+      "title": "Read to a Dog!",
+      "time": "9:00 PM",
+      "location": "Children's Room",
+      "description": "Reading to a dog is fun and helps build confidence! Join us select Saturday's in the children's room. For kids ages 5 and up. Thanks to Marin Humane Society Share-a-Book dogs. No sign-up neccessary.",
+      "source": "https://millvalleylibrary.libcal.com/event/17370579",
+      "website": "https://millvalleylibrary.libcal.com/event/17370579",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2026-12-19",
+      "day_label": "Saturday, 2026-12-19",
+      "title": "Read to a Dog!",
+      "time": "9:00 PM",
+      "location": "Children's Room",
+      "description": "Reading to a dog is fun and helps build confidence! Join us select Saturday's in the children's room. For kids ages 5 and up. Thanks to Marin Humane Society Share-a-Book dogs. No sign-up neccessary.",
+      "source": "https://millvalleylibrary.libcal.com/event/17370580",
+      "website": "https://millvalleylibrary.libcal.com/event/17370580",
       "source_type": "AUTO"
     },
     {
