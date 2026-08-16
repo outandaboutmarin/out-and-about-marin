@@ -176,7 +176,7 @@
       "description": "Stories, songs, rhymes, and movement followed by Stay & Play. No registration required.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "ALERT: No session Tuesday, September 22, 2026 — replaced this week by the library's special bilingual storytime, Cantos y Cuentos: Bilingual Storytime.",
+      "notes": "ALERT[2026-09-22]: Cancelled today — replaced this week by the library's special bilingual storytime, Cantos y Cuentos: Bilingual Storytime.",
       "location_group": "San Rafael",
       "event_name_es": "Hora del Cuento Preescolar y Familiar",
       "description_es": "Cuentos, canciones y actividades para preescolares y familias. Programa gratuito en la Biblioteca del Centro Cívico."
@@ -446,7 +446,7 @@
       "description": "Brought to you by Colors of Spanish, Cuentos con Ritmo is an engaging bilingual program for kids 0-5 and their caregivers. Stories, music, movement, rhymes and games in a fun outdoor setting.",
       "registration": "Not required",
       "website": "https://millvalleylibrary.org",
-      "notes": "Venue label normalized 2026-07-29 (was 'Old Mill Park Amphitheater') to match the ~20 other Mill Valley records for this same location. Aug 3-12 these programs temporarily move to the library's Smart Garden per libcal. Library CLOSED Mon Sep 7 (Labor Day) - no session that day. ALERT: No session Monday, September 7, 2026 — library closed for Labor Day and the branch has marked this date cancelled.",
+      "notes": "Venue label normalized 2026-07-29 (was 'Old Mill Park Amphitheater') to match the ~20 other Mill Valley records for this same location. Aug 3-12 these programs temporarily move to the library's Smart Garden per libcal. Library CLOSED Mon Sep 7 (Labor Day) - no session that day. ALERT[2026-09-07]: No session Monday, September 7, 2026 — library closed for Labor Day and the branch has marked this date cancelled.",
       "location_group": "Mill Valley",
       "event_name_es": "Cuentos con Ritmo",
       "description_es": "Cuentos con ritmo, canciones y movimiento al aire libre en el Anfiteatro del Parque Old Mill. ¡En español!"

@@ -3657,13 +3657,40 @@ function getPausedLabel(e) {
   return currentLang === 'es' ? 'Pausado temporalmente' : 'Temporarily Paused';
 }
 
+// Local-calendar YYYY-MM-DD. Deliberately NOT toISOString(), which converts to
+// UTC first: a Date carrying an evening local time (getWeekRange returns
+// `new Date(today)`, i.e. the current time of day, not midnight) rolls forward
+// to the next UTC day and yields tomorrow's string west of Greenwich.
+function localDateStr(d) {
+  return d.getFullYear() + '-' +
+    String(d.getMonth() + 1).padStart(2, '0') + '-' +
+    String(d.getDate()).padStart(2, '0');
+}
+
 // Notes prefixed with "ALERT:" render as a red banner on the card and detail
 // screen instead of the normal amber notes styling — for schedule-affecting
 // callouts (cancellations, breaks) that need to stand out in the feed itself,
 // not just the detail view.
-function getAlertNote(e) {
-  const m = e.notes && e.notes.match(/ALERT:\s*([^|]+)/i);
-  return m ? m[1].trim() : null;
+//
+// An alert may be scoped to ONE date: "ALERT[2026-09-22]: text" shows only on
+// that date and is invisible on every other occurrence. This matters for
+// recurring records — a bare "ALERT:" on a Weekly event renders on EVERY
+// occurrence, so a note reading "no session Sep 22" would sit on every Tuesday
+// from now until it's manually deleted, telling people the wrong thing about
+// dates the event is actually running. Added 2026-08-15 for exactly that case
+// (id 6, replaced by the bilingual storytime on Sep 22 only).
+//
+// A bare "ALERT:" with no bracket still shows on every occurrence — correct for
+// genuinely open-ended callouts, and it keeps existing notes working unchanged.
+// `dateStr` is the local YYYY-MM-DD of the occurrence being drawn; when a caller
+// can't determine one, a dated alert is shown rather than silently dropped.
+const ALERT_RE = /ALERT(?:\[(\d{4}-\d{2}-\d{2})\])?:\s*([^|]+)/i;
+
+function getAlertNote(e, dateStr) {
+  const m = e.notes && e.notes.match(ALERT_RE);
+  if (!m) return null;
+  if (m[1] && dateStr && m[1] !== dateStr) return null;
+  return m[2].trim();
 }
 
 function changeWeek(dir) {
@@ -3905,6 +3932,11 @@ function renderCards() {
     const dayDate = new Date(sortStart);
     dayDate.setDate(sortStart.getDate() + (dayDateMap[day] ?? 0));
     const dayDateStr = dayDate.toISOString().slice(0, 10);
+    // Local-calendar form of the same day, used for date-scoped alerts. Kept
+    // separate from dayDateStr above, which the holiday lookup uses: that one
+    // goes through UTC and can name the following day when dayDate carries an
+    // evening time. Not changed here — it would move the holiday banner.
+    const dayDateLocal = localDateStr(dayDate);
 
     // Check if there's a holiday notice for this day
     const notice = getHolidayNotice(dayDateStr);
@@ -3952,10 +3984,10 @@ function renderCards() {
         <div class="earlier-bar${earlierTodayOpen ? ' open' : ''}" onclick="toggleEarlierToday()">
           <span class="eb-chev">▸</span><span>${ebLabel}</span><span class="eb-hint">${ebHint}</span>
         </div>` : '';
-      const earlierCards = (earlierTodayOpen && earlier.length) ? earlier.map(e => cardHTML(e, 'ended')).join('') : '';
-      cardsHtml = earlierBar + earlierCards + current.map(o => cardHTML(o.ev, o.st === 'now' ? 'now' : '')).join('');
+      const earlierCards = (earlierTodayOpen && earlier.length) ? earlier.map(e => cardHTML(e, 'ended', dayDateLocal)).join('') : '';
+      cardsHtml = earlierBar + earlierCards + current.map(o => cardHTML(o.ev, o.st === 'now' ? 'now' : '', dayDateLocal)).join('');
     } else {
-      cardsHtml = grouped[day].map(e => cardHTML(e)).join('');
+      cardsHtml = grouped[day].map(e => cardHTML(e, '', dayDateLocal)).join('');
     }
     return `
       <div class="section-day-label">${dayLabel}</div>
@@ -4044,12 +4076,14 @@ function renderFeatured(){
   row.onscroll=updateFeatArrows;
   setTimeout(updateFeatArrows,0);
 }
-function cardHTML(e, timeStatus) {
+// `dateStr` is the local YYYY-MM-DD this card is being drawn for. It exists so
+// date-scoped alerts (see getAlertNote) fire only on their own occurrence.
+function cardHTML(e, timeStatus, dateStr) {
   const typeClass = typeTagClass[e.type] || 'tag-library';
   const dayShort = (e._displayDay || e.day || '').substring(0, 3);
   const isClosed = e.status === 'Temp. closed';
   const isPaused = e.status === 'Temp. paused';
-  const alertNote = getAlertNote(e);
+  const alertNote = getAlertNote(e, dateStr);
   return `
     <div class="event-card${timeStatus === 'ended' ? ' card-ended' : ''}" onclick="openDetail(${e.id})">
       <div class="card-left">
@@ -4129,8 +4163,11 @@ function openDetail(id) {
   // Date/time with locale
   const locale = currentLang === 'es' ? 'es-MX' : 'en-US';
   let dayTimeText;
+  // The occurrence this detail screen represents, for date-scoped alerts.
+  let detailDateLocal = null;
   if (e.cadence === 'One-off' && e.event_date) {
     const d = new Date(e.event_date + 'T00:00:00');
+    detailDateLocal = e.event_date;
     const dateStr = d.toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     dayTimeText = `${dateStr} · ${e.time}`;
   } else {
@@ -4142,6 +4179,7 @@ function openDetail(id) {
       if (eventDays.includes(dayNames[d.getDay()])) { nextDate = new Date(d); break; }
     }
     if (nextDate) {
+      detailDateLocal = localDateStr(nextDate);
       const dateStr = nextDate.toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
       dayTimeText = `${dateStr} · ${e.time}`;
     } else {
@@ -4199,9 +4237,11 @@ function openDetail(id) {
 
   const notesEl = document.getElementById('detailNotes');
   if (e.notes) {
-    notesEl.textContent = '⚠ ' + e.notes;
+    // Strip the "[YYYY-MM-DD]" scope marker for display — it's routing
+    // information for the renderer, not something to show a reader.
+    notesEl.textContent = '⚠ ' + e.notes.replace(/ALERT\[\d{4}-\d{2}-\d{2}\]:/i, 'ALERT:');
     notesEl.style.display = 'block';
-    notesEl.classList.toggle('notes-alert', !!getAlertNote(e));
+    notesEl.classList.toggle('notes-alert', !!getAlertNote(e, detailDateLocal));
   } else { notesEl.style.display = 'none'; }
 
   // Tags
