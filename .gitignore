@@ -1,2 +1,13 @@
 __pycache__/
 *.pyc
+
+# Per-run scratch from the daily workflow. Regenerated every morning and read
+# only within the run that wrote it — committing them is pure churn, and the
+# durable record is scraper_log.txt plus the findings issue itself.
+scraper_findings.json
+duplicate_report.txt
+issue_body.md
+
+# Review workbooks never belong in the repo — they live in Alexandra's
+# Documents folder. Belt and braces alongside the workflow's staging list.
+*_review.xlsx

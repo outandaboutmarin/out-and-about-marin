@@ -30,6 +30,7 @@ jobs:
 
     permissions:
       contents: write
+      issues: write   # the notification step opens/updates one rolling issue
 
     steps:
       # Step 1: Check out your repository
@@ -88,10 +89,12 @@ jobs:
         continue-on-error: true
         run: |
           set -uo pipefail
-          if python check_duplicates.py; then
+          if python check_duplicates.py | tee duplicate_report.txt; then
             echo "Duplicate check clean."
+            echo "DUPES=0" >> "$GITHUB_ENV"
           else
             echo "::warning::check_duplicates.py found possible duplicates — see the output above."
+            echo "DUPES=1" >> "$GITHUB_ENV"
           fi
 
       # Step 7: Commit and push any changes back to GitHub
@@ -157,3 +160,128 @@ jobs:
 
           echo "::error::Could not push after 3 attempts."
           exit 1
+
+      # Step 8: Surface anything a human has to act on, as ONE rolling GitHub
+      # Issue assigned to Alexandra.
+      #
+      # Added 2026-08-15 (open item 31). Design notes, because the obvious
+      # implementations are all worse:
+      #
+      #  * ONE rolling issue, not one per run. A new issue every morning for
+      #    the same unchanged finding is ~30 emails a month; it gets filtered
+      #    within a week and then the rare finding that matters is invisible
+      #    too. The issue is created when findings appear, updated only when
+      #    they CHANGE, and closed automatically when they clear.
+      #  * ASSIGNED, not just opened. GitHub's default notification setting is
+      #    "Participating and @mentions", which does NOT email you for an issue
+      #    a bot opened on a repo you merely own. Assignment notifies
+      #    regardless, so this is what makes the whole thing actually arrive.
+      #  * Page-change flags are deliberately NOT in here — 11-13 of 16 pages
+      #    per day against a fresh baseline. They stay in scraper_log.txt for
+      #    the weekly sweep. See write_findings() in scraper.py.
+      #  * Workflow FAILURE is not handled here at all: GitHub already emails
+      #    the owner, confirmed enabled 2026-08-15. Combined with the step 6b
+      #    liveness check, a silent breakage now fails loudly.
+      #
+      # Non-blocking: a notification problem must never fail a run whose data
+      # work already succeeded and pushed.
+      - name: Report findings as a GitHub Issue
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LABEL: scraper-findings
+          ASSIGNEE: outandaboutmarin
+        run: |
+          set -uo pipefail
+
+          if [ ! -f scraper_findings.json ]; then
+            echo "No scraper_findings.json — scraper.py did not get far enough. Nothing to report."
+            exit 0
+          fi
+
+          COUNT=$(jq -r '.count' scraper_findings.json)
+          SIG=$(jq -r '.signature' scraper_findings.json)
+          # Fold in the duplicate check, which runs after the purge and so sees
+          # the same data the live site will.
+          if [ "${DUPES:-0}" = "1" ]; then
+            COUNT=$((COUNT + 1))
+            SIG="${SIG} || duplicates:present"
+          fi
+
+          gh label create "$LABEL" --color FBCA04 \
+            --description "Daily scraper found something needing attention" 2>/dev/null || true
+
+          NUM=$(gh issue list --label "$LABEL" --state open --limit 1 \
+                  --json number --jq '.[0].number // empty')
+
+          # ── Nothing to report ──────────────────────────────────────────────
+          if [ "$COUNT" -eq 0 ]; then
+            if [ -n "$NUM" ]; then
+              gh issue comment "$NUM" --body \
+                "All clear as of $(date -u +'%Y-%m-%d') — the findings above no longer appear. Closing automatically."
+              gh issue close "$NUM"
+              echo "Closed issue #${NUM}; nothing outstanding."
+            else
+              echo "Nothing to report, and no open issue. Silent."
+            fi
+            exit 0
+          fi
+
+          # ── Build the body ─────────────────────────────────────────────────
+          # Written by python rather than shell so the em dashes and accented
+          # venue names in the findings survive intact.
+          python - <<'PY'
+          import json, os, io
+          d = json.load(io.open("scraper_findings.json", encoding="utf-8"))
+          dupes = os.environ.get("DUPES", "0") == "1"
+          sig = d["signature"] + (" || duplicates:present" if dupes else "")
+          L = ["The daily scraper flagged the following on its "
+               f"{d['generated']} run. This issue updates itself and closes "
+               "automatically once everything clears.", ""]
+          reop = [f for f in d["findings"] if f["kind"] == "reopening"]
+          need = [f for f in d["findings"] if f["kind"] == "needs_date"]
+          if reop:
+              L += ["### Reopening within 7 days", ""]
+              L += [f"- {f['text']}" for f in reop] + [""]
+          if need:
+              L += ["### Needs one-off dates added", "",
+                    "These recur on no fixed rule, so dates have to be looked "
+                    "up and entered by hand.", ""]
+              L += [f"- {f['text']}" for f in need] + [""]
+          if dupes:
+              L += ["### Possible duplicate events", "",
+                    "`check_duplicates.py` found something. Full output is in "
+                    "the workflow run log.", ""]
+              try:
+                  rep = io.open("duplicate_report.txt", encoding="utf-8").read().strip()
+                  if rep:
+                      L += ["```", rep[:3000], "```", ""]
+              except OSError:
+                  pass
+          L += ["---", "",
+                "To act on this, open a chat with Claude and paste in the "
+                "items above.", "",
+                f"<!-- signature: {sig} -->"]
+          io.open("issue_body.md", "w", encoding="utf-8").write("\n".join(L))
+          PY
+
+          # ── Create, update, or stay quiet ──────────────────────────────────
+          if [ -z "$NUM" ]; then
+            gh issue create \
+              --title "Daily scraper: items needing attention" \
+              --body-file issue_body.md \
+              --label "$LABEL" \
+              --assignee "$ASSIGNEE"
+            echo "Opened a new findings issue."
+          else
+            PREV=$(gh issue view "$NUM" --json body --jq '.body' \
+                     | sed -n 's/.*<!-- signature: \(.*\) -->.*/\1/p')
+            if [ "$PREV" = "$SIG" ]; then
+              echo "Issue #${NUM} already reports exactly these findings. Staying quiet."
+            else
+              gh issue edit "$NUM" --body-file issue_body.md
+              gh issue comment "$NUM" --body \
+                "Findings changed on the $(date -u +'%Y-%m-%d') run — updated above."
+              echo "Updated issue #${NUM}."
+            fi
+          fi

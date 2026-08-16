@@ -66,6 +66,28 @@ def parse_skip_dates(notes):
     return set(re.findall(r"\bskip\s*:?\s*(\d{4}-\d{2}-\d{2})", notes, re.I))
 
 
+def alert_dates(notes):
+    """
+    Dates carried by date-scoped alerts — "ALERT[2026-09-22]: ..." — matching
+    getAlertNote() in index.html. A bare "ALERT:" has no date and yields none.
+    """
+    if not notes:
+        return set()
+    return set(re.findall(r"ALERT\[(\d{4}-\d{2}-\d{2})\]:", notes, re.I))
+
+
+def acknowledged_on(event, d):
+    """
+    True when this record already explains itself on date `d` — a date-scoped
+    ALERT saying it's cancelled or replaced that day. Distinct from a `skip:`,
+    which removes the occurrence entirely; an ALERT keeps it visible and tells
+    the reader what's happening instead. Either way a human has decided, so the
+    collision is resolved rather than outstanding.
+    """
+    iso = d.isoformat()
+    return iso in alert_dates(event.get("notes")) or iso in parse_skip_dates(event.get("notes"))
+
+
 def _nth_weekday(nth, day_index, year, month):
     count = 0
     for day in range(1, calendar.monthrange(year, month)[1] + 1):
@@ -191,6 +213,16 @@ def scan(events, horizon_days=180):
                 continue
             if not does_event_occur_on(r, d):
                 continue
+            # Already acknowledged: the recurring record carries a date-scoped
+            # ALERT for exactly this date, so a human has looked at the clash
+            # and chosen to keep both — the recurring one rendering with a
+            # "cancelled today" banner beside the one-off that replaces it.
+            # Without this, a resolved collision is re-reported every night,
+            # and since these findings now open a GitHub Issue (open item 31)
+            # that would make the very first notification a false alarm.
+            # First case: ids 781/6, Civic Center, 2026-09-22.
+            if acknowledged_on(r, d) and not show_all:
+                continue
             same_time = str(r.get("time")).strip() == str(e.get("time")).strip()
             if not same_time and not show_all:
                 continue
@@ -242,6 +274,27 @@ def self_test(events):
             any_hit = any(does_event_occur_on(evs[i], datetime.date.today() + datetime.timedelta(days=k))
                           for k in range(90))
             expect(not any_hit, f"id {i} is Monthly with no usable rule and should never occur")
+
+    # date-scoped ALERTs resolve a collision; bare ones must NOT (they carry no
+    # date, so they say nothing about any particular day)
+    sep22 = datetime.date(2026, 9, 22)
+    sep15 = datetime.date(2026, 9, 15)
+    dated = {"notes": "ALERT[2026-09-22]: Cancelled today — replaced by the bilingual storytime."}
+    bare = {"notes": "ALERT: On break for all of August."}
+    skipped = {"notes": "skip: 2026-09-22"}
+    expect(acknowledged_on(dated, sep22), "dated ALERT should acknowledge its own date")
+    expect(not acknowledged_on(dated, sep15), "dated ALERT must not acknowledge other dates")
+    expect(not acknowledged_on(bare, sep22), "bare ALERT must not acknowledge any date")
+    expect(acknowledged_on(skipped, sep22), "a skip: should acknowledge its date")
+    expect(not acknowledged_on({"notes": ""}, sep22), "empty notes acknowledge nothing")
+
+    # the live case this was built for: id 6 is flagged cancelled on Sep 22,
+    # so its clash with the one-off id 781 is resolved, not outstanding
+    if 6 in evs:
+        expect(acknowledged_on(evs[6], sep22),
+               "id 6 should be acknowledged on 2026-09-22 (ALERT scoped to that date)")
+        expect(not acknowledged_on(evs[6], sep15),
+               "id 6 should NOT be acknowledged on an ordinary Tuesday")
 
     print(f"self-test: {checks - len(failures)}/{checks} passed")
     for f in failures:

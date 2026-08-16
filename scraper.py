@@ -162,7 +162,12 @@ def check_library_websites():
         changed, new_hashes = lr.check_for_page_changes(lr.LIBRARIES, prev_hashes)
         lr.save_hashes(new_hashes)
 
-        # Check for upcoming reopenings
+        # Check for upcoming reopenings.
+        # These used to be printed here and nowhere else — not added to
+        # `issues`, so never written into scraper_log.txt and never surfaced
+        # anywhere a human would look. Found 2026-08-15 while wiring up
+        # notifications; a branch reopening inside 7 days is exactly the kind
+        # of thing worth a nudge, so it now travels with the other findings.
         reopening_soon = lr.check_upcoming_reopenings(EVENTS_FILE)
         if reopening_soon:
             print("\n  🔔 UPCOMING REOPENINGS:")
@@ -184,6 +189,13 @@ def check_library_websites():
 
         if needs_lookup:
             issues += [f"NEEDS ONE-OFF DATE: {e['name']}" for e in needs_lookup]
+
+        if reopening_soon:
+            issues += [
+                f"REOPENING SOON: {r['event']} at {r['venue']} — reopens {r['reopens']}"
+                + (" (TODAY)" if r["days"] == 0 else f" (in {r['days']} day(s))")
+                for r in reopening_soon
+            ]
 
         return issues
 
@@ -242,6 +254,12 @@ def generate_run_report(events, issues):
     
     page_changes = [i for i in issues if i.startswith("PAGE CHANGED")]
     date_lookups = [i for i in issues if i.startswith("NEEDS ONE-OFF DATE")]
+    reopenings = [i for i in issues if i.startswith("REOPENING SOON")]
+
+    if reopenings:
+        lines += ["", "Libraries reopening within 7 days:"]
+        for issue in reopenings:
+            lines.append(f"  🔔 {issue}")
 
     if page_changes:
         lines += ["", "Library pages changed — review recommended:"]
@@ -260,11 +278,62 @@ def generate_run_report(events, issues):
         lines += ["", "All unpredictable events have upcoming dates loaded. ✓"]
     
     lines.append(f"\nNext run: tomorrow at 6:00 AM PT")
-    
+
     with open(report_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
-    
+
     print(f"\n✓ Report saved to {report_path}")
+
+    write_findings(date_lookups, reopenings)
+
+
+# Findings the workflow turns into a GitHub Issue. Deliberately a SUBSET of
+# what goes in the log: only things a human has to act on.
+FINDINGS_FILE = "scraper_findings.json"
+
+# " (TODAY)" / " (in 5 day(s))" — display detail, deliberately excluded from
+# the change signature so a countdown ticking down doesn't read as new news.
+COUNTDOWN_RE = re.compile(r"\s*\((?:TODAY|in \d+ day\(s\))\)\s*$")
+
+def write_findings(date_lookups, reopenings):
+    """
+    Emit the actionable findings for the notification step in daily.yml.
+
+    PAGE CHANGED is deliberately excluded. The hash check MD5s the entire raw
+    page, so a rotating banner counts as a change; across the two scheduled
+    runs on 2026-08-14/15 it flagged 11 and 13 of 16 pages against a FRESH
+    baseline. Notifying daily on that trains you to ignore the notification,
+    which then hides the rare finding that matters. It stays in the log for
+    the weekly sweep to read.
+
+    `signature` is what the workflow compares against the open issue to decide
+    whether anything actually changed — if it matches, the run stays silent.
+    Each finding therefore carries a `key` separate from its display `text`:
+    the key strips the "(in N day(s))" countdown, which otherwise ticks down
+    every morning and makes an unchanged reopening look like a new finding
+    every single day — the daily-email problem this design exists to avoid.
+    """
+    findings = []
+    for item in reopenings:
+        text = item[len("REOPENING SOON: "):]
+        findings.append({
+            "kind": "reopening",
+            "text": text,
+            "key": COUNTDOWN_RE.sub("", text).strip(),
+        })
+    for item in date_lookups:
+        text = item[len("NEEDS ONE-OFF DATE: "):]
+        findings.append({"kind": "needs_date", "text": text, "key": text})
+
+    payload = {
+        "generated": TODAY,
+        "count": len(findings),
+        "findings": findings,
+        "signature": " || ".join(sorted(f"{f['kind']}:{f['key']}" for f in findings)),
+    }
+    with open(FINDINGS_FILE, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
+    print(f"✓ {len(findings)} actionable finding(s) written to {FINDINGS_FILE}")
 
 def main():
     print("=" * 50)
