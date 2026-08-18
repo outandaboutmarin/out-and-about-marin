@@ -1450,21 +1450,19 @@ function mapDbUser(dbUser) {
     padding: 0.5rem 0.75rem;
   }
   .detail-back {
-    display: flex; align-items: center; gap: 7px;
-    color: rgba(255,255,255,0.85);
-    font-size: 0.95rem; font-weight: 500; cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+    color: #fff;
+    font-size: 1.15rem; font-weight: 600; cursor: pointer;
     background: none; border: none;
     font-family: var(--font-sans);
-    /* First pass (2026-08-18) only grew the invisible tap zone via padding
-       cancelled out by a matching negative margin — technically a real 44px
-       touch target, but the visible text was untouched (0.7rem -> 0.75rem,
-       under a pixel), so it looked exactly the same and Alexandra correctly
-       called that out. This pass makes it ACTUALLY bigger: font-size roughly
-       35% up (now clearly larger than .detail-org at 0.7rem, still well
-       under .detail-title's 1.25rem so it doesn't compete with it), plus a
-       lighter text color for more contrast against the navy header. The
-       padding/negative-margin/min-height combo below still keeps the tap
-       target at a real 44px regardless of the text's own size. */
+    /* History: pass 1 (2026-08-18) only grew the invisible tap zone, text
+       unchanged — looked identical. Pass 2 went to 0.95rem, still read as
+       small. This pass, per Alexandra ("plenty of room to make it bigger on
+       both computer and mobile"): 1.15rem — roughly DOUBLE the original
+       0.7rem, full white instead of 65% opacity, and bold rather than the
+       original default weight. One rule serves both the events detail
+       screen and the Resources detail screen (both use this class), and
+       there's no @media override, so this applies at every width. */
     padding: 0.625rem;
     margin: -0.625rem -0.625rem 0.25rem;
     min-height: 44px;
