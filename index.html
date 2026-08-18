@@ -1450,17 +1450,21 @@ function mapDbUser(dbUser) {
     padding: 0.5rem 0.75rem;
   }
   .detail-back {
-    display: flex; align-items: center; gap: 5px;
-    color: rgba(255,255,255,0.65);
-    font-size: 0.75rem; cursor: pointer;
+    display: flex; align-items: center; gap: 7px;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem; font-weight: 500; cursor: pointer;
     background: none; border: none;
     font-family: var(--font-sans);
-    /* Padding + matching negative margin grows the tap target to a real
-       44px touch target (Apple/Google's minimum) without shifting where the
-       text sits or how much gap there is before the badge below — the
-       header's own padding (0.875rem 1rem) no longer has to do that job.
-       Reported 2026-08-18: the button was effectively just its 0.7rem text,
-       ~15px tall, far under any usable mobile tap size. */
+    /* First pass (2026-08-18) only grew the invisible tap zone via padding
+       cancelled out by a matching negative margin — technically a real 44px
+       touch target, but the visible text was untouched (0.7rem -> 0.75rem,
+       under a pixel), so it looked exactly the same and Alexandra correctly
+       called that out. This pass makes it ACTUALLY bigger: font-size roughly
+       35% up (now clearly larger than .detail-org at 0.7rem, still well
+       under .detail-title's 1.25rem so it doesn't compete with it), plus a
+       lighter text color for more contrast against the navy header. The
+       padding/negative-margin/min-height combo below still keeps the tap
+       target at a real 44px regardless of the text's own size. */
     padding: 0.625rem;
     margin: -0.625rem -0.625rem 0.25rem;
     min-height: 44px;
