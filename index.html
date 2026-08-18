@@ -149,6 +149,7 @@ const T = {
     festival: 'Festival',
     fitness: 'Fitness',
     music: 'Music and Movies',
+    grownUpsOnly: 'Grown-Ups Only!',
     // Filter options - Time
     morning: 'Morning',
     afternoon: 'Afternoon',
@@ -244,6 +245,7 @@ const T = {
     festival: 'Festival',
     fitness: 'Ejercicio',
     music: 'Música y Películas',
+    grownUpsOnly: '¡Solo para Adultos!',
     // Filter options - Time
     morning: 'Mañana',
     afternoon: 'Tarde',
@@ -854,6 +856,10 @@ function mapDbUser(dbUser) {
     --market-bg: #EAF3DE; --market-text: #3B6D11;
     --community-bg: #FBEAF0; --community-text: #72243E;
     --music-bg: #EFE7FA; --music-text: #4B2E83;
+    /* Teal is the one hue not already spoken for: fitness is green-dominant
+       (#085041), library is navy (#0C447C). Added 2026-08-18 with the
+       Grown-Ups Only! type. */
+    --grownups-bg: #E2F1F3; --grownups-text: #0E5C66;
     /* Day colors */
     --mon-bg: #E6F1FB; --mon-text: #0C447C;
     --tue-bg: #EEEDFE; --tue-text: #3C3489;
@@ -1317,6 +1323,7 @@ function mapDbUser(dbUser) {
   .tag-market { color: var(--market-text); border-color: color-mix(in srgb, var(--market-text) 34%, #fff); }
   .tag-community { color: var(--community-text); border-color: color-mix(in srgb, var(--community-text) 34%, #fff); }
   .tag-music { color: var(--music-text); border-color: color-mix(in srgb, var(--music-text) 34%, #fff); }
+  .tag-grownups { color: var(--grownups-text); border-color: color-mix(in srgb, var(--grownups-text) 34%, #fff); }
 
   /* Holiday notice banner */
   .holiday-notice {
@@ -2838,7 +2845,8 @@ const typeOptions = [
   { value: 'Music and Movies', dot: '#7B4BC0' },
   { value: 'Fitness', dot: '#1D9E75' },
   { value: 'Festival / Community Event', dot: '#BA7517' },
-  { value: 'Farmers Market', dot: '#639922' }
+  { value: 'Farmers Market', dot: '#639922' },
+  { value: 'Grown-Ups Only!', dot: '#1795A6' }
 ];
 // Cadences treated as "Recurring" for the Recurring type-filter option.
 const RECURRING_CADENCES = ['Weekly', 'Bi-weekly', 'Monthly'];
@@ -2854,7 +2862,7 @@ const typeTagClass = {
   'Library': 'tag-library', 'Kids Programs': 'tag-kids',
   'Fitness': 'tag-fitness', 'Festival': 'tag-festival',
   'Farmers Market': 'tag-market', 'Community Event': 'tag-community',
-  'Music and Movies': 'tag-music'
+  'Music and Movies': 'tag-music', 'Grown-Ups Only!': 'tag-grownups'
 };
 
 // ═══════════════════════════════════════════
@@ -3196,6 +3204,7 @@ const filterOptionTranslations = {
   'Library': 'Biblioteca', 'Kids Programs': 'Programas infantiles',
   'Community Event': 'Evento comunitario', 'Farmers Market': 'Mercado agricultores',
   'Festival': 'Festival', 'Fitness': 'Ejercicio', 'Music and Movies': 'Música y Películas',
+  'Grown-Ups Only!': '¡Solo para Adultos!',
   // Ages
   'Babies (0–12 months)': 'Bebés (0–12 meses)',
   'Toddlers (1–3 yrs)': 'Pequeños (1–3 años)',
@@ -4102,7 +4111,7 @@ function cardHTML(e, timeStatus, dateStr) {
         <div class="card-title">${currentLang === "es" ? (e.event_name_es || e.event_name) : e.event_name}</div>
         <div class="card-venue">${e.venue}${e.town ? ' · ' + e.town : ''}</div>
         <div class="card-meta">
-          <span class="tag ${typeClass}">${currentLang === "es" ? ({"Library":"Biblioteca","Kids Programs":"Programas infantiles","Community Event":"Evento comunitario","Farmers Market":"Mercado agricultores","Festival":"Festival","Fitness":"Ejercicio","Music and Movies":"Música y Películas"}[e.type] || e.type) : e.type}</span>
+          <span class="tag ${typeClass}">${currentLang === "es" ? ({"Library":"Biblioteca","Kids Programs":"Programas infantiles","Community Event":"Evento comunitario","Farmers Market":"Mercado agricultores","Festival":"Festival","Fitness":"Ejercicio","Music and Movies":"Música y Películas","Grown-Ups Only!":"¡Solo para Adultos!"}[e.type] || e.type) : e.type}</span>
           <span class="tag tag-age">${e.ages}</span>
           <span class="tag ${e.cost === 'Free' ? 'tag-free' : 'tag-paid'}">${e.cost}</span>
           ${timeStatus === 'ended' ? `<span class="tag tag-ended">${currentLang === 'es' ? 'Terminado' : 'Ended'}</span>` : ''}
@@ -4165,7 +4174,8 @@ function openDetail(id) {
   const typeTranslations = {
     'Library': 'Biblioteca', 'Kids Programs': 'Programas infantiles',
     'Community Event': 'Evento comunitario', 'Farmers Market': 'Mercado agricultores',
-    'Festival': 'Festival', 'Fitness': 'Ejercicio', 'Music and Movies': 'Música y Películas'
+    'Festival': 'Festival', 'Fitness': 'Ejercicio', 'Music and Movies': 'Música y Películas',
+    'Grown-Ups Only!': '¡Solo para Adultos!'
   };
   document.getElementById('detailTypeBadge').textContent = currentLang === 'es' ? (typeTranslations[e.type] || e.type) : e.type;
   document.getElementById('detailTitle').textContent = currentLang === 'es' ? (e.event_name_es || e.event_name) : e.event_name;
