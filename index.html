@@ -1452,10 +1452,19 @@ function mapDbUser(dbUser) {
   .detail-back {
     display: flex; align-items: center; gap: 5px;
     color: rgba(255,255,255,0.65);
-    font-size: 0.7rem; cursor: pointer;
-    margin-bottom: 0.875rem;
+    font-size: 0.75rem; cursor: pointer;
     background: none; border: none;
     font-family: var(--font-sans);
+    /* Padding + matching negative margin grows the tap target to a real
+       44px touch target (Apple/Google's minimum) without shifting where the
+       text sits or how much gap there is before the badge below — the
+       header's own padding (0.875rem 1rem) no longer has to do that job.
+       Reported 2026-08-18: the button was effectively just its 0.7rem text,
+       ~15px tall, far under any usable mobile tap size. */
+    padding: 0.625rem;
+    margin: -0.625rem -0.625rem 0.25rem;
+    min-height: 44px;
+    box-sizing: border-box;
   }
   .detail-type-badge {
     display: inline-block;
