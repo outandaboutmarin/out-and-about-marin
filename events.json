@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-17",
+  "last_updated": "2026-08-18",
   "events": [
     {
       "id": 1,
@@ -6470,36 +6470,6 @@
       "notes": "4th Saturday of each month, 9am-3pm (owner-provided time; some listings show 8am-2pm - confirm). Held at St. Andrew Presbyterian Church parking lot.",
       "location_group": "Sausalito/Marin City",
       "id": 737
-    },
-    {
-      "organization": "Community (Song Circle with Amber)",
-      "venue": "Redwood Stage (next to Peri Park)",
-      "event_name": "Song Circle with Amber",
-      "event_name_es": "Círculo de Canciones con Amber",
-      "type": "Kids Programs",
-      "day": "Monday",
-      "time": "3:30 PM",
-      "time_of_day": "Afternoon",
-      "town": "Fairfax",
-      "address": "16 Park Rd, Fairfax, CA 94930",
-      "ages": "All ages",
-      "cost": "Free (donations welcome via Venmo)",
-      "indoor_outdoor": "Outdoor",
-      "active_sedentary": "Sedentary",
-      "cadence": "One-off",
-      "season_start": "",
-      "season_end": "",
-      "event_date": "2026-08-17",
-      "expires": "2026-08-17",
-      "status": "Active",
-      "featured": false,
-      "description": "Community song circle for all ages led by musician Amber, who has held a longstanding song circle in Bolinas for years. Kiddos, parents/caregivers, and elders all welcome.",
-      "description_es": "Círculo de canciones comunitario para todas las edades dirigido por la música Amber, quien ha mantenido un círculo de canciones en Bolinas durante años. Bienvenidos niños, padres/cuidadores y mayores.",
-      "registration": "Not required",
-      "website": "",
-      "notes": "Source: community (Mountain Mamas group), relayed by Alexandra. Confirmed continuing through August 2026 (2026-07). Community-run, turnout-dependent - no public web page. Redwood Stage is adjacent to Peri Park.",
-      "location_group": "Fairfax",
-      "id": 740
     },
     {
       "organization": "Community (Song Circle with Amber)",

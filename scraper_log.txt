@@ -1,6 +1,6 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-08-17
-Time: 13:31:05
+Date: 2026-08-18
+Time: 13:33:43
 
 Total events in events.json: 285
 Active events: 264
@@ -20,7 +20,7 @@ Events by town:
   Bolinas: 2
   Calistoga: 15
   Corte Madera: 19
-  Fairfax: 12
+  Fairfax: 11
   Inverness: 1
   Larkspur: 16
   Marin City: 4
@@ -29,7 +29,7 @@ Events by town:
   Muir Beach: 10
   Nicasio/San Geronimo: 4
   Novato: 19
-  Point Reyes Station: 5
+  Point Reyes Station: 6
   Ross: 3
   San Anselmo: 10
   San Geronimo: 1
