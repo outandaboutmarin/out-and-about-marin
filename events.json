@@ -8577,6 +8577,36 @@
       "location_group": "Mill Valley",
       "event_name_es": "Fiesta Comunitaria de Larry the Hat's",
       "description_es": "Fiesta de barrio en Depot Plaza con comida, bebidas, música en vivo, zona infantil y desfile de moda. Homenaje a Bobby Weir, con fondos destinados a los bomberos de Muir Beach."
+    },
+    {
+      "id": 851,
+      "organization": "Postpartum Support Center & West Marin Fund",
+      "venue": "Bear Valley Visitor Center",
+      "event_name": "West Marin Picnic",
+      "type": "Kids Programs",
+      "day": "Saturday",
+      "time": "10:00 AM",
+      "time_of_day": "Morning",
+      "town": "Point Reyes Station",
+      "address": "1 Bear Valley Visitor Center Access Rd, Point Reyes Station, CA 94956",
+      "ages": "0-5 yrs",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Both",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-08-29",
+      "expires": "2026-08-29",
+      "status": "Active",
+      "featured": false,
+      "description": "A picnic for expecting families and families with children ages 0-5, hosted by the Postpartum Support Center and West Marin Fund. Surprise gift bags, arts & crafts, games & family activities, books for children, and food & refreshments. 10:00 AM–12:00 PM.",
+      "registration": "Required — RSVP (QR code on flyer; call (415) 320-6707 with questions)",
+      "website": "https://www.postpartumsc.org",
+      "notes": "Added 2026-08-17 from the organization's own Instagram flyer (@postpartumsupportcenter), not a secondhand roundup. Not found on postpartumsc.org's own pages as of this add — not unusual for a small one-off community event promoted mainly via Instagram/QR RSVP; the flyer's phone number (415-320-6707) matches PPSC's number found independently via web search, which is why this was added despite no independent listing.",
+      "location_group": "West Marin",
+      "event_name_es": "Picnic de West Marin",
+      "description_es": "Un picnic para familias embarazadas y familias con niños de 0 a 5 años, organizado por Postpartum Support Center y West Marin Fund. Bolsas de regalo sorpresa, manualidades, juegos y actividades familiares, libros para niños, y comida y refrescos. 10:00 a.m.–12:00 p.m."
     }
   ]
 }
