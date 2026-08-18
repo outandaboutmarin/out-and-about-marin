@@ -450,7 +450,7 @@ UNPREDICTABLE_EVENTS = [
         "ages": "5-12 yrs",
         "type": "Kids Programs",
         "lookup_url": "https://marinlibrary.bibliocommons.com/v2/events",
-        "lookup_note": "Filter BiblioCommons by Corte Madera location and search 'Read to a Dog'. Monthly on a Sunday — specific date varies. NOTE: Corte Madera Library closed for Refresh early May–mid-June 2026.",
+        "lookup_note": "Filter BiblioCommons by Corte Madera location and search 'Read to a Dog'. Monthly on a Sunday — specific date varies. NOTE: Corte Madera Library closed for Refresh Jul 6–Sep 2, 2026, reopens Sep 3 (see open item 8) — the program likely won't post a date until after reopening; confirmed nothing posted as of 2026-08-17.",
         "template": {
             "organization": "Marin County Free Library",
             "venue": "Corte Madera Library",
