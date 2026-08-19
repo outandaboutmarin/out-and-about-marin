@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-18",
+  "last_updated": "2026-08-19",
   "events": [
     {
       "id": 1,
@@ -6260,36 +6260,6 @@
       "event_name_es": "Hora del cuento de Música y Movimiento con Ingrid",
       "description_es": "Cuentacuentos bilingüe de música y movimiento en español e inglés para niños pequeños, dirigido por Ingrid.",
       "id": 720
-    },
-    {
-      "organization": "One Tam / Marin Water",
-      "venue": "Lake Lagunitas",
-      "event_name": "Lake Lagunitas Spiders",
-      "type": "Kids Programs",
-      "day": "Tuesday",
-      "time": "10:00 AM",
-      "time_of_day": "Morning",
-      "town": "Fairfax",
-      "address": "Lake Lagunitas, Fairfax, CA 94930",
-      "ages": "All ages",
-      "cost": "Free",
-      "indoor_outdoor": "Outdoor",
-      "active_sedentary": "Active",
-      "cadence": "One-off",
-      "season_start": "",
-      "season_end": "",
-      "event_date": "2026-08-18",
-      "expires": "2026-08-18",
-      "status": "Active",
-      "featured": false,
-      "description": "Nature program exploring spiders at Lake Lagunitas, hosted by Marin Water District and One Tam. 10am-2pm.",
-      "registration": "Not required",
-      "website": "https://onetam.org/calendar",
-      "notes": "",
-      "location_group": "Fairfax",
-      "event_name_es": "Arañas de Lake Lagunitas",
-      "description_es": "Programa de naturaleza explorando las arañas en Lake Lagunitas, organizado por Marin Water District y One Tam. De 10am a 2pm.",
-      "id": 730
     },
     {
       "organization": "Belvedere-Tiburon Library",
