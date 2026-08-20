@@ -1,5 +1,5 @@
 {
-  "sweep_date": "2026-08-19",
+  "sweep_date": "2026-08-20",
   "suggested_events": [
     {
       "date": "TBD",
@@ -76,6 +76,116 @@
       "time": "9:00 AM",
       "location": "Mount Burdell Preserve",
       "description": "Directions: Meet at the gate on San Andreas Dr in Novato. From Hwy 101 in Novato, take the exit for San Marin Dr west 2.3 miles. Turn right onto San Andreas Dr and follow approximately 0.5 miles. The ",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-09-05",
+      "day_label": "Saturday, 2026-09-05",
+      "title": "Juice with a Ranger",
+      "time": "10:00 AM",
+      "location": "King Mountain Summit",
+      "description": "Directions: <p>Meet at the gate at the end of Ridgecrest Rd in Kentfield. From Hwy 101 in Larkspur, take the exit for Sir Francis Drake Blvd west 2.1 miles. Turn left onto College Ave, right onto Wood",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-09-05",
+      "day_label": "Saturday, 2026-09-05",
+      "title": "Meet Wildlife with WildCare",
+      "time": "11:00 AM",
+      "location": "Paradise Beach Park",
+      "description": "Directions: <p dir=\"ltr\">Paradise Beach Park \u2013 parking lot Meet at the parking lot in Paradise Beach Park in Tiburon (3450 Paradise Dr). From Hwy 101 in Mill Valley, take the exit for Tiburon Blvd (Hw",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-09-13",
+      "day_label": "Sunday, 2026-09-13",
+      "title": "Hamilton Wetlands Birds",
+      "time": "10:00 AM",
+      "location": "Hamilton Wetlands",
+      "description": "Directions: Meet at parking area near the playfield. From Highway 101 take the Ignacio/Bel Marin Keys exit. Stay right onto Nave Drive .7 mi, go left at Main Gate Rd, .4 mi, Main Gate Rd becomes S Pal",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-09-19",
+      "day_label": "Saturday, 2026-09-19",
+      "title": "Sunset Nature Walk",
+      "time": "5:30 PM",
+      "location": "Terra Linda Sleep Hollow Preserve",
+      "description": "Directions: <p dir=\"ltr\">Meet at the Eagle Rock Trail at the end of Del Haro Way. From Hwy 101 in San Rafael, take the Freitas Pkwy exit west, turn left onto Las Gallinas Dr, right onto Nova Albion Wa",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-09-20",
+      "day_label": "Sunday, 2026-09-20",
+      "title": "The Road to Becoming a Park Ranger",
+      "time": "10:30 AM",
+      "location": "Deer Island Preserve",
+      "description": "Directions: <p dir=\"ltr\">Meet at the gate on Deer Island Ln in Novato. From Hwy 101 in Novato, take the exit for Atherton Ave east 1.7 miles. Turn right onto Olive Ave and left onto Deer Island Ln. Th",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-09-20",
+      "day_label": "Sunday, 2026-09-20",
+      "title": "Junior Rangers: Nighttime Creatures",
+      "time": "5:00 PM",
+      "location": "Roy&#39\\;s Redwoods Preserve",
+      "description": "Directions: <p dir=\"ltr\">Meet at the&nbsp\\;Roy\u2019s&nbsp\\;Redwoods&nbsp\\;Loop trailhead on Nicasio Valley Rd in San Geronimo. From Hwy 101 in Larkspur, take the exit for Sir Francis Drake Blvd west 10.8 ",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-09-23",
+      "day_label": "Wednesday, 2026-09-23",
+      "title": "Muddy Hollow",
+      "time": "10:00 AM",
+      "location": "Point Reyes National Seashore",
+      "description": "Directions: Meet at the Muddy Hollow parking area. From Hwy 101 in Larkspur, take the exit for Sir Francis Drake Blvd west 20.4 miles to Olema. Turn right onto Hwy 1. Go 500 feet, turn left onto Bear ",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-09-30",
+      "day_label": "Wednesday, 2026-09-30",
+      "title": "Senior Stroll: Loch Lomond Birds",
+      "time": "10:00 AM",
+      "location": "Loch Lomond Marina",
+      "description": "Directions: Meet at the Loch Lomond Marina Park parking lot. From Highway 101 take the downtown San Rafael exit. Turn east onto 2<sup>nd</sup> St .3 mi, continue onto 3<sup>rd</sup> St .4 mi, continue",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-10-20",
+      "day_label": "Tuesday, 2026-10-20",
+      "title": "Senior Stroll: Raptors",
+      "time": "10:00 AM",
+      "location": "Marin Headlands",
+      "description": "Directions: Meet at the Miwok Trailhead on the east end of Rodeo Lagoon. From Hwy 101, take the exit for Alexander Ave and follow the signs to the Headlands. Follow Bunker Rd (through the tunnel) and ",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-10-25",
+      "day_label": "Sunday, 2026-10-25",
+      "title": "Oaks",
+      "time": "10:00 AM",
+      "location": "Deer Island Preserve",
+      "description": "Directions: Meet at the gate on Deer Island Ln in Novato. From Hwy 101 in Novato, take the exit for Atherton Ave east 1.7 miles. Turn right onto Olive Ave and left onto Deer Island Ln. The gate is on ",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-10-28",
+      "day_label": "Wednesday, 2026-10-28",
+      "title": "Evening at Roy&#8217\\;s Redwoods",
+      "time": "3:30 PM",
+      "location": "Roy&#8217\\;s Redwoods Preserve",
+      "description": "Directions: Meet at the Roy\u2019s Redwoods Loop trailhead on Nicasio Valley Rd in San Geronimo. From Hwy 101 in Larkspur, take the exit for Sir Francis Drake Blvd west 10.8 miles, turn right onto Nicasio ",
       "source": "Marin County Parks (Trumba iCal)",
       "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
     },
