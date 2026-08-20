@@ -8581,8 +8581,8 @@
       "id": 858,
       "organization": "Upside",
       "venue": "Upside",
-      "event_name": "Dirty Sneaks Sunset Sessions",
-      "type": "Music and Movies",
+      "event_name": "Dirty Sneaks Sunset Session - tacos & margs for sale",
+      "type": "Community Event",
       "day": "Friday",
       "time": "5:30 PM",
       "time_of_day": "Evening",
@@ -8599,13 +8599,13 @@
       "expires": "2026-08-21",
       "status": "Active",
       "featured": false,
-      "description": "Dirty Sneaks house + disco DJ set at Upside — live DJ, food, and good vibes. Billed as an easy Friday-night hang, \"the perfect way to kick off back to school.\" Free entry. 5:30–9:00 PM.",
+      "description": "Tacos, margs, house music to dance to; billed as an easy Friday night hang, \"perfect way to kick off back 2 school.\" Free entry. 5:30–9:00 PM.",
       "registration": "Not required",
       "website": "https://www.hello-upside.com",
-      "notes": "Added 2026-08-20 from a posted flyer. NOT a kids/family event — tacos, margaritas, house/disco DJ set, clearly adult-oriented. Filed under Music and Movies for lack of a better existing category; the still-open request to add a 'Grown-Ups Only!' Type would fit this record more precisely if built. Confirmed Upside is a real Mill Valley cafe at this address (normally a 6:30am-2pm coffee shop; this is an after-hours special event).",
+      "notes": "Added 2026-08-20 from a posted flyer. Filed under Community Event 2026-08-20 per Alexandra's call, after first being placed under Music and Movies for lack of a better fit. NOT a kids/family event — tacos, margaritas, house/disco DJ set, adult-oriented; kept ages: Adults so this doesn't read as family programming despite the Community Event type. Description text is Alexandra's own wording verbatim, with the closing phrase '2 school' restored from how she originally described this event earlier in the same conversation — the follow-up message that supplied the final description text cut off mid-quote at 'kick off back.' Confirmed Upside is a real Mill Valley cafe at this address (normally a 6:30am-2pm coffee shop; this is an after-hours special event).",
       "location_group": "Mill Valley",
-      "event_name_es": "Dirty Sneaks Sunset Sessions",
-      "description_es": "Set de DJ de house y disco de Dirty Sneaks en Upside — DJ en vivo, comida y buen ambiente. Entrada gratuita. 5:30–9:00 PM. Evento para adultos."
+      "event_name_es": "Dirty Sneaks Sunset Session - tacos y margaritas a la venta",
+      "description_es": "Tacos, margaritas, música house para bailar; un relajado plan de viernes por la noche, \"la manera perfecta de arrancar el regreso a clases.\" Entrada gratuita. 5:30–9:00 PM. Evento para adultos."
     }
   ]
 }
