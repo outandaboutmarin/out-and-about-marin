@@ -9820,6 +9820,37 @@
       "event_name_es": "Terceros Jueves en Markham",
       "description_es": "Una velada relajada y comunitaria con música en vivo, comida local y vinos con carácter. 5:30–7:30 p.m. Comida disponible para comprar.",
       "county": "Napa"
+    },
+    {
+      "id": 904,
+      "organization": "Alila Napa Valley",
+      "venue": "Salvia Terrace & Bar",
+      "event_name": "Social Sessions at Salvia Terrace & Bar",
+      "event_name_es": "Social Sessions en Salvia Terrace & Bar",
+      "type": "Music and Movies",
+      "day": "Thursday",
+      "time": "5:00 PM",
+      "time_of_day": "Evening",
+      "town": "St. Helena",
+      "address": "1915 Main St, St. Helena, CA 94574",
+      "ages": "All ages",
+      "cost": "Free to attend",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "Weekly",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "",
+      "expires": "",
+      "status": "Active",
+      "featured": false,
+      "description": "Let's get social at Salvia. Join us every Thursday for Salvia Social Sessions, an easygoing evening of live music on the terrace, thoughtfully crafted cocktails, and sweeping vineyard views. 5–8 PM.",
+      "description_es": "Únete a nosotros todos los jueves para las Salvia Social Sessions: una velada relajada con música en vivo en la terraza, cócteles cuidadosamente preparados y amplias vistas a los viñedos. 5–8 p.m.",
+      "registration": "Not required",
+      "website": "https://www.sthelena.com/event/social-sessions-at-salvia-terrace-bar-8/",
+      "notes": "Added 2026-08-21 at Alexandra's direction, using the event page she supplied. That page settles the frequency question raised in the Napa sweep review: it states 'every Thursday', 5–8 PM — not the first-Thursday-only, 5–7 PM pattern some third-party listings describe. Hosted by Alila Napa Valley, an adults-only resort, so the terrace setting skews grown-up even though attendance is not ticketed.",
+      "location_group": "St. Helena",
+      "county": "Napa"
     }
   ]
 }
