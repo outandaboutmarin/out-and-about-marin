@@ -155,6 +155,27 @@ def _norm(name):
     return re.sub(r"[^a-z]", "", str(name).lower())[:14]
 
 
+def _start_time(t):
+    """
+    Just the START time, normalized — '12:30 PM - 2:00 PM' and '12:30 PM' are
+    the same slot and must compare equal.
+
+    WHY (found 2026-08-20): the COLLISION scan compared the raw `time` strings,
+    so a recurring record storing a RANGE ('12:30 PM - 2:00 PM', id 208) never
+    matched a one-off storing only a start ('12:30 PM', id 870) on the same
+    date at the same venue. The finding was demoted to low-signal and hidden
+    without --all, so a genuine double-booking passed a clean scan. Roughly a
+    fifth of records store a range, so this was suppressing a whole class.
+    """
+    m = re.search(r"(\d{1,2})(?::(\d{2}))?\s*([AaPp])", str(t or ""))
+    if not m:
+        return str(t or "").strip().lower()
+    h = int(m.group(1)) % 12
+    if m.group(3).lower() == "p":
+        h += 12
+    return f"{h:02d}:{int(m.group(2) or 0):02d}"
+
+
 def scan(events, horizon_days=180):
     """Returns a list of (severity, label, detail) findings."""
     findings = []
@@ -233,7 +254,7 @@ def scan(events, horizon_days=180):
             # First case: ids 781/6, Civic Center, 2026-09-22.
             if acknowledged_on(r, d) and not show_all:
                 continue
-            same_time = str(r.get("time")).strip() == str(e.get("time")).strip()
+            same_time = _start_time(r.get("time")) == _start_time(e.get("time"))
             if not same_time and not show_all:
                 continue
             findings.append((
@@ -305,6 +326,17 @@ def self_test(events):
                "id 6 should be acknowledged on 2026-09-22 (ALERT scoped to that date)")
         expect(not acknowledged_on(evs[6], sep15),
                "id 6 should NOT be acknowledged on an ordinary Tuesday")
+
+    # A range and a bare start time are the SAME slot. Comparing raw strings
+    # hid a real id 208 / id 870 double-booking behind a clean scan.
+    expect(_start_time("12:30 PM – 2:00 PM") == _start_time("12:30 PM"),
+           "a time range must compare equal to its own start time")
+    expect(_start_time("10:15 AM – 10:45 AM") == _start_time("10:15 AM"),
+           "range/start equivalence must hold for morning times too")
+    expect(_start_time("3:30 PM") != _start_time("3:45 PM"),
+           "genuinely different start times must NOT collapse")
+    expect(_start_time("12:00 PM") != _start_time("12:00 AM"),
+           "noon and midnight must not collapse")
 
     # venue_scan must surface every duplicate the 2026-08-20 sweep missed.
     # These nine are the regression suite for rule 18 — if a future change to
