@@ -401,8 +401,15 @@ def venue_scan(events, needle):
     # Without this, 'Bolinas Park' matched every venue containing 'park' — 55
     # of 290 records — which is a list nobody reads, and an unread list is the
     # same failure as no list.
+    # Marin-side generics, plus the wine-country ones. Napa venues are almost
+    # all "<name> Vineyards / Winery / Cellars / Estate", so those words carry
+    # no identifying signal there — matching on them made Ballentine, Romeo and
+    # Markham all "match" Merryvale (ids 545-547) on the 2026-08-21 Napa sweep.
     GENERIC = {"park", "library", "center", "centre", "public", "room", "hall",
-               "plaza", "field", "marin", "county", "st", "ave", "road", "street"}
+               "plaza", "field", "marin", "county", "st", "ave", "road", "street",
+               "vineyards", "vineyard", "winery", "wineries", "cellars", "cellar",
+               "estate", "ranch", "napa", "valley", "bar", "grill", "restaurant",
+               "lounge", "cafe", "club", "the"}
 
     def tok(s):
         return {w for w in _norm_loose(s).split() if w not in STOP and len(w) > 1}
