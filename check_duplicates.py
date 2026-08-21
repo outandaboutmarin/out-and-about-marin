@@ -22,12 +22,22 @@ parseSkipDates / doesEventOccurOnDate below are deliberate line-by-line ports
 of the JavaScript in index.html. **If that logic changes, change it here too**
 — `--self-test` asserts the port still agrees with known-good records.
 
+The four scans above audit events.json for duplicates ALREADY IN IT. They
+cannot see a sweep candidate that hasn't been added yet — that is a different
+job, and it is what --venue is for (added 2026-08-20 after nine already-existing
+events were proposed as new in a single sweep). See rule 18 in CLAUDE.md.
+
 Usage:
     python check_duplicates.py              # all scans, human-readable
     python check_duplicates.py --self-test  # verify the JS port is faithful
     python check_duplicates.py --quiet      # exit code only (0 clean, 1 findings)
+    python check_duplicates.py --venue "Marin City Library"
+                                            # BEFORE proposing a sweep candidate:
+                                            # lists every record at that venue,
+                                            # any name, any status. Match on
+                                            # day+time+cadence, never on name.
 """
-import sys, re, calendar, datetime
+import sys, re, calendar, datetime, unicodedata
 from collections import defaultdict
 
 import events_io
@@ -296,10 +306,97 @@ def self_test(events):
         expect(not acknowledged_on(evs[6], sep15),
                "id 6 should NOT be acknowledged on an ordinary Tuesday")
 
+    # venue_scan must surface every duplicate the 2026-08-20 sweep missed.
+    # These nine are the regression suite for rule 18 — if a future change to
+    # the matching makes any of them stop appearing, that change reintroduces
+    # the exact failure the scan was built to prevent.
+    for venue, want in [("Lower Main Street, Tiburon", 459), ("Marin City Library", 10),
+                        ("Town Center Corte Madera", 69), ("Bolinas Park", 71),
+                        ("Robin Sweeny Park", 28), ("Sausalito Public Library", 627),
+                        ("MarinMOCA", 209), ("Civic Center Library", 46),
+                        ("San Anselmo Library", 685)]:
+        if want in evs:
+            ids = [e["id"] for e in venue_scan(events, venue)]
+            expect(want in ids,
+                   f"venue_scan({venue!r}) must surface id {want} (rule 18 regression)")
+
     print(f"self-test: {checks - len(failures)}/{checks} passed")
     for f in failures:
         print("  FAIL:", f)
     return not failures
+
+
+def _norm_loose(s):
+    """Aggressive normalize for venue/name comparison: strip accents, fold
+    '&'->'and', drop all punctuation. 'Wiggles & Wonder' and 'Wiggles and
+    Wonder' must land on the same string, and so must 'Storytime in the Park
+    (with Riva)' and 'Storytime in the Park with Riva'."""
+    s = unicodedata.normalize("NFKD", str(s or "")).encode("ascii", "ignore").decode()
+    s = s.lower().replace("&", " and ")
+    s = re.sub(r"[^a-z0-9 ]", " ", s)
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def venue_scan(events, needle):
+    """
+    List EVERY record at a venue/town, so a sweep candidate can be checked
+    against the full slate rather than against a name guess.
+
+    WHY THIS EXISTS (added 2026-08-20). The 2026-08-20 sweep proposed 37
+    candidates; NINE were already in events.json. Every miss came from
+    deduping by name substring — the stored names differed only by an
+    ampersand, a parenthesis, a plural, or an inserted word:
+
+        proposed 'Friday Night on Main'      -> stored 'Friday NightS on Main'   (id 459)
+        proposed 'Wiggles AND Wonder'        -> stored 'Wiggles & Wonder'        (id 10)
+        proposed 'Corte Madera Farmers Mkt'  -> stored '... TOWN CENTER Farmers' (id 69)
+        proposed 'Fairfax Farmers Market'    -> stored '... COMMUNITY Farmers'   (id 71)
+        proposed 'Storytime ... with Riva'   -> stored 'Storytime ... (with Riva)'(id 28)
+        proposed '2nd Saturdays Storytime'   -> stored '... FAMILY Storytime'    (id 627)
+        proposed 'Marin MOCA Family Day'     -> stored 'MarinMOCA Family Day'    (id 209)
+        proposed 'Bookworms Book Club'       -> stored '... BY GORDON KORMAN'    (id 685)
+
+    events_io.find_event() cannot catch these — it is a *substring* matcher and
+    says so in its own docstring, yet it was the only candidate-stage tool.
+    check_duplicates' four scans don't help either: they audit events.json for
+    duplicates ALREADY IN IT and cannot see a candidate that hasn't been added.
+    This closes that gap. Scanning by venue caught all nine instantly, because
+    a venue name is short, stable, and doesn't get editorialised the way an
+    event title does.
+    """
+    STOP = {"the", "a", "an", "of", "at", "in", "and", "de", "la", "el"}
+    # Words too common across Marin venues to identify anything on their own.
+    # Without this, 'Bolinas Park' matched every venue containing 'park' — 55
+    # of 290 records — which is a list nobody reads, and an unread list is the
+    # same failure as no list.
+    GENERIC = {"park", "library", "center", "centre", "public", "room", "hall",
+               "plaza", "field", "marin", "county", "st", "ave", "road", "street"}
+
+    def tok(s):
+        return {w for w in _norm_loose(s).split() if w not in STOP and len(w) > 1}
+
+    n = _norm_loose(needle)
+    nt = tok(needle)
+    if not nt:
+        return []
+    hits = []
+    for e in events:
+        v, t = _norm_loose(e.get("venue")), _norm_loose(e.get("town"))
+        vt, tt = tok(e.get("venue")), tok(e.get("town"))
+        # Token overlap, NOT substring — venue words get reordered too.
+        # 'Town Center Corte Madera' vs stored 'Corte Madera Town Center'
+        # share every token but no useful substring, and that reordering
+        # hid id 69 on the first pass at this very check.
+        shared = nt & vt
+        overlap = len(shared) / len(nt) if vt else 0
+        distinctive = bool(shared - GENERIC)   # a shared 'park' proves nothing
+        if ((overlap >= 0.5 and distinctive)
+                or (vt and vt <= nt and distinctive)
+                or (nt & tt and len(nt & tt) == len(nt))
+                or n in v or (v and v in n)):
+            hits.append(e)
+    hits.sort(key=lambda e: (str(e.get("day") or ""), str(e.get("time") or "")))
+    return hits
 
 
 def main():
@@ -307,6 +404,24 @@ def main():
     events = data["events"]
     if "--self-test" in sys.argv:
         sys.exit(0 if self_test(events) else 1)
+
+    if "--venue" in sys.argv:
+        i = sys.argv.index("--venue")
+        if i + 1 >= len(sys.argv):
+            print("usage: check_duplicates.py --venue \"<venue or town>\"")
+            sys.exit(2)
+        needle = sys.argv[i + 1]
+        hits = venue_scan(events, needle)
+        print(f"{len(hits)} record(s) at a venue/town matching {needle!r}:\n")
+        for e in hits:
+            print(f"  id {e['id']:<5} {str(e.get('cadence')):<9} {str(e.get('day')):<10} "
+                  f"{str(e.get('time')):<18} {str(e.get('status')):<14} {e.get('event_name')}")
+            print(f"        venue={e.get('venue')}  date={e.get('event_date') or '-'}")
+        if not hits:
+            print("  (none — nothing on file at this venue, so any candidate here is genuinely new)")
+        print("\nRead this whole list before proposing anything here. Match on "
+              "day+time+cadence, NOT on the event name — see rule 18 in CLAUDE.md.")
+        sys.exit(0)
 
     findings = scan(events)
     quiet = "--quiet" in sys.argv

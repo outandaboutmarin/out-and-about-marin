@@ -7,7 +7,13 @@ Read `CLAUDE.md` first for the event schema, data quality rules, and dedup rules
 1. **Load `events.json`** (via `events_io.py` — `load_events()`) so you have the current dataset to dedupe against.
 2. **Go through every source below, in order.** For each one:
    - Fetch the URL using the method specified — a web search snippet alone is NOT sufficient, you must fetch the actual live page/calendar and read every current/upcoming event off it. If a source is marked with a workaround (JS-rendered, robots-blocked, etc.), use that workaround — do not stop at "JS-rendered, no list."
-   - Compare every candidate event (name + date + venue) against `events.json` using `find_event()` in `events_io.py` before treating it as new. Skip anything already present under any status.
+   - **Dedup by VENUE, not by name — this is mandatory, see rule 18 in `CLAUDE.md`.** For every candidate, run:
+
+     ```
+     python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py --venue "<the candidate's venue>"
+     ```
+
+     Read the **whole** returned list and match on **day + time + cadence**. Do NOT dedup by event name, and do NOT treat `find_event()` as sufficient — it is a substring matcher and its own docstring says so. On 2026-08-20 name-based dedup let **nine already-existing events** through as "new" (a plural, an ampersand, a parenthesis, inserted words, a missing space). Two extra requirements that come out of the same episode: a record with `status: Inactive` is **still a duplicate** (`--venue` lists every status on purpose), and when a match comes back you must **read its `notes`** before deciding it's a different program — one of the nine was a single weekly slot with a rotating weekly theme, not a separate event.
    - Record: source name, URL fetched, method used, # of current items reviewed, newest item date seen, and the result (candidates found, or "none — fetched live list, N items reviewed").
    - Do NOT report a source as done from assumption. If you could not complete a source, say so explicitly rather than silently skipping it.
 3. **If you cannot complete all sources in one session**, tell Alexandra upfront before starting, rather than silently presenting a partial sweep as complete.

@@ -160,6 +160,44 @@ Always follow these when adding or editing events — they exist because of spec
 
     Two records already had this defect and were corrected the same day: **id 16** (Labor Day, → `ALERT[2026-09-07]`). Verify a scoped alert after writing it — evaluate `getAlertNote(e, '<date>')` across several occurrence dates and confirm exactly one says SHOWS.
 
+18. **Dedup a sweep candidate by VENUE, never by event name. Run `check_duplicates.py --venue "<venue>"` and read the whole list.**
+
+    **This is not advice, it is the required step.** The 2026-08-20 sweep proposed 37 candidates and **nine were already in `events.json`** — a 24% false-new rate on the sweep's single most important job. Alexandra caught it, not the process.
+
+    Every one of the nine failed the same way: dedup by **event-name substring**. Source pages and stored records name the same program differently, and a substring search sees no match:
+
+    | Proposed from the source | Already stored as | id |
+    |---|---|---|
+    | Friday **Night** on Main | Friday **Nights** on Main | 459 |
+    | Wiggles **and** Wonder Storytime | Wiggles **&** Wonder Storytime | 10 |
+    | Corte Madera Farmers Market | Corte Madera **Town Center** Farmers Market | 69 |
+    | Fairfax Farmers Market | Fairfax **Community** Farmers Market | 71 |
+    | Storytime in the Park **with Riva** | Storytime in the Park **(with Riva)** | 28 |
+    | 2nd Saturdays Storytime & Art | 2nd Saturdays **Family** Storytime & Art | 627 |
+    | **Marin MOCA** Free Family Day | **MarinMOCA** Free Family Day | 209 |
+    | Bookworms Book Club | Bookworms Book Club **by Gordon Korman** | 685 |
+
+    A plural, an ampersand, a parenthesis, two inserted words, a removed space, an author suffix. **Name matching cannot survive any of these, and there is no wording discipline that fixes it** — the library writes the title, not us.
+
+    **Why the existing tools did not catch it — this is the structural gap, and it is worth understanding rather than just obeying:**
+    - `events_io.find_event()` is the only candidate-stage check, and its own docstring calls itself a *"loose dedup lookup … name (case-insensitive substring)"*. It is a **substring matcher**. It was never capable of this and should never be the last word.
+    - `check_duplicates.py`'s four scans audit `events.json` for duplicates **already inside it**. A candidate that has not been added yet is invisible to all four. Rule 13 and that script protect the file *after* a bad add; they do nothing to prevent one.
+
+    So the correct unit of comparison is the **venue**, not the title. A venue name is short, stable, and doesn't get editorialised. Before proposing anything:
+
+    ```
+    python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py --venue "Marin City Library"
+    ```
+
+    It prints **every** record at that venue/town with day, time, cadence and status. Read the whole list and match on **day + time + cadence**, never on the name. That check surfaced all nine misses immediately. It matches on **token overlap, not substring** — because venue words get reordered too ("Town Center Corte Madera" vs the stored "Corte Madera Town Center" share every token and no useful substring, and that reordering hid id 69 even on the first version of this scan).
+
+    The nine ids above are wired into `--self-test` as a **regression suite**. If a future change to the matching stops surfacing any of them, the self-test fails.
+
+    **Three further traps this episode exposed:**
+    - **A retired record is still a duplicate.** ids 175/176 read as "new" because they were `Inactive`. `--venue` deliberately lists every status — dedup against the *record*, not against what's currently visible.
+    - **Not every collision is a name collision.** "Wednesday Kids' Movie: Encanto" wasn't a near-miss on any title; it was one week's edition of id 46, whose notes say it is a single weekly slot with a rotating theme. **Read the matched record's `notes` before concluding it's a different program.**
+    - **Verify the incumbent actually renders before dismissing a candidate.** Checking id 209 (MarinMOCA) confirmed it correctly renders Sep 13 — but the same check on id 208 (Goodie's Kids' Club) found it renders Sep 12 while the real session is Sep 19. A duplicate check is also a free correctness check on the record you're matching against; use it.
+
 ## Homepage Featured strip
 
 The horizontal card row at the top of the homepage (`#featuredWrap` / `#featuredRow`). Selection logic is `selectFeatured()` in `index.html` (~line 3981) — a client-side scoring pass over `allEvents`, not a stored list. `featured: true` on a record does **not** put it in the strip by itself; it only adds a scoring boost (`+10` in `score()`) among records that are otherwise eligible, plus one specific reserved-slot exception (below).
