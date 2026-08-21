@@ -14,6 +14,17 @@ Read `CLAUDE.md` first for the event schema, data quality rules, and dedup rules
      ```
 
      Read the **whole** returned list and match on **day + time + cadence**. Do NOT dedup by event name, and do NOT treat `find_event()` as sufficient — it is a substring matcher and its own docstring says so. On 2026-08-20 name-based dedup let **nine already-existing events** through as "new" (a plural, an ampersand, a parenthesis, inserted words, a missing space). Two extra requirements that come out of the same episode: a record with `status: Inactive` is **still a duplicate** (`--venue` lists every status on purpose), and when a match comes back you must **read its `notes`** before deciding it's a different program — one of the nine was a single weekly slot with a rotating weekly theme, not a separate event.
+
+   - **Write `notes` as PUBLIC text — it renders verbatim on the site. Mandatory, see rule 19 in `CLAUDE.md`.** There is no internal field on an event. Everything you put in `notes` appears in an amber callout box on the public event detail screen, which is how 109 records ended up publishing our maintenance log — including sentences naming Alexandra, citing internal ids, and criticising named sources. `notes` may contain **only**: the ordinal recurrence phrase the parser needs, `ALERT:` / `ALERT[YYYY-MM-DD]:`, `skip: YYYY-MM-DD`, `Reopens <date>`, `UNPREDICTABLE`, and short public logistics prose ("Sign up at the children's desk the morning of the event"). **Everything else — the URL you verified against, the date you checked it, what a source got wrong, why you chose a cadence, who told you — goes in the git commit message**, which is the durable internal record and is invisible to the public. Before committing:
+
+     ```bash
+     python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py --notes-lint --all
+     ```
+
+     It exits non-zero on any leak, prints the offending sentence and why it fired, and prints the public remainder that would survive. Fix every leak you introduced. (Pre-existing leaks on records you did not touch are tracked as open item 38 and need Alexandra's sign-off to batch-clean — don't fold that into a sweep commit.)
+
+   - **Never write a reminder-to-self into `notes` using a phrase the app parses.** Two live incidents on 2026-08-21, both self-inflicted while documenting the very rules they broke: the words "the THIRD Saturday" inside explanatory prose made `parseOccurrenceRule()` emit `{nths:[2,3]}` and generate a phantom occurrence that duplicated another record; and writing "add skip: 2026-09-18 here" as a to-do **immediately suppressed that date**, because `parseSkipDates()` matches anywhere in the string. `parseOccurrenceRule()` scans the entire notes field, ignores grammar, and tests `/\blast\b/` **first**, short-circuiting every other ordinal. After writing any `Monthly` record, verify the rule actually parses to what you intended before committing.
+
    - Record: source name, URL fetched, method used, # of current items reviewed, newest item date seen, and the result (candidates found, or "none — fetched live list, N items reviewed").
    - Do NOT report a source as done from assumption. If you could not complete a source, say so explicitly rather than silently skipping it.
 3. **If you cannot complete all sources in one session**, tell Alexandra upfront before starting, rather than silently presenting a partial sweep as complete.

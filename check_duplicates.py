@@ -32,6 +32,7 @@ Usage:
     python check_duplicates.py --self-test  # verify the JS port is faithful
     python check_duplicates.py --quiet      # exit code only (0 clean, 1 findings)
     python check_duplicates.py --venue "Marin City Library"
+    python check_duplicates.py --notes-lint [--all]   # rule 19 public-notes leak check
                                             # BEFORE proposing a sweep candidate:
                                             # lists every record at that venue,
                                             # any name, any status. Match on
@@ -438,11 +439,103 @@ def venue_scan(events, needle):
     return hits
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# NOTES LINT  (added 2026-08-21)
+#
+# `notes` RENDERS VERBATIM ON THE PUBLIC EVENT DETAIL SCREEN, in an amber
+# callout box under ABOUT THIS EVENT. It is not an internal field and never
+# has been. Sweeps from roughly 2026-07 onward wrote maintenance provenance
+# into it -- "CONFIRMED 2026-08-13 against ...", "per Alexandra", "duplicate
+# id 673 deleted", "doesEventOccurOnDate() always returned False" -- and all
+# of it was publicly visible the whole time. Alexandra caught it on id 530 on
+# 2026-08-21; this scan then found 95 records carrying the same kind of text.
+#
+# This lint exists so that cannot silently accumulate again. See rule 19.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Legitimately public content that must never be flagged: the control patterns
+# index.html parses out of notes, plus ordinary schedule prose.
+_KEEP = re.compile(
+    r"ALERT(\[\d{4}-\d{2}-\d{2}\])?:"
+    r"|\bskip\s*:?\s*\d{4}-\d{2}-\d{2}"
+    r"|\bReopen(s|ing)\b"
+    r"|\bUNPREDICTABLE\b"
+    r"|\b(1st|2nd|3rd|4th|5th|first|second|third|fourth|fifth|last)\b[^.]{0,40}"
+    r"\b(mon|tues|wednes|thurs|fri|satur|sun)day",
+    re.I)
+
+# Markers of internal / maintenance commentary that must not reach the public.
+_INTERNAL = [
+    ("work log", re.compile(
+        r"\b(FIXED|CORRECTED|CONFIRMED|VERIFIED|RETIRED|RENAMED|RESOLVED|ADDED"
+        r"|CHECKED|REACTIVATED)\b[^.]{0,60}\d{4}[-/]\d{2}([-/]\d{2})?", re.I)),
+    ("names Alexandra", re.compile(r"\bAlexandra\b", re.I)),
+    ("cites our data", re.compile(
+        r"\bids?\s+\d{2,4}\b|events\.json|\bthe (record|database|DB)\b", re.I)),
+    ("cites our code", re.compile(
+        r"doesEventOccurOnDate|parseOccurrence|shouldShowEvent|scraper\.py"
+        r"|index\.html|\bcadence\b|HTTP\s*\d{3}", re.I)),
+    ("cites process", re.compile(
+        r"\bsweep\b|\bopen item\b|\bduplicate\b|\baudit\b|\bdead domain\b"
+        r"|\bstale\b|\bphantom\b", re.I)),
+    ("sourcing note", re.compile(
+        r"\b(added|sourced|relayed|supplied)\b[^.]{0,40}"
+        r"(instagram|flyer|@|screenshot|community|per )", re.I)),
+]
+
+
+def _sentences(note):
+    """Split a note into segments, respecting the ' | ' delimiter."""
+    out = []
+    for part in re.split(r"\s*\|\s*", str(note or "")):
+        for s in re.split(r"(?<=[.!?])\s+(?=[A-Z0-9])", part):
+            if s.strip():
+                out.append(s.strip())
+    return out
+
+
+def notes_lint(events):
+    """Return [(event, [(sentence, [reasons])], public_remainder)] for leaky notes."""
+    findings = []
+    for e in events:
+        if not str(e.get("notes") or "").strip():
+            continue
+        bad, keep = [], []
+        for s in _sentences(e["notes"]):
+            if _KEEP.search(s):
+                keep.append(s)
+                continue
+            reasons = [label for label, rx in _INTERNAL if rx.search(s)]
+            if reasons:
+                bad.append((s, reasons))
+            else:
+                keep.append(s)
+        if bad:
+            findings.append((e, bad, " ".join(keep).strip()))
+    return findings
+
+
 def main():
     data = events_io.load_events()
     events = data["events"]
     if "--self-test" in sys.argv:
         sys.exit(0 if self_test(events) else 1)
+
+    if "--notes-lint" in sys.argv:
+        leaks = notes_lint(events)
+        verbose = "--all" in sys.argv
+        print("REMINDER: `notes` renders verbatim in the amber box on the public")
+        print("event detail screen. Anything in it is live on the site. See rule 19.\n")
+        print(f"{len(leaks)} record(s) whose notes carry internal commentary.\n")
+        for e, bad, keep in leaks:
+            print(f"  id {e['id']:<5} {str(e.get('event_name'))[:52]}")
+            if verbose:
+                for s, why in bad:
+                    print(f"        LEAK ({', '.join(why)}): {s[:108]}")
+                print(f"        KEEP: {keep[:108] or '(nothing - notes would be empty)'}")
+        if leaks and not verbose:
+            print("\n  (re-run with --all to see the offending sentences and what survives)")
+        sys.exit(1 if leaks else 0)
 
     if "--venue" in sys.argv:
         i = sys.argv.index("--venue")

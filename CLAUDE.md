@@ -66,7 +66,7 @@ File is a JSON object, **not** a flat array:
 ```
 Always load/save through the pattern in `scraper.py` (`load_existing_events()` / `save_events()` — reuse `events_io.py`, see below) rather than hand-editing JSON text. The file has Spanish-accented characters — always read/write with `encoding="utf-8"` or you'll corrupt them (confirmed failure mode: default Windows `cp1252` encoding mangles é/í/ñ etc.).
 
-As of 2026-08-14: **305 events, max ID 850.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 505 events / max 565 on 2026-07-02; 366 on 2026-08-09; 341 after the library audit; 353 after the Aug 13 sweep. The drop to 305 on 2026-08-14 was the **first automated purge in 98 days** — 48 expired one-offs cleared by the newly-repaired `daily.yml`. Expiry is automatic again; it should no longer need purging by hand. See State of play.)
+As of 2026-08-21: **330 events, max ID 907.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 505 events / max 565 on 2026-07-02; 366 on 2026-08-09; 341 after the library audit; 353 after the Aug 13 sweep. The drop to 305 on 2026-08-14 was the **first automated purge in 98 days** — 48 expired one-offs cleared by the newly-repaired `daily.yml`. Expiry is automatic again; it should no longer need purging by hand. See State of play.)
 
 **Fields on every event** (confirmed against actual `index.html` usage, not just assumed from old docs):
 
@@ -94,7 +94,7 @@ As of 2026-08-14: **305 events, max ID 850.** Next new event gets the next ID vi
 | `description`, `description_es` | **both required on every event** |
 | `registration` | free text, e.g. `"Not required"` |
 | `website` | source URL |
-| `notes` | free text. Special parsed patterns: nth-weekday rules (e.g. `"2nd and 4th Saturdays of each month"`), reopening dates matched via regex `Reopen(?:ing|s)\s+([A-Z][a-z]+\s+\d{1,2}(?:,\s*\d{4})?)` (e.g. `"Reopens June 11"`) which drives the "Closed · Reopens {date}" badge, the literal word `UNPREDICTABLE` (see Data Quality Rules below), and an `ALERT: <text>` prefix (added 2026-08-05) which renders `<text>` as a **red banner on the event card itself** plus red styling on the detail screen, for schedule-affecting callouts like cancellations or seasonal breaks that need to be visible in the feed without opening the event. Terminate it with ` \| ` if other notes follow; `getAlertNote()` reads up to the first `\|`. **Scope a one-date alert as `ALERT[YYYY-MM-DD]: <text>`** (added 2026-08-15) — see rule 17. |
+| `notes` | **PUBLIC — renders verbatim in an amber callout box on the event detail screen. Never put maintenance/provenance commentary here; see rule 19, and lint with `check_duplicates.py --notes-lint` before committing.** Free text. Special parsed patterns: nth-weekday rules (e.g. `"2nd and 4th Saturdays of each month"`), reopening dates matched via regex `Reopen(?:ing|s)\s+([A-Z][a-z]+\s+\d{1,2}(?:,\s*\d{4})?)` (e.g. `"Reopens June 11"`) which drives the "Closed · Reopens {date}" badge, the literal word `UNPREDICTABLE` (see Data Quality Rules below), and an `ALERT: <text>` prefix (added 2026-08-05) which renders `<text>` as a **red banner on the event card itself** plus red styling on the detail screen, for schedule-affecting callouts like cancellations or seasonal breaks that need to be visible in the feed without opening the event. Terminate it with ` \| ` if other notes follow; `getAlertNote()` reads up to the first `\|`. **Scope a one-date alert as `ALERT[YYYY-MM-DD]: <text>`** (added 2026-08-15) — see rule 17. |
 | `location_group` | **Do not assume the old fixed list from prior docs — it's drifted.** Live values as of 2026-07: `Mill Valley`, `Tiburon/Belvedere`, `San Rafael`, `Novato`, `San Anselmo`, `Larkspur/Greenbrae` (not `Larkspur`), `Corte Madera`, `Fairfax`, `Sausalito/Marin City` (not `Sausalito`), `West Marin`, `Nicasio/San Geronimo`, `Virtual`, plus Napa-area values (`Calistoga`, `St. Helena`, `Yountville` — see Napa note below). When adding a new event, match an existing value exactly — check current values in the file rather than trusting a hardcoded list here, since this has changed before. **Never use `"Marin County"`** — see rule 8 below (removed 2026-07-19; the 8 events that had it were reassigned to their real town's `location_group`). |
 | `county` | Only set on the Napa-area events (`"Napa"`). Leave blank for Marin events (implicit default). See the Napa County Music section below for its own separate sweep process. |
 
@@ -197,6 +197,32 @@ Always follow these when adding or editing events — they exist because of spec
     - **A retired record is still a duplicate.** ids 175/176 read as "new" because they were `Inactive`. `--venue` deliberately lists every status — dedup against the *record*, not against what's currently visible.
     - **Not every collision is a name collision.** "Wednesday Kids' Movie: Encanto" wasn't a near-miss on any title; it was one week's edition of id 46, whose notes say it is a single weekly slot with a rotating theme. **Read the matched record's `notes` before concluding it's a different program.**
     - **Verify the incumbent actually renders before dismissing a candidate.** Checking id 209 (MarinMOCA) confirmed it correctly renders Sep 13 — but the same check on id 208 (Goodie's Kids' Club) found it renders Sep 12 while the real session is Sep 19. A duplicate check is also a free correctness check on the record you're matching against; use it.
+
+19. **`notes` IS PUBLIC. It renders verbatim on the event detail screen. Never write internal commentary into it.**
+
+    Found 2026-08-21, and it is the single largest documentation failure in this file's history. Alexandra was looking at the live site, saw the amber callout box under ABOUT THIS EVENT on id 530, and asked why the public was being shown *"FIXED 2026-08-21. This record previously had day='Varies'… doesEventOccurOnDate() always returned False… NOTE the sweep checklist pointed at lincolnavebrewerycalistoga.com, a dead domain returning HTTP 521…"*. She was right, and the problem was never one record: **`check_duplicates.py --notes-lint` found 109 of 330 records carrying the same class of text.**
+
+    **There is no internal field on an event.** `notes` looks like scratch space and has been used as scratch space by every sweep since ~2026-07, but `index.html` renders it in full inside a styled amber box. Sentences like "CONFIRMED 2026-08-13 against srpubliclibrary.org", "per Alexandra", "duplicate id 673 deleted 2026-07-29", "the audit window was too narrow to see it", "Marin Mommies listed it wrong" have been live on the public site for weeks. Some name Alexandra directly; some disparage a source by name; some expose our internal ids and filenames.
+
+    **What `notes` may contain — nothing else:**
+    - the ordinal recurrence phrase the parser needs (rule 9) — "Second Saturday of each month."
+    - `ALERT:` / `ALERT[YYYY-MM-DD]:` banners (rule 17)
+    - `skip: YYYY-MM-DD` entries
+    - `Reopens <date>` / `UNPREDICTABLE` control words
+    - short, genuinely public schedule or logistics prose a *parent reading the listing* would want: "Sign up at the children's desk the morning of the event." / "Moves indoors in bad weather." / "Cash or exact change only."
+
+    **Where provenance goes instead: the git commit message.** That is the internal record — it is durable, timestamped, attributed, searchable with `git log -S`, and invisible to the public. Write the *why*, the source URL, the date verified, and the ids touched there, at whatever length is useful. Nothing is lost by keeping it out of `notes`.
+
+    **Before every commit that touches `events.json`:**
+    ```
+    python check_duplicates.py --notes-lint          # count + ids
+    python check_duplicates.py --notes-lint --all    # offending sentences, and what survives
+    ```
+    It exits non-zero when anything leaks, prints a `LEAK` line per offending sentence with the reason it fired, and a `KEEP` line showing the public remainder. The `KEEP` line is the draft of the corrected note — read it, don't apply it blindly, since the split is sentence-level and occasionally clips a legitimately public clause.
+
+    **Test the phrasing this way:** would you be comfortable if this sentence were read aloud by the venue's owner, or by a parent deciding whether to attend? "Second Saturday of each month" passes. "Time re-confirmed by Alexandra 2026-08-13 — Marin Mommies lists it wrong" does not.
+
+    Related: **open item 36** proposed adding a separate non-rendered `internal_notes` field, which would make this structurally impossible rather than merely against the rules. That is a schema change and needs Alexandra's sign-off. Until it exists, the rule above is the whole defence.
 
 ## Homepage Featured strip
 
@@ -318,9 +344,38 @@ She fills `Decision` and `YOUR ANSWER` and hands it back for `/process-sweep`. N
 
 ---
 
-## State of play — last updated 2026-08-13
+## State of play — last updated 2026-08-21
 
 Where a new session should pick up.
+
+### What happened 2026-08-20 → 2026-08-21 (two sweeps + a public-data incident)
+
+**Marin Weekly Sweep, window Aug 21 – Oct 4.** All 42 sources fetched. 28 verified-clean candidates added as ids 863–887 (`570b50b`), plus 8 corrections, 5 of which were live-wrong records. Review file: `daily_sweep_2026-08-20_review.xlsx`.
+
+**That sweep initially proposed 9 duplicates** — a 24% false-new rate, which Alexandra caught in review and called unacceptable work product. The cause was structural, not carelessness: `find_event()` is a *substring* matcher and was the only candidate-stage tool, while `check_duplicates.py` only audits records already in the file. Nine real programs were re-proposed under slightly different wording (Friday **Night**/Nights on Main, Wiggles **and**/& Wonder, Corte Madera **Town Center** Farmers, Fairfax **Community** Farmers, Storytime in the Park **(with Riva)**, 2nd Saturdays **Family** Storytime, **Marin MOCA**/MarinMOCA, Bookworms **by Gordon Korman**, and "Encanto", which was one week's edition of id 46's rotating theme). Fixed by **rule 18** and `check_duplicates.py --venue`; those nine ids are now a regression suite inside `--self-test`. **Do not dedup by name.**
+
+**Napa sweep, window Aug 22 – Oct 4.** 24 sources. 16 events added as ids 888–903 (`1d0e200`), 4 corrections, plus Salvia (id 904, `7325b1a`) and the Lincoln Ave monthly series (ids 905–907, `cfeec4c`). Review file: `napa_sweep_2026-08-21_review.xlsx`. Logged in the Weekly Sweep Log tab of `Napa_Live_Music_Tracker_v2.xlsx`.
+
+**⚠ THE INCIDENT — internal notes were public, on 109 records.** Alexandra spotted the amber box on id 530's detail screen and asked why the public was seeing our maintenance log. `notes` renders verbatim; it always has. See **rule 19**, which is now the most important rule in this file for anyone running a sweep. `check_duplicates.py --notes-lint` was added the same day. **109 of 330 records are still leaking and have NOT been cleaned** — cleaning them is a batch edit and needs Alexandra's sign-off (open item 38). Every new record written from here must pass the lint.
+
+**Two source corrections found by Alexandra, not by us:**
+- **Lincoln Avenue Brewery** was reported "down two sweeps." It was not. Our checklist pointed at `lincolnavebrewerycalistoga.com`, a **dead domain returning HTTP 521**; the real site is `lincolnavenuebrewery.com`. Separately id 530 had `day: "Varies"`, which matches no weekday, so the record had **never rendered since it was created**. Both fixed. **Lesson: when a venue reads as "down", verify the URL itself before recording the venue as down** — and when a record reads as present-but-invisible, check `day` is a real weekday name.
+- **Farmstead / Long Meadow Ranch** had ZERO records despite being a documented venue. Alexandra supplied `https://www.longmeadowranch.com/things-to-do/seasonal-events/`, which is the authoritative calendar and is now in the Napa checklist. It resolved a Sep 18 anomaly (a Live Fire chef dinner, not Locals Night) and surfaced Sep 23 Locals Night.
+- **`https://www.sthelena.com/events/` added as a Napa source** at Alexandra's request. Note the music-category URL redirects to `/events/` — link to `/events/` directly.
+
+**Self-inflicted parser traps hit AGAIN this stretch — all three are in the rules, and I still walked into them:**
+- **Rule 9a, twice.** Writing "the THIRD Saturday" inside a *prose* note on id 208 made `parseOccurrenceRule()` return `{nths:[2,3]}` and generate a phantom Sep 19 that duplicated id 870. The parser scans the **entire** notes string and does not care about grammar. `/\blast\b/` is tested **first** and short-circuits everything else.
+- **`parseSkipDates` prose trap.** Writing "add skip: 2026-09-18 here" as a *reminder to myself* suppressed that date immediately — the regex matches anywhere in the string, including inside a sentence about what someone should do later.
+- Both traps are the same shape as rule 19: **`notes` is not scratch space.** It is parsed by three separate mechanisms and rendered to the public. Treat every character in it as load-bearing.
+
+**A tooling blind spot worth knowing.** The COLLISION scan compared raw time strings, so `"12:30 PM – 2:00 PM"` never matched `"12:30 PM"` and real double-bookings were invisible. Fixed with `_start_time()` normalization, which immediately surfaced two live Larkspur collisions (resolved in `bf69112`, `6c039eb`). If a scan reports clean, confirm it is capable of reporting dirty — `--self-test` is 33 checks for exactly this reason.
+
+**Still open going into the next sweep:**
+- **109 records with leaking notes** (open item 38) — needs Alexandra's approval to batch-clean.
+- **Oct 4 LMR Jazz Orchestra** at Farmstead — in window, flagged, deliberately not added, awaiting her call.
+- **Hydro Bar & Grill (Calistoga)** — genuinely down, HTTP 500, verified. Passed this month; retry next Napa sweep.
+- Item 26 (San Anselmo Imagination Park address, 535 vs 541 conflict), item 30 (Sep 1 seasonal flip verification), item 32 (first real scraper findings notification, ~Aug 27 with the Corte Madera reopening).
+
 
 **Health**: `events.json` is 305 events / max id 850, all committed and pushed. Live site is current — GitHub Pages deploys straight off `main`, so **committing `events.json` IS publishing**; there is no build step and no staging. Verify locally before pushing, not after. **One known user-facing problem**: 39 *non-library* expired one-offs are still rendering (see open item 1 below) — found during the library audit but left alone, since batch deletions need Alexandra's sign-off and they're outside that audit's scope.
 
