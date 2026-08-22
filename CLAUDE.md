@@ -384,7 +384,7 @@ Where a new session should pick up.
 
 **Napa sweep, window Aug 22 – Oct 4.** 24 sources. 16 events added as ids 888–903 (`1d0e200`), 4 corrections, plus Salvia (id 904, `7325b1a`) and the Lincoln Ave monthly series (ids 905–907, `cfeec4c`). Review file: `napa_sweep_2026-08-21_review.xlsx`. Logged in the Weekly Sweep Log tab of `Napa_Live_Music_Tracker_v2.xlsx`.
 
-**⚠ THE INCIDENT — internal notes were public, on 109 records.** Alexandra spotted the amber box on id 530's detail screen and asked why the public was seeing our maintenance log. `notes` renders verbatim; it always has. See **rule 19**, which is now the most important rule in this file for anyone running a sweep. `check_duplicates.py --notes-lint` was added the same day. **109 of 330 records are still leaking and have NOT been cleaned** — cleaning them is a batch edit and needs Alexandra's sign-off (open item 38). Every new record written from here must pass the lint.
+**⚠ THE INCIDENT — internal notes were public, on 109 records.** Alexandra spotted the amber box on id 530's detail screen and asked why the public was seeing our maintenance log. `notes` renders verbatim; it always has. See **rule 19**, which is now the most important rule in this file for anyone running a sweep. `check_duplicates.py --notes-lint` was added the same day. **RESOLVED 2026-08-21 in `e451268`** — she chose the structural fix, `internal_notes` was added, and all 109 records were migrated with rendered dates provably unchanged (open items 36 and 40, both now closed). Every new record written from here must still pass the lint.
 
 **Two source corrections found by Alexandra, not by us:**
 - **Lincoln Avenue Brewery** was reported "down two sweeps." It was not. Our checklist pointed at `lincolnavebrewerycalistoga.com`, a **dead domain returning HTTP 521**; the real site is `lincolnavenuebrewery.com`. Separately id 530 had `day: "Varies"`, which matches no weekday, so the record had **never rendered since it was created**. Both fixed. **Lesson: when a venue reads as "down", verify the URL itself before recording the venue as down** — and when a record reads as present-but-invisible, check `day` is a real weekday name.
@@ -399,8 +399,8 @@ Where a new session should pick up.
 **A tooling blind spot worth knowing.** The COLLISION scan compared raw time strings, so `"12:30 PM – 2:00 PM"` never matched `"12:30 PM"` and real double-bookings were invisible. Fixed with `_start_time()` normalization, which immediately surfaced two live Larkspur collisions (resolved in `bf69112`, `6c039eb`). If a scan reports clean, confirm it is capable of reporting dirty — `--self-test` is 33 checks for exactly this reason.
 
 **Still open going into the next sweep:**
-- **109 records with leaking notes** (open item 38) — needs Alexandra's approval to batch-clean.
-- **Oct 4 LMR Jazz Orchestra** at Farmstead — in window, flagged, deliberately not added, awaiting her call.
+- ~~109 records with leaking notes~~ — **done 2026-08-21**, see rule 19 and `e451268`.
+- **Oct 4 LMR Jazz Orchestra** at Farmstead — **declined 2026-08-21.** Not added, and not to be re-proposed; it stays on Long Meadow Ranch's page, so treat it as deliberately declined (open item 38).
 - **Hydro Bar & Grill (Calistoga)** — genuinely down, HTTP 500, verified. Passed this month; retry next Napa sweep.
 - Item 26 (San Anselmo Imagination Park address, 535 vs 541 conflict), item 30 (Sep 1 seasonal flip verification), item 32 (first real scraper findings notification, ~Aug 27 with the Corte Madera reopening).
 
@@ -481,7 +481,7 @@ Verified by diffing derived output rather than reading text: **rendered dates id
 
 ## Also open, smaller
 
-- **Oct 4 LMR Jazz Orchestra** (Farmstead) — in window, flagged, deliberately not added, awaiting her call.
+- **Oct 4 LMR Jazz Orchestra** (Farmstead) — **declined 2026-08-21**, do not re-propose (open item 38).
 - **Hydro Bar & Grill** (Calistoga) — genuinely down, HTTP 500. Retry next Napa sweep.
 - **Item 26** — San Anselmo Imagination Park address; two sources conflict (535 vs 541). One phone call settles it. She passed for now.
 - **Item 30** — verify the Sep 1 seasonal flips actually land; first time that code path will have run successfully.
