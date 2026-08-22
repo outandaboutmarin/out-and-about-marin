@@ -75,7 +75,7 @@ As of 2026-08-21: **330 events, max ID 907.** Next new event gets the next ID vi
 | `id` | integer, unique |
 | `organization`, `venue` | text |
 | `event_name`, `event_name_es` | **both required on every event** |
-| `type` | one of: `Library`, `Kids Programs`, `Community Event`, `Farmers Market`, `Festival`, `Music and Movies`. (`Music` also appears on some older records — `Music and Movies` is the current type, renamed from `Music` in 2026; use `Music and Movies` for new outdoor concert series / movie screening entries.) |
+| `type` | one of: `Library`, `Kids Programs`, `Community Event`, `Farmers Market`, `Festival`, `Music and Movies`, `Grown-Ups Only!`. **`Grown-Ups Only!` was added 2026-08-18 at Alexandra's request and is fully wired in `index.html` — filter dropdown (`{ value: 'Grown-Ups Only!', dot: '#1795A6' }`), `.tag-grownups` styling, `--grownups-bg`/`--grownups-text` tokens, and the Spanish label `¡Solo para Adultos!` in two places. As of 2026-08-21 ZERO records use it** — the category exists and works, it just has no events yet. Use it for adult-oriented listings (evening music, wine events, adults-only classes) rather than inventing a new type. (`Music` also appears on some older records — `Music and Movies` is the current type, renamed from `Music` in 2026; use `Music and Movies` for new outdoor concert series / movie screening entries.) |
 | `day` | full English day name, e.g. `"Monday"`. Multi-day recurring: slash-separated, e.g. `"Tuesday/Thursday"`. |
 | `time` | 12-hour format, e.g. `"10:30 AM"` or `"2 PM"`. Parsed client-side with `/(\d+)(?::(\d+))? ?(AM|PM)/i` — unparseable times silently sort last. |
 | `time_of_day` | `Morning` / `Afternoon` / `Evening` |
@@ -256,6 +256,12 @@ Separate from the recurring Weekly Sweep: Alexandra sometimes hands over a curat
 
 - **Research each one before drafting it**: fetch any URL given (same "never assume, always verify" principle as rule 1). For screenshot-sourced events with no link, extract everything decipherable from the image itself — venue, date, time, cost — and flag anything illegible or ambiguous rather than guessing at it.
 - **Dedup check**: before treating anything as new, keyword-search `events.json` across `event_name` + `venue` + `organization` + `notes` for plausible matches — not just an exact-name check. A recurring series can already be in the DB under a different phrasing (e.g. "Marin Hiking Moms" vs. "Marin Moms' hike"), and a one-off date can collide with an existing recurring record's computed next-occurrence date. This is the concrete method for existing rule 6, below.
+- **Public-copy conventions, settled 2026-08-20/21 through her direct edits.** These are her standing preferences, not one-off instructions:
+  - **`description` is marketing copy for a parent, not a record of what we know.** She rewrote the Dirty Sneaks listing to *"tacos, margs, house music to dance to; billed as an easy Friday night hang"* — concrete, in the event's own voice. When a source gives you promotional phrasing, keep it.
+  - **Event titles may carry the selling point.** She renamed that record to *"Dirty Sneaks Sunset Session - tacos & margs for sale"* and asked for *"Kids Events"* appended to the Mill Valley Fall Arts Festival title. A title is allowed to be longer than the source's if it tells a parent what they'd actually get.
+  - **Strip anything a visitor doesn't need.** Twice in two days she asked for internal detail to come off a public listing — first the Dirty Sneaks commentary, then the amber notes box on id 530. See rule 19; this is the same instinct applied to `description` as well as `notes`.
+  - **Cancellations are flagged, not deleted.** For "Truckloads of Fun" (Aug 21, Mill Valley) she asked for a flag reading *"cancelled - this event was erroneously posted and is not happening!"* — done as a dated `ALERT[2026-08-21]:` per rule 17, leaving the record in place. Delete only when a source itself says CANCELED and there's no value in the record.
+- **Mobile tap targets.** The "Back to events" button took three attempts on 2026-08-20 before it was right, and the lesson generalizes: growing an invisible tap zone does nothing a user can perceive, and a "technically 44px" control can still read as small. Her standard is that the **text itself** is comfortably sized — `.detail-back` ended at `font-size: 1.15rem; font-weight: 600; color: #fff` with a 44px minimum target. When she says a control feels small, enlarge what's visible, not just what's clickable.
 - **When she asks to see them before posting**: draft full bilingual records matching the schema and present them as a list for her Approve/Skip — same shape as a sweep review, just for a handful of events instead of 37 sources. Don't write to `events.json` or push until she confirms, even though this isn't a schema/logic change (the kind of edit rule normally gates on) — the review-first ask itself is what gates it here.
 
 ## Napa County Music — separate sweep process
@@ -292,6 +298,15 @@ Monthly (not every sweep): napavintners.com/events/index.asp, festivalnapavalley
 > ⚠️ **Corrected 2026-08-21.** This paragraph told sweeps to dedupe on *"name + venue + date"* until that date, which is precisely the instruction that let **nine already-existing events** through as "new" on the 2026-08-20 Marin sweep. Name-based dedup is defeated by a plural, an ampersand, a parenthesis or an inserted word. **Napa is more exposed to this than Marin, not less**, because wine-country venue names share generic tokens — Ballentine, Romeo and Markham all matched Merryvale on the single word "Vineyards" until the GENERIC token set was extended. Use `--venue`, read the whole returned list, and match on **day + time + cadence**.
 
 > ⚠️ **Also new 2026-08-21: `notes` is public (rule 19).** Napa records are as exposed as Marin ones — several currently publish sourcing commentary naming Alexandra. Run `check_duplicates.py --notes-lint --all` before committing any Napa sweep.
+
+## Tide Pool Table (proposed third dataset — NOT started)
+
+Open item 33, created 2026-08-15. **Name only so far — scope deliberately not guessed.** Recorded here so a new session doesn't invent a design for it.
+
+- **Working assumption** (unconfirmed): a directory of Marin tide-pooling spots built the way the Swim Lesson Directory was — its own JSON file plus a sortable/filterable table reachable from Resources. Do NOT build it on this assumption alone.
+- **The design question that has to be settled first**: tide pool information is *time-dependent* in a way swim vendors are not. A spot is only worth visiting at low tide, so a static table of locations may be close to useless — the useful artifact is probably "good low-tide windows in the next N days per spot." That is a different shape from anything else in this app: it is neither an event nor a static directory row.
+- **Data is gettable free**: NOAA publishes tide predictions for Marin stations, so this does not need a paid service.
+- **Two questions are outstanding with Alexandra** and should be asked before any code: (a) static list of locations, or upcoming good low-tide windows? (b) a Resources page like the swim table, or something that feeds entries into the main event feed?
 
 ## Swim Lesson Directory (second dataset — not events)
 
@@ -414,8 +429,54 @@ Shipped across `0870cab`, `a018e5e`, `3ee9645`: 21 expired one-offs deleted; **f
 - **SOLVED 2026-08-12 — the 10 MCFL branches.** They were never "flaky" so much as fetched the wrong way: the per-branch `/locations/XX/` pages only list the next few days, so any multi-week sweep window using them alone was structurally under-reporting and no attestation would reveal it. Use `marinlibrary.bibliocommons.com/v2/events?startDate=…&endDate=…` paged with `&page=N` — one surface, every branch, and the **only** place CANCELED events are marked. Written up as a shortcut block at the top of `/run-sweep`'s Libraries section. Keep `/locations/XX/` only for a branch's own closure notice.
 - **SOLVED 2026-08-13 — Belvedere-Tiburon, Mill Valley, SRPL, Sausalito.** Same story as MCFL: not flaky, just fetched wrong. Belvedere-Tiburon accepts a date range as URL params (`/events?start=&end=`), cutting 25 pages to 7 with plain WebFetch. Mill Valley's libcal renders fully in the **browser** at `…/calendar?…&t=m`. SRPL needs the month-nav URL for anything past the current month. Sausalito's month URL is directly addressable (`/-curm-M/-cury-YYYY`). All four rewritten in `/run-sweep` sources 26, 37, 39, 40.
 - **⚠ REMOVED 2026-08-13 — the Mill Valley `site:…libcal.com` search-around.** This was a *prescribed* step in `/run-sweep` and it returned **2023-dated events mixed with current ones**. Do not reinstate it under any circumstance; it is the same stale-content failure class that produced the fabricated Novato movie records.
-- **Larkspur is now fully UNREACHABLE** (2026-08-13): `cityoflarkspur.org/185/Library` 301s to `larkspur.ca.gov`, which 404s on both hosts. Reclassified as a manual/phone source. Its 6 records are unverified.
+- **Larkspur — CORRECTED, this entry was wrong.** It said "fully UNREACHABLE" and it is not. The site **moved**: use `larkspur.ca.gov/296/Larkspur-Library` and `/718/Programs`, plus `calendar.aspx?...&CID=24` (CID 24 is the library — read it off the "Select a Calendar" list, do not guess). `/run-sweep` source 41 has the working routes and has been right about this since 2026-08-13, while this list stayed stale — **when the two disagree, trust `/run-sweep`, it is closer to the fetch.** The real limitation is narrower: the library posts essentially nothing to its city calendar, so its ~6 records cannot be verified against dated listings and the phone (415-927-5005) is the only route for that. Its Programs page does confirm id 15 ("Story Time takes place on Fridays at 10 AM").
 
 **Deliberately declined, do not silently redo**: Alexandra passed on backfilling the Marin Mommies 14-day gap from the 2026-08-06 sweep (Aug 10–19 went uncovered because only 5 out-of-range days were fetched), and on re-paging Belvedere-Tiburon. Both are known and accepted, not oversights to fix unprompted.
 
 **Working rhythm**: she runs the sweep on command, usually Wednesday or Thursday. Ad-hoc event batches arrive between sweeps (Instagram screenshots, links, plain text) — research each, dedup, and present for review before writing. She reviews in Excel and hands it back.
+
+---
+
+# ⇢ START HERE — state of play for a new session (2026-08-21)
+
+Read this first, then the sections above as needed.
+
+**Health**: `events.json` is **330 events, max id 907**, all committed and pushed. `check_duplicates.py --self-test` is 33/33 and all four duplicate scans are clean. GitHub Pages deploys off `main`, so **committing `events.json` IS publishing** — there is no staging.
+
+**Recent commits**: `cfeec4c` (Lincoln Ave Brewery: trimmed id 530, added the monthly series ids 905–907), `2e95450` (rule 19 + the notes lint), `3e2eaa7` (four Napa doc gaps closed).
+
+**The two sweeps are both done and applied.** Marin, window Aug 21 – Oct 4, ids 863–887. Napa, window Aug 22 – Oct 4, ids 888–907. Neither needs revisiting; the next Marin sweep is due on her command, usually Wednesday or Thursday.
+
+## The one thing waiting on Alexandra
+
+**109 of 330 records publish internal commentary in the public `notes` box** (open item 36, reopened 2026-08-21). She found this herself on the live site. Nothing has been cleaned — it is a batch edit and needs her sign-off. Two paths were offered and she has not yet chosen:
+- **Fast path**: work the 109 in batches, use the lint's `KEEP` column as the draft, hand her a before/after Excel to review before anything commits.
+- **Proper fix**: add a non-rendered `internal_notes` field so it is structurally impossible. Schema change, touches `index.html`, needs diff-and-confirm.
+
+**Do not start either without her answer.** Every *new* record must pass `check_duplicates.py --notes-lint`.
+
+## Before you write a single record
+
+1. `python check_duplicates.py --venue "<venue>"` — dedup by **venue**, match on day + time + cadence. Never by name (rule 18).
+2. `python check_duplicates.py --notes-lint --all` — `notes` is **public** (rule 19).
+3. For any `Monthly` record, verify the ordinal actually parses to what you intended (rule 9a). `last` is tested first and short-circuits.
+4. `python check_duplicates.py --self-test && python check_duplicates.py` before committing.
+
+## Also open, smaller
+
+- **Oct 4 LMR Jazz Orchestra** (Farmstead) — in window, flagged, deliberately not added, awaiting her call.
+- **Hydro Bar & Grill** (Calistoga) — genuinely down, HTTP 500. Retry next Napa sweep.
+- **Item 26** — San Anselmo Imagination Park address; two sources conflict (535 vs 541). One phone call settles it. She passed for now.
+- **Item 30** — verify the Sep 1 seasonal flips actually land; first time that code path will have run successfully.
+- **Item 32** — watch the first real scraper findings notification, ~Aug 27 with the Corte Madera reopening.
+- **Item 33** — Tide Pool Table; scope undefined, two questions outstanding. See its section above.
+- **Item 34** — app code quality audit; not started.
+- **`Grown-Ups Only!`** type is live in `index.html` with zero records using it.
+
+## Where the non-repo files live
+
+`OAA maintence and content/` in her Documents project folder (NOT in this repo, and never commit review workbooks): `open_items.md` (16 items, the master to-do list), `Napa_Live_Music_Tracker_v2.xlsx` (has a **Sweep Learnings** tab written 2026-08-21 — read it before a Napa sweep), and the sweep review workbooks.
+
+## Working rhythm
+
+She runs sweeps on command and reviews candidates in Excel. Ad-hoc batches arrive between sweeps (Instagram screenshots, links, plain text) — research each, dedup, present for review before writing. **She catches real errors and she is usually right** — twice this week she pushed back on a conclusion of mine and was correct both times. Check before defending a finding.
