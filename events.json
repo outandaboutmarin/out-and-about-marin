@@ -236,11 +236,11 @@
       "description": "Stories, movement, songs, and rhymes for young children and their caregivers.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "TEMPORARY RELOCATION during the Corte Madera Library Refresh closure (Jul 6 - Sep 2, 2026). Offsite storytime ran at Corte Madera Community Center on Tuesdays in July only - as of 2026-08-06 the library has published NO August offsite dates. Reopens Sep 3, 2026; September programming not yet published, re-check after reopening. Reopened 2026-09-03 as scheduled; confirmed running every Tuesday 9:30-10 AM from Sep 8.",
+      "notes": "Temporary relocation during the Corte Madera Library Refresh closure (Jul 6 – Sep 2, 2026). Reopens Sep 3, 2026.",
       "location_group": "Corte Madera",
       "event_name_es": "Hora del Cuento Familiar",
       "description_es": "Cuentos, canciones y rimas para toda la familia. Gratuito y abierto a todos en la Biblioteca de Corte Madera.",
-      "internal_notes": "This answers the outstanding question in open item 8 - the storytime does resume."
+      "internal_notes": "This answers the outstanding question in open item 8 - the storytime does resume. Offsite storytime ran at Corte Madera Community Center on Tuesdays in July only; as of 2026-08-06 the library had published no August offsite dates. ⚠ FLAGGED 2026-08-21: the sentence removed from the public note read 'Reopened 2026-09-03 as scheduled; confirmed running every Tuesday 9:30-10 AM from Sep 8' -- written in the past tense about a date that has not happened yet. Treat as unverified until someone actually checks on or after Sep 3. See open item 8."
     },
     {
       "id": 10,
@@ -297,10 +297,11 @@
       "description": "Sing, dance, and read stories to build pre-reading skills in a fun, active setting.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Novato Library reopened after its Jun 17 – Aug 18, 2026 refresh closure. This Tuesday session resumes 2026-09-01 (confirmed on the branch calendar: Sep 1, 8, 15). Does not run at the branch before Sep 1 — the Aug 18 and Aug 25 sessions are at Pioneer Park under id 486, so those two dates are suppressed here to avoid double-booking: skip: 2026-08-18 skip: 2026-08-25",
+      "notes": "Novato Library has reopened after its Jun 17 – Aug 18, 2026 refresh closure. This Tuesday session resumes September 1. The Aug 18 and Aug 25 sessions are held at Pioneer Park instead. skip: 2026-08-18 skip: 2026-08-25",
       "location_group": "Novato",
       "event_name_es": "Cuentos y Rimas con Movimiento",
-      "description_es": "Canciones, rimas y movimiento para niños de 1 a 5 años en la Biblioteca de Novato. ¡Ven a bailar y divertirte!"
+      "description_es": "Canciones, rimas y movimiento para niños de 1 a 5 años en la Biblioteca de Novato. ¡Ven a bailar y divertirte!",
+      "internal_notes": "Resumption confirmed on the branch calendar (Sep 1, 8, 15). The Pioneer Park sessions are id 486; the two August dates are suppressed here to avoid double-booking."
     },
     {
       "id": 12,
@@ -418,10 +419,11 @@
       "description": "Friday Family Storytime at Larkspur Library — songs, rhymes, and books for children ages 0–5 and their caregivers. A great way to introduce little ones to early literacy skills: talk, sing, read, write, and play. 10–10:30 am. Now at the new library location on Rose Lane. Special themed storytimes (bilingual, puppet shows, drumming) are posted separately.",
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/333/Story-Times",
-      "notes": "Weekly Friday storytime, 0-5 yrs. New location: 10 Rose Lane (moved from Doherty Drive). Special themed weeks (bilingual, puppet shows etc.) added as separate one-off entries. Confirmed by Alexandra 2026-08-20: the Cuentos con Ritmo bilingual session REPLACES the regular storytime on both of its dates, so those occurrences are suppressed here and ids 699 (August) and 700 (September) carry them. skip: 2026-08-21 skip: 2026-09-18",
+      "notes": "Weekly Friday storytime, 0-5 yrs. New location: 10 Rose Lane (moved from Doherty Drive). Special themed weeks (bilingual, puppet shows etc.) are listed separately. On Aug 21 and Sep 18 the Cuentos con Ritmo bilingual session replaces the regular storytime. skip: 2026-08-21 skip: 2026-09-18",
       "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Hora del Cuento",
-      "description_es": "Cuentos semanales para niños de 0 a 5 años los viernes por la mañana en la Biblioteca de Larkspur."
+      "description_es": "Cuentos semanales para niños de 0 a 5 años los viernes por la mañana en la Biblioteca de Larkspur.",
+      "internal_notes": "Replacement confirmed by Alexandra 2026-08-20; ids 699 (August) and 700 (September) carry those two dates."
     },
     {
       "id": 16,
@@ -448,10 +450,11 @@
       "description": "Brought to you by Colors of Spanish, Cuentos con Ritmo is an engaging bilingual program for kids 0-5 and their caregivers. Stories, music, movement, rhymes and games in a fun outdoor setting.",
       "registration": "Not required",
       "website": "https://millvalleylibrary.org",
-      "notes": "Venue label normalized 2026-07-29 (was 'Old Mill Park Amphitheater') to match the ~20 other Mill Valley records for this same location. Aug 3-12 these programs temporarily move to the library's Smart Garden per libcal. Library CLOSED Mon Sep 7 (Labor Day) - no session that day. ALERT[2026-09-07]: No session Monday, September 7, 2026 — library closed for Labor Day and the branch has marked this date cancelled.",
+      "notes": "Library CLOSED Mon Sep 7 (Labor Day) - no session that day. ALERT[2026-09-07]: No session Monday, September 7, 2026 — library closed for Labor Day and the branch has marked this date cancelled.",
       "location_group": "Mill Valley",
       "event_name_es": "Cuentos con Ritmo",
-      "description_es": "Cuentos con ritmo, canciones y movimiento al aire libre en el Anfiteatro del Parque Old Mill. ¡En español!"
+      "description_es": "Cuentos con ritmo, canciones y movimiento al aire libre en el Anfiteatro del Parque Old Mill. ¡En español!",
+      "internal_notes": "Venue label normalized 2026-07-29 (was 'Old Mill Park Amphitheater') to match the ~20 other Mill Valley records for this same location. Aug 3-12 these programs temporarily move to the library's Smart Garden per libcal."
     },
     {
       "id": 17,
@@ -478,10 +481,11 @@
       "description": "Sing, dance, jump and play with musician Emily Bonn in this drop-in music and movement class. Emily's banjo tunes will have you up on your feet! Ages 2-5, no registration required.",
       "registration": "Not required",
       "website": "https://millvalleylibrary.org",
-      "notes": "Venue label normalized 2026-07-29 (was 'Old Mill Park Amphitheater') to match the ~20 other Mill Valley records for this same location. Aug 3-12 these programs temporarily move to the library's Smart Garden per libcal.",
+      "notes": "",
       "location_group": "Mill Valley",
       "event_name_es": "Canta y Zapatea",
-      "description_es": "Canciones, movimiento y cuentos al aire libre en el Anfiteatro del Parque Old Mill con la música de Emily Bonn."
+      "description_es": "Canciones, movimiento y cuentos al aire libre en el Anfiteatro del Parque Old Mill con la música de Emily Bonn.",
+      "internal_notes": "Venue label normalized 2026-07-29 (was 'Old Mill Park Amphitheater') to match the ~20 other Mill Valley records for this same location. Aug 3-12 these programs temporarily move to the library's Smart Garden per libcal."
     },
     {
       "id": 18,
@@ -538,10 +542,11 @@
       "description": "Songs, rhymes, and a story for babies and toddlers. Held outside in Imagination Park, moving to Council Chambers in inclement weather.",
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
-      "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. Carpet squares provided for family groups; blankets welcome. August break encoded as skip dates 2026-08-20 rather than left as a banner: the programs restart Wednesday September 2 per sananselmo.gov/624/Storytime-Programs, and a bare ALERT would otherwise sit on the card forever (rule 17). skip: 2026-08-24 skip: 2026-08-31",
+      "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. Carpet squares provided for family groups; blankets welcome. On break for the rest of August — programs restart Wednesday September 2 (sananselmo.gov/624/Storytime-Programs). skip: 2026-08-24 skip: 2026-08-31",
       "location_group": "San Anselmo",
       "event_name_es": "Hora del Cuento para Bebés y Pequeños",
-      "description_es": "Cuentos, canciones y rimas al aire libre para bebés y niños pequeños los lunes con sus cuidadores en Imagination Park, San Anselmo."
+      "description_es": "Cuentos, canciones y rimas al aire libre para bebés y niños pequeños los lunes con sus cuidadores en Imagination Park, San Anselmo.",
+      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17)."
     },
     {
       "id": 24,
@@ -629,10 +634,11 @@
       "description": "Practice reading aloud to friendly therapy dogs from the Marin Humane Society SHARE a Book program. A comforting and confidence-building experience for emerging readers in grades 1-3. Sign up at the children's desk the morning of the event. Limited spots available.",
       "registration": "Not required",
       "website": "https://srpubliclibrary.org/events/",
-      "notes": "4th Saturdays of each month. Sign up at the children's desk the morning of the event. Ordinal rule restored 2026-07-29 - previously had no ordinal phrase and carried UNPREDICTABLE, so parseOccurrenceRule() returned null and the event rendered NOWHERE. Dates confirmed by two independent sources: SRPL Summer 2026 flyer ('4th Saturdays, 10:30am-11:30am') and Marin Humane's Sep 26 Share-A-Book listing at San Rafael Library.",
+      "notes": "4th Saturdays of each month. Sign up at the children's desk the morning of the event.",
       "location_group": "San Rafael",
       "event_name_es": "Léele a un Perro",
-      "description_es": "Practica la lectura leyendo en voz alta a un perro de terapia amigable. Para lectores emergentes de primaria. Regístrate en la mesa de niños."
+      "description_es": "Practica la lectura leyendo en voz alta a un perro de terapia amigable. Para lectores emergentes de primaria. Regístrate en la mesa de niños.",
+      "internal_notes": "Ordinal rule restored 2026-07-29 - the record previously had no ordinal phrase and carried UNPREDICTABLE, so parseOccurrenceRule() returned null and it rendered NOWHERE. Dates corroborated by two independent sources: the SRPL Summer 2026 flyer ('4th Saturdays, 10:30am-11:30am') and Marin Humane's Sep 26 Share-A-Book listing at San Rafael Library."
     },
     {
       "id": 27,
@@ -811,10 +817,11 @@
       "description": "Songs, rhymes, and a story in Spanish and English for young children. Held outside in Imagination Park, moving to Council Chambers in inclement weather.",
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
-      "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. August break encoded as skip dates 2026-08-20 rather than left as a banner: the programs restart Wednesday September 2 per sananselmo.gov/624/Storytime-Programs, and a bare ALERT would otherwise sit on the card forever (rule 17). skip: 2026-08-26",
+      "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. On break for the rest of August — programs restart Wednesday September 2 (sananselmo.gov/624/Storytime-Programs). skip: 2026-08-26",
       "location_group": "San Anselmo",
       "event_name_es": "Hora del Cuento Bilingüe en Español",
-      "description_es": "Cuentos bilingües en español e inglés al aire libre en Imagination Park, San Anselmo."
+      "description_es": "Cuentos bilingües en español e inglés al aire libre en Imagination Park, San Anselmo.",
+      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17)."
     },
     {
       "id": 35,
@@ -902,10 +909,11 @@
       "description": "Interactive storytime with books, songs, and stories. Builds early literacy skills through rhythm, repetition, and movement. Caregivers learn simple ways to support learning at home. No sign-up necessary.",
       "registration": "Not required",
       "website": "https://millvalleylibrary.org",
-      "notes": "Outdoor at Old Mill Park Amphitheater Venue label normalized 2026-07-29 (was 'Old Mill Park Amphitheater') to match the ~20 other Mill Valley records for this same location. Aug 3-12 these programs temporarily move to the library's Smart Garden per libcal.",
+      "notes": "Outdoor at Old Mill Park Amphitheater.",
       "location_group": "Mill Valley",
       "event_name_es": "Toddler Storytime with Miranda",
-      "description_es": "Cuentos para niños pequeños al aire libre en el Anfiteatro del Parque Old Mill los miércoles con Miranda."
+      "description_es": "Cuentos para niños pequeños al aire libre en el Anfiteatro del Parque Old Mill los miércoles con Miranda.",
+      "internal_notes": "Venue label normalized 2026-07-29 (was 'Old Mill Park Amphitheater') to match the ~20 other Mill Valley records for this same location. Aug 3-12 2026 these programs temporarily moved to the library's Smart Garden per libcal."
     },
     {
       "id": 38,
@@ -1053,10 +1061,11 @@
       "description": "Drop-in free LEGO building and play for kids ages 5-12. Explore, build, create, and have fun! Meets on the 1st and 3rd Wednesdays of each month.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "1st and 3rd Wednesdays of each month. MCFL Corte Madera closed Jul 6 – Sep 2, 2026 for Library Refresh. Reopens Sep 3. | Reopened 2026-09-03 as scheduled; confirmed on the live calendar Sep 16, Wednesday 3:30-4:30 PM. The branch now advertises it as 'LEGO Club! For ages 5-12'.",
+      "notes": "1st and 3rd Wednesdays of each month. MCFL Corte Madera closed Jul 6 – Sep 2, 2026 for Library Refresh. Reopens Sep 3. The branch now advertises it as 'LEGO Club! For ages 5-12'.",
       "location_group": "Corte Madera",
       "event_name_es": "Club de LEGO",
-      "description_es": "Club de LEGO los miércoles 1ro y 3ro de cada mes para niños de 5 a 12 años en la Biblioteca de Corte Madera. ¡Gratis!"
+      "description_es": "Club de LEGO los miércoles 1ro y 3ro de cada mes para niños de 5 a 12 años en la Biblioteca de Corte Madera. ¡Gratis!",
+      "internal_notes": "⚠ FLAGGED 2026-08-21: the sentence moved here reads \"Reopened 2026-09-03 as scheduled; confirmed on the live calendar Sep 16\" -- past tense about a date that has not happened yet (today is 2026-08-21). Same shape as id 8. Treat as unverified until someone checks on or after Sep 3. See open item 8. Reopened 2026-09-03 as scheduled; confirmed on the live calendar Sep 16, Wednesday 3:30-4:30 PM."
     },
     {
       "id": 43,
@@ -1231,14 +1240,14 @@
       "description": "Bilingual Spanish/English music, movement, and storytime for kids 0-5. Runs twice each morning — attend only one session. Held outdoors under the oak trees, weather permitting.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Set Inactive rather than deleted pending branch confirmation.",
+      "notes": "",
       "id": 50,
       "day": "Thursday",
       "time": "9:30 AM",
       "location_group": "Fairfax",
       "event_name_es": "Bilingual Storytime (Thu 9:30)",
       "description_es": "Cuentos bilingüe en español e inglés para niños de 0 a 5 años los jueves a las 9:30 AM en la Biblioteca de Fairfax.",
-      "internal_notes": "RETIRED 2026-07-29: does not appear on the live Fairfax calendar. Across 80 items reviewed (Jul 29–Oct 15) Bilingual Storytime runs TUESDAYS only (id 48); every Thursday shows 'Storytime!' with Iris at 10:00 AM (id 40) instead."
+      "internal_notes": "RETIRED 2026-07-29: does not appear on the live Fairfax calendar. Across 80 items reviewed (Jul 29–Oct 15) Bilingual Storytime runs TUESDAYS only (id 48); every Thursday shows 'Storytime!' with Iris at 10:00 AM (id 40) instead. Set Inactive rather than deleted pending branch confirmation."
     },
     {
       "id": 52,
@@ -1658,10 +1667,11 @@
       "description": "Weekly farmers market at Dunphy Park, run in partnership between Sausalito Recreation Department and local vendors — fresh produce, artisanal goods, food. 9am (8am in summer).",
       "registration": "Not required",
       "website": "https://www.marincounty.gov/departments/awm/farmers-markets-marin",
-      "notes": "CORRECTED 2026-07 per Alexandra's direct confirmation: this is a Weekly Sunday market at Dunphy Park (previously incorrectly listed as Monthly/4th Saturday/Tracy Way Promenade).",
+      "notes": "",
       "location_group": "Sausalito/Marin City",
       "event_name_es": "Sausalito Farmers Market",
-      "description_es": "Mercado de agricultores semanal en Dunphy Park, en asociación entre el Departamento de Recreación de Sausalito y vendedores locales. 9am (8am en verano)."
+      "description_es": "Mercado de agricultores semanal en Dunphy Park, en asociación entre el Departamento de Recreación de Sausalito y vendedores locales. 9am (8am en verano).",
+      "internal_notes": "CORRECTED 2026-07 per Alexandra's direct confirmation: this is a Weekly Sunday market at Dunphy Park, previously listed incorrectly as Monthly / 4th Saturday / Tracy Way Promenade."
     },
     {
       "id": 71,
@@ -1809,11 +1819,11 @@
       "description": "Summer evening market on 4th Street in downtown San Rafael with fresh produce, street food, artisans, and live entertainment. Runs until 9 PM.",
       "registration": "Not required",
       "website": "https://www.sanrafaelmarket.org",
-      "notes": "Seasonal: June–September only. Corroborated by cityofsanrafael.org/san-rafael-summer-market/, which lists only the monthly Friday market and makes no mention of a Thursday market. Retired rather than deleted: if it returns next summer, set status back to Active and re-verify the day/time and season bounds.",
+      "notes": "Seasonal: June–September only. Corroborated by cityofsanrafael.org/san-rafael-summer-market/, which lists only the monthly Friday market and makes no mention of a Thursday market.",
       "location_group": "San Rafael",
       "event_name_es": "San Rafael Downtown Thursday Market",
       "description_es": "Mercado de verano los jueves por la noche en la Calle 4ta en el centro de San Rafael con productos frescos, comida callejera, artesanos y entretenimiento en vivo. Hasta las 9 PM.",
-      "internal_notes": "RETIRED 2026-08-13 — Alexandra confirmed the season has ended."
+      "internal_notes": "RETIRED 2026-08-13 — Alexandra confirmed the season has ended. Retired rather than deleted: if it returns next summer, set status back to Active and re-verify the day/time and season bounds."
     },
     {
       "id": 76,
@@ -1930,10 +1940,11 @@
       "description": "Sing, dance, jump and play with musician Emily Bonn in this drop-in music and movement group. You are welcome to sit, but Emily's tunes will have you up and on your feet in no time! Ages 0-5.",
       "registration": "Not required",
       "website": "https://www.sananselmo.gov/624/Storytime-Programs",
-      "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. August break encoded as skip dates 2026-08-20 rather than left as a banner: the programs restart Wednesday September 2 per sananselmo.gov/624/Storytime-Programs, and a bare ALERT would otherwise sit on the card forever (rule 17). skip: 2026-08-21 skip: 2026-08-28",
+      "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. On break for the rest of August — programs restart Wednesday September 2 (sananselmo.gov/624/Storytime-Programs). skip: 2026-08-21 skip: 2026-08-28",
       "location_group": "San Anselmo",
       "event_name_es": "Canta y Zapatea con Emily Bonn",
-      "description_es": "¡Canta, baila, salta y juega con la música de Emily Bonn en este grupo de música y movimiento! Bienvenidos a sentarse, pero las melodías de Emily te harán levantarte a bailar. Para niños de 0 a 5 años."
+      "description_es": "¡Canta, baila, salta y juega con la música de Emily Bonn en este grupo de música y movimiento! Bienvenidos a sentarse, pero las melodías de Emily te harán levantarte a bailar. Para niños de 0 a 5 años.",
+      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17)."
     },
     {
       "id": 89,
@@ -1960,10 +1971,11 @@
       "description": "Annual Strawberry Community Night — FREE to attend! Come eat, play, and shop. Live music, food booths, vendors, community organizations, and family activities. 4:30–8 pm. Family activities include free balloon artist (Mr. Shap), free face painting (Buki the Clown), a rock climbing wall, giant inflatables, a giant pirate ship, and a new Kids Zone with activities at every booth. New beer and wine tent overlooking the baseball field. Food vendors include HopMonk, Cousins Maine Lobster, Bombo's Pizza, Rich's Ice Cream, Baked Marin Cookies, and more. Bring a picnic or buy food on-site. Blankets and chairs recommended. RSVP requested. No dogs at the facility.",
       "registration": "RSVP requested at strawberryrecreation.recdesk.com",
       "website": "https://strawberryrecreation.recdesk.com/Community/Program/Detail?programId=4670",
-      "notes": "One-off Aug 21. FREE annual community night 4:30–8pm. Food/beer/wine vendors + family activities + live music. RSVP. No dogs.",
+      "notes": "FREE annual community night 4:30–8pm. Food/beer/wine vendors + family activities + live music. RSVP. No dogs.",
       "location_group": "Mill Valley",
       "event_name_es": "Noche Comunitaria de Strawberry 2026",
-      "description_es": "Noche Comunitaria Anual de Strawberry — ¡GRATIS! Ven a comer, jugar y comprar. Música en vivo, puestos de comida, vendedores, organizaciones comunitarias y actividades familiares. De 4:30 a 8 pm. Actividades familiares: artista de globos (Mr. Shap) y pintacaras (Buki the Clown) gratuitos, muro de escalada, inflables gigantes, barco pirata inflable y nueva Zona de Niños. Trae un picnic o compra comida en el lugar. Se recomiendan mantas y sillas. Se requiere RSVP. No se permiten perros."
+      "description_es": "Noche Comunitaria Anual de Strawberry — ¡GRATIS! Ven a comer, jugar y comprar. Música en vivo, puestos de comida, vendedores, organizaciones comunitarias y actividades familiares. De 4:30 a 8 pm. Actividades familiares: artista de globos (Mr. Shap) y pintacaras (Buki the Clown) gratuitos, muro de escalada, inflables gigantes, barco pirata inflable y nueva Zona de Niños. Trae un picnic o compra comida en el lugar. Se recomiendan mantas y sillas. Se requiere RSVP. No se permiten perros.",
+      "internal_notes": "One-off Aug 21."
     },
     {
       "id": 90,
@@ -2231,10 +2243,11 @@
       "description": "Pony rides every Sunday from 11 am–3 pm behind Rustic Bakery at Marin Country Mart. A sweet little adventure for young riders — no reservations needed, just stop by.",
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
-      "notes": "Behind Rustic Bakery. Every Sunday, June 28 - September 27, 2026. Corrected 2026-07-29: was Weekly with notes claiming 'through year-end', but Marin Country Mart publishes the range as Jun 28 - Sep 28, so the last actual Sunday is Sep 27. Left as-is it would have shown pony rides every Sunday Oct-Dec when they are not running.",
+      "notes": "Behind Rustic Bakery. Every Sunday, June 28 – September 27, 2026.",
       "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Domingos a Caballo — Paseos en Poni",
-      "description_es": "Paseos en poni todos los domingos de 11 am a 3 pm detrás de Rustic Bakery en Marin Country Mart. Una pequeña aventura para los jinetes jóvenes — sin reservaciones, solo ven."
+      "description_es": "Paseos en poni todos los domingos de 11 am a 3 pm detrás de Rustic Bakery en Marin Country Mart. Una pequeña aventura para los jinetes jóvenes — sin reservaciones, solo ven.",
+      "internal_notes": "Corrected 2026-07-29: the record was Weekly with notes claiming 'through year-end', but Marin Country Mart publishes the range as Jun 28 - Sep 28, so the final actual Sunday is Sep 27; left alone it would have advertised pony rides every Sunday Oct-Dec. ⚠ NOTE 2026-08-21: the removed sentence contained a bare ordinal word that parseOccurrenceRule() read as a final-weekday-of-month rule -- so this Seasonal record had been rendering ONLY on the final Sunday of each month instead of every Sunday. Removing the prose fixes it (rule 9a)."
     },
     {
       "id": 129,
@@ -2292,11 +2305,11 @@
       "description": "Drop-in Saturday morning program at the Bolinas Library with crafts and free play for families. All ages welcome.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/events/69f00728129f1274383b3cf1",
-      "notes": "West Marin — Bolinas Library. She may restart it in the fall and will post it to the library website at that point — so this record is kept and hidden rather than deleted. To bring it back, set status to Active and re-verify the day/time against the branch. Note Bolinas is absent from MCFL's bibliocommons calendar entirely, so it cannot be checked online; the branch phone is 415-868-1171. Confirmed running every Saturday 10 AM-12 PM from Aug 22 through Oct 3.",
+      "notes": "West Marin — Bolinas Library. Confirmed running every Saturday 10 AM-12 PM from Aug 22 through Oct 3.",
       "location_group": "West Marin",
       "event_name_es": "Sábados en la Biblioteca: Manualidades y Juego",
       "description_es": "Programa de entrada libre los sábados por la mañana en la Biblioteca de Bolinas con manualidades y juego libre para familias. Todas las edades bienvenidas.",
-      "internal_notes": "RETIRED 2026-08-13: Alexandra spoke with the Bolinas librarian, who confirmed this program is not currently running. Reactivated 2026-08-20: Bolinas programs have restarted for the fall, as the librarian predicted when this was retired (open item 5)."
+      "internal_notes": "RETIRED 2026-08-13: Alexandra spoke with the Bolinas librarian, who confirmed this program is not currently running. Reactivated 2026-08-20: Bolinas programs have restarted for the fall, as the librarian predicted when this was retired (open item 5). She may restart it in the fall and will post it to the library website at that point — so this record is kept and hidden rather than deleted. To bring it back, set status to Active and re-verify the day/time against the branch. Note Bolinas is absent from MCFL's bibliocommons calendar entirely, so it cannot be checked online; the branch phone is 415-868-1171."
     },
     {
       "id": 176,
@@ -2323,11 +2336,11 @@
       "description": "LEGO Club at the Bolinas Library — build, create, and connect with other LEGO fans. All ages welcome. Drop in, no registration required.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/events/69f006588ddc1caf5f1fa5a8",
-      "notes": "West Marin — Bolinas Library. She may restart it in the fall and will post it to the library website at that point — so this record is kept and hidden rather than deleted. To bring it back, set status to Active and re-verify the day/time against the branch. Note Bolinas is absent from MCFL's bibliocommons calendar entirely, so it cannot be checked online; the branch phone is 415-868-1171. Confirmed running every Monday 3:30-4:30 PM from Aug 24 through Sep 28.",
+      "notes": "West Marin — Bolinas Library. Confirmed running every Monday 3:30-4:30 PM from Aug 24 through Sep 28.",
       "location_group": "West Marin",
       "event_name_es": "Club de LEGO — Biblioteca de Bolinas",
       "description_es": "Club de LEGO en la Biblioteca de Bolinas — construye, crea y conéctate con otros fanáticos del LEGO. Todas las edades bienvenidas. Entrada libre, sin registro necesario.",
-      "internal_notes": "RETIRED 2026-08-13: Alexandra spoke with the Bolinas librarian, who confirmed this program is not currently running. Reactivated 2026-08-20: Bolinas programs have restarted for the fall (open item 5)."
+      "internal_notes": "RETIRED 2026-08-13: Alexandra spoke with the Bolinas librarian, who confirmed this program is not currently running. Reactivated 2026-08-20: Bolinas programs have restarted for the fall (open item 5). She may restart it in the fall and will post it to the library website at that point — so this record is kept and hidden rather than deleted. To bring it back, set status to Active and re-verify the day/time against the branch. Note Bolinas is absent from MCFL's bibliocommons calendar entirely, so it cannot be checked online; the branch phone is 415-868-1171."
     },
     {
       "id": 177,
@@ -2749,11 +2762,11 @@
       "description": "Marin Hiking Moms is a community group for women and their children who want to disconnect from the noise and reconnect — with nature and with other women. One Saturday morning each month, the group meets at King Mountain Loop Trail in Larkspur for an easy, scenic hike followed by coffee. All fitness levels welcome. Come solo, bring a friend, bring a baby (carrier friendly) and/or a dog. Come once or come often. Join the WhatsApp group for the latest details and to connect with the group: https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t. Follow on Instagram: @marinhikingmoms.",
       "registration": "None",
       "website": "https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t",
-      "notes": "Second Saturday of each month. Day and time can vary month to month — join the WhatsApp group for each meetup's exact details. Specific announced dates are added as separate one-off entries. Meet point: https://maps.app.goo.gl/7ADgHvyadBYa2PGj8 No hike on the usual 2nd Saturday in August 2026 (skip: 2026-08-08) — this month's hike is Aug 1 instead, see the separate August Hike listing. No hike at the usual 9:30 AM time in September 2026 (skip: 2026-09-12) — this month's hike is at 8:30 AM instead, see the separate September Hike listing.",
+      "notes": "Second Saturday of each month. Day and time can vary month to month — join the WhatsApp group for each meetup's exact details. Meet point: https://maps.app.goo.gl/7ADgHvyadBYa2PGj8 No hike on the usual 2nd Saturday in August 2026 (skip: 2026-08-08) — this month's hike is Aug 1 instead, see the separate August Hike listing. No hike at the usual 9:30 AM time in September 2026 (skip: 2026-09-12) — this month's hike is at 8:30 AM instead, see the separate September Hike listing.",
       "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Caminatas Mensuales de Marin Hiking Moms",
       "description_es": "Marin Hiking Moms es un grupo comunitario para mujeres y sus hijos que quieren desconectarse del ruido y reconectarse con la naturaleza y con otras mujeres. Un sabado por la manana cada mes, el grupo se reune en King Mountain Loop Trail en Larkspur para una caminata facil y pintoresca seguida de cafe. Todos los niveles de condicion fisica son bienvenidos. Venga solo, traiga un amigo, traiga a su bebe (apto para portabebes) y/o un perro. Venga una vez o venga seguido. Unase al grupo de WhatsApp para los ultimos detalles y para conectarse con el grupo: https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t. Siganos en Instagram: @marinhikingmoms.",
-      "internal_notes": "Day corrected from previously listed Sunday, per Alexandra 2026-07-06. August skip per Alexandra 2026-07-31."
+      "internal_notes": "Day corrected from previously listed Sunday, per Alexandra 2026-07-06. August skip per Alexandra 2026-07-31. Specific announced dates are added as separate one-off entries."
     },
     {
       "id": 259,
@@ -2961,11 +2974,11 @@
       "description": "Free summer concert at Novato Civic Green. 6–8 pm. Bring blankets and chairs.",
       "registration": "None",
       "website": "https://www.marinmommies.com/free-summer-outdoor-concerts-marin-2026",
-      "notes": "One-off 2026-08-21. Part of the Concerts on the Green summer series.",
+      "notes": "Part of the Concerts on the Green summer series.",
       "location_group": "Novato",
       "event_name_es": "Conciertos en el Green — Novato: Anthony Arya",
       "description_es": "Concierto de verano gratuito en el Parque Cívico de Novato. De 6 a 8 pm. Traiga mantas y sillas.",
-      "internal_notes": "Performer added 2026-07-29 from the announced lineup - the record was a generic series row with no act named, and families choose by band."
+      "internal_notes": "Performer added 2026-07-29 from the announced lineup - the record was a generic series row with no act named, and families choose by band. One-off 2026-08-21."
     },
     {
       "id": 282,
@@ -3085,10 +3098,11 @@
       "description": "Free outdoor summer concert at Piccolo Pavilion in Old Corte Madera Square. 5–6:30 pm. Bring lawn chairs, blankets, and a picnic. 2026 lineup includes the Walking Mirrors, the Westons, Kanekoa, Boot Juice, Danny Click and Hell Yeahs, and the Corte Madera Town Band. Aug 23 features Jackie Greene (Americana/roots).",
       "registration": "None",
       "website": "https://www.cortemaderacommunityfoundation.org/corte-madera-summer-concerts",
-      "notes": "One-off 2026-08-23. Part of Summer Sunday Concerts series Jun 14–Aug 30.",
+      "notes": "Part of Summer Sunday Concerts series Jun 14–Aug 30.",
       "location_group": "Corte Madera",
       "event_name_es": "Conciertos de Verano los Domingos — Old Corte Madera Square",
-      "description_es": "Concierto de verano gratuito al aire libre en el Pabellón Piccolo en Old Corte Madera Square. De 5 a 6:30 pm. Traiga sillas, mantas y un picnic. El 23 de agosto se presenta Jackie Greene (americana/roots)."
+      "description_es": "Concierto de verano gratuito al aire libre en el Pabellón Piccolo en Old Corte Madera Square. De 5 a 6:30 pm. Traiga sillas, mantas y un picnic. El 23 de agosto se presenta Jackie Greene (americana/roots).",
+      "internal_notes": "One-off 2026-08-23."
     },
     {
       "id": 299,
@@ -3115,10 +3129,11 @@
       "description": "Free outdoor summer concert at Piccolo Pavilion in Old Corte Madera Square. 5–6:30 pm. Bring lawn chairs, blankets, and a picnic. 2026 lineup includes the Walking Mirrors, the Westons, Kanekoa, Boot Juice, Danny Click and Hell Yeahs, and the Corte Madera Town Band.",
       "registration": "None",
       "website": "https://www.cortemaderacommunityfoundation.org/corte-madera-summer-concerts",
-      "notes": "One-off 2026-08-30. Part of Summer Sunday Concerts series Jun 14–Aug 30.",
+      "notes": "Part of Summer Sunday Concerts series Jun 14–Aug 30.",
       "location_group": "Corte Madera",
       "event_name_es": "Conciertos de Verano los Domingos — Old Corte Madera Square",
-      "description_es": "Concierto de verano gratuito al aire libre en el Pabellón Piccolo en Old Corte Madera Square. De 5 a 6:30 pm. Traiga sillas, mantas y un picnic."
+      "description_es": "Concierto de verano gratuito al aire libre en el Pabellón Piccolo en Old Corte Madera Square. De 5 a 6:30 pm. Traiga sillas, mantas y un picnic.",
+      "internal_notes": "One-off 2026-08-30."
     },
     {
       "id": 308,
@@ -3145,11 +3160,11 @@
       "description": "Free acoustic music gathering under the redwoods at the Cabin. Featuring Maddy & the Mayors. Bring a picnic dinner. Limited parking — please bike or walk if possible. Drop-off and ADA parking only at the Cabin.",
       "registration": "None",
       "website": "https://www.tamcsd.org/creekside-fridays/",
-      "notes": "One-off 2026-08-21. Performer: Maddy & the Mayors. Acoustic concert under the redwoods. The authoritative 6-date lineup is Jun 19, Jul 10, Jul 24, Aug 7, Aug 21, Sep 4 only.",
+      "notes": "Performer: Maddy & the Mayors. Acoustic concert under the redwoods. The authoritative 6-date lineup is Jun 19, Jul 10, Jul 24, Aug 7, Aug 21, Sep 4 only.",
       "location_group": "Mill Valley",
       "event_name_es": "Creekside Unplugged — Tam Valley Cabin: Maddy & the Mayors",
       "description_es": "Reunión gratuita de música acústica bajo las secuoyas en el Cabin. Presentando a Maddy & the Mayors. Traiga su cena de picnic.",
-      "internal_notes": "Performer (Maddy & the Mayors) added 2026-07-29 from the official lineup. WARNING for future sweeps: marinmommies.com per-day pages also render 'Creekside Fridays' on Jul 31, Aug 14 and Aug 28 - those are PHANTOM calendar repeats, not real events."
+      "internal_notes": "Performer (Maddy & the Mayors) added 2026-07-29 from the official lineup. WARNING for future sweeps: marinmommies.com per-day pages also render 'Creekside Fridays' on Jul 31, Aug 14 and Aug 28 - those are PHANTOM calendar repeats, not real events. One-off 2026-08-21."
     },
     {
       "id": 309,
@@ -3176,11 +3191,11 @@
       "description": "Free acoustic music gathering under the redwoods at the Cabin. Featuring Marble Party. Bring a picnic dinner. Limited parking — please bike or walk if possible. Drop-off and ADA parking only at the Cabin.",
       "registration": "None",
       "website": "https://www.tamcsd.org/creekside-fridays/",
-      "notes": "One-off 2026-09-04. Performer: Marble Party. Acoustic concert under the redwoods. The authoritative 6-date lineup is Jun 19, Jul 10, Jul 24, Aug 7, Aug 21, Sep 4 only.",
+      "notes": "Performer: Marble Party. Acoustic concert under the redwoods. The authoritative 6-date lineup is Jun 19, Jul 10, Jul 24, Aug 7, Aug 21, Sep 4 only.",
       "location_group": "Mill Valley",
       "event_name_es": "Creekside Unplugged — Tam Valley Cabin: Marble Party",
       "description_es": "Reunión gratuita de música acústica bajo las secuoyas en el Cabin. Presentando a Marble Party. Traiga su cena de picnic.",
-      "internal_notes": "Performer (Marble Party) added 2026-07-29 from the official lineup. WARNING for future sweeps: marinmommies.com per-day pages also render 'Creekside Fridays' on Jul 31, Aug 14 and Aug 28 - those are PHANTOM calendar repeats, not real events."
+      "internal_notes": "Performer (Marble Party) added 2026-07-29 from the official lineup. WARNING for future sweeps: marinmommies.com per-day pages also render 'Creekside Fridays' on Jul 31, Aug 14 and Aug 28 - those are PHANTOM calendar repeats, not real events. One-off 2026-09-04."
     },
     {
       "id": 310,
@@ -3238,10 +3253,11 @@
       "description": "Free outdoor summer concert at Marinwood Community Center. 6–8 pm. Live music from Bay Area rock, bluegrass, and folk artists. BBQ by Marinwood Market and a bar for adults. Bring a picnic blanket.",
       "registration": "None",
       "website": "https://www.marinwood.org/event/music-park",
-      "notes": "One-off 2026-08-21. Food and bar on-site. Part of Music in the Park series.",
+      "notes": "Food and bar on-site. Part of Music in the Park series.",
       "location_group": "San Rafael",
       "event_name_es": "Música en el Parque — Marinwood",
-      "description_es": "Concierto de verano gratuito al aire libre en el Centro Comunitario de Marinwood. De 6 a 8 pm. Música de artistas del Área de la Bahía. BBQ y bar disponibles."
+      "description_es": "Concierto de verano gratuito al aire libre en el Centro Comunitario de Marinwood. De 6 a 8 pm. Música de artistas del Área de la Bahía. BBQ y bar disponibles.",
+      "internal_notes": "One-off 2026-08-21."
     },
     {
       "id": 324,
@@ -3268,10 +3284,11 @@
       "description": "Free weekly outdoor jazz and blues concert at Gabrielson Park in Sausalito. 6:30–8 pm. The entire lawn is available for seating — bring a low chair and friends. 2026 lineup includes the Beau Beau Band, Spike Sikes and His Awesome Hotcakes, Juke Joint, James Henry Hands on Fire, West Coast Blues Society, and more.",
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
-      "notes": "One-off 2026-08-21. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
+      "notes": "Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
       "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
-      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
+      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos.",
+      "internal_notes": "One-off 2026-08-21."
     },
     {
       "id": 325,
@@ -3298,10 +3315,11 @@
       "description": "Free weekly outdoor jazz and blues concert at Gabrielson Park in Sausalito. 6:30–8 pm. The entire lawn is available for seating — bring a low chair and friends. 2026 lineup includes the Beau Beau Band, Spike Sikes and His Awesome Hotcakes, Juke Joint, James Henry Hands on Fire, West Coast Blues Society, and more.",
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
-      "notes": "One-off 2026-08-28. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
+      "notes": "Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
       "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
-      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos."
+      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6:30–8 pm. Traiga una silla baja y amigos.",
+      "internal_notes": "One-off 2026-08-28."
     },
     {
       "id": 326,
@@ -3328,10 +3346,11 @@
       "description": "Free weekly outdoor jazz and blues concert at Gabrielson Park in Sausalito. 6–7:30 pm. The entire lawn is available for seating — bring a low chair and friends. 2026 lineup includes the Beau Beau Band, Spike Sikes and His Awesome Hotcakes, Juke Joint, James Henry Hands on Fire, West Coast Blues Society, and more.",
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
-      "notes": "One-off 2026-09-04. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
+      "notes": "Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
       "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
-      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos."
+      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos.",
+      "internal_notes": "One-off 2026-09-04."
     },
     {
       "id": 327,
@@ -3358,10 +3377,11 @@
       "description": "Free weekly outdoor jazz and blues concert at Gabrielson Park in Sausalito. 6–7:30 pm. The entire lawn is available for seating — bring a low chair and friends. 2026 lineup includes the Beau Beau Band, Spike Sikes and His Awesome Hotcakes, Juke Joint, James Henry Hands on Fire, West Coast Blues Society, and more.",
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
-      "notes": "One-off 2026-09-11. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
+      "notes": "Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
       "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
-      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos."
+      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos.",
+      "internal_notes": "One-off 2026-09-11."
     },
     {
       "id": 328,
@@ -3388,10 +3408,11 @@
       "description": "Free weekly outdoor jazz and blues concert at Gabrielson Park in Sausalito. 6–7:30 pm. The entire lawn is available for seating — bring a low chair and friends. 2026 lineup includes the Beau Beau Band, Spike Sikes and His Awesome Hotcakes, Juke Joint, James Henry Hands on Fire, West Coast Blues Society, and more.",
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
-      "notes": "One-off 2026-09-18. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
+      "notes": "Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
       "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
-      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos."
+      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos.",
+      "internal_notes": "One-off 2026-09-18."
     },
     {
       "id": 329,
@@ -3418,10 +3439,11 @@
       "description": "Free weekly outdoor jazz and blues concert at Gabrielson Park in Sausalito. 6–7:30 pm. The entire lawn is available for seating — bring a low chair and friends. 2026 lineup includes the Beau Beau Band, Spike Sikes and His Awesome Hotcakes, Juke Joint, James Henry Hands on Fire, West Coast Blues Society, and more.",
       "registration": "None",
       "website": "https://www.sausalito.gov/departments/parks-and-recreation/events/jazz-and-blues-by-the-bay",
-      "notes": "One-off 2026-09-25. Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
+      "notes": "Part of Jazz and Blues by the Bay weekly Friday series Jun 5–Sep 25.",
       "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
-      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos."
+      "description_es": "Concierto semanal gratuito de jazz y blues al aire libre en Gabrielson Park, Sausalito. 6–7:30 pm. Traiga una silla baja y amigos.",
+      "internal_notes": "One-off 2026-09-25."
     },
     {
       "id": 333,
@@ -3448,11 +3470,11 @@
       "description": "Free outdoor summer concert at Belvedere Park, 28th annual season. Featuring Foreverland (Michael Jackson tribute). Bring blankets and a picnic.",
       "registration": "None",
       "website": "https://www.cityofbelvedere.org/departments/concerts-in-the-park/",
-      "notes": "One-off 2026-09-06. Performer: Foreverland (Michael Jackson tribute). Part of Belvedere Concerts in the Park series.",
+      "notes": "Performer: Foreverland (Michael Jackson tribute). Part of Belvedere Concerts in the Park series.",
       "location_group": "Tiburon/Belvedere",
       "event_name_es": "Conciertos en el Parque de Belvedere: Foreverland",
       "description_es": "Concierto de verano gratuito al aire libre en el Parque de Belvedere. Presentando a Foreverland (Michael Jackson tribute). Traiga mantas y un picnic.",
-      "internal_notes": "Performer added 2026-07-29 from the announced lineup - the record was a generic series row with no act named, and families choose by band."
+      "internal_notes": "Performer added 2026-07-29 from the announced lineup - the record was a generic series row with no act named, and families choose by band. One-off 2026-09-06."
     },
     {
       "id": 334,
@@ -3541,9 +3563,9 @@
       "description_es": "Cierre de temporada de la Serie de Conciertos de Verano del Marin Art and Garden Center: el Teen Rock Showcase, con Red 40 y otros jóvenes músicos locales. Niños de 17 años y menores gratis.",
       "registration": "Tickets at maringarden.org/summerconcerts",
       "website": "https://maringarden.org/summerconcerts/",
-      "notes": "One-off 2026-08-27. Amphitheater — 5–6pm. Genre: Rockabilly, New Wave, and indie pop-punk-rock. Annual Summer Concert Series. Kids under 17 free. Verified against the published MAGC lineup: Aug 27 is the Teen Rock Showcase featuring Red 40. Redwood Amphitheater 5:30-6:30 PM.",
+      "notes": "Amphitheater — 5–6pm. Genre: Rockabilly, New Wave, and indie pop-punk-rock. Annual Summer Concert Series. Kids under 17 free. Verified against the published MAGC lineup: Aug 27 is the Teen Rock Showcase featuring Red 40. Redwood Amphitheater 5:30-6:30 PM.",
       "location_group": "San Anselmo",
-      "internal_notes": "Renamed 2026-07-29 from the placeholder genre label 'Rockabilly, New Wave, and indie pop-punk-rock'."
+      "internal_notes": "Renamed 2026-07-29 from the placeholder genre label 'Rockabilly, New Wave, and indie pop-punk-rock'. One-off 2026-08-27."
     },
     {
       "id": 419,
@@ -3691,11 +3713,11 @@
       "description": "Free family-friendly classic film every Friday night at 6 pm under the big tent at Marin Country Mart. Bring blankets or lawn chairs. Dinner, nibbles and drinks available on site from Le Marais Bistro, El Huarache Loco, Farmshop, Hog Island, Johnny Doughnuts, Miette, Pressed, Rustic Bakery and Souvla, plus a beer and wine bar. 2026 lineup: Jul 31 Charlotte's Web (2006) · Aug 7 Cinderella (1950) · Aug 14 Peter Pan (1953) · Aug 21 One Hundred and One Dalmatians (1961) · Aug 28 A Bug's Life · Sep 4 Toy Story · Sep 11 Curious George · Sep 18 Toy Story 2 · Sep 25 The Lion King · Oct 2 Lilo & Stitch · Oct 9 Ratatouille · Oct 16 Finding Nemo · Oct 23 Finding Dory · Oct 30 Coco.",
       "registration": "Not required",
       "website": "https://marincountrymart.com/movie-night",
-      "notes": "FULL 2026 lineup read off the official schedule graphic (20 Fridays, Jun 19 - Oct 30), which confirms the existing 06/19-10/30 season bounds and 'EVERY FRIDAY NIGHT AT 6PM'. Already-past films: Jun 19 Babe, Jun 26 Aristocats, Jul 3 Aladdin, Jul 10 The Many Adventures of Winnie the Pooh, Jul 17 The Tigger Movie, Jul 24 Up. ⚠ marincountrymart.com/movie-night publishes this schedule ONLY as a PNG (MCM_MovieNightWebSchedule_2026.png) with no text equivalent, so WebFetch cannot read it - future sweeps must get the lineup from a screenshot or a secondary source.",
+      "notes": "Every Friday night at 6 PM, Jun 19 – Oct 30, 2026.",
       "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Noches de Cine en el Mart",
       "description_es": "Película clásica familiar gratuita todos los viernes a las 6 pm bajo la gran carpa en Marin Country Mart. Trae mantas o sillas de jardín. Hay cena, bocadillos y bebidas disponibles en el lugar de Le Marais Bistro, El Huarache Loco, Farmshop, Hog Island, Johnny Doughnuts, Miette, Pressed, Rustic Bakery y Souvla, además de un bar de cerveza y vino. Programación 2026: 31 jul Charlotte's Web (2006) · 7 ago Cinderella (1950) · 14 ago Peter Pan (1953) · 21 ago One Hundred and One Dalmatians (1961) · 28 ago A Bug's Life · 4 sep Toy Story · 11 sep Curious George · 18 sep Toy Story 2 · 25 sep The Lion King · 2 oct Lilo & Stitch · 9 oct Ratatouille · 16 oct Finding Nemo · 23 oct Finding Dory · 30 oct Coco.",
-      "internal_notes": "Renamed 2026-07-29 from 'Friday Movie Nights at the Mart' to the Mart's own title, 'Movie Nights at the Mart', per Alexandra. KEPT as a single Weekly record, but note the DB's convention for movie series elsewhere is per-film One-off records (see the Mill Valley Summer Movie Series ids 150/154/158/161/166/170 and San Rafael Movies in the Park ids 451-454) - splitting this into 14 remaining per-film records is an open option for Alexandra. Duplicate id 587 (fabricated Wednesday version) deleted 2026-07-29."
+      "internal_notes": "Renamed 2026-07-29 from 'Friday Movie Nights at the Mart' to the Mart's own title, 'Movie Nights at the Mart', per Alexandra. KEPT as a single Weekly record, but note the DB's convention for movie series elsewhere is per-film One-off records (see the Mill Valley Summer Movie Series ids 150/154/158/161/166/170 and San Rafael Movies in the Park ids 451-454) - splitting this into 14 remaining per-film records is an open option for Alexandra. Duplicate id 587 (fabricated Wednesday version) deleted 2026-07-29. Full 2026 lineup read off the official schedule graphic (20 Fridays, Jun 19 - Oct 30), which confirms the stored 06/19-10/30 season bounds. Already-past films: Jun 19 Babe, Jun 26 Aristocats, Jul 3 Aladdin, Jul 10 The Many Adventures of Winnie the Pooh, Jul 17 The Tigger Movie, Jul 24 Up. ⚠ marincountrymart.com/movie-night publishes the schedule ONLY as a PNG (MCM_MovieNightWebSchedule_2026.png) with no text equivalent, so WebFetch cannot read it - future sweeps must take the lineup from a screenshot or a secondary source."
     },
     {
       "id": 435,
@@ -5469,9 +5491,10 @@
       "description_es": "Club de lectura mensual para niños de 3º a 5º grado — discuten un libro destacado y disfrutan de juegos y actividades.",
       "registration": "Not required",
       "website": "https://townofsananselmolibrary.libcal.com/calendar/programs",
-      "notes": "Described as monthly but no ordinal-day rule published yet - tracked as One-off until confirmed recurring.",
+      "notes": "",
       "location_group": "San Anselmo",
-      "id": 685
+      "id": 685,
+      "internal_notes": "Described as monthly but no ordinal-day rule published yet - tracked as One-off until confirmed recurring."
     },
     {
       "organization": "The Curtain Theatre",
@@ -6618,9 +6641,10 @@
       "description_es": "Cuentacuentos semanal gratuito para los más pequeños en Pottery Barn Kids dentro de The Village at Corte Madera. Ven los viernes por la mañana para escuchar cuentos en la sección infantil de la tienda.",
       "registration": "Not required",
       "website": "https://www.villageatcortemadera.com/Events",
-      "notes": "Entered as Seasonal 07/31-08/31 because the source confirms dates only through August 31 (Fri Jul 31, Aug 7, Aug 14, Aug 21 named explicitly) - this lets it auto-retire rather than showing forever. Re-check for a fall continuation. Cost not stated on the source; PBK storytimes are free - worth confirming.",
+      "notes": "Entered as Seasonal 07/31-08/31 because the source confirms dates only through August 31 (Fri Jul 31, Aug 7, Aug 14, Aug 21 named explicitly) - this lets it auto-retire rather than showing forever. Cost not stated on the source; PBK storytimes are free - worth confirming.",
       "location_group": "Corte Madera",
-      "id": 750
+      "id": 750,
+      "internal_notes": "Re-check for a fall continuation."
     },
     {
       "organization": "Marin County Free Library — Civic Center",
@@ -6648,9 +6672,10 @@
       "description_es": "Trae un rompecabezas terminado con todas sus piezas e intercámbialo por un nuevo desafío. Abierto a familias, niños y adultos; entrada libre durante la tarde. De 1 a 4 pm.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events?locations=MC",
-      "notes": "Second-Thursday series (Aug 13, Sep 10, Oct 8 - Oct falls outside this sweep window). Tagged for Families/Kids/Preschoolers/Toddlers/Adults, unlike the Corte Madera Puzzle Swaps which are adults-only.",
+      "notes": "Part of a second-Thursday series: Aug 13, Sep 10, Oct 8. Open to families, kids, preschoolers, toddlers and adults — unlike the Corte Madera Puzzle Swaps, which are adults-only.",
       "location_group": "San Rafael",
-      "id": 764
+      "id": 764,
+      "internal_notes": "Oct 8 falls outside the sweep window this record was added in."
     },
     {
       "organization": "Marin County Free Library — Fairfax",
@@ -6678,10 +6703,10 @@
       "description_es": "Club semanal de entrada libre después de clases para niños y preadolescentes con una actividad rotativa cada semana: Club de LEGO el 1er y 3er miércoles, juegos de mesa el 2do miércoles, y manualidades el 4to y 5to miércoles. Todos los materiales incluidos, sin inscripción. De 2:30 a 3:30 pm.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events?locations=MF",
-      "notes": "BRAND-NEW Fairfax program - first session Aug 19, confirmed every Wednesday through Oct 14. Date field is the START date, not a one-off.",
+      "notes": "New Fairfax program — runs every Wednesday through Oct 14.",
       "location_group": "Fairfax",
       "id": 765,
-      "internal_notes": "Distinct from the Civic Center 'Wednesday Kids' Club' (id 46), a different branch."
+      "internal_notes": "Distinct from the Civic Center 'Wednesday Kids' Club' (id 46), a different branch. First session Aug 19, confirmed running every Wednesday through Oct 14. The date field is the START date, not a one-off."
     },
     {
       "organization": "San Rafael Public Library",
@@ -6832,10 +6857,10 @@
       "description_es": "Caminata nocturna guiada por un guardaparques a través de las secuoyas después del cierre del parque, explorando qué mantiene despierto al bosque de noche. Unas 2 millas de ida y vuelta por el sendero plano y accesible de Redwood Creek, con una extensión opcional de 0.5 millas por el sendero Hillside que tiene cambios de elevación, raíces expuestas y secciones estrechas con caídas pronunciadas. El programa en sí es gratuito, pero Muir Woods cobra $15 de entrada por persona (gratis para menores de 16 años) y se requiere reservación de estacionamiento.",
       "registration": "Registration required — opens 8 AM two weeks before",
       "website": "https://www.onetam.org/muir-woods-night-tour",
-      "notes": "Groups up to 6. Cost string shortened 2026-07-30 (was 96 chars) - full pricing moved into the description; long cost values wrapped to 3 lines in the card tag.",
+      "notes": "Groups up to 6.",
       "location_group": "Mill Valley",
       "id": 772,
-      "internal_notes": "New dated instance of the program already in the DB as id 651 (Jul 31)."
+      "internal_notes": "New dated instance of the program already in the DB as id 651 (Jul 31). Cost string shortened 2026-07-30 (was 96 chars) - full pricing moved into the description; long cost values wrapped to 3 lines in the card tag."
     },
     {
       "organization": "Slide Ranch",
@@ -6955,9 +6980,10 @@
       "description_es": "Ayuda con las tareas después de clases para niños de 3º a 6º grado, ofrecida por adolescentes voluntarios de secundaria capacitados. No se necesita inscripción ni cita. De 4:30 a 5:30 pm.",
       "registration": "Not required",
       "website": "https://beltiblibrary.org/events",
-      "notes": "NEW fall program - first published date Sep 14, confirmed running Sep 21 and Sep 28, so an ongoing weekly school-year program. Date field is the START date, not a one-off. The paired Children's Lab listing is the teen-volunteer sign-up side and is deliberately not listed as a separate family event.",
+      "notes": "New fall program — runs weekly during the school year, starting Sep 14.",
       "location_group": "Tiburon/Belvedere",
-      "id": 776
+      "id": 776,
+      "internal_notes": "First published date Sep 14, confirmed running Sep 21 and Sep 28, so an ongoing weekly school-year program. The date field is the START date, not a one-off. The paired Children's Lab listing is the teen-volunteer sign-up side and is deliberately not listed as a separate family event."
     },
     {
       "organization": "Slide Ranch",
@@ -7015,10 +7041,10 @@
       "description_es": "Celebración de otoño de Tam Valley con juegos, premios, arte y manualidades, casas inflables, comida y música en vivo. La entrada infantil incluye juegos, premios, manualidades y las casas inflables; hay paquetes familiares y de grupo disponibles. De 3 a 8 pm. Entrada: $20 adultos por anticipado o $25 en la puerta, $10 niños de 3-18 años, $15 adultos mayores de 65+, gratis para menores de 3, o $50 por paquete familiar.",
       "registration": "Not required",
       "website": "https://www.tamcsd.org/oktoberfest",
-      "notes": "DAY CORRECTED: the Marin Mommies detail page prints 'Friday, September 19, 2026' but Sep 19, 2026 is a SATURDAY - the site's own per-day calendar heading confirms Saturday. Cost string shortened 2026-07-30 (was 94 chars) - full pricing moved into the description.",
+      "notes": "",
       "location_group": "Mill Valley",
       "id": 778,
-      "internal_notes": "Same venue as ids 304-306 but a different event."
+      "internal_notes": "Same venue as ids 304-306 but a different event. DAY CORRECTED: the Marin Mommies detail page prints 'Friday, September 19, 2026' but Sep 19 2026 is a SATURDAY - the site's own per-day calendar heading confirms Saturday. Cost string shortened 2026-07-30 (was 94 chars) - full pricing moved into the description."
     },
     {
       "organization": "Friends of the Mill Valley Library",
@@ -7229,9 +7255,10 @@
       "description_es": "Sesión de improvisación abierta para músicos de ukulele, cantantes y músicos acústicos de todos los niveles. Trae tu instrumento o simplemente tu voz. De 3 a 4:30 pm.",
       "registration": "Not required",
       "website": "https://beltiblibrary.org/events",
-      "notes": "Third date in the last-Friday-of-month series; ids 714 (Jul 24) and 715 (Aug 28) are already in the DB. The Sep 25 listing shows ages as 'All' where Aug 28 showed 'Adults' - using All ages per the newer listing.",
+      "notes": "Part of the Friday series at the end of each month. All ages.",
       "location_group": "Tiburon/Belvedere",
-      "id": 785
+      "id": 785,
+      "internal_notes": "Third date in the series; ids 714 (Jul 24) and 715 (Aug 28) are already stored. The Sep 25 listing shows ages as 'All' where Aug 28 showed 'Adults' - using All ages per the newer listing."
     },
     {
       "organization": "Slide Ranch",
@@ -7592,14 +7619,15 @@
       "expires": "",
       "description": "Sewing and textile craft club for children ages 8 to 12 at the Belvedere-Tiburon Library.",
       "description_es": "Club de costura y manualidades textiles para ninos de 8 a 12 anos en la Biblioteca de Belvedere-Tiburon.",
-      "notes": "2nd and 4th Wednesdays of each month. Confirmed on the branch calendar: Aug 12, Aug 26 and Sep 9, 2026. Converted 2026-08-13 from a single Aug 12 one-off into the recurring record it actually is.",
+      "notes": "2nd and 4th Wednesdays of each month. Confirmed on the branch calendar: Aug 12, Aug 26 and Sep 9, 2026.",
       "website": "https://beltiblibrary.org/events",
       "location_group": "Tiburon/Belvedere",
       "season_start": "",
       "season_end": "",
       "status": "Active",
       "featured": false,
-      "registration": "Not required"
+      "registration": "Not required",
+      "internal_notes": "Converted 2026-08-13 from a single Aug 12 one-off into the recurring record it actually is."
     },
     {
       "id": 819,
@@ -7689,8 +7717,9 @@
       "season_end": "",
       "status": "Active",
       "featured": false,
-      "notes": "Fourth Wednesday of each month. Confirmed on the branch calendar: Aug 26 and Sep 23, 2026. Converted 2026-08-13 from a single Aug 26 one-off into the recurring record it actually is.",
-      "registration": "Not required"
+      "notes": "Fourth Wednesday of each month. Confirmed on the branch calendar: Aug 26 and Sep 23, 2026.",
+      "registration": "Not required",
+      "internal_notes": "Converted 2026-08-13 from a single Aug 26 one-off into the recurring record it actually is."
     },
     {
       "id": 825,
@@ -8237,10 +8266,11 @@
       "description": "Community volunteer workday on the farm — hands-on projects around the ranch.",
       "registration": "Not required",
       "website": "https://slideranch.org/events",
-      "notes": "⚠ TIME NOT PUBLISHED. Approved 2026-08-13 alongside Sausalito's Make a Difference Day; pure stewardship work-parties (OneTam) stay excluded.",
+      "notes": "Start time not published by the venue — confirm before going.",
       "location_group": "West Marin",
       "event_name_es": "Jornada de Voluntariado en Slide Ranch",
-      "description_es": "Jornada comunitaria de voluntariado en la granja, con proyectos prácticos por todo el rancho."
+      "description_es": "Jornada comunitaria de voluntariado en la granja, con proyectos prácticos por todo el rancho.",
+      "internal_notes": "Approved 2026-08-13 alongside Sausalito's Make a Difference Day; pure stewardship work-parties (OneTam) stay excluded."
     },
     {
       "id": 848,
@@ -8358,11 +8388,11 @@
       "description": "A picnic for expecting families and families with children ages 0-5, hosted by the Postpartum Support Center and West Marin Fund. Surprise gift bags, arts & crafts, games & family activities, books for children, and food & refreshments. 10:00 AM–12:00 PM.",
       "registration": "Required — RSVP (QR code on flyer; call (415) 320-6707 with questions)",
       "website": "https://www.postpartumsc.org",
-      "notes": "Not found on postpartumsc.org's own pages as of this add — not unusual for a small one-off community event promoted mainly via Instagram/QR RSVP; the flyer's phone number (415-320-6707) matches PPSC's number found independently via web search, which is why this was added despite no independent listing.",
+      "notes": "",
       "location_group": "West Marin",
       "event_name_es": "Picnic de West Marin",
       "description_es": "Un picnic para familias embarazadas y familias con niños de 0 a 5 años, organizado por Postpartum Support Center y West Marin Fund. Bolsas de regalo sorpresa, manualidades, juegos y actividades familiares, libros para niños, y comida y refrescos. 10:00 a.m.–12:00 p.m.",
-      "internal_notes": "Added 2026-08-17 from the organization's own Instagram flyer (@postpartumsupportcenter), not a secondhand roundup."
+      "internal_notes": "Added 2026-08-17 from the organization's own Instagram flyer (@postpartumsupportcenter), not a secondhand roundup. Not found on postpartumsc.org's own pages as of this add — not unusual for a small one-off community event promoted mainly via Instagram/QR RSVP; the flyer's phone number (415-320-6707) matches PPSC's number found independently via web search, which is why this was added despite no independent listing."
     },
     {
       "cost": "Free",
@@ -8606,9 +8636,10 @@
       "description_es": "Los perros son compañeros de lectura ideales porque ofrecen amor y aceptación incondicionales. Los lectores nuevos y emergentes son bienvenidos a practicar la lectura en voz alta con nuestros perros voluntarios. Recomendado para niños de todas las habilidades, desde kindergarten en adelante.",
       "registration": "Required — sign up at the Children's Desk the day of the event",
       "website": "https://marinlibrary.bibliocommons.com/events",
-      "notes": "2nd Thursday of each month. Confirmed live 2026-08-20 — four listed forward dates (Sep 10, Oct 8, Nov 12, Dec 10) all independently verified as the 2nd Thursday of their month.",
+      "notes": "2nd Thursday of each month. Upcoming dates: Sep 10, Oct 8, Nov 12, Dec 10.",
       "location_group": "Novato",
-      "id": 860
+      "id": 860,
+      "internal_notes": "Confirmed live 2026-08-20 - all four forward dates independently verified as the 2nd Thursday of their month."
     },
     {
       "organization": "Marin County Free Library — Novato",
@@ -8909,10 +8940,11 @@
       "description": "Pick-your-project workshop - wooden birdfeeders, popsicle-stick pencil holders, wooden birdhouses, flowering pots and more. Free for children 12 and under. 12:30-2 PM.",
       "registration": "Required - RSVP by Friday Sep 18, 5 PM",
       "website": "https://www.goodmanbuildingsupply.net/goodies-kids-club/",
-      "notes": "September's session falls on the THIRD Saturday, not the second - id 208 (the recurring template) carries skip: 2026-09-12 so it does not advertise a phantom session.",
+      "notes": "September's session falls a week later than the usual monthly date.",
       "location_group": "Mill Valley",
       "event_name_es": "Club Infantil Goodie's: Taller Elige tu Proyecto",
-      "description_es": "Taller para elegir tu proyecto: comederos de madera para pájaros, portalápices de palitos, casitas para pájaros, macetas y más. Gratis para niños de 12 años o menos. 12:30-2 p.m."
+      "description_es": "Taller para elegir tu proyecto: comederos de madera para pájaros, portalápices de palitos, casitas para pájaros, macetas y más. Gratis para niños de 12 años o menos. 12:30-2 p.m.",
+      "internal_notes": "id 208 (the recurring template) carries skip: 2026-09-12 so it does not advertise a phantom session on the usual date. Deliberately not naming the week-of-month here: parseOccurrenceRule() reads ordinal words out of prose (rule 9a)."
     },
     {
       "id": 871,
@@ -9151,10 +9183,11 @@
       "description": "Building and construction club for kids at the Downtown Library. 3:45-4:45 PM.",
       "registration": "Not required",
       "website": "https://srpubliclibrary.org/events/",
-      "notes": "Entered as a dated one-off rather than a weekly slot - the start time moved between sessions (Aug 12 at 3:30, Sep 9 at 3:45), so no fixed rule is safe to assume.",
+      "notes": "",
       "location_group": "San Rafael",
       "event_name_es": "Club de Constructores Infantiles",
-      "description_es": "Club de construcción para niños en la Biblioteca Central. 3:45-4:45 p.m."
+      "description_es": "Club de construcción para niños en la Biblioteca Central. 3:45-4:45 p.m.",
+      "internal_notes": "Entered as a dated one-off rather than a weekly slot - the start time moved between sessions (Aug 12 at 3:30, Sep 9 at 3:45), so no fixed rule is safe to assume."
     },
     {
       "id": 879,

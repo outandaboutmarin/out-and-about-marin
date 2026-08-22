@@ -394,16 +394,27 @@ def self_test(events):
                   "internal_notes": "Reopens September 3, 2026 per the branch page."}])
               for l in ls] == ["Reopens date lives only in internal_notes"],
            "a Reopens date stranded in internal_notes must be reported")
-    expect(any("UNPREDICTABLE" in l for _, ls in control_in_internal(
+    # The literal word UNPREDICTABLE is NOT what index.html parses -- the string
+    # does not appear in that file at all. "check" + "calendar" with no ordinal
+    # is the real trigger, and it surfaces through the occurrence-rule branch.
+    expect(any("unpredictable" in l for _, ls in control_in_internal(
                 [{"id": -5, "cadence": "Monthly", "notes": "",
-                  "internal_notes": "Schedule is UNPREDICTABLE, check the calendar."}])
+                  "internal_notes": "Schedule varies, check the calendar."}])
               for l in ls),
-           "a stranded UNPREDICTABLE must be reported")
+           "a stranded check-the-calendar rule must be reported")
+    expect(control_in_internal(
+                [{"id": -10, "cadence": "Monthly", "notes": "4th Saturdays of each month.",
+                  "internal_notes": "This record previously carried UNPREDICTABLE."}]) == [],
+           "the literal word UNPREDICTABLE is not a control and must not be flagged")
     expect(any("skip: 2026-09-12" in l for _, ls in control_in_internal(
                 [{"id": -6, "cadence": "Monthly", "notes": "Second Saturday of each month.",
                   "internal_notes": "skip: 2026-09-12 because the shop moved it."}])
               for l in ls),
            "a skip: date stranded in internal_notes must be reported")
+    expect(control_in_internal(
+                [{"id": -11, "cadence": "One-off", "event_date": "2026-09-19", "notes": "",
+                  "internal_notes": "id 208 carries skip: 2026-09-12 for the usual date."}]) == [],
+           "a One-off is routed by event_date, so no skip: can be stranded for it")
     expect(control_in_internal(
                 [{"id": -7, "cadence": "Monthly", "notes": "skip: 2026-09-12",
                   "internal_notes": "The skip above covers the moved session."}]) == [],
@@ -421,6 +432,51 @@ def self_test(events):
                 [{"id": -9, "cadence": "Weekly", "notes": "Every Thursday, 5-8 PM.",
                   "internal_notes": "not the first-Thursday-only pattern some listings describe"}]) == [],
            "Weekly short-circuits the rule, so nothing can be stranded for it")
+
+    # ── the wave-2 regressions (2026-08-21) ────────────────────────────────
+    # Alexandra found id 16 publishing "Venue label normalized 2026-07-29 (was
+    # 'Old Mill Park Amphitheater')..." on the live site AFTER the first
+    # migration had reported itself clean. Two causes, one test each.
+
+    # (A) THE STRUCTURAL ONE. _KEEP used to be tested first and `continue`d, so
+    # commentary fused into a sentence carrying a control pattern was never
+    # evaluated against _INTERNAL at all. Thirteen records hid there. The
+    # sentence below is id 26's, which published parseOccurrenceRule() internals
+    # behind the word UNPREDICTABLE.
+    fused = {"id": -20, "cadence": "Monthly", "notes":
+             "4th Saturdays of each month. Ordinal rule restored 2026-07-29 - previously "
+             "carried UNPREDICTABLE, so parseOccurrenceRule() returned null."}
+    found = notes_lint([fused])
+    expect(len(found) == 1, "a leak fused with a control pattern must still be reported")
+    if found:
+        _, bad, _ = found[0]
+        expect(any("MIXED" in w for _, why in bad for w in why),
+               "a fused leak must be marked MIXED, not moved wholesale")
+        expect(any("4th Saturdays" in keep for _, _, keep in found),
+               "the control pattern must stay in the public remainder")
+
+    # (B) THE VOCABULARY ONE. Each of these shipped to the public site because
+    # the marker list did not know the verb.
+    for probe, why in [
+        ("Venue label normalized 2026-07-29 (was 'Old Mill Park Amphitheater').", "normalized"),
+        ("Converted 2026-08-13 from a single one-off into the recurring record it is.", "converted"),
+        ("Approved 2026-08-13 alongside Sausalito's Make a Difference Day.", "approved"),
+        ("Cost string shortened 2026-07-30 (was 94 chars).", "cost string"),
+        ("Aug 3-12 these programs move to the Smart Garden per libcal.", "libcal"),
+        ("Retired rather than deleted: set status back to Active if it returns.", "instruction"),
+        ("So this record is kept and hidden rather than deleted.", "this record"),
+        ("marincountrymart.com publishes it as a PNG, so WebFetch cannot read it.", "WebFetch"),
+    ]:
+        expect(len(notes_lint([{"id": -21, "notes": probe}])) == 1,
+               f"the lint must catch internal commentary of the {why!r} shape")
+
+    # And the counterweight: ordinary public prose must still pass clean.
+    for ok in ["Moves indoors in bad weather.",
+               "Free for children 12 and under; RSVP recommended by the Friday before.",
+               "Sign up at the children's desk the morning of the event.",
+               "Second Saturday of each month, 12:30-2 PM."]:
+        expect(notes_lint([{"id": -22, "notes": ok}]) == [],
+               f"public prose must not be flagged: {ok!r}")
 
     print(f"self-test: {checks - len(failures)}/{checks} passed")
     for f in failures:
@@ -549,7 +605,24 @@ _KEEP = re.compile(
 _INTERNAL = [
     ("work log", re.compile(
         r"\b(FIXED|CORRECTED|CONFIRMED|VERIFIED|RETIRED|RENAMED|RESOLVED|ADDED"
-        r"|CHECKED|REACTIVATED)\b[^.]{0,60}\d{4}[-/]\d{2}([-/]\d{2})?", re.I)),
+        r"|CHECKED|REACTIVATED|NORMALI[SZ]ED|CONVERTED|APPROVED|REOPENED|RESTORED"
+        r"|SHORTENED|CONSOLIDATED|ABSORBED|MERGED|REVIVED|SUPPRESSED|DEDUPED"
+        r"|RELABELLED|RELABELED|TRIMMED)\b[^.]{0,60}\d{4}[-/]\d{2}([-/]\d{2})?", re.I)),
+    # Editorial instructions addressed to whoever maintains the record. These
+    # carry no date, so the work-log pattern cannot see them -- "Retired rather
+    # than deleted: if it returns next summer, set status back to Active" was
+    # live on the public site.
+    ("instruction to us", re.compile(
+        r"\brather than (deleted|a banner|left)\b"
+        r"|\bset status\b|\bstatus (back )?to (Active|Inactive)\b"
+        r"|\bto bring it back\b|\bre-?verify\b|\bre-?check\b"
+        r"|\bthis record\b|\bthese records\b|\bthe records\b"
+        r"|\bkept and hidden\b|\bpending branch confirmation\b", re.I)),
+    # Our own tooling, pipelines and internal field names.
+    ("cites our tooling", re.compile(
+        r"\blibcal\b|\bbibliocommons\b|\bCivicEngage\b|\bWebFetch\b"
+        r"|\bthe DB\b|\bcard tag\b|\bcost string\b|\bvenue label\b"
+        r"|\bone-?off\b|\brecurring record\b", re.I)),
     ("names Alexandra", re.compile(r"\bAlexandra\b", re.I)),
     ("cites our data", re.compile(
         r"\bids?\s+\d{2,4}\b|events\.json|\bthe (record|database|DB)\b", re.I)),
@@ -583,11 +656,23 @@ def notes_lint(events):
             continue
         bad, keep = [], []
         for s in _sentences(e["notes"]):
-            if _KEEP.search(s):
-                keep.append(s)
-                continue
             reasons = [label for label, rx in _INTERNAL if rx.search(s)]
-            if reasons:
+            pinned = bool(_KEEP.search(s))
+            if reasons and pinned:
+                # BOTH. The control pattern pins this sentence to `notes`, but
+                # the commentary in it is still public. It cannot be moved
+                # wholesale and it cannot be left -- it needs a hand split.
+                #
+                # This branch is the whole reason the scan was rewritten
+                # 2026-08-21: _KEEP used to be tested FIRST and `continue`d, so
+                # a leak fused with a skip:/ALERT/ordinal was never evaluated
+                # against _INTERNAL at all. Eight records hid here through the
+                # first migration -- including id 26, which published
+                # "parseOccurrenceRule() returned null and the event rendered
+                # NOWHERE" behind the word UNPREDICTABLE.
+                bad.append((s, reasons + ["MIXED - hand split, control pattern must stay"]))
+                keep.append(s)
+            elif reasons:
                 bad.append((s, reasons))
             else:
                 keep.append(s)
@@ -627,12 +712,12 @@ def control_in_internal(events):
                 lost.append(f"occurrence rule {parse_occurrence_rule(internal)} "
                             f"lives only in internal_notes")
 
-        for d in sorted(parse_skip_dates(internal) - parse_skip_dates(notes)):
-            lost.append(f"skip: {d} lives only in internal_notes")
+        if e.get("cadence") != "One-off":
+            for d in sorted(parse_skip_dates(internal) - parse_skip_dates(notes)):
+                lost.append(f"skip: {d} lives only in internal_notes")
 
         for label, rx in (("Reopens date", re.compile(r"\bReopen(?:s|ing)\b\s+[A-Z][a-z]+\s+\d{1,2}")),
-                          ("ALERT", re.compile(r"ALERT(\[\d{4}-\d{2}-\d{2}\])?:")),
-                          ("UNPREDICTABLE", re.compile(r"\bUNPREDICTABLE\b"))):
+                          ("ALERT", re.compile(r"ALERT(\[\d{4}-\d{2}-\d{2}\])?:"))):
             if rx.search(internal) and not rx.search(notes):
                 lost.append(f"{label} lives only in internal_notes")
 
