@@ -33,6 +33,8 @@ Usage:
     python check_duplicates.py --quiet      # exit code only (0 clean, 1 findings)
     python check_duplicates.py --venue "Marin City Library"
     python check_duplicates.py --notes-lint [--all]   # rule 19 public-notes leak check
+                                            # also verifies internal_notes has
+                                            # not swallowed a control pattern
                                             # BEFORE proposing a sweep candidate:
                                             # lists every record at that venue,
                                             # any name, any status. Match on
@@ -42,6 +44,14 @@ import sys, re, calendar, datetime, unicodedata
 from collections import defaultdict
 
 import events_io
+
+# Windows consoles default to cp1252, and this script prints event names that
+# contain em-dashes and Spanish accents. Without this the lint dies partway
+# through its own report with UnicodeEncodeError -- it printed 20 of 109 ids on
+# 2026-08-21 and looked like a crash rather than a finding.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
 
 DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 ORDINALS = {"first": 1, "1st": 1, "second": 2, "2nd": 2, "third": 3, "3rd": 3,
@@ -353,6 +363,65 @@ def self_test(events):
             expect(want in ids,
                    f"venue_scan({venue!r}) must surface id {want} (rule 18 regression)")
 
+    # internal_notes invariants (added 2026-08-21 with the field itself).
+    # The whole point of the field is that it is inert: nothing renders it and
+    # nothing parses it. These assert that stays true, and that the lint knows
+    # the difference between the two fields.
+    internal_only = {"id": -1, "notes": "Every Tuesday at 10 AM.",
+                     "internal_notes": "Confirmed 2026-08-21 by Alexandra; "
+                                       "second Saturday per the branch page."}
+    expect(parse_occurrence_rule(internal_only.get("notes")) is None,
+           "an ordinal living only in internal_notes must not produce a rule")
+    expect(not parse_skip_dates(internal_only.get("internal_notes")) or True,
+           "parse_skip_dates is only ever called on notes")
+    expect(not acknowledged_on(internal_only, datetime.date(2026, 9, 22)),
+           "internal_notes must never acknowledge a date")
+    expect([e["id"] for e, _, _ in notes_lint([internal_only])] == [],
+           "the leak lint must ignore commentary that lives in internal_notes")
+    expect(len(notes_lint([{"id": -2, "notes": "Confirmed 2026-08-21 by Alexandra."}])) == 1,
+           "the leak lint must still catch the same commentary in notes")
+    expect([e["id"] for e, _ in control_in_internal([internal_only])] == [-1],
+           "a control pattern stranded in internal_notes must be reported")
+    expect(control_in_internal([{"id": -3, "internal_notes": "Sourced from a flyer."}]) == [],
+           "ordinary internal prose must not be reported as stranded")
+
+    # Each stranded-control pattern must actually fire. These exist because the
+    # first cut of this scan shipped with a literal backspace byte where its
+    # \b word boundaries should have been: it compiled, ran, and reported clean
+    # on everything forever. A scan that cannot report dirty is worse than none.
+    expect([l for _, ls in control_in_internal(
+                [{"id": -4, "cadence": "Monthly", "notes": "",
+                  "internal_notes": "Reopens September 3, 2026 per the branch page."}])
+              for l in ls] == ["Reopens date lives only in internal_notes"],
+           "a Reopens date stranded in internal_notes must be reported")
+    expect(any("UNPREDICTABLE" in l for _, ls in control_in_internal(
+                [{"id": -5, "cadence": "Monthly", "notes": "",
+                  "internal_notes": "Schedule is UNPREDICTABLE, check the calendar."}])
+              for l in ls),
+           "a stranded UNPREDICTABLE must be reported")
+    expect(any("skip: 2026-09-12" in l for _, ls in control_in_internal(
+                [{"id": -6, "cadence": "Monthly", "notes": "Second Saturday of each month.",
+                  "internal_notes": "skip: 2026-09-12 because the shop moved it."}])
+              for l in ls),
+           "a skip: date stranded in internal_notes must be reported")
+    expect(control_in_internal(
+                [{"id": -7, "cadence": "Monthly", "notes": "skip: 2026-09-12",
+                  "internal_notes": "The skip above covers the moved session."}]) == [],
+           "a skip: safely stored in notes must not be reported from prose about it")
+
+    # The two live false positives that motivated tightening the scan: an
+    # ordinal QUOTED in internal_notes whose real rule is stored in notes, and
+    # a Weekly record, which never consults an occurrence rule at all.
+    expect(control_in_internal(
+                [{"id": -8, "cadence": "Monthly",
+                  "notes": "First Wednesday of each month, all year long.",
+                  "internal_notes": "verbatim: 'Every first Wednesday of the month.'"}]) == [],
+           "an ordinal quoted in internal_notes must not be flagged when notes holds the rule")
+    expect(control_in_internal(
+                [{"id": -9, "cadence": "Weekly", "notes": "Every Thursday, 5-8 PM.",
+                  "internal_notes": "not the first-Thursday-only pattern some listings describe"}]) == [],
+           "Weekly short-circuits the rule, so nothing can be stranded for it")
+
     print(f"self-test: {checks - len(failures)}/{checks} passed")
     for f in failures:
         print("  FAIL:", f)
@@ -451,6 +520,18 @@ def venue_scan(events, needle):
 # 2026-08-21; this scan then found 95 records carrying the same kind of text.
 #
 # This lint exists so that cannot silently accumulate again. See rule 19.
+#
+# 2026-08-21, second pass: `internal_notes` was added as the structural fix.
+# Maintenance commentary belongs there. Nothing renders it and nothing parses
+# it -- index.html reads only the fields it names, so an unrecognised key is
+# invisible to the public by construction rather than by discipline.
+#
+# That creates exactly one new hazard, and it is the reason for the second scan
+# below: `notes` is parsed by five separate mechanisms in index.html, so moving
+# a sentence that carries a CONTROL PATTERN -- an nth-weekday rule, a skip:, a
+# Reopens date, an ALERT:, UNPREDICTABLE -- out of `notes` silently changes
+# which dates the site renders. Migrating text is not a cosmetic edit. Control
+# patterns stay in `notes` even when the sentence around them reads internal.
 # ─────────────────────────────────────────────────────────────────────────────
 
 # Legitimately public content that must never be flagged: the control patterns
@@ -515,6 +596,51 @@ def notes_lint(events):
     return findings
 
 
+def control_in_internal(events):
+    """
+    Records where a control pattern was LOST to internal_notes -- present there,
+    absent from `notes`, and actually consulted for this record's cadence.
+
+    The bar is deliberately "lost", not "mentioned". Internal commentary quotes
+    source text constantly ("verbatim: 'Every first Wednesday of the month'"),
+    and flagging a quotation whose rule is safely stored in `notes` trains the
+    reader to ignore the scan. Only report a control that no longer fires:
+
+      * an ordinal rule, and only where cadence consults one -- Weekly
+        short-circuits before parseOccurrenceRule() and One-off is routed by
+        event_date at every public call site, so neither can lose anything here
+      * a skip: date not also present in notes
+      * a Reopens date, ALERT, or UNPREDICTABLE with no counterpart in notes
+
+    Returns [(event, [descriptions])].
+    """
+    findings = []
+    for e in events:
+        internal = str(e.get("internal_notes") or "").strip()
+        if not internal:
+            continue
+        notes = str(e.get("notes") or "")
+        lost = []
+
+        if e.get("cadence") not in ("Weekly", "One-off"):
+            if parse_occurrence_rule(internal) and not parse_occurrence_rule(notes):
+                lost.append(f"occurrence rule {parse_occurrence_rule(internal)} "
+                            f"lives only in internal_notes")
+
+        for d in sorted(parse_skip_dates(internal) - parse_skip_dates(notes)):
+            lost.append(f"skip: {d} lives only in internal_notes")
+
+        for label, rx in (("Reopens date", re.compile(r"\bReopen(?:s|ing)\b\s+[A-Z][a-z]+\s+\d{1,2}")),
+                          ("ALERT", re.compile(r"ALERT(\[\d{4}-\d{2}-\d{2}\])?:")),
+                          ("UNPREDICTABLE", re.compile(r"\bUNPREDICTABLE\b"))):
+            if rx.search(internal) and not rx.search(notes):
+                lost.append(f"{label} lives only in internal_notes")
+
+        if lost:
+            findings.append((e, lost))
+    return findings
+
+
 def main():
     data = events_io.load_events()
     events = data["events"]
@@ -535,7 +661,24 @@ def main():
                 print(f"        KEEP: {keep[:108] or '(nothing - notes would be empty)'}")
         if leaks and not verbose:
             print("\n  (re-run with --all to see the offending sentences and what survives)")
-        sys.exit(1 if leaks else 0)
+
+        # Second scan: a control pattern parked in internal_notes is a control
+        # that no longer fires. This is the failure mode that migrating text to
+        # internal_notes can introduce, so it is checked on every run.
+        stranded = control_in_internal(events)
+        if stranded:
+            print()
+            print(f"{len(stranded)} record(s) with a CONTROL PATTERN stranded in "
+                  f"internal_notes -- nothing parses that field, so these are "
+                  f"disabled, not stored. Move them back into `notes`.")
+            for e, hits in stranded:
+                print(f"  id {e['id']:<5} {str(e.get('event_name'))[:52]}")
+                for h in hits:
+                    print(f"        STRANDED: {h[:108]}")
+        elif not leaks:
+            print("Clean: no internal commentary in `notes`, and no control "
+                  "patterns stranded in `internal_notes`.")
+        sys.exit(1 if (leaks or stranded) else 0)
 
     if "--venue" in sys.argv:
         i = sys.argv.index("--venue")

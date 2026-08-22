@@ -94,7 +94,8 @@ As of 2026-08-21: **330 events, max ID 907.** Next new event gets the next ID vi
 | `description`, `description_es` | **both required on every event** |
 | `registration` | free text, e.g. `"Not required"` |
 | `website` | source URL |
-| `notes` | **PUBLIC — renders verbatim in an amber callout box on the event detail screen. Never put maintenance/provenance commentary here; see rule 19, and lint with `check_duplicates.py --notes-lint` before committing.** Free text. Special parsed patterns: nth-weekday rules (e.g. `"2nd and 4th Saturdays of each month"`), reopening dates matched via regex `Reopen(?:ing|s)\s+([A-Z][a-z]+\s+\d{1,2}(?:,\s*\d{4})?)` (e.g. `"Reopens June 11"`) which drives the "Closed · Reopens {date}" badge, the literal word `UNPREDICTABLE` (see Data Quality Rules below), and an `ALERT: <text>` prefix (added 2026-08-05) which renders `<text>` as a **red banner on the event card itself** plus red styling on the detail screen, for schedule-affecting callouts like cancellations or seasonal breaks that need to be visible in the feed without opening the event. Terminate it with ` \| ` if other notes follow; `getAlertNote()` reads up to the first `\|`. **Scope a one-date alert as `ALERT[YYYY-MM-DD]: <text>`** (added 2026-08-15) — see rule 17. |
+| `notes` | **PUBLIC — renders verbatim in an amber callout box on the event detail screen. Maintenance/provenance commentary goes in `internal_notes` instead (added 2026-08-21); see rule 19, and lint with `check_duplicates.py --notes-lint` before committing.** Free text. Special parsed patterns: nth-weekday rules (e.g. `"2nd and 4th Saturdays of each month"`), reopening dates matched via regex `Reopen(?:ing|s)\s+([A-Z][a-z]+\s+\d{1,2}(?:,\s*\d{4})?)` (e.g. `"Reopens June 11"`) which drives the "Closed · Reopens {date}" badge, the literal word `UNPREDICTABLE` (see Data Quality Rules below), and an `ALERT: <text>` prefix (added 2026-08-05) which renders `<text>` as a **red banner on the event card itself** plus red styling on the detail screen, for schedule-affecting callouts like cancellations or seasonal breaks that need to be visible in the feed without opening the event. Terminate it with ` \| ` if other notes follow; `getAlertNote()` reads up to the first `\|`. **Scope a one-date alert as `ALERT[YYYY-MM-DD]: <text>`** (added 2026-08-15) — see rule 17. |
+| `internal_notes` | **INTERNAL — never rendered, never parsed.** Added 2026-08-21 as the structural fix for rule 19. Maintenance log, provenance, sourcing, corrections, open-item references, reasoning about the record — all of it belongs here. `index.html` reads only the fields it names, so this one is invisible to the public by construction rather than by discipline. Optional; omit it rather than writing an empty string. **The one hazard**: the five control patterns `notes` carries (nth-weekday rule, `skip:`, `Reopens`, `ALERT:`, `UNPREDICTABLE`) are inert in here. Moving one out of `notes` silently disables it — `check_duplicates.py --notes-lint` scans for exactly that and reports it as STRANDED. Explaining a control in `internal_notes` is fine and expected; *storing* it there is not. |
 | `location_group` | **Do not assume the old fixed list from prior docs — it's drifted.** Live values as of 2026-07: `Mill Valley`, `Tiburon/Belvedere`, `San Rafael`, `Novato`, `San Anselmo`, `Larkspur/Greenbrae` (not `Larkspur`), `Corte Madera`, `Fairfax`, `Sausalito/Marin City` (not `Sausalito`), `West Marin`, `Nicasio/San Geronimo`, `Virtual`, plus Napa-area values (`Calistoga`, `St. Helena`, `Yountville` — see Napa note below). When adding a new event, match an existing value exactly — check current values in the file rather than trusting a hardcoded list here, since this has changed before. **Never use `"Marin County"`** — see rule 8 below (removed 2026-07-19; the 8 events that had it were reassigned to their real town's `location_group`). |
 | `county` | Only set on the Napa-area events (`"Napa"`). Leave blank for Marin events (implicit default). See the Napa County Music section below for its own separate sweep process. |
 
@@ -211,7 +212,7 @@ Always follow these when adding or editing events — they exist because of spec
     - `Reopens <date>` / `UNPREDICTABLE` control words
     - short, genuinely public schedule or logistics prose a *parent reading the listing* would want: "Sign up at the children's desk the morning of the event." / "Moves indoors in bad weather." / "Cash or exact change only."
 
-    **Where provenance goes instead: the git commit message.** That is the internal record — it is durable, timestamped, attributed, searchable with `git log -S`, and invisible to the public. Write the *why*, the source URL, the date verified, and the ids touched there, at whatever length is useful. Nothing is lost by keeping it out of `notes`.
+    **Where provenance goes instead: `internal_notes` on the record** (added 2026-08-21 — see the schema table). It is never rendered and never parsed, so it holds the maintenance log where it is most useful: attached to the record it describes. Write the *why*, the source URL, the date verified, and the ids touched there, at whatever length is useful. The git commit message remains the right place for cross-record reasoning about a batch.
 
     **Before every commit that touches `events.json`:**
     ```
@@ -222,7 +223,15 @@ Always follow these when adding or editing events — they exist because of spec
 
     **Test the phrasing this way:** would you be comfortable if this sentence were read aloud by the venue's owner, or by a parent deciding whether to attend? "Second Saturday of each month" passes. "Time re-confirmed by Alexandra 2026-08-13 — Marin Mommies lists it wrong" does not.
 
-    Related: **open item 36** proposed adding a separate non-rendered `internal_notes` field, which would make this structurally impossible rather than merely against the rules. That is a schema change and needs Alexandra's sign-off. Until it exists, the rule above is the whole defence.
+    **The migration — done 2026-08-21, at Alexandra's direction.** All 109 records were split: public text stayed in `notes`, commentary moved to `internal_notes`. Nothing was deleted. 71 split cleanly on the lint's own sentence boundaries, 31 had notes that were entirely internal and now carry no public note at all, and **7 needed hand-splitting** because a control pattern and a comment shared one sentence (ids 12, 25, 177, 208, 255, 859, 904).
+
+    **The migration was verified by diffing what the site DERIVES from `notes`, not by reading the diff.** For all 330 records, before and after: the occurrence dates over a 365-day horizon, the parsed rule, the skip set, the `Reopens` date, the `ALERT` text, and the `UNPREDICTABLE` flag. **Rendered dates: identical, 6,786 before and after.** Five records' parsed *rule* changed (674, 675, 771, 773, 904) — all phantom rules that ordinal words in internal prose had produced by accident, on four One-off records (routed by `event_date` at every public call site) and one Weekly record (short-circuits before `parseOccurrenceRule()`). None was ever consulted. Rule 9a in reverse: the prose was creating rules nobody wanted.
+
+    **Re-run that diff before any future batch edit to `notes`.** Reading a 109-record text diff cannot tell you whether a date moved; only expanding the occurrences can.
+
+    Two things worth knowing about the field:
+    - **A control pattern in `internal_notes` is a control that no longer fires.** The lint's second scan reports these as STRANDED. It flags only *lost* controls — one absent from `notes` and actually consulted for that cadence — because internal commentary quotes source text constantly, and a scan that cries wolf gets ignored.
+    - **`--notes-lint` shipped 2026-08-21 with two dead regexes** — a literal backspace byte sat where the `\b` word boundaries belonged, so the `Reopens` and `UNPREDICTABLE` checks could never match anything. It ran, printed clean, and proved nothing. Fixed the same day and each pattern now has a self-test that asserts it can fire. This is the same lesson as the COLLISION time-string bug: **if a scan reports clean, confirm it is capable of reporting dirty.**
 
 ## Homepage Featured strip
 
@@ -447,13 +456,21 @@ Read this first, then the sections above as needed.
 
 **The two sweeps are both done and applied.** Marin, window Aug 21 – Oct 4, ids 863–887. Napa, window Aug 22 – Oct 4, ids 888–907. Neither needs revisiting; the next Marin sweep is due on her command, usually Wednesday or Thursday.
 
-## The one thing waiting on Alexandra
+## The rule 19 fix — DONE 2026-08-21, awaiting her review before it publishes
 
-**109 of 330 records publish internal commentary in the public `notes` box** (open item 36, reopened 2026-08-21). She found this herself on the live site. Nothing has been cleaned — it is a batch edit and needs her sign-off. Two paths were offered and she has not yet chosen:
-- **Fast path**: work the 109 in batches, use the lint's `KEEP` column as the draft, hand her a before/after Excel to review before anything commits.
-- **Proper fix**: add a non-rendered `internal_notes` field so it is structurally impossible. Schema change, touches `index.html`, needs diff-and-confirm.
+She chose the **proper fix** over the fast path. `internal_notes` now exists (schema table + rule 19), and all **109 leaking records have been migrated**: public text stayed in `notes`, commentary moved to `internal_notes`, nothing deleted.
 
-**Do not start either without her answer.** Every *new* record must pass `check_duplicates.py --notes-lint`.
+**It is written to `events.json` but NOT committed** — committing is publishing, and she reviews before that. The before/after workbook is `OAA maintence and content/notes_migration_2026-08-21_review.xlsx`.
+
+Verified by diffing derived output rather than reading text: **rendered dates identical, 6,786 before and after** across all 330 records. Five phantom rules disappeared (ids 674, 675, 771, 773, 904); none was ever consulted — four are One-off, one is Weekly. See rule 19 for the full method and re-run it before any future batch edit to `notes`.
+
+**The 7 hand-split records** (12, 25, 177, 208, 255, 859, 904) are the ones worth reading closely in the workbook.
+
+**id 25 (Lego Saturdays, SRPL Northgate) — RESOLVED 2026-08-21 by Alexandra.** The migration had preserved a stored twice-a-month rule that contradicted SRPL's own live calendar. Her call: **every Saturday, 10 AM – 3 PM, through Aug 29 2026**; after that the branch calendar is simply not updated, which is not evidence the program stopped. Applied to `notes`, `time`, `description`, `description_es`, and `season_end` (08/31 → **08/29**). That last one is not cosmetic: with the ordinal gone the record matches every Saturday, and the season filter in `getFilteredEvents()` keeps any week that merely *overlaps* the season — so an 08/31 end would have rendered **Sep 5**, a date the calendar does not cover. Ending on the last covered Saturday closes that week. Verified week by week: renders Aug 8, 15, 22, 29 and then nothing.
+
+**id 208 (Goodie's Kids' Club) — she reviewed and passed; fine as is.** Its public note still ends with the literal `skip: 2026-09-12`, which the parser requires in `notes`. Hiding control patterns from the rendered amber box is a frontend change, scoped but not started.
+
+**Also fixed in the same pass**: `--notes-lint` crashed with `UnicodeEncodeError` partway through its own report on any name with an em-dash (it printed 20 of 109 ids and looked like a crash); and two of its regexes had a literal backspace byte where `\b` belonged, so they could never match. Both fixed, self-test now 46/46.
 
 ## Before you write a single record
 
