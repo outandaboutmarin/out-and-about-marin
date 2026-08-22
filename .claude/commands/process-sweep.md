@@ -2,6 +2,36 @@ Process a completed Weekly Sweep review file: apply Alexandra's Approve/Skip dec
 
 Read `CLAUDE.md` first for the event schema and data quality rules — every event you add must follow them.
 
+
+## Before you commit — `notes` is PUBLIC (rule 19)
+
+This file is where Alexandra's Approve/Skip decisions get written into `events.json`, which
+means it is where `notes` values get authored. **`notes` renders verbatim in an amber callout
+box on the public event detail screen.** There is no internal field on an event.
+
+On 2026-08-21 a scan found **109 of 330 records** publishing maintenance commentary — sentences
+naming Alexandra, citing internal ids and filenames, and criticising named third-party sources.
+That accumulated one sweep at a time, through this file.
+
+When applying a decision, `notes` may contain **only**: the ordinal recurrence phrase the parser
+needs, `ALERT:` / `ALERT[YYYY-MM-DD]:`, `skip: YYYY-MM-DD`, `Reopens <date>`, `UNPREDICTABLE`,
+and short public logistics prose. **Everything else — the workbook row it came from, the source
+URL, the date verified, who confirmed it, why a cadence was chosen — goes in the git commit
+message.** Do not copy a review workbook's "Notes" or "Rationale" column into the record's
+`notes` field; that column is internal by nature.
+
+Required before committing:
+
+```bash
+python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py --notes-lint --all
+```
+
+It exits non-zero on any leak, prints the offending sentence and why it fired, and prints the
+public remainder that would survive. Fix every leak you introduce. Pre-existing leaks on records
+you did not touch are open item 36 and need Alexandra's sign-off — do not fold that cleanup into
+a sweep commit.
+
+
 ## Process
 
 1. **Locate the filled-in review file.** Default location: `C:\Users\AWalter\Documents\2. Claude-Work\PROJECTS\OAA Marin\OAA maintence and content\daily_sweep_YYYY-MM-DD_review.xlsx` (most recent one, unless Alexandra points you at a specific file/path).
