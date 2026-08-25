@@ -4,6 +4,25 @@ on:
   schedule:
     # Full daily sweep: every morning at 6:00 AM Pacific Time (13:00 UTC)
     - cron: '0 13 * * *'
+    # BACKUP daily sweep: 1:00 PM Pacific (20:00 UTC).
+    #
+    # Added 2026-08-24. That morning's run (#138) never executed a single step:
+    # GitHub failed to allocate a hosted runner and cancelled the job after 15
+    # minutes with "The job was not acquired by Runner of type hosted even
+    # after multiple attempts". Nothing in this repo was wrong -- and nothing
+    # in this repo could have prevented it.
+    #
+    # The cost was not the failed run, it was the SILENCE afterwards: seven
+    # expired events kept rendering as upcoming all day, including one that had
+    # already happened, and the only reason anyone noticed was the failure
+    # email. A single daily attempt means any GitHub-side hiccup shows stale
+    # events to families until the next morning.
+    #
+    # This run is a no-op when the morning one worked: the purge is computed
+    # from today's date rather than from a cursor, so a second run finds
+    # nothing to change and the commit step exits 0 on "No changes to commit".
+    # It costs about 90 seconds of Actions time.
+    - cron: '0 20 * * *'
     # Monthly audit: 1st of each month at 6:00 AM Pacific Time
     - cron: '0 13 1 * *'
   # Also allows you to run it manually from GitHub if needed
@@ -55,7 +74,7 @@ jobs:
 
       # Step 5: Run full event sweep (every morning)
       - name: Run weekly event sweep
-        if: github.event.schedule == '0 13 * * *' || github.event.inputs.run_weekly_sweep == 'true'
+        if: github.event.schedule == '0 13 * * *' || github.event.schedule == '0 20 * * *' || github.event.inputs.run_weekly_sweep == 'true'
         run: python library_review.py --weekly-sweep
 
       # Step 6: Run monthly audit on the 1st of each month
