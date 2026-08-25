@@ -1,6 +1,6 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-08-25
-Time: 13:39:08
+Time: 20:37:12
 
 Total events in events.json: 300
 Active events: 284
@@ -46,7 +46,6 @@ Libraries reopening within 7 days:
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
-  🔔 PAGE CHANGED: Mill Valley Public Library
   🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
