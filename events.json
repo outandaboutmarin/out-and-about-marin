@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-22",
+  "last_updated": "2026-08-24",
   "events": [
     {
       "id": 1,
@@ -3346,10 +3346,11 @@
       "description": "A weekly outdoor play group for children and parents — gather outside to play, connect, and grow together. All ages welcome. Meets Tuesday mornings 9:30–11:30 AM (and Thursday afternoons 3–5 PM) at Quietwood Grove in Marinwood. Join the WhatsApp group for details and updates.",
       "registration": "Join the WhatsApp group to take part and for details",
       "website": "https://chat.whatsapp.com/Bqj0Qtwb9ZF3NcSQqDyV44?s=cl&p=i&mlu=1",
-      "notes": "Twice weekly (Tue 9:30–11:30 AM + Thu 3–5 PM). Google Maps: https://goo.gl/maps/gNZ1HMZYETfdg1cR6. Source: group WhatsApp.",
+      "notes": "Twice weekly (Tue 9:30–11:30 AM + Thu 3–5 PM). Google Maps: https://goo.gl/maps/gNZ1HMZYETfdg1cR6.",
       "location_group": "San Rafael",
       "event_name_es": "Grupo de Juego Little Grove",
-      "description_es": "Un grupo de juego al aire libre semanal para niños y padres: nos reunimos afuera para jugar, conectar y crecer juntos. Todas las edades bienvenidas. Se reúne los martes por la mañana de 9:30 a 11:30 AM (y los jueves por la tarde de 3 a 5 PM) en Quietwood Grove, Marinwood. Únete al grupo de WhatsApp para más información y novedades."
+      "description_es": "Un grupo de juego al aire libre semanal para niños y padres: nos reunimos afuera para jugar, conectar y crecer juntos. Todas las edades bienvenidas. Se reúne los martes por la mañana de 9:30 a 11:30 AM (y los jueves por la tarde de 3 a 5 PM) en Quietwood Grove, Marinwood. Únete al grupo de WhatsApp para más información y novedades.",
+      "internal_notes": "Sourced from the group WhatsApp; the join link is in `website`."
     },
     {
       "id": 420,
@@ -3376,10 +3377,11 @@
       "description": "A weekly outdoor play group for children and parents — gather outside to play, connect, and grow together. All ages welcome. Meets Thursday afternoons 3–5 PM (and Tuesday mornings 9:30–11:30 AM) at Quietwood Grove in Marinwood. Join the WhatsApp group for details and updates.",
       "registration": "Join the WhatsApp group to take part and for details",
       "website": "https://chat.whatsapp.com/Bqj0Qtwb9ZF3NcSQqDyV44?s=cl&p=i&mlu=1",
-      "notes": "Twice weekly (Tue 9:30–11:30 AM + Thu 3–5 PM). Google Maps: https://goo.gl/maps/gNZ1HMZYETfdg1cR6. Source: group WhatsApp.",
+      "notes": "Twice weekly (Tue 9:30–11:30 AM + Thu 3–5 PM). Google Maps: https://goo.gl/maps/gNZ1HMZYETfdg1cR6.",
       "location_group": "San Rafael",
       "event_name_es": "Grupo de Juego Little Grove",
-      "description_es": "Un grupo de juego al aire libre semanal para niños y padres: nos reunimos afuera para jugar, conectar y crecer juntos. Todas las edades bienvenidas. Se reúne los jueves por la tarde de 3 a 5 PM (y los martes por la mañana de 9:30 a 11:30 AM) en Quietwood Grove, Marinwood. Únete al grupo de WhatsApp para más información y novedades."
+      "description_es": "Un grupo de juego al aire libre semanal para niños y padres: nos reunimos afuera para jugar, conectar y crecer juntos. Todas las edades bienvenidas. Se reúne los jueves por la tarde de 3 a 5 PM (y los martes por la mañana de 9:30 a 11:30 AM) en Quietwood Grove, Marinwood. Únete al grupo de WhatsApp para más información y novedades.",
+      "internal_notes": "Sourced from the group WhatsApp; the join link is in `website`."
     },
     {
       "id": 432,
@@ -3770,9 +3772,9 @@
       "description_es": "Cada último domingo del mes, los vecinos del Valle de Ross colocan sus frutas y verduras sobrantes al final de sus entradas — luego amigos, familias y vecinos caminan juntos por las calles, comparten la cosecha y se conectan. Una encantadora salida comunitaria gratuita para todas las edades. 8 AM–1 PM. Inicio: 28 de junio de 2026.",
       "registration": "None",
       "website": "https://www.nextgenpurpose.com/ross-valley-farm-walk/",
-      "notes": "Last Sunday of each month, 8 AM-1 PM. 2026 dates confirmed on the official site: Jun 28 (kickoff), Jul 26, Aug 30, Sep 27. Participating neighborhoods: Palm Hill (founding), Pacheco Valley, Lagunitas Ross, Alexander Avenue, Elm Avenue. No fixed meeting point - neighborhood walk. Source: nextgenpurpose.com/ross-valley-farm-walk",
+      "notes": "Last Sunday of each month, 8 AM-1 PM. 2026 dates: Jun 28 (kickoff), Jul 26, Aug 30, Sep 27. Participating neighborhoods: Palm Hill (founding), Pacheco Valley, Lagunitas Ross, Alexander Avenue, Elm Avenue. No fixed meeting point - neighborhood walk.",
       "location_group": "San Anselmo",
-      "internal_notes": "Corrected 2026-07-29: was labelled summer-only (Jun-Aug) and sourced to a generic nextdoor.com link; the official page shows it runs through Sep 27."
+      "internal_notes": "Corrected 2026-07-29: was labelled summer-only (Jun-Aug) and sourced to a generic nextdoor.com link; the official page shows it runs through Sep 27. Sourced from nextgenpurpose.com/ross-valley-farm-walk, which is already in `website`. The 2026 date list was verified against that official site."
     },
     {
       "id": 486,
@@ -4450,13 +4452,14 @@
       "expires": "2026-09-19",
       "status": "Active",
       "featured": false,
-      "description": "One-day marketplace where young entrepreneurs ages 6-14 run their own business booths — future CEOs, inventors, artists, and makers bringing their big ideas to life. Free to attend and browse. Space is limited for young vendors; applications required in advance.",
-      "description_es": "Mercado de un día donde jóvenes emprendedores de 6 a 14 años manejan sus propios puestos de negocio — futuros directores ejecutivos, inventores, artistas y creadores dando vida a sus grandes ideas. Entrada gratuita. El espacio para jóvenes vendedores es limitado; se requiere solicitud por adelantado.",
-      "registration": "Free to attend; young vendors must apply in advance (https://forms.gle/9NqmBpt77g6aHhj38)",
+      "description": "One-day marketplace where young entrepreneurs ages 6-14 run their own business booths - future CEOs, inventors, artists and makers bringing their big ideas to life. Students can apply on their own or in teams of up to three, and there are cash prizes in several categories. Free to attend and browse; space is limited for young vendors, who must apply in advance.",
+      "description_es": "Mercado de un día donde jóvenes emprendedores de 6 a 14 años manejan sus propios puestos de negocio - futuros directores ejecutivos, inventores, artistas y creadores dando vida a sus grandes ideas. Los estudiantes pueden postularse solos o en equipos de hasta tres, y hay premios en efectivo en varias categorías. Entrada gratuita; el espacio para jóvenes vendedores es limitado y se requiere solicitud por adelantado.",
+      "registration": "Free to attend; young vendors ages 6-14 must apply in advance (https://forms.gle/Pr7MHCZGhPCca8u99)",
       "website": "https://www.ronniesawesomelist.com/ronnies-awesome-list",
-      "notes": "Vendor applications: https://forms.gle/9NqmBpt77g6aHhj38. Source: @goldenhourmarin. 11am-2pm.",
+      "notes": "Young vendors apply in advance and spaces are limited. Free to attend and browse.",
       "location_group": "Corte Madera",
-      "id": 582
+      "id": 582,
+      "internal_notes": "Originally sourced from @goldenhourmarin. Updated 2026-08-24 from the organiser's own announcement, relayed by Alexandra, which added the team size (up to 3) and the cash prizes - neither was in the record before. The announcement said 'ONLY 10 SPOTS LEFT' as of 2026-08-24; deliberately NOT written into the public note, because a spots-left count is stale within days and there is nothing that would come back to correct it. URL CHECK: the announcement carried forms.gle/Pr7MHCZGhPCca8u99 while the record held forms.gle/9NqmBpt77g6aHhj38. Both 302 to the SAME Google Form id (1FAIpQLSfVT1Bllf4lyMyt8DUIDxI06cdxDYmsGqsg7P2RIMwxDGNfEA), so they are aliases, not a conflict - checked rather than assumed, after the Lincoln Ave Brewery dead-domain episode. Stored the newer alias since that is the one being circulated."
     },
     {
       "organization": "Homestead Valley Community Association",
@@ -5752,11 +5755,12 @@
       "description": "Free community repair event — bring a broken lamp, bike, clothing, small appliance, or other item and trained repair coaches will help you fix it for free. Hosted by Zero Waste Marin and Reuse Alliance.",
       "registration": "Pre-registration encouraged, walk-ins accepted — reusealliance.org/events/fairfax-repair-fair-2026",
       "website": "https://www.reusealliance.org/events/fairfax-repair-fair-2026",
-      "notes": "Source: zerowastemarin.org/repair-fairs/",
+      "notes": "",
       "location_group": "Fairfax",
       "event_name_es": "Feria de Reparación — Fairfax",
       "description_es": "Evento comunitario gratuito de reparación — trae una lámpara, bicicleta, ropa, electrodoméstico pequeño u otro artículo roto y entrenadores capacitados te ayudarán a repararlo gratis. Organizado por Zero Waste Marin y Reuse Alliance.",
-      "id": 713
+      "id": 713,
+      "internal_notes": "Sourced from zerowastemarin.org/repair-fairs/; `website` points at the reusealliance.org listing for this specific fair."
     },
     {
       "organization": "Belvedere-Tiburon Library",
@@ -5966,10 +5970,10 @@
       "description_es": "Proyecciones familiares comunitarias de temporada 'Movies on Main' de Cinelounge Tiburon — películas infantiles nuevas y clásicas todos los miércoles a las 3:30 PM. Entrada gratuita o de $1. Pizza de Tony's y bocadillos gourmet disponibles.",
       "registration": "Not required (online booking optional)",
       "website": "https://www.instagram.com/cineloungetiburon/",
-      "notes": "Source: @cineloungetiburon Instagram.",
+      "notes": "",
       "location_group": "Tiburon/Belvedere",
       "id": 736,
-      "internal_notes": "Seasonal series — verify end date each sweep."
+      "internal_notes": "Seasonal series — verify end date each sweep. Sourced from the @cineloungetiburon Instagram account, which is already in `website`."
     },
     {
       "season_start": "",

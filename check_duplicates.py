@@ -466,6 +466,9 @@ def self_test(events):
         ("Retired rather than deleted: set status back to Active if it returns.", "instruction"),
         ("So this record is kept and hidden rather than deleted.", "this record"),
         ("marincountrymart.com publishes it as a PNG, so WebFetch cannot read it.", "WebFetch"),
+        ("Source: @goldenhourmarin.", "bare Source: attribution"),
+        ("Source: group WhatsApp.", "Source: with no handle"),
+        ("Relayed from @cineloungetiburon Instagram.", "a social handle anywhere in the note"),
     ]:
         expect(len(notes_lint([{"id": -21, "notes": probe}])) == 1,
                f"the lint must catch internal commentary of the {why!r} shape")
@@ -474,7 +477,10 @@ def self_test(events):
     for ok in ["Moves indoors in bad weather.",
                "Free for children 12 and under; RSVP recommended by the Friday before.",
                "Sign up at the children's desk the morning of the event.",
-               "Second Saturday of each month, 12:30-2 PM."]:
+               "Second Saturday of each month, 12:30-2 PM.",
+               "Google Maps: https://goo.gl/maps/gNZ1HMZYETfdg1cR6.",
+               "Tickets at cityofsanrafael.org/summer-market.",
+               "Email info@example.org to register."]:
         expect(notes_lint([{"id": -22, "notes": ok}]) == [],
                f"public prose must not be flagged: {ok!r}")
 
@@ -634,7 +640,13 @@ _INTERNAL = [
         r"|\bstale\b|\bphantom\b", re.I)),
     ("sourcing note", re.compile(
         r"\b(added|sourced|relayed|supplied)\b[^.]{0,40}"
-        r"(instagram|flyer|@|screenshot|community|per )", re.I)),
+        r"(instagram|flyer|@|screenshot|community|per )"
+        # The bare attribution shape, found on id 582 (2026-08-24): "Source:
+        # @goldenhourmarin." No verb, so the pattern above could not see it.
+        # A social handle in a public note is always internal -- it credits our
+        # sourcing, not the event's own account, which belongs in `website`.
+        r"|\bsources?\s*:\s*\S"
+        r"|(?<![\w.])@[A-Za-z0-9_.]{3,}", re.I)),
 ]
 
 
