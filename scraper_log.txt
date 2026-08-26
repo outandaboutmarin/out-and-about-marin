@@ -1,6 +1,6 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-08-25
-Time: 20:37:12
+Date: 2026-08-26
+Time: 13:43:44
 
 Total events in events.json: 300
 Active events: 284
@@ -42,10 +42,11 @@ Events by town:
   Yountville: 4
 
 Libraries reopening within 7 days:
-  🔔 REOPENING SOON: JymBabies Indoor Play at JCC South — reopens August 31 (in 6 day(s))
+  🔔 REOPENING SOON: JymBabies Indoor Play at JCC South — reopens August 31 (in 5 day(s))
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
+  🔔 PAGE CHANGED: Mill Valley Public Library
   🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
