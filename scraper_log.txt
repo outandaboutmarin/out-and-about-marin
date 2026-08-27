@@ -1,9 +1,9 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-08-26
-Time: 23:16:34
+Date: 2026-08-27
+Time: 22:40:32
 
-Total events in events.json: 300
-Active events: 284
+Total events in events.json: 298
+Active events: 282
 Temp. closed: 3
 
 Events by type:
@@ -11,9 +11,9 @@ Events by type:
   Farmers Market: 13
   Festival: 20
   Kids Programs: 41
-  Library: 88
+  Library: 87
   Music: 1
-  Music and Movies: 82
+  Music and Movies: 81
 
 Events by town:
   Belvedere: 2
@@ -33,20 +33,20 @@ Events by town:
   Point Reyes Station: 6
   Ross: 2
   San Anselmo: 10
-  San Rafael: 43
+  San Rafael: 42
   Sausalito: 24
-  St. Helena: 18
+  St. Helena: 17
   Tiburon: 22
   Tomales: 2
   Virtual: 1
   Yountville: 4
 
 Libraries reopening within 7 days:
-  🔔 REOPENING SOON: JymBabies Indoor Play at JCC South — reopens August 31 (in 5 day(s))
+  🔔 REOPENING SOON: JymBabies Indoor Play at JCC South — reopens August 31 (in 4 day(s))
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
-  🔔 PAGE CHANGED: San Anselmo Library
+  🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library
