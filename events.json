@@ -9046,7 +9046,7 @@
       "status": "Active",
       "notes": "",
       "registration": "Not required",
-      "website": "https://www.marinmommies.com/fall-family-festivals-oktoberfests-bay-area",
+      "website": "https://grossifamilyfarm.com",
       "indoor_outdoor": "Outdoor",
       "active_sedentary": "Active",
       "time_of_day": "Morning",
@@ -9058,7 +9058,7 @@
       "day": "Saturday",
       "time": "10:00 AM – 5:30 PM",
       "town": "Novato",
-      "address": "Novato, CA",
+      "address": "3666 Novato Blvd, Novato, CA",
       "ages": "All ages",
       "cost": "See website",
       "cadence": "One-off",
@@ -9067,7 +9067,7 @@
       "description": "Live music, brats, beer, pumpkins and more at the Grossi Family Farm patch.",
       "description_es": "Música en vivo, salchichas, cerveza, calabazas y más en el huerto de la granja Grossi Family Farm.",
       "location_group": "Novato",
-      "internal_notes": "Added 2026-08-27 from Alexandra's Oktoberfest list, corroborated against Marin Mommies. Two-day event, both entries expire 2026-09-27 (rule 4). The source gives no street address — worth filling in before this goes near a map link."
+      "internal_notes": "Added 2026-08-27 from Alexandra's Oktoberfest list, corroborated against Marin Mommies. Two-day event, both entries expire 2026-09-27 (rule 4). Address supplied by Alexandra 2026-08-27 and confirmed on grossifamilyfarm.com/contact-us-1: 3666 Novato Blvd, phone 707-888-5607. That page prints the street line ONLY — no city, state or ZIP — so the ZIP is deliberately omitted here rather than guessed; the address still resolves for a map link. website switched from the Marin Mommies roundup to the farm itself."
     },
     {
       "id": 915,
@@ -9075,7 +9075,7 @@
       "status": "Active",
       "notes": "",
       "registration": "Not required",
-      "website": "https://www.marinmommies.com/fall-family-festivals-oktoberfests-bay-area",
+      "website": "https://grossifamilyfarm.com",
       "indoor_outdoor": "Outdoor",
       "active_sedentary": "Active",
       "time_of_day": "Morning",
@@ -9087,7 +9087,7 @@
       "day": "Sunday",
       "time": "10:00 AM – 5:30 PM",
       "town": "Novato",
-      "address": "Novato, CA",
+      "address": "3666 Novato Blvd, Novato, CA",
       "ages": "All ages",
       "cost": "See website",
       "cadence": "One-off",
@@ -9096,7 +9096,7 @@
       "description": "Live music, brats, beer, pumpkins and more at the Grossi Family Farm patch.",
       "description_es": "Música en vivo, salchichas, cerveza, calabazas y más en el huerto de la granja Grossi Family Farm.",
       "location_group": "Novato",
-      "internal_notes": "Added 2026-08-27 from Alexandra's Oktoberfest list, corroborated against Marin Mommies. Two-day event, both entries expire 2026-09-27 (rule 4). The source gives no street address — worth filling in before this goes near a map link."
+      "internal_notes": "Added 2026-08-27 from Alexandra's Oktoberfest list, corroborated against Marin Mommies. Two-day event, both entries expire 2026-09-27 (rule 4). Address supplied by Alexandra 2026-08-27 and confirmed on grossifamilyfarm.com/contact-us-1: 3666 Novato Blvd, phone 707-888-5607. That page prints the street line ONLY — no city, state or ZIP — so the ZIP is deliberately omitted here rather than guessed; the address still resolves for a map link. website switched from the Marin Mommies roundup to the farm itself."
     },
     {
       "id": 916,
