@@ -1,37 +1,37 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-08-27
-Time: 22:40:32
+Date: 2026-08-28
+Time: 04:10:38
 
-Total events in events.json: 298
-Active events: 282
+Total events in events.json: 291
+Active events: 275
 Temp. closed: 3
 
 Events by type:
-  Community Event: 55
+  Community Event: 52
   Farmers Market: 13
   Festival: 20
   Kids Programs: 41
-  Library: 87
+  Library: 85
   Music: 1
-  Music and Movies: 81
+  Music and Movies: 79
 
 Events by town:
   Belvedere: 2
   Bolinas: 3
   Calistoga: 19
-  Corte Madera: 18
+  Corte Madera: 17
   Fairfax: 12
   Inverness: 1
-  Larkspur: 14
+  Larkspur: 12
   Marin City: 4
   Marin County: 1
   Mill Valley: 54
-  Muir Beach: 10
+  Muir Beach: 9
   Nicasio: 4
   Nicasio/San Geronimo: 2
-  Novato: 24
+  Novato: 23
   Point Reyes Station: 6
-  Ross: 2
+  Ross: 1
   San Anselmo: 10
   San Rafael: 42
   Sausalito: 24
@@ -39,13 +39,14 @@ Events by town:
   Tiburon: 22
   Tomales: 2
   Virtual: 1
-  Yountville: 4
+  Yountville: 3
 
 Libraries reopening within 7 days:
-  🔔 REOPENING SOON: JymBabies Indoor Play at JCC South — reopens August 31 (in 4 day(s))
+  🔔 REOPENING SOON: JymBabies Indoor Play at JCC South — reopens August 31 (in 3 day(s))
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
+  🔔 PAGE CHANGED: Larkspur Library
   🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library

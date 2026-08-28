@@ -1,5 +1,5 @@
 {
-  "sweep_date": "2026-08-27",
+  "sweep_date": "2026-08-28",
   "suggested_events": [
     {
       "date": "TBD",
@@ -18,16 +18,6 @@
       "location": "Strawberry Recreation District, Mill Valley",
       "source": "Strawberry Rec",
       "source_type": "AUTO"
-    },
-    {
-      "date": "2026-08-27",
-      "day_label": "Thursday, 2026-08-27",
-      "title": "Lunar Eclipse with Marin Stargazers",
-      "time": "8:00 PM",
-      "location": "Mount Burdell Preserve",
-      "description": "Directions: <p dir=\"ltr\">To be provided only upon successful RSVP.</p><br>Sponsor: Parks<br>Accommodation Information: If you are a person with a disability and require an accommodation to participate",
-      "source": "Marin County Parks (Trumba iCal)",
-      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
     },
     {
       "date": "2026-08-28",
