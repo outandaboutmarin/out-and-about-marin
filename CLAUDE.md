@@ -457,6 +457,13 @@ Shipped across `0870cab`, `a018e5e`, `3ee9645`: 21 expired one-offs deleted; **f
 
 **Deliberately declined, do not silently redo**: Alexandra passed on backfilling the Marin Mommies 14-day gap from the 2026-08-06 sweep (Aug 10–19 went uncovered because only 5 out-of-range days were fetched), and on re-paging Belvedere-Tiburon. Both are known and accepted, not oversights to fix unprompted.
 
+**Declined 2026-08-28, and these three WILL come back round — do not re-propose them without asking:**
+- **Sweetwater's Moonalice Sunday Matinee.** This is the one to watch, because it is a *standing monthly slot* — Nov 8 and Dec 6 are already on Sweetwater's calendar and more will follow. It passes the source #5 filter cleanly (free/matinee, All Ages, 1 pm), and id 704 holds the Sep 6 edition, so it looks approvable every single sweep. It is not. Ask before proposing another one.
+- **"Movies at Marin City Library" screenings.** The Sep 17 edition (*Michael*, the Michael Jackson biopic) was declined because MCFL categorises it for **Adults**. The series itself is ongoing, so the rule to apply is: check the audience MCFL assigns each film rather than assuming a library film night is a family film night.
+- **Musical Yoga with JAMaROO Kids at Larkspur Library.** Appears on Marin Mommies but on none of Larkspur's own pages, and its one listed date had already passed by the time it was reviewed. Not added, and the offer to phone the branch (415-927-5005) to find out whether it is a real series was declined too.
+
+The shape worth noticing: all three cleared the mechanical filters and were still wrong for the site. **A candidate passing the source's own filter is not the same as belonging here**, and that judgement is hers, not the checklist's.
+
 **Working rhythm**: she runs the sweep on command, usually Wednesday or Thursday. Ad-hoc event batches arrive between sweeps (Instagram screenshots, links, plain text) — research each, dedup, and present for review before writing. She reviews in Excel and hands it back.
 
 ---
