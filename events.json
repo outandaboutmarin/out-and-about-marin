@@ -528,7 +528,7 @@
       "time": "10:30 AM",
       "time_of_day": "Morning",
       "town": "San Anselmo",
-      "address": "110 Tunstead Ave, San Anselmo, CA 94960",
+      "address": "541 San Anselmo Ave, San Anselmo, CA 94960",
       "ages": "0-3 yrs",
       "cost": "Free",
       "indoor_outdoor": "Outdoor",
@@ -547,7 +547,7 @@
       "location_group": "San Anselmo",
       "event_name_es": "Hora del Cuento para Bebés y Pequeños",
       "description_es": "Cuentos, canciones y rimas al aire libre para bebés y niños pequeños los lunes con sus cuidadores en Imagination Park, San Anselmo.",
-      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17)."
+      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value."
     },
     {
       "id": 24,
@@ -803,7 +803,7 @@
       "time": "10:30 AM",
       "time_of_day": "Morning",
       "town": "San Anselmo",
-      "address": "110 Tunstead Ave, San Anselmo, CA 94960",
+      "address": "541 San Anselmo Ave, San Anselmo, CA 94960",
       "ages": "0-5 yrs",
       "cost": "Free",
       "indoor_outdoor": "Outdoor",
@@ -822,7 +822,7 @@
       "location_group": "San Anselmo",
       "event_name_es": "Hora del Cuento Bilingüe en Español",
       "description_es": "Cuentos bilingües en español e inglés al aire libre en Imagination Park, San Anselmo.",
-      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17)."
+      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value."
     },
     {
       "id": 35,
@@ -1926,7 +1926,7 @@
       "time": "10:30 AM",
       "time_of_day": "Morning",
       "town": "San Anselmo",
-      "address": "110 Tunstead Ave, San Anselmo, CA 94960",
+      "address": "541 San Anselmo Ave, San Anselmo, CA 94960",
       "ages": "0-5 yrs",
       "cost": "Free",
       "indoor_outdoor": "Outdoor",
@@ -1945,7 +1945,7 @@
       "location_group": "San Anselmo",
       "event_name_es": "Canta y Zapatea con Emily Bonn",
       "description_es": "¡Canta, baila, salta y juega con la música de Emily Bonn en este grupo de música y movimiento! Bienvenidos a sentarse, pero las melodías de Emily te harán levantarte a bailar. Para niños de 0 a 5 años.",
-      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17)."
+      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value."
     },
     {
       "id": 90,
