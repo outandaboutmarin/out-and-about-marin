@@ -2652,7 +2652,7 @@
       "organization": "Marin Hiking Moms",
       "venue": "King Mountain Loop Trail",
       "event_name": "Marin Hiking Moms — Monthly Hike",
-      "type": "Community Event",
+      "type": "Fitness",
       "day": "Saturday",
       "time": "9:30 AM",
       "time_of_day": "Morning",
@@ -2676,7 +2676,7 @@
       "location_group": "Larkspur/Greenbrae",
       "event_name_es": "Caminatas Mensuales de Marin Hiking Moms",
       "description_es": "Marin Hiking Moms es un grupo comunitario para mujeres y sus hijos que quieren desconectarse del ruido y reconectarse con la naturaleza y con otras mujeres. Un sabado por la manana cada mes, el grupo se reune en King Mountain Loop Trail en Larkspur para una caminata facil y pintoresca seguida de cafe. Todos los niveles de condicion fisica son bienvenidos. Venga solo, traiga un amigo, traiga a su bebe (apto para portabebes) y/o un perro. Venga una vez o venga seguido. Unase al grupo de WhatsApp para los ultimos detalles y para conectarse con el grupo: https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t. Siganos en Instagram: @marinhikingmoms.",
-      "internal_notes": "Day corrected from previously listed Sunday, per Alexandra 2026-07-06. August skip per Alexandra 2026-07-31. Specific announced dates are added as separate one-off entries."
+      "internal_notes": "Day corrected from previously listed Sunday, per Alexandra 2026-07-06. August skip per Alexandra 2026-07-31. Specific announced dates are added as separate one-off entries. Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it."
     },
     {
       "id": 260,
@@ -3419,7 +3419,7 @@
       "organization": "Wednesday Night Rodeo Hike",
       "venue": "Rodeo Ave Trailhead",
       "event_name": "Wednesday Night Rodeo — Moms & Babies Hike",
-      "type": "Community Event",
+      "type": "Fitness",
       "day": "Wednesday",
       "time": "4:55 PM",
       "time_of_day": "Evening",
@@ -3442,7 +3442,8 @@
       "notes": "Weekly, every Wednesday. Meet 4:55 PM; on the trail 5–6 PM. About 2 miles round trip. Carrier- and stroller-friendly. Meet at the Rodeo Ave Trailhead, Sausalito.",
       "location_group": "Sausalito/Marin City",
       "event_name_es": "Wednesday Night Rodeo — Caminata para Mamás y Bebés",
-      "description_es": "Caminata semanal de 2 millas (ida y vuelta) para mamás y bebés — trae un portabebés o un cochecito. Punto de encuentro a las 4:55 PM en el Rodeo Ave Trailhead en Sausalito; en el sendero de 5 a 6 PM. Todos los miércoles, llueva o truene."
+      "description_es": "Caminata semanal de 2 millas (ida y vuelta) para mamás y bebés — trae un portabebés o un cochecito. Punto de encuentro a las 4:55 PM en el Rodeo Ave Trailhead en Sausalito; en el sendero de 5 a 6 PM. Todos los miércoles, llueva o truene.",
+      "internal_notes": "Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it."
     },
     {
       "id": 451,
@@ -5926,7 +5927,7 @@
       "venue": "Muir Woods National Monument",
       "event_name": "Muir Woods Night Tour",
       "event_name_es": "Recorrido Nocturno por Muir Woods",
-      "type": "Community Event",
+      "type": "Fitness",
       "day": "Friday",
       "time": "6:30 PM",
       "time_of_day": "Evening",
@@ -5950,7 +5951,7 @@
       "notes": "Groups up to 6.",
       "location_group": "Mill Valley",
       "id": 772,
-      "internal_notes": "New dated instance of the program already in the DB as id 651 (Jul 31). Cost string shortened 2026-07-30 (was 96 chars) - full pricing moved into the description; long cost values wrapped to 3 lines in the card tag."
+      "internal_notes": "New dated instance of the program already in the DB as id 651 (Jul 31). Cost string shortened 2026-07-30 (was 96 chars) - full pricing moved into the description; long cost values wrapped to 3 lines in the card tag. Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it."
     },
     {
       "organization": "Slide Ranch",
@@ -6019,7 +6020,7 @@
       "venue": "Osher Marin JCC (trailhead announced before each hike)",
       "event_name": "New Month, New Mountain: Community Hike",
       "event_name_es": "Nuevo Mes, Nueva Montaña: Caminata Comunitaria",
-      "type": "Kids Programs",
+      "type": "Fitness",
       "day": "Sunday",
       "time": "10:30 AM",
       "time_of_day": "Morning",
@@ -6042,7 +6043,8 @@
       "website": "https://www.marinjcc.org/events/",
       "notes": "⚠ TRAILHEAD NOT PUBLISHED - the JCC lists Location as 'To Be Announced', so the JCC's own address is used as a placeholder. Confirm the actual trailhead before this date and update venue/address/location_group to match that trailhead's town.",
       "location_group": "San Rafael",
-      "id": 775
+      "id": 775,
+      "internal_notes": "Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it."
     },
     {
       "organization": "Belvedere-Tiburon Library",
@@ -6480,7 +6482,7 @@
       "venue": "King Mountain Loop Trail",
       "event_name": "Marin Hiking Moms — September Hike",
       "event_name_es": "Caminata de Septiembre de Marin Hiking Moms",
-      "type": "Community Event",
+      "type": "Fitness",
       "day": "Saturday",
       "time": "8:30 AM",
       "time_of_day": "Morning",
@@ -6502,7 +6504,8 @@
       "registration": "Not required — join the WhatsApp group",
       "website": "",
       "notes": "This month's hike starts at 8:30 AM instead of the usual 9:30 AM. Meet point: https://maps.app.goo.gl/7ADgHvyadBYa2PGj8",
-      "location_group": "Larkspur/Greenbrae"
+      "location_group": "Larkspur/Greenbrae",
+      "internal_notes": "Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it."
     },
     {
       "organization": "San Rafael Public Library",
@@ -7674,7 +7677,7 @@
       "organization": "Marin Agricultural Land Trust (MALT)",
       "venue": "Hicks Mountain Belvedere Ranch",
       "event_name": "Hike at Hicks Mountain Belvedere Ranch",
-      "type": "Community Event",
+      "type": "Fitness",
       "day": "Friday",
       "time": "See website",
       "time_of_day": "Morning",
@@ -7697,14 +7700,15 @@
       "notes": "Start time not published on MALT's listing page as of 2026-08-20 - confirm before the date.",
       "location_group": "Nicasio/San Geronimo",
       "event_name_es": "Caminata en Hicks Mountain Belvedere Ranch",
-      "description_es": "Una de las primeras caminatas públicas en un rancho protegido por MALT recién abierto."
+      "description_es": "Una de las primeras caminatas públicas en un rancho protegido por MALT recién abierto.",
+      "internal_notes": "Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it."
     },
     {
       "id": 869,
       "organization": "Marin Agricultural Land Trust (MALT)",
       "venue": "Hicks Mountain Belvedere Ranch",
       "event_name": "Hike at Hicks Mountain Belvedere Ranch",
-      "type": "Community Event",
+      "type": "Fitness",
       "day": "Saturday",
       "time": "See website",
       "time_of_day": "Morning",
@@ -7727,7 +7731,8 @@
       "notes": "Start time not published on MALT's listing page as of 2026-08-20 - confirm before the date.",
       "location_group": "Nicasio/San Geronimo",
       "event_name_es": "Caminata en Hicks Mountain Belvedere Ranch",
-      "description_es": "Una de las primeras caminatas públicas en un rancho protegido por MALT recién abierto."
+      "description_es": "Una de las primeras caminatas públicas en un rancho protegido por MALT recién abierto.",
+      "internal_notes": "Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it."
     },
     {
       "id": 870,
@@ -9318,7 +9323,7 @@
       "venue": "China Camp State Park",
       "event_name": "Full Moon Hike: Sturgeon Moon",
       "event_name_es": "Caminata de Luna Llena: Luna del Esturión",
-      "type": "Community Event",
+      "type": "Fitness",
       "day": "Friday",
       "time": "6:45 PM – 9:30 PM",
       "town": "San Rafael",
@@ -9328,7 +9333,7 @@
       "description": "An evening hike timed to the rise of the Sturgeon Moon over China Camp.",
       "description_es": "Una caminata nocturna programada para la salida de la Luna del Esturión sobre China Camp.",
       "location_group": "San Rafael",
-      "internal_notes": "Added from the 2026-08-27 sweep, source #1 (Marin Mommies weekend roundup).",
+      "internal_notes": "Added from the 2026-08-27 sweep, source #1 (Marin Mommies weekend roundup). Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it.",
       "cadence": "One-off",
       "expires": "2026-08-28"
     },
@@ -9405,7 +9410,7 @@
       "venue": "San Geronimo Park & Roy's Redwoods Preserve",
       "event_name": "Adventure Hike — San Geronimo & Roy's Redwoods",
       "event_name_es": "Caminata de Aventura — San Geronimo y Roy's Redwoods",
-      "type": "Community Event",
+      "type": "Fitness",
       "day": "Monday",
       "time": "12:30 PM – 2:30 PM",
       "town": "San Geronimo",
@@ -9415,7 +9420,7 @@
       "description": "A guided afternoon adventure hike through San Geronimo Park and Roy's Redwoods.",
       "description_es": "Una caminata guiada de aventura por San Geronimo Park y Roy's Redwoods.",
       "location_group": "Nicasio/San Geronimo",
-      "internal_notes": "Added from the 2026-08-27 sweep, source #13 (One Tam).",
+      "internal_notes": "Added from the 2026-08-27 sweep, source #13 (One Tam). Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it.",
       "cadence": "One-off",
       "expires": "2026-09-14"
     },
@@ -9434,7 +9439,7 @@
       "venue": "Terra Linda / Sleepy Hollow Divide Preserve",
       "event_name": "Sunset Nature Walk",
       "event_name_es": "Caminata Natural al Atardecer",
-      "type": "Community Event",
+      "type": "Fitness",
       "day": "Saturday",
       "time": "5:30 PM – 7:30 PM",
       "town": "San Rafael",
@@ -9444,7 +9449,7 @@
       "description": "A guided walk through the preserve timed for sunset.",
       "description_es": "Una caminata guiada por la reserva programada para el atardecer.",
       "location_group": "San Rafael",
-      "internal_notes": "Added from the 2026-08-27 sweep, source #13 (One Tam).",
+      "internal_notes": "Added from the 2026-08-27 sweep, source #13 (One Tam). Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it.",
       "cadence": "One-off",
       "expires": "2026-09-19"
     },
@@ -9521,7 +9526,7 @@
       "venue": "White Hill Preserve",
       "event_name": "Hike to the Summit — White Hill",
       "event_name_es": "Caminata a la Cumbre — White Hill",
-      "type": "Community Event",
+      "type": "Fitness",
       "day": "Saturday",
       "time": "8:00 AM – 2:00 PM",
       "town": "Fairfax",
@@ -9531,7 +9536,7 @@
       "description": "A guided hike to the summit of White Hill. A long outing — bring plenty of water and lunch.",
       "description_es": "Una caminata guiada a la cumbre de White Hill. Es una salida larga — lleva suficiente agua y almuerzo.",
       "location_group": "Fairfax",
-      "internal_notes": "Added from the 2026-08-27 sweep, source #13 (One Tam). Six hours — flagged on the review row as likely long for young families; Alexandra approved it anyway.",
+      "internal_notes": "Added from the 2026-08-27 sweep, source #13 (One Tam). Six hours — flagged on the review row as likely long for young families; Alexandra approved it anyway. Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it.",
       "cadence": "One-off",
       "expires": "2026-10-03"
     },
