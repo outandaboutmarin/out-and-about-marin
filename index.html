@@ -4063,10 +4063,10 @@ function selectFeatured(){
     var isStorytimeReserve=e.featured===true&&e.cadence==='Monthly'&&e.type==='Kids Programs';
     if(e.cadence!=='One-off'&&!isStorytimeReserve)return false;
     if(e.type==='Music and Movies'&&e.time_of_day==='Evening'&&n.toLowerCase().indexOf('movie')<0)return false;
-    return ['Festival','Music and Movies','Community Event','Kids Programs','Library'].indexOf(e.type)>=0;}
+    return ['Festival','Music and Movies','Community Event','Kids Programs','Library','Fitness'].indexOf(e.type)>=0;}
   function occ(e,lo,hi){if(e.cadence==='One-off'){var d=pd(e.event_date);return (d&&d>=lo&&d<=hi)?d:null;}var c=new Date(lo);while(c<=hi){if(typeof doesEventOccurOnDate==='function'&&doesEventOccurOnDate(e,new Date(c)))return new Date(c);c.setDate(c.getDate()+1);}return null;}
   function isLibHi(e){var o=(e.organization||'').toLowerCase();return e.type==='Library'&&e.cadence==='One-off'&&(o.indexOf('mill valley public library')>=0||o.indexOf('sausalito public library')>=0);}
-  function score(e){var n=(e.event_name||'').toLowerCase();var s=({Festival:5,'Music and Movies':3,'Community Event':3,'Kids Programs':3,Library:2}[e.type])||1;if(e.type==='Festival'&&e.expires&&e.expires!==e.event_date)s+=2;if(e.cadence==='One-off')s+=1;if(BOOST.some(function(b){return n.indexOf(b)>=0;}))s+=2;if(DEM.some(function(x){return n.indexOf(x)>=0;}))s-=5;if(isLibHi(e))s+=2;if(e.featured===true)s+=10;return s;}
+  function score(e){var n=(e.event_name||'').toLowerCase();var s=({Festival:5,'Music and Movies':3,'Community Event':3,'Kids Programs':3,Fitness:3,Library:2}[e.type])||1;if(e.type==='Festival'&&e.expires&&e.expires!==e.event_date)s+=2;if(e.cadence==='One-off')s+=1;if(BOOST.some(function(b){return n.indexOf(b)>=0;}))s+=2;if(DEM.some(function(x){return n.indexOf(x)>=0;}))s-=5;if(isLibHi(e))s+=2;if(e.featured===true)s+=10;return s;}
   function skey(e){return (e.event_name||'').split(':')[0].replace(/\s*[\u2014-]\s*.*$/,'').trim().toLowerCase();}
   var today=new Date();today.setHours(0,0,0,0);
   function pick(days){
