@@ -1162,7 +1162,10 @@ function mapDbUser(dbUser) {
     z-index: 98;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   }
-  .dropdown-panel.open { max-height: 50vh; overflow-y: auto; }
+  /* 50vh -> 62vh (2026-08-28): the Type list has 8 options and the last was
+     cut off. Kept as a vh cap with overflow-y so a long list (Location has
+     far more) still scrolls rather than running off the screen. */
+  .dropdown-panel.open { max-height: 62vh; overflow-y: auto; }
   .dropdown-header {
     padding: 0.75rem 1rem 0.625rem;
     display: flex; justify-content: space-between; align-items: center;
@@ -1175,7 +1178,13 @@ function mapDbUser(dbUser) {
   .dropdown-header-label { font-size: 0.7rem; font-weight: 600; color: #444; letter-spacing: 0.06em; text-transform: uppercase; }
 
   .dd-option {
-    padding: 0.5rem 1rem;
+    /* 0.5rem -> 0.4rem (2026-08-28): with 8 type options the last one,
+       Grown-Ups Only!, sat below the fold and needed a scroll. Trimming the
+       row padding rather than shrinking the font keeps the labels legible;
+       the panel's max-height was raised in the same change so the two
+       together clear the 8th row on a phone. Applies to every filter
+       dropdown, which is intended - they should stay consistent. */
+    padding: 0.4rem 1rem;
     font-size: 0.8rem;
     color: var(--text-primary);
     cursor: pointer;
@@ -2845,15 +2854,19 @@ const filterDefaults = new Proxy({}, { get: (_, k) => currentLang === 'es' ? fil
 const selections = { type: new Set(), location: new Set(), day: new Set(), time: new Set(), age: new Set(), cost: new Set() };
 let defaultFilters = { type: new Set(), location: new Set(), day: new Set(), time: new Set(), age: new Set(), cost: new Set() };
 
+// Alphabetical by English label (2026-08-28, Alexandra's request). NOTE the
+// list is NOT re-sorted at render time: translateOption() swaps in the Spanish
+// labels, and sorting by those would reshuffle the list between languages. The
+// order below is therefore alphabetical in English and stable in Spanish.
 const typeOptions = [
-  { value: 'Recurring', dot: '#52616B' },
-  { value: 'Library', dot: '#378ADD' },
-  { value: 'Kids Programs', dot: '#D85A30' },
-  { value: 'Music and Movies', dot: '#7B4BC0' },
-  { value: 'Fitness', dot: '#1D9E75' },
-  { value: 'Festival / Community Event', dot: '#BA7517' },
   { value: 'Farmers Market', dot: '#639922' },
-  { value: 'Grown-Ups Only!', dot: '#1795A6' }
+  { value: 'Festival / Community Event', dot: '#BA7517' },
+  { value: 'Fitness', dot: '#1D9E75' },
+  { value: 'Grown-Ups Only!', dot: '#1795A6' },
+  { value: 'Kids Programs', dot: '#D85A30' },
+  { value: 'Library', dot: '#378ADD' },
+  { value: 'Music and Movies', dot: '#7B4BC0' },
+  { value: 'Recurring', dot: '#52616B' }
 ];
 // Cadences treated as "Recurring" for the Recurring type-filter option.
 const RECURRING_CADENCES = ['Weekly', 'Bi-weekly', 'Monthly'];

@@ -3755,7 +3755,7 @@
       "venue": "F–G Street, West End, San Rafael",
       "event_name": "West End Block Party — San Rafael",
       "event_name_es": "Fiesta de Barrio West End — San Rafael",
-      "type": "Music",
+      "type": "Community Event",
       "day": "Friday",
       "time": "6:00 PM",
       "time_of_day": "Evening",
@@ -3778,7 +3778,7 @@
       "website": "https://downtownsanrafael.org/west-end-block-party/",
       "notes": "Fridays 6–9 PM. Held on F–G Street in the West End.",
       "location_group": "San Rafael",
-      "internal_notes": "2026 dates confirmed 2026-08-13 from the organiser's own page: 8/21, 8/28, 9/4, 9/11, 9/18, 9/25, 10/2, 10/9, 10/16 — matching this record's 08/21–10/16 season."
+      "internal_notes": "2026 dates confirmed 2026-08-13 from the organiser's own page: 8/21, 8/28, 9/4, 9/11, 9/18, 9/25, 10/2, 10/9, 10/16 — matching this record's 08/21–10/16 season. Type corrected 2026-08-28 from \"Music\", which was not a valid type at all: it matched NO filter option, so this record was live on the site and unreachable from the Type filter, and typeTagClass had no entry for it either, so its card tag rendered unstyled. Found by auditing every record against the filter vocabulary at Alexandra's request. Set to Community Event because the source calls it a block party - a street party with live music, food and vendors. \"Music and Movies\" would also have been defensible; flagged to her."
     },
     {
       "id": 494,
