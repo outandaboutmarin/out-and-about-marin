@@ -1,9 +1,9 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-08-31
-Time: 23:42:38
+Date: 2026-09-01
+Time: 17:02:40
 
-Total events in events.json: 315
-Active events: 298
+Total events in events.json: 314
+Active events: 295
 Temp. closed: 2
 
 Events by type:
@@ -11,7 +11,7 @@ Events by type:
   Farmers Market: 13
   Festival: 26
   Fitness: 11
-  Kids Programs: 49
+  Kids Programs: 48
   Library: 91
   Music and Movies: 68
 
@@ -20,7 +20,7 @@ Events by town:
   Bolinas: 3
   Calistoga: 18
   Corte Madera: 17
-  Fairfax: 16
+  Fairfax: 15
   Larkspur: 12
   Marin City: 4
   Marin County: 1
@@ -44,7 +44,6 @@ Events by town:
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
-  🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library

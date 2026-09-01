@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-31",
+  "last_updated": "2026-09-01",
   "events": [
     {
       "id": 1,
@@ -5250,37 +5250,6 @@
       "id": 737
     },
     {
-      "organization": "Community (Song Circle with Amber)",
-      "venue": "Redwood Stage (next to Peri Park)",
-      "event_name": "Song Circle with Amber",
-      "event_name_es": "Círculo de Canciones con Amber",
-      "type": "Kids Programs",
-      "day": "Monday",
-      "time": "3:30 PM",
-      "time_of_day": "Afternoon",
-      "town": "Fairfax",
-      "address": "16 Park Rd, Fairfax, CA 94930",
-      "ages": "All ages",
-      "cost": "Free (donations welcome via Venmo)",
-      "indoor_outdoor": "Outdoor",
-      "active_sedentary": "Sedentary",
-      "cadence": "One-off",
-      "season_start": "",
-      "season_end": "",
-      "event_date": "2026-08-31",
-      "expires": "2026-08-31",
-      "status": "Active",
-      "featured": false,
-      "description": "Community song circle for all ages led by musician Amber, who has held a longstanding song circle in Bolinas for years. Kiddos, parents/caregivers, and elders all welcome.",
-      "description_es": "Círculo de canciones comunitario para todas las edades dirigido por la música Amber, quien ha mantenido un círculo de canciones en Bolinas durante años. Bienvenidos niños, padres/cuidadores y mayores.",
-      "registration": "Not required",
-      "website": "",
-      "notes": "Community-run, turnout-dependent - no public web page. Redwood Stage is adjacent to Peri Park.",
-      "location_group": "Fairfax",
-      "id": 742,
-      "internal_notes": "Source: community (Mountain Mamas group), relayed by Alexandra. Confirmed continuing through August 2026 (2026-07)."
-    },
-    {
       "season_start": "",
       "season_end": "",
       "event_date": "",
@@ -5423,7 +5392,7 @@
       "season_end": "08/31",
       "event_date": "",
       "expires": "",
-      "status": "Active",
+      "status": "Seasonal - Inactive",
       "featured": false,
       "description": "Free weekly storytime for little ones at Pottery Barn Kids inside The Village at Corte Madera. Drop in on Friday mornings for stories in the store's kids' section.",
       "description_es": "Cuentacuentos semanal gratuito para los más pequeños en Pottery Barn Kids dentro de The Village at Corte Madera. Ven los viernes por la mañana para escuchar cuentos en la sección infantil de la tienda.",
@@ -6168,7 +6137,7 @@
       "location_group": "Corte Madera",
       "event_date": "",
       "expires": "",
-      "status": "Active",
+      "status": "Seasonal - Inactive",
       "featured": false,
       "registration": "Not required",
       "internal_notes": "Same handling as id 750."
