@@ -23,8 +23,24 @@ on:
     # nothing to change and the commit step exits 0 on "No changes to commit".
     # It costs about 90 seconds of Actions time.
     - cron: '0 20 * * *'
-    # Monthly audit: 1st of each month at 6:00 AM Pacific Time
-    - cron: '0 13 1 * *'
+    # NO SEPARATE MONTHLY CRON. There used to be one here -- '0 13 1 * *' --
+    # and it caused a guaranteed failure on the 1st of every month.
+    #
+    # Both it and the daily cron fire at 13:00 UTC, so on the 1st two runs
+    # started 45 seconds apart (runs 153 and 154 on 2026-09-01). The
+    # concurrency group serialised them rather than running them together, but
+    # that did not help: the first run committed its purge and pushed, and the
+    # second then rebased onto a main that already contained a near-identical
+    # change to events.json, conflicted, and hit the workflow's own
+    # "Rebase conflict against origin/main. Not retrying -- needs a human."
+    #
+    # The second run's work was entirely redundant -- the purge is derived from
+    # today's date, so both runs computed the same thing. The fix is to have one
+    # run per day and let it decide whether to also do the monthly audit, which
+    # is what the audit step below now does with a date check.
+    #
+    # The 20:00 backup run is what actually saved 2026-09-01: run 155 succeeded
+    # that evening, so no data was stale despite the failure email.
   # Also allows you to run it manually from GitHub if needed
   workflow_dispatch:
     inputs:
@@ -78,9 +94,21 @@ jobs:
         run: python library_review.py --weekly-sweep
 
       # Step 6: Run monthly audit on the 1st of each month
+      # Runs inside the ordinary daily run on the 1st, rather than from its own
+      # cron. `if:` cannot test the date, so the guard is in the shell.
       - name: Run monthly recurring events audit
-        if: github.event.schedule == '0 13 1 * *' || github.event.inputs.run_monthly_audit == 'true'
-        run: python library_review.py --monthly-audit
+        # Morning run only. The 20:00 backup is also a 'schedule' event, and
+        # without this it would redo the audit on the 1st -- harmless, but a
+        # second pointless run of a ~2,000-line script.
+        if: github.event.schedule == '0 13 * * *' || github.event.inputs.run_monthly_audit == 'true'
+        run: |
+          set -euo pipefail
+          if [ "$(date -u +%d)" = "01" ] || [ "${{ github.event.inputs.run_monthly_audit }}" = "true" ]; then
+            echo "Running the monthly audit."
+            python library_review.py --monthly-audit
+          else
+            echo "Not the 1st of the month -- skipping the monthly audit."
+          fi
 
       # Step 6b: Prove the scraper actually ran today. scraper.py rewrites
       # scraper_log.txt with today's date on every successful run, so a stale
