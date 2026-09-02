@@ -3272,7 +3272,7 @@
       "time_of_day": "Evening",
       "town": "Sausalito",
       "address": "Rodeo Ave Trailhead, Sausalito, CA 94965",
-      "ages": "Babies & toddlers (carrier or stroller)",
+      "ages": "Babies to older kids — carrier, or able to hike 2 miles",
       "cost": "Free",
       "indoor_outdoor": "Outdoor",
       "active_sedentary": "Active",
@@ -3283,14 +3283,14 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "description": "A weekly 2-mile round-trip hike for moms and babies — bring a carrier or a stroller. Meet at 4:55 PM at the Rodeo Ave Trailhead in Sausalito; on the trail from 5 to 6 PM. Every Wednesday, rain or shine.",
+      "description": "A weekly 2-mile round-trip hike for mums and little ones. Not stroller friendly — babies ride in a carrier, and toddlers and older kids are welcome if they can hike the distance. Meet at 4:55 PM at the Rodeo Ave Trailhead in Sausalito; on the trail from 5 to 6 PM. Every Wednesday, rain or shine.",
       "registration": "None",
       "website": "",
-      "notes": "Weekly, every Wednesday. Meet 4:55 PM; on the trail 5–6 PM. About 2 miles round trip. Carrier- and stroller-friendly. Meet at the Rodeo Ave Trailhead, Sausalito.",
+      "notes": "Weekly, every Wednesday. Meet 4:55 PM; on the trail 5–6 PM. About 2 miles round trip. NOT stroller friendly — bring a carrier, or come with kids who can walk the distance. Meet at the Rodeo Ave Trailhead, Sausalito.",
       "location_group": "Sausalito/Marin City",
       "event_name_es": "Wednesday Night Rodeo — Caminata para Mamás y Bebés",
-      "description_es": "Caminata semanal de 2 millas (ida y vuelta) para mamás y bebés — trae un portabebés o un cochecito. Punto de encuentro a las 4:55 PM en el Rodeo Ave Trailhead en Sausalito; en el sendero de 5 a 6 PM. Todos los miércoles, llueva o truene.",
-      "internal_notes": "Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it."
+      "description_es": "Caminata semanal de 2 millas (ida y vuelta) para mamás y pequeños. NO es apta para cochecitos — los bebés van en portabebés, y los niños pequeños y mayores son bienvenidos si pueden caminar la distancia. Punto de encuentro a las 4:55 PM en el Rodeo Ave Trailhead en Sausalito; en el sendero de 5 a 6 PM. Todos los miércoles, llueva o haga sol.",
+      "internal_notes": "Type changed to Fitness 2026-08-28 at Alexandra's direction (\"re-code all hikes to Fitness\"). Fitness was already fully wired in index.html - filter option, tag styling, Spanish label \"Ejercicio\", icon - but had ZERO records using it until now, and it is still missing from the type list in CLAUDE.md. NOTE the side effect: elig() admits only Festival, Music and Movies, Community Event, Kids Programs and Library to the homepage Featured strip, so Fitness records are no longer eligible for it. CORRECTED 2026-09-01 on the organiser's own feedback, relayed by Alexandra: the hike is NOT stroller friendly, and toddlers and older children are welcome provided they can ride in a carrier or walk the 2 miles. The stroller claim was wrong in THREE fields at once - `ages` said \"Babies & toddlers (carrier or stroller)\", `notes` said \"Carrier- and stroller-friendly\", and both descriptions said \"bring a carrier or a stroller\" - so a parent could have arrived with a stroller on the strength of any of them. All four corrected. The age range was also too narrow: it read as babies-and-toddlers only, when older children who can hike are welcome."
     },
     {
       "id": 452,
@@ -9625,6 +9625,35 @@
       "description_es": "Halloween en el Mart — se anima a venir disfrazado, con dulces y actividades por todo el centro.",
       "internal_notes": "Added 2026-09-01 from the Mart's own \"Fall Festivities at the Mart\" flyer, which Alexandra sent. NOT on marincountrymart.com/events - that page was fetched the same day and still ends at the Oct 30 movie night, carrying none of the fall programme. The flyer is the only source, so re-check the site before relying on times. Halloween day itself. Note id 710 (Halloween Sausalito) is also Oct 31 — a different town, not a duplicate.",
       "expires": "2026-10-31"
+    },
+    {
+      "id": 975,
+      "featured": false,
+      "status": "Active",
+      "organization": "ThRED TENT",
+      "venue": "In front of Green Door Design",
+      "event_name": "ThRED TENT — Curated Pop-Up Sale",
+      "event_name_es": "ThRED TENT — Venta Pop-Up Seleccionada",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "10:00 AM – 3:00 PM",
+      "time_of_day": "Morning",
+      "town": "Mill Valley",
+      "address": "219 Flamingo Rd, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "cost": "Free to browse",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-09-05",
+      "expires": "2026-09-05",
+      "description": "A curated pop-up sale of re-loved women's fashion — modern flair, vintage soul, hand-selected from favourite closets. Set up outside Green Door Design.",
+      "description_es": "Una venta pop-up seleccionada de moda femenina de segunda mano — estilo moderno y alma vintage, elegida a mano de los armarios favoritos. Instalada frente a Green Door Design.",
+      "registration": "Not required",
+      "website": "",
+      "notes": "",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-09-01 from a flyer Alexandra sent (posted by Vikki Goldman, Strawberry). No website or booking page exists for it, so `website` is deliberately empty rather than pointed at something unrelated. SCOPE NOTE: this is an adult women's consignment sale, not children's programming - added on her direct instruction, same call as id 909, Goodman's Women's Appreciation Day."
     }
   ]
 }
