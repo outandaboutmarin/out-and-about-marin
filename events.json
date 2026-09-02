@@ -9685,35 +9685,6 @@
       "description_es": "Halloween en el Mart — se anima a venir disfrazado, con dulces y actividades por todo el centro.",
       "internal_notes": "Added 2026-09-01 from the Mart's own \"Fall Festivities at the Mart\" flyer, which Alexandra sent. NOT on marincountrymart.com/events - that page was fetched the same day and still ends at the Oct 30 movie night, carrying none of the fall programme. The flyer is the only source, so re-check the site before relying on times. Halloween day itself. Note id 710 (Halloween Sausalito) is also Oct 31 — a different town, not a duplicate.",
       "expires": "2026-10-31"
-    },
-    {
-      "id": 975,
-      "featured": false,
-      "status": "Active",
-      "organization": "Marin Country Mart",
-      "town": "Larkspur",
-      "address": "2257 Larkspur Landing Cir, Larkspur, CA 94939",
-      "cost": "Free",
-      "ages": "All ages",
-      "indoor_outdoor": "Outdoor",
-      "active_sedentary": "Active",
-      "cadence": "Seasonal",
-      "location_group": "Larkspur/Greenbrae",
-      "registration": "Not required",
-      "website": "https://marincountrymart.com/events",
-      "notes": "",
-      "venue": "Marin Country Mart",
-      "event_name": "Honor System Pumpkin Patch",
-      "event_name_es": "Huerto de Calabazas de Honor",
-      "type": "Community Event",
-      "day": "Saturday",
-      "time": "During Mart hours",
-      "time_of_day": "Morning",
-      "season_start": "10/01",
-      "season_end": "10/31",
-      "description": "An honour-system pumpkin patch at the Mart through October — pick your pumpkin and pay on trust. Guess the weight of the giant pumpkin while you are there.",
-      "description_es": "Un huerto de calabazas de honor en el Mart durante todo octubre — elige tu calabaza y paga por confianza. Y adivina cuánto pesa la calabaza gigante.",
-      "internal_notes": "Added 2026-09-01 from the Mart's own \"Fall Festivities at the Mart\" flyer, which Alexandra sent. NOT on marincountrymart.com/events - that page was fetched the same day and still ends at the Oct 30 movie night, carrying none of the fall programme. The flyer is the only source, so re-check the site before relying on times. Stored Seasonal for all of October rather than as a dated event, because the flyer says \"ALL OCTOBER\" with no date or time. `day` is set to Saturday only because the schema requires a weekday and doesEventOccurOnDate() matches on it — a true all-week attraction has no clean representation in this schema, and this is the closest honest fit; it renders on October Saturdays. \"Guess the Weight of the Giant Pumpkin\" is folded into this record rather than given its own: the flyer gives it no date or time and it is an activity within the patch, not a separate event."
     }
   ]
 }
