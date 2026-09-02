@@ -484,6 +484,20 @@ def self_test(events):
         expect(notes_lint([{"id": -22, "notes": ok}]) == [],
                f"public prose must not be flagged: {ok!r}")
 
+    # type vocabulary. id 493's "Music" is the regression case: a plausible
+    # near-miss that broke filtering, styling and Featured eligibility at once
+    # and raised nothing anywhere.
+    expect([e["id"] for e, _ in type_lint([{"id": -30, "type": "Music"}])] == [-30],
+           "a near-miss type like 'Music' must be reported")
+    expect(type_lint([{"id": -31, "type": "Music and Movies"}]) == [],
+           "a valid type must not be reported")
+    expect([e["id"] for e, _ in type_lint([{"id": -32}])] == [-32],
+           "a record with no type at all must be reported")
+    expect(type_lint([{"id": -33, "type": t} for t in VALID_TYPES]) == [],
+           "every value in VALID_TYPES must pass its own check")
+    expect(all(type_lint(events)[0:0] == [] for _ in [0]) and not type_lint(events),
+           "the live dataset must currently have no unknown types")
+
     print(f"self-test: {checks - len(failures)}/{checks} passed")
     for f in failures:
         print("  FAIL:", f)
@@ -738,6 +752,46 @@ def control_in_internal(events):
     return findings
 
 
+# ────────────────────────────────────────────────────────────────────────────────
+# TYPE VOCABULARY  (added 2026-09-01)
+#
+# `type` decides three things at once: which filter option reaches the record,
+# which colour its card tag gets, and whether it can enter the Featured strip.
+# Nothing validates it on write, so a value that is merely PLAUSIBLE fails
+# silently in all three places at once.
+#
+# That is not hypothetical. id 493 (West End Block Party) carried type "Music"
+# -- which looks like a truncation of "Music and Movies" and reads fine in the
+# data -- for as long as anyone can tell. It was Active and Seasonal the whole
+# time: no Type filter could reach it, and typeTagClass had no entry for it, so
+# its card tag rendered unstyled. It was found only because Alexandra asked, on
+# 2026-08-28, whether every event was tagged to a category.
+#
+# Keep this list in step with typeOptions and typeTagClass in index.html.
+# ────────────────────────────────────────────────────────────────────────────────
+VALID_TYPES = {
+    "Library", "Kids Programs", "Community Event", "Farmers Market",
+    "Festival", "Music and Movies", "Fitness", "Grown-Ups Only!",
+}
+
+
+def type_lint(events):
+    """Records whose `type` is not a value the app knows about.
+
+    Returns [(event, reason)]. A bad type is invisible in three ways at once --
+    unfilterable, unstyled, and ineligible for the Featured strip -- and none
+    of them raises an error, so this is the only thing that will catch it.
+    """
+    findings = []
+    for e in events:
+        t = e.get("type")
+        if not t:
+            findings.append((e, "no type at all"))
+        elif t not in VALID_TYPES:
+            findings.append((e, "%r is not a known type" % t))
+    return findings
+
+
 def main():
     data = events_io.load_events()
     events = data["events"]
@@ -776,6 +830,16 @@ def main():
             print("Clean: no internal commentary in `notes`, and no control "
                   "patterns stranded in `internal_notes`.")
         sys.exit(1 if (leaks or stranded) else 0)
+
+    bad_types = type_lint(events)
+    if bad_types:
+        print()
+        print("%d record(s) with a type the app does not know. A bad type is "
+              "invisible THREE ways at once -- no filter reaches it, its card tag "
+              "renders unstyled, and it cannot enter the Featured strip." % len(bad_types))
+        for e, why in bad_types:
+            print("  id %-5s %-46s %s" % (e.get("id"), str(e.get("event_name"))[:46], why))
+        print("  valid: %s" % ", ".join(sorted(VALID_TYPES)))
 
     if "--venue" in sys.argv:
         i = sys.argv.index("--venue")

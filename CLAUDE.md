@@ -470,49 +470,39 @@ The shape worth noticing: all three cleared the mechanical filters and were stil
 
 ---
 
-# ⇢ START HERE — state of play for a new session (2026-08-21)
+# ⇢ START HERE — state of play for a new session (2026-09-01)
 
 Read this first, then the sections above as needed.
 
-**Health**: `events.json` is **330 events, max id 907**, all committed and pushed. `check_duplicates.py --self-test` is 33/33 and all four duplicate scans are clean. GitHub Pages deploys off `main`, so **committing `events.json` IS publishing** — there is no staging.
+**Health**: `events.json` is **318 events, max id 964**, all committed and pushed. `check_duplicates.py --self-test` is **73/73**, `--notes-lint` is clean, and all four duplicate scans are clean. GitHub Pages deploys off `main`, so **committing `events.json` IS publishing** — there is no staging.
 
-**Recent commits**: `cfeec4c` (Lincoln Ave Brewery: trimmed id 530, added the monthly series ids 905–907), `2e95450` (rule 19 + the notes lint), `3e2eaa7` (four Napa doc gaps closed).
+**Nothing is blocking.** No decision is outstanding; the last sweep is fully applied and every question from it has been answered.
 
-**The two sweeps are both done and applied.** Marin, window Aug 21 – Oct 4, ids 863–887. Napa, window Aug 22 – Oct 4, ids 888–907. Neither needs revisiting; the next Marin sweep is due on her command, usually Wednesday or Thursday.
+## What changed since 2026-08-21, in one pass
 
-## The rule 19 fix — DONE 2026-08-21, awaiting her review before it publishes
+- **The `notes` leak is fixed properly.** `internal_notes` exists, is never rendered and never parsed, and all 158 leaking records across two waves were migrated with rendered dates provably unchanged. See rule 19 — including **wave 2**, which existed because the first lint tested `_KEEP` before `_INTERNAL` and so could not see a leak fused to a control pattern.
+- **The 2026-08-27 sweep is applied**: 32 events added, 6 record fixes, and a live duplicate (ids 310/854, Concerts in the Plaza) removed.
+- **`Fitness` is in use.** It had been fully wired in `index.html` with zero records for months. The hikes now carry it, and it was added to `elig()` AND `score()` — see the type row in the schema table for why both were needed.
+- **Napa music is out of the Featured carousel**, and the carousel deliberately ignores the county toggle — see the Featured strip section, that is a recorded decision, not a bug.
+- **A type-vocabulary check now runs with every `check_duplicates.py`**, after id 493 sat live with `type: "Music"` — unfilterable, unstyled, and ineligible for the strip, raising nothing anywhere.
 
-She chose the **proper fix** over the fast path. `internal_notes` now exists (schema table + rule 19), and all **109 leaking records have been migrated**: public text stayed in `notes`, commentary moved to `internal_notes`, nothing deleted.
+## The pattern worth carrying into the next session
 
-**It is written to `events.json` but NOT committed** — committing is publishing, and she reviews before that. The before/after workbook is `OAA maintence and content/notes_migration_2026-08-21_review.xlsx`.
+**Every significant problem in this stretch was found by Alexandra asking a question, not by a scan.** The 109 leaking notes, the nine duplicate candidates, the JCC's entire family programme missing from a sweep, id 493's broken type, and id 853 advertising two Wednesdays that do not run — all of them surfaced because she asked "is this right?", and every one had been passing every automated check at the time.
 
-Verified by diffing derived output rather than reading text: **rendered dates identical, 6,786 before and after** across all 330 records. Five phantom rules disappeared (ids 674, 675, 771, 773, 904); none was ever consulted — four are One-off, one is Weekly. See rule 19 for the full method and re-run it before any future batch edit to `notes`.
+The corollary, which has now bitten repeatedly: **a scan that reports clean has not proved anything until you have seen it report dirty.** `--notes-lint` shipped with a backspace byte where `\b` belonged and could never match; the COLLISION scan compared raw time strings and hid a whole class of real double-bookings; the duplicate scans missed 310/854 because the normalised key compares only the first 14 characters of a name. Each was found by testing the check, not by trusting it.
 
-**The 7 hand-split records** (12, 25, 177, 208, 255, 859, 904) are the ones worth reading closely in the workbook.
+**Third-party listings are not evidence.** In one week Marin Mommies was wrong about a movie night's day, a concert's time, a storytime's venue, a library programme's date, and the Encanto screening's date — five times, every time contradicted by the venue's own page. Fetch the source that owns the event.
 
-**id 25 (Lego Saturdays, SRPL Northgate) — RESOLVED 2026-08-21 by Alexandra.** The migration had preserved a stored twice-a-month rule that contradicted SRPL's own live calendar. Her call: **every Saturday, 10 AM – 3 PM, through Aug 29 2026**; after that the branch calendar is simply not updated, which is not evidence the program stopped. Applied to `notes`, `time`, `description`, `description_es`, and `season_end` (08/31 → **08/29**). That last one is not cosmetic: with the ordinal gone the record matches every Saturday, and the season filter in `getFilteredEvents()` keeps any week that merely *overlaps* the season — so an 08/31 end would have rendered **Sep 5**, a date the calendar does not cover. Ending on the last covered Saturday closes that week. Verified week by week: renders Aug 8, 15, 22, 29 and then nothing.
+## Open items worth knowing about
 
-**id 208 (Goodie's Kids' Club) — she reviewed and passed; fine as is.** Its public note still ends with the literal `skip: 2026-09-12`, which the parser requires in `notes`. Hiding control patterns from the rendered amber box is a frontend change, scoped but not started.
+Full list in `OAA maintence and content/open_items.md`; the dashboard renders it at the artifact URL in `build_dashboard.py`.
 
-**Also fixed in the same pass**: `--notes-lint` crashed with `UnicodeEncodeError` partway through its own report on any name with an em-dash (it printed 20 of 109 ids and looked like a crash); and two of its regexes had a literal backspace byte where `\b` belonged, so they could never match. Both fixed, self-test now 46/46.
-
-## Before you write a single record
-
-1. `python check_duplicates.py --venue "<venue>"` — dedup by **venue**, match on day + time + cadence. Never by name (rule 18).
-2. `python check_duplicates.py --notes-lint --all` — `notes` is **public** (rule 19).
-3. For any `Monthly` record, verify the ordinal actually parses to what you intended (rule 9a). `last` is tested first and short-circuits.
-4. `python check_duplicates.py --self-test && python check_duplicates.py` before committing.
-
-## Also open, smaller
-
-- **Oct 4 LMR Jazz Orchestra** (Farmstead) — **declined 2026-08-21**, do not re-propose (open item 38).
-- **Hydro Bar & Grill** (Calistoga) — genuinely down, HTTP 500. Retry next Napa sweep.
-- **Item 26** — San Anselmo Imagination Park address; two sources conflict (535 vs 541). One phone call settles it. She passed for now.
-- **Item 30** — verify the Sep 1 seasonal flips actually land; first time that code path will have run successfully.
-- **Item 32** — watch the first real scraper findings notification, ~Aug 27 with the Corte Madera reopening.
-- **Item 33** — Tide Pool Table; scope undefined, two questions outstanding. See its section above.
-- **Item 34** — app code quality audit; not started.
-- **`Grown-Ups Only!`** type is live in `index.html` with zero records using it.
+- **44** — three library records whose cadence cannot be derived from one month of published dates (ids 43, 41, 3). The fourth, id 853, was resolved 2026-09-01 from a flyer.
+- **34** — app code quality audit, not started; six confirmed findings already in hand. Needs her call on report-vs-fix.
+- **33** — Tide Pool Table, scope undefined.
+- **24** — users-table lockdown. A real security item: the site still talks to Supabase `users` with the public key.
+- **30** — the September seasonal checks, due now.
 
 ## Where the non-repo files live
 
