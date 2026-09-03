@@ -1,9 +1,9 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-09-02
-Time: 22:31:04
+Date: 2026-09-03
+Time: 16:44:07
 
-Total events in events.json: 319
-Active events: 300
+Total events in events.json: 317
+Active events: 298
 Temp. closed: 2
 
 Events by type:
@@ -12,8 +12,8 @@ Events by type:
   Festival: 29
   Fitness: 11
   Kids Programs: 48
-  Library: 87
-  Music and Movies: 71
+  Library: 86
+  Music and Movies: 70
 
 Events by town:
   Belvedere: 2
@@ -35,9 +35,9 @@ Events by town:
   San Geronimo: 2
   San Rafael: 45
   Sausalito: 24
-  St. Helena: 15
+  St. Helena: 14
   Stinson Beach: 1
-  Tiburon: 28
+  Tiburon: 27
   Tomales: 2
   Virtual: 1
   Yountville: 3
@@ -45,7 +45,6 @@ Events by town:
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
   🔔 PAGE CHANGED: Mill Valley Public Library
-  🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library
