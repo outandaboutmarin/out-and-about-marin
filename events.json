@@ -6778,14 +6778,14 @@
       "expires": "",
       "status": "Active",
       "featured": false,
-      "description": "Join us every other Wednesday for Books & Bubbles Storytime with Teacher Carrie! We'll read, sing, build social-emotional skills, and, of course, pop bubbles! Hosted outdoors on the lawn when weather is warm and dry.",
-      "description_es": "¡Únete a nosotros cada dos miércoles para la Hora del Cuento Libros y Burbujas con la maestra Carrie! Leeremos, cantaremos, desarrollaremos habilidades socioemocionales y, por supuesto, ¡haremos burbujas! Se realiza al aire libre en el césped cuando el clima es cálido y seco.",
+      "description": "Join us on the 2nd, 4th and 5th Wednesdays of the month for Books & Bubbles Storytime with Teacher Carrie! We'll read, sing, build social-emotional skills, and, of course, pop bubbles! Hosted outdoors on the lawn when weather is warm and dry.",
+      "description_es": "¡Únete a nosotros el 2º, 4º y 5º miércoles del mes para la Hora del Cuento Libros y Burbujas con la maestra Carrie! Leeremos, cantaremos, desarrollaremos habilidades socioemocionales y, por supuesto, ¡haremos burbujas! Se realiza al aire libre en el césped cuando el clima es cálido y seco.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/events",
       "notes": "2nd, 4th, and 5th Wednesdays of each month — alternates with Music & Movement Story Time with Colors of Spanish, which covers the library's other Wednesday storytime slot each month.",
       "location_group": "Novato",
       "id": 859,
-      "internal_notes": "Confirmed live 2026-08-20 (Sep 9, 23, 30 match; also consistent with the older date list from open item 29 — Oct 14/28, Nov 25, Dec 9). Resolves item 29. The alternating partner is id 12."
+      "internal_notes": "Confirmed live 2026-08-20 (Sep 9, 23, 30 match; also consistent with the older date list from open item 29 — Oct 14/28, Nov 25, Dec 9). Resolves item 29. The alternating partner is id 12. CORRECTED 2026-09-02: both descriptions said \"every other Wednesday\" / \"cada dos miércoles\", which was wrong and was live. The cadence is 2nd/4th/5th, so consecutive Wednesdays do occur (Sep 23 and 30) and a parent computing dates from \"every other\" would have landed on the alternating Colors of Spanish session (id 12) instead. `notes` and `cadence` were correct throughout, so the rendered dates were never wrong - only the prose. Re-confirmed the same day against the @novatolibrary Instagram post announcing the Sep 9 return, which states \"Every 2nd, 4th, and 5th Wednesday of the month (alternating with Colors of Spanish Storytime)\"."
     },
     {
       "organization": "Marin County Free Library — Novato",
