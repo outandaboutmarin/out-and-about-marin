@@ -3927,6 +3927,10 @@ function renderCards() {
   // Rolling California holiday notices — dates are computed per year, so they roll over automatically.
   const HOLIDAY_BODY_EN = 'Some recurring programs may not run on public holidays — please check with the venue before heading out.';
   const HOLIDAY_BODY_ES = 'Algunos programas regulares pueden no funcionar en días festivos — consulta con el lugar antes de ir.';
+  // Eves are not public holidays, so they get their own wording: the risk is an
+  // early close rather than a full closure, and "public holidays" would be wrong.
+  const EVE_BODY_EN = 'Many venues close early or entirely on this day — please check with the venue before heading out.';
+  const EVE_BODY_ES = 'Muchos lugares cierran temprano o no abren este día — consulta con el lugar antes de ir.';
   const HOL_DOW_EN = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const HOL_MON_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const HOL_DOW_ES = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
@@ -3938,16 +3942,29 @@ function renderCards() {
   function holObs(y, m, d){ const dow = new Date(y, m-1, d).getDay(); if (dow === 6){ const a = new Date(y, m-1, d-1); return { y:a.getFullYear(), m:a.getMonth()+1, d:a.getDate(), s:true }; } if (dow === 0){ const b = new Date(y, m-1, d+1); return { y:b.getFullYear(), m:b.getMonth()+1, d:b.getDate(), s:true }; } return { y:y, m:m, d:d, s:false }; }
   function buildHolidays(year){
     const H = {};
-    function put(o, en, es){
+    function put(o, en, es, bodyEn, bodyEs){
       const dow = new Date(o.y, o.m-1, o.d).getDay();
       const key = o.y + '-' + holPad(o.m) + '-' + holPad(o.d);
-      const enStr = '<strong>' + HOL_DOW_EN[dow] + ' ' + HOL_MON_EN[o.m-1] + ' ' + o.d + ' is ' + en + (o.s ? ' (observed)' : '') + '.</strong> ' + HOLIDAY_BODY_EN;
-      const esStr = '<strong>El ' + HOL_DOW_ES[dow] + ' ' + o.d + ' de ' + HOL_MON_ES[o.m-1] + ' es ' + es + (o.s ? ' (observado)' : '') + '.</strong> ' + HOLIDAY_BODY_ES;
+      const enStr = '<strong>' + HOL_DOW_EN[dow] + ' ' + HOL_MON_EN[o.m-1] + ' ' + o.d + ' is ' + en + (o.s ? ' (observed)' : '') + '.</strong> ' + (bodyEn || HOLIDAY_BODY_EN);
+      const esStr = '<strong>El ' + HOL_DOW_ES[dow] + ' ' + o.d + ' de ' + HOL_MON_ES[o.m-1] + ' es ' + es + (o.s ? ' (observado)' : '') + '.</strong> ' + (bodyEs || HOLIDAY_BODY_ES);
       H[key] = { en: enStr, es: esStr };
     }
     const fx = (m, d) => holObs(year, m, d);
+    // Raw calendar date, NO observed-day shift. Christmas Eve is Dec 24 whatever
+    // weekday it lands on -- it is not a holiday that gets moved to a weekday.
+    // Using fx here would shift Christmas Eve 2028 and 2034 onto Dec 25 itself,
+    // overwriting Christmas Day, and would move it to Dec 23 in 2033 and 2039.
+    const rw = (m, d) => ({ y: year, m: m, d: d, s: false });
     const nd = (m, wd, n) => ({ y: year, m: m, d: holNth(year, m, wd, n), s: false });
     const ld = (m, wd) => ({ y: year, m: m, d: holLast(year, m, wd), s: false });
+    // The two eves are inserted BEFORE everything else on purpose. H is a plain
+    // object, so a later put() with the same key wins, and the observed-day shift
+    // does collide with an eve: when Christmas Day falls on a Saturday its
+    // observed date is Friday Dec 24 (2027, 2032, 2038). Listing the eves first
+    // means the actual holiday overwrites the eve in those years, which is the
+    // stronger message and the right one to keep.
+    put(rw(12, 24), 'Christmas Eve', 'la Nochebuena', EVE_BODY_EN, EVE_BODY_ES);
+    put(rw(12, 31), "New Year's Eve", 'la Nochevieja', EVE_BODY_EN, EVE_BODY_ES);
     put(fx(1, 1),    "New Year's Day", 'el Día de Año Nuevo');
     put(nd(1, 1, 3), 'Martin Luther King Jr. Day', 'el Día de Martin Luther King Jr.');
     put(nd(2, 1, 3), "Presidents' Day", 'el Día de los Presidentes');
