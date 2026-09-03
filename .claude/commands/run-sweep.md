@@ -29,12 +29,12 @@ Read `CLAUDE.md` first for the event schema, data quality rules, and dedup rules
    - Do NOT report a source as done from assumption. If you could not complete a source, say so explicitly rather than silently skipping it.
 3. **If you cannot complete all sources in one session**, tell Alexandra upfront before starting, rather than silently presenting a partial sweep as complete.
 4. **Build the review workbook** with two sheets:
-   - **Sheet 1 "Attestation Log"**: one row per source (**all 43** — the checklist is 42 items; this line said 38 until 2026-08-27 and a stale count here invites an under-attested sweep) — columns: Source | Category (Event Source / Library / Learning Bus) | URL Fetched | Method | Result | # Current Items Reviewed | Newest Item Date Seen.
+   - **Sheet 1 "Attestation Log"**: one row per source (**all 44** — the two halves of this sentence used to disagree, reading "all 43" and "the checklist is 42 items"; both are now 44; this line said 38 until 2026-08-27 and a stale count here invites an under-attested sweep) — columns: Source | Category (Event Source / Library / Learning Bus) | URL Fetched | Method | Result | # Current Items Reviewed | Newest Item Date Seen.
    - **Sheet 2 "Weekly Sweep"**: one row per genuinely new candidate — columns: Decision (blank, for Alexandra to fill Approve/Skip) | Event Name | Date | Day | Time | Venue | Town | Description | Source URL | Notes | Type | Location Filter | Ages | Cost | Indoor/Outdoor | Cadence. Flag anything genuinely uncertain with "⚠ POSSIBLE DUPE" in Notes rather than silently including or excluding it.
 5. **Save the workbook** to `C:\Users\AWalter\Documents\2. Claude-Work\PROJECTS\OAA Marin\OAA maintence and content\daily_sweep_YYYY-MM-DD_review.xlsx` (today's date). Do not save it inside this repo, and do not commit/push it.
 6. **Summarize in chat**: how many sources were fully checked, how many candidates were found, any sources you couldn't complete, and where the review file is. Tell Alexandra to fill in the Decision column and let you know when it's ready for `/process-sweep`.
 
-## Source checklist (43 total: 26 event sources + 16 libraries + Learning Bus)
+## Source checklist (44 total: 27 event sources + 16 libraries + Learning Bus)
 
 Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checklist — Marin-only, per CLAUDE.md.
 
@@ -100,7 +100,17 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
 
     **Why the number is 43 and not 26.** It belongs with the event sources, but inserting it there would renumber all sixteen libraries and the Learning Bus. Every past sweep's Attestation Log keys its rows off these numbers, so renumbering would silently invalidate the historical logs. The number is a stable identifier, not a running order — work this source with the other event sources, and leave the sequence alone.
 
-(Note: the numbering here is now contiguous end-to-end — event sources 1–25, libraries 26–41, Learning Bus 42. It previously restarted at 24 for the libraries, so #24 meant two different sources; fixed 2026-08-09 when Marin Magazine was added. Treat each numbered line as one checklist item — that's the working granularity, and it is what the Attestation Log rows key off.)
+44. **Novato Mothers Club — Novato Community Events** — **added 2026-09-02 at Alexandra's request.** Fetch `novatomothersclub.com/page-18142`. A Wild Apricot site; the path resolves to the public "Novato Community Events" page, so if it ever bounces to the root, look for that heading rather than assuming the link is dead.
+
+    **What it is, and why it earns a slot.** A hand-curated list maintained by a parent volunteer (contact NMC.NVillalta@gmail.com), not a calendar feed. It is organised as **September Events** (dated one-offs), **Recurring Fall Events** (seasonal date ranges), and **Always Recurring Events** split into Weekly and Monthly. It self-describes as "non-comprehensive". Its value is Novato coverage, which is the thinnest part of this checklist, plus small community items that reach no other source on the list — the Novato History Guild's Pioneer Park Cemetery Tour, Trash to Treasures Flea Market, Movies on the Green.
+
+    **TREAT CADENCE FROM THIS SOURCE AS UNVERIFIED. Discovery only.** It is volunteer-maintained and demonstrably carries stale recurrence. On the day it was added it listed "Every other Wednesday: Books & Bubbles at the Novato Library" — which is **exactly the error corrected in id 859 the same morning**, from the library's own Instagram: the real cadence is the 2nd, 4th and 5th Wednesdays. Take names, dates, venues and times as leads; confirm every cadence against the venue before writing it to a record. This is the one source on the list known to have propagated a specific wrong cadence.
+
+    **It is also a cross-check, which is a second reason to read it.** Much of what it lists is already in the database (Stories & Rhyme Wiggle Time = id 11, Books & Bubbles = id 859, Mart Littles = ids 55/56, the Novato and Hamilton farmers markets). Where it disagrees with a record, that disagreement is a signal worth chasing in one direction or the other — it may be stale, or the record may be.
+
+    **Two things to filter.** It deliberately spans "Marin and Sonoma County", and Sonoma is outside this app's geography — Tomales and Point Reyes are in Marin and stay, Rohnert Park, Petaluma and Sonoma Farm Trails do not. It also links **member-only events behind a login**; those are out of scope, do not attempt to reach them.
+
+(Note: the numbering here is now contiguous end-to-end — event sources 1–25, libraries 26–41, Learning Bus 42, then two later additions kept at the end to protect the historical Attestation Logs — Downtown San Rafael 43 and Novato Mothers Club 44, both of which are event sources and should be worked with 1–25. It previously restarted at 24 for the libraries, so #24 meant two different sources; fixed 2026-08-09 when Marin Magazine was added. Treat each numbered line as one checklist item — that's the working granularity, and it is what the Attestation Log rows key off.)
 
 ### Libraries (16) — every sweep, no exceptions, even though programs are "recurring/already in DB" — one-off guest performers and specials show up on these calendars constantly
 
