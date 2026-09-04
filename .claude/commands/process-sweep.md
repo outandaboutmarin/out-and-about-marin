@@ -26,6 +26,14 @@ Required before committing:
 python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py --notes-lint --all
 ```
 
+**Also run the bilingual lint before committing** (added 2026-09-03):
+
+```bash
+python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py --bilingual-lint
+```
+
+`description_es` renders to the public exactly as `description` does. This lint catches a `description_es` that is empty, untranslated, names a town no field on the record places it in, or names a weekday that is not the record's `day`. It exists because id 41 spent an unknown period telling Spanish readers to go to **South Novato** when the event was in **Corte Madera** — see rule 20 in `CLAUDE.md`. Every event you write here has two descriptions, and this is the only check that reads the second one.
+
 It exits non-zero on any leak, prints the offending sentence and why it fired, and prints the
 public remainder that would survive. Fix every leak you introduce. Pre-existing leaks on records
 you did not touch are open item 36 and need Alexandra's sign-off — do not fold that cleanup into

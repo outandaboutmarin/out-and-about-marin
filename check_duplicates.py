@@ -200,6 +200,103 @@ def _hhmm(t):
     return h * 60 + int(m.group(2) or 0)
 
 
+# ── bilingual lint ────────────────────────────────────────────────────────
+# Added 2026-09-03 after id 41 published the WRONG BRANCH to Spanish readers.
+#
+# Its venue had been corrected from South Novato to Corte Madera at some point,
+# but `description_es` still read "en South Novato" - so Spanish-speaking
+# families were being sent to a different library in a different town, while the
+# English description said nothing about a town at all. Nothing detected it:
+# every existing check compares fields to fields, and this was prose contradicting
+# a field, in one language only. It survived because nobody had reason to read
+# the Spanish.
+#
+# TWO EARLIER, NOISIER DESIGNS WERE REJECTED before this one, and the reason is
+# worth keeping. "Flag any town named in prose that the record does not claim"
+# gives 22 findings, nearly all legitimate - beneficiaries ("proceeds to Muir
+# Beach Volunteer Fire"), donation drop-offs, second venues. "Flag any town the
+# Spanish names that the English does not" gives 38, because naming the town in
+# Spanish is simply this dataset's house style. Either would have been a
+# cry-wolf tool, which is the failure closed item 31 was about.
+#
+# What actually distinguishes the id 41 bug is the CONJUNCTION: a town named in
+# exactly ONE language, which the record itself does not claim anywhere. Both
+# halves are needed. That scores 0 on live data while still catching id 41.
+
+_LINT_TOWNS = ["Mill Valley", "Tiburon", "Belvedere", "San Rafael", "South Novato",
+               "Novato", "Larkspur", "Corte Madera", "Sausalito", "Fairfax",
+               "San Anselmo", "Ross", "Kentfield", "Greenbrae", "Point Reyes",
+               "Nicasio", "Bolinas", "Stinson Beach", "Marin City", "San Geronimo",
+               "Woodacre", "Tomales", "Olema", "Inverness", "Muir Beach",
+               "Calistoga", "St. Helena", "Yountville"]
+
+_LINT_DAYS_ES = {"Monday": "lunes", "Tuesday": "martes", "Wednesday": "mi\u00e9rcoles",
+                 "Thursday": "jueves", "Friday": "viernes", "Saturday": "s\u00e1bado",
+                 "Sunday": "domingo"}
+
+
+def _lint_fold(s):
+    """Lowercase and strip accents, so 'Mi\u00e9rcoles' matches 'miercoles'."""
+    s = unicodedata.normalize("NFD", str(s or ""))
+    return "".join(c for c in s if not unicodedata.combining(c)).lower()
+
+
+def _lint_towns_in(txt):
+    tf = _lint_fold(txt)
+    found = {t for t in _LINT_TOWNS
+             if re.search(r"\b" + re.escape(_lint_fold(t)) + r"\b", tf)}
+    if "South Novato" in found:
+        found.discard("Novato")      # the specific name wins over the substring
+    return found
+
+
+def _lint_days_in(txt, spanish):
+    tf = _lint_fold(txt)
+    return {en for en, es in _LINT_DAYS_ES.items()
+            if re.search(r"\b" + _lint_fold(es if spanish else en) + r"s?\b", tf)}
+
+
+def bilingual_lint(events):
+    """(event, message) for records whose two languages disagree with each other
+    or with their own fields."""
+    out = []
+    for e in events:
+        en = str(e.get("description") or "")
+        es = str(e.get("description_es") or "")
+
+        if not es.strip():
+            out.append((e, "description_es is empty"))
+            continue
+        if not str(e.get("event_name_es") or "").strip():
+            out.append((e, "event_name_es is empty"))
+        if en.strip() and _lint_fold(en) == _lint_fold(es):
+            out.append((e, "description_es is identical to the English - not translated"))
+
+        own = _lint_fold(" | ".join(str(e.get(k) or "") for k in (
+            "town", "venue", "address", "organization",
+            "event_name", "event_name_es", "location_group")))
+
+        # (a) a town named in ONE language only, that the record does not claim.
+        for t in sorted(_lint_towns_in(en) ^ _lint_towns_in(es)):
+            if re.search(r"\b" + re.escape(_lint_fold(t)) + r"\b", own):
+                continue                      # the record really is there; fine
+            where = "description_es" if t in _lint_towns_in(es) else "description"
+            out.append((e, "%s names %r - the other language does not, and no field "
+                           "on this record places it there" % (where, t)))
+
+        # (b) prose that names weekdays, NONE of which is the record's own day.
+        # Naming an extra day is normal ("Saturday and Sunday", a Friday-to-
+        # Saturday campout). Naming ONLY the wrong one is the id 41 shape.
+        days = {d.strip() for d in str(e.get("day") or "").split("/") if d.strip()}
+        if days:
+            for field, txt, sp in (("description", en, False), ("description_es", es, True)):
+                named = _lint_days_in(txt, sp)
+                if named and not (named & days):
+                    out.append((e, "%s names %s but the record's day is %r"
+                                % (field, "/".join(sorted(named)), e.get("day"))))
+    return out
+
+
 def scan(events, horizon_days=180):
     """Returns a list of (severity, label, detail) findings."""
     findings = []
@@ -584,6 +681,54 @@ def self_test(events):
     expect(_hhmm("TBD") is None and _hhmm("During Library Hours") is None and _hhmm(None) is None,
            "an unparseable time must be None, so 'TBD' cannot pose as a distinguishing session")
 
+    # ── bilingual lint. The regression case is id 41 as it actually stood on
+    # 2026-09-03: description_es said "en South Novato" while the record was
+    # Corte Madera, and BOTH descriptions said Wednesdays while day was Thursday.
+    _id41 = {"id": -50, "town": "Corte Madera", "venue": "Corte Madera Library",
+             "address": "707 Meadowsweet Dr, Corte Madera, CA 94925",
+             "organization": "Marin County Free Library \u2014 Corte Madera",
+             "event_name": "M\u00fasica y Movimiento with Ingrid",
+             "event_name_es": "M\u00fasica y Movimiento con Ingrid",
+             "location_group": "Corte Madera", "day": "Thursday",
+             "description": "Music, movement, and stories with Ingrid. Held on the 2nd, 4th, "
+                            "and 5th Wednesdays of each month.",
+             "description_es": "M\u00fasica y movimiento biling\u00fce con Ingrid el 2do, 4to y "
+                               "5to mi\u00e9rcoles de cada mes en South Novato."}
+    _m41 = [m for _, m in bilingual_lint([_id41])]
+    expect(any("South Novato" in m for m in _m41),
+           "id 41 regression: a town named in Spanish only, that the record does not claim, "
+           "must be caught")
+    expect(sum("day is 'Thursday'" in m or "day is \"Thursday\"" in m for m in _m41) == 2,
+           "id 41 regression: both descriptions naming only Wednesday must be caught")
+
+    # must STAY SILENT on the three shapes that made the noisier designs unusable
+    expect(bilingual_lint([{"id": -51, "town": "Mill Valley", "venue": "Depot Plaza",
+        "address": "", "organization": "", "event_name": "Block Party",
+        "event_name_es": "Fiesta", "location_group": "Mill Valley", "day": "Sunday",
+        "description": "Proceeds to the Muir Beach Volunteer Fire Department.",
+        "description_es": "Fondos destinados al cuerpo de bomberos de Muir Beach."}]) == [],
+        "a town named in BOTH languages is a deliberate mention, not drift")
+    expect(bilingual_lint([{"id": -52, "town": "Corte Madera", "venue": "The Village",
+        "address": "", "organization": "", "event_name": "Acoustic Weekends",
+        "event_name_es": "Fines de Semana Ac\u00fasticos", "location_group": "Corte Madera",
+        "day": "Saturday",
+        "description": "Live music every Saturday and Sunday.",
+        "description_es": "M\u00fasica en vivo todos los s\u00e1bados y domingos."}]) == [],
+        "naming an EXTRA weekday alongside the right one must not fire")
+    expect(bilingual_lint([{"id": -53, "town": "Novato", "venue": "Novato Library",
+        "address": "", "organization": "", "event_name": "Storytime",
+        "event_name_es": "Hora del Cuento", "location_group": "Novato", "day": "Tuesday",
+        "description": "Songs and stories for toddlers.",
+        "description_es": "Canciones y cuentos para ni\u00f1os en la biblioteca de Novato."}]) == [],
+        "Spanish naming the record's OWN town is house style, not an error")
+    expect([e["id"] for e, _ in bilingual_lint([{"id": -54, "description": "x",
+        "description_es": ""}])] == [-54], "an empty description_es must be reported")
+    expect(any("identical" in m for _, m in bilingual_lint([{"id": -55, "day": "",
+        "description": "Same text.", "description_es": "Same text.",
+        "event_name_es": "x"}])), "an untranslated description_es must be reported")
+    expect(bilingual_lint(events) == [],
+           "the live dataset must currently pass the bilingual lint")
+
     print(f"self-test: {checks - len(failures)}/{checks} passed")
     for f in failures:
         print("  FAIL:", f)
@@ -944,6 +1089,18 @@ def main():
         print("\nRead this whole list before proposing anything here. Match on "
               "day+time+cadence, NOT on the event name — see rule 18 in CLAUDE.md.")
         sys.exit(0)
+
+    if "--bilingual-lint" in sys.argv:
+        rows = bilingual_lint(events)
+        print("REMINDER: `description` and `description_es` BOTH render to the public.")
+        print("An error only Spanish readers see is the kind that stays hidden longest.\n")
+        for e, msg in rows:
+            print("  id %-5d %s" % (e["id"], str(e.get("event_name"))[:50]))
+            print("          %s" % msg)
+        print("\n%d finding(s)." % len(rows))
+        if not rows:
+            print("Clean: the two languages agree with each other and with their own fields.")
+        sys.exit(1 if rows else 0)
 
     findings = scan(events)
     quiet = "--quiet" in sys.argv

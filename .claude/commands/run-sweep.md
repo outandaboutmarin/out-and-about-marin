@@ -132,6 +132,16 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
 
 ### Libraries (16) — every sweep, no exceptions, even though programs are "recurring/already in DB" — one-off guest performers and specials show up on these calendars constantly
 
+> **⏰ IN DECEMBER 2026, CHECK THESE TWO BEFORE ANYTHING ELSE (open item 47).**
+> Two library storytimes run **every fourteen days**, which no ordinal rule can express, so they
+> are stored as individual dated records and will simply STOP APPEARING when those dates run out:
+> **South Novato "Hora del cuento … con Ingrid"** (ids 1030–1036, Wed 11:00 AM, last date
+> **2026-12-09**) and **Corte Madera "Música y Movimiento with Ingrid"** (ids 1037–1041,
+> Thu 9:30 AM, last date **2026-12-03**). Read the feed with a window into the next term and add
+> one record per published date. **Do NOT convert them back to a recurring rule** — a fortnightly
+> series impersonates an ordinal in any month where the two coincide, which is exactly how the
+> Corte Madera record came to carry a rule that fit October and was wrong from November onward.
+
 > **MCFL SHORTCUT — do this FIRST, it covers sources 27–36 in one pass (added 2026-08-12).**
 > Fetch `marinlibrary.bibliocommons.com/v2/events?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD`
 > with the sweep window, then page with `&page=N` (20 per page; it reports the

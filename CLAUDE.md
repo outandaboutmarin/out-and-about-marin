@@ -161,6 +161,18 @@ Always follow these when adding or editing events — they exist because of spec
 
     Two records already had this defect and were corrected the same day: **id 16** (Labor Day, → `ALERT[2026-09-07]`). Verify a scoped alert after writing it — evaluate `getAlertNote(e, '<date>')` across several occurrence dates and confirm exactly one says SHOWS.
 
+20. **`description_es` is public too, and an error only Spanish readers see stays hidden longest. Lint with `check_duplicates.py --bilingual-lint`.**
+
+    Added 2026-09-03 after id 41 was found publishing **the wrong branch** to Spanish readers. Its venue had been corrected from South Novato to Corte Madera at some point; `description_es` still read *"en South Novato"*, so Spanish-speaking families were being sent to a different library in a different town. The English description named no town at all, so the two languages did not even agree with each other. It had been live for an unknown length of time.
+
+    **Nothing could have caught it.** Every existing check compares a field to a field. This was *prose contradicting a field*, in one language only — and it survived precisely because nobody had reason to read the Spanish. The same record also carried "the 2nd, 4th, and 5th Wednesdays" in **both** descriptions while its `day` was Thursday.
+
+    The lint reports four things: a `description_es` that is empty, or identical to the English; a **town named in exactly one language that no field on the record places it in**; and **prose naming weekdays when none of them is the record's own `day`**.
+
+    **Both halves of the town rule are load-bearing, and the noisier versions were tried first.** "Flag any town in prose the record does not claim" gives 22 findings, nearly all legitimate — beneficiaries (*"proceeds to Muir Beach Volunteer Fire"*), donation drop-offs, second venues. "Flag any town the Spanish names that the English does not" gives 38, because naming the town in Spanish is simply this dataset's house style. Either would have been a cry-wolf tool, the failure closed item 31 was about. The conjunction scores **0 on live data** while still catching id 41. Likewise the weekday rule fires only when *no* named day matches: naming an extra day is normal ("Saturday and Sunday", a Friday-to-Saturday campout).
+
+    **Do not "fix" a finding by editing the prose to match a wrong field** — check which one is actually right first. On id 41 the prose was wrong; on another record it may be the field.
+
 18. **Dedup a sweep candidate by VENUE, never by event name. Run `check_duplicates.py --venue "<venue>"` and read the whole list.**
 
     **This is not advice, it is the required step.** The 2026-08-20 sweep proposed 37 candidates and **nine were already in `events.json`** — a 24% false-new rate on the sweep's single most important job. Alexandra caught it, not the process.
