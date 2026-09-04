@@ -70,11 +70,16 @@ jobs:
     steps:
       # Step 1: Check out your repository
       - name: Checkout repository
-        uses: actions/checkout@v4
+        # v5 (was v4) — bumped 2026-09-03 to get off the Node 20 runtime, which
+        # GitHub is retiring. v4 still ran, but every run logged a deprecation
+        # warning and was force-migrated to Node 24 anyway; this makes that
+        # explicit rather than leaving it to a forced migration we did not choose.
+        uses: actions/checkout@v5
 
       # Step 2: Set up Python
       - name: Set up Python
-        uses: actions/setup-python@v5
+        # v6 (was v5) — same Node 20 retirement as the checkout bump above.
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
