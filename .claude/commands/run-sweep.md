@@ -80,7 +80,9 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
 
     **Two per-site traps.** (a) Every program runs at up to two locations — **Osher Marin JCC, 200 N. San Pedro Rd, San Rafael** and **JCC South, 36 Tiburon Blvd, Mill Valley** — on different days and times. They are two records, not one; dedup each site separately (ids 58 and 59 are exactly this pair for JymBabies). (b) **The JCC's own pages contradict themselves**: as of 2026-08-27 the JymBabies Mill Valley entry said "Monday" while giving the session as "September 9th – November 18th", both of which are Wednesdays. Re-derive the weekday from the dates (rule 14) and flag the conflict rather than picking one.
 
-    **Three programs publish no schedule at all** — Shabbat ShaBabies (its "Join us on these Fridays:" date list does not render), Family Connections, and Side by Side. Do not infer they have stopped; report them as unpublished and, if Alexandra wants them listed, the number is **415.444.8072 / rweiss@marinjcc.org**.
+    **SIDE BY SIDE IS DELIBERATELY EXCLUDED — DO NOT PROPOSE IT AGAIN (settled 2026-09-03).** It used to be listed here as publishing no schedule. It now publishes a full one (Fall 2026, Sept 8 – Nov 19; Mill Valley Tuesdays 9:30–11:00, San Rafael Thursdays 9:30–11:00, ages 15–30 months), so it WILL look like a new find on every future sweep. It is out of scope anyway, for a specific reason: the page states *"we cannot accommodate drop-in attendance. You must pre-register"*, at $352 member / $385 non-member for 11 classes. **The stated rationale for including JBaby programmes at all is that they allow drop-in** — a closed 11-week enrolled course at $352 is a class you sign up for, not something a family can turn up to. Alexandra confirmed Skip on 2026-09-03. If the JCC ever opens it to drop-ins, that changes the answer.
+
+    **Two programs publish no schedule at all** — Shabbat ShaBabies (its "Join us on these Fridays:" date list does not render; as of 2026-09-03 only a past August date showed) and Family Connections. Do not infer they have stopped; report them as unpublished and, if Alexandra wants them listed, the number is **415.444.8072 / rweiss@marinjcc.org**.
 
     (`/programs/` is documented in older notes but **404s as of 2026-08-13**; don't use it.)
 7. **Mill Valley Community Center** — fetch millvalleylibrary.org/calendar.aspx?CID=23 (CivicEngage month grid — page via grid arrows) AND scan event detail pages. The /289/Special-Events page is a stub, do NOT rely on it alone.
@@ -138,9 +140,15 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
 > Keep the `/locations/XX/` fetch only for a branch's own closure/refresh notice.
 > Do NOT use `&audiences=` — the value is undocumented and silently returns zero
 > results; page unfiltered and filter by hand.
-> **Bolinas is absent from this calendar system entirely** — it is not in the
-> branch filter list and has no events in the feed. Source #34 must still be
-> fetched its own way.
+> **CORRECTED 2026-09-03 — Bolinas IS in this calendar system.** This block used
+> to say it was "absent from this calendar system entirely — not in the branch
+> filter list and no events in the feed". That is wrong: Bolinas has its own
+> branch facet and returned **30 events** for the Sep 4 – Oct 31 window, covering
+> all three of its programmes (ids 175, 176, 876). Source #34 is therefore
+> covered by this one pass like every other branch. Still fetch #34's own page
+> for a branch-specific closure notice, but do NOT treat the shortcut as blind
+> to Bolinas — believing that invites a needless second fetch route, and worse,
+> makes a genuine gap there look expected.
 > **Day-of-week labels from WebFetch are unreliable** — on 2026-08-12 it called
 > Aug 13 both "Tuesday" and "Wednesday" (it is a Thursday). Always re-derive the
 > weekday from the date, same discipline as source #1.
@@ -156,7 +164,15 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
 34. **MCFL — Bolinas** — fetch marinlibrary.org/locations/mb/ directly (see corrected slug note on #27 above — this is the real Bolinas page); check marinlibrary.bibliocommons.com series URLs for existing program IDs (175/176) as a supplement. Very small branch.
 35. **MCFL — Inverness** — fetch marinlibrary.org/locations/mi/ (very small branch, check manually).
 36. **MCFL — Stinson Beach** — fetch marinlibrary.org/locations/ms/ (very small branch, check manually).
-37. **Mill Valley Public Library** — **SOLVED 2026-08-13, the "libcal renders empty" problem is gone.** The libcal calendar is JS-rendered so WebFetch sees nothing, but it renders completely in the **browser**. Navigate to `millvalleylibrary.libcal.com/calendar?cid=-1&cal=-1&inc=0&d=YYYY-MM-DD&t=m` — `t=m` gives a full month grid with every event, one fetch per month. It also marks cancellations inline (e.g. "Canceled - Cuentos con Ritmo" on Sep 7). **The old `site:millvalleylibrary.libcal.com/event … 2026` search-around instruction has been REMOVED and must not be reinstated** — on 2026-08-13 it returned 2023-dated events interleaved with current ones, i.e. it actively injects stale data, exactly the failure class that produced the fabricated Novato movie records. Do NOT rely on the iCal feed either — it goes stale.
+37. **Mill Valley Public Library** — **SOLVED 2026-08-13, the "libcal renders empty" problem is gone.** The libcal calendar is JS-rendered so WebFetch sees nothing, but it renders completely in the **browser**. Navigate to `millvalleylibrary.libcal.com/calendar?cid=-1&cal=-1&inc=0&d=YYYY-MM-DD&t=m` — one navigation per month.
+
+    **⚠ TWO TRAPS HERE, BOTH FOUND 2026-09-03. READ THIS BEFORE PARSING ANYTHING.**
+
+    **(1) `t=m` no longer renders event titles as page text.** This file used to say it "gives a full month grid with every event"; today the grid's visible text is only the day numbers and a per-day count like "3 events". `get_page_text` therefore returns a calendar that looks EMPTY of events. The events are still there — they sit in the DOM as `td.s-lc-mc-day > .s-lc-mc-evt`, visually hidden — so read them out of the DOM, not the text.
+
+    **(2) The event rows interleave desktop and mobile cells, and a naive column index silently assigns EVERY EVENT THE WRONG DATE.** Each week's `tr.s-lc-mc-r` holds 14 `td`s, not 7. The date header row (`tr.s-lc-mc-date-row.s-lc-desktop-only`) holds 7. Zipping index-to-index shifts everything by a day or more, with no error and a perfectly plausible-looking result — on 2026-09-03 it put Cuentos con Ritmo (a Monday programme) on Tuesdays and Sing & Stomp (Tuesday) on Thursdays. **Filter the row's cells to `.s-lc-desktop-only` before pairing them with the dates.** Also note `tr.s-lc-mc-rdays` contains the substring `s-lc-mc-r`, so a `className.includes('s-lc-mc-r')` test picks up the weekday header row too — exclude it explicitly.
+
+    **Verify before trusting the output**: open ONE event's own page and check its printed date against what you parsed. That is the only reason this was caught rather than shipped. It also marks cancellations inline (e.g. "Canceled - Cuentos con Ritmo" on Sep 7). **The old `site:millvalleylibrary.libcal.com/event … 2026` search-around instruction has been REMOVED and must not be reinstated** — on 2026-08-13 it returned 2023-dated events interleaved with current ones, i.e. it actively injects stale data, exactly the failure class that produced the fabricated Novato movie records. Do NOT rely on the iCal feed either — it goes stale.
 38. **San Anselmo Library** — **THREE required fetches, all of them, every sweep. None is optional and none substitutes for another:**
     - **(a)** sananselmo.gov/Calendar.aspx?CID=22 — CivicEngage month grid, page via grid arrows. The library calendar; lists dated one-off programs.
     - **(b)** sananselmo.gov/624/Storytime-Programs — **REQUIRED FETCH, not a confirmation step.** This page is the *only* place the library publishes changes to the recurring Mon/Wed/Fri storytimes: venue moves, seasonal breaks, and resumption dates appear here and **nowhere on the calendar grid**. Read the whole program blurb and **diff it against `venue`, `notes`, `description` and `description_es` on ids 21, 33 and 82** — checking that the page still loads is not doing this source. Report what the blurb currently says even when nothing changed.
@@ -168,7 +184,7 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
 
     **A blanket resumption date on the program does NOT apply verbatim to each record** — "programs start again Wednesday September 2" means the Wednesday record resumes Sep 2, but the Friday record resumes Sep 4 and the Monday record Sep 7. Compute the first matching weekday on/after the restart date for each record separately.
 
-    **Re-confirmed 2026-08-13**: the CivicEngage calendar grid (fetch (a)) was read for BOTH August and September and carries **zero children's programming** in either month — only adult book groups, author talks and a Labor Day closure. Fetch (b) really is the only place the storytimes exist. Page months via `Calendar.aspx?CID=22&Month=<M>&Year=<YYYY>`.
+    **SUPERSEDED 2026-09-03 — the grid now DOES carry children's programming.** This line used to say fetch (a) held "zero children's programming" and that fetch (b) was the only place the storytimes existed. Both September and October 2026 were read in full and the grid now lists **Bilingual Spanish Storytime (Wednesdays 10:30) and Sing and Stomp (Fridays 10:30) by date, with venue Imagination Park** — which is how the Monday question below was even noticeable. Fetch (a) is now a real schedule source, not just an adult-events feed. **Fetch (b) is still mandatory** and still the only place the programme BLURB changes appear (venue moves, seasonal breaks, resumption dates); the two now complement each other rather than one substituting for the other. Page months via `Calendar.aspx?CID=22&Month=<M>&Year=<YYYY>`.
 
     Do NOT attest from a generic web search — it surfaces town-wide events, not the library's own calendar (root cause of a past miss).
 39. **SRPL (San Rafael Public Library — Downtown/Northgate/Pickleweed/Al Boro)** — fetch `srpubliclibrary.org/events/`, which shows the **current month only**. **For any later month you must use the month-nav URL** (added 2026-08-13): `srpubliclibrary.org/events/action~month/exact_date~<unix-timestamp>/request_format~html/`. Do not guess the timestamp and do not try `/events/month/YYYY-MM/` — that 404s. Instead load `/events/` in the browser and read the href off the "Sep"/"Oct" month link, then fetch that URL. Missing this is how a sweep silently covers only the first two weeks of its own window. The monthly newsletter PDF is a fallback only — it has served corrupted/binary before.
