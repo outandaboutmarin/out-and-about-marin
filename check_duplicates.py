@@ -187,9 +187,23 @@ def _start_time(t):
     return f"{h:02d}:{int(m.group(2) or 0):02d}"
 
 
+def _hhmm(t):
+    r"""Minutes-since-midnight for a stored `time` string, or None if it will not
+    parse. Mirrors index.html's /(\d+)(?::(\d+))? ?(AM|PM)/i - a value that fails
+    here is also a value the app cannot sort, so 'TBD' is correctly None."""
+    m = re.search(r"(\d{1,2})(?::(\d{2}))?\s*([AaPp])[Mm]", str(t or ""))
+    if not m:
+        return None
+    h = int(m.group(1)) % 12
+    if m.group(3).lower() == "p":
+        h += 12
+    return h * 60 + int(m.group(2) or 0)
+
+
 def scan(events, horizon_days=180):
     """Returns a list of (severity, label, detail) findings."""
     findings = []
+    show_all = "--all" in sys.argv
     one_offs = [e for e in events if e.get("cadence") == "One-off" and e.get("event_date")]
     recurring = [e for e in events
                  if e.get("cadence") not in ("One-off", "", None)
@@ -204,6 +218,46 @@ def scan(events, horizon_days=180):
     for k, ids in sorted(g.items()):
         if len(ids) > 1:
             findings.append(("EXACT", f"ids {ids}", f"{k[0][:44]!r} @ {k[1][:30]} on {k[2]}"))
+
+    # 1b. SAME NAME, SAME DATE - regardless of venue, town or time.
+    #
+    # Added 2026-09-03 after a real live pair walked through every other scan.
+    # ids 848 and 935 were BOTH "California Coastal Cleanup Day" on 2026-09-19,
+    # both Active, and the site rendered the day twice under two different town
+    # filters. Every existing key missed it because all three of the fields they
+    # rely on differed:
+    #     848  venue "Various Marin beaches"  town "Marin County"  time "TBD"
+    #     935  venue "Multiple Marin sites"   town "San Rafael"    time "9:00 AM - 2:00 PM"
+    # Scan 1 keys on (name, venue, date) -> venue differs.
+    # Scan 2 keys on (date, time, town, name) -> time AND town differ.
+    # Scan 3 keys on (day, time, venue, cadence) -> same.
+    # So the cheapest possible key, the one that ignores every field a human
+    # might reasonably vary, is the one that catches it. Two records sharing a
+    # name and a date are a duplicate until proven otherwise.
+    #
+    # ONE REFINEMENT, and it follows the convention scan 4 already uses: if every
+    # record in the group states a DIFFERENT parseable time, they are separate
+    # sessions rather than a duplicate, and the group is suppressed unless --all.
+    # Fairfax genuinely runs "Native Bird Connections: Live Raptor Showcase"
+    # twice on Sep 26, at 11:00 AM and 1:00 PM (ids 874 and 940) - flagging that
+    # forever would make the nightly run exit non-zero and poison the findings
+    # notifier, which is the cry-wolf failure closed item 31 was about.
+    # An UNPARSEABLE time (e.g. "TBD") does not count as a distinguishing time -
+    # that is exactly what id 848 had, and it must stay caught.
+    g = defaultdict(list)
+    for e in one_offs:
+        g[(_norm(e.get("event_name")), e["event_date"])].append(e)
+    for k, group in sorted(g.items(), key=lambda kv: kv[0]):
+        if len(group) < 2:
+            continue
+        ids = sorted(x["id"] for x in group)
+        times = [_hhmm(x.get("time")) for x in group]
+        distinct_sessions = all(t is not None for t in times) and len(set(times)) == len(times)
+        if distinct_sessions and not show_all:
+            continue
+        note = " (differing times \u2014 shown by --all)" if distinct_sessions else ""
+        findings.append(("SAME-NAME/DATE", f"ids {ids}",
+                         f"{k[0][:52]!r} \u2014 {len(ids)} records on {k[1]}{note}"))
 
     # 2. normalized
     g = defaultdict(list)
@@ -240,7 +294,6 @@ def scan(events, horizon_days=180):
     #    runs storytime at 9:30 and a puzzle swap at 1:00 on the same Thursday.
     #    Same venue + same date + same time is the shape every real duplicate
     #    had (572/573 vs 74, 177 vs 827). Use --all to see the rest.
-    show_all = "--all" in sys.argv
     today = datetime.date.today()
     horizon = today + datetime.timedelta(days=horizon_days)
     for e in one_offs:
@@ -497,6 +550,39 @@ def self_test(events):
            "every value in VALID_TYPES must pass its own check")
     expect(all(type_lint(events)[0:0] == [] for _ in [0]) and not type_lint(events),
            "the live dataset must currently have no unknown types")
+
+    # ── scan 1b: same name + same date. Added 2026-09-03 (sweep Q10) after a
+    # real live pair got past all four existing scans. These tests encode BOTH
+    # halves of the rule: it must catch the pair it was written for, and it must
+    # stay silent on the legitimate double session that would otherwise become a
+    # permanent finding and poison the nightly notifier.
+    _cleanup = [
+        {"id": -40, "cadence": "One-off", "event_date": "2026-09-19",
+         "event_name": "California Coastal Cleanup Day", "venue": "Various Marin beaches",
+         "town": "Marin County", "time": "TBD", "status": "Active", "day": "Saturday"},
+        {"id": -41, "cadence": "One-off", "event_date": "2026-09-19",
+         "event_name": "California Coastal Cleanup Day", "venue": "Multiple Marin sites",
+         "town": "San Rafael", "time": "9:00 AM \u2013 2:00 PM", "status": "Active",
+         "day": "Saturday"}]
+    _raptor = [
+        {"id": -42, "cadence": "One-off", "event_date": "2026-09-26",
+         "event_name": "Native Bird Connections: Live Raptor Showcase",
+         "venue": "Fairfax Library", "town": "Fairfax", "time": "11:00 AM",
+         "status": "Active", "day": "Saturday"},
+        {"id": -43, "cadence": "One-off", "event_date": "2026-09-26",
+         "event_name": "Native Bird Connections: Live Raptor Showcase",
+         "venue": "Fairfax Library", "town": "Fairfax", "time": "1:00 PM \u2013 2:00 PM",
+         "status": "Active", "day": "Saturday"}]
+    _sev = lambda evs: [sv for sv, _, _ in scan(evs)]
+    expect("SAME-NAME/DATE" in _sev(_cleanup),
+           "ids 848/935 shape must be caught: same name + date, differing venue/town/time")
+    expect("SAME-NAME/DATE" not in _sev(_raptor),
+           "a same-day double session with two distinct parseable times must stay silent")
+    expect(_hhmm("9:00 AM") == 540 and _hhmm("1:00 PM") == 780 and _hhmm("12:00 AM") == 0
+           and _hhmm("12:30 PM") == 750,
+           "_hhmm must convert 12-hour times correctly, including both noon and midnight")
+    expect(_hhmm("TBD") is None and _hhmm("During Library Hours") is None and _hhmm(None) is None,
+           "an unparseable time must be None, so 'TBD' cannot pose as a distinguishing session")
 
     print(f"self-test: {checks - len(failures)}/{checks} passed")
     for f in failures:
@@ -864,7 +950,7 @@ def main():
     if not quiet:
         print(f"checked {len(events)} events\n")
         if not findings:
-            print("No duplicates found. All four scans clean.")
+            print("No duplicates found. All five scans clean.")
         else:
             for sev, who, detail in findings:
                 print(f"[{sev:10}] {who}\n             {detail}")
