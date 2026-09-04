@@ -1,50 +1,51 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-09-03
-Time: 22:28:49
+Date: 2026-09-04
+Time: 16:38:32
 
-Total events in events.json: 317
-Active events: 298
-Temp. closed: 2
+Total events in events.json: 379
+Active events: 364
+Temp. closed: 0
 
 Events by type:
-  Community Event: 60
-  Farmers Market: 13
-  Festival: 29
-  Fitness: 11
-  Kids Programs: 48
-  Library: 86
-  Music and Movies: 70
+  Community Event: 80
+  Farmers Market: 14
+  Festival: 34
+  Fitness: 13
+  Grown-Ups Only!: 1
+  Kids Programs: 59
+  Library: 104
+  Music and Movies: 74
 
 Events by town:
   Belvedere: 2
-  Bolinas: 3
+  Bolinas: 4
   Calistoga: 18
-  Corte Madera: 18
-  Fairfax: 14
-  Larkspur: 16
+  Corte Madera: 26
+  Fairfax: 15
+  Greenbrae: 1
+  Larkspur: 18
   Marin City: 4
-  Marin County: 1
-  Mill Valley: 56
+  Mill Valley: 75
   Muir Beach: 9
   Nicasio: 6
   Nicasio/San Geronimo: 2
-  Novato: 29
+  Novato: 38
   Point Reyes Station: 8
   Ross: 1
-  San Anselmo: 11
+  San Anselmo: 12
   San Geronimo: 2
-  San Rafael: 45
-  Sausalito: 24
+  San Rafael: 56
+  Sausalito: 26
   St. Helena: 14
   Stinson Beach: 1
-  Tiburon: 27
+  Tiburon: 31
   Tomales: 2
-  Virtual: 1
+  Virtual: 3
+  West Marin: 2
   Yountville: 3
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
-  🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library
@@ -56,9 +57,6 @@ Library pages changed — review recommended:
   🔔 PAGE CHANGED: MCFL — Inverness Library
   🔔 PAGE CHANGED: MCFL — Stinson Beach Library
 
-Unpredictable events needing one-off dates added:
-  🔔 NEEDS ONE-OFF DATE: Read to a Dog with Stinson — Corte Madera (monthly Sunday)
-  → Open a chat with Claude and say:
-  → "Please look up upcoming dates for unpredictable events and add them to events.json"
+All unpredictable events have upcoming dates loaded. ✓
 
 Next run: tomorrow at 6:00 AM PT
