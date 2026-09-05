@@ -1,9 +1,9 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-09-04
-Time: 22:17:55
+Date: 2026-09-05
+Time: 15:41:19
 
-Total events in events.json: 379
-Active events: 364
+Total events in events.json: 376
+Active events: 361
 Temp. closed: 0
 
 Events by type:
@@ -14,7 +14,7 @@ Events by type:
   Grown-Ups Only!: 1
   Kids Programs: 59
   Library: 104
-  Music and Movies: 74
+  Music and Movies: 71
 
 Events by town:
   Belvedere: 2
@@ -25,7 +25,7 @@ Events by town:
   Greenbrae: 1
   Larkspur: 18
   Marin City: 4
-  Mill Valley: 75
+  Mill Valley: 74
   Muir Beach: 9
   Nicasio: 6
   Nicasio/San Geronimo: 2
@@ -35,8 +35,8 @@ Events by town:
   San Anselmo: 12
   San Geronimo: 2
   San Rafael: 56
-  Sausalito: 26
-  St. Helena: 14
+  Sausalito: 25
+  St. Helena: 13
   Stinson Beach: 1
   Tiburon: 31
   Tomales: 2
