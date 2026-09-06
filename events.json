@@ -1926,12 +1926,12 @@
       "event_name": "Scary at the Berry — Halloween Event",
       "type": "Community Event",
       "day": "Friday",
-      "time": "5:00 PM",
+      "time": "5:00 PM – 8:00 PM",
       "time_of_day": "Afternoon",
       "town": "Mill Valley",
       "address": "118 E. Strawberry Drive, Mill Valley, CA 94941",
       "ages": "All ages",
-      "cost": "Paid",
+      "cost": "$5 entry, under 2 free",
       "indoor_outdoor": "Outdoor",
       "active_sedentary": "Both",
       "cadence": "One-off",
@@ -1947,7 +1947,8 @@
       "notes": "Registration required. Paid event — check website for ticket prices.",
       "location_group": "Mill Valley",
       "event_name_es": "Scary at the Berry — Halloween Event",
-      "description_es": "Evento anual de Halloween del Distrito Recreativo Strawberry. ¡Se anima a venir disfrazado! Hasta las 8 PM. Consulta el sitio web para precios de entradas y actividades."
+      "description_es": "Evento anual de Halloween del Distrito Recreativo Strawberry. ¡Se anima a venir disfrazado! Hasta las 8 PM. Consulta el sitio web para precios de entradas y actividades.",
+      "internal_notes": "REFINED 2026-09-05 from the Strawberry Recreation District flyer Alexandra forwarded. cost was the bare word 'Paid', which tells a parent nothing - it could have meant $5 or $50; the flyer says '$5 ENTRY FEE, UNDER 2 FREE!'. time was an open-ended 5:00 PM; the flyer gives 5:00PM-8:00PM. Note the record was already correct on date and venue - only these two fields were thinner than the source."
     },
     {
       "id": 91,
@@ -6950,7 +6951,7 @@
       "event_name": "Trash to Treasures Fall Flea Market",
       "type": "Community Event",
       "day": "Saturday",
-      "time": "9:00 AM",
+      "time": "9:00 AM – 2:00 PM",
       "time_of_day": "Morning",
       "town": "Novato",
       "address": "1560 Hill Rd, Novato, CA 94947",
@@ -6971,7 +6972,8 @@
       "notes": "",
       "location_group": "Novato",
       "event_name_es": "Mercado de Pulgas de Otoño Trash to Treasures",
-      "description_es": "Mercado de pulgas comunitario bajo techo. Entrada gratuita, llueva o truene. 9 a.m.-2 p.m."
+      "description_es": "Mercado de pulgas comunitario bajo techo. Entrada gratuita, llueva o truene. 9 a.m.-2 p.m.",
+      "internal_notes": "REFINED 2026-09-05 from the City of Novato Parks & Recreation flyer Alexandra forwarded: the stored time was an open-ended 9:00 AM, and the flyer gives 09.00 AM - 02.00 PM. Date, venue and address were already correct."
     },
     {
       "id": 873,
@@ -12398,20 +12400,20 @@
       "day": "Monday",
       "time": "Sign up any time",
       "time_of_day": "Morning",
-      "town": "Marin County (mailed to your home)",
-      "address": "Books are mailed to your home address — there is nowhere to go",
+      "town": "Marin County",
+      "address": "Books are mailed to your home — there is nowhere to go",
       "ages": "Birth to age 5",
       "cost": "Free",
       "indoor_outdoor": "Indoor",
       "active_sedentary": "Sedentary",
       "cadence": "Monthly",
       "location_group": "San Rafael",
-      "notes": "First of each month. Register once and a book arrives every month until your child turns five — there is no event to attend and nothing to collect.",
-      "description": "A free book mailed to your child every month, from birth until their fifth birthday, at no cost to your family. Marin County Free Library sponsors the programme locally, and books are available in English or as bilingual English/Spanish editions.\n\nHOW TO SIGN UP: go to imaginationlibrary.com/check-availability and enter your ZIP code to confirm your address is covered. If it is, complete the short registration form with your child's name, birth date and mailing address, and choose English or bilingual books. Registration takes a few minutes and only has to be done once per child.\n\nThe first book usually arrives eight to ten weeks after you register, and then one book each month. There is no cost, no library card required, and nothing to return.",
-      "description_es": "Un libro gratuito enviado por correo a tu hijo o hija cada mes, desde el nacimiento hasta que cumple cinco años, sin ningún costo para tu familia. La Biblioteca Pública del Condado de Marin patrocina el programa localmente, y los libros están disponibles en inglés o en ediciones bilingües en inglés y español.\n\nCÓMO INSCRIBIRSE: entra en imaginationlibrary.com/check-availability y escribe tu código postal para confirmar que tu dirección está cubierta. Si lo está, completa el breve formulario de inscripción con el nombre de tu hijo o hija, su fecha de nacimiento y tu dirección postal, y elige libros en inglés o bilingües. La inscripción toma unos minutos y solo se hace una vez por niño.\n\nEl primer libro suele llegar entre ocho y diez semanas después de inscribirse, y después llega un libro cada mes. No tiene costo, no se necesita tarjeta de biblioteca y no hay que devolver nada.",
-      "registration": "Register once at imaginationlibrary.com/check-availability",
-      "website": "https://imaginationlibrary.com/check-availability",
-      "internal_notes": "Added 2026-09-03 at Alexandra's request: 'On the carousel, add Dolly Parton's imagination library as the first event. When you click into the card provide a description of how to sign up through the Marin Library system, and the link.'\nTHIS IS THE FIRST RECORD TO USE `pinned: true`, a new flag added to selectFeatured() in the same commit. It is needed because this is NOT an event: there is no date, no venue and nothing to attend, so occ() would never find an occurrence and elig() would reject it for not being One-off. The pin makes it eligible regardless of cadence, always count as occurring, and sit at the FRONT of reserved[] - which is emptied into the strip before the scored loop runs, so position in reserved is display order.\nUSE THE PIN SPARINGLY. It costs one of the strip's nine slots every single day, permanently. Two pins would cost two.\n`cadence: Monthly` with a first-of-month ordinal is deliberate: the pin governs the carousel, but the record also lands in the ordinary feed, and once a month is a light touch for a standing programme. Without an ordinal a Monthly record renders NOWHERE (rule 9), so the phrase in notes is load-bearing.\n`venue` and `address` say plainly that books are mailed, so nobody turns up somewhere. Alexandra also flagged this as a good candidate for the Resources page - not done here, and worth doing as well rather than instead, since the carousel slot is time-limited attention and Resources is where people look when they want it."
+      "notes": "First of each month. A standing programme rather than a dated event — register once and a book arrives every month until your child turns five. There is nothing to attend and nothing to return.",
+      "description": "A free, high-quality book mailed to your child every month, from birth until their fifth birthday, personalised with your child's name. Marin County Free Library runs the programme locally with First 5 Marin, and all Marin County families qualify.\n\nHOW TO SIGN UP: go to marinlibrary.org/imagination-library and click Register Online. You will need your child's name and date of birth and your mailing address. When you enrol you can choose bilingual English and Spanish books — California is the only state in the country that offers them.\n\nThe first book arrives about 8 to 12 weeks after your registration is approved, and a new one roughly every 30 days after that. It is completely free, no library card is needed, and there is nothing to return. Questions about enrolling: daphne@first5marin.org.",
+      "description_es": "Un libro gratuito y de calidad enviado por correo a tu hijo o hija cada mes, desde el nacimiento hasta que cumple cinco años, personalizado con su nombre. La Biblioteca Pública del Condado de Marin dirige el programa localmente junto con First 5 Marin, y todas las familias del condado de Marin pueden participar.\n\nCÓMO INSCRIBIRSE: entra en marinlibrary.org/imagination-library y haz clic en Register Online. Necesitarás el nombre y la fecha de nacimiento de tu hijo o hija y tu dirección postal. Al inscribirte puedes elegir libros bilingües en inglés y español: California es el único estado del país que los ofrece.\n\nEl primer libro llega entre 8 y 12 semanas después de que se apruebe la inscripción, y después llega uno nuevo aproximadamente cada 30 días. Es totalmente gratuito, no se necesita tarjeta de biblioteca y no hay que devolver nada. Para preguntas sobre la inscripción: daphne@first5marin.org.",
+      "registration": "Register once at marinlibrary.org/imagination-library",
+      "website": "https://marinlibrary.org/imagination-library/",
+      "internal_notes": "Added 2026-09-03 at Alexandra's request: 'On the carousel, add Dolly Parton's imagination library as the first event. When you click into the card provide a description of how to sign up through the Marin Library system, and the link.'\nTHIS IS THE FIRST RECORD TO USE `pinned: true`, a new flag added to selectFeatured() in the same commit. It is needed because this is NOT an event: there is no date, no venue and nothing to attend, so occ() would never find an occurrence and elig() would reject it for not being One-off. The pin makes it eligible regardless of cadence, always count as occurring, and sit at the FRONT of reserved[] - which is emptied into the strip before the scored loop runs, so position in reserved is display order.\nUSE THE PIN SPARINGLY. It costs one of the strip's nine slots every single day, permanently. Two pins would cost two.\n`cadence: Monthly` with a first-of-month ordinal is deliberate: the pin governs the carousel, but the record also lands in the ordinary feed, and once a month is a light touch for a standing programme. Without an ordinal a Monthly record renders NOWHERE (rule 9), so the phrase in notes is load-bearing.\n`venue` and `address` say plainly that books are mailed, so nobody turns up somewhere. Alexandra also flagged this as a good candidate for the Resources page - not done here, and worth doing as well rather than instead, since the carousel slot is time-limited attention and Resources is where people look when they want it.\nUPDATED 2026-09-05 on Alexandra's instruction: remove the September 5 date, keep it a standing carousel item, and point the website at marinlibrary.org/imagination-library/.\nTHE DATE WAS A RENDERING BUG, NOT A FIELD. Nothing on this record ever said Sep 5. occ() hands every pinned card TODAY's date so it always counts as occurring, and renderFeatured() printed that date verbatim - so the card read 'Sep 5' as though it were a one-day event, and would have read 'Sep 6' tomorrow. Editing this record could not have fixed it; the fix is a featMeta() helper in index.html that renders 'Sign up any time' for pinned cards and omits the town.\nTown changed from 'Marin County (mailed to your home)' to 'Marin County' and venue to 'Mailed to your home', so the detail line reads 'Mailed to your home - Marin County' instead of repeating itself. location_group stays San Rafael: rule 8 forbids a county-level location_group and the town filter still has to place this somewhere.\nSign-up steps rewritten from marinlibrary.org/imagination-library/ rather than the national site. That is what she asked for and it is also more accurate for Marin: run locally with First 5 Marin, all Marin families qualify, books personalised with the child's name, first book in 8-12 weeks (NOT the 8-10 I had written from the national page), and California is the only state offering the bilingual option. Enrolment contact: daphne@first5marin.org.\nRULE 9 REGRESSION, CAUGHT BY THE LINT AND FIXED THE SAME MINUTE (2026-09-05). Rewriting notes for the 'standing event' change dropped the ordinal phrase, so this Monthly record had NO occurrence rule and would have rendered NOWHERE in the feed - the exact silent-vanish failure rule 9 describes. --notes-lint reported it as STRANDED, because internal_notes still explained an ordinal that notes no longer carried. 'First of each month.' restored to the front of notes. The pin governs the carousel independently, so this only ever affected the feed.\nOPEN QUESTION for Alexandra: it now appears in the ordinary feed once a month as well as permanently on the carousel. If she wants it carousel-ONLY there is no clean field for that - the nearest lever is status Inactive, which shouldShowEvent() hides from the feed while selectFeatured() ignores status entirely, but that is a side effect rather than a designed behaviour and would break if a status check were ever added to the strip. Ask before using it."
     }
   ]
 }

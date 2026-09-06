@@ -4142,6 +4142,19 @@ function selectFeatured(){
 function scrollFeatured(dir){var row=document.getElementById('featuredRow');if(!row)return;var dx=dir*320;if(typeof row.scrollBy==='function'){row.scrollBy({left:dx,behavior:'smooth'});}else{row.scrollLeft+=dx;}setTimeout(updateFeatArrows,360);}
 function updateFeatArrows(){var row=document.getElementById('featuredRow');var L=document.getElementById('featArrowL'),Rg=document.getElementById('featArrowR');if(!row||!L||!Rg)return;var max=row.scrollWidth-row.clientWidth-2;L.classList.toggle('show',row.scrollLeft>4);Rg.classList.toggle('show',max>2&&row.scrollLeft<max);}
 window.addEventListener('resize',function(){if(typeof updateFeatArrows==='function')updateFeatArrows();});
+// Meta line for a Featured card. A PINNED record is a standing programme with no
+// occurrence, so drawing a date on it is actively wrong: occ() hands pinned cards
+// TODAY's date, which made the Imagination Library card read "Sep 5" as though it
+// were a one-day event -- and it would have said "Sep 6" tomorrow. Pinned cards get
+// a standing label instead, and no town, since "Marin County" tells a reader
+// nothing when there is nowhere to go. Added 2026-09-05 at Alexandra's request.
+function featMeta(o){
+  var e=o.e;
+  if(e.pinned===true){
+    return '<b>'+(currentLang==='es'?'Inscríbete cuando quieras':'Sign up any time')+'</b>';
+  }
+  return '<b>'+featDateStr(o.d)+'</b>'+(e.town?' · '+e.town:'');
+}
 function renderFeatured(){
   var wrap=document.getElementById('featuredWrap'),row=document.getElementById('featuredRow');if(!wrap||!row)return;
   var head=document.getElementById('featuredHead');if(head)head.textContent=currentLang==='es'?'Destacados':'Featured';
@@ -4149,7 +4162,7 @@ function renderFeatured(){
   if(!sel.length){wrap.style.display='none';return;}
   wrap.style.display='block';
   row.innerHTML=sel.map(function(o,i){var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
-    return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile"><div class="ft-top"><span class="ft-icon">'+featIcon(e)+'</span><div class="ft-kicker">'+featKicker(e)+'</div></div><div class="ft-name">'+name+'</div><div class="ft-meta"><b>'+featDateStr(o.d)+'</b>'+(e.town?' \u00B7 '+e.town:'')+'</div></div></div>';
+    return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile"><div class="ft-top"><span class="ft-icon">'+featIcon(e)+'</span><div class="ft-kicker">'+featKicker(e)+'</div></div><div class="ft-name">'+name+'</div><div class="ft-meta">'+featMeta(o)+'</div></div></div>';
   }).join('');
   row.onscroll=updateFeatArrows;
   setTimeout(updateFeatArrows,0);
