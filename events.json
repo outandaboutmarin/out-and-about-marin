@@ -753,7 +753,7 @@
       "season_end": "",
       "event_date": "",
       "expires": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "description": "Stories and songs the whole family will enjoy together. Held on select Sundays — check library website for dates.",
       "registration": "Not required",
@@ -761,7 +761,8 @@
       "notes": "Bi-monthly on select Sundays — check beltiblibrary.org for specific dates. UNPREDICTABLE — dates not fixed.",
       "location_group": "Tiburon/Belvedere",
       "event_name_es": "Family Storytime (Sunday)",
-      "description_es": "Cuentos y canciones para toda la familia los domingos seleccionados en la Biblioteca de Belvedere-Tiburon."
+      "description_es": "Cuentos y canciones para toda la familia los domingos seleccionados en la Biblioteca de Belvedere-Tiburon.",
+      "internal_notes": "RETIRED 2026-09-05 (open item 48). No ordinal phrase in notes, so parseOccurrenceRule() returned null and the record rendered on zero dates. beltiblibrary.org's own calendar was read in full for Sep 4 - Oct 31 and showed zero Sunday storytimes across those eight weeks. Set Inactive rather than deleted, per the retire-don't-delete rule; revive if the branch's calendar shows it running again."
     },
     {
       "id": 32,
@@ -4058,7 +4059,7 @@
       "season_end": "",
       "event_date": "",
       "expires": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "description": "First Thursday of each month (Jun-Aug), 4-6pm — live local music, food, and shopping at Town Center.",
       "description_es": "Primer jueves de cada mes (jun-ago), de 4 a 6pm — música local en vivo, comida y compras en Town Center.",
@@ -4067,7 +4068,7 @@
       "notes": "Next date: Aug 6, 2026.",
       "location_group": "Corte Madera",
       "id": 586,
-      "internal_notes": "CONFIRMED for 2026 per Alexandra's request (verified via Town Center's own official page)."
+      "internal_notes": "CONFIRMED for 2026 per Alexandra's request (verified via Town Center's own official page). RETIRED 2026-09-05 (open item 48): no ordinal phrase in notes, so the record rendered on zero dates; it's a summer-only series (Jun-Aug) whose most recent date on file was Aug 6. Set Inactive rather than deleted; convert to Seasonal with a real summer window if the series returns in 2027."
     },
     {
       "organization": "Sound Summit",
