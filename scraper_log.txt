@@ -1,32 +1,32 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-09-06
-Time: 22:04:01
+Date: 2026-09-07
+Time: 17:59:00
 
-Total events in events.json: 414
-Active events: 397
+Total events in events.json: 412
+Active events: 395
 Temp. closed: 0
 
 Events by type:
-  Community Event: 81
+  Community Event: 83
   Farmers Market: 14
-  Festival: 34
+  Festival: 33
   Fitness: 13
   Grown-Ups Only!: 3
   Kids Programs: 59
   Library: 133
-  Music and Movies: 77
+  Music and Movies: 74
 
 Events by town:
-  Belvedere: 2
+  Belvedere: 1
   Bolinas: 4
   Calistoga: 18
-  Corte Madera: 27
+  Corte Madera: 30
   Fairfax: 15
   Greenbrae: 1
   Larkspur: 18
   Marin City: 7
   Marin County: 1
-  Mill Valley: 76
+  Mill Valley: 75
   Muir Beach: 9
   Nicasio: 5
   Nicasio/San Geronimo: 2
@@ -35,11 +35,11 @@ Events by town:
   Ross: 1
   San Anselmo: 11
   San Geronimo: 3
-  San Rafael: 71
+  San Rafael: 70
   Sausalito: 25
-  St. Helena: 18
+  St. Helena: 17
   Tiburon: 30
-  Tomales: 3
+  Tomales: 2
   Virtual: 5
   West Marin: 2
   Yountville: 4
