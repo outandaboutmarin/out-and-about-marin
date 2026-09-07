@@ -24,7 +24,7 @@ Claude Code sessions for this project run with the working directory set to **`C
 python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py
 ```
 
-Exits 0 when clean, 1 when it finds something (so it scripts). `--self-test` verifies its logic still matches `index.html`; `--all` adds the low-signal findings it suppresses by default. Written 2026-08-13 after **five** duplicate pairs were found live in two days — see rule 13 and the script's own header for what each of its four scans catches and which real pair motivated it.
+Exits 0 when clean, 1 when it finds something (so it scripts). `--self-test` verifies its logic still matches `index.html`; `--all` adds the low-signal findings it suppresses by default. Written 2026-08-13 after **five** duplicate pairs were found live in two days — see rule 13 and the script's own header for what each of its **five** scans catches and which real pair motivated it. (Four until 2026-09-03, when SAME-NAME/DATE was added after a live duplicate slipped past the other four; it is stricter again since 2026-09-06, when `_norm()` learned to strip a leading article.)
 
 Three consequences of this split. All are normal; none need fixing:
 
@@ -127,9 +127,37 @@ Always follow these when adding or editing events — they exist because of spec
 
     - **572/573 vs 74** — the San Rafael Summer Market. id 74 is `Monthly`/2nd Friday and its notes already listed the real dates; 572 and 573 were dated one-offs sitting on two of them, with a wrong time. Both those dates rendered twice.
 
-    **Don't hand-roll these checks — run `python check_duplicates.py`** (repo root). It does all four scans, including the one no string comparison can do: a `One-off` landing on a date a recurring record *computes*. That last scan needs the app's occurrence logic, so the script ports `parseOccurrenceRule` / `parseSkipDates` / `doesEventOccurOnDate` from `index.html` — **if you change that logic, change the port too**, and run `--self-test`, which asserts the two still agree.
+    **Don't hand-roll these checks — run `python check_duplicates.py`** (repo root). It does all **five** scans, including the one no string comparison can do: a `One-off` landing on a date a recurring record *computes*. That last scan needs the app's occurrence logic, so the script ports `parseOccurrenceRule` / `parseSkipDates` / `doesEventOccurOnDate` from `index.html` — **if you change that logic, change the port too**, and run `--self-test`, which asserts the two still agree.
 
     For reference, the keys it uses: exact `(event_name, venue, event_date)` catches 766/799 but sails straight past 768/801; the normalized `(event_date, time, town, name-prefix)` key catches that one; `(day, time, venue, cadence)` **plus a matching occurrence rule** catches 34/627 without flagging legitimate same-slot pairs like San Anselmo's 3rd-Wednesday and last-Wednesday programs. Same-venue/same-date/same-**time** is the shape every real collision had — differing times are almost always two separate programs and are suppressed unless you pass `--all`.
+
+    **The scans only audit what can RENDER — retired records are skipped (changed 2026-09-07,
+    open item 45).** `scan()` drops any record whose `status` is `Inactive` or
+    `Seasonal - Inactive` from **both** its one-off and recurring lists, via one `_renders()`
+    predicate. The audit exists to find events that double-book **on the live site**, and
+    `shouldShowEvent()` hides those two statuses outright, so a retired record cannot double-book
+    anything; counting it produces a finding no reader could ever have seen.
+
+    **The history matters, because the trap it created is easy to re-create.** The filter had been
+    on the `recurring` list since the file was written on 2026-08-13, and **never on `one_offs`**.
+    Retire a dated one-off that a recurring record has superseded and it stayed a **permanent
+    COLLISION finding** — it still lands on a date the recurring record generates, forever.
+    `check_duplicates` then exits non-zero every night and feeds a standing `duplicates:present`
+    flag to the daily notifier: precisely the cry-wolf failure that notifier exists to avoid. On
+    2026-09-01 six records did this and the workaround was to **delete** them rather than retire
+    them, losing the reference copies. **The tool was pushing us toward the worse of the two
+    options** — which is the real reason this was worth fixing, more than the tidier report.
+    Prefer `Inactive` over deletion for a superseded record; the scans will now stay quiet.
+
+    **`Temp. closed` and `Temp. paused` are NOT retired.** Both still render, with a badge, so both
+    still take part in every scan. A self-test asserts it.
+
+    **What this deliberately does not touch: `--venue` / `venue_scan()` still lists every record
+    whatever its status**, because rule 18 asks a different question — *"is this candidate already
+    on file anywhere?"* — for which a retired record absolutely still counts. That is a separate
+    function and a self-test pins it. `--all` also still shows everything. **Nothing protecting
+    against ADDING a duplicate was weakened here**; only the render-time audit was scoped to what
+    can actually render.
 
     **When a one-off legitimately replaces a recurring occurrence** (a themed storytime standing in for the regular one), don't delete either — add `skip: YYYY-MM-DD` to the recurring record's notes. `parseSkipDates()` reads it and drops just that date.
 
@@ -194,7 +222,7 @@ Always follow these when adding or editing events — they exist because of spec
 
     **Why the existing tools did not catch it — this is the structural gap, and it is worth understanding rather than just obeying:**
     - `events_io.find_event()` is the only candidate-stage check, and its own docstring calls itself a *"loose dedup lookup … name (case-insensitive substring)"*. It is a **substring matcher**. It was never capable of this and should never be the last word.
-    - `check_duplicates.py`'s four scans audit `events.json` for duplicates **already inside it**. A candidate that has not been added yet is invisible to all four. Rule 13 and that script protect the file *after* a bad add; they do nothing to prevent one.
+    - `check_duplicates.py`'s five scans audit `events.json` for duplicates **already inside it**. A candidate that has not been added yet is invisible to all five. Rule 13 and that script protect the file *after* a bad add; they do nothing to prevent one.
 
     So the correct unit of comparison is the **venue**, not the title. A venue name is short, stable, and doesn't get editorialised. Before proposing anything:
 
@@ -527,7 +555,7 @@ The shape worth noticing: all three cleared the mechanical filters and were stil
 
 Read this first, then the sections above as needed.
 
-**Health**: `events.json` is **318 events, max id 964**, all committed and pushed. `check_duplicates.py --self-test` is **73/73**, `--notes-lint` is clean, and all four duplicate scans are clean. GitHub Pages deploys off `main`, so **committing `events.json` IS publishing** — there is no staging.
+**Health** (refreshed 2026-09-07): `events.json` is **415 events, max id 1096**, all committed and pushed. `check_duplicates.py --self-test` is **92/92**, `--notes-lint` and `--bilingual-lint` are clean, and all **five** duplicate scans are clean. (Was 318 events / 73 self-tests when this line was last written — worth re-reading as a reminder that a hard-coded count in prose goes stale silently.) GitHub Pages deploys off `main`, so **committing `events.json` IS publishing** — there is no staging.
 
 **Nothing is blocking.** No decision is outstanding; the last sweep is fully applied and every question from it has been answered.
 
