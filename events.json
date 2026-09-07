@@ -10544,7 +10544,7 @@
       "town": "Bolinas",
       "address": "14 Wharf Rd, Bolinas, CA 94924",
       "ages": "All ages",
-      "cost": "Unconfirmed",
+      "cost": "Free",
       "indoor_outdoor": "Outdoor",
       "active_sedentary": "Active",
       "cadence": "One-off",
@@ -10556,7 +10556,7 @@
       "location_group": "West Marin",
       "event_date": "2026-09-07",
       "expires": "2026-09-07",
-      "internal_notes": "Added 2026-09-03 from a flyer Alexandra sent mid-session, outside the sweep workbook. Not from any of the 44 checklist sources - no Bolinas Community Center source is on the list, and the MCFL feed covers only the Bolinas LIBRARY. Venue scan run first: nothing on file at this venue, and the only other Sep 7 one-off is id 696 (Curtain Theatre, Mill Valley). The flyer lists a 3-stage line-up (Psychedelic Seniors, Old King, Plovver, Juice & Friends, Bobo Tempo, Los Padres, Wildmustard and the B's, Spice Rack) with two slots covered by 'TO BE ANNOUNCED' stickers - the 4 PM Street Stage special guest and the 3 PM Smiley's Stage act - so the line-up is deliberately NOT reproduced in the public description. No admission price is printed on the flyer, hence cost Unconfirmed."
+      "internal_notes": "Added 2026-09-03 from a flyer Alexandra sent mid-session, outside the sweep workbook. Not from any of the 44 checklist sources - no Bolinas Community Center source is on the list, and the MCFL feed covers only the Bolinas LIBRARY. Venue scan run first: nothing on file at this venue, and the only other Sep 7 one-off is id 696 (Curtain Theatre, Mill Valley). The flyer lists a 3-stage line-up (Psychedelic Seniors, Old King, Plovver, Juice & Friends, Bobo Tempo, Los Padres, Wildmustard and the B's, Spice Rack) with two slots covered by 'TO BE ANNOUNCED' stickers - the 4 PM Street Stage special guest and the 3 PM Smiley's Stage act - so the line-up is deliberately NOT reproduced in the public description. No admission price is printed on the flyer, hence cost Unconfirmed.\nCOST CONFIRMED 2026-09-06. Was 'Unconfirmed'; Alexandra confirmed the barbeque is free to attend, so the record now reads Free. Set on her word, not from the Bolinas Community Center site -- if that page is ever checked and shows a gate fee or a plate price, this is the field to revisit."
     },
     {
       "id": 1028,
