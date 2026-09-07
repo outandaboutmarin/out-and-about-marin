@@ -1,0 +1,170 @@
+<title>Open Items — Out AND About Marin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F6F5F0; --surface:#FFFFFF; --surface-2:#EEEDE5;
+  --border:#DDDACD; --border-soft:#E8E5D9;
+  --text:#23271E; --text-muted:#5C6154; --text-faint:#8A8F7D;
+  --accent:#2F6E5C; --accent-strong:#204B3F; --accent-soft:#E3EEE7;
+  --s-urgent:#B4432A; --s-urgent-soft:#F7E4DD;
+  --s-open:#B4802A;   --s-open-soft:#F5EAD5;
+  --s-scheduled:#3A6EA5; --s-scheduled-soft:#DEE9F3;
+  --s-hold:#7C7566;   --s-hold-soft:#EAE7DD;
+  --s-closed:#4B7A5C; --s-closed-soft:#E1EEE5;
+  --shadow: 0 1px 2px rgba(35,39,30,0.06), 0 8px 24px -12px rgba(35,39,30,0.12);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14180F; --surface:#1B2016; --surface-2:#20261A;
+    --border:#333B29; --border-soft:#2A311F;
+    --text:#EAEAE0; --text-muted:#A6AB96; --text-faint:#767C68;
+    --accent:#7CBBA0; --accent-strong:#9BD3B7; --accent-soft:#1E2E26;
+    --s-urgent:#E38669; --s-urgent-soft:#3A2620;
+    --s-open:#D9AC5C;   --s-open-soft:#332C1C;
+    --s-scheduled:#84B0DD; --s-scheduled-soft:#1E2C39;
+    --s-hold:#ABA695;   --s-hold-soft:#2A2820;
+    --s-closed:#83B497; --s-closed-soft:#1E2E24;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14180F; --surface:#1B2016; --surface-2:#20261A;
+  --border:#333B29; --border-soft:#2A311F;
+  --text:#EAEAE0; --text-muted:#A6AB96; --text-faint:#767C68;
+  --accent:#7CBBA0; --accent-strong:#9BD3B7; --accent-soft:#1E2E26;
+  --s-urgent:#E38669; --s-urgent-soft:#3A2620;
+  --s-open:#D9AC5C;   --s-open-soft:#332C1C;
+  --s-scheduled:#84B0DD; --s-scheduled-soft:#1E2C39;
+  --s-hold:#ABA695;   --s-hold-soft:#2A2820;
+  --s-closed:#83B497; --s-closed-soft:#1E2E24;
+  --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:'Public Sans',system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.55;}
+::selection{background:var(--accent-soft);color:var(--accent-strong);}
+a{color:var(--accent);}
+.wrap{max-width:960px;margin:0 auto;padding:48px 24px 96px;}
+
+header{display:flex;flex-direction:column;gap:18px;margin-bottom:40px;
+  padding-bottom:28px;border-bottom:1px solid var(--border);}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);font-weight:500;}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(32px,5vw,44px);
+  margin:0;letter-spacing:-.01em;text-wrap:balance;}
+.subline{color:var(--text-muted);font-size:14.5px;max-width:62ch;margin:0;}
+.subline b{color:var(--text);font-weight:600;}
+.tally{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;}
+.tally-chip{display:flex;align-items:baseline;gap:6px;padding:7px 12px;border-radius:8px;
+  background:var(--surface-2);border:1px solid var(--border-soft);font-size:13px;color:var(--text-muted);}
+.tally-chip strong{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--text);
+  font-weight:500;font-variant-numeric:tabular-nums;}
+.tally-chip.urgent strong{color:var(--s-urgent);}
+
+.priority-head{display:flex;align-items:center;gap:10px;margin:0 0 16px;}
+.priority-head h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px;margin:0;}
+.priority-head .count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-faint);}
+.priority-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:48px;}
+.pcard{background:var(--surface);border:1px solid var(--border);
+  border-left:4px solid var(--stripe,var(--s-open));border-radius:10px;padding:18px 20px;box-shadow:var(--shadow);}
+.pcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.pcard-title{font-weight:600;font-size:15.5px;display:flex;align-items:baseline;gap:8px;}
+.item-no{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-faint);
+  font-weight:400;font-variant-numeric:tabular-nums;}
+.pcard-ask{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border-soft);
+  font-size:13.5px;color:var(--text-muted);}
+.pcard-ask b{color:var(--text);}
+
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;
+  font-size:11.5px;font-weight:600;letter-spacing:.01em;white-space:nowrap;}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;}
+.pill.urgent{background:var(--s-urgent-soft);color:var(--s-urgent);}
+.pill.open{background:var(--s-open-soft);color:var(--s-open);}
+.pill.scheduled{background:var(--s-scheduled-soft);color:var(--s-scheduled);}
+.pill.hold{background:var(--s-hold-soft);color:var(--s-hold);}
+.pill.closed{background:var(--s-closed-soft);color:var(--s-closed);}
+.pill.done{background:var(--s-closed-soft);color:var(--s-closed);}
+
+section.group{margin-bottom:44px;}
+.group-head{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;}
+.group-head h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:19px;margin:0;}
+.group-head .rule{flex:1;height:1px;background:var(--border);}
+.group-head .n{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-faint);}
+.group-note{font-size:13px;color:var(--text-faint);margin:-6px 0 14px;max-width:70ch;}
+
+.item{background:var(--surface);border:1px solid var(--border-soft);border-radius:10px;
+  padding:15px 18px;margin-bottom:8px;}
+.item-row{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.item-title{font-weight:600;font-size:14.5px;display:flex;align-items:baseline;gap:7px;}
+.item-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-faint);margin-top:3px;}
+
+details.notes{margin-top:10px;}
+details.notes > summary{cursor:pointer;font-size:12.5px;color:var(--accent);font-weight:600;
+  list-style:none;display:inline-flex;align-items:center;gap:5px;}
+details.notes > summary::-webkit-details-marker{display:none;}
+details.notes > summary::before{content:"▸";font-size:10px;transition:transform .15s ease;}
+details.notes[open] > summary::before{transform:rotate(90deg);}
+details.notes > summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px;}
+.notes-body{margin-top:8px;font-size:13.5px;color:var(--text-muted);padding-top:8px;
+  border-top:1px solid var(--border-soft);max-width:74ch;}
+.notes-body p{margin:0 0 8px;}
+.notes-body p:last-child{margin-bottom:0;}
+.notes-body b{color:var(--text);}
+.notes-body code,.pcard-ask code,.closed-item code{font-family:'IBM Plex Mono',monospace;
+  font-size:.92em;background:var(--surface-2);padding:1px 5px;border-radius:4px;}
+.box{color:var(--s-open);font-weight:700;}
+.check{color:var(--s-closed);}
+
+.closed-list{display:flex;flex-direction:column;gap:8px;}
+.closed-item{display:flex;gap:10px;align-items:baseline;font-size:13.5px;color:var(--text-faint);
+  padding:10px 14px;background:var(--surface-2);border-radius:8px;}
+.closed-item .check{flex-shrink:0;}
+.closed-item span.body{color:var(--text-muted);}
+
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);
+  font-size:12px;color:var(--text-faint);font-family:'IBM Plex Mono',monospace;}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
+@media (max-width:560px){.wrap{padding:32px 16px 64px;}.item-row,.pcard-top{flex-direction:column;}}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">Out AND About Marin — Maintenance</span>
+    <h1>Open Items</h1>
+    <p class="subline">Running list of open to-dos for the site. Generated from <code>open_items.md</code>, last updated <b>{{UPDATED}}</b>.</p>
+    <div class="tally">
+      <div class="tally-chip urgent"><strong>{{N_CALL}}</strong> need your call</div>
+      <div class="tally-chip"><strong>{{N_DATA}}</strong> data &amp; content</div>
+      <div class="tally-chip"><strong>{{N_NOTSTARTED}}</strong> not started</div>
+      <div class="tally-chip"><strong>{{N_TOTAL}}</strong> total open</div>
+    </div>
+  </header>
+
+  <div class="priority-grid">
+    <div class="priority-head" style="margin-bottom:0">
+      <h2>Needs your call</h2>
+      <span class="count">{{N_CALL}} items</span>
+    </div>
+  </div>
+
+  <div class="priority-grid" style="margin-top:-8px">
+{{PRIORITY_CARDS}}
+  </div>
+
+{{SECTIONS}}
+
+  <section class="group">
+    <div class="group-head"><h2>Recently closed</h2><div class="rule"></div><span class="n">latest first</span></div>
+    <div class="closed-list">
+{{CLOSED_LIST}}
+    </div>
+  </section>
+
+  <footer>open_items.md · {{N_TOTAL}} open items · {{N_CLOSED}} shown closed · built {{UPDATED}}</footer>
+
+</div>

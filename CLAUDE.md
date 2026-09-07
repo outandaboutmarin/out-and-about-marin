@@ -476,8 +476,19 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
 ## Open Items tracker (Alexandra's to-do list)
 
 - **Source of truth**: `OAA maintence and content/open_items.md` (her Documents project folder, **not** this repo). Grouped Infrastructure / Data Quality / Marketing, with a "Recently closed" section kept for reference. Edit it directly when she says to add, update, or close an item.
-- **"Show me the dashboard" / "open the open items list"** means render it as a formatted page. The generator is a scratchpad script (`build_dashboard.py`) that emits a self-contained HTML file published as an Artifact. Statuses: `open`, `waiting`, `scheduled`, `low`, `hold`.
-- **Keep the two in sync in the same edit.** They have drifted before (item 25 stayed open in the dashboard after being closed in the markdown). Closing an item means: remove from the open list in `open_items.md`, add a line to "Recently closed", remove the `dict(n=…)` from `build_dashboard.py`'s `ITEMS`, append to its `CLOSED`, regenerate, and republish the Artifact.
+- **"Show me the dashboard" / "open the open items list"** means render it as a formatted page. **Run it, do not rebuild it by hand:**
+  ```bash
+  python build_dashboard.py            # writes dashboard.html
+  python build_dashboard.py --check    # verify sync only, write nothing
+  ```
+  Then publish `dashboard.html` to the **existing** artifact
+  `https://claude.ai/code/artifact/7c27ebfe-6674-4c8d-9b90-a0559d8e483c` (read it first — another session may have changed it). Card tones: `urgent`, `scheduled`, `open`, `hold`.
+
+  ⚠ **Corrected 2026-09-07. This bullet used to call the generator "a scratchpad script", and that was wrong twice over.** Scratchpads are session-specific temp folders, so a tool living in one is invisible to every future session **by design** — and when it was finally looked for, `build_dashboard.py` did not exist anywhere on the machine. Every "show me the dashboard" had quietly been a hand-rebuild of ~500 lines of HTML while this file described a working process. **It is now a real file in the repo**, with `dashboard_template.html` beside it. **The general lesson: a tool documented as living in a scratchpad is a tool that does not exist.** If a process is worth writing down, its script belongs in the repo.
+
+  **Where the content lives:** item summaries are curated in `build_dashboard.py`'s `ITEMS` and `CLOSED` lists, deliberately **not** parsed out of `open_items.md`. The dashboard summarises and reprioritises rather than dumping the markdown, whose entries run to several prose paragraphs each; a parser over prose would read worse and would fail silently the moment the prose changed shape.
+- **Keep the two in sync in the same edit, and let the script check you.** They have drifted before (item 25 stayed open in the dashboard after being closed in the markdown). Closing an item means: remove it from the open list in `open_items.md`, add a line to "Recently closed", remove the `dict(n=…)` from `build_dashboard.py`'s `ITEMS`, append to its `CLOSED`, regenerate, and republish the Artifact.
+  **`--check` guards the one thing that must never drift** — *which* item numbers are open. It reads `open_items.md`, compares the numbers above "Recently closed" against `ITEMS`, and reports both directions (open in the markdown but missing from the dashboard; on the dashboard but no longer open) plus any number appearing in both `ITEMS` and `CLOSED`. A plain build runs it too, so a stale page cannot ship quietly. **Verified capable of failing**, per the standing rule that a check reporting clean must be shown able to report dirty: both drift directions were induced and both were caught.
 - Items resolved by a **policy decision** should be encoded where the policy actually executes — e.g. item 9 (stale Megan Schoenbohm source) and item 10 (add Slide Ranch) were both written into `/run-sweep`'s source list so they enforce themselves every sweep, not just sit in a tracker.
 
 ## Sweep review workbook format
