@@ -254,6 +254,42 @@ Always follow these when adding or editing events — they exist because of spec
     - **A control pattern in `internal_notes` is a control that no longer fires.** The lint's second scan reports these as STRANDED. It flags only *lost* controls — one absent from `notes` and actually consulted for that cadence — because internal commentary quotes source text constantly, and a scan that cries wolf gets ignored.
     - **`--notes-lint` shipped 2026-08-21 with two dead regexes** — a literal backspace byte sat where the `\b` word boundaries belonged, so the `Reopens` and `UNPREDICTABLE` checks could never match anything. It ran, printed clean, and proved nothing. Fixed the same day and each pattern now has a self-test that asserts it can fire. This is the same lesson as the COLLISION time-string bug: **if a scan reports clean, confirm it is capable of reporting dirty.**
 
+21. **Correcting `time` is not the whole job — `description` usually repeats the hours in prose,
+    and nothing checks that the two agree.** Confirmed 2026-09-06 on id 871 (Show Your School
+    Spirit, Corte Madera). Its `time` had been corrected on 2026-08-27 from `11:00 AM` to
+    `12:00 PM – 3:00 PM` against the venue's own page — and both `description` and
+    `description_es` were left reading *"11 AM-3 PM"*. The record sat that way for ten days,
+    publicly, telling a reader to arrive an hour before the event started. **No scan catches
+    this.** The five duplicate scans, `--notes-lint` and `--bilingual-lint` all passed on that
+    record every single day, because none of them compares a time field with the prose around it.
+    It was caught by eye.
+
+    **So: whenever you change `time`, grep that record's `description`, `description_es` and
+    `notes` for the old hours and fix every copy.** The same applies in reverse — a description
+    that states hours is a claim about the same fact as `time`, and the two must never disagree.
+    A cheap lint for this (find a time-like string in `description` and compare it to `time`)
+    does not exist yet and would be worth writing.
+
+22. **`cost: "Free"` must mean free to a family who walks up on the day. A waived admission fee
+    is not the same thing as a free outing.** Confirmed 2026-09-06 on id 961 (Free Day at Muir
+    Woods, Constitution Day). The record read `Free` and it was wrong in the way that costs a
+    family money: the fee-free day waives the **$15 per-adult entrance fee only**. NPS states
+    plainly that *"Parking/shuttle reservation fees are separate from entrance fees and are
+    required for all vehicles and shuttle riders"*, and `gomuirwoods.com` prices them at **$10 per
+    standard vehicle** or **$4 per adult round trip** on the shuttle. You cannot get in without
+    one. A family reading `Free` would have driven up Highway 1 expecting to pay nothing.
+
+    The field now reads `Free entry; $10 parking or $4 shuttle`, which means `index.html` tags it
+    with `.tag-paid` and it drops out of the free filter — **that is the correct outcome, not a
+    regression.** `cardHTML()` branches on `e.cost === 'Free'` exactly, so any string but that
+    literal renders as paid.
+
+    **This will recur.** Any venue that charges separately for admission and for parking, entry
+    and booking, or the event and a required reservation, has the same shape: a national or state
+    park on a fee-free day, a museum with a free-admission day but paid timed entry, a festival
+    that is free to enter with a paid parking lot. **Ask what the family actually pays to be
+    standing there**, and put that in `cost` — not the headline the venue is advertising.
+
 ## Homepage Featured strip
 
 The horizontal card row at the top of the homepage (`#featuredWrap` / `#featuredRow`). Selection logic is `selectFeatured()` in `index.html` (~line 3981) — a client-side scoring pass over `allEvents`, not a stored list. `featured: true` on a record does **not** put it in the strip by itself; it only adds a scoring boost (`+10` in `score()`) among records that are otherwise eligible, plus one specific reserved-slot exception (below).
