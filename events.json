@@ -6277,8 +6277,8 @@
       "event_name": "Opera in the Amphitheater",
       "type": "Music and Movies",
       "day": "Saturday",
-      "time": "TBD",
-      "time_of_day": "Evening",
+      "time": "4:00 PM – 6:00 PM",
+      "time_of_day": "Afternoon",
       "town": "Novato",
       "address": "Hamilton Amphitheater, Novato, CA 94949",
       "ages": "All ages",
@@ -6294,11 +6294,12 @@
       "featured": false,
       "description": "Fourth annual free outdoor opera featuring world-class singers, with arias and al fresco activities for families.",
       "registration": "Not required",
-      "website": "https://marinmagazine.com/calendar/things-to-do-this-september/",
-      "notes": "⚠ TIME NOT PUBLISHED — Marin Magazine gives no start time. Confirm with the Hamilton Arts Foundation before this renders to users; “TBD” sorts last in the feed.",
+      "website": "https://www.hamiltonartsfoundation.org/opera",
+      "notes": "Free to attend; $20 donation tickets are available and an RSVP reserves a spot. Opera trivia, games and face painting alongside the performance.",
       "location_group": "Novato",
       "event_name_es": "Ópera en el Anfiteatro",
-      "description_es": "Cuarta edición anual de ópera gratuita al aire libre con cantantes de primer nivel, arias y actividades para familias."
+      "description_es": "Cuarta edición anual de ópera gratuita al aire libre con cantantes de primer nivel, arias y actividades para familias.",
+      "internal_notes": "\nTIME CONFIRMED 2026-09-06. Was 'TBD' with a warning note, because Marin Magazine -- the original source -- published no start time. The Hamilton Arts Foundation's own opera page gives '4 pm to 6 pm', and Eventbrite's listing for the same event agrees ('Starts at 4 PM'). time_of_day corrected from Evening to Afternoon to match. website moved off the Marin Magazine round-up and onto the organiser's page, which is the better source for a reader."
     },
     {
       "id": 846,
@@ -6337,7 +6338,7 @@
       "event_name": "Slide Ranch Volunteer Workday",
       "type": "Community Event",
       "day": "Sunday",
-      "time": "TBD",
+      "time": "9:00 AM – 12:00 PM",
       "time_of_day": "Morning",
       "town": "Muir Beach",
       "address": "2025 Shoreline Hwy, Muir Beach, CA 94965",
@@ -6355,11 +6356,11 @@
       "description": "Community volunteer workday on the farm — hands-on projects around the ranch.",
       "registration": "Not required",
       "website": "https://slideranch.org/events",
-      "notes": "Start time not published by the venue — confirm before going.",
+      "notes": "Registration required in advance. Under-18s must be accompanied by a participating adult — no drop-offs.",
       "location_group": "West Marin",
       "event_name_es": "Jornada de Voluntariado en Slide Ranch",
       "description_es": "Jornada comunitaria de voluntariado en la granja, con proyectos prácticos por todo el rancho.",
-      "internal_notes": "Approved 2026-08-13 alongside Sausalito's Make a Difference Day; pure stewardship work-parties (OneTam) stay excluded."
+      "internal_notes": "Approved 2026-08-13 alongside Sausalito's Make a Difference Day; pure stewardship work-parties (OneTam) stay excluded.\nTIME SET 2026-09-06. Was 'TBD'. slideranch.org/events lists the Sunday 13 September workday but prints no time on it. The time comes from Slide Ranch's OWN Eventbrite registration, titled 'Volunteer Day: Saturdays and Sundays, 9:00 AM to 12 PM' -- the venue's published standard for every volunteer day. CAVEAT WORTH KEEPING: that is the standard, not this date's own listing, and the Eventbrite page showed 'Event ended' for its recurring registration. If a reader reports a different start, this is the field to revisit. The 9-12 window is also why time_of_day stays Morning."
     },
     {
       "id": 849,
