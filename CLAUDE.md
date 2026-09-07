@@ -318,6 +318,51 @@ Always follow these when adding or editing events — they exist because of spec
     that is free to enter with a paid parking lot. **Ask what the family actually pays to be
     standing there**, and put that in `cost` — not the headline the venue is advertising.
 
+23. **NEVER write in place. Write a temp file, verify it reads back, then replace — and copy the
+    original aside first.** Opening a file for writing **truncates it instantly**, before a single
+    byte of new content lands. If anything then fails, the old content is already gone and the new
+    content never arrived.
+
+    **This destroyed `open_items.md` on 2026-09-07.** A script read the file, built the new text in
+    memory, opened the real file for writing, and died on the write with a `UnicodeEncodeError`:
+    an emoji had been written as the escape `\ud83d\uddc2`, which is *half* of a character.
+    Python holds a lone surrogate in memory quite happily and refuses to encode it to UTF-8. The
+    file was left at **0 bytes**. Three weeks of an untracked, hand-maintained document, gone in
+    the time it took to fail.
+
+    **The pattern that would have made it a non-event:**
+
+    ```python
+    tmp = dest + ".tmp"
+    with io.open(tmp, "w", encoding="utf-8", newline="\n") as f:
+        f.write(new_text)
+    assert io.open(tmp, encoding="utf-8").read() == new_text   # it round-tripped
+    shutil.copy2(dest, dest + ".bak2")                          # keep the old one
+    os.replace(tmp, dest)                                       # atomic swap
+    ```
+
+    A crash anywhere above the last line leaves the target untouched. **Use this for every write to
+    a file that is not in git** — which, on this project, means everything in
+    `OAA maintence and content/`.
+
+    **Why it was unrecoverable, which is the part worth fixing at the source.** Those MD files are
+    the only project records outside version control. File History has never been enabled on that
+    machine, there were no volume shadow copies, and the folder sits outside OneDrive. The `.bak`
+    beside it was three weeks stale. **A single bad write on an untracked file is permanent.**
+
+    **How it was actually recovered, worth knowing for next time.** Claude Code logs every tool call
+    and its full output to `~/.claude/projects/<project>/<session>.jsonl`. Another session had read
+    the whole file earlier the same day, so a complete verbatim copy of all 200 lines was sitting in
+    that log. `grep -l "<a distinctive phrase>" *.jsonl` found it; the Read tool's line-number
+    prefixes (`1\t`, `2\t`, …) strip off with a one-line regex. **This is a real recovery route
+    for any file a session has read, but do not treat it as a backup** — it depends entirely on
+    somebody having happened to read the file, and on the log not having been rotated.
+
+    **Two things the lint cannot check for you.** Build the replacement text with real characters
+    (`"\U0001F5C2"` or the literal emoji), never a surrogate pair written by hand. And after any
+    scripted edit to a hand-maintained document, assert on the result — length, line count, a few
+    distinctive strings that must survive, and any that must be gone.
+
 ## Homepage Featured strip
 
 The horizontal card row at the top of the homepage (`#featuredWrap` / `#featuredRow`). Selection logic is `selectFeatured()` in `index.html` (~line 3981) — a client-side scoring pass over `allEvents`, not a stored list. `featured: true` on a record does **not** put it in the strip by itself; it only adds a scoring boost (`+10` in `score()`) among records that are otherwise eligible, plus one specific reserved-slot exception (below).
