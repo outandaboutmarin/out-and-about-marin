@@ -11,3 +11,7 @@ issue_body.md
 # Review workbooks never belong in the repo — they live in Alexandra's
 # Documents folder. Belt and braces alongside the workflow's staging list.
 *_review.xlsx
+
+# Rendered Instagram slides — build output of render_slides.py. Regenerate from
+# the approved mockup HTML; never commit the images themselves.
+slides/
