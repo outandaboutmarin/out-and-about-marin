@@ -6876,14 +6876,14 @@
       "expires": "2026-09-12",
       "status": "Active",
       "featured": false,
-      "description": "Back-to-school themed community event at The Village. 11 AM-3 PM.",
+      "description": "Back-to-school themed community event at The Village. 12-3 PM.",
       "registration": "Not required",
       "website": "https://www.villageatcortemadera.com/Events",
       "notes": "",
       "location_group": "Corte Madera",
       "event_name_es": "Muestra tu Espíritu Escolar",
-      "description_es": "Evento comunitario con temática de regreso a clases en The Village. 11 a.m.-3 p.m.",
-      "internal_notes": "Time corrected 2026-08-27 from 11:00 AM to 12:00-3:00 PM per villageatcortemadera.com/Events."
+      "description_es": "Evento comunitario con temática de regreso a clases en The Village. 12-3 p.m.",
+      "internal_notes": "Time corrected 2026-08-27 from 11:00 AM to 12:00-3:00 PM per villageatcortemadera.com/Events. DESCRIPTION FIXED 2026-09-06: both descriptions still read '11 AM-3 PM', contradicting the time field that was corrected on 2026-08-27. A reader going by the description would have arrived an hour early. LESSON: correcting the time field is not the whole job -- the description often repeats the hours in prose and has to be corrected with it."
     },
     {
       "id": 872,
