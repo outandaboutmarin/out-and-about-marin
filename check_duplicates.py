@@ -309,14 +309,70 @@ def bilingual_lint(events):
     return out
 
 
+def _next_weekday_iso(day_name):
+    """ISO date of the next occurrence of `day_name`, for date-sensitive tests.
+
+    The COLLISION scan only looks `horizon_days` ahead, so a fixture pinned to a
+    hard-coded date would quietly stop testing anything once that date passed --
+    the test would still pass, while asserting nothing. Confirmed hazard: this is
+    the same shape as the two dead `--notes-lint` regexes that ran clean for a
+    day while being incapable of matching.
+    """
+    import datetime
+    names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    today = datetime.date.today()
+    for n in range(1, 15):
+        d = today + datetime.timedelta(days=n)
+        if names[d.weekday()] == day_name:
+            return d.isoformat()
+    raise AssertionError("no %s within a fortnight" % day_name)
+
+
+RETIRED = ("Inactive", "Seasonal - Inactive")
+
+
+def _renders(e):
+    """False for a record `shouldShowEvent()` in index.html hides outright.
+
+    The audit scans exist to find events that DOUBLE-BOOK ON THE LIVE SITE. A
+    record that cannot render cannot double-book, so counting it produces a
+    finding no reader could ever have seen.
+
+    WHY THIS FUNCTION EXISTS (open item 45, fixed 2026-09-07). The status filter
+    has been here since the file was written on 2026-08-13 -- but only on the
+    `recurring` list. One-offs were never filtered, and the asymmetry had a real
+    cost. Retire a dated one-off that a recurring record has superseded and it
+    stays a PERMANENT COLLISION finding: it still "lands on" a date the
+    recurring record generates, forever, even though it is hidden. check_duplicates
+    then exits non-zero every night and feeds a standing `duplicates:present`
+    flag to the daily notifier -- exactly the cry-wolf failure that notifier was
+    built to avoid (closed item 31). On 2026-09-01 six records did this and the
+    workaround was to DELETE them rather than retire them, losing the reference
+    copies. The tool was quietly pushing us toward the worse of the two options.
+
+    WHAT THIS DELIBERATELY DOES NOT TOUCH. `venue_scan()` is a separate function
+    and still lists every record whatever its status, because rule 18 dedup asks
+    a different question -- "is this candidate already on file anywhere?" -- for
+    which a retired record absolutely still counts. `--all` also keeps showing
+    everything. So nothing that protects against ADDING a duplicate is weakened
+    here; only the render-time audit is scoped to what can actually render.
+
+    `Temp. closed` and `Temp. paused` are NOT retired: both still render, with a
+    badge, so both still take part.
+    """
+    return e.get("status") not in RETIRED
+
+
 def scan(events, horizon_days=180):
     """Returns a list of (severity, label, detail) findings."""
     findings = []
     show_all = "--all" in sys.argv
-    one_offs = [e for e in events if e.get("cadence") == "One-off" and e.get("event_date")]
+    one_offs = [e for e in events
+                if e.get("cadence") == "One-off" and e.get("event_date")
+                and _renders(e)]
     recurring = [e for e in events
                  if e.get("cadence") not in ("One-off", "", None)
-                 and e.get("status") not in ("Inactive", "Seasonal - Inactive")]
+                 and _renders(e)]
 
     # 1. exact
     g = defaultdict(list)
@@ -748,6 +804,35 @@ def self_test(events):
            "a leading 'A' must not defeat it either")
     expect(_norm("Theatre in the Park") != _norm("in the Park"),
            "'The' inside a longer word must NOT be stripped")
+
+    # ── item 45: a retired record must not raise an audit finding ──────────
+    # Shape that used to produce a permanent COLLISION: a dated one-off sitting
+    # on a date its superseding recurring record also generates.
+    _weekly = {"id": 9001, "cadence": "Weekly", "day": "Saturday", "event_name": "KidTime",
+               "venue": "Mill Valley Library", "town": "Mill Valley", "time": "10:00 AM",
+               "status": "Active"}
+    _oneoff = {"id": 9002, "cadence": "One-off", "day": "Saturday", "event_name": "KidTime",
+               "venue": "Mill Valley Library", "town": "Mill Valley", "time": "10:00 AM",
+               "status": "Active", "event_date": _next_weekday_iso("Saturday")}
+    expect(any(f.startswith("COLLISION") for f in _sev([_weekly, _oneoff])),
+           "an ACTIVE one-off colliding with a recurring record must still be caught")
+
+    _retired = dict(_oneoff, status="Inactive")
+    expect(not _sev([_weekly, _retired]),
+           "a RETIRED one-off must raise nothing - it cannot render, so it cannot double-book")
+
+    _retired_rec = dict(_weekly, status="Inactive")
+    expect(not _sev([_retired_rec, _oneoff]),
+           "a RETIRED recurring record must raise nothing either (this half already worked)")
+
+    # Temp. closed / Temp. paused still RENDER, with a badge, so they still count.
+    expect(any(f.startswith("COLLISION") for f in _sev([_weekly, dict(_oneoff,
+                                                                     status="Temp. paused")])),
+           "'Temp. paused' is not retired - it renders, so it must still be scanned")
+
+    # ...and the dedup path rule 18 depends on must be UNAFFECTED by all of that.
+    expect([e["id"] for e in venue_scan([_retired], "Mill Valley")] == [9002],
+           "venue_scan must still surface a RETIRED record - rule 18 asks a different question")
 
     print(f"self-test: {checks - len(failures)}/{checks} passed")
     for f in failures:
