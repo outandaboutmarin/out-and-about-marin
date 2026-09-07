@@ -163,7 +163,19 @@ def does_event_occur_on(e, d):
 
 # ── scans ─────────────────────────────────────────────────────────────────
 def _norm(name):
-    return re.sub(r"[^a-z]", "", str(name).lower())[:14]
+    """Letters only, lowercased, first 14 — with a LEADING ARTICLE STRIPPED.
+
+    The article matters. On 2026-09-05 "The French Market Marin" (id 1046) and
+    "French Market Marin" (id 666) sat on the same date at the same place and
+    the SAME-NAME/DATE scan did not fire, because truncating to 14 characters
+    gave 'thefrenchmarke' and 'frenchmarketma' -- the leading "The" shifted
+    every character and the two never lined up. That is the same near-miss
+    family as rule 18's plural/ampersand/inserted-word cases, and "The" is the
+    commonest of them.
+    """
+    n = re.sub(r"[^a-z ]", "", str(name).lower()).strip()
+    n = re.sub(r"^(the|a|an) ", "", n)
+    return n.replace(" ", "")[:14]
 
 
 def _start_time(t):
@@ -728,6 +740,14 @@ def self_test(events):
         "event_name_es": "x"}])), "an untranslated description_es must be reported")
     expect(bilingual_lint(events) == [],
            "the live dataset must currently pass the bilingual lint")
+
+    # _norm must see through a leading article (ids 666 / 1046, 2026-09-05)
+    expect(_norm("The French Market Marin") == _norm("French Market Marin"),
+           "a leading 'The' must not defeat the normalized name match")
+    expect(_norm("A Night at the Museum") == _norm("Night at the Museum"),
+           "a leading 'A' must not defeat it either")
+    expect(_norm("Theatre in the Park") != _norm("in the Park"),
+           "'The' inside a longer word must NOT be stripped")
 
     print(f"self-test: {checks - len(failures)}/{checks} passed")
     for f in failures:
