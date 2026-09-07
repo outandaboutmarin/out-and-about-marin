@@ -75,11 +75,13 @@ ITEMS = [
               "was the genuine blocker — every route needs image files and the post only existed "
               "as HTML. Twelve upload-ready slides for the week of Sep 11 are in "
               "<code>slides/week_of_sep11/</code>.",
-         ask="<b>Your move:</b> post one week by hand before we automate anything. If that takes "
-             "ten minutes it may never be worth automating, since the link stickers need "
-             "attaching by hand either way and the carousel upload was always the only real "
-             "saving. <b>Also queued:</b> the Sunday posting window is still undecided — the plan "
-             "says 7–9pm, you called it the afternoon post."),
+         ask="<b>Nothing here is manual.</b> An earlier version of this card asked you to post "
+             "a week by hand, reasoning that the link stickers needed attaching either way — "
+             "<b>a leftover from the superseded claim that no tool can publish one</b>. Business "
+             "Suite can, so the automation covers the whole post. <b>Next move is mine:</b> drive "
+             "Business Suite, stage the Thursday post, and stop before anything publishes. "
+             "<b>Still queued:</b> the Sunday posting window — the plan says 7–9pm, you called "
+             "it the afternoon post."),
 
     dict(n=49, group="call", tone="open", created="2026-09-03",
          title="Two records still missing one fact", pill="Waiting on you",
