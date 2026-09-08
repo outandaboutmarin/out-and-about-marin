@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Render an approved weekly-post mockup to Instagram-ready PNGs.
+"""Render an approved mockup to Instagram-ready PNGs, square or Story-shaped.
 
-    python render_slides.py <mockup.html> [-o OUTDIR] [--size 1080]
+    python render_slides.py <mockup.html>                       # 1080x1080 squares, .slide
+    python render_slides.py <page.html> --size 1080x1920 \\
+        --selector .frame                                       # 9:16 Stories
 
 WHY THIS EXISTS. The weekly post is authored and approved as an HTML page (see
 `social_media_and_marketing.md` section 3b, Treatment C). Instagram takes image
@@ -9,8 +11,16 @@ files. Every publishing route we might pick -- Meta Business Suite, Buffer, the
 Graph API -- needs PNGs, so this step is route-independent and blocks all of
 them. Open item 15.
 
-WHAT IT DOES. Loads the page in headless Chromium, finds every `.slide`, and
-screenshots each one at exactly SIZE x SIZE. It does NOT re-lay-out the page:
+WHAT IT DOES. Loads the page in headless Chromium, finds every frame matching
+`--selector`, and screenshots each at exactly WIDTH x HEIGHT.
+
+IT WAS SQUARE-ONLY UNTIL 2026-09-07, AND THAT WAS A SELF-INFLICTED LIMIT. The
+first version took a single `--size` and used it for both dimensions, because
+the weekly carousel is square. Instagram Stories are 1080x1920, the Start Here
+highlight had been built at 9:16 two days earlier, and the Story format was
+written down in the same file this tool was built from. Taking width and height
+would have cost nothing then; it cost a rebuild later. **Do not narrow a tool to
+the first job you point it at.** It does NOT re-lay-out the page:
 each slide is already `container-type: inline-size` with every dimension in
 `cqw`, so setting the element's width to 1080px makes the design resolve at
 1080px natively. That is the whole reason the mockups were built in container
@@ -38,7 +48,7 @@ import os
 import re
 import sys
 
-SLIDE_SEL = ".slide"
+DEFAULT_SEL = ".slide"      # weekly carousel; the Start Here frames use ".frame"
 DECK_SEL = "h2"
 
 
@@ -47,7 +57,7 @@ def slugify(text, limit=28):
     return (s[:limit].rstrip("-")) or "slide"
 
 
-async def render(path, outdir, size, check, fonts_ms):
+async def render(path, outdir, w, h, check, fonts_ms, sel, hide):
     from playwright.async_api import async_playwright
 
     url = "file:///" + os.path.abspath(path).replace("\\", "/")
@@ -58,7 +68,7 @@ async def render(path, outdir, size, check, fonts_ms):
         browser = await pw.chromium.launch()
         # deviceScaleFactor stays 1: the slides are authored in container units,
         # so we render AT 1080 rather than rendering small and scaling up.
-        page = await browser.new_page(viewport={"width": size + 200, "height": size + 200},
+        page = await browser.new_page(viewport={"width": w + 200, "height": h + 200},
                                       device_scale_factor=1)
         await page.goto(url, wait_until="networkidle")
 
@@ -87,12 +97,20 @@ async def render(path, outdir, size, check, fonts_ms):
             "max-width:none!important;max-height:none!important;"
             "aspect-ratio:auto!important;overflow:hidden!important;"
             "border-radius:0!important;box-shadow:none!important;}"
-            % (SLIDE_SEL, SLIDE_SEL, SLIDE_SEL, size, size, size, size)))
+            % (sel, sel, sel, w, h, w, h)))
+        # Review furniture must never reach a published image. The Start Here
+        # mockup draws dashed SAFE AREA guides so the design can be checked
+        # against Instagram's UI overlap -- they rendered straight into the first
+        # 1080x1920 PNGs on 2026-09-07 and would have been posted. Caught by
+        # looking at the output, not by any check: the file was the right size
+        # and full of colour, so verify() passed it.
+        if hide:
+            await page.add_style_tag(content="%s{display:none!important}" % hide)
         await page.wait_for_timeout(250)
 
-        slides = await page.query_selector_all(SLIDE_SEL)
+        slides = await page.query_selector_all(sel)
         if not slides:
-            print("No %r elements found in %s" % (SLIDE_SEL, path), file=sys.stderr)
+            print("No %r elements found in %s" % (sel, path), file=sys.stderr)
             await browser.close()
             return []
 
@@ -113,7 +131,7 @@ async def render(path, outdir, size, check, fonts_ms):
                  }
                  const cap = el.closest('.slot') ? el.closest('.slot').querySelector('cap') : null;
                  return { deck: h ? h.textContent : '', cap: cap ? cap.textContent : '' };
-               })""", SLIDE_SEL)
+               })""", sel)
 
         # Render each slide ALONE, pinned to the viewport origin.
         #
@@ -152,22 +170,22 @@ async def render(path, outdir, size, check, fonts_ms):
                          s.style.display = 'none';
                        }
                      });
-                   }""", [SLIDE_SEL, i])
+                   }""", [sel, i])
             await page.wait_for_timeout(60)
             await page.screenshot(path=dest,
-                                  clip={"x": 0, "y": 0, "width": size, "height": size})
-            off = _exact(dest, size)
+                                  clip={"x": 0, "y": 0, "width": w, "height": h})
+            off = _exact(dest, w, h)
             written.append(dest)
             print("  %s%s" % (name, off))
 
         await browser.close()
 
     if check:
-        verify(written, size)
+        verify(written, w, h)
     return written
 
 
-def _exact(path, size):
+def _exact(path, w, h):
     """Trim the 1px overshoot CSS grid causes, and report anything larger.
 
     An element screenshot is taken from the element's device-pixel bounding box,
@@ -183,16 +201,16 @@ def _exact(path, size):
     except ImportError:
         return ""
     with Image.open(path) as im:
-        w, h = im.size
-        if (w, h) == (size, size):
+        gw, gh = im.size
+        if (gw, gh) == (w, h):
             return ""
-        if abs(w - size) > 2 or abs(h - size) > 2:
-            return "  (! %dx%d)" % (w, h)
-        im.crop((0, 0, size, size)).save(path)
-    return "  (trimmed %dx%d)" % (w, h)
+        if abs(gw - w) > 2 or abs(gh - h) > 2:
+            return "  (! %dx%d)" % (gw, gh)
+        im.crop((0, 0, w, h)).save(path)
+    return "  (trimmed %dx%d)" % (gw, gh)
 
 
-def verify(paths, size):
+def verify(paths, w, h):
     """Assert each PNG is the right size and is not a single flat colour."""
     try:
         from PIL import Image
@@ -202,9 +220,9 @@ def verify(paths, size):
     bad = []
     for p in paths:
         with Image.open(p) as im:
-            if im.size != (size, size):
+            if im.size != (w, h):
                 bad.append("%s is %dx%d, expected %dx%d"
-                           % (os.path.basename(p), im.size[0], im.size[1], size, size))
+                           % (os.path.basename(p), im.size[0], im.size[1], w, h))
                 continue
             # A slide that failed to lay out is one flat colour. Real slides carry
             # a navy bar, white card and coloured tag pills, so hundreds of values.
@@ -217,7 +235,7 @@ def verify(paths, size):
         for b in bad:
             print("   " + b)
         sys.exit(1)
-    print("\n✓ checked %d file(s): all %dx%d, none blank" % (len(paths), size, size))
+    print("\n✓ checked %d file(s): all %dx%d, none blank" % (len(paths), w, h))
 
 
 def main():
@@ -226,7 +244,14 @@ def main():
     ap.add_argument("html", help="the approved mockup page")
     ap.add_argument("-o", "--outdir", default=None,
                     help="output directory (default: ./slides/<html basename>)")
-    ap.add_argument("--size", type=int, default=1080, help="square edge in px (default 1080)")
+    ap.add_argument("--size", default="1080",
+                    help='"1080" for a square, or "WxH" e.g. "1080x1920" for a Story')
+    ap.add_argument("--hide", default=None,
+                    help="CSS selector for review-only furniture to remove before "
+                         "rendering, e.g. '.safe,.safe-tag' on the Start Here frames")
+    ap.add_argument("--selector", default=DEFAULT_SEL,
+                    help="CSS selector for one frame (default %s; Start Here uses .frame)"
+                    % DEFAULT_SEL)
     ap.add_argument("--fonts-ms", type=int, default=600,
                     help="extra settle after document.fonts.ready (default 600)")
     ap.add_argument("--no-check", action="store_true", help="skip the output verification")
@@ -234,10 +259,16 @@ def main():
 
     if not os.path.exists(a.html):
         sys.exit("no such file: %s" % a.html)
+    spec = str(a.size).lower()
+    try:
+        w, h = [int(x) for x in spec.split("x")] if "x" in spec else (int(spec), int(spec))
+    except ValueError:
+        sys.exit('--size must be "1080" or "1080x1920", got %r' % a.size)
     outdir = a.outdir or os.path.join("slides",
                                       os.path.splitext(os.path.basename(a.html))[0])
-    print("rendering %s → %s at %dpx\n" % (a.html, outdir, a.size))
-    files = asyncio.run(render(a.html, outdir, a.size, not a.no_check, a.fonts_ms))
+    print("rendering %s → %s at %dx%d, selector %s\n" % (a.html, outdir, w, h, a.selector))
+    files = asyncio.run(render(a.html, outdir, w, h, not a.no_check, a.fonts_ms,
+                               a.selector, a.hide))
     print("\n%d slide(s) written to %s" % (len(files), outdir))
 
 
