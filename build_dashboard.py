@@ -136,6 +136,31 @@ ITEMS = [
               "independently confirmed real, family-appropriate and correctly dated — and report "
               "\"none qualify\" rather than adding anything unverified.</p>"),
 
+    dict(n=51, group="data", tone="hold", created="2026-09-07",
+         title="Should the multi-day <code>expires</code> rule apply to a <i>series</i>?",
+         pill="A decision, not a bug",
+         body="<p>id 215, a June-dated one-off, is still on file in September. It looked like the "
+              "daily purge had failed. <b>It had not.</b> The purge deletes on <code>expires</code>, "
+              "not <code>event_date</code>, and the multi-day festival rule gives every sibling "
+              "entry the LAST date's expiry so earlier days do not vanish mid-festival. Working "
+              "exactly as documented.</p>"
+              "<p><b>Nor does it render</b> — a one-off is matched on its date, so a June record "
+              "cannot appear in any current week. No reader has ever seen it, which is why it went "
+              "unnoticed for three months.</p>"
+              "<p><b>The real question:</b> that rule was written for a genuinely multi-day event, "
+              "where killing Friday's entry on Saturday would break a listing mid-run. Jazz and "
+              "Blues by the Bay is a <i>series of separate evenings</i> that share a name. Giving "
+              "each the last date's expiry keeps a June record alive until late September for no "
+              "benefit.</p>"
+              "<p><b>Why it is not harmless:</b> stale records are returned by <code>--venue</code> "
+              "scans — the tool rule 18 depends on before adding anything. It shows a future "
+              "sweep a June event that reads as current, inviting a wrong \"already covered\" call "
+              "or a duplicate. Same shape as the closed item 45.</p>",
+         ask="<b>Three options:</b> scope the rule to genuinely multi-day events; leave it, on the "
+             "grounds that a simple occasionally-over-broad rule beats one with an exception; or "
+             "mark past-dated records in the venue scan so they are visible but obviously stale. "
+             "<b>No urgency</b> — nothing is user-facing and id 215 clears itself on 25 Sep."),
+
     dict(n=38, group="data", tone="hold", created="2026-08-21",
          title="Napa sweep follow-ups", pill="Half closed",
          body="<p><span class='check'>✓</span> Oct 4 LMR Jazz Orchestra — answered, declined. Not "
