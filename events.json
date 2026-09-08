@@ -12428,6 +12428,36 @@
       "notes_es": "$36 por clase, reservando una fecha a la vez. Inscríbete con anticipación — no estás registrado sin un correo de confirmación. Las clases son en el estudio B-SIDE de MYSTIC en E. Blithedale, no en la tienda de Sunnyside Ave.",
       "location_group": "Mill Valley",
       "internal_notes": "Added 2026-09-06 at Alexandra's request, sourced live from mysticmv.com/shop/youth-classes. The page had to be read in a browser — it is JavaScript-rendered and WebFetch returned an empty shell with nothing but the word MYSTIC, which would have looked like a dead page.\nBoth classes read \"EVERY {day}\", \"Choose your days!\", \"(10am-10:45am)\", \"$36\", \"(0-4yrs)\".\n⚠ ADDRESS IS A JUDGEMENT CALL. MYSTIC lists TWO Mill Valley spaces — \"shop + studio: 31 sunnyside ave\" and \"b-side studio: 18 E. Blithedale Ave\" — and the class listings do not say which one hosts these. 31 Sunnyside is used here because it is the one called 'studio'. The public notes tell a reader to confirm, so nobody drives to the wrong door.\nREGISTRATION IS NOT OPTIONAL despite these being 'drop-in' in the everyday sense. The page states: \"If you do not reach a confirmation page or receive a confirmation email, you are not registered.\"\nADDRESS RESOLVED 2026-09-07 by Alexandra: both classes are at the B-SIDE studio, 18 E. Blithedale Ave, Suite 12 — NOT 31 Sunnyside Ave, which is what this record originally carried. MYSTIC's site lists both spaces and its class pages name neither, so the first pass picked Sunnyside because it is the one labelled 'studio'. That was wrong. The suite number came from Alexandra and is not on the website. The public notes now name the right building explicitly rather than telling readers to work it out."
+    },
+    {
+      "id": 1097,
+      "organization": "Malinky Music",
+      "venue": "Mini Anna Studio",
+      "event_name": "Malinky Music — Free Preview Music Class",
+      "event_name_es": "Malinky Music — Clase de Música de Muestra Gratuita",
+      "type": "Kids Programs",
+      "day": "Wednesday",
+      "time": "10:00 AM – 10:45 AM",
+      "time_of_day": "Morning",
+      "town": "Sausalito",
+      "address": "475 Gate 5 Road #212, Sausalito, CA 94965",
+      "ages": "0-5 yrs",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-09-09",
+      "expires": "2026-09-09",
+      "status": "Active",
+      "featured": false,
+      "description": "A free 45-minute preview of Malinky Music's classes for babies, toddlers and preschoolers, taught by Emilia Lopez-Yanez. Singing, movement and instruments, with a grown-up alongside. Register in advance.",
+      "description_es": "Una muestra gratuita de 45 minutos de las clases de Malinky Music para bebés, niños pequeños y preescolares, con Emilia Lopez-Yanez. Canto, movimiento e instrumentos, acompañados de un adulto. Inscríbete con anticipación.",
+      "registration": "Required in advance",
+      "website": "https://app.mainstreetsites.com/dmn5096/class.aspx?cls=1056333",
+      "notes": "Free preview class — a taster, not part of a paid term. Spaces are limited and registration is required in advance at https://app.mainstreetsites.com/dmn5096/register.aspx?cls=1056333",
+      "notes_es": "Clase de muestra gratuita — una probadita, no parte de un trimestre pagado. Los lugares son limitados y se requiere inscripción con anticipación en https://app.mainstreetsites.com/dmn5096/register.aspx?cls=1056333",
+      "location_group": "Sausalito/Marin City",
+      "internal_notes": "Added 2026-09-07 from Alexandra, sourced live at %s. The class page confirms: \"Preview Music Class\", instructor Emilia Lopez-Yanez, 09/09/26, 10:00 AM - 10:45 AM, Mini Anna Studio, single session, registration required. Weekday re-derived from the date rather than trusted: 2026-09-09 is a Wednesday.\nTWO FIELDS THE CLASS PAGE DOES NOT CARRY, both taken from elsewhere and flagged here rather than presented as sourced:\n  COST — the page lists no price. Recorded as Free on Alexandra's word ('free intro class'). If anyone finds a fee, this is the field to change.\n  ADDRESS — 475 Gate 5 Road #212 came from Alexandra, not from the page, which names only 'Mini Anna Studio (Sausalito)'.\nAGES 0-5 is the best-sourced of the three: malinkymusic.com describes classes for babies, toddlers and preschoolers ages 0-5, in 40-45 minute sessions, which matches the 45 minutes here.\nDeduped first: no record anywhere mentions Malinky, Mini Anna, Gate 5 or this booking system, and --venue \"Sausalito\" returned 27 records with nothing comparable."
     }
   ]
 }
