@@ -5380,10 +5380,11 @@
       "description_es": "Proyección gratuita al aire libre de Monsters University en Old Mill Park, parte de la serie Movies in the Park de la Ciudad de Mill Valley. Comienza al atardecer, alrededor de las 7 pm. Trae mantas, sillas bajas de jardín y un picnic.",
       "registration": "Not required",
       "website": "https://cityofmillvalley.gov/2204/Recreation",
-      "notes": "2026 season runs Jun 2 - Oct 13 on 2nd Tuesdays (Jun 2 was the 1st-Tuesday opener).",
+      "notes": "ALERT[2026-09-08]: CANCELLED — this screening is not happening. Sorry for the inconvenience. | 2026 season runs Jun 2 - Oct 13 on 2nd Tuesdays (Jun 2 was the 1st-Tuesday opener).",
       "location_group": "Mill Valley",
       "id": 788,
-      "internal_notes": "Aug 11 (Finding Nemo, id 588) is the only screening at the Community Center rather than Old Mill Park. Sourced 2026-07-29 from Alexandra directly, corroborated by web search (Jun 2-Oct 13 season, dusk ~7 PM, Aug 11 at the Community Center Lawn). NOTE: the city's deep link cityofmillvalley.gov/840/Movies-in-the-Park currently returns 404, so the generic Recreation page is used instead - re-check the deep link next sweep."
+      "internal_notes": "Aug 11 (Finding Nemo, id 588) is the only screening at the Community Center rather than Old Mill Park. Sourced 2026-07-29 from Alexandra directly, corroborated by web search (Jun 2-Oct 13 season, dusk ~7 PM, Aug 11 at the Community Center Lawn). NOTE: the city's deep link cityofmillvalley.gov/840/Movies-in-the-Park currently returns 404, so the generic Recreation page is used instead - re-check the deep link next sweep.\nCANCELLED 2026-09-08 on Alexandra's instruction: the screening is not happening and the record was outdated. Kept Active with a date-scoped ALERT rather than deleted or set Inactive, because a hidden record tells a reader nothing - anyone who already planned around it needs to SEE the cancellation today. The record expires tonight (expires=2026-09-08), so the banner is visible for today only and the daily job clears it after that, which is the right lifetime for a same-day cancellation.",
+      "notes_es": "ALERT[2026-09-08]: CANCELADO — esta proyección no se llevará a cabo. Disculpa las molestias. | La temporada 2026 va del 2 de junio al 13 de octubre, los segundos martes (el 2 de junio fue la apertura, un primer martes)."
     },
     {
       "organization": "City of Mill Valley — Movies in the Park",
