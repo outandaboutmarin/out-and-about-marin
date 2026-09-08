@@ -1,0 +1,571 @@
+<title>Marin Week of Sep 11</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Every colour is lifted from index.html, with the line it lives on. */
+  :root{
+    --navy:#0D1B3E;            /* index.html:835 */
+    --off-white:#F4F3EF;       /* :839 */
+    --card-border:#E2DED6;     /* :841 */
+    --ink-2:#333; --ink-3:#444; --muted:#6b6b73;
+
+    /* type-tag text colours, :852-862 */
+    --kids-text:#993C1D; --community-text:#72243E;
+    --music-text:#4B2E83; --fitness-text:#085041;
+    /* utility tags, :1353-1355 */
+    --free-text:#085041; --age-text:#3C3489; --paid-text:#633806;
+    /* day-pill grounds, :864-870 */
+    --mon-bg:#E6F1FB; --mon-text:#0C447C;
+    --tue-bg:#EEEDFE; --tue-text:#3C3489;
+    --thu-bg:#FAEEDA; --thu-text:#633806;
+    --fri-bg:#FAECE7; --fri-text:#712B13;
+    --sat-bg:#FBEAF0; --sat-text:#72243E;
+    --sun-bg:#F1EFE8; --sun-text:#444441;
+
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'Jost','Helvetica Neue',Arial,sans-serif;
+
+    --page:#EDEBE5; --page-ink:#1c1c22;
+    --panel:#fff; --panel-border:#dcd8d0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --page:#15161a; --page-ink:#e9e7e2; --panel:#1e2026;
+      --panel-border:#33353d; --muted:#9b99a3;
+    }
+  }
+  :root[data-theme="dark"]{
+    --page:#15161a; --page-ink:#e9e7e2; --panel:#1e2026;
+    --panel-border:#33353d; --muted:#9b99a3;
+  }
+
+  body{background:var(--page);color:var(--page-ink);font-family:var(--sans);
+       -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1180px;margin:0 auto;padding:40px 24px 80px;}
+
+  .kicker{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+          color:var(--muted);margin:0 0 10px;}
+  h1.top{font-family:var(--serif);font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);
+         margin:0 0 12px;letter-spacing:-.01em;text-wrap:balance;}
+  .lede{max-width:66ch;margin:0;font-size:.95rem;line-height:1.65;color:var(--muted);font-weight:300;}
+
+  .slot-head{margin:60px 0 22px;padding-top:28px;border-top:1px solid var(--panel-border);}
+  h2.slot-name{font-family:var(--serif);font-size:1.6rem;font-weight:600;margin:0 0 6px;
+               letter-spacing:-.01em;}
+  .slot-when{font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+             font-weight:500;margin:0 0 12px;}
+  .slot-lede{max-width:66ch;margin:0;font-size:.9rem;line-height:1.65;color:var(--muted);
+             font-weight:300;}
+  h3.sec{font-family:var(--serif);font-size:1.05rem;font-weight:600;margin:34px 0 6px;}
+
+  /* ── slides ── */
+  .deck{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px;}
+  .slot{display:flex;flex-direction:column;gap:9px;}
+  .slide{container-type:inline-size;aspect-ratio:1/1;border-radius:4px;overflow:hidden;
+         position:relative;box-shadow:0 6px 22px rgba(13,27,62,.16);font-family:var(--sans);}
+  .slot cap{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+            color:var(--muted);font-weight:500;display:block;}
+
+  /* cover — Treatment A */
+  .cover{background:var(--navy);color:#fff;display:flex;flex-direction:column;
+         justify-content:center;padding:0 9cqw;text-align:center;}
+  .cover .mark{margin:0 auto 4cqw;width:12cqw;height:12cqw;}
+  .cover .mark svg{width:100%;height:100%;display:block;}
+  .cover .wordmark{font-family:var(--serif);font-weight:600;font-size:7.2cqw;
+                   line-height:1.15;letter-spacing:.01em;}
+  .cover .wordmark .and{font-family:var(--sans);font-size:3.3cqw;font-weight:600;
+                        letter-spacing:.2em;vertical-align:middle;position:relative;
+                        top:-.5cqw;margin:0 .6cqw;}
+  .cover .rule{width:14cqw;height:1px;background:rgba(255,255,255,.28);margin:6.5cqw auto;}
+  .cover .head{font-family:var(--serif);font-size:9cqw;line-height:1.12;font-weight:400;
+               font-style:italic;letter-spacing:-.01em;}
+  .cover .dates{font-size:3.3cqw;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+                color:rgba(255,255,255,.8);margin-top:3.4cqw;}
+  .cover .swipe{position:absolute;left:0;right:0;bottom:6cqw;font-size:2.6cqw;
+                letter-spacing:.16em;text-transform:uppercase;
+                color:rgba(255,255,255,.5);font-weight:500;}
+
+  /* event slides — Treatment C */
+  .app{background:var(--off-white);display:flex;flex-direction:column;}
+  .app .bar{background:var(--navy);color:#fff;padding:3.6cqw 5cqw;display:flex;
+            align-items:center;justify-content:space-between;flex:0 0 auto;}
+  .app .bar .wm{font-family:var(--serif);font-size:3.5cqw;font-weight:600;letter-spacing:.01em;}
+  .app .bar .wm .and{font-family:var(--sans);font-size:1.85cqw;font-weight:600;
+                     letter-spacing:.2em;vertical-align:middle;position:relative;
+                     top:-.3cqw;margin:0 .35cqw;}
+  .app .bar .url{font-size:2cqw;font-weight:300;letter-spacing:.06em;color:rgba(255,255,255,.62);}
+  .app .body{flex:1;display:flex;flex-direction:column;justify-content:center;
+             padding:6cqw 6.5cqw 5cqw;gap:4cqw;}
+
+  .daystrip{display:flex;align-items:center;gap:2.6cqw;}
+  .daystrip .date{font-size:2.5cqw;font-weight:400;letter-spacing:.14em;
+                  text-transform:uppercase;color:var(--muted);}
+  .daypill{font-size:2.5cqw;font-weight:500;padding:1.2cqw 3cqw;border-radius:999px;
+           white-space:nowrap;letter-spacing:.04em;}
+  .d-mon{background:var(--mon-bg);color:var(--mon-text);}
+  .d-tue{background:var(--tue-bg);color:var(--tue-text);}
+  .d-thu{background:var(--thu-bg);color:var(--thu-text);}
+  .d-fri{background:var(--fri-bg);color:var(--fri-text);}
+  .d-sat{background:var(--sat-bg);color:var(--sat-text);}
+  .d-sun{background:var(--sun-bg);color:var(--sun-text);}
+
+  /* Saturday eyebrow: WHEN, not which day */
+  .nowpill{font-size:2.4cqw;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+           padding:1.3cqw 3.4cqw;border-radius:999px;background:var(--navy);color:#fff;}
+  .nowpill.tmw{background:transparent;color:var(--navy);border:1px solid var(--navy);}
+  /* Sunday eyebrow: the day, set large */
+  .bigday{font-family:var(--serif);font-size:5cqw;font-weight:400;font-style:italic;
+          color:var(--navy);line-height:1;}
+
+  .ev-name{font-family:var(--serif);font-size:7.4cqw;font-weight:600;line-height:1.14;
+           color:var(--navy);letter-spacing:-.012em;text-wrap:balance;margin:0;}
+  .ev-name.long{font-size:6.2cqw;}
+  .ev-venue{font-size:2.85cqw;color:var(--ink-2);font-weight:400;line-height:1.45;}
+
+  /* .card-meta / .tag, index.html:1313-1355 — white pill, dot in the type colour */
+  .tags{display:flex;flex-wrap:wrap;gap:1.6cqw;}
+  .tag{font-size:2.35cqw;font-weight:500;padding:1.1cqw 3cqw;border-radius:999px;
+       display:inline-flex;align-items:center;gap:1.5cqw;background:#fff;
+       border:1px solid var(--card-border);line-height:1;}
+  .tag::before{content:"";width:1.5cqw;height:1.5cqw;border-radius:50%;
+               background:currentColor;flex:0 0 auto;}
+  .t-music{color:var(--music-text);border-color:#b9aad4;}
+  .t-community{color:var(--community-text);border-color:#cfa8b9;}
+  .t-kids{color:var(--kids-text);border-color:#d6b2a3;}
+  .t-fitness{color:var(--fitness-text);border-color:#a8cabd;}
+  .t-age{color:var(--age-text);border-color:#b3b0d5;}
+  .t-free{color:var(--free-text);border-color:#a8cabd;}
+  .t-paid{color:var(--paid-text);border-color:#c1a98d;}
+
+  .ev-time{font-family:var(--serif);font-size:4.6cqw;font-weight:400;color:var(--navy);}
+  .ev-time.hero{font-size:6.4cqw;font-weight:600;}
+  .ev-desc{font-size:2.6cqw;line-height:1.62;color:var(--ink-3);font-weight:300;
+           border-top:1px solid var(--card-border);padding-top:3.4cqw;}
+
+  .app .foot{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
+             padding:3.4cqw 6.5cqw 4.4cqw;font-size:2.1cqw;letter-spacing:.1em;
+             text-transform:uppercase;color:var(--muted);font-weight:500;}
+  .counter{display:flex;gap:1.4cqw;align-items:center;}
+  .dot{width:1.5cqw;height:1.5cqw;border-radius:50%;background:#cdc9c1;display:block;}
+  .dot.on{background:var(--navy);}
+
+  /* ── panels ── */
+  .panel{background:var(--panel);border:1px solid var(--panel-border);border-radius:6px;
+         padding:22px 24px;}
+  .caption{font-size:.9rem;line-height:1.75;white-space:pre-wrap;font-weight:300;margin:0;}
+  .caption b{font-weight:600;}
+  .tags-line{color:var(--muted);font-size:.84rem;}
+  table{width:100%;border-collapse:collapse;font-size:.85rem;}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--panel-border);
+        vertical-align:top;}
+  th{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+     font-weight:600;}
+  td code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem;
+          overflow-wrap:anywhere;}
+  .scroll{overflow-x:auto;}
+  ul.notes{margin:0;padding-left:1.15rem;font-size:.87rem;line-height:1.7;font-weight:300;}
+  ul.notes li{margin-bottom:10px;}
+  ul.notes b{font-weight:600;}
+  .flag{border-left:3px solid var(--paid-text);padding-left:14px;}
+</style>
+
+<div class="wrap">
+
+  <p class="kicker">Week of Sep 11 · all three slots</p>
+  <h1 class="top">One week of posts, end to end</h1>
+  <p class="lede">Twelve slides across three posts. Every cover is Treatment A on navy; every event
+    slide is Treatment C — the web app's own card, so a reader who has used the site recognises it
+    before reading a word. What changes between slots is the <b>eyebrow</b>, because each slot
+    answers a different question.</p>
+
+  <h3 class="sec">The week at a glance</h3>
+  <div class="panel scroll">
+    <table>
+      <thead><tr><th>Slot</th><th>Posts</th><th>Covers</th><th>Events</th><th>UTM campaign</th></tr></thead>
+      <tbody>
+        <tr><td><b>Thursday</b></td><td>Thu 10, 6–8pm</td><td>Fri 11 – Sun 13</td>
+            <td>Zootopia in the Park · Marin Hiking Moms hike · Slide Ranch workday</td>
+            <td><code>story_thu_weekend</code></td></tr>
+        <tr><td><b>Saturday</b></td><td>Sat 12, 8–10am</td><td>Today &amp; tomorrow</td>
+            <td>Repair Fair · Opera in the Amphitheater · MarinMOCA Family Day</td>
+            <td><code>story_sat_today</code></td></tr>
+        <tr><td><b>Sunday</b></td><td>Sun 13 <i>— window open</i></td><td>Mon 14 – Thu 17</td>
+            <td>Adventure Hike · DrawBridge Crafts · <b>Free Day at Muir Woods</b></td>
+            <td><code>story_sun_weekahead</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════ THURSDAY ═══════════════ -->
+  <div class="slot-head">
+    <h2 class="slot-name">Thursday — this weekend</h2>
+    <p class="slot-when">Posts Thu 10 Sep, 6–8pm · covers Fri 11 – Sun 13</p>
+    <p class="slot-lede">Dinner-table planning, and the richest slot of the three — the weekend
+      carries roughly half of all one-off events. The eyebrow is the day pill and date, drawn
+      exactly as the web app draws it.</p>
+  </div>
+
+  <div class="deck">
+    <div class="slot">
+      <cap>1 · cover</cap>
+      <div class="slide cover">
+        <div class="mark"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M30 44L28 42L30 39L29 36L31 34L33 31L33 28L35 25L36 22L38 20L38 17L36 15L34 14L33 12L31 11L28 10L25 10L22 11L19 12L16 11L13 10L10 10L8 11L7 13L7 15L8 17L9 19L8 21L6 22L4 21L3 22L3 24L5 26L7 26L9 27L10 29L10 31L11 33L13 34L14 36L15 38L17 40L19 41L21 42L23 43L26 44Z" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>
+          <path d="M8 17L5 16L3 15L2 13L3 11L5 10L7 11L7 13" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>
+          <path d="M7 15L10 17L13 18L14 20L13 22" fill="none" stroke="#fff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" opacity=".7"/>
+          <path d="M30 39L32 40L34 41L35 43L33 44L31 44" fill="none" stroke="#fff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" opacity=".75"/>
+        </svg></div>
+        <div class="wordmark">Out <span class="and">AND</span> About Marin</div>
+        <div class="rule"></div>
+        <div class="head">Three things<br>this weekend</div>
+        <div class="dates">Fri 11 — Sun 13 September</div>
+        <div class="swipe">Swipe →</div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <cap>2 · friday · id 452</cap>
+      <div class="slide app">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-fri">Fri</span><span class="date">Sep 11</span></div>
+          <h3 class="ev-name">Movies in the Park: Zootopia&nbsp;2</h3>
+          <div class="ev-venue">Sun Valley Park · San Rafael</div>
+          <div class="tags"><span class="tag t-music">Music and Movies</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">8:00 PM</div>
+          <div class="ev-desc">Free outdoor screening. Bring blankets and a picnic — it starts
+            around dusk.</div>
+        </div>
+        <div class="foot"><span class="counter"><i class="dot"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></span><span>Link in bio</span></div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <cap>3 · saturday · id 793</cap>
+      <div class="slide app">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-sat">Sat</span><span class="date">Sep 12</span></div>
+          <h3 class="ev-name long">Marin Hiking Moms — September Hike</h3>
+          <div class="ev-venue">King Mountain Loop Trail · Larkspur</div>
+          <div class="tags"><span class="tag t-fitness">Fitness</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">8:30 AM</div>
+          <div class="ev-desc">A hike for women and their kids. Note the earlier start this
+            month — 8:30, not the usual 9:30.</div>
+        </div>
+        <div class="foot"><span class="counter"><i class="dot"></i><i class="dot"></i><i class="dot on"></i><i class="dot"></i></span><span>Link in bio</span></div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <cap>4 · sunday · id 847</cap>
+      <div class="slide app">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-sun">Sun</span><span class="date">Sep 13</span></div>
+          <h3 class="ev-name">Slide Ranch Volunteer Workday</h3>
+          <div class="ev-venue">Slide Ranch · Muir Beach</div>
+          <div class="tags"><span class="tag t-community">Community Event</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">9:00 AM – 12:00 PM</div>
+          <div class="ev-desc">Hands-on morning on the coastal farm. Register ahead; under-18s
+            come with an adult.</div>
+        </div>
+        <div class="foot"><span class="counter"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot on"></i></span><span>Link in bio</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Caption</h3>
+  <div class="panel">
+<p class="caption"><b>Three things worth leaving the house for this weekend.</b>
+
+🎬 <b>Fri</b> — Movies in the Park: Zootopia 2 · Sun Valley Park, San Rafael · 8pm · free
+🥾 <b>Sat</b> — Marin Hiking Moms September hike · King Mountain Loop, Larkspur · 8:30am · free
+🌾 <b>Sun</b> — Slide Ranch volunteer workday · Muir Beach · 9am–12pm · free
+
+All three are free, and on the web app right now — along with other events happening across
+Marin this weekend. Filter by your town, your kids' ages, the day, the cost.
+
+Link in bio 🔗
+
+<span class="tags-line">#marincounty #marinkids #sanrafael #larkspur #muirbeach #westmarin #bayareafamilies #thingstodowithkids #freefamilyfun #marinmoms</span></p>
+  </div>
+
+  <!-- ═══════════════ SATURDAY ═══════════════ -->
+  <div class="slot-head">
+    <h2 class="slot-name">Saturday — today &amp; tomorrow</h2>
+    <p class="slot-when">Posts Sat 12 Sep, 8–10am · covers Sat 12 &amp; Sun 13</p>
+    <p class="slot-lede">Highest intent of the three: the reader is at the kitchen table deciding
+      what to do today. The eyebrow is a filled navy <b>TODAY</b> chip or an outlined
+      <b>TOMORROW</b> one, and the time is set large — it's the field that decides whether
+      something is still catchable.</p>
+  </div>
+
+  <div class="deck">
+    <div class="slot">
+      <cap>1 · cover</cap>
+      <div class="slide cover">
+        <div class="mark"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M30 44L28 42L30 39L29 36L31 34L33 31L33 28L35 25L36 22L38 20L38 17L36 15L34 14L33 12L31 11L28 10L25 10L22 11L19 12L16 11L13 10L10 10L8 11L7 13L7 15L8 17L9 19L8 21L6 22L4 21L3 22L3 24L5 26L7 26L9 27L10 29L10 31L11 33L13 34L14 36L15 38L17 40L19 41L21 42L23 43L26 44Z" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>
+          <path d="M8 17L5 16L3 15L2 13L3 11L5 10L7 11L7 13" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>
+          <path d="M7 15L10 17L13 18L14 20L13 22" fill="none" stroke="#fff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" opacity=".7"/>
+          <path d="M30 39L32 40L34 41L35 43L33 44L31 44" fill="none" stroke="#fff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" opacity=".75"/>
+        </svg></div>
+        <div class="wordmark">Out <span class="and">AND</span> About Marin</div>
+        <div class="rule"></div>
+        <div class="head">Still time<br>to go</div>
+        <div class="dates">Today &amp; tomorrow</div>
+        <div class="swipe">Swipe →</div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <cap>2 · today · id 713</cap>
+      <div class="slide app">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="nowpill">Today</span></div>
+          <h3 class="ev-name">Repair Fair — Fairfax</h3>
+          <div class="ev-venue">Fairfax Library · Fairfax</div>
+          <div class="tags"><span class="tag t-community">Community Event</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time hero">1:00 PM</div>
+          <div class="ev-desc">Bring a broken lamp, bike, jacket or small appliance — repair
+            coaches will help you fix it, free.</div>
+        </div>
+        <div class="foot"><span class="counter"><i class="dot"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></span><span>Link in bio</span></div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <cap>3 · today · id 845</cap>
+      <div class="slide app">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="nowpill">Today</span></div>
+          <h3 class="ev-name">Opera in the Amphitheater</h3>
+          <div class="ev-venue">Hamilton Amphitheater · Novato</div>
+          <div class="tags"><span class="tag t-music">Music and Movies</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time hero">4:00 PM</div>
+          <div class="ev-desc">Free outdoor opera with world-class singers, plus trivia, games
+            and face painting.</div>
+        </div>
+        <div class="foot"><span class="counter"><i class="dot"></i><i class="dot"></i><i class="dot on"></i><i class="dot"></i></span><span>Link in bio</span></div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <cap>4 · tomorrow · id 209</cap>
+      <div class="slide app">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="nowpill tmw">Tomorrow</span></div>
+          <h3 class="ev-name">MarinMOCA Free Family Day</h3>
+          <div class="ev-venue">MarinMOCA · San Rafael</div>
+          <div class="tags"><span class="tag t-kids">Kids Programs</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time hero">11:00 AM</div>
+          <div class="ev-desc">Hands-on painting and mixed media with an instructor. Reserve a
+            slot — 11am, noon, 1pm or 2pm.</div>
+        </div>
+        <div class="foot"><span class="counter"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot on"></i></span><span>Link in bio</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Caption</h3>
+  <div class="panel">
+<p class="caption"><b>Still time to go. Three things on today and tomorrow.</b>
+
+🔧 <b>Today</b> — Repair Fair · Fairfax Library · 1pm · free
+🎭 <b>Today</b> — Opera in the Amphitheater · Hamilton Amphitheater, Novato · 4pm · free
+🎨 <b>Tomorrow</b> — MarinMOCA Free Family Day · San Rafael · 11am · free
+
+All three are free, and on the web app right now — along with everything else happening across
+Marin this weekend. Filter by your town, your kids' ages, the day, the cost.
+
+Link in bio 🔗
+
+<span class="tags-line">#marincounty #marinkids #fairfax #novato #sanrafael #bayareafamilies #thingstodowithkids #freefamilyfun #marinmoms #weekendplans</span></p>
+  </div>
+
+  <!-- ═══════════════ SUNDAY ═══════════════ -->
+  <div class="slot-head">
+    <h2 class="slot-name">Sunday — the week ahead</h2>
+    <p class="slot-when">Posts Sun 13 Sep · covers Mon 14 – Thu 17</p>
+    <p class="slot-lede">The reader is placing things in a week rather than deciding on the spot,
+      so the eyebrow is the day name set large in the serif, with the day pill beside it in the
+      web app's own colour — Monday blue, Tuesday violet, Thursday gold.</p>
+  </div>
+
+  <div class="deck">
+    <div class="slot">
+      <cap>1 · cover</cap>
+      <div class="slide cover">
+        <div class="mark"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M30 44L28 42L30 39L29 36L31 34L33 31L33 28L35 25L36 22L38 20L38 17L36 15L34 14L33 12L31 11L28 10L25 10L22 11L19 12L16 11L13 10L10 10L8 11L7 13L7 15L8 17L9 19L8 21L6 22L4 21L3 22L3 24L5 26L7 26L9 27L10 29L10 31L11 33L13 34L14 36L15 38L17 40L19 41L21 42L23 43L26 44Z" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>
+          <path d="M8 17L5 16L3 15L2 13L3 11L5 10L7 11L7 13" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>
+          <path d="M7 15L10 17L13 18L14 20L13 22" fill="none" stroke="#fff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" opacity=".7"/>
+          <path d="M30 39L32 40L34 41L35 43L33 44L31 44" fill="none" stroke="#fff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" opacity=".75"/>
+        </svg></div>
+        <div class="wordmark">Out <span class="and">AND</span> About Marin</div>
+        <div class="rule"></div>
+        <div class="head">Three for<br>the week ahead</div>
+        <div class="dates">Mon 14 — Thu 17 September</div>
+        <div class="swipe">Swipe →</div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <cap>2 · monday · id 927</cap>
+      <div class="slide app">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="bigday">Monday</span><span class="daypill d-mon">Sep 14</span></div>
+          <h3 class="ev-name long">Adventure Hike — San Geronimo &amp; Roy's Redwoods</h3>
+          <div class="ev-venue">Roy's Redwoods Preserve · San Geronimo</div>
+          <div class="tags"><span class="tag t-fitness">Fitness</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">12:30 PM – 2:30 PM</div>
+          <div class="ev-desc">A guided afternoon hike through the park and the redwood grove.</div>
+        </div>
+        <div class="foot"><span class="counter"><i class="dot"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></span><span>Link in bio</span></div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <cap>3 · tuesday · id 605</cap>
+      <div class="slide app">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="bigday">Tuesday</span><span class="daypill d-tue">Sep 15</span></div>
+          <h3 class="ev-name">DrawBridge Crafts: Altered Books</h3>
+          <div class="ev-venue">Corte Madera Library · Corte Madera</div>
+          <div class="tags"><span class="tag t-kids">Kids Programs</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">3:30 PM</div>
+          <div class="ev-desc">Expressive-arts craft session — turning old books into something
+            else entirely.</div>
+        </div>
+        <div class="foot"><span class="counter"><i class="dot"></i><i class="dot"></i><i class="dot on"></i><i class="dot"></i></span><span>Link in bio</span></div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <cap>4 · thursday · id 961</cap>
+      <div class="slide app">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="bigday">Thursday</span><span class="daypill d-thu">Sep 17</span></div>
+          <h3 class="ev-name">Free Day at Muir Woods</h3>
+          <div class="ev-venue">Muir Woods National Monument · Mill Valley</div>
+          <div class="tags"><span class="tag t-community">Community Event</span>
+            <span class="tag t-age">All ages</span>
+            <span class="tag t-paid">Free entry; $10 parking or $4 shuttle</span></div>
+          <div class="ev-time">8:00 AM – sunset</div>
+          <div class="ev-desc">Constitution Day waives the $15 entrance fee. A parking or
+            shuttle reservation is still required — book at gomuirwoods.com.</div>
+        </div>
+        <div class="foot"><span class="counter"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot on"></i></span><span>Link in bio</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Caption</h3>
+  <div class="panel">
+<p class="caption"><b>Three for the week ahead.</b>
+
+🌲 <b>Mon</b> — Adventure Hike, San Geronimo &amp; Roy's Redwoods · 12:30–2:30pm · free
+📚 <b>Tue</b> — DrawBridge Crafts: Altered Books · Corte Madera Library · 3:30pm · free
+🌳 <b>Thu</b> — Free Day at Muir Woods, Constitution Day · 8am–sunset · free entry, parking extra
+
+All on the web app right now — along with the storytimes, playgroups and markets running every
+weekday across Marin. Filter by your town, your kids' ages, the day, the cost.
+
+Link in bio 🔗
+
+<span class="tags-line">#marincounty #marinkids #sangeronimo #cortemadera #millvalley #muirwoods #bayareafamilies #thingstodowithkids #freefamilyfun #marinmoms</span></p>
+  </div>
+
+  <!-- ═══════════════ STICKERS + NOTES ═══════════════ -->
+  <h3 class="sec">All nine Story link stickers</h3>
+  <div class="panel scroll">
+    <table>
+      <thead><tr><th>Slot</th><th>Event</th><th>URL</th></tr></thead>
+      <tbody>
+        <tr><td>Thu</td><td>Zootopia in the Park</td><td><code>outandaboutmarin.com/?event=452&amp;utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=story_thu_weekend</code></td></tr>
+        <tr><td>Thu</td><td>Marin Hiking Moms hike</td><td><code>outandaboutmarin.com/?event=793&amp;utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=story_thu_weekend</code></td></tr>
+        <tr><td>Thu</td><td>Slide Ranch Workday</td><td><code>outandaboutmarin.com/?event=847&amp;utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=story_thu_weekend</code></td></tr>
+        <tr><td>Sat</td><td>Repair Fair — Fairfax</td><td><code>outandaboutmarin.com/?event=713&amp;utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=story_sat_today</code></td></tr>
+        <tr><td>Sat</td><td>Opera in the Amphitheater</td><td><code>outandaboutmarin.com/?event=845&amp;utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=story_sat_today</code></td></tr>
+        <tr><td>Sat</td><td>MarinMOCA Family Day</td><td><code>outandaboutmarin.com/?event=209&amp;utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=story_sat_today</code></td></tr>
+        <tr><td>Sun</td><td>Adventure Hike</td><td><code>outandaboutmarin.com/?event=927&amp;utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=story_sun_weekahead</code></td></tr>
+        <tr><td>Sun</td><td>DrawBridge Crafts</td><td><code>outandaboutmarin.com/?event=605&amp;utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=story_sun_weekahead</code></td></tr>
+        <tr><td>Sun</td><td>Free Day at Muir Woods</td><td><code>outandaboutmarin.com/?event=961&amp;utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=story_sun_weekahead</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sec">Notes across the week</h3>
+  <div class="panel">
+    <ul class="notes">
+      <li class="flag"><b>You called this the Sunday <i>afternoon</i> post; the plan has it at
+        7–9pm.</b> I've left the window open above rather than quietly changing it. The 7–9pm case
+        is that it lands after dinner, when the week actually gets planned. The afternoon case is
+        that Sunday afternoon is when a parent is already thinking about the week and still has
+        energy to open a link. Either works with this creative — tell me which and I'll set it in
+        the plan and the MD file.</li>
+      <li><b>The gold rule is settled and written down.</b> It now reads <i>no orange or gold as a
+        background or accent colour</i>, with the addition that a colour the web app itself assigns
+        to a category — a type tag, a cost tag, a day pill — is data, not decoration, and is never
+        a violation. That's why Thursday's gold day pill and Muir Woods' gold paid tag stand here.
+        Recorded in <code>social_media_and_marketing.md</code>, along with Treatment C as the
+        default for weekly event posts.</li>
+      <li><b>Nothing repeats across the nine slides now.</b> The opera had been carried into both
+        the Thursday and Saturday decks — the single repeat the rules permit, reframed as
+        <b>Today</b> on Saturday. You asked for it deduped, so it stays on <b>Saturday</b>, where
+        "TODAY · 4:00 PM" is the strongest possible framing: read at 9am, go at 4pm. Thursday's
+        Saturday slot is now the <b>Marin Hiking Moms September hike</b> (id 793) — a free one-off
+        in Larkspur that also brings Fitness into a deck that had none.
+        <br><b>If you'd rather keep the opera on Thursday</b>, the swap runs the other way and
+        Saturday's middle slide becomes <b>Battery Townsley Open House</b> (id 114, Sausalito,
+        noon, free) — WWII tunnels and gun batteries, strong for older kids. Say the word.</li>
+      <li><b>Nine events, eight towns.</b> San Rafael, Larkspur, Muir Beach, Fairfax, Novato,
+        San Geronimo, Corte Madera, Mill Valley — no town appears twice within any single post,
+        and only San Rafael appears twice across the whole week.</li>
+      <li><b>Muir Woods is in — it's the last slide of the Sunday deck.</b> Free Day at Muir
+        Woods, Constitution Day, Thu Sep 17, 8:00 AM – sunset. It replaced the Community Challah
+        Bake, and it's the slide carrying the gold paid tag.</li>
+      <li class="flag"><b>Eight of nine are free; Muir Woods is the deliberate exception.</b>
+        Constitution Day waives the $15 entrance fee and nothing else — the parking or shuttle
+        reservation is separate, required, and not waived. So that slide carries the web app's
+        real paid tag and its caption line says "free entry, parking extra". A family who drives
+        out on the strength of the word "free" and meets a $10 charge is a family that trusts the
+        next post less.</li>
+      <li><b>Four live records were repaired to make this week postable</b> — every one surfaced
+        by picking events rather than by any audit. ids 845 and 847 had <code>time: "TBD"</code>;
+        id 961 had "See website", a wrong <code>cost</code> and a 404 <code>website</code>;
+        id 1026 was <code>Unconfirmed</code> when it was free. All committed and live. It's worth
+        noticing that the posting workflow is turning out to be a data-quality check on the
+        catalogue.</li>
+      <li><b>One campaign per slot</b> — <code>story_thu_weekend</code>,
+        <code>story_sat_today</code>, <code>story_sun_weekahead</code> — so at the six-week review
+        each slot is judged on its own sessions and sign-ups, and the weakest is cut rather than
+        all three kept out of habit.</li>
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,310 @@
+<title>Start Here Highlight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ---- page chrome: quiet, so the frames carry the page ---- */
+  :root{
+    --ground:#F1F2F5;
+    --panel:#FFFFFF;
+    --edge:#DDE0E7;
+    --ink:#171A21;
+    --ink-2:#525A6B;
+    --ink-3:#7C8496;
+    --rule:#E6E8EE;
+    --accent:#0D1B3E;
+    --flag-bg:#EDEFF4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#111319;
+      --panel:#181B23;
+      --edge:#2A2F3B;
+      --ink:#E9EBF0;
+      --ink-2:#A6ADBD;
+      --ink-3:#79808F;
+      --rule:#242833;
+      --accent:#C7D2E8;
+      --flag-bg:#1E222C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#111319;
+    --panel:#181B23;
+    --edge:#2A2F3B;
+    --ink:#E9EBF0;
+    --ink-2:#A6ADBD;
+    --ink-3:#79808F;
+    --rule:#242833;
+    --accent:#C7D2E8;
+    --flag-bg:#1E222C;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:'Jost',system-ui,-apple-system,sans-serif;
+    font-size:15px;
+    line-height:1.65;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:44px 22px 80px}
+
+  header{border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:34px}
+  .eyebrow{
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-3);font-weight:500;margin:0 0 10px
+  }
+  h1{
+    font-family:'Playfair Display',Georgia,serif;
+    font-weight:500;font-size:clamp(27px,4.4vw,38px);
+    margin:0 0 10px;letter-spacing:-.01em;text-wrap:balance;color:var(--ink)
+  }
+  .lede{margin:0;color:var(--ink-2);max-width:64ch}
+
+  /* ---- the three story frames ---- */
+  .board{
+    display:grid;gap:26px;margin:0 0 14px;
+    grid-template-columns:repeat(auto-fit,minmax(232px,1fr));
+  }
+  .slot{display:flex;flex-direction:column;gap:10px}
+  .slot-label{
+    display:flex;align-items:baseline;gap:8px;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:500
+  }
+  .slot-label b{color:var(--ink-2);font-weight:500}
+
+  /* The frame is a committed navy/cream world — it must look identical
+     to what gets posted, so it does NOT follow the viewer's theme. */
+  .frame{
+    position:relative;aspect-ratio:9/16;width:100%;
+    background:#0D1B3E;color:#F4F3EF;border-radius:14px;overflow:hidden;
+    box-shadow:0 1px 2px rgba(13,27,62,.14),0 18px 40px -22px rgba(13,27,62,.5);
+    display:flex;flex-direction:column;
+    padding:13.5% 7.5% 21%;
+    /* type scales with the FRAME, not the viewport, so what you see here is
+       proportionally what a 1080x1920 Story will look like */
+    container-type:inline-size;
+  }
+  /* Instagram chrome eats the top ~13.5% and bottom ~21%. Guides show it. */
+  .safe{position:absolute;left:0;right:0;border-color:rgba(244,243,239,.22);pointer-events:none}
+  .safe.top{top:13.5%;border-top:1px dashed}
+  .safe.bot{bottom:21%;border-bottom:1px dashed}
+  .safe-tag{
+    position:absolute;right:7px;font-size:8px;letter-spacing:.1em;text-transform:uppercase;
+    color:rgba(244,243,239,.4);pointer-events:none
+  }
+  .safe-tag.t{top:calc(13.5% - 13px)}
+  .safe-tag.b{bottom:calc(21% - 13px)}
+
+  .f-eyebrow{
+    font-size:3.3cqw;letter-spacing:.22em;text-transform:uppercase;
+    color:rgba(244,243,239,.62);font-weight:500;margin:0
+  }
+  .f-rule{width:13cqw;height:1px;background:rgba(244,243,239,.45);margin:0 0 5.3cqw}
+  .f-head{
+    font-family:'Playfair Display',Georgia,serif;font-weight:400;
+    font-size:11.6cqw;line-height:1.14;margin:0 0 5cqw;letter-spacing:-.012em
+  }
+  .f-body{font-size:4.5cqw;line-height:1.5;color:rgba(244,243,239,.82);margin:0;font-weight:300}
+  .f-kicker{
+    font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;
+    font-size:5cqw;line-height:1.3;margin:5.3cqw 0 0;color:#F4F3EF
+  }
+  /* content sits centred in the safe band, not shoved to the bottom */
+  .f-foot{margin:auto 0}
+
+  /* frame 2's list — evergreen, no figures that can go stale */
+  .points{display:flex;flex-direction:column;gap:4.2cqw;margin:0 0 5cqw;padding:0;list-style:none}
+  .points li{
+    font-size:4.6cqw;line-height:1.35;color:#F4F3EF;font-weight:300;
+    padding-left:5.5cqw;position:relative
+  }
+  .points li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:2.6cqw;height:1px;background:rgba(244,243,239,.55)
+  }
+  .points li b{font-weight:500}
+
+  /* mocked instagram link sticker, drawn where it actually lands */
+  .sticker{
+    position:absolute;left:50%;transform:translateX(-50%);bottom:8.5%;
+    background:rgba(244,243,239,.94);color:#0D1B3E;
+    font-size:3.5cqw;font-weight:500;letter-spacing:.01em;
+    padding:2cqw 4.3cqw;border-radius:2.3cqw;display:flex;align-items:center;gap:1.7cqw;
+    white-space:nowrap
+  }
+  .sticker svg{width:3.3cqw;height:3.3cqw;flex:none}
+  .sticker-note{
+    position:absolute;left:0;right:0;bottom:3.2%;text-align:center;
+    font-size:2.7cqw;letter-spacing:.09em;text-transform:uppercase;color:rgba(244,243,239,.38)
+  }
+
+  /* ---- spec panels ---- */
+  .note{
+    font-size:12.5px;color:var(--ink-3);margin:0 0 34px;padding-left:13px;
+    border-left:2px solid var(--edge)
+  }
+  section.panel{
+    background:var(--panel);border:1px solid var(--edge);border-radius:12px;
+    padding:22px 24px;margin-bottom:16px
+  }
+  h2{
+    font-family:'Playfair Display',Georgia,serif;font-weight:500;
+    font-size:19px;margin:0 0 14px;letter-spacing:-.005em
+  }
+  dl{display:grid;grid-template-columns:auto 1fr;gap:9px 20px;margin:0;font-size:14px}
+  dt{color:var(--ink-3);white-space:nowrap}
+  dd{margin:0;color:var(--ink)}
+  code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;
+    background:var(--flag-bg);padding:2px 6px;border-radius:4px;word-break:break-all
+  }
+  .url{display:block;padding:11px 13px;line-height:1.7}
+  ol{margin:0;padding-left:19px}
+  ol li{margin-bottom:8px;color:var(--ink-2)}
+  ol li b{color:var(--ink);font-weight:500}
+  ol li:last-child{margin-bottom:0}
+  .flag{
+    margin-top:14px;padding:12px 14px;background:var(--flag-bg);border-radius:8px;
+    font-size:13px;color:var(--ink-2)
+  }
+  .flag b{color:var(--ink);font-weight:500}
+  footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--rule);
+    font-size:12px;color:var(--ink-3)}
+  @media (max-width:560px){ .wrap{padding:30px 16px 56px} }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Instagram · for review before posting</p>
+    <h1>Start Here — three Story frames</h1>
+    <p class="lede">A permanent highlight that sits under the bio and explains the app to anyone
+    who lands on the profile. Unlike every other post, this one never goes stale — and it is the
+    only asset aimed at sign-ups rather than at a particular event. It carries the tagline already
+    running on the feed, <b>Stop searching. Start going.</b>, opening on it and closing on its
+    companion line so the highlight and the launch post read as one voice.</p>
+  </header>
+
+  <div class="board">
+
+    <div class="slot">
+      <div class="slot-label">Frame 1 · <b>the hook</b></div>
+      <div class="frame">
+        <div class="safe top"></div><span class="safe-tag t">safe area</span>
+        <div class="safe bot"></div><span class="safe-tag b">safe area</span>
+        <p class="f-eyebrow">Start here</p>
+        <div class="f-foot">
+          <div class="f-rule"></div>
+          <p class="f-head">Stop searching. Start going.</p>
+          <p class="f-body">Out AND About Marin is one place for all the best family programming
+          in Marin — library story times, kids programs, farmers markets, free fun, etc. — with
+          filters for town, age, day, and cost. Gathered from over forty sources, so you don't
+          have to.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-label">Frame 2 · <b>what's inside</b></div>
+      <div class="frame">
+        <div class="safe top"></div><span class="safe-tag t">safe area</span>
+        <div class="safe bot"></div><span class="safe-tag b">safe area</span>
+        <p class="f-eyebrow">No catch</p>
+        <div class="f-foot">
+          <div class="f-rule"></div>
+          <p class="f-head">Nothing to download. Nothing to pay.</p>
+          <ul class="points">
+            <li>Opens in any browser — <b>add it to your home screen</b></li>
+            <li>Free to use, and <b>most of what's on it is free too</b></li>
+            <li>Every town in Marin, <b>Novato to Point Reyes</b></li>
+            <li><b>In English and Spanish</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-label">Frame 3 · <b>the ask</b></div>
+      <div class="frame">
+        <div class="safe top"></div><span class="safe-tag t">safe area</span>
+        <div class="safe bot"></div><span class="safe-tag b">safe area</span>
+        <p class="f-eyebrow">Make it yours</p>
+        <div class="f-foot">
+          <div class="f-rule"></div>
+          <p class="f-head">Save what you like. See only what fits.</p>
+          <p class="f-body">A free account lets you save any event with a tap, and set your town
+          and your children's ages once so the list arrives already filtered.</p>
+          <p class="f-kicker">One app. Everything crossed off.</p>
+        </div>
+        <div class="sticker">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+               stroke-linecap="round" aria-hidden="true">
+            <path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/>
+            <path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>
+          </svg>
+          outandaboutmarin.com
+        </div>
+        <div class="sticker-note">link sticker — tappable</div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="note">Dashed guides mark where Instagram's own interface sits — your profile picture
+  and name across the top, the reply bar and send arrow across the bottom. Nothing that has to be
+  read is placed in those bands, and the link sticker on frame 3 is drawn where it will actually
+  land.</p>
+
+  <section class="panel">
+    <h2>The link, exactly as it must be entered</h2>
+    <code class="url">https://outandaboutmarin.com/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=highlight_start_here</code>
+    <div class="flag"><b>The tag on the end is the whole point.</b> It is what lets Google
+    Analytics separate people who arrived from this highlight from people who tapped your bio link
+    or found you on Google. Without it these visits vanish into "Direct" and the highlight can
+    never be shown to have worked.</div>
+  </section>
+
+  <section class="panel">
+    <h2>Specification</h2>
+    <dl>
+      <dt>Size</dt><dd>1080 × 1920 px, 9:16 — Instagram's Story format</dd>
+      <dt>Palette</dt><dd>Navy <code>#0D1B3E</code> ground, cream <code>#F4F3EF</code> type. No orange or gold.</dd>
+      <dt>Type</dt><dd>Playfair Display for headings, Jost for everything else — the app's own faces</dd>
+      <dt>Frames</dt><dd>Three, viewed in order, roughly five seconds each</dd>
+      <dt>Link sticker</dt><dd>Frame 3 only — one clear ask rather than three competing ones</dd>
+      <dt>Lifespan</dt><dd>Permanent, once saved to a highlight</dd>
+    </dl>
+  </section>
+
+  <section class="panel">
+    <h2>How it gets posted</h2>
+    <ol>
+      <li><b>Post all three as Stories</b>, in order, within the same 24 hours.</li>
+      <li><b>On frame 3, add the link sticker</b> using the URL above. This step has to happen in
+      the Instagram app — a link sticker cannot be attached any other way on a Story you post
+      yourself.</li>
+      <li><b>Save all three to a highlight</b> named <b>Start Here</b>, before the 24 hours are up.
+      Saving is what makes them permanent; the link stays live inside the highlight.</li>
+      <li><b>Move it to the first position</b> under your bio, so it is the first thing a new
+      visitor sees.</li>
+    </ol>
+    <div class="flag"><b>Do it in that order.</b> If a Story is deleted before it is saved to a
+    highlight, the link sticker goes with it and has to be rebuilt from scratch.</div>
+  </section>
+
+  <div class="flag" style="margin-bottom:16px"><b>Every claim on these frames is one the app can
+  actually back.</b> A draft of frame 2 claimed the listings were "checked every single day" —
+  an overclaim Alexandra caught. Only the <i>expiry</i> of past events is automatic and daily; the
+  sweep that adds new events is manual and roughly weekly. Frame 2 no longer makes any claim about
+  cadence, because a permanent highlight is the worst possible place for a promise the product
+  cannot keep. What it does claim — no download, free to use, every town, both languages — is
+  checkable in the product today.</div>
+
+  <footer>Draft for review · not yet posted · deliberately carries no counts or figures, so it
+  cannot go stale on a permanent highlight</footer>
+
+</div>
