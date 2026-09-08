@@ -647,4 +647,22 @@ Full list in `OAA maintence and content/open_items.md`; the dashboard renders it
 
 ## Working rhythm
 
+**A QUESTION IS NOT AUTHORISATION. Answer it and stop.** Added 2026-09-07 at Alexandra's explicit
+instruction, after I answered "why will it take an hour to fix?" and then wrote "Doing it now" and
+started the work. She had asked about an estimate. She had not said go.
+
+- **Only an instruction authorises action.** "Do it", "yes", "go ahead", "fix it". Not "why…?",
+  not "how long…?", not "what about X?", not "I don't understand".
+- **A question that exposes a problem is still a question.** "Why did you build it in the wrong
+  shape?" identifies work worth doing — and it is not permission to do that work. Say what you
+  would do, say what it costs, and wait.
+- **Do not treat your own proposal as approved because she engaged with it.** Asking a follow-up
+  about a plan is not adopting the plan.
+- **The tell to watch for in your own drafts:** a sentence like "Doing it now", "Let me just…" or
+  "I'll go ahead and…" appearing in a reply to a question. If the user's last message ended in a
+  question mark and you are about to change something, stop.
+- This is narrower than the general read-only/write distinction and it outranks it: it applies
+  even to changes that are small, reversible, and obviously beneficial.
+
+
 She runs sweeps on command and reviews candidates in Excel. Ad-hoc batches arrive between sweeps (Instagram screenshots, links, plain text) — research each, dedup, present for review before writing. **She catches real errors and she is usually right** — twice this week she pushed back on a conclusion of mine and was correct both times. Check before defending a finding.
