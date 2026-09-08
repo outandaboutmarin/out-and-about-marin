@@ -137,29 +137,21 @@ ITEMS = [
               "\"none qualify\" rather than adding anything unverified.</p>"),
 
     dict(n=51, group="data", tone="hold", created="2026-09-07",
-         title="Should the multi-day <code>expires</code> rule apply to a <i>series</i>?",
-         pill="A decision, not a bug",
-         body="<p>id 215, a June-dated one-off, is still on file in September. It looked like the "
-              "daily purge had failed. <b>It had not.</b> The purge deletes on <code>expires</code>, "
-              "not <code>event_date</code>, and the multi-day festival rule gives every sibling "
-              "entry the LAST date's expiry so earlier days do not vanish mid-festival. Working "
-              "exactly as documented.</p>"
-              "<p><b>Nor does it render</b> — a one-off is matched on its date, so a June record "
-              "cannot appear in any current week. No reader has ever seen it, which is why it went "
-              "unnoticed for three months.</p>"
-              "<p><b>The real question:</b> that rule was written for a genuinely multi-day event, "
-              "where killing Friday's entry on Saturday would break a listing mid-run. Jazz and "
-              "Blues by the Bay is a <i>series of separate evenings</i> that share a name. Giving "
-              "each the last date's expiry keeps a June record alive until late September for no "
-              "benefit.</p>"
-              "<p><b>Why it is not harmless:</b> stale records are returned by <code>--venue</code> "
-              "scans — the tool rule 18 depends on before adding anything. It shows a future "
-              "sweep a June event that reads as current, inviting a wrong \"already covered\" call "
-              "or a duplicate. Same shape as the closed item 45.</p>",
-         ask="<b>Three options:</b> scope the rule to genuinely multi-day events; leave it, on the "
-             "grounds that a simple occasionally-over-broad rule beats one with an exception; or "
-             "mark past-dated records in the venue scan so they are visible but obviously stale. "
-             "<b>No urgency</b> — nothing is user-facing and id 215 clears itself on 25 Sep."),
+         title="id 215 has the wrong <code>expires</code> date",
+         pill="Small fix",
+         body="<p><b>The issue.</b> Jazz and Blues by the Bay ran every Friday through the summer, "
+              "each date its own record. Every past record deleted itself when its date passed \u2014 "
+              "<b>except id 215, Fri 5 June.</b> Its <code>expires</code> field says 25 September "
+              "instead of 5 June, and the cleanup goes by <code>expires</code>, so it was told to "
+              "keep it. The three September records are all correct. <b>id 215 is the only one "
+              "wrong.</b></p>"
+              "<p><b>What it costs.</b> Nothing to readers \u2014 past events do not show on the site. "
+              "But it appears in the venue scan run before adding anything new, looking current, "
+              "which could mean a skipped event or a duplicate.</p>",
+         ask="<b>Recommendation:</b> set id 215's <code>expires</code> to 2026-06-05 so it clears "
+             "on the next daily run, then check whether any other one-off has an "
+             "<code>expires</code> well past its own date. Worth a one-line addition to the "
+             "existing scans so it cannot happen quietly again. <b>No urgency.</b>"),
 
     dict(n=38, group="data", tone="hold", created="2026-08-21",
          title="Napa sweep follow-ups", pill="Half closed",
