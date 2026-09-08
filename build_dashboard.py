@@ -80,8 +80,8 @@ ITEMS = [
              "<b>a leftover from the superseded claim that no tool can publish one</b>. Business "
              "Suite can, so the automation covers the whole post. <b>Next move is mine:</b> drive "
              "Business Suite, stage the Thursday post, and stop before anything publishes. "
-             "<b>Still queued:</b> the Sunday posting window — the plan says 7–9pm, you called "
-             "it the afternoon post."),
+             "<b>Cadence settled 2026-09-07:</b> Thursday 5:00 PM, Saturday 7:00 AM, Sunday "
+             "5:00 PM — exact times, since scheduling needs a single minute."),
 
     dict(n=49, group="call", tone="open", created="2026-09-03",
          title="Two records still missing one fact", pill="Waiting on you",
