@@ -149,6 +149,48 @@
   .dot{width:1.5cqw;height:1.5cqw;border-radius:50%;background:#cdc9c1;display:block;}
   .dot.on{background:var(--navy);}
 
+
+  /* ── Story frames, 9:16 — one event each, for the link-sticker Stories ──
+     Same card anatomy as the square slides, re-proportioned. The BOTTOM
+     ~22% is deliberately left empty: Instagram's link sticker is placed
+     there in the composer, and its own UI (profile chip top, reply bar
+     bottom) crowds both ends. Nothing that must be read goes in those bands. */
+  .story{container-type:inline-size;aspect-ratio:9/16;border-radius:4px;overflow:hidden;
+         position:relative;box-shadow:0 6px 22px rgba(13,27,62,.16);font-family:var(--sans);
+         background:var(--off-white);display:flex;flex-direction:column;}
+  .story .bar{background:var(--navy);color:#fff;padding:4.6cqw 5.5cqw;display:flex;
+              align-items:center;justify-content:space-between;flex:0 0 auto;}
+  .story .bar .wm{font-family:var(--serif);font-size:4.4cqw;font-weight:600;letter-spacing:.01em;}
+  .story .bar .wm .and{font-family:var(--sans);font-size:2.3cqw;font-weight:600;
+                       letter-spacing:.2em;vertical-align:middle;position:relative;
+                       top:-.4cqw;margin:0 .45cqw;}
+  .story .bar .url{font-size:2.5cqw;font-weight:300;letter-spacing:.06em;
+                   color:rgba(255,255,255,.62);}
+  .story .body{flex:1;display:flex;flex-direction:column;justify-content:center;
+               padding:8cqw 7cqw 0;gap:5cqw;}
+  .story .daystrip{display:flex;align-items:center;gap:3cqw;flex-wrap:wrap;}
+  .story .daypill{font-size:3.1cqw;font-weight:500;padding:1.5cqw 3.6cqw;border-radius:999px;
+                  white-space:nowrap;letter-spacing:.04em;}
+  .story .date{font-size:3.1cqw;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+               color:var(--muted);}
+  .story .ev-name{font-family:var(--serif);font-size:9.4cqw;font-weight:600;line-height:1.12;
+                  color:var(--navy);letter-spacing:-.012em;text-wrap:balance;margin:0;}
+  .story .ev-name.long{font-size:7.6cqw;}
+  .story .ev-venue{font-size:3.5cqw;color:var(--ink-2);font-weight:400;line-height:1.45;}
+  .story .tags{display:flex;flex-wrap:wrap;gap:2cqw;}
+  .story .tag{font-size:2.9cqw;padding:1.4cqw 3.6cqw;gap:1.9cqw;}
+  .story .tag::before{width:1.9cqw;height:1.9cqw;}
+  .story .ev-time{font-family:var(--serif);font-size:7cqw;font-weight:600;color:var(--navy);}
+  .story .ev-desc{font-size:3.2cqw;line-height:1.6;color:var(--ink-3);font-weight:300;
+                  border-top:1px solid var(--card-border);padding-top:4.2cqw;}
+  /* the reserved band — empty on purpose, the sticker lands here */
+  .story .sticker-zone{flex:0 0 22%;display:flex;align-items:flex-end;justify-content:center;
+                       padding-bottom:5cqw;}
+  .story .sticker-zone span{font-size:2.5cqw;letter-spacing:.16em;text-transform:uppercase;
+                            color:var(--muted);font-weight:500;}
+  .story-note{font-size:.82rem;color:var(--muted);margin:0 0 18px;line-height:1.6;
+              max-width:70ch;font-weight:300;}
+
   /* ── panels ── */
   .panel{background:var(--panel);border:1px solid var(--panel-border);border-radius:6px;
          padding:22px 24px;}
@@ -498,6 +540,175 @@ weekday across Marin. Filter by your town, your kids' ages, the day, the cost.
 Link in bio 🔗
 
 <span class="tags-line">#marincounty #marinkids #sangeronimo #cortemadera #millvalley #muirwoods #bayareafamilies #thingstodowithkids #freefamilyfun #marinmoms</span></p>
+  </div>
+
+
+  <div class="slot-head">
+    <h2 class="slot-name">The nine Stories — 9:16</h2>
+    <p class="slot-when">One per event · 1080×1920 · three per slot</p>
+    <p class="slot-lede">These are the clickable half. Each carries its own link sticker, attached
+      in the Business Suite composer — <b>not drawn on the image</b>. The bottom band is left
+      empty on purpose: that is where the sticker lands, and Instagram's own UI crowds both ends
+      of the frame.</p>
+  </div>
+  <p class="story-note">Render these separately from the square carousel slides:
+    <code>python render_slides.py templates/weekly_post_template.html --size 1080x1920
+    --selector .story -o slides/week_of_sep11_stories</code></p>
+
+  <div class="deck">
+    <div class="slot">
+      <cap>thu · id 452</cap>
+      <div class="story">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-fri">Fri</span><span class="date">Sep 11</span></div>
+          <h3 class="ev-name">Movies in the Park: Zootopia&nbsp;2</h3>
+          <div class="ev-venue">Sun Valley Park · San Rafael</div>
+          <div class="tags"><span class="tag t-music">Music and Movies</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">8:00 PM</div>
+          <div class="ev-desc">Free outdoor screening. Bring blankets and a picnic — it starts around dusk.</div>
+        </div>
+        <div class="sticker-zone"><span>link sticker goes here</span></div>
+      </div>
+    </div>
+    <div class="slot">
+      <cap>thu · id 793</cap>
+      <div class="story">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-sat">Sat</span><span class="date">Sep 12</span></div>
+          <h3 class="ev-name long">Marin Hiking Moms — September Hike</h3>
+          <div class="ev-venue">King Mountain Loop Trail · Larkspur</div>
+          <div class="tags"><span class="tag t-fitness">Fitness</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">8:30 AM</div>
+          <div class="ev-desc">A hike for women and their kids. Note the earlier start this month — 8:30, not 9:30.</div>
+        </div>
+        <div class="sticker-zone"><span>link sticker goes here</span></div>
+      </div>
+    </div>
+    <div class="slot">
+      <cap>thu · id 847</cap>
+      <div class="story">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-sun">Sun</span><span class="date">Sep 13</span></div>
+          <h3 class="ev-name">Slide Ranch Volunteer Workday</h3>
+          <div class="ev-venue">Slide Ranch · Muir Beach</div>
+          <div class="tags"><span class="tag t-community">Community Event</span>
+            <span class="tag t-age">10+ yrs</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">9:00 AM – 12:00 PM</div>
+          <div class="ev-desc">Hands-on morning on the coastal farm. Register ahead, and an adult comes too.</div>
+        </div>
+        <div class="sticker-zone"><span>link sticker goes here</span></div>
+      </div>
+    </div>
+    <div class="slot">
+      <cap>sat · id 713</cap>
+      <div class="story">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-sat">Sat</span><span class="date">Sep 12</span></div>
+          <h3 class="ev-name">Repair Fair — Fairfax</h3>
+          <div class="ev-venue">Fairfax Library · Fairfax</div>
+          <div class="tags"><span class="tag t-community">Community Event</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">1:00 PM</div>
+          <div class="ev-desc">Bring a broken lamp, bike, jacket or small appliance — coaches help you fix it, free.</div>
+        </div>
+        <div class="sticker-zone"><span>link sticker goes here</span></div>
+      </div>
+    </div>
+    <div class="slot">
+      <cap>sat · id 1019</cap>
+      <div class="story">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-sat">Sat</span><span class="date">Sep 12</span></div>
+          <h3 class="ev-name">DJs by the Bay</h3>
+          <div class="ev-venue">Dunphy Park · Sausalito</div>
+          <div class="tags"><span class="tag t-music">Music and Movies</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">2:30 PM – 8:30 PM</div>
+          <div class="ev-desc">An afternoon and evening of DJ sets by the water, opening with a free yoga flow.</div>
+        </div>
+        <div class="sticker-zone"><span>link sticker goes here</span></div>
+      </div>
+    </div>
+    <div class="slot">
+      <cap>sat · id 209</cap>
+      <div class="story">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-sun">Sun</span><span class="date">Sep 13</span></div>
+          <h3 class="ev-name">MarinMOCA Free Family Day</h3>
+          <div class="ev-venue">MarinMOCA · San Rafael</div>
+          <div class="tags"><span class="tag t-kids">Kids Programs</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">11:00 AM</div>
+          <div class="ev-desc">Hands-on painting and mixed media with an instructor. Reserve a slot.</div>
+        </div>
+        <div class="sticker-zone"><span>link sticker goes here</span></div>
+      </div>
+    </div>
+    <div class="slot">
+      <cap>sun · id 927</cap>
+      <div class="story">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-mon">Mon</span><span class="date">Sep 14</span></div>
+          <h3 class="ev-name long">Adventure Hike — Roy's Redwoods</h3>
+          <div class="ev-venue">Roy's Redwoods Preserve · San Geronimo</div>
+          <div class="tags"><span class="tag t-fitness">Fitness</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">12:30 PM – 2:30 PM</div>
+          <div class="ev-desc">A guided afternoon hike through the park and the redwood grove.</div>
+        </div>
+        <div class="sticker-zone"><span>link sticker goes here</span></div>
+      </div>
+    </div>
+    <div class="slot">
+      <cap>sun · id 605</cap>
+      <div class="story">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-tue">Tue</span><span class="date">Sep 15</span></div>
+          <h3 class="ev-name long">DrawBridge Crafts: Altered Books</h3>
+          <div class="ev-venue">Corte Madera Library · Corte Madera</div>
+          <div class="tags"><span class="tag t-kids">Kids Programs</span>
+            <span class="tag t-age">All ages</span><span class="tag t-free">Free</span></div>
+          <div class="ev-time">3:30 PM</div>
+          <div class="ev-desc">Expressive-arts craft session — turning old books into something else entirely.</div>
+        </div>
+        <div class="sticker-zone"><span>link sticker goes here</span></div>
+      </div>
+    </div>
+    <div class="slot">
+      <cap>sun · id 961</cap>
+      <div class="story">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="daystrip"><span class="daypill d-thu">Thu</span><span class="date">Sep 17</span></div>
+          <h3 class="ev-name">Free Day at Muir Woods</h3>
+          <div class="ev-venue">Muir Woods National Monument · Mill Valley</div>
+          <div class="tags"><span class="tag t-community">Community Event</span>
+            <span class="tag t-age">All ages</span><span class="tag t-paid">Free entry; $10 parking</span></div>
+          <div class="ev-time">8:00 AM – sunset</div>
+          <div class="ev-desc">Constitution Day waives the $15 entrance fee. A parking or shuttle reservation is still required.</div>
+        </div>
+        <div class="sticker-zone"><span>link sticker goes here</span></div>
+      </div>
+    </div>
   </div>
 
   <!-- ═══════════════ STICKERS + NOTES ═══════════════ -->
