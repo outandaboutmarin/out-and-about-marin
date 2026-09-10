@@ -38,7 +38,7 @@ import sys
 ARTIFACT = "https://claude.ai/code/artifact/7c27ebfe-6674-4c8d-9b90-a0559d8e483c"
 MD = (r"C:\Users\AWalter\Documents\2. Claude-Work\PROJECTS\OAA Marin"
       r"\OAA maintence and content\open_items.md")
-UPDATED = "2026-09-07"
+UPDATED = "2026-09-09"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # The content. `body` and `ask` accept inline HTML.
@@ -62,26 +62,29 @@ ITEMS = [
              "already written down. You deferred it deliberately — this is a nudge, not a new "
              "finding."),
 
-    dict(n=15, group="call", tone="scheduled", created="2026-07-28",
-         title="Instagram posting programme — unblocked", pill="In progress",
-         body="<b>Yes, it can be automated</b> — carousel <i>and</i> the Stories that carry the "
-              "links. Meta Business Suite publishes and schedules a Story with a link sticker; it "
-              "is Meta's own surface and is not bound by the Graph API restriction that stops "
-              "third-party tools. The one real limit is narrower than this item claimed for two "
-              "days: <b>no third-party tool</b> (Buffer, Later, Metricool) can do it — which is "
-              "exactly why the recommended route is browser automation against Business Suite "
-              "rather than Buffer.<br><br><b>The renderer is built.</b> "
-              "<code>render_slides.py</code> turns an approved mockup into 1080×1080 PNGs. That "
-              "was the genuine blocker — every route needs image files and the post only existed "
-              "as HTML. Twelve upload-ready slides for the week of Sep 11 are in "
-              "<code>slides/week_of_sep11/</code>.",
-         ask="<b>Nothing here is manual.</b> An earlier version of this card asked you to post "
-             "a week by hand, reasoning that the link stickers needed attaching either way — "
-             "<b>a leftover from the superseded claim that no tool can publish one</b>. Business "
-             "Suite can, so the automation covers the whole post. <b>Next move is mine:</b> drive "
-             "Business Suite, stage the Thursday post, and stop before anything publishes. "
-             "<b>Cadence settled 2026-09-07:</b> Thursday 5:00 PM, Saturday 7:00 AM, Sunday "
-             "5:00 PM — exact times, since scheduling needs a single minute."),
+    dict(n=15, group="marketing", tone="scheduled", created="2026-07-28",
+         title="Instagram posting programme — running", pill="First week scheduled",
+         body="<b>It is no longer a plan.</b> Both Meta Business Suite composers were driven end "
+              "to end on 8–9 September and the week of Sep 11 is <b>five of six assets "
+              "scheduled</b> — three carousels and two Stories, each Story carrying its own "
+              "tagged link sticker. You uploaded nothing, typed nothing and scheduled nothing."
+              "<br><br><b>Three things are left, in this order:</b>"
+              "<p><span class='box'>☐</span> <b>Check Sat 12 Sep, 7:00 AM in the Planner.</b> The "
+              "Saturday Story was submitted and Business Suite gave its success signal, but I "
+              "never looked at the tile. <b>If it is there, change nothing</b> — re-creating a "
+              "scheduled Story double-posts it.</p>"
+              "<p><span class='box'>☐</span> <b>Move the Thursday Story from 5:05 PM to 5:00 PM</b>, "
+              "so each Story matches its carousel to the minute.</p>"
+              "<p><span class='box'>☐</span> <b>Build the Sunday Story</b> — Free Day at Muir "
+              "Woods, Sun 13 Sep 5:00 PM. It was never made.</p>",
+         ask="<b>What this costs you is being at the machine.</b> Chrome has to be the frontmost "
+             "window on screen for the whole run — not just the right tab open, the <i>window</i> "
+             "in front. While you were reading something else, five clicks in a row did nothing, "
+             "with no error at all. <b>So this can never run overnight</b>; it is attended time, "
+             "in one sitting, and there is still no script — every step is hand-driven at roughly "
+             "15 tool calls per carousel and 20 per Story. <b>Nothing has gone live yet</b>, so no "
+             "link sticker has been tapped and GA4 has never seen one of these campaigns; the "
+             "first real numbers arrive after Thursday 5:00 PM."),
 
     dict(n=49, group="call", tone="open", created="2026-09-03",
          title="Two records still missing one fact", pill="Waiting on you",
@@ -194,20 +197,53 @@ ITEMS = [
          body="<p>Feature idea, no scope given. Worth clarifying what fields to track, how it gets "
               "populated and kept current, and how it sits alongside the events database.</p>"),
 
-    dict(n=21, group="notstarted", tone="open", created="2026-08-02",
+    dict(n=21, group="marketing", tone="open", created="2026-08-02",
          title="Anchor other advertisers", pill="Open",
          body="<p>A prospect list exists from 2026-08-15, given as names only — not verified "
               "against business records, contacts, or whether any already appear in the events "
               "database. <b>The list ended mid-sentence</b> (\"social club, ;\"), so it may have "
               "been cut off. Send the rest and I will look each one up.</p>"),
 
-    dict(n=20, group="notstarted", tone="open", created="2026-08-02",
+    dict(n=20, group="marketing", tone="open", created="2026-08-02",
          title="Reach out to Annie", pill="Open",
          body="<p>No detail beyond the title.</p>"),
 
-    dict(n=22, group="notstarted", tone="open", created="2026-08-02",
+    dict(n=22, group="marketing", tone="open", created="2026-08-02",
          title="Set up Stripe", pill="Open",
          body="<p>No detail beyond the title — presumably for advertiser billing.</p>"),
+
+    dict(n=52, group="integrity", tone="open", created="2026-09-09",
+         title="Homepage carousel — do all nine cards get equal visibility?",
+         pill="Needs investigation",
+         body="<p>Raised by Alexandra: the homepage carousel rotates through <b>nine cards</b>, and "
+              "the concern is whether the rotation is actually even — that all nine get roughly "
+              "equal airtime rather than some showing far more than others (e.g. always starting "
+              "from card 1, or a weighting/scoring step biasing which nine make the cut in the "
+              "first place). Not yet investigated: how the carousel picks and orders its nine, "
+              "whether the starting card is randomised or fixed per page load, and whether "
+              "<code>score()</code>'s weighting (already known to affect the separate Featured "
+              "strip, see closed item 39) also biases this rotation.</p>",
+         ask="<b>Next step:</b> read the carousel's selection/rotation code in <code>index.html</code> "
+             "and report back on how the nine are chosen and sequenced, before proposing a fix."),
+
+    dict(n=53, group="integrity", tone="open", created="2026-09-09",
+         title="Consider a weekly text newsletter", pill="Scope undefined",
+         body="<p>New feature idea from Alexandra, name only so far. Four open questions she raised "
+              "herself, none answered yet:</p>"
+              "<p><span class='box'>☐</span> <b>Opt-out on initial sign-up</b> — default the new "
+              "account in or out, and where that choice sits in the sign-up flow.</p>"
+              "<p><span class='box'>☐</span> <b>Opt-out pop-up for existing users</b> — a one-time "
+              "prompt to the current base, and what it needs to say to be a real choice rather than "
+              "a dark pattern.</p>"
+              "<p><span class='box'>☐</span> <b>Opt in/out on the Profile page</b> — a standing "
+              "toggle, presumably alongside whatever other notification prefs already live there.</p>"
+              "<p><span class='box'>☐</span> <b>What would the weekly text actually say?</b> The "
+              "content question, and probably the one to settle first — everything else is "
+              "plumbing around a message that does not exist yet.</p>",
+         ask="<b>Needs from you:</b> is this SMS (carrier costs, A2P 10DLC registration, opt-in "
+             "language requirements under TCPA) or an in-app/email digest badged as a \"weekly "
+             "text\"? That decision changes the entire build, including whether it is legally "
+             "gated on explicit consent language before anything else here matters."),
 ]
 
 CLOSED = [
@@ -245,10 +281,14 @@ CLOSED = [
 
 GROUPS = [
     ("data", "Data &amp; content", "Work in flight. None blocked on you."),
-    ("notstarted", "Not started",
-     "Three of these (#20, #21, #22) are the business-development thread and have sat untouched "
-     "since 2 August with a line each. They are either a real workstream that deserves scoping, or "
-     "they should come off the list — right now they are doing neither."),
+    ("marketing", "Marketing &amp; Advertising",
+     "Instagram is the one actively moving. #20, #21 and #22 are the business-development thread "
+     "and have sat untouched since 2 August with a line each — either a real workstream that "
+     "deserves scoping, or they should come off the list; right now they are doing neither."),
+    ("integrity", "Website Integrity",
+     "Correctness and fairness of what the site itself shows and does, distinct from the "
+     "underlying event data."),
+    ("notstarted", "Not started", ""),
 ]
 
 
@@ -310,8 +350,9 @@ def render():
         rows = [i for i in ITEMS if i["group"] == key]
         out = ['<section class="group">',
                '<div class="group-head"><h2>%s</h2><div class="rule"></div>'
-               '<span class="n">%d item%s</span></div>' % (label, len(rows), "" if len(rows) == 1 else "s"),
-               '<p class="group-note">%s</p>' % note]
+               '<span class="n">%d item%s</span></div>' % (label, len(rows), "" if len(rows) == 1 else "s")]
+        if note:
+            out.append('<p class="group-note">%s</p>' % note)
         for it in rows:
             out.append(
                 '<div class="item">\n  <div class="item-row">\n'
@@ -331,12 +372,16 @@ def render():
 
     n_call = len(calls)
     n_data = len([i for i in ITEMS if i["group"] == "data"])
+    n_marketing = len([i for i in ITEMS if i["group"] == "marketing"])
+    n_integrity = len([i for i in ITEMS if i["group"] == "integrity"])
     n_not = len([i for i in ITEMS if i["group"] == "notstarted"])
 
     return (shell
             .replace("{{UPDATED}}", UPDATED)
             .replace("{{N_CALL}}", str(n_call))
             .replace("{{N_DATA}}", str(n_data))
+            .replace("{{N_MARKETING}}", str(n_marketing))
+            .replace("{{N_INTEGRITY}}", str(n_integrity))
             .replace("{{N_NOTSTARTED}}", str(n_not))
             .replace("{{N_TOTAL}}", str(len(ITEMS)))
             .replace("{{N_CLOSED}}", str(len(CLOSED)))

@@ -66,7 +66,7 @@ File is a JSON object, **not** a flat array:
 ```
 Always load/save through the pattern in `scraper.py` (`load_existing_events()` / `save_events()` — reuse `events_io.py`, see below) rather than hand-editing JSON text. The file has Spanish-accented characters — always read/write with `encoding="utf-8"` or you'll corrupt them (confirmed failure mode: default Windows `cp1252` encoding mangles é/í/ñ etc.).
 
-As of 2026-08-21: **330 events, max ID 907.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 505 events / max 565 on 2026-07-02; 366 on 2026-08-09; 341 after the library audit; 353 after the Aug 13 sweep. The drop to 305 on 2026-08-14 was the **first automated purge in 98 days** — 48 expired one-offs cleared by the newly-repaired `daily.yml`. Expiry is automatic again; it should no longer need purging by hand. See State of play.)
+As of 2026-09-09: **406 events, max ID 1097.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 330 events / max 907 on 2026-08-21; 505 events / max 565 on 2026-07-02; 366 on 2026-08-09; 341 after the library audit; 353 after the Aug 13 sweep. The drop to 305 on 2026-08-14 was the **first automated purge in 98 days** — 48 expired one-offs cleared by the newly-repaired `daily.yml`. Expiry is automatic again; it should no longer need purging by hand. See State of play.)
 
 **Fields on every event** (confirmed against actual `index.html` usage, not just assumed from old docs):
 
@@ -607,13 +607,49 @@ The shape worth noticing: all three cleared the mechanical filters and were stil
 
 ---
 
-# ⇢ START HERE — state of play for a new session (2026-09-01)
+# ⇢ START HERE — state of play for a new session (2026-09-09)
 
 Read this first, then the sections above as needed.
 
-**Health** (refreshed 2026-09-07): `events.json` is **415 events, max id 1096**, all committed and pushed. `check_duplicates.py --self-test` is **92/92**, `--notes-lint` and `--bilingual-lint` are clean, and all **five** duplicate scans are clean. (Was 318 events / 73 self-tests when this line was last written — worth re-reading as a reminder that a hard-coded count in prose goes stale silently.) GitHub Pages deploys off `main`, so **committing `events.json` IS publishing** — there is no staging.
+**Health** (re-run and verified 2026-09-09, not copied forward): `events.json` is **406 events, max id 1097**. Data verified at HEAD `813ca0a`, which was clean and level with `origin/main`. ⚠ **The 2026-09-09 documentation edits — this section, `build_dashboard.py`, `.gitignore` — were left UNCOMMITTED.** Run `git status` first; commit them before anything else so the next session starts clean. `check_duplicates.py --self-test` is **92/92**; `--notes-lint`, `--bilingual-lint` and all **five** duplicate scans report clean. (415 events / max 1096 on 2026-09-07 — the count **fell by nine** because the daily job purged expired one-offs, which is the system working. 318 events / 73 self-tests when this line was first written — a hard-coded count in prose goes stale silently, so re-run the scans rather than trusting this sentence.) GitHub Pages deploys off `main`, so **committing `events.json` IS publishing** — there is no staging.
 
-**Nothing is blocking.** No decision is outstanding; the last sweep is fully applied and every question from it has been answered.
+**Nothing is blocking, but one job is half-finished.** No decision is outstanding and the data is clean. **The Instagram week of Sep 11 is 5 assets scheduled out of 6** — see "Where to pick up" below. That is the only work in flight.
+
+## Where to pick up — the only open thread
+
+**Instagram, week of Sep 11.** Three carousels and three Stories were planned; five are scheduled in Meta Business Suite. In order:
+
+1. **Verify** the Saturday Story (DJs by the Bay, id 1019, Sat 12 Sep 7:00 AM) actually landed in the Planner. It was submitted with the documented success signal but its tile was never looked at. **If it is there, change nothing** — re-creating a scheduled Story double-posts it.
+2. **Move** the Thursday Story from 5:05 PM to **5:00 PM**, so each Story matches its carousel to the minute.
+3. **Build** the Sunday Story — Free Day at Muir Woods, id 961, Sun 13 Sep 5:00 PM, `utm_campaign=story_sun_weekahead`.
+
+Everything needed is in `social_media_and_marketing.md`: sections **3c** and **3d** for the composer procedures and its six traps, and its own **STATE OF PLAY** section at the bottom for the exact asset paths and URLs. **Do not drive Business Suite without reading 3c and 3d first** — the traps there cost two evenings.
+
+## What changed 2026-09-07 to 2026-09-09, in one pass
+
+- **Instagram went from designed to running.** Both Business Suite composers — feed carousel and
+  Story — were driven end to end for real, and five of the six assets for the week of Sep 11 are
+  scheduled. `render_slides.py` renders any size, so the square carousel slides and the 9:16 Story
+  frames come from the same approved HTML.
+- **⚠ "We're having trouble completing your request" CAN MEAN IT WORKED.** Two of the three
+  carousels showed that error on a hung spinner and **both had scheduled successfully**. Retrying
+  would have double-posted. **On any error or hang from a Business Suite composer, check the
+  Planner before touching anything.**
+- **A stale event was published for a day.** Id 788, a Mill Valley movie night, was live and
+  cancelled; it now carries an `ALERT[2026-09-08]:` banner. Auditing its source found a **2017
+  article still being scraped as current** — `/outdoor-movies` on Ronnie's Awesome List, now
+  flagged in `run-sweep.md` source 11. Id 789 was retired in the same pass.
+- **Rules 21, 22 and 23 added.** 21: correcting `time` is not the whole job, because `description`
+  repeats the hours and nothing checks they agree. 22: `cost: "Free"` must mean free to a family
+  who walks up. 23: **never write a file in place** — temp file, verify the round-trip, back up,
+  then `os.replace`. Rule 23 exists because `open_items.md` was truncated to zero bytes on
+  2026-09-07 and only recovered from another session's transcript log.
+- **The duplicate scans now skip retired one-offs** (item 45), which they never had, though they
+  had always skipped retired *recurring* records. 87 → 92 self-tests.
+- **`build_dashboard.py` is a real file in the repo.** It had been described in CLAUDE.md as a
+  scratchpad script for weeks; when it was finally looked for it **did not exist**, and every
+  "show me the dashboard" had been a hand-rebuild. Its `--check` guard was tested in both drift
+  directions before being trusted.
 
 ## What changed since 2026-08-21, in one pass
 
@@ -635,15 +671,17 @@ The corollary, which has now bitten repeatedly: **a scan that reports clean has 
 
 Full list in `OAA maintence and content/open_items.md`; the dashboard renders it at the artifact URL in `build_dashboard.py`.
 
+- **15** — the Instagram programme. **In progress, and the only item with work in flight** — see "Where to pick up" above.
+- **24** — users-table lockdown. A real security item: the site still talks to Supabase `users` with the public key. Deferred by Alexandra, but it leads the dashboard because the cost of waiting is the only one here that grows.
 - **44** — three library records whose cadence cannot be derived from one month of published dates (ids 43, 41, 3). The fourth, id 853, was resolved 2026-09-01 from a flyer.
 - **34** — app code quality audit, not started; six confirmed findings already in hand. Needs her call on report-vs-fix.
 - **33** — Tide Pool Table, scope undefined.
-- **24** — users-table lockdown. A real security item: the site still talks to Supabase `users` with the public key.
-- **30** — the September seasonal checks, due now.
+- **51** — id 215 carries an `expires` three months past its date, so it never got purged. One field, no user-facing effect, plus a check worth adding so it cannot recur quietly.
+- **39 and 45 closed 2026-09-07**; **30** (September seasonal checks) closed on live data.
 
 ## Where the non-repo files live
 
-`OAA maintence and content/` in her Documents project folder (NOT in this repo, and never commit review workbooks): `open_items.md` (16 items, the master to-do list), `Napa_Live_Music_Tracker_v2.xlsx` (has a **Sweep Learnings** tab written 2026-08-21 — read it before a Napa sweep), and the sweep review workbooks.
+`OAA maintence and content/` in her Documents project folder (NOT in this repo, and never commit review workbooks): `open_items.md` (the master to-do list — count it, do not trust a number written here), `Napa_Live_Music_Tracker_v2.xlsx` (has a **Sweep Learnings** tab written 2026-08-21 — read it before a Napa sweep), and the sweep review workbooks.
 
 ## Working rhythm
 

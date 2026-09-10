@@ -16,3 +16,9 @@ issue_body.md
 # the approved mockup HTML; never commit the images themselves.
 slides/
 dashboard.html
+
+# Rule-23 safe-write backups. In the repo git is already the backup, so these
+# are transient; in the Documents folder (no VCS) they are the only one.
+*.bak
+*.bak[0-9]
+*.tmp
