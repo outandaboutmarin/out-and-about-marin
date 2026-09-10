@@ -363,6 +363,50 @@ Always follow these when adding or editing events — they exist because of spec
     scripted edit to a hand-maintained document, assert on the result — length, line count, a few
     distinctive strings that must survive, and any that must be gone.
 
+24. **ONE TIME SLOT, TWO NAMED PROGRAMMES — the alternation trap. A `Weekly` record over a shared
+    slot silently over-advertises, and no scan will tell you.** Found twice on 2026-09-10, at two
+    unrelated libraries, within an hour of each other.
+
+    - **Larkspur, Fridays 10:00 AM.** id 15 (Storytime) was `Weekly`. The branch actually alternates
+      that slot with **Cuentos con Ritmo**: Storytime on Oct 9, 23 and 30, Cuentos on Oct 2 and 16.
+      id 15 generated all five, so the site advertised Storytime on **three Fridays it does not
+      run** — two taken by the other programme and one cancelled outright.
+    - **Inverness, Wednesdays 10:45 AM.** A new `Weekly` record ("Storytime is calling") and a new
+      one-off ("Music & Movement with Colors of Spanish") landed on the same slot on Oct 14. Here
+      `check_duplicates.py` **did** catch it — as a COLLISION — but only because the replacing
+      programme had been entered as its own record in the same batch.
+
+    **That difference is the whole lesson.** The collision scan compares records to records. When
+    the other programme is in the database, it fires. When the other programme is only on the
+    library's calendar and not in the database, **nothing fires at all** — the recurring record
+    just quietly claims a slot it does not own. Larkspur was invisible for exactly that reason.
+
+    **So: when reading any venue calendar, do not only look for events to ADD. Look at what occupies
+    the slots your existing recurring records claim.** A week where the slot is filled by a
+    different named programme is a `skip:` on your record, and it is the only signal you will get.
+
+25. **WHEN AN ORGANISATION'S OWN TWO CHANNELS DISAGREE, THAT IS NOT A THIRD-PARTY PROBLEM AND THE
+    USUAL RULE DOES NOT SETTLE IT.** "Fetch the source that owns the event" assumes the owner speaks
+    with one voice. Twice on 2026-09-10 the owner did not:
+
+    - **id 853, Spanish Sing-along at Northgate.** The record says 10:30 AM, sourced from the
+      library's own **August Instagram flyer**. `srpubliclibrary.org` lists **10:00–10:30 AM** for
+      every September and October date. Same library, two channels, a 30-minute gap. Unresolved as
+      of this writing — open item 54.
+    - **Bolinas Film Festival Kids Film Showcase.** The festival's **own Instagram** announced it
+      for Fri Sep 11, 6–7 PM; the festival's **own website** lists no such event and shows a
+      different pre-festival screening on Sep 12. Added anyway (id 1143), because the flyer was
+      recent, came from the organiser's account, and named the festival's real venue and address
+      exactly — it reads as a late addition the website has not caught up with.
+
+    **How to decide, and what to record.** Prefer the channel that is **dated closest to the event**
+    and most specific to it: a current-term calendar beats a month-old flyer; a this-week social
+    post beats a season-overview page that predates it. Then **write which channel you took and
+    why into `internal_notes`**, because the next person to look will find the same contradiction
+    and needs to know it was seen rather than missed. When the two disagree on something a family
+    acts on — a start time, a date — and neither is clearly fresher, **ask rather than pick.**
+
+
 ## Homepage Featured strip
 
 The horizontal card row at the top of the homepage (`#featuredWrap` / `#featuredRow`). Selection logic is `selectFeatured()` in `index.html` (~line 3981) — a client-side scoring pass over `allEvents`, not a stored list. `featured: true` on a record does **not** put it in the strip by itself; it only adds a scoring boost (`+10` in `score()`) among records that are otherwise eligible, plus one specific reserved-slot exception (below).
@@ -640,23 +684,71 @@ The shape worth noticing: all three cleared the mechanical filters and were stil
 
 ---
 
-# ⇢ START HERE — state of play for a new session (2026-09-09)
+# ⇢ START HERE — state of play for a new session (2026-09-10)
 
 Read this first, then the sections above as needed.
 
-**Health** (re-run and verified 2026-09-09, not copied forward): `events.json` is **406 events, max id 1097**. Data verified at HEAD `813ca0a`, which was clean and level with `origin/main`. ⚠ **The 2026-09-09 documentation edits — this section, `build_dashboard.py`, `.gitignore` — were left UNCOMMITTED.** Run `git status` first; commit them before anything else so the next session starts clean. `check_duplicates.py --self-test` is **92/92**; `--notes-lint`, `--bilingual-lint` and all **five** duplicate scans report clean. (415 events / max 1096 on 2026-09-07 — the count **fell by nine** because the daily job purged expired one-offs, which is the system working. 318 events / 73 self-tests when this line was first written — a hard-coded count in prose goes stale silently, so re-run the scans rather than trusting this sentence.) GitHub Pages deploys off `main`, so **committing `events.json` IS publishing** — there is no staging.
+**Health** (re-run and verified 2026-09-10, not copied forward): `events.json` is **440 events,
+max id 1145**, all committed and pushed, HEAD `0fc2255` and level with `origin/main`.
+`check_duplicates.py --self-test` is **92/92**; `--notes-lint --all`, `--bilingual-lint` and all
+**five** duplicate scans report clean. (406 events / max 1097 on 2026-09-09. The count moves both
+ways — the daily job purges expired one-offs, so a fall is the system working. **Re-run the scans
+rather than trusting this sentence**; a hard-coded count in prose goes stale silently, and this
+line has been wrong before.) GitHub Pages deploys off `main`, so **committing `events.json` IS
+publishing** — there is no staging.
 
-**Nothing is blocking, but one job is half-finished.** No decision is outstanding and the data is clean. **The Instagram week of Sep 11 is 5 assets scheduled out of 6** — see "Where to pick up" below. That is the only work in flight.
+**Nothing is blocking and nothing is half-finished.** The Instagram week of Sep 11 is fully
+scheduled, the weekly sweep is run and applied, and the working tree is clean.
 
-## Where to pick up — the only open thread
+## Where to pick up — four small things, all waiting on Alexandra
 
-**Instagram, week of Sep 11.** Three carousels and three Stories were planned; five are scheduled in Meta Business Suite. In order:
+None is urgent and none blocks anything else. All four are on the dashboard; the first is the only
+one with a user-facing cost.
 
-1. **Verify** the Saturday Story (DJs by the Bay, id 1019, Sat 12 Sep 7:00 AM) actually landed in the Planner. It was submitted with the documented success signal but its tile was never looked at. **If it is there, change nothing** — re-creating a scheduled Story double-posts it.
-2. **Move** the Thursday Story from 5:05 PM to **5:00 PM**, so each Story matches its carousel to the minute.
-3. **Build** the Sunday Story — Free Day at Muir Woods, id 961, Sun 13 Sep 5:00 PM, `utm_campaign=story_sun_weekahead`.
+1. **id 853, Spanish Sing-along at Northgate: 10:00 or 10:30 AM?** See rule 25 and open item 54.
+   If 10:00 is right, families are being sent as the session ends. One word settles it.
+2. **Home Depot's Nov 21 extra Kids Workshop.** The monthly record (id 435, first Saturday) already
+   generates Oct 3, Nov 7 and Dec 5; **Nov 21 is a third Saturday and is genuinely missing**. Not
+   added because `homedepot.com` is **Akamai-blocked at all three fetch tiers** — WebFetch, the
+   in-app browser and real Chrome all returned an empty document — so the date rests on aggregator
+   flyers alone, and the flyer names no store.
+3. **The Fibershed natural-fibre clothing swap, Wed Sep 16** at the MWPCA Clubhouse (40 Ridge Ave,
+   the same venue as id 1043). Venue confirmed; **no time published**, sign-up is an Instagram bio
+   link, and the audience reads adult rather than family.
+4. **The Monarch Butterflies seminar** (Point Reyes Library, Oct 10). The sweep workbook's Decision
+   column said Approve but the answer to its own Question 10 said skip — held rather than guessed.
 
-Everything needed is in `social_media_and_marketing.md`: sections **3c** and **3d** for the composer procedures and its six traps, and its own **STATE OF PLAY** section at the bottom for the exact asset paths and URLs. **Do not drive Business Suite without reading 3c and 3d first** — the traps there cost two evenings.
+## What changed 2026-09-10, in one pass
+
+- **Weekly sweep run, applied and pushed — all 44 sources checked**, which took two sessions: the
+  first covered 21 and honestly attested the other 18 as not reached rather than presenting a
+  partial sweep as complete. **41 events added**, plus 3 from Instagram flyers and 3 existing
+  records enriched from organisers' own flyers instead of being duplicated.
+- **The sweep's biggest finding was a hole in the checklist, not in the data.** `/run-sweep` source
+  41 said Larkspur Library "posts essentially NOTHING", verified three ways in August. True of its
+  **city** calendar; false of the venue — the library runs a **LibCal on a different host** that no
+  sweep had ever fetched, found only because Marin Mommies linked one of its event pages. One pass
+  produced four candidates, a cancelled storytime and the id 15 defect behind new rule 24. The
+  route is now in `run-sweep.md` source 41, and the general rule — **"this venue publishes nothing"
+  is a claim about a ROUTE, not about a venue** — is in the Weekly Sweep section above.
+- **`check_duplicates.py` caught a collision introduced in the same batch that created it** (ids
+  1108/1111, Inverness). Worth noting because three of this project's four historic duplicate pairs
+  were introduced by exactly this step — adding a dated one-off on top of a recurring record. Run
+  it after every batch write, not just before a commit.
+- **Rules 24 and 25 added.** 24: one slot shared by two named programmes, where a `Weekly` record
+  over-advertises and **no scan fires unless the other programme is also a record**. 25: what to do
+  when an organisation's own two channels contradict each other, which is not the same problem as
+  an unreliable third party.
+- **Two documentation corrections, and they were the same error in two places.** `CLAUDE.md` and
+  `open_items.md` both described `build_dashboard.py`'s old curated-`ITEMS` design and a `--check`
+  guard that no longer exists — the script now parses `open_items.md` directly and takes no
+  arguments, so a command line carrying `--check` looks like it verified something and did not.
+  CLAUDE.md was fixed first and `open_items.md` was missed, then caught the same day. **One fact
+  written down twice will be corrected once.**
+- **The dashboard's own header was stale all day**, reading 2026-09-09 while the file was edited
+  four times. Nothing computes that date; it is prose in `open_items.md` and the page prints it
+  verbatim. Alexandra caught it on the published page. That file now carries an explicit
+  update-it-in-the-same-edit warning.
 
 ## What changed 2026-09-07 to 2026-09-09, in one pass
 
