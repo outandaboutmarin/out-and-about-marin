@@ -498,17 +498,30 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
 - **Source of truth**: `OAA maintence and content/open_items.md` (her Documents project folder, **not** this repo). Grouped Infrastructure / Data Quality / Marketing, with a "Recently closed" section kept for reference. Edit it directly when she says to add, update, or close an item.
 - **"Show me the dashboard" / "open the open items list"** means render it as a formatted page. **Run it, do not rebuild it by hand:**
   ```bash
-  python build_dashboard.py            # writes dashboard.html
-  python build_dashboard.py --check    # verify sync only, write nothing
+  python build_dashboard.py            # writes open_items_dashboard.html
   ```
   Then publish `dashboard.html` to the **existing** artifact
   `https://claude.ai/code/artifact/7c27ebfe-6674-4c8d-9b90-a0559d8e483c` (read it first — another session may have changed it). Card tones: `urgent`, `scheduled`, `open`, `hold`.
 
   ⚠ **Corrected 2026-09-07. This bullet used to call the generator "a scratchpad script", and that was wrong twice over.** Scratchpads are session-specific temp folders, so a tool living in one is invisible to every future session **by design** — and when it was finally looked for, `build_dashboard.py` did not exist anywhere on the machine. Every "show me the dashboard" had quietly been a hand-rebuild of ~500 lines of HTML while this file described a working process. **It is now a real file in the repo**, with `dashboard_template.html` beside it. **The general lesson: a tool documented as living in a scratchpad is a tool that does not exist.** If a process is worth writing down, its script belongs in the repo.
 
-  **Where the content lives:** item summaries are curated in `build_dashboard.py`'s `ITEMS` and `CLOSED` lists, deliberately **not** parsed out of `open_items.md`. The dashboard summarises and reprioritises rather than dumping the markdown, whose entries run to several prose paragraphs each; a parser over prose would read worse and would fail silently the moment the prose changed shape.
-- **Keep the two in sync in the same edit, and let the script check you.** They have drifted before (item 25 stayed open in the dashboard after being closed in the markdown). Closing an item means: remove it from the open list in `open_items.md`, add a line to "Recently closed", remove the `dict(n=…)` from `build_dashboard.py`'s `ITEMS`, append to its `CLOSED`, regenerate, and republish the Artifact.
-  **`--check` guards the one thing that must never drift** — *which* item numbers are open. It reads `open_items.md`, compares the numbers above "Recently closed" against `ITEMS`, and reports both directions (open in the markdown but missing from the dashboard; on the dashboard but no longer open) plus any number appearing in both `ITEMS` and `CLOSED`. A plain build runs it too, so a stale page cannot ship quietly. **Verified capable of failing**, per the standing rule that a check reporting clean must be shown able to report dirty: both drift directions were induced and both were caught.
+  ⚠ **Corrected again 2026-09-10 — the paragraph that stood here described a design the script no longer has.** It said item summaries were curated in `build_dashboard.py`'s `ITEMS` and `CLOSED` lists and were "deliberately **not** parsed out of `open_items.md`", on the reasoning that a parser over prose would read worse and fail silently. **The script was rewritten at some point to do exactly the thing that paragraph ruled out**, and this file was never updated to match.
+
+  **Where the content actually lives:** `open_items.md` is the single source of truth and the dashboard is parsed straight out of it — the script's own docstring says "so the two cannot drift". There is no `ITEMS` list and no `CLOSED` list to edit. What the parser reads:
+
+  | Markdown | Effect |
+  |---|---|
+  | `## Section` | the group heading (Infrastructure / Data Quality / …) |
+  | `**54. Title**` | one item, numbered |
+  | `- Status: …` | drives the status pill — see `pill_for()` for the words it matches |
+  | `- Created: …` | the meta line |
+  | `- **Needs from you:** …` | **promotes the item into "Waiting on you" at the top** |
+  | `- ✅ **Item NN, …**` under "Recently closed" | the closed list |
+
+  So prioritisation is controlled from the markdown, not from the script: add or remove a **Needs from you** bullet to move something in or out of the top section. Nothing in the Python needs touching to change what is prioritised.
+- **There is nothing to keep in sync any more, and that is the point.** The drift this section used to warn about (item 25 stayed open on the dashboard after being closed in the markdown) is now structurally impossible, because there is only one copy of the content. **Closing an item** means: move it out of the open list in `open_items.md`, add a `- ✅ **Item NN, …**` line under "Recently closed", regenerate, and republish the Artifact. **Adding one** means writing the item into the right `## Section` with a `Status:` and `Created:` bullet. No Python edit either way.
+
+  ⚠ **`--check` NO LONGER EXISTS. Do not put it in a command line — the script takes no arguments and will silently ignore it and just build.** It used to compare the markdown's open item numbers against the script's `ITEMS` list and fail on either kind of drift, and this file recorded it as "verified capable of failing". That guard went away with the two lists it compared; there is nothing left for it to check. **The lesson worth keeping from its removal:** a documented safety check is worth exactly as much as its last verification, and a rewrite can delete one without deleting the paragraph that promises it.
 - Items resolved by a **policy decision** should be encoded where the policy actually executes — e.g. item 9 (stale Megan Schoenbohm source) and item 10 (add Slide Ranch) were both written into `/run-sweep`'s source list so they enforce themselves every sweep, not just sit in a tracker.
 
 ## Sweep review workbook format
@@ -668,8 +681,9 @@ Everything needed is in `social_media_and_marketing.md`: sections **3c** and **3
   had always skipped retired *recurring* records. 87 → 92 self-tests.
 - **`build_dashboard.py` is a real file in the repo.** It had been described in CLAUDE.md as a
   scratchpad script for weeks; when it was finally looked for it **did not exist**, and every
-  "show me the dashboard" had been a hand-rebuild. Its `--check` guard was tested in both drift
-  directions before being trusted.
+  "show me the dashboard" had been a hand-rebuild. It had a `--check` guard, tested in both drift
+  directions before being trusted. **That guard is gone as of 2026-09-10** — the script now parses
+  `open_items.md` directly, so there are no longer two copies for it to compare.
 
 ## What changed since 2026-08-21, in one pass
 
