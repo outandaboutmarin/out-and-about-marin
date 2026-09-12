@@ -4164,8 +4164,8 @@
     {
       "organization": "Town of Fairfax Recreation Department",
       "venue": "Fairfax Library",
-      "event_name": "Fairfax New Parents and Babies/Toddler Support Group",
-      "event_name_es": "Grupo de Apoyo para Padres Nuevos y Bebés/Niños Pequeños de Fairfax",
+      "event_name": "Babies/Toddler Support Group for New Parents",
+      "event_name_es": "Grupo de Apoyo para Nuevos Padres con Bebés y Niños Pequeños",
       "type": "Kids Programs",
       "day": "Thursday",
       "time": "11:00 AM",
@@ -4190,7 +4190,7 @@
       "notes": "Also known as \"Fairfax Mother Circle\" - same program. Sponsored by Town of Fairfax Recreation Dept. Attendance varies 1-15.",
       "location_group": "Fairfax",
       "id": 626,
-      "internal_notes": "Source: relayed directly by Alexandra."
+      "internal_notes": "Source: relayed directly by Alexandra. TITLE RENAMED 2026-09-11 at Alexandra's instruction, from \"Fairfax New Parents and Babies/Toddler Support Group\". Spanish title updated to match."
     },
     {
       "organization": "Sausalito Public Library",
@@ -11455,8 +11455,8 @@
       "id": 1095,
       "organization": "MYSTIC",
       "venue": "MYSTIC B-SIDE Studio",
-      "event_name": "Sensory Studio for Littles + Caregivers",
-      "event_name_es": "Estudio Sensorial para Pequeños y Cuidadores",
+      "event_name": "Sensory Studio for Littles + Caregivers (Drop in class)",
+      "event_name_es": "Estudio Sensorial para Pequeños y Cuidadores (clase sin inscripción)",
       "type": "Kids Programs",
       "day": "Wednesday",
       "time": "10:00 AM – 10:45 AM",
@@ -11477,14 +11477,14 @@
       "notes": "$36 per class, booked one date at a time. Sign up in advance — you are not registered without a confirmation email. Classes are at MYSTIC's B-SIDE studio on E. Blithedale, not the Sunnyside Ave shop.",
       "notes_es": "$36 por clase, reservando una fecha a la vez. Inscríbete con anticipación — no estás registrado sin un correo de confirmación. Las clases son en el estudio B-SIDE de MYSTIC en E. Blithedale, no en la tienda de Sunnyside Ave.",
       "location_group": "Mill Valley",
-      "internal_notes": "Added 2026-09-06 at Alexandra's request, sourced live from mysticmv.com/shop/youth-classes. The page had to be read in a browser — it is JavaScript-rendered and WebFetch returned an empty shell with nothing but the word MYSTIC, which would have looked like a dead page.\nBoth classes read \"EVERY {day}\", \"Choose your days!\", \"(10am-10:45am)\", \"$36\", \"(0-4yrs)\".\n⚠ ADDRESS IS A JUDGEMENT CALL. MYSTIC lists TWO Mill Valley spaces — \"shop + studio: 31 sunnyside ave\" and \"b-side studio: 18 E. Blithedale Ave\" — and the class listings do not say which one hosts these. 31 Sunnyside is used here because it is the one called 'studio'. The public notes tell a reader to confirm, so nobody drives to the wrong door.\nREGISTRATION IS NOT OPTIONAL despite these being 'drop-in' in the everyday sense. The page states: \"If you do not reach a confirmation page or receive a confirmation email, you are not registered.\"\nADDRESS RESOLVED 2026-09-07 by Alexandra: both classes are at the B-SIDE studio, 18 E. Blithedale Ave, Suite 12 — NOT 31 Sunnyside Ave, which is what this record originally carried. MYSTIC's site lists both spaces and its class pages name neither, so the first pass picked Sunnyside because it is the one labelled 'studio'. That was wrong. The suite number came from Alexandra and is not on the website. The public notes now name the right building explicitly rather than telling readers to work it out."
+      "internal_notes": "Added 2026-09-06 at Alexandra's request, sourced live from mysticmv.com/shop/youth-classes. The page had to be read in a browser — it is JavaScript-rendered and WebFetch returned an empty shell with nothing but the word MYSTIC, which would have looked like a dead page.\nBoth classes read \"EVERY {day}\", \"Choose your days!\", \"(10am-10:45am)\", \"$36\", \"(0-4yrs)\".\n⚠ ADDRESS IS A JUDGEMENT CALL. MYSTIC lists TWO Mill Valley spaces — \"shop + studio: 31 sunnyside ave\" and \"b-side studio: 18 E. Blithedale Ave\" — and the class listings do not say which one hosts these. 31 Sunnyside is used here because it is the one called 'studio'. The public notes tell a reader to confirm, so nobody drives to the wrong door.\nREGISTRATION IS NOT OPTIONAL despite these being 'drop-in' in the everyday sense. The page states: \"If you do not reach a confirmation page or receive a confirmation email, you are not registered.\"\nADDRESS RESOLVED 2026-09-07 by Alexandra: both classes are at the B-SIDE studio, 18 E. Blithedale Ave, Suite 12 — NOT 31 Sunnyside Ave, which is what this record originally carried. MYSTIC's site lists both spaces and its class pages name neither, so the first pass picked Sunnyside because it is the one labelled 'studio'. That was wrong. The suite number came from Alexandra and is not on the website. The public notes now name the right building explicitly rather than telling readers to work it out. TITLE RENAMED 2026-09-11 at Alexandra's instruction, from \"Sensory Studio for Littles + Caregivers\". Spanish title updated to match."
     },
     {
       "id": 1096,
       "organization": "MYSTIC",
       "venue": "MYSTIC B-SIDE Studio",
-      "event_name": "Movement for Minis + Caregivers",
-      "event_name_es": "Movimiento para Pequeños y Cuidadores",
+      "event_name": "Movement for Minis + Caregivers (Drop in class)",
+      "event_name_es": "Movimiento para Pequeñitos y Cuidadores (clase sin inscripción)",
       "type": "Kids Programs",
       "day": "Friday",
       "time": "10:00 AM – 10:45 AM",
@@ -11505,7 +11505,7 @@
       "notes": "$36 per class, booked one date at a time. Sign up in advance — you are not registered without a confirmation email. Classes are at MYSTIC's B-SIDE studio on E. Blithedale, not the Sunnyside Ave shop.",
       "notes_es": "$36 por clase, reservando una fecha a la vez. Inscríbete con anticipación — no estás registrado sin un correo de confirmación. Las clases son en el estudio B-SIDE de MYSTIC en E. Blithedale, no en la tienda de Sunnyside Ave.",
       "location_group": "Mill Valley",
-      "internal_notes": "Added 2026-09-06 at Alexandra's request, sourced live from mysticmv.com/shop/youth-classes. The page had to be read in a browser — it is JavaScript-rendered and WebFetch returned an empty shell with nothing but the word MYSTIC, which would have looked like a dead page.\nBoth classes read \"EVERY {day}\", \"Choose your days!\", \"(10am-10:45am)\", \"$36\", \"(0-4yrs)\".\n⚠ ADDRESS IS A JUDGEMENT CALL. MYSTIC lists TWO Mill Valley spaces — \"shop + studio: 31 sunnyside ave\" and \"b-side studio: 18 E. Blithedale Ave\" — and the class listings do not say which one hosts these. 31 Sunnyside is used here because it is the one called 'studio'. The public notes tell a reader to confirm, so nobody drives to the wrong door.\nREGISTRATION IS NOT OPTIONAL despite these being 'drop-in' in the everyday sense. The page states: \"If you do not reach a confirmation page or receive a confirmation email, you are not registered.\"\nADDRESS RESOLVED 2026-09-07 by Alexandra: both classes are at the B-SIDE studio, 18 E. Blithedale Ave, Suite 12 — NOT 31 Sunnyside Ave, which is what this record originally carried. MYSTIC's site lists both spaces and its class pages name neither, so the first pass picked Sunnyside because it is the one labelled 'studio'. That was wrong. The suite number came from Alexandra and is not on the website. The public notes now name the right building explicitly rather than telling readers to work it out."
+      "internal_notes": "Added 2026-09-06 at Alexandra's request, sourced live from mysticmv.com/shop/youth-classes. The page had to be read in a browser — it is JavaScript-rendered and WebFetch returned an empty shell with nothing but the word MYSTIC, which would have looked like a dead page.\nBoth classes read \"EVERY {day}\", \"Choose your days!\", \"(10am-10:45am)\", \"$36\", \"(0-4yrs)\".\n⚠ ADDRESS IS A JUDGEMENT CALL. MYSTIC lists TWO Mill Valley spaces — \"shop + studio: 31 sunnyside ave\" and \"b-side studio: 18 E. Blithedale Ave\" — and the class listings do not say which one hosts these. 31 Sunnyside is used here because it is the one called 'studio'. The public notes tell a reader to confirm, so nobody drives to the wrong door.\nREGISTRATION IS NOT OPTIONAL despite these being 'drop-in' in the everyday sense. The page states: \"If you do not reach a confirmation page or receive a confirmation email, you are not registered.\"\nADDRESS RESOLVED 2026-09-07 by Alexandra: both classes are at the B-SIDE studio, 18 E. Blithedale Ave, Suite 12 — NOT 31 Sunnyside Ave, which is what this record originally carried. MYSTIC's site lists both spaces and its class pages name neither, so the first pass picked Sunnyside because it is the one labelled 'studio'. That was wrong. The suite number came from Alexandra and is not on the website. The public notes now name the right building explicitly rather than telling readers to work it out. TITLE RENAMED 2026-09-11 at Alexandra's instruction, from \"Movement for Minis + Caregivers\". Spanish title updated to match."
     },
     {
       "organization": "Marinwood Community Services District",
@@ -12936,8 +12936,8 @@
     {
       "organization": "Little Village Marin",
       "venue": "Town Park",
-      "event_name": "Little Village Marin Park Day - free playgroup, ages 0-5",
-      "event_name_es": "Día de Parque de Little Village Marin - grupo de juego gratuito, de 0 a 5 años",
+      "event_name": "Free Playgroup - Little Village Marin Park Day",
+      "event_name_es": "Grupo de Juego Gratuito - Día de Parque de Little Village Marin",
       "type": "Kids Programs",
       "day": "Saturday",
       "time": "3:00 PM – 4:30 PM",
@@ -12961,14 +12961,14 @@
       "website": "https://www.instagram.com/littlevillagemarin/",
       "notes": "",
       "location_group": "Corte Madera",
-      "internal_notes": "Added 2026-09-10 from Little Village Marin's own Instagram flyer, supplied by Alexandra. The group runs two park days a month at different parks, so these are entered as two one-offs rather than a recurring record — there is no ordinal rule that fits 'second Saturday at one park, third Sunday at another'. Park address confirmed independently (Corte Madera Town Park, 498 Tamalpais Dr). No website found beyond Instagram.",
+      "internal_notes": "Added 2026-09-10 from Little Village Marin's own Instagram flyer, supplied by Alexandra. The group runs two park days a month at different parks, so these are entered as two one-offs rather than a recurring record — there is no ordinal rule that fits 'second Saturday at one park, third Sunday at another'. Park address confirmed independently (Corte Madera Town Park, 498 Tamalpais Dr). No website found beyond Instagram. TITLE RENAMED 2026-09-11 at Alexandra's instruction, from \"Little Village Marin Park Day - free playgroup, ages 0-5\". Spanish title updated to match.",
       "id": 1144
     },
     {
       "organization": "Little Village Marin",
       "venue": "Millennium Playground, San Anselmo Memorial Park",
-      "event_name": "Little Village Marin Park Day - free playgroup, ages 0-5",
-      "event_name_es": "Día de Parque de Little Village Marin - grupo de juego gratuito, de 0 a 5 años",
+      "event_name": "Free Playgroup - Little Village Marin Park Day",
+      "event_name_es": "Grupo de Juego Gratuito - Día de Parque de Little Village Marin",
       "type": "Kids Programs",
       "day": "Sunday",
       "time": "9:30 AM – 11:30 AM",
@@ -12992,7 +12992,7 @@
       "website": "https://www.instagram.com/littlevillagemarin/",
       "notes": "",
       "location_group": "San Anselmo",
-      "internal_notes": "Added 2026-09-10 from Little Village Marin's own Instagram flyer, supplied by Alexandra. Second of the two September park days. Millennium Playground sits inside San Anselmo Memorial Park, 1000 Sir Francis Drake Blvd — address confirmed independently, since the flyer gives only the playground name.",
+      "internal_notes": "Added 2026-09-10 from Little Village Marin's own Instagram flyer, supplied by Alexandra. Second of the two September park days. Millennium Playground sits inside San Anselmo Memorial Park, 1000 Sir Francis Drake Blvd — address confirmed independently, since the flyer gives only the playground name. TITLE RENAMED 2026-09-11 at Alexandra's instruction, from \"Little Village Marin Park Day - free playgroup, ages 0-5\". Spanish title updated to match.",
       "id": 1145
     }
   ]
