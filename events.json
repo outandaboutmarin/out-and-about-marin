@@ -13025,6 +13025,37 @@
       "notes": "$36 per class. Choose the dates you want — but you must register and pay online before each class; you are not booked until you receive the confirmation email.",
       "location_group": "Mill Valley",
       "internal_notes": "Added 2026-09-11 from the @mysticmillvalley September poster Alexandra forwarded, then VERIFIED against mysticmv.com's own youth-classes booking page. The vendor's page is the source for every field: Thursday 10:00-11:00 AM (the poster said 10:00-10:45) and ages 0-5 (the other two Minis classes are 0-4). Third of the three Minis classes; the other two are ids 1095 and 1096."
+    },
+    {
+      "id": 1147,
+      "organization": "Annual Hamilton Community Garage Sale",
+      "venue": "Hamilton Landing",
+      "event_name": "Annual Hamilton Community Garage Sale - multi-home, open to all",
+      "event_name_es": "Venta de Garaje Comunitaria Anual de Hamilton - varias casas, abierta a todos",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "8:00 AM – 12:00 PM",
+      "time_of_day": "Morning",
+      "town": "Novato",
+      "address": "Hamilton Landing, Novato, CA 94949",
+      "ages": "All ages",
+      "cost": "Free to attend",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-09-12",
+      "expires": "2026-09-12",
+      "status": "Active",
+      "featured": false,
+      "description": "A multi-home garage sale across the Hamilton neighbourhood, held once a year on the Saturday after Labor Day. Anyone can come and browse — worth a slow morning walk with children, and the sort of place secondhand toys, books and bikes turn up cheaply.",
+      "description_es": "Una venta de garaje en varias casas del barrio de Hamilton, que se celebra una vez al año el sábado después del Día del Trabajo. Cualquiera puede venir a curiosear: vale la pena dar un paseo tranquilo con los niños, y es el tipo de lugar donde aparecen juguetes, libros y bicicletas de segunda mano baratos.",
+      "registration": "Not required",
+      "website": "",
+      "notes": "Open to the public. Sellers must be Hamilton residents.",
+      "location_group": "Novato",
+      "internal_notes": "Added 2026-09-11 from the event's Facebook page, forwarded by Alexandra. The page states the location, the 8am-12noon hours, and that it runs \"typically on the Saturday after Labor Day\" - but publishes NO specific 2026 date. Sat 12 Sep 2026 is the Saturday after Labor Day and ALEXANDRA CONFIRMED that date explicitly on 2026-09-11 rather than it being inferred. No website URL recorded: the only source is a Facebook page and no clean public URL was captured, so the field is left blank rather than guessed."
     }
   ]
 }
