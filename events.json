@@ -2550,7 +2550,7 @@
       "season_start": "",
       "season_end": "",
       "event_date": "2026-06-05",
-      "expires": "2026-09-25",
+      "expires": "2026-06-05",
       "status": "Active",
       "featured": true,
       "description": "Free weekly outdoor jazz and blues concert series at Gabrielson Park in Sausalito. Every Friday, June 5 through September 25 (no show July 3). Stunning Bay views; bring a low chair. 6:30–8 pm (6–7:30 pm in September). 2026 lineup includes the Beau Beau Band, Spike Sikes and His Awesome Hotcakes, Juke Joint, James Henry Hands on Fire, and more.",
@@ -2559,7 +2559,8 @@
       "notes": "Fridays Jun 5–Sep 25, no show Jul 3. Free. Bring low chair.",
       "location_group": "Sausalito/Marin City",
       "event_name_es": "Jazz y Blues junto a la Bahía — Sausalito",
-      "description_es": "Serie de conciertos gratuitos de jazz y blues al aire libre en el Parque Gabrielson de Sausalito. Todos los viernes del 5 de junio al 25 de septiembre (sin función el 3 de julio). Vistas espectaculares de la bahía; traiga una silla baja. De 6:30 a 8 pm."
+      "description_es": "Serie de conciertos gratuitos de jazz y blues al aire libre en el Parque Gabrielson de Sausalito. Todos los viernes del 5 de junio al 25 de septiembre (sin función el 3 de julio). Vistas espectaculares de la bahía; traiga una silla baja. De 6:30 a 8 pm.",
+      "internal_notes": "EXPIRES FIXED 2026-09-13 (open item 51, Alexandra approved): was 2026-09-25, a copy of the series end date, so the nightly purge kept this past record. Set to its own date; it deletes itself on the next daily run. Sibling check the same day found no other record with this fault - the seven other one-offs whose expires follows their date are multi-day events set per the festival rule."
     },
     {
       "id": 255,
