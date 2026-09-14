@@ -4155,17 +4155,43 @@ function featMeta(o){
   }
   return '<b>'+featDateStr(o.d)+'</b>'+(e.town?' · '+e.town:'');
 }
+// ROTATION (added 2026-09-13, Alexandra): the strip's order used to be fixed --
+// pins first, then reserved library slots, then by score -- so the same cards
+// held the same spots all day. Now the chosen nine rotate one slot every
+// FEAT_ROTATE_MS: the card in slot 2 moves to slot 1 and slot 1 goes to the
+// end. The offset comes from the wall clock, not the page load, so every
+// visitor sees the same order at the same moment and a reload does not reset
+// it; over a day each card spends equal time in every slot. WHICH nine are
+// chosen is unchanged -- only their order moves. Pinned cards rotate too.
+var FEAT_ROTATE_MS=5*60*1000;
+function rotateFeatured(sel){var n=sel.length;if(n<2)return sel;var off=Math.floor(Date.now()/FEAT_ROTATE_MS)%n;return off?sel.slice(off).concat(sel.slice(0,off)):sel;}
+// Re-render at each 5-minute boundary. Skipped (and retried next boundary) if
+// the tab is hidden or the visitor has scrolled the strip, so cards never jump
+// out from under someone who is reading them.
+function armFeatRotation(){
+  if(window.__featRotTimer)return;
+  var ms=FEAT_ROTATE_MS-(Date.now()%FEAT_ROTATE_MS)+250;
+  window.__featRotTimer=setTimeout(function(){
+    window.__featRotTimer=null;
+    var row=document.getElementById('featuredRow');
+    if(document.visibilityState==='visible'&&(!row||row.scrollLeft<=4))renderFeatured();
+    else armFeatRotation();
+  },ms);
+}
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&typeof allEvents!=='undefined'&&allEvents&&allEvents.length)renderFeatured();});
 function renderFeatured(){
   var wrap=document.getElementById('featuredWrap'),row=document.getElementById('featuredRow');if(!wrap||!row)return;
   var head=document.getElementById('featuredHead');if(head)head.textContent=currentLang==='es'?'Destacados':'Featured';
   var sel=selectFeatured();
   if(!sel.length){wrap.style.display='none';return;}
   wrap.style.display='block';
+  sel=rotateFeatured(sel);
   row.innerHTML=sel.map(function(o,i){var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
     return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile"><div class="ft-top"><span class="ft-icon">'+featIcon(e)+'</span><div class="ft-kicker">'+featKicker(e)+'</div></div><div class="ft-name">'+name+'</div><div class="ft-meta">'+featMeta(o)+'</div></div></div>';
   }).join('');
   row.onscroll=updateFeatArrows;
   setTimeout(updateFeatArrows,0);
+  armFeatRotation();
 }
 // `dateStr` is the local YYYY-MM-DD this card is being drawn for. It exists so
 // date-scoped alerts (see getAlertNote) fire only on their own occurrence.
