@@ -84,14 +84,16 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
 
     **SIDE BY SIDE IS THE WORKED EXAMPLE — DO NOT PROPOSE IT AGAIN.** It used to be listed here as publishing no schedule. It now publishes a full one (Fall 2026, Sept 8 – Nov 19; Mill Valley Tuesdays 9:30–11:00, San Rafael Thursdays 9:30–11:00, ages 15–30 months), so it WILL look like a new find on every future sweep. It is out of scope anyway, for a specific reason: the page states *"we cannot accommodate drop-in attendance. You must pre-register"*, at $352 member / $385 non-member for 11 classes. **The stated rationale for including JBaby programmes at all is that they allow drop-in** — a closed 11-week enrolled course at $352 is a class you sign up for, not something a family can turn up to. Alexandra confirmed Skip on 2026-09-03. If the JCC ever opens it to drop-ins, that changes the answer.
 
-    **Two programs publish no schedule at all** — Shabbat ShaBabies (its "Join us on these Fridays:" date list does not render; as of 2026-09-03 only a past August date showed) and Family Connections. Do not infer they have stopped; report them as unpublished and, if Alexandra wants them listed, the number is **415.444.8072 / rweiss@marinjcc.org**.
+    **SHABBAT SHABABIES NOW PUBLISHES ITS DATES — corrected 2026-09-24.** This line used to list it among the programmes with no schedule. It now prints a full Friday list (Sep 25, Oct 23, Nov 13, Dec 4 … at 10:30 AM, San Rafael, with Congregation Rodef Sholom; Mill Valley still "coming soon"), and those dates became ids 1204–1206. The dates are NOT a clean ordinal — two fourth Fridays then a second Friday — so store them as dated one-offs, not a Monthly rule. **Family Connections** still publishes no schedule Do not infer they have stopped; report them as unpublished and, if Alexandra wants them listed, the number is **415.444.8072 / rweiss@marinjcc.org**.
 
     (`/programs/` is documented in older notes but **404s as of 2026-08-13**; don't use it.)
 7. **Mill Valley Community Center** — fetch millvalleylibrary.org/calendar.aspx?CID=23 (CivicEngage month grid — page via grid arrows) AND scan event detail pages. The /289/Special-Events page is a stub, do NOT rely on it alone.
 8. **Sausalito City Events** — **RESOLVED 2026-07**: the whole sausalito.gov domain sits behind an Akamai bot-management WAF that 403s any WebFetch/curl request regardless of headers — this is fingerprint/behavior-based, not fixable by URL or header changes. **Use REAL CHROME (`mcp__claude-in-chrome__*`), not the in-app preview browser** — re-confirmed 2026-09-03, when the in-app browser was served a stripped page (day numbers, zero events, HTTP 200) for both September and October, and real Chrome returned both months in full from the same URLs. `navigate` + `get_page_text` is all it takes. The month URL is addressable the same way as source 40: `/city-calendar/-curm-<MONTH>/-cury-<YEAR>`. Correct base URL is sausalito.gov/our-city/local-events/city-calendar (NOT /our-city/calendar-of-events, which 404s). The homepage itself also shows a live preview widget of upcoming events if you need a quick check. Note: this calendar is shared with Sausalito Public Library (#40 below) — same Granicus-powered event system, same event list appears on both sites.
 9. **Enjoy Mill Valley** — fetch enjoymillvalley.com directly.
 10. **Marin Country Mart** — fetch marincountrymart.com/events directly.
-11. **Ronnie's Awesome List** — fetch the current Marin kids roundup page, plus ronniesawesomelist.com/free-music-marin and /outdoor-movies. Newsletter drops Thursdays — check on Friday sweeps.
+11. **Ronnie's Awesome List** — fetch the current Marin kids roundup page, plus ronniesawesomelist.com/free-music-marin. Newsletter drops Thursdays — check on Friday sweeps.
+
+    **`/outdoor-movies` IS NO LONGER A SOURCE — DO NOT FETCH IT (Alexandra, 2026-09-24).** It was re-checked that day and is still the June 27 2017 article. Her instruction: *“you can remove as a source. No need to look going forward.”* The history below is kept because it is the origin of two bad-data incidents and the reason rule 26 exists — but the page is off the checklist, and a sweep should neither fetch it nor attest it.
 
     ⚠⚠ **`/outdoor-movies` IS A 2017 ARTICLE. It is still live, it carries no visible year, and it reads as current.** Published 27 June 2017; it lists Jul 7 / Aug 4 / Sep 8 / Oct 6 at Old Mill Park — all 2017 Fridays. **It has now put bad data into the database twice.** The first time produced the record CLAUDE.md describes as carrying "all four are 2017 Fridays"; the second, on 2026-07-29, produced ids 588/788/789, a Mill Valley "Movies in the Park" season built from *2023* dates (Jun 2 - Oct 13, verified as 2023 against the city's own calendar) and rationalised into an invented "2nd Tuesdays" rule, because those dates happen to be Tuesdays in 2026. Alexandra cancelled the Sep 8 screening on 2026-09-08; id 789 was retired the same day.
 
@@ -101,6 +103,17 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
     - **If the organiser's own page 404s, that is a STOP, not a footnote.** The 2026-07-29 pass recorded that cityofmillvalley.gov/840/Movies-in-the-Park returned 404 and proceeded anyway. On the same day it corrected id 310 from the same list, because the city publishes a working page for that one. **The presence of a verifying page decided which record was right — so no verifying page means do not add the record.**
     - Mill Valley Movies in the Park specifically: the real recent pattern is **Fridays** (2025 was Aug 1 / Sep 5 / Oct 3). No 2026 season is published anywhere findable. **Re-source by phone — Mill Valley Recreation, 415-383-1370 — before re-adding any of it.**
 12. **Bay Area Kid Fun** — fetch bayareakidfun.com/family-friendly-events-in-the-bay-area/, filter to Marin towns only.
+    **STANDING EXCLUSIONS SETTLED 2026-09-24 (Alexandra, on the sweep workbook's Questions tab).** Three
+    recurring scope questions are now answered; do not re-raise them each sweep:
+    - **Teen-only programmes are OUT.** Crafting Meetup for Teens, Teen Library Council, Teen Advisory Board,
+      Teen Anime Club and the like. Her answer was a flat *“skip”*. Tween programming (Books & Bites,
+      Book Snacks, Threads Club) stays in.
+    - **Special events at excluded venues are still excluded.** The Bay Area Discovery Museum's annual Goblin
+      Jamboree was skipped even though it is a named annual fundraiser rather than the everyday drop-in the
+      exclusion was written for. The venue list in source #1 governs.
+    - **Library art exhibits and their receptions are OUT** — MCFL's month-long "Stewards of the Land" with
+      three receptions was skipped. An all-day exhibit is not an event.
+
     **STANDING EXCLUSION — volunteer stewardship work-parties (settled 2026-08-13).** OneTam regularly lists Restoration/Nursery/Workday/Stewards items (Hal Brown Park restoration, Marin Headlands Nursery, Workday at the Bike Park, Tennessee Valley Tuesday Stewards, Landscape Stewardship). **These are out of scope** — adult volunteer shifts, not family programming, and the DB has never carried them. The line: a *work party* is excluded; a **community celebration** framed around service is not — Sausalito's Make a Difference Day and Slide Ranch's Volunteer Workday were both approved on that basis.
 
 13. **Marin County Parks** — the parks.marincounty.org calendar is JS/Trumba and won't fetch directly. PRIMARY: fetch onetam.org/calendar (page 1) and onetam.org/calendar?page=1 (page 2) — server-rendered, reliably returns full Marin County Parks event list. Filter for family/ranger/nature programs.
@@ -129,6 +142,19 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
 44. **Novato Mothers Club — Novato Community Events** — **added 2026-09-02 at Alexandra's request.** Fetch `novatomothersclub.com/page-18142`. A Wild Apricot site; the path resolves to the public "Novato Community Events" page, so if it ever bounces to the root, look for that heading rather than assuming the link is dead.
 
     **What it is, and why it earns a slot.** A hand-curated list maintained by a parent volunteer (contact NMC.NVillalta@gmail.com), not a calendar feed. It is organised as **September Events** (dated one-offs), **Recurring Fall Events** (seasonal date ranges), and **Always Recurring Events** split into Weekly and Monthly. It self-describes as "non-comprehensive". Its value is Novato coverage, which is the thinnest part of this checklist, plus small community items that reach no other source on the list — the Novato History Guild's Pioneer Park Cemetery Tour, Trash to Treasures Flea Market, Movies on the Green.
+
+    **ITS PUBLIC PAGE LAGS ITS INSTAGRAM, AND OCTOBER 2026 WAS SIMPLY ABSENT (2026-09-24).** The page carried
+    September's dated events and the standing recurring lists, but nothing for October — while the club's own
+    Instagram was already posting October flyers (Ghouls Night In on Oct 3, Picnic and Pumpkins on Oct 11).
+    So this source is a floor, not a ceiling: **when the page has no entries for the month you are sweeping,
+    say so in attestation and expect the flyers to arrive separately** rather than concluding the club has
+    nothing on.
+
+    **Two of its three undated "always recurring" leads turned out to be OUTSIDE MARIN (2026-09-24)** — Museum
+    Mondays is at the Charles M. Schulz Museum in **Santa Rosa** and the Box Shop is in **San Francisco**. Only
+    Makers Market at the Mill Valley Lumber Yard survived (id 1217). The page says it spans "Marin and Sonoma
+    County"; it also, quietly, spans the city. **Check the venue's county before proposing anything from the
+    undated lists.**
 
     **TREAT CADENCE FROM THIS SOURCE AS UNVERIFIED. Discovery only.** It is volunteer-maintained and demonstrably carries stale recurrence. On the day it was added it listed "Every other Wednesday: Books & Bubbles at the Novato Library" — which is **exactly the error corrected in id 859 the same morning**, from the library's own Instagram: the real cadence is the 2nd, 4th and 5th Wednesdays. Take names, dates, venues and times as leads; confirm every cadence against the venue before writing it to a record. This is the one source on the list known to have propagated a specific wrong cadence.
 

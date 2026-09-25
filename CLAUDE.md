@@ -387,6 +387,44 @@ Always follow these when adding or editing events — they exist because of spec
     the slots your existing recurring records claim.** A week where the slot is filled by a
     different named programme is a `skip:` on your record, and it is the only signal you will get.
 
+26. **A MONTH-GRID LISTING IS NOT A DATE. OPEN THE EVENT'S OWN PAGE.** Found 2026-09-24 and it
+    nearly put a two-year-old event on the site. The Mill Valley Chamber's calendar rendered
+    "Blessing of the Animals" inside its **October 2026** grid, on Oct 4 — a Sunday, so the
+    weekday check (rule 14) passed cleanly. The event's own detail page on the same site read
+    **"Sunday, October 6, 2024"**. Aggregator grids re-render undated or recurring entries into
+    whatever month you are browsing, so the grid position carries no year at all.
+
+    **The rule: a date is only as good as the deepest page you opened.** A month grid tells you an
+    event exists; the detail page, or better the organiser's own bulletin or calendar, tells you
+    when. Two events were held back on this basis the same day and one was then confirmed from a
+    church bulletin PDF (id 1219) while the other stayed out. This is the same failure class as
+    Ronnie's 2017 outdoor-movies page, except the stale content was wearing the current month's
+    clothes.
+
+27. **THE FEED MAY NAME THIS WEEK'S THEME AS IF IT WERE A NEW EVENT.** MCFL publishes its rotating
+    afterschool slot as "Wednesday Kids' Club: Gaming Club", "… : Sugar Skull Mask Craft" and so
+    on, and Mill Valley names the film in "Family Movie Day: Coco". Each reads as a distinct new
+    programme and each is really one existing record — id 46, whose own description says *"the
+    activity rotates each week between gaming on the Nintendo Switch, LEGO building, and crafts"*,
+    and id 969's monthly Movie Days. Five such proposals reached the review workbook on 2026-09-24
+    and were withdrawn only because `check_duplicates.py` flagged the COLLISION against the
+    recurring record. **This is rule 18's dedup-by-venue check earning its keep: match on day +
+    time + venue and READ the matched record's description before calling a theme a new event.**
+
+    **Which way to resolve it matters.** If the theme is just this week's activity in the usual
+    slot, the dated record is a duplicate and should be dropped. If a *different* programme
+    genuinely displaces the usual one that week — a movie instead of the club, a visiting bat
+    show — keep the special and add `skip: YYYY-MM-DD` to the recurring record, which is how
+    id 46 now carries both Oct 7 and Oct 14.
+
+28. **A LEGITIMATE SPANISH WORD CAN TRIP THE BILINGUAL LINT, AND THE FIX IS THE WORDING, NOT THE
+    LINT.** `--bilingual-lint` flags a Marin town named in one language only, which is what caught
+    a real bug in the past. On 2026-09-24 it fired on id 1214 (Shark Night, in Mill Valley)
+    because **"tiburón" contains "Tiburon"** — the Spanish for shark is also the name of a town
+    twelve miles away. The lint was right to fire: a Spanish reader seeing "Tiburon" on a Mill
+    Valley card would be misled. Reworded to "grandes blancos", which is what Spanish actually
+    calls great whites. **Never suppress a lint finding to make a commit pass — reword the copy.**
+
 25. **WHEN AN ORGANISATION'S OWN TWO CHANNELS DISAGREE, THAT IS NOT A THIRD-PARTY PROBLEM AND THE
     USUAL RULE DOES NOT SETTLE IT.** "Fetch the source that owns the event" assumes the owner speaks
     with one voice. Twice on 2026-09-10 the owner did not:
