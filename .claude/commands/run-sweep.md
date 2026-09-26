@@ -103,6 +103,15 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
     - **If the organiser's own page 404s, that is a STOP, not a footnote.** The 2026-07-29 pass recorded that cityofmillvalley.gov/840/Movies-in-the-Park returned 404 and proceeded anyway. On the same day it corrected id 310 from the same list, because the city publishes a working page for that one. **The presence of a verifying page decided which record was right — so no verifying page means do not add the record.**
     - Mill Valley Movies in the Park specifically: the real recent pattern is **Fridays** (2025 was Aug 1 / Sep 5 / Oct 3). No 2026 season is published anywhere findable. **Re-source by phone — Mill Valley Recreation, 415-383-1370 — before re-adding any of it.**
 12. **Bay Area Kid Fun** — fetch bayareakidfun.com/family-friendly-events-in-the-bay-area/, filter to Marin towns only.
+    **STANDING INCLUSION — single-school PTA events ARE in scope (Alexandra, 2026-09-25).** Her answer to open
+    item 58v: *"Yes, single PTA events are OK."* So a PTA movie night, pancake breakfast or school-grounds fundraiser
+    is a candidate like anything else. **The condition is that the limit must be legible on the card**, which is the
+    handling already used for id 1167 (Strawberry Point School movie night, free “to all SPS families”): put the
+    audience limit in `ages`, in `cost` if entry is only free to that school's families, and in both `description` and
+    `notes`. A family should be able to tell from the card alone whether they can turn up — nobody should drive
+    across the county to a gate that is not open to them. A separate visible marker or badge was raised as a possible
+    second step and is NOT being built; the wording carries it.
+
     **STANDING EXCLUSIONS SETTLED 2026-09-24 (Alexandra, on the sweep workbook's Questions tab).** Three
     recurring scope questions are now answered; do not re-raise them each sweep:
     - **Teen-only programmes are OUT.** Crafting Meetup for Teens, Teen Library Council, Teen Advisory Board,
