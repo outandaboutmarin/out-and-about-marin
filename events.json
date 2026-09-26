@@ -12077,6 +12077,37 @@
       "internal_notes": "Added 2026-09-25 from Little Village Marin’s own Instagram flyer, supplied by Alexandra: \"Spooky Season MEETUP\", \"FRIDAY, OCTOBER 2\", \"3:00 - 4:30 PM\", \"GROSSI FAMILY PUMPKIN PATCH, NOVATO, CA\", \"Come for some fall fun!\". Oct 2 2026 is a Friday, which matches. Patch address taken from ids 914/915. COST NOT STATED: the meetup itself is a Little Village drop-in (their park days are free) but the patch charges for rides and activities, so cost says Not listed rather than Free (rule 22) and the public note points at the patch’s own pricing.",
       "id": 1222,
       "expires": "2026-10-02"
+    },
+    {
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "id": 1223,
+      "organization": "Marin Country Day School",
+      "venue": "Marin Country Day School campus",
+      "event_name": "Book Fair Family Day at Marin Country Day School",
+      "event_name_es": "Feria del Libro — Día Familiar en Marin Country Day School",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "9:30 AM – 4:30 PM",
+      "time_of_day": "Morning",
+      "town": "Corte Madera",
+      "address": "5221 Paradise Dr, Corte Madera, CA 94925",
+      "ages": "All ages",
+      "cost": "Free to attend; books for sale",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-07",
+      "expires": "2026-11-07",
+      "description": "A day of book shopping on the MCDS campus, 9:30 AM – 4:30 PM, with titles chosen by parent volunteers and activities for children and grown-ups alike. Open to the public, not just school families.",
+      "description_es": "Un día de compra de libros en el campus de MCDS, de 9:30 AM a 4:30 PM, con títulos elegidos por madres y padres voluntarios y actividades para niños y adultos. Abierto al público, no solo a las familias de la escuela.",
+      "registration": "Not required",
+      "website": "https://www.mcds.org/supportmcds/events/book-fair/book-fair-family-day",
+      "notes": "Open to the public. Free to come in; the books are for sale.",
+      "location_group": "Corte Madera",
+      "internal_notes": "Added 2026-09-25 at Alexandra's request, confirmed on the school's own page: \"Saturday, November 7\", \"9:30am-4:30pm\", \"MCDS Campus\", 5221 Paradise Drive, Corte Madera, \"Open to the Public\", books curated by parent volunteers plus activities for all ages. Nov 7 2026 is a Saturday, which matches. NOT the single-school scope case open item 58v tracks: this one says open to the public in its own words, where the Strawberry Point movie night is free only to that school's families. No price is published, so cost says free to attend with books for sale rather than Free outright (rule 22)."
     }
   ]
 }
