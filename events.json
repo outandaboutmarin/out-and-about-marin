@@ -6376,13 +6376,13 @@
       "event_name": "Nature Club with Kier Holmes",
       "event_name_es": "Club de Naturaleza con Kier Holmes",
       "day": "Thursday",
-      "time": "3:30 PM",
+      "time": "3:30 PM – 4:30 PM",
       "ages": "Grades 1-3",
-      "notes": "Second Thursday of each month. Registration required — call 415-384-4741.",
+      "notes": "Second Thursday of each month, 3:30 to 4:30 PM in the Smart Garden. Registration required on the library events calendar.",
       "description": "Roll up your sleeves and learn about the environment with nature educator Kier Holmes. Hear a story, then get stuck into hands-on activities in the Smart Garden.",
       "description_es": "Arángate las mangas y aprende sobre el medio ambiente con la educadora ambiental Kier Holmes. Escucha un cuento y participa en actividades prácticas en el Smart Garden.",
-      "registration": "Required — call 415-384-4741",
-      "internal_notes": "Added 2026-09-01 from the Mill Valley Library printed programme guide Alexandra photographed. The guide states KidTime runs THURSDAYS at 3:30pm with registration required (415-384-4741), and Movie Days on THIRD FRIDAYS at 3:00pm. Observed Sep 10, a second Thursday. Replaces one-off id 881, now retired. Known editions: Sep 10 2026. The dated one-offs these came from were REMOVED rather than left Inactive: the COLLISION scan compares what is in the file and does not read status, so six retired records sat as permanent findings, which would have made check_duplicates.py exit non-zero every night and fed a standing duplicates:present flag to the scraper notifier - the exact cry-wolf failure the notifier was designed to avoid. Making COLLISION status-aware would also be defensible, since an Inactive record cannot render and so cannot double-book, but that changes shared scan semantics and was not done unilaterally."
+      "registration": "Required — register on the Mill Valley Library events calendar (millvalleylibrary.libcal.com)",
+      "internal_notes": "Added 2026-09-01 from the Mill Valley Library printed programme guide Alexandra photographed. The guide states KidTime runs THURSDAYS at 3:30pm with registration required (415-384-4741), and Movie Days on THIRD FRIDAYS at 3:00pm. Observed Sep 10, a second Thursday. Replaces one-off id 881, now retired. Known editions: Sep 10 2026. The dated one-offs these came from were REMOVED rather than left Inactive: the COLLISION scan compares what is in the file and does not read status, so six retired records sat as permanent findings, which would have made check_duplicates.py exit non-zero every night and fed a standing duplicates:present flag to the scraper notifier - the exact cry-wolf failure the notifier was designed to avoid. Making COLLISION status-aware would also be defensible, since an Inactive record cannot render and so cannot double-book, but that changes shared scan semantics and was not done unilaterally. 2026-09-26: confirmed on millvalleylibrary.libcal.com (day view 2026-10-08): \"Nature Club - Celebrating Spiders!\", Thu Oct 8, 3:30pm - 4:30pm, Smart Garden, Children, In-Person Registration with a Register! button. Added the end time, and moved registration from the phone number to the online calendar. Oct 8 is the second Thursday, so the stored ordinal holds for October. The monthly theme is not stored as a separate event (rule 27)."
     },
     {
       "id": 967,
@@ -7102,7 +7102,7 @@
     {
       "id": 1001,
       "featured": false,
-      "status": "Active",
+      "status": "Inactive",
       "organization": "San Rafael Public Library - Downtown",
       "venue": "San Rafael Public Library - Downtown",
       "event_name": "Poetic Playlist",
@@ -7126,7 +7126,7 @@
       "location_group": "San Rafael",
       "event_date": "2026-10-03",
       "expires": "2026-10-03",
-      "internal_notes": "Added 2026-09-03 from the weekly sweep (window Sep 4 - Oct 31), workbook daily_sweep_2026-09-03_review.xlsx, Alexandra marked Approve. The calendar does not state an audience for this one; flagged as unconfirmed in the workbook and approved anyway."
+      "internal_notes": "Added 2026-09-03 from the weekly sweep (window Sep 4 - Oct 31), workbook daily_sweep_2026-09-03_review.xlsx, Alexandra marked Approve. The calendar does not state an audience for this one; flagged as unconfirmed in the workbook and approved anyway. RETIRED 2026-09-26 (status Inactive, not deleted): picking events for the week-of-Oct-1 posts, the San Rafael library's own calendar (srpubliclibrary.org/events, agenda for 10-3-2026) describes it as \"A creative writing class for girls and gender-expansive youth ages 12-18\", 11:00 am - 12:30 pm, with tickets. The record said All ages and \"An hour of poetry and music\". A 12-18 class falls under the standing exclusion \"Teen-only programmes are OUT\" (run-sweep.md, settled 2026-09-24), so it is retired rather than corrected. Reactivate only on Alexandra's say-so."
     },
     {
       "id": 1002,
