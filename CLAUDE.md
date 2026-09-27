@@ -519,6 +519,35 @@ Separate from the recurring Weekly Sweep: Alexandra sometimes hands over a curat
   - **Strip anything a visitor doesn't need.** Twice in two days she asked for internal detail to come off a public listing — first the Dirty Sneaks commentary, then the amber notes box on id 530. See rule 19; this is the same instinct applied to `description` as well as `notes`.
   - **Cancellations are flagged, not deleted.** For "Truckloads of Fun" (Aug 21, Mill Valley) she asked for a flag reading *"cancelled - this event was erroneously posted and is not happening!"* — done as a dated `ALERT[2026-08-21]:` per rule 17, leaving the record in place. Delete only when a source itself says CANCELED and there's no value in the record.
 - **Mobile tap targets.** The "Back to events" button took three attempts on 2026-08-20 before it was right, and the lesson generalizes: growing an invisible tap zone does nothing a user can perceive, and a "technically 44px" control can still read as small. Her standard is that the **text itself** is comfortably sized — `.detail-back` ended at `font-size: 1.15rem; font-weight: 600; color: #fff` with a 44px minimum target. When she says a control feels small, enlarge what's visible, not just what's clickable.
+- **Grown-Ups Only! records: `ages` must not repeat the type.** The list card prints type, ages and
+  cost as three pills side by side, so `ages: "Grown-ups only"` under a Grown-Ups Only! type reads
+  "Grown-Ups Only! · Grown-ups only" (caught by Alexandra 2026-09-26 on the Golden Gate Mahjong
+  mockup). Use **`Adults`**, or `18+` / `21+` when the organiser states a minimum. Same instinct for
+  `notes`: do not restate the audience the type badge already carries.
+- **Pills are short; the notes box holds the detail.** `ages` and `cost` both render as pills on the
+  list card, and a long value wraps the card to three lines. For Stroller Strides the cost became
+  `$20 · first class free` with the full price list in `notes`, and the age
+  `0-5 yrs, with a caregiver` rather than a sentence.
+- **A title longer than ~30 characters is cut on the phone list** (`.card-title` is one line with an
+  ellipsis): "Chinese Mahjong Intro Night with …". The event page shows it in full. She may still
+  want the long one (she did, 2026-09-26) — say so when proposing, then follow her call.
+- **Online events**: `town` and `location_group` both `Virtual`, `address` "Online — link sent on
+  registration" (ids 110, 1229, 1230). One record per session date, like any multi-date event.
+- **Adult-focused events are her call case by case.** She skipped the Monarch seminar as
+  adult-focused (item 58j) and then asked for Todd Sarner's online parenting workshop (ids
+  1229/1230, sponsored, ends with a paid-cohort pitch). Flag adult-focused or sales-funnel events
+  when drafting them; do not refuse them. When the organiser discloses a pitch, the description
+  says so too.
+- **`check_duplicates.does_event_occur_on()` is the RECURRING-occurrence port.** It never looks at a
+  One-off's `event_date`, so a quick "what's on Oct 6?" loop built on it returns every One-off whose
+  `day` is a Tuesday (it offered a Dec 8 Santa visit). Filter One-offs by `event_date` yourself;
+  the scans already do.
+- **Standing findings in `check_duplicates.py` that are CORRECT and must not be "fixed"** (there is
+  no allowlist; the convention is a dated `CHECKED` note in `internal_notes` on both records):
+  ids **1153/1154/1155** (three fire stations, same name and date, three places); **1156/1158**
+  (one weekly Pavilion playgroup split in two because a year-wrapping season does not render);
+  **3 vs 952** and **3 vs 1183** (Belvedere-Tiburon runs several programmes for different ages in
+  its Wednesday 3:30 slot — confirmed on the library's own calendar for Oct 21, 2026-09-26).
 - **When she asks to see them before posting**: draft full bilingual records matching the schema and present them as a list for her Approve/Skip — same shape as a sweep review, just for a handful of events instead of 37 sources. Don't write to `events.json` or push until she confirms, even though this isn't a schema/logic change (the kind of edit rule normally gates on) — the review-first ask itself is what gates it here.
 
 ## Napa County Music — separate sweep process
@@ -838,6 +867,11 @@ The corollary, which has now bitten repeatedly: **a scan that reports clean has 
 
 Full list in `OAA maintence and content/open_items.md`; the dashboard renders it at the artifact URL in `build_dashboard.py`.
 
+- **21 / 59** — advertisers. **21**: three vendors drafted and with mockups (Social Klub ad, FIT4MOM
+  Stroller Strides, Golden Gate Mahjong), all in `OAA Sponsorship and Partners/`. **59**: the app
+  build those mockups imply (a sponsored Featured slot exempt from `selectFeatured()`'s rules like
+  the pin, an ad-page variant of the detail screen, a PARTNER badge, social-link fields). Nothing
+  built yet.
 - **15** — the Instagram programme. **In progress, and the only item with work in flight** — see "Where to pick up" above.
 - **24** — users-table lockdown. A real security item: the site still talks to Supabase `users` with the public key. Deferred by Alexandra, but it leads the dashboard because the cost of waiting is the only one here that grows.
 - **44** — three library records whose cadence cannot be derived from one month of published dates (ids 43, 41, 3). The fourth, id 853, was resolved 2026-09-01 from a flyer.
@@ -847,6 +881,26 @@ Full list in `OAA maintence and content/open_items.md`; the dashboard renders it
 - **39 and 45 closed 2026-09-07**; **30** (September seasonal checks) closed on live data.
 
 ## Where the non-repo files live
+
+**`OAA Sponsorship and Partners/`** (sibling of `OAA maintence and content/`, created by Alexandra
+2026-09-26) — everything advertiser-facing:
+- `Advertising Partners Upload.xlsx` — a `template` tab plus one tab per vendor (`TSK`,
+  `Stroller Strides`, `GGMahj`). Events table in rows 4+ with columns she extended on 2026-09-26
+  (Time, Town, Cost, Instagram, phone, Notes / questions for the vendor); a **Featured Partner Ads**
+  block below (Ad title, Graphic, Verbiage, Mockup file).
+  - **She edits it in Excel. Check it is not open before writing** (`open(path,'r+b')` raises
+    PermissionError while Excel holds it) and ask her to close it rather than writing elsewhere.
+  - **Write the ORIGINAL file in place and leave no copies or `.bak` files in that folder** — her
+    explicit instruction 2026-09-26.
+  - **Re-read the tab before writing**: she edits between passes (renumbered cells, moved the vendor
+    name, added columns) and a row she deleted in Excel had shifted only some columns, leaving one
+    row's values under another row's highlight. Verify row by row.
+- The mockups, as `<Vendor> - <what> mockup.png` + `.html`, with logos in `assets/`. The HTML
+  sources also live in the repo's `templates/` (`ad_social_klub_web.html`, `ad_fit4mom_web.html`,
+  `stroller_strides_monday.html`, `ggmahj_oct6.html`, untracked like the weekly deck templates).
+  The HTML copies carry review notes written for Alexandra: **share the PNG with vendors, not the HTML.**
+- What these mock up is designed but **not built** — see open item **59** and
+  `social_media_and_marketing.md` section 6.
 
 `OAA maintence and content/` in her Documents project folder (NOT in this repo, and never commit review workbooks): `open_items.md` (the master to-do list — count it, do not trust a number written here), `Napa_Live_Music_Tracker_v2.xlsx` (has a **Sweep Learnings** tab written 2026-08-21 — read it before a Napa sweep), and the sweep review workbooks.
 
