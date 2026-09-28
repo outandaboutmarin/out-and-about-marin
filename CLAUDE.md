@@ -899,7 +899,11 @@ Full list in `OAA maintence and content/open_items.md`; the dashboard renders it
   - **Re-read the tab before writing**: she edits between passes (renumbered cells, moved the vendor
     name, added columns) and a row she deleted in Excel had shifted only some columns, leaving one
     row's values under another row's highlight. Verify row by row.
-- The mockups, as `<Vendor> - <what> mockup.png` + `.html`, with logos in `assets/`. The HTML
+- The mockups, as `<Vendor> - <what> mockup.png` + `.html`, **one subfolder per vendor** (`Social Klub/`, `Stroller Strides/`,
+  `Golden Gate Mahj/`, reorganised by Alexandra 2026-09-27) with the logos in a single shared `assets/` folder at the top.
+  **A copy written into a vendor subfolder must reference `../assets/...`**, or its logo breaks; the repo sources keep
+  `assets/...`. When re-rendering a PNG into her folder fails with `OSError [Errno 22]`, the old PNG is open in a viewer:
+  render to the scratchpad and copy over it. The HTML
   sources also live in the repo's `templates/` (`ad_social_klub_web.html`, `ad_fit4mom_web.html`,
   `stroller_strides_monday.html`, `ggmahj_oct6.html`, untracked like the weekly deck templates).
   The HTML copies carry review notes written for Alexandra: **share the PNG with vendors, not the HTML.**
