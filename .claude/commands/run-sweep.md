@@ -187,6 +187,10 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
     family programme, if any, is a separate check). The library listings duplicate source #37; dedupe by venue
     (rule 18), and a library listing with a theme name is usually a themed edition of an existing slot (rule 27).
 
+    **DECLINED 2026-09-28 — do not re-propose:** Alexandra skipped all three items the first review surfaced:
+    the Depot Cafe plaza music (weekly Fri/Sat 5:30 PM, Sun 4-6 PM), the Marin Bluegrass Sessions at Sweetwater
+    (4th Sunday), and the Throckmorton youth musical "Little Red Met a Wolf" (Oct 2-4).
+
 (Note: the numbering here is now contiguous end-to-end — event sources 1–25, libraries 26–41, Learning Bus 42, then later additions (43, 44, 45) kept at the end to protect the historical Attestation Logs — Downtown San Rafael 43 and Novato Mothers Club 44, both of which are event sources and should be worked with 1–25. It previously restarted at 24 for the libraries, so #24 meant two different sources; fixed 2026-08-09 when Marin Magazine was added. Treat each numbered line as one checklist item — that's the working granularity, and it is what the Attestation Log rows key off.)
 
 ### Libraries (16) — every sweep, no exceptions, even though programs are "recurring/already in DB" — one-off guest performers and specials show up on these calendars constantly
