@@ -43,7 +43,7 @@ Read `CLAUDE.md` first for the event schema, data quality rules, and dedup rules
    - Do NOT report a source as done from assumption. If you could not complete a source, say so explicitly rather than silently skipping it.
 3. **If you cannot complete all sources in one session**, tell Alexandra upfront before starting, rather than silently presenting a partial sweep as complete.
 4. **Build the review workbook** with two sheets:
-   - **Sheet 1 "Attestation Log"**: one row per source (**all 44** — the two halves of this sentence used to disagree, reading "all 43" and "the checklist is 42 items"; both are now 44; this line said 38 until 2026-08-27 and a stale count here invites an under-attested sweep) — columns: Source | Category (Event Source / Library / Learning Bus) | URL Fetched | Method | Result | # Current Items Reviewed | Newest Item Date Seen.
+   - **Sheet 1 "Attestation Log"**: one row per source (**all 45** — the two halves of this sentence used to disagree, reading "all 43" and "the checklist is 42 items"; both are now 45 (44 until the Mill Valley Briefing was added 2026-09-28); this line said 38 until 2026-08-27 and a stale count here invites an under-attested sweep) — columns: Source | Category (Event Source / Library / Learning Bus) | URL Fetched | Method | Result | # Current Items Reviewed | Newest Item Date Seen.
    - **Sheet 2 "Weekly Sweep"**: one row per genuinely new candidate — columns: Decision (blank, for Alexandra to fill Approve/Skip) | Event Name | Date | Day | Time | Venue | Town | Description | Source URL | Notes | Type | Location Filter | Ages | Cost | Indoor/Outdoor | Cadence. Flag anything genuinely uncertain with "⚠ POSSIBLE DUPE" in Notes rather than silently including or excluding it.
 5. **Save the workbook** to `C:\Users\AWalter\Documents\2. Claude-Work\PROJECTS\OAA Marin\OAA maintence and content\daily_sweep_YYYY-MM-DD_review.xlsx` (today's date). Do not save it inside this repo, and do not commit/push it.
 6. **Summarize in chat**: how many sources were fully checked, how many candidates were found, any sources you couldn't complete, and where the review file is. Tell Alexandra to fill in the Decision column and let you know when it's ready for `/process-sweep`.
@@ -171,7 +171,23 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
 
     **Two things to filter.** It deliberately spans "Marin and Sonoma County", and Sonoma is outside this app's geography — Tomales and Point Reyes are in Marin and stay, Rohnert Park, Petaluma and Sonoma Farm Trails do not. It also links **member-only events behind a login**; those are out of scope, do not attempt to reach them.
 
-(Note: the numbering here is now contiguous end-to-end — event sources 1–25, libraries 26–41, Learning Bus 42, then two later additions kept at the end to protect the historical Attestation Logs — Downtown San Rafael 43 and Novato Mothers Club 44, both of which are event sources and should be worked with 1–25. It previously restarted at 24 for the libraries, so #24 meant two different sources; fixed 2026-08-09 when Marin Magazine was added. Treat each numbered line as one checklist item — that's the working granularity, and it is what the Attestation Log rows key off.)
+
+45. **Mill Valley Briefing — Mill Valley Event Calendar** — **added 2026-09-28 at Alexandra's request.** Fetch
+    `newsletter.millvalleybriefing.com/p/mill-valley-event-calendar` (WebFetch reads it whole; not paywalled). It is a
+    **weekly article, not a live calendar**: one page covering a single week (on 2026-09-28 it covered Sep 27 - Oct 4),
+    organised by day with venue, time, cost and a one-line description, all in Mill Valley. So on a sweep it only
+    reaches the first week of the window: read it for discovery and cross-checking, then go to each organiser for
+    later dates.
+
+    **What it is good for:** it catches Mill Valley venues no other source covers — the **Depot Cafe plaza music**
+    (Fri/Sat 5:30 PM, Sun 4-6 PM, free), **Sweetwater's** daytime and all-ages shows (e.g. the free Marin Bluegrass
+    Sessions, 4th Sunday), the **Throckmorton Theatre** youth productions, O'Hanlon Center, and Tam Valley Community
+    Center. **What to filter:** most of each issue is adult programming — author talks, O'Hanlon workshops, Sweetwater
+    evening concerts, comedy, and in early October the **Mill Valley Film Festival** screenings (adult slate; its
+    family programme, if any, is a separate check). The library listings duplicate source #37; dedupe by venue
+    (rule 18), and a library listing with a theme name is usually a themed edition of an existing slot (rule 27).
+
+(Note: the numbering here is now contiguous end-to-end — event sources 1–25, libraries 26–41, Learning Bus 42, then later additions (43, 44, 45) kept at the end to protect the historical Attestation Logs — Downtown San Rafael 43 and Novato Mothers Club 44, both of which are event sources and should be worked with 1–25. It previously restarted at 24 for the libraries, so #24 meant two different sources; fixed 2026-08-09 when Marin Magazine was added. Treat each numbered line as one checklist item — that's the working granularity, and it is what the Attestation Log rows key off.)
 
 ### Libraries (16) — every sweep, no exceptions, even though programs are "recurring/already in DB" — one-off guest performers and specials show up on these calendars constantly
 
