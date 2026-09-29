@@ -701,81 +701,58 @@ function initSupabase() {
 
 // ── Supabase helpers ──
 
+// ── Users table: every read and write goes through three Edge Functions ──
+// Open item 24. The browser no longer touches the `users` table with the public
+// key; `login`, `signup` and `save-profile` (supabase/functions/) do it with the
+// service role, so the table can be closed to the public. Each function answers
+// expected outcomes with HTTP 200 + { ok, code }, because functions.invoke hides
+// the body of non-2xx responses.
+async function callUserFn(name, body) {
+  if (!db) return { ok: false, code: 'offline' };
+  try {
+    const { data, error } = await db.functions.invoke(name, { body });
+    if (error) { console.warn(name + ' error:', error.message || error); return { ok: false, code: 'server' }; }
+    return data || { ok: false, code: 'server' };
+  } catch (e) { console.warn(name + ' unavailable:', e); return { ok: false, code: 'offline' }; }
+}
+
+// Returns the profile row (without the pin) or null.
 async function dbGetUser(phone, pin) {
-  try {
-    console.log('Supabase: attempting login for phone', phone);
-    const hashedPin = await hashPin(pin);
-    const { data, error } = await db
-      .from('users')
-      .select('*')
-      .eq('phone', phone)
-      .eq('pin', hashedPin)
-      .single();
-    if (error) {
-      console.error('Supabase login error:', error.message, error.code, error.details);
-      return null;
-    }
-    console.log('Supabase: login success', data);
-    return data;
-  } catch(e) {
-    console.error('Supabase login exception:', e);
-    return null;
-  }
+  const r = await callUserFn('login', { phone, pin });
+  return r.ok ? r.user : null;
 }
 
+// Returns { user } on success, { exists: true } if the phone is taken, or null.
 async function dbCreateUser(user) {
-  try {
-    console.log('Supabase: attempting to create user for phone', user.phone);
-    const hashedPin = await hashPin(user.pin);
-    const { data, error } = await db
-      .from('users')
-      .insert([{
-        phone: user.phone,
-        pin: hashedPin,
-        name: user.name,
-        zip: user.zip,
-        ages: user.ages,
-        referral: user.referral,
-        saved_events: user.savedEvents || [],
-        default_filters: user.defaultFilters || {},
-        plan: user.plan || 'beta',
-        member_since: user.memberSince
-      }])
-      .select()
-      .single();
-    if (error) {
-      console.error('Supabase create error:', error.message, error.code, error.details, error.hint);
-      return null;
-    }
-    console.log('Supabase: user created successfully', data);
-    return data;
-  } catch(e) {
-    console.error('Supabase exception:', e);
-    return null;
+  const r = await callUserFn('signup', {
+    phone: user.phone, pin: user.pin, name: user.name, zip: user.zip, ages: user.ages,
+    referral: user.referral, saved_events: user.savedEvents || [],
+    default_filters: user.defaultFilters || {}, member_since: user.memberSince
+  });
+  if (r.ok) return { user: r.user };
+  if (r.code === 'exists') return { exists: true };
+  return null;
+}
+
+// The browser keeps the SHA-256 of the PIN (never the digits) as proof of ownership.
+async function pinProof() {
+  const p = String((currentUser && currentUser.pin) || '');
+  if (/^\d{4}$/.test(p)) {            // older sessions stored the digits: upgrade them in place
+    currentUser.pin = await hashPin(p);
+    try { localStorage.setItem('oaam_user', JSON.stringify(currentUser)); } catch (e) {}
   }
+  return currentUser ? currentUser.pin : '';
 }
 
+let saveAuthWarned = false;
 async function dbUpdateUser(phone, updates) {
-  try {
-    const { error } = await db
-      .from('users')
-      .update(updates)
-      .eq('phone', phone);
-    if (error) console.warn('Supabase update error:', error.message);
-  } catch(e) { console.warn('Supabase unavailable:', e); }
-}
-
-async function dbCheckPhoneExists(phone) {
-  try {
-    const { data, error } = await db
-      .from('users')
-      .select('phone')
-      .eq('phone', phone)
-      .single();
-    if (error && error.code === 'PGRST116') return false; // not found
-    if (error) return false;
-    return !!data;
-  } catch(e) { return false; }
+  const r = await callUserFn('save-profile', { phone, pin_hash: await pinProof(), updates });
+  if (!r.ok && r.code === 'unauthorized' && !saveAuthWarned) {
+    saveAuthWarned = true;              // e.g. the PIN was changed on another device
+    alert(currentLang === 'es'
+      ? 'Tus cambios se guardaron en este dispositivo. Vuelve a iniciar sesión para sincronizarlos.'
+      : 'Your changes are saved on this device. Please sign in again to sync them to your account.');
+  }
 }
 
 async function logActivity(actionType, details = {}) {
@@ -801,7 +778,6 @@ function mapDbUser(dbUser) {
   return {
     name: dbUser.name,
     phone: dbUser.phone,
-    pin: dbUser.pin,
     zip: dbUser.zip,
     ages: Array.isArray(dbUser.ages) ? dbUser.ages : (dbUser.ages ? [dbUser.ages] : []),
     referral: dbUser.referral || '',
@@ -2985,15 +2961,7 @@ async function completeSignup() {
 
   if (!phone || !pin) { alert(currentLang==='es' ? 'Vuelve e ingresa tu número y PIN.' : 'Please go back and enter your phone number and PIN.'); showLogin(); return; }
 
-  // Check if phone already registered
   if (btn) { btn.textContent = 'Setting up…'; btn.disabled = true; }
-  const exists = await dbCheckPhoneExists(phone);
-  if (exists) {
-    if (btn) { btn.textContent = "Let's go →"; btn.disabled = false; }
-    alert(currentLang==='es' ? 'Este número ya está registrado. Inicia sesión.' : 'This phone number is already registered. Please sign in instead.');
-    showLogin();
-    return;
-  }
 
   currentUser = {
     name, phone, pin, zip,
@@ -3004,14 +2972,22 @@ async function completeSignup() {
     plan: 'beta'
   };
 
-  // Save to Supabase
+  // Create the account (the signup function also rejects a phone that is already registered)
   const dbResult = await dbCreateUser(currentUser);
-  if (dbResult) {
-    currentUser.id = dbResult.id;
+  if (dbResult && dbResult.exists) {
+    currentUser = null;
+    if (btn) { btn.textContent = "Let's go →"; btn.disabled = false; }
+    alert(currentLang==='es' ? 'Este número ya está registrado. Inicia sesión.' : 'This phone number is already registered. Please sign in instead.');
+    showLogin();
+    return;
+  }
+  if (dbResult && dbResult.user) {
+    currentUser.id = dbResult.user.id;
     console.log('User saved to Supabase ✓');
   } else {
     console.warn('Supabase save failed — using localStorage only');
   }
+  currentUser.pin = await hashPin(pin);   // keep the hash, never the digits
 
   logActivity('login');
   // GA4 sign-up conversion (no PII — never send phone/name/PIN)
@@ -3052,6 +3028,7 @@ async function handleLogin() {
   const dbUser = await dbGetUser(phone, pin);
   if (dbUser) {
     currentUser = mapDbUser(dbUser);
+    currentUser.pin = await hashPin(pin);   // proof of ownership for save-profile
     localStorage.setItem('oaam_user', JSON.stringify(currentUser));
     logActivity('login');
     if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
@@ -3065,15 +3042,17 @@ async function handleLogin() {
   const saved = localStorage.getItem('oaam_user');
   if (saved) {
     const u = JSON.parse(saved);
-    if (u.phone === phone && u.pin === pin) {
+    const pinHash = await hashPin(pin);
+    if (u.phone === phone && (u.pin === pin || u.pin === pinHash)) {
       currentUser = u;
-      // Migrate this user to Supabase silently
-      dbCreateUser(u).then(dbResult => {
-        if (dbResult) {
-          currentUser.id = dbResult.id;
+      // Migrate this user to Supabase silently (the signup function needs the digits)
+      dbCreateUser({ ...u, pin }).then(dbResult => {
+        if (dbResult && dbResult.user) {
+          currentUser.id = dbResult.user.id;
           localStorage.setItem('oaam_user', JSON.stringify(currentUser));
         }
       });
+      currentUser.pin = pinHash;
       logActivity('login');
       if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
       showScreen('app');
@@ -4907,6 +4886,10 @@ async function resetConfirm() {
   if (!ok) {
     err.textContent = currentLang === 'es' ? 'Código incorrecto o expirado. Inténtalo de nuevo.' : 'Incorrect or expired code. Please try again.';
     err.style.display = 'block'; return;
+  }
+  if (currentUser && currentUser.phone === phone) {
+    currentUser.pin = await hashPin(newPin);
+    try { localStorage.setItem('oaam_user', JSON.stringify(currentUser)); } catch (e) {}
   }
   showResetStep(3);
 }
