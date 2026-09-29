@@ -1285,6 +1285,7 @@ function mapDbUser(dbUser) {
   .detail-contact a { color: var(--navy); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
   .follow-label { font-size: 0.62rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem 0.75rem 0; }
   a.secondary-btn { text-decoration: none; }
+  .partner-disclose { font-size: 0.62rem; color: var(--text-muted); text-align: center; padding: 0.75rem 0.75rem 0; line-height: 1.5; }
   .card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
   .card-title {
     font-family: var(--font-serif);
@@ -2541,6 +2542,7 @@ function mapDbUser(dbUser) {
       <div class="follow-label" id="detailFollowLabel"></div>
       <div class="secondary-row" id="detailFollowRow"></div>
     </div>
+    <div class="partner-disclose" id="detailDisclose" style="display:none"></div>
   </div>
 </div>
 
@@ -4213,6 +4215,13 @@ function renderPartnerExtras(e) {
   const es = currentLang === 'es';
   const badge = document.getElementById('detailPartnerBadge');
   if (badge) { badge.textContent = es ? 'Colaborador' : 'Partner'; badge.style.display = e.partner === true ? 'inline-block' : 'none'; }
+  // Paid-listing disclosure at the foot of the page (2026-09-28), same wording as the Featured ad.
+  const disc = document.getElementById('detailDisclose');
+  if (disc) {
+    disc.textContent = es ? 'Anuncio patrocinado. Out AND About Marin recibe un pago por destacar este negocio local.'
+                          : 'Sponsored listing. Out AND About Marin is paid to feature this local business.';
+    disc.style.display = e.partner === true ? 'block' : 'none';
+  }
 
   const box = document.getElementById('detailContact');
   if (box) {
