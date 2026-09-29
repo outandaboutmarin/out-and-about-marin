@@ -877,7 +877,7 @@ Full list in `OAA maintence and content/open_items.md`; the dashboard renders it
   the pin, an ad-page variant of the detail screen, a PARTNER badge, social-link fields). Nothing
   built yet.
 - **15** — the Instagram programme. **In progress, and the only item with work in flight** — see "Where to pick up" above.
-- **24** — users-table lockdown. A real security item: the site still talks to Supabase `users` with the public key. Deferred by Alexandra, but it leads the dashboard because the cost of waiting is the only one here that grows.
+- **24 CLOSED 2026-09-28** — the `users` table is private. **The browser must never touch `users` directly again.** Sign-in, sign-up and saving call the Edge Functions `login`, `signup` and `save-profile` (source in `supabase/functions/`, deployed by pasting into the Supabase dashboard, JWT verification OFF). Any new profile field has to be added to the function's select list (`PROFILE`) and, if the browser may change it, to `save-profile`'s `ALLOWED` list, then redeployed. The browser keeps the SHA-256 of the PIN as `currentUser.pin` (never the digits) and sends it as `pin_hash`. There is no Supabase CLI on this machine; deploys are done by Alexandra in the dashboard. Follow-up: **item 60**, rate-limit `login`.
 - **44** — three library records whose cadence cannot be derived from one month of published dates (ids 43, 41, 3). The fourth, id 853, was resolved 2026-09-01 from a flyer.
 - **34** — app code quality audit, not started; six confirmed findings already in hand. Needs her call on report-vs-fix.
 - **33** — Tide Pool Table, scope undefined.
