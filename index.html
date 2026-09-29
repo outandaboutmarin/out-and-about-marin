@@ -1269,6 +1269,22 @@ function mapDbUser(dbUser) {
     letter-spacing: 0.04em; text-transform: uppercase;
   }
   .card-left { flex: 1; min-width: 0; }
+  /* PARTNER (2026-09-28, open item 59): events from local partners carry `partner: true`.
+     The list card reuses .featured-badge above the title; the event page shows a white pill
+     beside the type badge so the two read as separate badges. */
+  .detail-partner-badge {
+    display: inline-block; vertical-align: baseline;
+    font-size: 0.575rem; font-weight: 600;
+    padding: 2px 8px; border-radius: var(--radius-pill);
+    background: #fff; color: var(--navy);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin: 0 0 0.5rem 4px;
+  }
+  .detail-contact { margin-top: 0.6rem; font-size: 0.78rem; line-height: 1.6; color: #333; }
+  .detail-contact b { font-weight: 600; color: var(--text-primary); }
+  .detail-contact a { color: var(--navy); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+  .follow-label { font-size: 0.62rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem 0.75rem 0; }
+  a.secondary-btn { text-decoration: none; }
   .card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
   .card-title {
     font-family: var(--font-serif);
@@ -2424,7 +2440,7 @@ function mapDbUser(dbUser) {
 <div id="detailScreen">
   <div class="detail-header">
     <button class="detail-back" id="detailBackBtn" onclick="closeDetail()">‹ Back to events</button>
-    <div class="detail-type-badge" id="detailTypeBadge"></div>
+    <div class="detail-type-badge" id="detailTypeBadge"></div><span class="detail-partner-badge" id="detailPartnerBadge" style="display:none">Partner</span>
     <div class="detail-title" id="detailTitle"></div>
     <div class="detail-org" id="detailOrg"></div>
   </div>
@@ -2467,6 +2483,7 @@ function mapDbUser(dbUser) {
       <div class="detail-section">
         <div class="section-label" id="detailSectionAbout">About this event</div>
         <div class="description-text" id="detailDescription"></div>
+        <div class="detail-contact" id="detailContact" style="display:none"></div>
         <div class="notes-text" id="detailNotes" style="display:none"></div>
       </div>
       <div class="detail-section">
@@ -2519,6 +2536,10 @@ function mapDbUser(dbUser) {
         <span id="shareBtnLabel">Share</span>
       </div>
 
+    </div>
+    <div id="detailFollow" style="display:none">
+      <div class="follow-label" id="detailFollowLabel"></div>
+      <div class="secondary-row" id="detailFollowRow"></div>
     </div>
   </div>
 </div>
@@ -4174,6 +4195,81 @@ function renderFeatured(){
 }
 // `dateStr` is the local YYYY-MM-DD this card is being drawn for. It exists so
 // date-scoped alerts (see getAlertNote) fire only on their own occurrence.
+// ── Partner extras (2026-09-28, open item 59) ──
+// All three are optional and only appear when the record carries them:
+//   partner: true                       -> PARTNER badge (list card + event page)
+//   contact: { name, phone, email, instagram, form_url }
+//                                       -> "Questions? ..." line under the description
+//   socials: { instagram, facebook }    -> "Follow <organization>" row under the buttons
+// Built with DOM nodes and textContent, never innerHTML with record text, so a record cannot inject markup.
+function partnerLink(href, text) {
+  const a = document.createElement('a');
+  a.href = href; a.textContent = text;
+  if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener'; }
+  return a;
+}
+function igHandle(h) { return String(h || '').replace(/^@/, '').replace(/^https?:\/\/(www\.)?instagram\.com\//, '').replace(/\/.*$/, ''); }
+function renderPartnerExtras(e) {
+  const es = currentLang === 'es';
+  const badge = document.getElementById('detailPartnerBadge');
+  if (badge) { badge.textContent = es ? 'Colaborador' : 'Partner'; badge.style.display = e.partner === true ? 'inline-block' : 'none'; }
+
+  const box = document.getElementById('detailContact');
+  if (box) {
+    box.textContent = '';
+    const c = e.contact || null;
+    const links = [];
+    if (c) {
+      if (c.phone) links.push(partnerLink('tel:' + String(c.phone).replace(/[^\d+]/g, ''), c.phone));
+      if (c.email) links.push(partnerLink('mailto:' + c.email, c.email));
+      if (c.instagram) {
+        const h = igHandle(c.instagram);
+        const span = document.createElement('span');
+        span.appendChild(partnerLink('https://www.instagram.com/' + h + '/', '@' + h));
+        span.appendChild(document.createTextNode(es ? ' en Instagram' : ' on Instagram'));
+        links.push(span);
+      }
+      if (c.form_url) links.push(partnerLink(c.form_url, es ? 'formulario de contacto' : 'contact form'));
+    }
+    if (links.length) {
+      const head = document.createElement('b');
+      const who = c.name || e.organization;
+      head.textContent = (c.phone || c.email)
+        ? (es ? '¿Preguntas? Contacta a ' : 'Questions? Contact ') + who
+        : (es ? '¿Preguntas? Escribe a ' : 'Questions? Message ') + who;
+      box.appendChild(head);
+      box.appendChild(document.createElement('br'));
+      links.forEach((l, i) => { if (i) box.appendChild(document.createTextNode(' · ')); box.appendChild(l); });
+      box.style.display = 'block';
+    } else box.style.display = 'none';
+  }
+
+  const wrap = document.getElementById('detailFollow'), row = document.getElementById('detailFollowRow');
+  if (wrap && row) {
+    row.textContent = '';
+    const so = e.socials || {};
+    const IG = '<svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="3.2" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="7" cy="7" r="2.6" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="10.3" cy="3.7" r=".7" fill="#1A1A1A"/></svg>';
+    const FB = '<svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="2.5" stroke="#1A1A1A" stroke-width="1.2"/><path d="M8.6 12.5V8h1.5l.3-1.7H8.6v-1c0-.5.2-.9.9-.9h.9V2.9c-.3 0-.8-.1-1.4-.1-1.4 0-2.2.8-2.2 2.3v1.2H5.4V8h1.4v4.5" stroke="#1A1A1A" stroke-width="1.1" stroke-linejoin="round"/></svg>';
+    const add = (href, icon, label) => {
+      const a = document.createElement('a');
+      a.className = 'action-btn secondary-btn'; a.href = href; a.target = '_blank'; a.rel = 'noopener';
+      a.innerHTML = icon;                       // fixed icon markup only, never record text
+      a.appendChild(document.createTextNode(label));
+      row.appendChild(a);
+    };
+    if (so.instagram) { const h = igHandle(so.instagram); add('https://www.instagram.com/' + h + '/', IG, '@' + h); }
+    if (so.facebook) {
+      const f = String(so.facebook);
+      const slug = f.replace(/^https?:\/\/(www\.)?facebook\.com\//, '').replace(/\/.*$/, '');
+      add(/^https?:/.test(f) ? f : 'https://www.facebook.com/' + slug, FB, slug);
+    }
+    if (row.children.length) {
+      document.getElementById('detailFollowLabel').textContent = (es ? 'Sigue a ' : 'Follow ') + e.organization;
+      wrap.style.display = 'block';
+    } else wrap.style.display = 'none';
+  }
+}
+
 function cardHTML(e, timeStatus, dateStr) {
   const typeClass = typeTagClass[e.type] || 'tag-library';
   const dayShort = (e._displayDay || e.day || '').substring(0, 3);
@@ -4183,7 +4279,7 @@ function cardHTML(e, timeStatus, dateStr) {
   return `
     <div class="event-card${timeStatus === 'ended' ? ' card-ended' : ''}" onclick="openDetail(${e.id})">
       <div class="card-left">
-        
+        ${e.partner === true ? `<span class="featured-badge">${currentLang === 'es' ? 'Colaborador' : 'Partner'}</span>` : ''}
         <div class="card-title">${currentLang === "es" ? (e.event_name_es || e.event_name) : e.event_name}</div>
         <div class="card-venue">${e.venue}${e.town ? ' · ' + e.town : ''}</div>
         <div class="card-meta">
@@ -4329,6 +4425,7 @@ function openDetail(id) {
   document.getElementById('detailVenue').textContent = e.venue;
   document.getElementById('detailAddress').textContent = e.address;
   document.getElementById('detailDescription').textContent = currentLang === 'es' ? (e.description_es || e.description) : e.description;
+  renderPartnerExtras(e);
   document.getElementById('detailAges').textContent = e.ages;
   document.getElementById('detailReg').textContent = e.registration;
 
