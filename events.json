@@ -11966,6 +11966,37 @@
       "notes": "Free. Fall craft for the kids.",
       "location_group": "Novato",
       "internal_notes": "Added 2026-09-28 from @novato_parents_nursery_school's own flyer (reshared by @momlifeonthemove_novato), supplied by Alexandra: 'Community Playdate, October 3, 2026, 10:00 AM - Noon', 'free community playdate', fall-inspired craft, 1473 S Novato Blvd, npnurseryschool.org. Ages 0-5 read from the nursery-school setting; not stated. Outdoor from the flyer photos (play yard)."
+    },
+    {
+      "id": 1267,
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "organization": "Golden Gate Mahjong",
+      "venue": "The Social Klub",
+      "event_name": "Chinese Mahjong Intro Night with Golden Gate Mahjong",
+      "event_name_es": "Noche de introducción al mahjong chino con Golden Gate Mahjong",
+      "type": "Grown-Ups Only!",
+      "day": "Tuesday",
+      "time": "7:00 PM – 9:00 PM",
+      "time_of_day": "Evening",
+      "town": "Sausalito",
+      "address": "2650 Bridgeway, Sausalito, CA 94965",
+      "ages": "Adults",
+      "cost": "$60",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-10-06",
+      "expires": "2026-10-06",
+      "description": "The game is the excuse. Curated mahjong evenings in Marin: beautiful tiles, good company, and not a screen in sight. No experience needed. Chinese mahjong is where it all started, and it’s the faster version to learn. In a single evening you’ll go from zero to playing full rounds. Perfect for a first night, solo or with a friend.",
+      "description_es": "El juego es la excusa. Noches de mahjong en Marin cuidadas al detalle: fichas preciosas, buena compañía y ni una pantalla a la vista. No hace falta experiencia. El mahjong chino es donde empezó todo, y es la versión más rápida de aprender. En una sola noche pasarás de cero a jugar partidas completas. Perfecto para una primera noche, solo o con un amigo.",
+      "registration": "Required: book your seat online (Visit website)",
+      "website": "https://goldengatemahjongscheduling.as.me/?appointmentType=95549886",
+      "notes": "$60 a seat; reserve in advance.",
+      "location_group": "Sausalito/Marin City",
+      "internal_notes": "Added 2026-09-28 at Alexandra's instruction ('post live'), from the approved mockup in OAA Sponsorship and Partners/Golden Gate Mahj/ and the GGMahj tab of Advertising Partners Upload.xlsx. Source: Golden Gate Mahjong's own booking calendar (Acuity, owner 39755166): Tue Oct 6 2026, 7:00 PM, 2 hours, $60, '@ Social Klub, Sausalito', host Kendall Gavaret. Title, About text (their tagline + their Chinese mahjong copy, em dashes removed, last line changed to 'Perfect for a first night...' because they have moved away from the series format), ages 'Adults' and the note are all Alexandra's approved wording. Website points straight at the booking page for this date, per her request. A prospective advertising partner (open item 21): the PARTNER badge and Instagram follow row in the mockup are NOT built yet (item 59), so the live card is an ordinary Grown-Ups Only! listing. Social Play (Mon Oct 12) is NOT added: venue unpublished."
     }
   ]
 }
