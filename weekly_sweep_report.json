@@ -1,10 +1,19 @@
 {
-  "sweep_date": "2026-09-28",
+  "sweep_date": "2026-09-29",
   "suggested_events": [
     {
       "date": "TBD",
       "day_label": "Check calendar",
       "title": "Fall Pool Membership Registration",
+      "time": "See website",
+      "location": "Strawberry Recreation District, Mill Valley",
+      "source": "Strawberry Rec",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "TBD",
+      "day_label": "Check calendar",
+      "title": "Fall Court Memberships &#8211; October 1 Registration",
       "time": "See website",
       "location": "Strawberry Recreation District, Mill Valley",
       "source": "Strawberry Rec",
@@ -288,17 +297,6 @@
       "description": "Documents: Agenda TBD<br>Sponsor: Parks<br>Link: https://www.marincountyparks.org/about-us/boards-and-commissions/measure-a-oversight-committee<br><br>The Measure A Community Oversight Committee revie",
       "source": "Marin County Parks (Trumba iCal)",
       "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
-    },
-    {
-      "date": "2026-09-28",
-      "day_label": "Monday, 2026-09-28",
-      "title": "Mahjong for Tweens",
-      "time": "10:30 PM",
-      "location": "Creekside Room",
-      "description": "Don't know pung from chow? No idea what bams, cracks, or dots are? Or already mastered Mahjong and want to share it with others? Join us for a month-long series of hands-on lessons that build your Mahjong knowledge week after week. Together, we'll learn the basics, build the walls, and strategize wi",
-      "source": "https://millvalleylibrary.libcal.com/event/17615984",
-      "website": "https://millvalleylibrary.libcal.com/event/17615984",
-      "source_type": "AUTO"
     },
     {
       "date": "2026-10-02",
@@ -969,17 +967,6 @@
       "description": "TAB meetings will be in-person at the library\u2019s Conference room, the 2nd Tuesday of every. More days will be added based on programs or outreach events teens are currently planning. Email Jasmyn, teen@cityofmillvalley.org if you have any questions. Visit www.millvalleylibrary.org/teen for all TAB in",
       "source": "https://millvalleylibrary.libcal.com/event/17266952",
       "website": "https://millvalleylibrary.libcal.com/event/17266952",
-      "source_type": "AUTO"
-    },
-    {
-      "date": "",
-      "day_label": "",
-      "title": "[MCFL MCFL] {eventTitle}\",\"sr_event_times\":\"{startTime} to {endTime}\",\"sr_event_date\":\"on {s",
-      "time": "",
-      "location": "MCFL \u2014 MCFL Library",
-      "description": "",
-      "source": "https://marinlibrary.bibliocommons.com/v2/events?audiences=BABIES,TODDLERS,PRESCHOOLERS,KIDS,TWEENS,FAMILIES",
-      "website": "https://marinlibrary.bibliocommons.com/v2/events",
       "source_type": "AUTO"
     }
   ]
