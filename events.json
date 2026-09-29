@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-29",
+  "last_updated": "2026-09-28",
   "events": [
     {
       "id": 1,
@@ -10122,11 +10122,11 @@
       "expires": "2026-10-03",
       "organization": "Le Petit Jardin",
       "venue": "Le Petit Jardin",
-      "event_name": "Camp LPJ Fall Family Event",
-      "event_name_es": "Evento Familiar de Otoño de Camp LPJ",
+      "event_name": "Camp LPJ Event/Music with Megan",
+      "event_name_es": "Evento Camp LPJ/Música con Megan",
       "type": "Kids Programs",
       "day": "Saturday",
-      "time": "10:30 AM",
+      "time": "10:30 AM – 1:00 PM",
       "time_of_day": "Morning",
       "town": "San Rafael",
       "address": "1 St Vincent Dr, San Rafael, CA 94903",
@@ -10135,13 +10135,13 @@
       "indoor_outdoor": "Outdoor",
       "active_sedentary": "Active",
       "cadence": "One-off",
-      "description": "A fall family event at the Le Petit Jardin campus, 10:30 AM.",
-      "description_es": "Un evento familiar de otoño en el campus de Le Petit Jardin, a las 10:30 AM.",
+      "description": "Le Petit Jardin's cozy fall family morning, 10:30 AM to 1 PM: a little taste of camp, LPJ style, with \"French\" s'mores, camp-inspired crafts, playful \"faux\" fireside stories and plenty of time to explore, plus music with Megan Schoenbohm.",
+      "description_es": "La mañana familiar de otoño de Le Petit Jardin, de 10:30 AM a 1 PM: un pequeño campamento al estilo LPJ, con s'mores \"franceses\", manualidades de campamento, cuentos junto a una \"falsa\" fogata y mucho tiempo para explorar, además de música con Megan Schoenbohm.",
       "registration": "Not required",
       "website": "https://www.lpjkids.com/",
-      "notes": "",
+      "notes": "Music with Megan Schoenbohm. 10:30 AM to 1 PM.",
       "location_group": "San Rafael",
-      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Venue new to the database; address confirmed as 1 St Vincent Dr from the preschool’s own listings.",
+      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Venue new to the database; address confirmed as 1 St Vincent Dr from the preschool’s own listings. 2026-09-28: updated from Le Petit Jardin's own flyer (@lpjkids story, supplied by Alexandra): 'A cozy fall family event, Saturday, October 3, 2026, 10:30 AM - 1:00 PM', French s'mores, camp-inspired crafts, faux fireside stories, 'ADDED FUN! Music with Megan @meganschoenbohm'. Title set by Alexandra. Cost still not stated on the flyer, so it stays Not listed.",
       "id": 1203
     },
     {
@@ -11935,6 +11935,37 @@
       "location_group": "San Rafael",
       "internal_notes": "Added 2026-09-28 from the Postpartum Support Center's own Instagram post, supplied by Alexandra: Fridays 1:00-2:00 PM, Oct 2 Newborn Care, Oct 16 Birth Preparation, Oct 23 Postpartum Planning, Oct 30 Feeding & Breastfeeding Basics, 'All classes are held at the Postpartum Support Center', register at info@postpartumsc.org. Address from postpartumsc.org. Price not published; the center is a nonprofit, but free is NOT assumed (rule 22). One record per class.",
       "id": 1265
+    },
+    {
+      "id": 1266,
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "organization": "Novato Parents Nursery School",
+      "venue": "Novato Parents Nursery School",
+      "event_name": "Community Playdate at Novato Parents Nursery School",
+      "event_name_es": "Encuentro de juego comunitario en Novato Parents Nursery School",
+      "type": "Kids Programs",
+      "day": "Saturday",
+      "time": "10:00 AM – 12:00 PM",
+      "time_of_day": "Morning",
+      "town": "Novato",
+      "address": "1473 S Novato Blvd, Novato, CA 94947",
+      "ages": "0-5 yrs",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-10-03",
+      "expires": "2026-10-03",
+      "description": "A free community playdate at Novato Parents Nursery School, 10 AM to noon: little ones explore the play yard, meet new friends and make a hands-on fall craft. Their first community playdate.",
+      "description_es": "Un encuentro de juego comunitario gratuito en Novato Parents Nursery School, de 10 AM al mediodía: los pequeños exploran el patio, hacen nuevos amigos y una manualidad de otoño. Su primer encuentro comunitario.",
+      "registration": "Not required",
+      "website": "https://www.npnurseryschool.org/",
+      "notes": "Free. Fall craft for the kids.",
+      "location_group": "Novato",
+      "internal_notes": "Added 2026-09-28 from @novato_parents_nursery_school's own flyer (reshared by @momlifeonthemove_novato), supplied by Alexandra: 'Community Playdate, October 3, 2026, 10:00 AM - Noon', 'free community playdate', fall-inspired craft, 1473 S Novato Blvd, npnurseryschool.org. Ages 0-5 read from the nursery-school setting; not stated. Outdoor from the flyer photos (play yard)."
     }
   ]
 }
