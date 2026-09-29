@@ -11996,7 +11996,16 @@
       "website": "https://goldengatemahjongscheduling.as.me/?appointmentType=95549886",
       "notes": "$60 a seat; reserve in advance.",
       "location_group": "Sausalito/Marin City",
-      "internal_notes": "Added 2026-09-28 at Alexandra's instruction ('post live'), from the approved mockup in OAA Sponsorship and Partners/Golden Gate Mahj/ and the GGMahj tab of Advertising Partners Upload.xlsx. Source: Golden Gate Mahjong's own booking calendar (Acuity, owner 39755166): Tue Oct 6 2026, 7:00 PM, 2 hours, $60, '@ Social Klub, Sausalito', host Kendall Gavaret. Title, About text (their tagline + their Chinese mahjong copy, em dashes removed, last line changed to 'Perfect for a first night...' because they have moved away from the series format), ages 'Adults' and the note are all Alexandra's approved wording. Website points straight at the booking page for this date, per her request. A prospective advertising partner (open item 21): the PARTNER badge and Instagram follow row in the mockup are NOT built yet (item 59), so the live card is an ordinary Grown-Ups Only! listing. Social Play (Mon Oct 12) is NOT added: venue unpublished."
+      "internal_notes": "Added 2026-09-28 at Alexandra's instruction ('post live'), from the approved mockup in OAA Sponsorship and Partners/Golden Gate Mahj/ and the GGMahj tab of Advertising Partners Upload.xlsx. Source: Golden Gate Mahjong's own booking calendar (Acuity, owner 39755166): Tue Oct 6 2026, 7:00 PM, 2 hours, $60, '@ Social Klub, Sausalito', host Kendall Gavaret. Title, About text (their tagline + their Chinese mahjong copy, em dashes removed, last line changed to 'Perfect for a first night...' because they have moved away from the series format), ages 'Adults' and the note are all Alexandra's approved wording. Website points straight at the booking page for this date, per her request. A prospective advertising partner (open item 21): the PARTNER badge and Instagram follow row in the mockup are NOT built yet (item 59), so the live card is an ordinary Grown-Ups Only! listing. Social Play (Mon Oct 12) is NOT added: venue unpublished. 2026-09-28: partner fields added (partner, contact, socials) when the Partner badge, contact line and Follow row were built into the app.",
+      "partner": true,
+      "contact": {
+        "name": "Golden Gate Mahjong",
+        "instagram": "goldengatemahj",
+        "form_url": "https://www.goldengatemahjong.com/inquire"
+      },
+      "socials": {
+        "instagram": "goldengatemahj"
+      }
     }
   ]
 }
