@@ -878,6 +878,17 @@ Full list in `OAA maintence and content/open_items.md`; the dashboard renders it
   built yet.
 - **15** — the Instagram programme. **In progress, and the only item with work in flight** — see "Where to pick up" above.
 - **24 CLOSED 2026-09-28** — the `users` table is private. **The browser must never touch `users` directly again.** Sign-in, sign-up and saving call the Edge Functions `login`, `signup` and `save-profile` (source in `supabase/functions/`, deployed by pasting into the Supabase dashboard, JWT verification OFF). Any new profile field has to be added to the function's select list (`PROFILE`) and, if the browser may change it, to `save-profile`'s `ALLOWED` list, then redeployed. The browser keeps the SHA-256 of the PIN as `currentUser.pin` (never the digits) and sends it as `pin_hash`. There is no Supabase CLI on this machine; deploys are done by Alexandra in the dashboard. Follow-up: **item 60**, rate-limit `login`.
+  **If sign-in, sign-up or saving ever breaks because of the lock** (e.g. a function is deleted or its code breaks), the
+  emergency rollback is two lines in the Supabase SQL Editor, run by Alexandra (from her printed checklist):
+  ```sql
+  grant select, insert, update on public.users to anon;
+  alter table public.users disable row level security;
+  ```
+  This reopens the table to the public key, which the CURRENT site no longer uses, so on its own it fixes nothing: it only
+  helps if `index.html` is also rolled back to a version that reads `users` directly (anything before `ee3668b`). Prefer
+  fixing the function. If the rollback is used, re-lock as soon as the cause is fixed with
+  `alter table public.users enable row level security; revoke all on public.users from anon, authenticated;`
+  and record it in open items.
 - **44** — three library records whose cadence cannot be derived from one month of published dates (ids 43, 41, 3). The fourth, id 853, was resolved 2026-09-01 from a flyer.
 - **34** — app code quality audit, not started; six confirmed findings already in hand. Needs her call on report-vs-fix.
 - **33** — Tide Pool Table, scope undefined.
