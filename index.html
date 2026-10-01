@@ -4290,6 +4290,8 @@ function copyAdCode(btn, code) {
   var fallback = function () { var t = document.createElement('textarea'); t.value = code; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (x) {} document.body.removeChild(t); done(); };
   if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(code).then(done, fallback); else fallback();
   logActivity('ad_code_copy', { event_name: 'AD ' + currentAdId + ': ' + code });
+  // GA4 (2026-09-30): same event, no PII. Register ad_id / promo_code as custom dimensions to report on them.
+  if (typeof gtag === 'function') gtag('event', 'ad_code_copy', { ad_id: currentAdId, promo_code: code });
 }
 function openAd(id) {
   var a = (activeAds || []).find(function (x) { return x.id === id; });
@@ -4297,6 +4299,7 @@ function openAd(id) {
   var es = currentLang === 'es';
   currentAdId = id;
   logActivity('ad_click', { event_name: 'AD ' + a.id + ': ' + a.name });
+  if (typeof gtag === 'function') gtag('event', 'ad_click', { ad_id: a.id, ad_name: a.name });
   var scr = document.getElementById('adScreen');
   scr.style.setProperty('--ad-color', a.color || '#AACDCF');
   scr.style.setProperty('--ad-ink', a.color_ink || '#3E6E72');
