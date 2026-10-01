@@ -1,0 +1,796 @@
+{
+  "audit_date": "2026-10-01",
+  "total_audited": 159,
+  "confirmed": [
+    {
+      "id": 2,
+      "name": "Tuesday Toddler Storytime"
+    },
+    {
+      "id": 4,
+      "name": "Spanish Storytime with Arle"
+    },
+    {
+      "id": 5,
+      "name": "Friday Toddler Storytime"
+    },
+    {
+      "id": 6,
+      "name": "Preschool & Family Storytime"
+    },
+    {
+      "id": 7,
+      "name": "Preschool & Family Storytime"
+    },
+    {
+      "id": 8,
+      "name": "Family Storytime"
+    },
+    {
+      "id": 16,
+      "name": "Cuentos con Ritmo"
+    },
+    {
+      "id": 18,
+      "name": "Family Storytime"
+    },
+    {
+      "id": 21,
+      "name": "Storytime for Babies & Toddlers"
+    },
+    {
+      "id": 24,
+      "name": "Downtown Storytime / Hora de Cuentos"
+    },
+    {
+      "id": 33,
+      "name": "Bilingual Spanish Storytime"
+    },
+    {
+      "id": 37,
+      "name": "Toddler Storytime with Librarian Miranda"
+    },
+    {
+      "id": 39,
+      "name": "Tuesday Crafternoon"
+    },
+    {
+      "id": 48,
+      "name": "Bilingual Storytime / Hora del cuento"
+    },
+    {
+      "id": 55,
+      "name": "Mart Littles Storytime at Copperfield's Books"
+    },
+    {
+      "id": 56,
+      "name": "Mart Littles Music"
+    },
+    {
+      "id": 57,
+      "name": "Mart Littles Crafts"
+    },
+    {
+      "id": 58,
+      "name": "JymBabies Indoor Play"
+    },
+    {
+      "id": 59,
+      "name": "JymBabies Indoor Play"
+    },
+    {
+      "id": 66,
+      "name": "Marin Country Mart Farmers Market"
+    },
+    {
+      "id": 69,
+      "name": "Corte Madera Town Center Farmers Market"
+    },
+    {
+      "id": 73,
+      "name": "Point Reyes Farmers Market"
+    },
+    {
+      "id": 74,
+      "name": "San Rafael Summer Market"
+    },
+    {
+      "id": 80,
+      "name": "Rainbow Playgroup"
+    },
+    {
+      "id": 81,
+      "name": "Rainbow Playgroup"
+    },
+    {
+      "id": 112,
+      "name": "Nike Missile Site Open House"
+    },
+    {
+      "id": 114,
+      "name": "Battery Townsley Open House"
+    },
+    {
+      "id": 175,
+      "name": "Saturdays at the Library: Crafts and Play"
+    },
+    {
+      "id": 176,
+      "name": "Lego Club \u2014 Bolinas Library"
+    },
+    {
+      "id": 180,
+      "name": "Mosaic Monday \u2014 Sidewalk Chalk"
+    },
+    {
+      "id": 181,
+      "name": "Family StoryTUNES \u2014 Belvedere-Tiburon Library"
+    },
+    {
+      "id": 208,
+      "name": "Goodie's Kids' Club Workshop \u2014 Goodman Building Supply"
+    },
+    {
+      "id": 334,
+      "name": "Marin County Cars and Coffee"
+    },
+    {
+      "id": 433,
+      "name": "Movie Nights at the Mart"
+    },
+    {
+      "id": 626,
+      "name": "Babies/Toddler Support Group for New Parents"
+    },
+    {
+      "id": 705,
+      "name": "Hootenanny @ the Library"
+    },
+    {
+      "id": 736,
+      "name": "Movies on Main: Children's Movie"
+    },
+    {
+      "id": 776,
+      "name": "Afterschool Homework Hub"
+    },
+    {
+      "id": 837,
+      "name": "Bilingual Storytime / Hora del cuento biling\u00fce"
+    },
+    {
+      "id": 853,
+      "name": "Spanish Sing-along and Storytime | M\u00fasica y Cuentos en espa\u00f1ol"
+    },
+    {
+      "id": 876,
+      "name": "Toddler Time \u2014 Bolinas Library"
+    },
+    {
+      "id": 951,
+      "name": "Chess Club \u2014 Belvedere-Tiburon Library"
+    },
+    {
+      "id": 965,
+      "name": "Storyteller Spotlight"
+    },
+    {
+      "id": 966,
+      "name": "Nature Club with Kier Holmes"
+    },
+    {
+      "id": 967,
+      "name": "Inspired Artists"
+    },
+    {
+      "id": 968,
+      "name": "Full STEAM Ahead"
+    },
+    {
+      "id": 969,
+      "name": "Movie Days at Mill Valley Library"
+    },
+    {
+      "id": 976,
+      "name": "Crafternoon \u2014 Corte Madera Library"
+    },
+    {
+      "id": 984,
+      "name": "THURS-DIY Crafts for Middle Schoolers"
+    },
+    {
+      "id": 1022,
+      "name": "First Fridays on Grant"
+    },
+    {
+      "id": 1053,
+      "name": "Book Passage Storytime \u2014 Corte Madera"
+    },
+    {
+      "id": 1101,
+      "name": "Novato Mothers Club Monthly Social Stroll - open to all"
+    },
+    {
+      "id": 1108,
+      "name": "Storytime is calling"
+    },
+    {
+      "id": 1140,
+      "name": "Homework Helpers \u2014 San Anselmo"
+    },
+    {
+      "id": 1163,
+      "name": "Mart Littles Music \u2014 Wednesdays at Poppy"
+    },
+    {
+      "id": 1182,
+      "name": "Homework Helpers for Grades 3-10 \u2014 Corte Madera"
+    }
+  ],
+  "not_found": [
+    {
+      "id": 1,
+      "name": "Baby Bounce",
+      "source": "Belvedere-Tiburon Library",
+      "url": "https://www.beltiblibrary.org/events"
+    },
+    {
+      "id": 3,
+      "name": "Preschool Storytime",
+      "source": "Belvedere-Tiburon Library",
+      "url": "https://www.beltiblibrary.org/events"
+    },
+    {
+      "id": 10,
+      "name": "Wiggles & Wonder Storytime",
+      "source": "MCFL Marin City",
+      "url": "https://marinlibrary.org/locations/mc/"
+    },
+    {
+      "id": 11,
+      "name": "Stories & Rhyme Wiggle Time",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 12,
+      "name": "Musica y Movimiento",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 13,
+      "name": "Canta Conmigo!",
+      "source": "MCFL Point Reyes",
+      "url": "https://marinlibrary.org/locations/mp/"
+    },
+    {
+      "id": 14,
+      "name": "Story Time with Mr. Brian",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 15,
+      "name": "Storytime",
+      "source": "Larkspur Library iCal",
+      "url": "https://www.ci.larkspur.ca.us/common/modules/iCalendar/iCalendar.aspx?catID=24&feed=calendar"
+    },
+    {
+      "id": 17,
+      "name": "Sing & Stomp",
+      "source": "Mill Valley Library iCal",
+      "url": "https://millvalleylibrary.libcal.com/ical_subscribe.php?src=p&cid=17002&aud=5670,5671"
+    },
+    {
+      "id": 26,
+      "name": "Read to a Dog",
+      "source": "SRPL Events",
+      "url": "https://srpubliclibrary.org/events/"
+    },
+    {
+      "id": 40,
+      "name": "Storytime with Iris",
+      "source": "MCFL Fairfax",
+      "url": "https://marinlibrary.org/locations/mf/"
+    },
+    {
+      "id": 42,
+      "name": "LEGO Club",
+      "source": "MCFL Corte Madera",
+      "url": "https://marinlibrary.org/locations/mm/"
+    },
+    {
+      "id": 44,
+      "name": "Read to a Dog",
+      "source": "San Anselmo Library",
+      "url": "https://www.sananselmo.gov/624/Storytime-Programs"
+    },
+    {
+      "id": 45,
+      "name": "Crafternoon",
+      "source": "San Anselmo Library",
+      "url": "https://www.sananselmo.gov/624/Storytime-Programs"
+    },
+    {
+      "id": 46,
+      "name": "Wednesday Kids' Club",
+      "source": "MCFL Civic Center",
+      "url": "https://marinlibrary.org/locations/mb/"
+    },
+    {
+      "id": 64,
+      "name": "Marin Farmers Market \u2014 Sunday",
+      "source": "MCFL Civic Center",
+      "url": "https://marinlibrary.org/locations/mb/"
+    },
+    {
+      "id": 71,
+      "name": "Fairfax Community Farmers Market",
+      "source": "MCFL Bolinas",
+      "url": "https://marinlibrary.org/locations/mb/"
+    },
+    {
+      "id": 72,
+      "name": "Downtown Novato Farmers Market",
+      "source": "SRPL Events",
+      "url": "https://srpubliclibrary.org/events/"
+    },
+    {
+      "id": 82,
+      "name": "Sing & Stomp with Emily Bonn",
+      "source": "San Anselmo Library",
+      "url": "https://www.sananselmo.gov/624/Storytime-Programs"
+    },
+    {
+      "id": 97,
+      "name": "Sausalito Art & Harbor Days",
+      "source": "SRPL Events",
+      "url": "https://srpubliclibrary.org/events/"
+    },
+    {
+      "id": 177,
+      "name": "Read to a Dog \u2014 Belvedere-Tiburon Library",
+      "source": "Belvedere-Tiburon Library",
+      "url": "https://www.beltiblibrary.org/events"
+    },
+    {
+      "id": 286,
+      "name": "Reading Buddies / Compa\u00f1eros de Leer \u2014 Point Reyes",
+      "source": "MCFL Point Reyes",
+      "url": "https://marinlibrary.org/locations/mp/"
+    },
+    {
+      "id": 494,
+      "name": "M\u00fasica y Movimiento con Colores del Espa\u00f1ol \u2014 South Novato Library",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 707,
+      "name": "Games - Sudoku, Crosswords, and More!",
+      "source": "Larkspur Library iCal",
+      "url": "https://www.ci.larkspur.ca.us/common/modules/iCalendar/iCalendar.aspx?catID=24&feed=calendar"
+    },
+    {
+      "id": 717,
+      "name": "\u0427\u0430\u0441 \u0441\u043a\u0430\u0437\u043e\u043a / Russian Storytime!",
+      "source": "MCFL Marin City",
+      "url": "https://marinlibrary.org/locations/mc/"
+    },
+    {
+      "id": 737,
+      "name": "Marin City Flea Market",
+      "source": "MCFL Marin City",
+      "url": "https://marinlibrary.org/locations/mc/"
+    },
+    {
+      "id": 743,
+      "name": "Little Angels Program \u2014 Music & Art Playtime",
+      "source": "Belvedere-Tiburon Library",
+      "url": "https://www.beltiblibrary.org/events"
+    },
+    {
+      "id": 748,
+      "name": "Food Truck Thursdays at The Village",
+      "source": "MCFL Corte Madera",
+      "url": "https://marinlibrary.org/locations/mm/"
+    },
+    {
+      "id": 765,
+      "name": "Wednesday Kids' Club!",
+      "source": "MCFL Fairfax",
+      "url": "https://marinlibrary.org/locations/mf/"
+    },
+    {
+      "id": 815,
+      "name": "Threads Club (Ages 8-12)",
+      "source": "Belvedere-Tiburon Library",
+      "url": "https://www.beltiblibrary.org/events"
+    },
+    {
+      "id": 824,
+      "name": "Pok\u00e9mon Club",
+      "source": "SRPL Events",
+      "url": "https://srpubliclibrary.org/events/"
+    },
+    {
+      "id": 838,
+      "name": "Baby Bounce \u2014 Novato",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 859,
+      "name": "Books & Bubbles Storytime",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 860,
+      "name": "Read to a Dog: A Marin Humane Society Program",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 861,
+      "name": "Homework Helpers / Ayuda Con La Tarea",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 873,
+      "name": "Chess Club for Kids",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 1005,
+      "name": "2nd Friday Art Walk",
+      "source": "SRPL Events",
+      "url": "https://srpubliclibrary.org/events/"
+    },
+    {
+      "id": 1012,
+      "name": "First Tuesday Artwalk",
+      "source": "SRPL Events",
+      "url": "https://srpubliclibrary.org/events/"
+    },
+    {
+      "id": 1117,
+      "name": "Meet the Makers",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 1118,
+      "name": "Kids Eat Free \u2014 Tuesdays",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 1119,
+      "name": "Kids Eat Free \u2014 Sundays",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 1156,
+      "name": "Pavilion Play Group",
+      "source": "MCFL Fairfax",
+      "url": "https://marinlibrary.org/locations/mf/"
+    },
+    {
+      "id": 1157,
+      "name": "New Parents, Babies and Toddlers Support Group",
+      "source": "MCFL Fairfax",
+      "url": "https://marinlibrary.org/locations/mf/"
+    },
+    {
+      "id": 1158,
+      "name": "Pavilion Play Group",
+      "source": "MCFL Fairfax",
+      "url": "https://marinlibrary.org/locations/mf/"
+    },
+    {
+      "id": 1201,
+      "name": "Mart Littles Yoga",
+      "source": "Marin Country Mart",
+      "url": "https://marincountrymart.com/events"
+    }
+  ],
+  "manual_check": [
+    {
+      "id": 38,
+      "name": "Pop-up Storytime in the Parks",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://millvalleylibrary.org)"
+    },
+    {
+      "id": 52,
+      "name": "Jumping Jacks \u2014 Crawlers",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.cityofsanrafael.org/recreation)"
+    },
+    {
+      "id": 53,
+      "name": "Jumping Jacks \u2014 Toddlers",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.cityofsanrafael.org/recreation)"
+    },
+    {
+      "id": 65,
+      "name": "Marin Farmers Market \u2014 Thursday",
+      "reason": "MANUAL \u2014 Farmers Market (check market website annually)"
+    },
+    {
+      "id": 67,
+      "name": "Mill Valley Certified Farmers Market",
+      "reason": "MANUAL \u2014 Farmers Market (check market website annually)"
+    },
+    {
+      "id": 68,
+      "name": "Strawberry Village Farmers Market",
+      "reason": "MANUAL \u2014 Strawberry Rec (check strawberryrec.com)"
+    },
+    {
+      "id": 70,
+      "name": "Sausalito Farmers Market",
+      "reason": "MANUAL \u2014 Farmers Market (check market website annually)"
+    },
+    {
+      "id": 76,
+      "name": "Tomales Farmers Market",
+      "reason": "MANUAL \u2014 Farmers Market (check market website annually)"
+    },
+    {
+      "id": 110,
+      "name": "Baby Sign Language Virtual Playgroup",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.eventbrite.com/e/family-event-tuesday-playgroup-virtual-202401-202612-tickets-781123751167)"
+    },
+    {
+      "id": 188,
+      "name": "Oldies Music at The Redwoods Senior Living Center",
+      "reason": "MANUAL \u2014 The Redwoods Senior Living (no online calendar)"
+    },
+    {
+      "id": 255,
+      "name": "Marin Hiking Moms \u2014 Monthly Hike",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://chat.whatsapp.com/CStnj5OiEYSA0VoZIXEcvp?mode=gi_t)"
+    },
+    {
+      "id": 335,
+      "name": "Marin's Motor Social \u2014 Strawberry Village",
+      "reason": "MANUAL \u2014 Strawberry Rec (check strawberryrec.com)"
+    },
+    {
+      "id": 419,
+      "name": "Little Grove Play Group",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://chat.whatsapp.com/Bqj0Qtwb9ZF3NcSQqDyV44?s=cl&p=i&mlu=1)"
+    },
+    {
+      "id": 435,
+      "name": "Kids Workshop",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.homedepot.com/c/kids-workshop)"
+    },
+    {
+      "id": 436,
+      "name": "Wednesday Night Rodeo \u2014 Moms & Babies Hike",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: )"
+    },
+    {
+      "id": 470,
+      "name": "Makers Market at the Mill Valley Lumber Yard",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: http://www.millvalleylumberyard.com/events)"
+    },
+    {
+      "id": 476,
+      "name": "Ross Valley Farm Walk",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.nextgenpurpose.com/ross-valley-farm-walk/)"
+    },
+    {
+      "id": 508,
+      "name": "Live Music on the Patio",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.calistogainn.com/restaurant)"
+    },
+    {
+      "id": 509,
+      "name": "Sunday Live Jazz & Blues",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.busterssouthernbbq.com/)"
+    },
+    {
+      "id": 510,
+      "name": "Sunday Jazz Night \u2014 The Tritones",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://hydrogrillnapavalley.com/)"
+    },
+    {
+      "id": 511,
+      "name": "Friday Evening Live Music",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://picayunecellars.com/)"
+    },
+    {
+      "id": 518,
+      "name": "Bluesy Tuesday",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.thesaintnapavalley.com/events)"
+    },
+    {
+      "id": 519,
+      "name": "Friday Night Live Music",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.thesaintnapavalley.com/events)"
+    },
+    {
+      "id": 527,
+      "name": "Friday Night Live Music",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.rorestaurantandlounge.com/)"
+    },
+    {
+      "id": 529,
+      "name": "Weekend Live Music",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://visitcalistoga.com/hot-spots-in-calistoga-to-enjoy-live-music-while-you-sip-and-dine/)"
+    },
+    {
+      "id": 530,
+      "name": "Lincoln Avenue Live!",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lincolnavenuebrewery.com/)"
+    },
+    {
+      "id": 531,
+      "name": "Friday Steel Drums & DJ",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://pacificomexicanrestaurant.com/)"
+    },
+    {
+      "id": 532,
+      "name": "Saturday Acoustic Guitar",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://pacificomexicanrestaurant.com/)"
+    },
+    {
+      "id": 533,
+      "name": "Sunday Brunch Live Music",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.indianspringscalistoga.com/samssocialclub)"
+    },
+    {
+      "id": 534,
+      "name": "Wednesday Locals Night",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.fleetwoodcalistoga.com/)"
+    },
+    {
+      "id": 744,
+      "name": "Little Angels Program \u2014 Music & Art Playtime",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: )"
+    },
+    {
+      "id": 833,
+      "name": "Friday & Saturday Live Music",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.calistogadepot.com/distillery/events)"
+    },
+    {
+      "id": 834,
+      "name": "Sunday Live Music",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.calistogadepot.com/distillery/events)"
+    },
+    {
+      "id": 900,
+      "name": "Friday Night Music Series",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.sthelena.com/)"
+    },
+    {
+      "id": 901,
+      "name": "Live Music Weekends \u2014 Friday & Saturday",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.romeovineyards.com/music-events/)"
+    },
+    {
+      "id": 902,
+      "name": "Live Music Weekends \u2014 Sunday",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.romeovineyards.com/music-events/)"
+    },
+    {
+      "id": 903,
+      "name": "Third Thursdays at Markham",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://markhamvineyards.com/upcoming-events/)"
+    },
+    {
+      "id": 904,
+      "name": "Social Sessions at Salvia Terrace & Bar",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.sthelena.com/event/social-sessions-at-salvia-terrace-bar-8/)"
+    },
+    {
+      "id": 905,
+      "name": "Jam Night with Jason McKee",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lincolnavenuebrewery.com/)"
+    },
+    {
+      "id": 906,
+      "name": "Don Cameron Acoustic",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lincolnavenuebrewery.com/)"
+    },
+    {
+      "id": 907,
+      "name": "Mark Shuttleworth Acoustic",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lincolnavenuebrewery.com/)"
+    },
+    {
+      "id": 953,
+      "name": "Marine Science Sunday",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.marinemammalcenter.org/education/adults-families/marine-science-sunday)"
+    },
+    {
+      "id": 1024,
+      "name": "Outdoor Antique Market",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://novatomothersclub.com/page-18142)"
+    },
+    {
+      "id": 1025,
+      "name": "Live Music in the Hall",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://novatomothersclub.com/page-18142)"
+    },
+    {
+      "id": 1043,
+      "name": "Sunday Cafe at the MWPCA Clubhouse",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://mounttam.org/sunday-cafe)"
+    },
+    {
+      "id": 1082,
+      "name": "Dolly Parton's Imagination Library \u2014 Free Books by Mail",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://marinlibrary.org/imagination-library/)"
+    },
+    {
+      "id": 1095,
+      "name": "Sensory Studio for Minis + Caregivers (Drop in class)",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.mysticmv.com/shop/youth-classes/JSHCFIBEWG47Z2PXW2T4MCNI)"
+    },
+    {
+      "id": 1096,
+      "name": "Movement for Minis + Caregivers (Drop in class)",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.mysticmv.com/shop/youth-classes/JSHCFIBEWG47Z2PXW2T4MCNI)"
+    },
+    {
+      "id": 1116,
+      "name": "Mobile Art in the Garden",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.novatomothersclub.com/page-18142)"
+    },
+    {
+      "id": 1146,
+      "name": "Nature Explorers for Minis + Caregivers (Drop in class)",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.mysticmv.com/shop/youth-classes/JSHCFIBEWG47Z2PXW2T4MCNI)"
+    },
+    {
+      "id": 1161,
+      "name": "Art & Affogato Meetup",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.everlacedesignco.com/)"
+    },
+    {
+      "id": 1217,
+      "name": "Makers Market",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.millvalleylumberyard.com/events)"
+    }
+  ],
+  "fetch_failed": [
+    {
+      "id": 28,
+      "name": "Storytime in the Park (with Riva)",
+      "source": "Sausalito Library Programs"
+    },
+    {
+      "id": 29,
+      "name": "Spanish Storytime in the Park (with Ingrid)",
+      "source": "Sausalito Library Programs"
+    },
+    {
+      "id": 35,
+      "name": "Soul4Kidz Music in the Park",
+      "source": "Sausalito Library Programs"
+    },
+    {
+      "id": 36,
+      "name": "In Harmony Music & Movement",
+      "source": "Sausalito Library Programs"
+    },
+    {
+      "id": 209,
+      "name": "MarinMOCA Free Family Day",
+      "source": "MarinMOCA"
+    },
+    {
+      "id": 627,
+      "name": "2nd Saturdays Family Storytime & Art in the Library",
+      "source": "Sausalito Library Programs"
+    }
+  ]
+}
