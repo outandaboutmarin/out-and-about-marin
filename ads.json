@@ -1,0 +1,60 @@
+{
+  "_about": "Sponsored Featured ads (open item 59). Each active ad takes one of the nine Featured slots, rotates with the others, and opens its own ad page. Not events: never shown in day lists, search or saved. Set active false (or an end date, YYYY-MM-DD, last day shown) to take an ad down. Copy is public; keep commentary in internal_notes.",
+  "ads": [
+    {
+      "id": "social-klub",
+      "active": true,
+      "start": "2026-09-30",
+      "end": "",
+      "name": "The Social Klub",
+      "logo": "assets/ads/social_klub_logo.png",
+      "color": "#AACDCF",
+      "color_ink": "#3E6E72",
+      "tile_meta": { "en": "Indoor play", "es": "Juego bajo techo" },
+      "town": "Sausalito",
+      "badge": { "en": "Sponsored · Local partner", "es": "Patrocinado · Colaborador local" },
+      "subtitle": { "en": "Indoor play space for kids 0-7", "es": "Espacio de juego bajo techo para niños de 0 a 7 años" },
+      "venue": "The Social Klub · Sausalito",
+      "address": "2650 Bridgeway, Sausalito, CA 94965",
+      "address_note": { "en": "free parking", "es": "estacionamiento gratis" },
+      "phone": "(415) 599-3440",
+      "hours": [
+        { "days": { "en": "Mon–Fri", "es": "Lun–Vie" }, "time": { "en": "9 AM – 5 PM", "es": "9 AM – 5 PM" } },
+        { "days": { "en": "Saturday", "es": "Sábado" }, "time": { "en": "10 AM – 4 PM", "es": "10 AM – 4 PM" } },
+        { "days": { "en": "Sunday", "es": "Domingo" }, "time": { "en": "Private parties only", "es": "Solo fiestas privadas" } }
+      ],
+      "hours_note": { "en": "Closed on major public holidays.", "es": "Cerrado en los principales días festivos." },
+      "about": {
+        "en": "An indoor play space for kids up to 7, built for calm, child-led play. Play sessions run every weekday and on Saturdays: book ahead to guarantee a spot, or walk in when there is room. In the evenings it belongs to the grown-ups, with workshops, wellness talks and gatherings, and there is a shop stocked with the toys the kids love most.",
+        "es": "Un espacio de juego bajo techo para niños de hasta 7 años, pensado para un juego tranquilo y guiado por los niños. Hay sesiones de juego todos los días entre semana y los sábados: reserva con antelación para asegurar tu lugar, o entra cuando haya espacio. Por las tardes es para los adultos, con talleres, charlas de bienestar y encuentros, y hay una tienda con los juguetes favoritos de los niños."
+      },
+      "note": {
+        "en": "$30 per child with one caregiver; extra adults $10. Babies under 12 months free with an older sibling. Bring grip socks for kids and socks for grown-ups.",
+        "es": "$30 por niño con un adulto; adultos adicionales $10. Bebés menores de 12 meses gratis con un hermano mayor. Trae calcetines antideslizantes para los niños y calcetines para los adultos."
+      },
+      "offers_label": { "en": "Offers for Out AND About Marin readers", "es": "Ofertas para lectores de Out AND About Marin" },
+      "offers": [
+        {
+          "title": { "en": "50% off your first Open Play session", "es": "50% de descuento en tu primera sesión de Juego Libre" },
+          "sub": { "en": "For families visiting for the first time.", "es": "Para familias que vienen por primera vez." },
+          "code": "PLAY50"
+        },
+        {
+          "title": { "en": "$100 off a Dream Theme party, or a free balloon garland with any DIY party", "es": "$100 de descuento en una fiesta Dream Theme, o una guirnalda de globos gratis con cualquier fiesta DIY" },
+          "sub": { "en": "Birthdays, baby showers and every milestone in between.", "es": "Cumpleaños, baby showers y todos los momentos especiales." },
+          "code": "PARTY100"
+        }
+      ],
+      "offers_how": { "en": "Enter the code when you book at thesocialklub.com.", "es": "Ingresa el código al reservar en thesocialklub.com." },
+      "tags": [
+        { "text": { "en": "Indoor Play", "es": "Juego bajo techo" }, "class": "tag-kids" },
+        { "text": { "en": "0-7 yrs", "es": "0-7 años" }, "class": "tag-age" },
+        { "text": { "en": "$30 per child", "es": "$30 por niño" }, "class": "tag-paid" }
+      ],
+      "website": "https://www.thesocialklub.com",
+      "website_label": "thesocialklub.com",
+      "instagram": "the.social.klub",
+      "internal_notes": "Posted live 2026-09-30 at Alexandra's instruction, from the approved mockup in OAA Sponsorship and Partners/Social Klub/. Alexandra confirmed both codes are live in the Klub's booking system (PLAY50, PARTY100), chose the open-window hours (not the bookable sessions), and chose the phone on thesocialklub.com, (415) 599-3440, over the Nextdoor number (415) 261-7977. Billing: item 22 (Stripe) not set up."
+    }
+  ]
+}

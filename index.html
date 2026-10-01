@@ -673,6 +673,16 @@ function showShareToast(msg) {
 function handleDeepLink() {
   // Check if URL has ?event=ID parameter
   const params = new URLSearchParams(window.location.search);
+  const adId = params.get('ad');
+  if (adId) {
+    let tries = 0;
+    const openWhenReady = () => {
+      const ad = (activeAds || []).find(a => a.id === adId);
+      if (ad) { showScreen('app'); openAd(adId); window.history.replaceState({}, document.title, window.location.pathname); }
+      else if (++tries < 50) setTimeout(openWhenReady, 200);
+    };
+    openWhenReady();
+  }
   const eventId = params.get('event');
   if (eventId) {
     // Wait for events to load then open the detail
@@ -1242,6 +1252,29 @@ function mapDbUser(dbUser) {
   .feat-arrow-left { left: -3px; }
   .feat-arrow-right { right: -3px; }
   .feat-arrow.show { display: flex; }
+  /* SPONSORED ADS (2026-09-30, open item 59). A tile the same size as its neighbours,
+     told apart by the sponsor's logo in the icon circle, a SPONSORED kicker and a border
+     in the sponsor's colour (--ad-color / --ad-ink, set per ad from ads.json). */
+  .feat-tile.ad { border: 1.5px solid var(--ad-color, #AACDCF); }
+  .feat-tile.ad .ft-icon { background: #fff; border: 1px solid #e3eeef; overflow: hidden; }
+  .feat-tile.ad .ft-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .feat-tile.ad .ft-kicker { color: var(--ad-ink, #3E6E72); }
+  #adScreen { display: none; flex-direction: column; min-height: 100vh; background: var(--off-white); }
+  .ad-logo { display: flex; justify-content: center; padding: 1rem 0 0.85rem; background: #fff; border-bottom: 0.5px solid #EDEAE4; }
+  .ad-logo img { width: 118px; height: 118px; display: block; object-fit: contain; }
+  .ad-hours { display: grid; grid-template-columns: auto 1fr; column-gap: 0.9rem; row-gap: 0.3rem; font-size: 0.82rem; margin: 0; }
+  .ad-hours dt { font-weight: 500; color: var(--text-primary); }
+  .ad-hours dd { margin: 0; font-weight: 300; color: #333; }
+  .ad-phone a { color: var(--navy); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
+  .offer { border: 1.5px dashed var(--ad-color, #AACDCF); border-radius: var(--radius-sm); padding: 0.7rem 0.75rem; background: #F6FAFA; }
+  .offer + .offer { margin-top: 0.55rem; }
+  .offer-title { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); line-height: 1.35; }
+  .offer-sub { font-size: 0.66rem; color: var(--text-muted); margin-top: 2px; line-height: 1.45; }
+  .offer-code { margin-top: 0.55rem; display: flex; align-items: center; gap: 0.5rem; }
+  .offer-code .code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.12em; color: var(--ad-ink, #3E6E72); background: #fff; border: 1px solid var(--ad-color, #AACDCF); border-radius: 6px; padding: 0.3rem 0.6rem; }
+  .offer-code .copy { font-family: var(--font-sans); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.04em; color: var(--navy); background: none; border: 1px solid var(--navy); border-radius: var(--radius-pill); padding: 0.3rem 0.75rem; cursor: pointer; min-height: 30px; }
+  .offer-code .copy.done { background: var(--navy); color: #fff; }
+  .offer-how { font-size: 0.62rem; color: var(--text-muted); margin-top: 0.6rem; line-height: 1.5; }
   .section-day-label {
     font-size: 0.68rem;
     font-weight: 600;
@@ -2436,6 +2469,19 @@ function mapDbUser(dbUser) {
 </div>
 
 <!-- ═══════════════════════════════════════════════════
+     AD SCREEN (sponsored Featured ads, filled from ads.json by openAd)
+═══════════════════════════════════════════════════ -->
+<div id="adScreen">
+  <div class="detail-header">
+    <button class="detail-back" onclick="closeAd()">‹ <span id="adBackLabel">Back to events</span></button>
+    <div class="detail-type-badge" id="adBadge"></div>
+    <div class="detail-title" id="adTitle"></div>
+    <div class="detail-org" id="adSubtitle"></div>
+  </div>
+  <div class="detail-body" id="adBody"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
      DETAIL SCREEN
 ═══════════════════════════════════════════════════ -->
 <div id="detailScreen">
@@ -2909,6 +2955,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function loadEvents() {
+  loadAds();
   fetch('events.json?v=' + Date.now())
     .then(r => r.json())
     .then(data => {
@@ -3167,6 +3214,7 @@ function showScreen(screen) {
   document.getElementById('appScreen').style.display = 'none';
   document.getElementById('profileScreen').style.display = 'none';
   document.getElementById('detailScreen').style.display = 'none';
+  document.getElementById('adScreen').style.display = 'none';
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('signupScreen2').style.display = 'none';
   document.getElementById('resourcesScreen').style.display = 'none';
@@ -4181,14 +4229,172 @@ function armFeatRotation(){
   },ms);
 }
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&typeof allEvents!=='undefined'&&allEvents&&allEvents.length)renderFeatured();});
+// ── Sponsored ads (2026-09-30, open item 59) ──
+// ads.json holds paid Featured ads. They are NOT events: they never enter allEvents,
+// so they cannot appear in day lists, search, saved hearts or the scraper's view.
+// Each live ad takes one of the nine Featured slots and rotates with the others.
+// Pages are built with DOM nodes and textContent, never innerHTML with ad text.
+var activeAds = [];
+var currentAdId = null;
+function adLive(a) {
+  if (!a || a.active !== true) return false;
+  var t = new Date(); var today = t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+  if (a.start && today < a.start) return false;
+  if (a.end && today > a.end) return false;
+  return true;
+}
+function loadAds() {
+  return fetch('ads.json?v=' + Date.now())
+    .then(function (r) { return r.ok ? r.json() : { ads: [] }; })
+    .then(function (d) { activeAds = (d.ads || []).filter(adLive); })
+    .catch(function () { activeAds = []; })
+    .then(function () { if (typeof allEvents !== 'undefined' && allEvents && allEvents.length) renderFeatured(); });
+}
+function adText(v) { if (v == null) return ''; if (typeof v === 'string') return v; return (currentLang === 'es' ? (v.es || v.en) : v.en) || ''; }
+function adEsc(t) { return String(t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+// Live ads take their slots out of the nine; the ad goes second so the strip
+// still opens on an event, then rotateFeatured() moves it through every slot.
+function withAds(sel) {
+  var ads = (activeAds || []).slice(0, 2);
+  if (!ads.length) return sel;
+  var out = sel.slice(0, Math.max(0, 9 - ads.length));
+  ads.forEach(function (a, i) { out.splice(Math.min(1 + i, out.length), 0, { ad: a }); });
+  return out;
+}
+function adTileHTML(a) {
+  var style = '--ad-color:' + adEsc(a.color || '#AACDCF') + ';--ad-ink:' + adEsc(a.color_ink || '#3E6E72');
+  return '<div class="feat-card" onclick="openAd(\'' + adEsc(a.id) + '\')"><div class="feat-tile ad" style="' + style + '"><div class="ft-top"><span class="ft-icon"><img src="' + adEsc(a.logo) + '" alt=""></span><div class="ft-kicker">' + (currentLang === 'es' ? 'Patrocinado' : 'Sponsored') + '</div></div><div class="ft-name">' + adEsc(a.name) + '</div><div class="ft-meta"><b>' + adEsc(adText(a.tile_meta)) + '</b>' + (a.town ? ' · ' + adEsc(a.town) : '') + '</div></div></div>';
+}
+function adEl(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+function adSection(label) { var s = adEl('div', 'detail-section'); s.appendChild(adEl('div', 'section-label', label)); return s; }
+var AD_ICONS = {
+  pin: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z" stroke="#0D1B3E" stroke-width="1.2"/><circle cx="7" cy="5" r="1.5" stroke="#0D1B3E" stroke-width="1.2"/></svg>',
+  clock: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#0D1B3E" stroke-width="1.2"/><polyline points="7,4 7,7 9,9" stroke="#0D1B3E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  phone: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 1.5h2l1 3-1.5 1a7 7 0 0 0 4 4l1-1.5 3 1v2a1.5 1.5 0 0 1-1.5 1.5A10.5 10.5 0 0 1 1.5 3 1.5 1.5 0 0 1 3 1.5z" stroke="#0D1B3E" stroke-width="1.2" stroke-linejoin="round"/></svg>',
+  maps: '<svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z" stroke="#0D1B3E" stroke-width="1.3"/></svg>',
+  web: '<svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c-1.5 2-2 3.5-2 5.5s.5 3.5 2 5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c1.5 2 2 3.5 2 5.5s-.5 3.5-2 5.5" stroke="white" stroke-width="1.2"/><line x1="1.5" y1="7" x2="12.5" y2="7" stroke="white" stroke-width="1.2"/></svg>',
+  ig: '<svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="3.2" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="7" cy="7" r="2.6" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="10.3" cy="3.7" r=".7" fill="#1A1A1A"/></svg>',
+  share: '<svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="11" cy="2.5" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="11" cy="11.5" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="3" cy="7" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><line x1="4.4" y1="6.2" x2="9.6" y2="3.3" stroke="#1A1A1A" stroke-width="1.2"/><line x1="4.4" y1="7.8" x2="9.6" y2="10.7" stroke="#1A1A1A" stroke-width="1.2"/></svg>'
+};
+function adRow(icon, label) {
+  var r = adEl('div', 'detail-row'); var i = adEl('div', 'detail-icon'); i.innerHTML = AD_ICONS[icon]; r.appendChild(i);
+  var c = adEl('div', 'detail-row-content'); if (label) c.appendChild(adEl('div', 'detail-row-label', label)); r.appendChild(c); return { row: r, content: c };
+}
+function adBtn(cls, href, icon, label) {
+  var a = adEl('a', cls); if (href) { a.href = href; if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener'; } }
+  a.innerHTML = AD_ICONS[icon]; a.appendChild(document.createTextNode(label)); return a;
+}
+function copyAdCode(btn, code) {
+  var done = function () { btn.textContent = currentLang === 'es' ? '¡Copiado!' : 'Copied!'; btn.classList.add('done');
+    setTimeout(function () { btn.textContent = currentLang === 'es' ? 'Copiar código' : 'Copy code'; btn.classList.remove('done'); }, 2000); };
+  var fallback = function () { var t = document.createElement('textarea'); t.value = code; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (x) {} document.body.removeChild(t); done(); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(code).then(done, fallback); else fallback();
+  logActivity('ad_code_copy', { event_name: 'AD ' + currentAdId + ': ' + code });
+}
+function openAd(id) {
+  var a = (activeAds || []).find(function (x) { return x.id === id; });
+  if (!a) return;
+  var es = currentLang === 'es';
+  currentAdId = id;
+  logActivity('ad_click', { event_name: 'AD ' + a.id + ': ' + a.name });
+  var scr = document.getElementById('adScreen');
+  scr.style.setProperty('--ad-color', a.color || '#AACDCF');
+  scr.style.setProperty('--ad-ink', a.color_ink || '#3E6E72');
+  document.getElementById('adBackLabel').textContent = es ? 'Volver a eventos' : 'Back to events';
+  document.getElementById('adBadge').textContent = adText(a.badge);
+  document.getElementById('adTitle').textContent = a.name;
+  document.getElementById('adSubtitle').textContent = adText(a.subtitle);
+
+  var body = document.getElementById('adBody'); body.textContent = '';
+  var card = adEl('div', 'detail-card');
+  if (a.logo) { var lg = adEl('div', 'ad-logo'); var im = document.createElement('img'); im.src = a.logo; im.alt = a.name + ' logo'; lg.appendChild(im); card.appendChild(lg); }
+
+  var where = adSection(es ? 'Dónde' : 'Where');
+  var w = adRow('pin', es ? 'Lugar y dirección' : 'Venue & address');
+  w.content.appendChild(adEl('div', 'detail-row-value', a.venue || a.name));
+  w.content.appendChild(adEl('div', 'detail-row-sub', a.address + (a.address_note ? ' · ' + adText(a.address_note) : '')));
+  where.appendChild(w.row);
+  if (a.phone) {
+    var ph = adRow('phone', es ? 'Teléfono' : 'Phone');
+    var pv = adEl('div', 'detail-row-value ad-phone'); var pl = adEl('a', null, a.phone); pl.href = 'tel:' + a.phone.replace(/[^\d+]/g, '');
+    pv.appendChild(pl); ph.content.appendChild(pv); where.appendChild(ph.row);
+  }
+  card.appendChild(where);
+
+  if (a.hours && a.hours.length) {
+    var hs = adSection(es ? 'Horario' : 'Hours');
+    var h = adRow('clock', null); var dl = adEl('dl', 'ad-hours');
+    a.hours.forEach(function (x) { dl.appendChild(adEl('dt', null, adText(x.days))); dl.appendChild(adEl('dd', null, adText(x.time))); });
+    h.content.appendChild(dl);
+    if (a.hours_note) { var hn = adEl('div', 'detail-row-sub', adText(a.hours_note)); hn.style.marginTop = '6px'; h.content.appendChild(hn); }
+    hs.appendChild(h.row); card.appendChild(hs);
+  }
+
+  var ab = adSection(es ? 'Acerca de' : 'About');
+  ab.appendChild(adEl('div', 'description-text', adText(a.about)));
+  if (a.note) ab.appendChild(adEl('div', 'notes-text', adText(a.note)));
+  card.appendChild(ab);
+
+  if (a.offers && a.offers.length) {
+    var of = adSection(adText(a.offers_label) || (es ? 'Ofertas' : 'Offers'));
+    a.offers.forEach(function (o) {
+      var box = adEl('div', 'offer');
+      box.appendChild(adEl('div', 'offer-title', adText(o.title)));
+      if (o.sub) box.appendChild(adEl('div', 'offer-sub', adText(o.sub)));
+      var row = adEl('div', 'offer-code'); row.appendChild(adEl('span', 'code', o.code));
+      var b = adEl('button', 'copy', es ? 'Copiar código' : 'Copy code'); b.type = 'button';
+      b.addEventListener('click', function () { copyAdCode(b, o.code); });
+      row.appendChild(b); box.appendChild(row); of.appendChild(box);
+    });
+    if (a.offers_how) of.appendChild(adEl('div', 'offer-how', adText(a.offers_how)));
+    card.appendChild(of);
+  }
+
+  if (a.tags && a.tags.length) {
+    var ds = adSection(es ? 'Detalles' : 'Details'); var tg = adEl('div', 'detail-tags');
+    a.tags.forEach(function (t) { tg.appendChild(adEl('span', 'detail-tag ' + (t['class'] || ''), adText(t.text))); });
+    ds.appendChild(tg); card.appendChild(ds);
+  }
+  body.appendChild(card);
+
+  var r1 = adEl('div', 'action-row');
+  r1.appendChild(adBtn('action-btn btn-maps', 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(a.address), 'maps', es ? 'Cómo llegar' : 'Directions'));
+  if (a.website) r1.appendChild(adBtn('action-btn btn-website', a.website, 'web', (es ? 'Visita ' : 'Visit ') + (a.website_label || a.website)));
+  body.appendChild(r1);
+  var r2 = adEl('div', 'secondary-row');
+  if (a.instagram) r2.appendChild(adBtn('action-btn secondary-btn', 'https://www.instagram.com/' + a.instagram + '/', 'ig', '@' + a.instagram));
+  var sh = adBtn('action-btn secondary-btn', null, 'share', es ? 'Compartir' : 'Share'); sh.style.cursor = 'pointer';
+  sh.addEventListener('click', function () { shareAd(a); });
+  r2.appendChild(sh); body.appendChild(r2);
+  body.appendChild(adEl('div', 'partner-disclose', es ? 'Anuncio patrocinado. Out AND About Marin recibe un pago por destacar este negocio local.'
+                                                     : 'Sponsored listing. Out AND About Marin is paid to feature this local business.'));
+
+  window._savedScrollTop = window.scrollY || document.documentElement.scrollTop;
+  document.getElementById('appScreen').style.display = 'none';
+  scr.style.display = 'flex'; scr.style.flexDirection = 'column';
+  window.scrollTo(0, 0);
+}
+function closeAd() {
+  document.getElementById('adScreen').style.display = 'none';
+  currentAdId = null;
+  var app = document.getElementById('appScreen'); app.style.display = 'flex'; app.style.flexDirection = 'column';
+  requestAnimationFrame(function () { window.scrollTo(0, window._savedScrollTop || 0); });
+}
+function shareAd(a) {
+  var url = window.location.origin + '/?ad=' + encodeURIComponent(a.id);
+  if (navigator.share) navigator.share({ title: a.name, text: a.name + ' on Out AND About Marin', url: url }).catch(function () { copyShareLink(url); });
+  else copyShareLink(url);
+}
+
 function renderFeatured(){
   var wrap=document.getElementById('featuredWrap'),row=document.getElementById('featuredRow');if(!wrap||!row)return;
   var head=document.getElementById('featuredHead');if(head)head.textContent=currentLang==='es'?'Destacados':'Featured';
   var sel=selectFeatured();
   if(!sel.length){wrap.style.display='none';return;}
   wrap.style.display='block';
+  sel=withAds(sel);
   sel=rotateFeatured(sel);
-  row.innerHTML=sel.map(function(o,i){var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
+  row.innerHTML=sel.map(function(o,i){if(o.ad)return adTileHTML(o.ad);var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
     return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile"><div class="ft-top"><span class="ft-icon">'+featIcon(e)+'</span><div class="ft-kicker">'+featKicker(e)+'</div></div><div class="ft-name">'+name+'</div><div class="ft-meta">'+featMeta(o)+'</div></div></div>';
   }).join('');
   row.onscroll=updateFeatArrows;
