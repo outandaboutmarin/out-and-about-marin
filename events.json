@@ -9884,8 +9884,8 @@
       "expires": "",
       "organization": "Woander",
       "venue": "The Wylding Woods (next to Woander)",
-      "event_name": "The Singing Garden",
-      "event_name_es": "El Jardín que Canta",
+      "event_name": "The Singing Garden Puppet Show",
+      "event_name_es": "The Singing Garden: espectáculo de títeres",
       "type": "Music and Movies",
       "day": "Saturday/Sunday",
       "time": "10:00 AM – 4:30 PM",
@@ -9903,7 +9903,7 @@
       "website": "https://www.wyldingwoods.com/story-stump",
       "notes": "Shows every Saturday and Sunday, Oct 3 – Nov 22. About 50 minutes.",
       "location_group": "Mill Valley",
-      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Venue new to the database; address confirmed as 73 Throckmorton Ave from the shop’s own listing. No price published on the calendar entry. 2026-10-01 (sweep 2026-09-30, Alexandra approved): converted from a one-off Oct 3 'singing session' to Seasonal Sat/Sun 10/03-11/22 per wyldingwoods.com/story-stump (Oct 3 - Nov 22, ~50 min, ages 3-9, 77 Throckmorton Ave) and Ronnie's weekend listings.",
+      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Venue new to the database; address confirmed as 73 Throckmorton Ave from the shop’s own listing. No price published on the calendar entry. 2026-10-01 (sweep 2026-09-30, Alexandra approved): converted from a one-off Oct 3 'singing session' to Seasonal Sat/Sun 10/03-11/22 per wyldingwoods.com/story-stump (Oct 3 - Nov 22, ~50 min, ages 3-9, 77 Throckmorton Ave) and Ronnie's weekend listings. 2026-10-01: renamed 'The Singing Garden Puppet Show' at Alexandra's request.",
       "id": 1202
     },
     {
@@ -10560,7 +10560,7 @@
     {
       "season_start": "",
       "season_end": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "organization": "PEACE + POP Sound Bath",
       "venue": "Homestead Valley Community Center — Pool",
@@ -10585,7 +10585,7 @@
       "website": "https://peaceandpop.com/book-bay-area-sound-bath",
       "notes": "Free; reserve a float in advance, as they are limited. You stay dry, and a lifeguard is on hand.",
       "location_group": "Mill Valley",
-      "internal_notes": "Added 2026-09-26 from the organiser’s own Nextdoor post (Joey, PEACE + POP, supplied by Alexandra) plus peaceandpop.com. CHANNELS DISAGREE ON THE END TIME (rule 25): the Nextdoor post says 6:30-8:30p, the website’s home and booking pages say 6:30-8p. Took 8:30 from the Nextdoor post because it was posted this week for this date, and a social before a 90-minute sound bath fits two hours; the start time agrees across both. Venue: the post says Homestead Valley Community Center, the site says Homestead Valley Pool; the pool is at the community center, 315 Montford Ave. Site: \"Our Social + Sound Bath events are always free.\" TYPE Grown-Ups Only! is a judgment call: an evening social with sparkling drinks and a sound bath, pitched at women and women-owned businesses; the organiser never states an age limit. Revisit if they say kids are welcome.",
+      "internal_notes": "Added 2026-09-26 from the organiser’s own Nextdoor post (Joey, PEACE + POP, supplied by Alexandra) plus peaceandpop.com. CHANNELS DISAGREE ON THE END TIME (rule 25): the Nextdoor post says 6:30-8:30p, the website’s home and booking pages say 6:30-8p. Took 8:30 from the Nextdoor post because it was posted this week for this date, and a social before a 90-minute sound bath fits two hours; the start time agrees across both. Venue: the post says Homestead Valley Community Center, the site says Homestead Valley Pool; the pool is at the community center, 315 Montford Ave. Site: \"Our Social + Sound Bath events are always free.\" TYPE Grown-Ups Only! is a judgment call: an evening social with sparkling drinks and a sound bath, pitched at women and women-owned businesses; the organiser never states an age limit. Revisit if they say kids are welcome. 2026-10-01: set Inactive at Alexandra's instruction ('remove this event on 10/3').",
       "id": 1227
     },
     {
