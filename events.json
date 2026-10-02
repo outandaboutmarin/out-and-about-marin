@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-01",
+  "last_updated": "2026-10-02",
   "events": [
     {
       "id": 1,
@@ -7220,35 +7220,6 @@
       "internal_notes": "Added 2026-09-03 at Alexandra's request. She supplied the cadence verbatim: 'the 1st Saturday of each month at 10:30 AM at our Corte Madera store. Kids of all sizes and their parents are welcome!' Venue scan run first — nothing on file at Book Passage, which is a notable gap given it is one of Marin's best-known bookshops. Stored Monthly with a first-Saturday ordinal, which parseOccurrenceRule needs (rule 9); her stated cadence is the confirmation rule 2 asks for. CADENCE CONFIRMED BY PHONE 2026-09-13: Alexandra called the Corte Madera store, which confirmed storytime runs on the first Saturday of each month. This upgrades the source from a single unverified quote to the venue itself. Scope of the confirmation, stated precisely so it is not over-read: the CADENCE was confirmed. The 10:30 AM time was not separately reported, nor was December, nor what other family events the store runs."
     },
     {
-      "id": 1080,
-      "featured": false,
-      "status": "Active",
-      "organization": "Marin County Free Library — The Learning Bus",
-      "venue": "Papermill Creek Children's Corner",
-      "event_name": "The Learning Bus — Papermill Creek Children's Corner",
-      "event_name_es": "El Bus del Aprendizaje — Papermill Creek Children's Corner",
-      "type": "Library",
-      "day": "Thursday",
-      "time": "9:30 AM – 10:30 AM",
-      "time_of_day": "Morning",
-      "town": "Point Reyes Station",
-      "address": "503 B St, Point Reyes Station, CA 94956",
-      "ages": "All ages",
-      "cost": "Free",
-      "indoor_outdoor": "Outdoor",
-      "active_sedentary": "Sedentary",
-      "cadence": "One-off",
-      "event_date": "2026-10-01",
-      "expires": "2026-10-01",
-      "description": "The Marin County Free Library's Learning Bus stops here — a library on wheels with books to borrow and activities for children. Free, no library card needed to visit.",
-      "description_es": "El Bus del Aprendizaje de la Biblioteca Pública del Condado de Marin para aquí: una biblioteca sobre ruedas con libros para llevar y actividades para niños. Gratis, no se necesita tarjeta de biblioteca para visitarlo.",
-      "registration": "Not required",
-      "website": "https://marinlibrary.org/learning-bus/",
-      "notes": "",
-      "location_group": "West Marin",
-      "internal_notes": "Added 2026-09-03 from the MCFL 'Learning Bus September 2026 / El Bus del Aprendizaje Septiembre 2026' flyer Alexandra sent. Source 42 of the sweep checklist prescribes exactly this: parse every stop and add each as a dated one-off.\nTHE DATABASE HELD ZERO Learning Bus records before this — the previous months' stops expired and were purged by the daily scraper, and no new PDF had been posted. As of this sweep marinlibrary.org/learning-bus/ still carries only the May and June 2026 PDFs, so this flyer is AHEAD of the website; the schedule could not have been found through the documented fetch route. Open item 12 tracks the contact for exactly this problem, and the flyer's 'WE'RE BACK! / ¡YA REGRESAMOS!' banner answers it: the programme has resumed after the summer.\nThe flyer marks Mon Sep 7 CLOSED for Labor Day, and the week of Sep 28 carries only Wed Sep 30 (Tomales) plus two October stops — no Mon 28 or Tue 29 — so the regular weekly pattern genuinely stops after Sep 25. Nothing was inferred to fill it.\nNote elig() in index.html excludes any event whose name contains 'Learning Bus' from the Featured strip, so these will not crowd the carousel."
-    },
-    {
       "id": 1081,
       "featured": false,
       "status": "Active",
@@ -11776,37 +11747,6 @@
       "socials": {
         "instagram": "goldengatemahj"
       }
-    },
-    {
-      "season_start": "",
-      "season_end": "",
-      "status": "Active",
-      "featured": false,
-      "cadence": "One-off",
-      "id": 1269,
-      "organization": "The Local Hype Girl",
-      "venue": "Pink Owl Coffee",
-      "event_name": "Coffee Meetup - The Local Hype Girl",
-      "event_name_es": "Encuentro con café - The Local Hype Girl",
-      "type": "Community Event",
-      "day": "Thursday",
-      "time": "11:00 AM – 12:30 PM",
-      "time_of_day": "Morning",
-      "town": "San Rafael",
-      "address": "1100 4th St, San Rafael, CA",
-      "location_group": "San Rafael",
-      "ages": "All ages",
-      "cost": "Not listed",
-      "indoor_outdoor": "Indoor",
-      "active_sedentary": "Sedentary",
-      "event_date": "2026-10-01",
-      "expires": "2026-10-01",
-      "description": "Let's hang: a sort-of-planned coffee meetup for anyone, hosted by The Local Hype Girl at Pink Owl Coffee. Don't think too hard about it; come if you can.",
-      "description_es": "Vamos a juntarnos: un encuentro con café medio planeado y abierto a todos, organizado por The Local Hype Girl en Pink Owl Coffee. No lo pienses demasiado; ven si puedes.",
-      "registration": "Not required; drop an owl on her Instagram post if you're coming",
-      "website": "https://www.instagram.com/thelocalhypegirl/",
-      "notes": "",
-      "internal_notes": "Added 2026-09-29 from a screenshot of @thelocalhypegirl's Instagram post Alexandra sent: 'Let's Hang, a sort of planned meet up for anyone', Pink Owl Coffee, Thursday October 1st, 11:00 AM, 1100 4th St, San Rafael. The flyer gives a start time only; end 12:30 PM and the title are Alexandra's. Cost not stated (a coffee shop), so 'Not listed' per rule 22. No zip on the flyer, so none added."
     },
     {
       "season_start": "",

@@ -1,19 +1,19 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-10-01
-Time: 23:50:29
+Date: 2026-10-02
+Time: 18:06:14
 
-Total events in events.json: 452
-Active events: 418
+Total events in events.json: 450
+Active events: 416
 Temp. closed: 0
 
 Events by type:
-  Community Event: 110
+  Community Event: 109
   Farmers Market: 14
   Festival: 15
   Fitness: 21
   Grown-Ups Only!: 12
   Kids Programs: 91
-  Library: 112
+  Library: 111
   Music and Movies: 77
 
 Events by town:
@@ -31,11 +31,11 @@ Events by town:
   Muir Beach: 8
   Nicasio/San Geronimo: 2
   Novato: 60
-  Point Reyes Station: 12
+  Point Reyes Station: 11
   Ross: 5
   San Anselmo: 14
   San Geronimo: 5
-  San Rafael: 71
+  San Rafael: 70
   Sausalito: 25
   St. Helena: 14
   Tiburon: 35
