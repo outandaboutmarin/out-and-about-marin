@@ -1,6 +1,6 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-10-03
-Time: 16:49:41
+Time: 22:49:02
 
 Total events in events.json: 460
 Active events: 427
@@ -46,11 +46,9 @@ Events by town:
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
-  🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library
-  🔔 PAGE CHANGED: MCFL — Marin City Library
   🔔 PAGE CHANGED: MCFL — Novato Library
   🔔 PAGE CHANGED: MCFL — Point Reyes Library
   🔔 PAGE CHANGED: MCFL — South Novato Library
