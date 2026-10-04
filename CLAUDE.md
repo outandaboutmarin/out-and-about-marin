@@ -840,6 +840,10 @@ one with a user-facing cost.
   Story — were driven end to end for real, and five of the six assets for the week of Sep 11 are
   scheduled. `render_slides.py` renders any size, so the square carousel slides and the 9:16 Story
   frames come from the same approved HTML.
+  ⚠ **Moved 2026-10-03:** the Instagram mockups and rendered PNGs no longer live in this repo's
+  `templates/` and `slides/`. They are in the Documents project folder, `OAA marketing\Instagram templates\`
+  and `OAA marketing\Instagram slides\` (Alexandra's request). Run `render_slides.py` from here with full paths.
+  Partner ad mockups stay in `templates/`. Path map: `social_media_and_marketing.md`, "Where the Instagram files live".
 - **⚠ "We're having trouble completing your request" CAN MEAN IT WORKED.** Two of the three
   carousels showed that error on a hung spinner and **both had scheduled successfully**. Retrying
   would have double-posted. **On any error or hang from a Business Suite composer, check the
