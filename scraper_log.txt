@@ -1,20 +1,20 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-10-04
-Time: 17:10:07
+Time: 22:58:32
 
-Total events in events.json: 442
-Active events: 411
+Total events in events.json: 447
+Active events: 416
 Temp. closed: 0
 
 Events by type:
-  Community Event: 116
+  Community Event: 119
   Farmers Market: 14
   Festival: 16
   Fitness: 19
   Grown-Ups Only!: 10
   Kids Programs: 88
   Library: 108
-  Music and Movies: 71
+  Music and Movies: 73
 
 Events by town:
   Belvedere: 2
@@ -27,7 +27,7 @@ Events by town:
   Larkspur: 26
   Marin City: 5
   Marin County: 1
-  Mill Valley: 67
+  Mill Valley: 72
   Muir Beach: 8
   Nicasio/San Geronimo: 2
   Novato: 55
@@ -46,9 +46,7 @@ Events by town:
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
-  🔔 PAGE CHANGED: Larkspur Library
-  🔔 PAGE CHANGED: Mill Valley Public Library
-  🔔 PAGE CHANGED: San Anselmo Library
+  🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library
