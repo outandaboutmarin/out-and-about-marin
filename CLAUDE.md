@@ -619,7 +619,10 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
 ## Open Items tracker (Alexandra's to-do list)
 
 - **Source of truth**: `OAA maintence and content/open_items.md` (her Documents project folder, **not** this repo). Grouped Infrastructure / Data Quality / Marketing, with a "Recently closed" section kept for reference. Edit it directly when she says to add, update, or close an item.
-- **"Show me the dashboard" / "open the open items list"** means render it as a formatted page. **Run it, do not rebuild it by hand:**
+- **"Show me the dashboard" / "open the open items list"** means render it as a formatted page.
+
+  ⚠ **Corrected 2026-10-03: which generator is live.** The script in use is `OAA maintence and content/build_dashboard.py` (with `_dashboard.css` beside it), run from that folder; it writes `open_items_dashboard.html`, published to **https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH**. The `build_dashboard.py` in this repo is an older, larger copy (Sep 9) and is **not** the one to edit. As of 2026-10-03 the parser also renders **indented sub-bullets and wrapped lines** under each bullet (before that they were silently dropped, which hid item 15's open tasks and item 62's blurbs), and the "Waiting on you" cards carry the same full Notes expander as the other items.
+ **Run it, do not rebuild it by hand:**
   ```bash
   python build_dashboard.py            # writes open_items_dashboard.html
   ```
