@@ -198,6 +198,9 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
     **DECLINED 2026-09-28 — do not re-propose:** Alexandra skipped all three items the first review surfaced:
     the Depot Cafe plaza music (weekly Fri/Sat 5:30 PM, Sun 4-6 PM), the Marin Bluegrass Sessions at Sweetwater
     (4th Sunday), and the Throckmorton youth musical "Little Red Met a Wolf" (Oct 2-4).
+    **REVERSED 2026-10-04 for the Depot music only:** Alexandra asked for it herself; it is now id 1354
+    (Fri/Sat 5:30 PM, patio, no cover). Sweeps: it is in the database, so treat it as existing, not as a proposal.
+    The Sunday 4-6 PM slot was not added. The Bluegrass Sessions and the youth musical stay declined.
 
 46. **The Social Klub — Events & Activities (SPONSOR)** — **added 2026-10-01 at Alexandra's request; The Social Klub is a paying sponsor.** Fetch `thesocialklub.com/events-and-activities` (Squarespace; reads fine in the headless browser — give it ~5 s). Indoor play space for kids 0–7 at **2650 Bridgeway, Sausalito**; its events page mixes kids' events (free play days, Halloween silent disco), grown-ups' evenings (ceramics nights, women's-health talks, Golden Gate Mahjong nights) and parent workshops.
 
