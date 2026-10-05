@@ -13824,7 +13824,7 @@
     {
       "season_start": "",
       "season_end": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "event_date": "",
       "expires": "",
@@ -13838,7 +13838,7 @@
       "event_name_es": "Clase para que los niños aprendan a atarse los zapatos en Nordstrom",
       "type": "Kids Programs",
       "day": "Saturday",
-      "time": "10:00 AM",
+      "time": "9:30 AM",
       "time_of_day": "Morning",
       "ages": "Kids",
       "cost": "Not listed",
@@ -13849,7 +13849,7 @@
       "description_es": "Una divertida clase mensual en el departamento de zapatos de Nordstrom en The Village donde los pequeños aprenden a atarse los zapatos. Llama al departamento de zapatos para más detalles y para inscribirte.",
       "registration": "Required: call the store's shoe department to sign up (store: 415-927-1690)",
       "website": "https://www.nordstrom.com/store-details/united-states/ca/corte-madera/nordstrom-the-village-at-corte",
-      "internal_notes": "Added 2026-10-05 at Alexandra's request ('third saturday of the month at 10am'). Nordstrom's Corte Madera store page (read in full) says only: 'Kids' Shoe-Tying Class ... This class is offered once a month. To get more details or sign up, please call our shoe department.' Day and time are Alexandra's; no price or age published, so cost 'Not listed' and ages 'Kids'. Store phone 415.927.1690 from the same page (no direct shoe-department number).",
+      "internal_notes": "Added 2026-10-05 at Alexandra's request ('third saturday of the month at 10am'). Nordstrom's Corte Madera store page (read in full) says only: 'Kids' Shoe-Tying Class ... This class is offered once a month. To get more details or sign up, please call our shoe department.' Day and time are Alexandra's; no price or age published, so cost 'Not listed' and ages 'Kids'. Store phone 415.927.1690 from the same page (no direct shoe-department number). 2026-10-05: set Inactive at Alexandra's request: the class is paused and is expected to resume on the 3rd Saturday of each month at 9:30 AM (time changed from 10 AM). Check back in January 2027 (open item 58zg); reactivate then if it has restarted.",
       "id": 1359
     }
   ]
