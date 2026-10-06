@@ -81,7 +81,7 @@ As of 2026-10-04: **446 events, max ID 1354.** Next new event gets the next ID v
 | `time_of_day` | `Morning` / `Afternoon` / `Evening` |
 | `town` | town name |
 | `address` | full street address |
-| `ages` | free text, e.g. `"0-12 months"`, `"All ages"`, `"5-12 yrs"` |
+| `ages` | free text, e.g. `"0-12 months"`, `"All ages"`, `"5-12 yrs"`. **The age filter reads it as a range** (since 2026-10-05, open item 64: `parseAgeRange`/`ageChipsFor` in `index.html`). It understands `X-Y yrs`, `X-Y months`, mixed `6 months - 5 yrs`, `Grades K-2` / `3rd-5th grade` / `Grades K+`, `X+` / `X and up` / `X yrs and older`, `12 and under`, `Birth to age 5`, `Pregnancy to 3 yrs`, `Expecting and new parents`, `School age`, `Tweens`, `Teens`, `Kids`. An event shows under each chip it overlaps by 6+ months: Babies 0-12 mo, Toddlers 1-3, Preschool 3-5, Kids 5-12; an upper age is the END of the range, so `0-5 yrs` is not under Kids. `All ages` / `Families` map to Families only; `Adults`, `21+`, `Not listed` map to none. **Prefer those shapes for new records**; a phrasing it cannot read appears under no age chip. To check one: open index.html headless and call `ageChipsFor("<text>")`. |
 | `cost` | free text: `"Free"`, `"Paid"`, `"$10 drop-in"`, etc. |
 | `indoor_outdoor` | `Indoor` / `Outdoor` / `Both` — present on every record but **not currently read by `index.html`**. Keep filling it in for consistency/future use, don't skip it. |
 | `active_sedentary` | `Active` / `Sedentary` — same status: present on every record, not currently read by the frontend. Keep filling in. |
