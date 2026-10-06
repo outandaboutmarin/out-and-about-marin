@@ -3253,8 +3253,12 @@ function buildDropdowns() {
 }
 
 function buildLocationOptions() {
+  // Retired (Inactive) records are hidden from every list, so they must not add
+  // a location either: on 2026-10-06 one retired record kept the removed
+  // 'Larkspur/Corte Madera' group in this menu.
   const countyEvents = allEvents.filter(e =>
-    activeCounty === 'napa' ? e.county === 'Napa' : e.county !== 'Napa'
+    e.status !== 'Inactive' &&
+    (activeCounty === 'napa' ? e.county === 'Napa' : e.county !== 'Napa')
   );
   const groups = [...new Set(countyEvents.map(e => e.location_group || e.town))].sort();
   buildFilterOptions('location', groups.map(v => ({ value: v })));
@@ -4970,9 +4974,14 @@ function saveDefaults() {
 // silently lose that town from their filters. Add an entry here any time a
 // location_group value is renamed or removed.
 const LOCATION_ALIAS_MAP = {
-  'Larkspur': ['Larkspur/Greenbrae'],
-  'Larkspur/Corte Madera': ['Corte Madera', 'Larkspur/Greenbrae'],  // group retired 2026-10-06; saved filters map to both
-  'Greenbrae': ['Larkspur/Greenbrae'],
+  'Larkspur': ['Larkspur/Greenbrae/Kentfield'],
+  'Greenbrae': ['Larkspur/Greenbrae/Kentfield'],
+  'Kentfield': ['Larkspur/Greenbrae/Kentfield'],
+  // 2026-10-06: 'Larkspur/Greenbrae' renamed to 'Larkspur/Greenbrae/Kentfield' and
+  // 'Larkspur/Corte Madera' retired (Corte Madera stands alone). Saved filters follow.
+  'Larkspur/Greenbrae': ['Larkspur/Greenbrae/Kentfield'],
+  'Larkspur/Corte Madera': ['Corte Madera', 'Larkspur/Greenbrae/Kentfield'],
+  'Ross Valley': ['San Anselmo', 'Fairfax', 'Larkspur/Greenbrae/Kentfield'],  // retired 2026-10-06; its records were San Anselmo, Fairfax, Larkspur and Kentfield
   'Sausalito': ['Sausalito/Marin City'],
   'Marin City': ['Sausalito/Marin City'],
   'Tiburon': ['Tiburon/Belvedere'],
