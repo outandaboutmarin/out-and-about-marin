@@ -4620,7 +4620,7 @@
       "event_name": "Treat Walk (3rd Annual)",
       "type": "Community Event",
       "day": "Thursday",
-      "time": "4:00 PM",
+      "time": "4:00 PM – 6:00 PM",
       "time_of_day": "Afternoon",
       "town": "San Rafael",
       "address": "618 B Street, San Rafael, CA 94901",
@@ -4633,7 +4633,7 @@
       "location_group": "San Rafael",
       "event_name_es": "Caminata de Dulces (3º Anual)",
       "id": 856,
-      "internal_notes": "Added 2026-08-18 from @sanrafaellibraryrec's flyer. 2026-09-30: description enriched at Alexandra's request from a Marin Magazine Instagram carousel slide (San Rafael, Oct. 29, 'Treat Walk': third year, Lonatese Garden, face painting, pumpkin decorating, games, treats, 618 B Street). Venue now names Lonatese Garden; address unchanged (same 618 B Street).",
+      "internal_notes": "Added 2026-08-18 from @sanrafaellibraryrec's flyer. 2026-09-30: description enriched at Alexandra's request from a Marin Magazine Instagram carousel slide (San Rafael, Oct. 29, 'Treat Walk': third year, Lonatese Garden, face painting, pumpkin decorating, games, treats, 618 B Street). Venue now names Lonatese Garden; address unchanged (same 618 B Street). 2026-10-06: enriched from the Halloween roundup Alexandra pasted (Town Center Corte Madera events-news / local blurbs).",
       "notes": ""
     },
     {
@@ -5992,7 +5992,7 @@
       "event_name_es": "Sing & Stompers en Sweetwater Music Hall",
       "type": "Music and Movies",
       "day": "Saturday",
-      "time": "11:00 AM",
+      "time": "11:00 AM – 12:00 PM",
       "time_of_day": "Morning",
       "town": "Mill Valley",
       "address": "19 Corte Madera Ave, Mill Valley, CA 94941",
@@ -6009,7 +6009,7 @@
       "location_group": "Mill Valley",
       "event_date": "2026-10-31",
       "expires": "2026-10-31",
-      "internal_notes": "Added 2026-09-03 from the weekly sweep (window Sep 4 - Oct 31), workbook daily_sweep_2026-09-03_review.xlsx, Alexandra marked Approve. A Mill Valley LIBRARY programme held offsite at Sweetwater. It qualifies despite source 5's free/matinee-only Sweetwater filter, because it is a daytime family event run by the library rather than a club booking."
+      "internal_notes": "Added 2026-09-03 from the weekly sweep (window Sep 4 - Oct 31), workbook daily_sweep_2026-09-03_review.xlsx, Alexandra marked Approve. A Mill Valley LIBRARY programme held offsite at Sweetwater. It qualifies despite source 5's free/matinee-only Sweetwater filter, because it is a daytime family event run by the library rather than a club booking. 2026-10-06: enriched from the Halloween roundup Alexandra pasted (Town Center Corte Madera events-news / local blurbs)."
     },
     {
       "id": 991,
@@ -6338,7 +6338,7 @@
       "event_name_es": "Halloween en el Centro Comunitario",
       "type": "Festival",
       "day": "Friday",
-      "time": "4:00 PM",
+      "time": "4:00 PM – 6:00 PM",
       "time_of_day": "Afternoon",
       "town": "Mill Valley",
       "address": "180 Camino Alto, Mill Valley, CA 94941",
@@ -6347,15 +6347,15 @@
       "indoor_outdoor": "Indoor",
       "active_sedentary": "Active",
       "cadence": "One-off",
-      "description": "A Halloween celebration for families at the Mill Valley Community Center.",
-      "description_es": "Una celebración de Halloween para familias en el centro comunitario de Mill Valley.",
+      "description": "A frightfully fun evening of costumes, treats and creepy-cool surprises for families at the Mill Valley Community Center.",
+      "description_es": "Una tarde terroríficamente divertida de disfraces, golosinas y sorpresas espeluznantes para las familias en el Mill Valley Community Center.",
       "registration": "Not required",
       "website": "https://info.enjoymillvalley.com/events",
       "notes": "",
       "location_group": "Mill Valley",
       "event_date": "2026-10-30",
       "expires": "2026-10-30",
-      "internal_notes": "Added 2026-09-03 from the weekly sweep (window Sep 4 - Oct 31), workbook daily_sweep_2026-09-03_review.xlsx, Alexandra marked Approve. Runs 4:00-6:00 PM. Cost not published."
+      "internal_notes": "Added 2026-09-03 from the weekly sweep (window Sep 4 - Oct 31), workbook daily_sweep_2026-09-03_review.xlsx, Alexandra marked Approve. Runs 4:00-6:00 PM. Cost not published. 2026-10-06: enriched from the Halloween roundup Alexandra pasted (Town Center Corte Madera events-news / local blurbs)."
     },
     {
       "id": 1011,
@@ -6367,7 +6367,7 @@
       "event_name_es": "La Gran Limpieza de Armarios y Colecta de Disfraces",
       "type": "Community Event",
       "day": "Friday",
-      "time": "4:00 PM – 7:00 PM",
+      "time": "4:00 PM – 9:00 PM",
       "time_of_day": "Afternoon",
       "town": "Mill Valley",
       "address": "180 Camino Alto, Mill Valley, CA 94941",
@@ -6384,7 +6384,7 @@
       "location_group": "Mill Valley",
       "event_date": "2026-10-09",
       "expires": "2026-10-09",
-      "internal_notes": "Added 2026-09-03 from the weekly sweep (window Sep 4 - Oct 31), workbook daily_sweep_2026-09-03_review.xlsx, Alexandra marked Approve. Runs 4:00-7:00 PM. ⚠ The Chamber listing gives no venue beyond 'Mill Valley', so `venue` and `address` are deliberately town-level rather than invented. | Updated 2026-09-14 from the City of Mill Valley's own page (cityofmillvalley.gov/2230), after Alexandra sent the Marin Mommies costume-resources listing: renamed '... and Costume Drive', venue Community Center Cascade Room, 180 Camino Alto, pickup Fri Oct 9 4-7pm, cost Free (page says free), donation drop-off Sep 21-Oct 4, volunteers of 2.5+ hrs get 30 min early access, free outdoor Coco screening 7-9pm. indoor_outdoor Both because of the outdoor movie."
+      "internal_notes": "Added 2026-09-03 from the weekly sweep (window Sep 4 - Oct 31), workbook daily_sweep_2026-09-03_review.xlsx, Alexandra marked Approve. Runs 4:00-7:00 PM. ⚠ The Chamber listing gives no venue beyond 'Mill Valley', so `venue` and `address` are deliberately town-level rather than invented. | Updated 2026-09-14 from the City of Mill Valley's own page (cityofmillvalley.gov/2230), after Alexandra sent the Marin Mommies costume-resources listing: renamed '... and Costume Drive', venue Community Center Cascade Room, 180 Camino Alto, pickup Fri Oct 9 4-7pm, cost Free (page says free), donation drop-off Sep 21-Oct 4, volunteers of 2.5+ hrs get 30 min early access, free outdoor Coco screening 7-9pm. indoor_outdoor Both because of the outdoor movie. 2026-10-06: enriched from the Halloween roundup Alexandra pasted (Town Center Corte Madera events-news / local blurbs)."
     },
     {
       "id": 1012,
@@ -7908,12 +7908,12 @@
       "event_name_es": "Tallado de Calabazas — McNears Beach Park",
       "type": "Kids Programs",
       "day": "Sunday",
-      "time": "11:30 AM",
+      "time": "11:30 AM – 1:00 PM",
       "time_of_day": "Morning",
       "town": "San Rafael",
       "address": "201 Cantera Way, San Rafael, CA 94901",
       "ages": "All ages",
-      "cost": "Free (park entry fee may apply)",
+      "cost": "Free",
       "indoor_outdoor": "Outdoor",
       "active_sedentary": "Active",
       "cadence": "One-off",
@@ -7923,13 +7923,13 @@
       "expires": "2026-10-25",
       "status": "Active",
       "featured": false,
-      "description": "Pumpkin carving with Marin County Parks down at McNears Beach.",
-      "description_es": "Tallado de calabazas con Marin County Parks en McNears Beach.",
+      "description": "Get creative and carve pumpkins with Marin County Parks rangers at McNears Beach Park. Free.",
+      "description_es": "Usa tu creatividad y talla calabazas con los guardaparques de Marin County Parks en McNears Beach Park. Gratis.",
       "registration": "Not required",
       "website": "https://www.onetam.org/calendar",
       "notes": "A park entry fee may apply at the gate.",
       "location_group": "San Rafael",
-      "internal_notes": "",
+      "internal_notes": " 2026-10-06: enriched from the Halloween roundup Alexandra pasted (Town Center Corte Madera events-news / local blurbs).",
       "id": 1123
     },
     {
@@ -7954,13 +7954,13 @@
       "expires": "2026-10-25",
       "status": "Active",
       "featured": false,
-      "description": "An evening of Halloween activities followed by a guided graveyard stroll with Marin County Parks.",
-      "description_es": "Una tarde de actividades de Halloween seguida de un paseo guiado por el cementerio con Marin County Parks.",
+      "description": "An evening of Halloween fun with Marin County Parks rangers: activities, a visit from the East Bay Vivarium's creatures, then a guided graveyard stroll. Free.",
+      "description_es": "Una tarde de diversión de Halloween con los guardaparques de Marin County Parks: actividades, la visita de los animales del East Bay Vivarium y luego un paseo guiado por el cementerio. Gratis.",
       "registration": "Not required",
       "website": "https://parks.marincounty.gov/discoverlearn/events-calendar?trumbaEmbed=view%3Devent%26eventid%3D207176090",
       "notes": "An evening walk in the dark — bring a torch and warm layers.",
       "location_group": "San Rafael",
-      "internal_notes": " 2026-10-06: moved from Mon Oct 26 to SUNDAY Oct 25, 6:30-8:30 PM, at Alexandra's direction (open item 58zb, closed): 'Assume it is Sunday night', per Marin County Parks' own event page, now the website.",
+      "internal_notes": " 2026-10-06: moved from Mon Oct 26 to SUNDAY Oct 25, 6:30-8:30 PM, at Alexandra's direction (open item 58zb, closed): 'Assume it is Sunday night', per Marin County Parks' own event page, now the website. 2026-10-06: enriched from the Halloween roundup Alexandra pasted (Town Center Corte Madera events-news / local blurbs).",
       "id": 1124
     },
     {
@@ -8610,8 +8610,8 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Outdoors in front of Poppy.",
-      "location_group": "Larkspur/Corte Madera",
-      "internal_notes": "Added 2026-09-23 from Marin Country Mart's own Instagram post, supplied by Alexandra: 'Join us every Wednesday at 10:30am outside Poppy for Mart Littles Music.' NOT a duplicate of id 56, which is Mart Littles Music on SATURDAYS at 9:30 AM as part of the Farmers Market - different day, time and spot in the centre, so the names are deliberately distinguished in the title.",
+      "location_group": "Larkspur/Greenbrae",
+      "internal_notes": "Added 2026-09-23 from Marin Country Mart's own Instagram post, supplied by Alexandra: 'Join us every Wednesday at 10:30am outside Poppy for Mart Littles Music.' NOT a duplicate of id 56, which is Mart Littles Music on SATURDAYS at 9:30 AM as part of the Farmers Market - different day, time and spot in the centre, so the names are deliberately distinguished in the title. 2026-10-06: location_group Larkspur/Corte Madera -> Larkspur/Greenbrae, matching the other 21 Larkspur records; 'Larkspur/Corte Madera' retired as a group.",
       "id": 1163
     },
     {
@@ -8920,8 +8920,8 @@
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events",
       "notes": "Extra date (3rd Sunday) this month; the regular session is the 2nd Sunday.",
-      "location_group": "Larkspur/Corte Madera",
-      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. id 43 already covers the Sep 27 session; these are the next two published dates. 2026-10-06: aligned name/description with the 2nd-Sunday record id 1371; Oct 18 stays as its own one-off because it is a 3rd-Sunday exception (58n).",
+      "location_group": "Corte Madera",
+      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. id 43 already covers the Sep 27 session; these are the next two published dates. 2026-10-06: aligned name/description with the 2nd-Sunday record id 1371; Oct 18 stays as its own one-off because it is a 3rd-Sunday exception (58n). 2026-10-06: location_group Larkspur/Corte Madera -> Corte Madera (Alexandra: 'Fix Corte Madera town type'); 28 other Corte Madera records already use it.",
       "id": 1180
     },
     {
@@ -8982,8 +8982,8 @@
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events",
       "notes": "First come, first served.",
-      "location_group": "Larkspur/Corte Madera",
-      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Homework Helpers already existed at Novato (id 861) and San Anselmo (id 1140); this Saturday session at Corte Madera was not on file.",
+      "location_group": "Corte Madera",
+      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Homework Helpers already existed at Novato (id 861) and San Anselmo (id 1140); this Saturday session at Corte Madera was not on file. 2026-10-06: location_group Larkspur/Corte Madera -> Corte Madera (Alexandra: 'Fix Corte Madera town type'); 28 other Corte Madera records already use it.",
       "id": 1182
     },
     {
@@ -9509,8 +9509,8 @@
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "A grown-up stays for the class.",
-      "location_group": "Larkspur/Corte Madera",
-      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Not a duplicate of id 56 (Mart Littles Music), which is the Farmers Market music slot at the same hour in a different part of the centre. No price published on either listing.",
+      "location_group": "Larkspur/Greenbrae",
+      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Not a duplicate of id 56 (Mart Littles Music), which is the Farmers Market music slot at the same hour in a different part of the centre. No price published on either listing. 2026-10-06: location_group Larkspur/Corte Madera -> Larkspur/Greenbrae, matching the other 21 Larkspur records; 'Larkspur/Corte Madera' retired as a group.",
       "id": 1201
     },
     {
@@ -12935,7 +12935,7 @@
       "organization": "Central Marin Fire Department",
       "venue": "Central Marin Fire Station 14",
       "town": "Corte Madera",
-      "location_group": "Larkspur/Corte Madera",
+      "location_group": "Corte Madera",
       "address": "342 Tamalpais Dr, Corte Madera, CA 94925",
       "event_name": "Fire Station Open House: Charge Into Fire Safety",
       "event_name_es": "Puertas Abiertas en la Estación de Bomberos: Seguridad contra incendios",
@@ -12951,7 +12951,7 @@
       "description_es": "Puertas abiertas de Central Marin Fire por la Semana de Prevención de Incendios en la Estación 14: camión de bomberos en exhibición, brincolín, zona de bocadillos, demostración de manguera para niños y folletos de seguridad, con Sparky. Trae baterías de litio usadas y extintores caseros para reciclar.",
       "registration": "Not required",
       "website": "https://www.instagram.com/centralmarinfire/",
-      "internal_notes": "Added 2026-10-02 from a @centralmarinfire Instagram flyer Alexandra sent: 'Central Marin Fire Dept. Presents: Charge Into Fire Safety... Open House, 342 Tamalpais Drive, Station 14, October 10th 10 AM - 2 PM. Fire Engine on display, Snack Zone, Jumpy House, Pub Ed handouts, NRG information, Kids Hose Demo & More! Accepting Li-Ion batteries & residential fire extinguishers for recycling.' Town of Corte Madera and Larkspur logos. No price on the flyer; a public fire-department open house, stored Free like the Southern Marin open houses (1153-1155).",
+      "internal_notes": "Added 2026-10-02 from a @centralmarinfire Instagram flyer Alexandra sent: 'Central Marin Fire Dept. Presents: Charge Into Fire Safety... Open House, 342 Tamalpais Drive, Station 14, October 10th 10 AM - 2 PM. Fire Engine on display, Snack Zone, Jumpy House, Pub Ed handouts, NRG information, Kids Hose Demo & More! Accepting Li-Ion batteries & residential fire extinguishers for recycling.' Town of Corte Madera and Larkspur logos. No price on the flyer; a public fire-department open house, stored Free like the Southern Marin open houses (1153-1155). 2026-10-06: location_group Larkspur/Corte Madera -> Corte Madera (Alexandra: 'Fix Corte Madera town type'); 28 other Corte Madera records already use it.",
       "day": "Saturday",
       "id": 1341
     },
@@ -13881,9 +13881,40 @@
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events",
       "notes": "2nd Sunday of each month. skip: 2026-10-11",
-      "location_group": "Larkspur/Corte Madera",
-      "internal_notes": "Added 2026-10-06 at Alexandra's request (open item 58n, closed): 'Make recurring as the 2nd Sunday.' MCFL's Corte Madera calendar (marinlibrary.bibliocommons.com/v2/events?locations=MM, pages 1-3, read in full) lists Read to a Dog! on Sun Oct 18, Sun Nov 8 and Sun Dec 13, 2:30-3:30 PM, 'Readers in kindergarten and up'. Nov 8 and Dec 13 are 2nd Sundays; Oct 18 is a 3rd-Sunday exception kept as its own one-off (id 1180), so Oct 11 is skipped here. One-off id 1181 (Nov 8) retired as covered by this rule. Earlier one-off id 43 (Sep 27) has expired.",
+      "location_group": "Corte Madera",
+      "internal_notes": "Added 2026-10-06 at Alexandra's request (open item 58n, closed): 'Make recurring as the 2nd Sunday.' MCFL's Corte Madera calendar (marinlibrary.bibliocommons.com/v2/events?locations=MM, pages 1-3, read in full) lists Read to a Dog! on Sun Oct 18, Sun Nov 8 and Sun Dec 13, 2:30-3:30 PM, 'Readers in kindergarten and up'. Nov 8 and Dec 13 are 2nd Sundays; Oct 18 is a 3rd-Sunday exception kept as its own one-off (id 1180), so Oct 11 is skipped here. One-off id 1181 (Nov 8) retired as covered by this rule. Earlier one-off id 43 (Sep 27) has expired. 2026-10-06: location_group Larkspur/Corte Madera -> Corte Madera (Alexandra: 'Fix Corte Madera town type'); 28 other Corte Madera records already use it.",
       "id": 1371
+    },
+    {
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "organization": "National Park Service",
+      "venue": "Muir Woods National Monument",
+      "town": "Mill Valley",
+      "location_group": "Mill Valley",
+      "address": "1 Muir Woods Rd, Mill Valley, CA 94941",
+      "event_name": "Free Entrance Day at Muir Woods: Theodore Roosevelt's Birthday",
+      "event_name_es": "Día de entrada gratuita en Muir Woods: cumpleaños de Theodore Roosevelt",
+      "type": "Community Event",
+      "day": "Tuesday",
+      "time": "All day",
+      "time_of_day": "Morning",
+      "ages": "All ages",
+      "cost": "Free entrance for US citizens and residents; parking/shuttle reservation required (separate fee)",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-10-27",
+      "expires": "2026-10-27",
+      "description": "Entrance to Muir Woods is free on Theodore Roosevelt's birthday, one of the National Park Service's 2026 free entrance days, for US citizens and residents. You still need a parking or shuttle reservation, which has its own fee.",
+      "description_es": "La entrada a Muir Woods es gratuita el día del cumpleaños de Theodore Roosevelt, uno de los días de entrada gratuita de 2026 del Servicio de Parques Nacionales, para ciudadanos y residentes de EE. UU. Igual necesitas una reserva de estacionamiento o de transporte, que tiene su propio costo.",
+      "registration": "Parking/shuttle reservation required: gomuirwoods.com",
+      "website": "https://www.nps.gov/planyourvisit/passes.htm#free_entrance_days",
+      "notes": "Entrance fee waived for US citizens and residents only. Reserve parking or the shuttle in advance at gomuirwoods.com.",
+      "internal_notes": "Added 2026-10-06 from the Halloween roundup Alexandra pasted ('Free day at Muir Woods for Theodore Roosevelt's birthday on October 27'; she wrote Monday, but Oct 27 2026 is a Tuesday). Confirmed on nps.gov (read in full): '2026 Free Entrance Days ... October 27: Theodore Roosevelt's birthday ... free entrance on these days will be for US citizens and residents only', and 'other fees, including timed entry or reservation fees, may apply'. nps.gov/muwo fees page: parking/shuttle reservations required for all vehicles and shuttle riders, separate from entrance fees. Cost spelled out per rule 22 (cf. the Sep 2026 Muir Woods lesson in social_media_and_marketing.md). Park hours not taken from a page, so time 'All day'.",
+      "id": 1372
     }
   ]
 }
