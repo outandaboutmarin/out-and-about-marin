@@ -19,11 +19,12 @@
       "address_note": { "en": "free parking", "es": "estacionamiento gratis" },
       "phone": "(415) 599-3440",
       "hours": [
-        { "days": { "en": "Mon–Fri", "es": "Lun–Vie" }, "time": { "en": "9 AM – 5 PM", "es": "9 AM – 5 PM" } },
+        { "days": { "en": "Mon, Wed & Fri", "es": "Lun, Mié y Vie" }, "time": { "en": "9 AM – 5 PM", "es": "9 AM – 5 PM" } },
+        { "days": { "en": "Tue & Thu", "es": "Mar y Jue" }, "time": { "en": "9 AM – 2:15 PM", "es": "9 AM – 2:15 PM" } },
         { "days": { "en": "Saturday", "es": "Sábado" }, "time": { "en": "10 AM – 4 PM", "es": "10 AM – 4 PM" } },
-        { "days": { "en": "Sunday", "es": "Domingo" }, "time": { "en": "Private parties only", "es": "Solo fiestas privadas" } }
+        { "days": { "en": "Sunday", "es": "Domingo" }, "time": { "en": "Closed for parties", "es": "Cerrado por fiestas privadas" } }
       ],
-      "hours_note": { "en": "Closed on major public holidays.", "es": "Cerrado en los principales días festivos." },
+      "hours_note": { "en": "Tuesday and Thursday afternoons: look out for classes and community activities. Closed on major public holidays.", "es": "Martes y jueves por la tarde: atentos a clases y actividades comunitarias. Cerrado en los principales días festivos." },
       "about": {
         "en": "An indoor play space for kids up to 7, built for calm, child-led play. Play sessions run every weekday and on Saturdays: book ahead to guarantee a spot, or walk in when there is room. In the evenings it belongs to the grown-ups, with workshops, wellness talks and gatherings, and there is a shop stocked with the toys the kids love most.",
         "es": "Un espacio de juego bajo techo para niños de hasta 7 años, pensado para un juego tranquilo y guiado por los niños. Hay sesiones de juego todos los días entre semana y los sábados: reserva con antelación para asegurar tu lugar, o entra cuando haya espacio. Por las tardes es para los adultos, con talleres, charlas de bienestar y encuentros, y hay una tienda con los juguetes favoritos de los niños."
