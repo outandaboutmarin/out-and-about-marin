@@ -1,6 +1,6 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-10-05
-Time: 21:01:58
+Date: 2026-10-06
+Time: 01:15:49
 
 Total events in events.json: 440
 Active events: 408
