@@ -68,7 +68,7 @@ Napa-area events (Calistoga, St. Helena, Yountville) are NOT part of this checkl
     - `marinjcc.org/preschool/musicbabies/` — **carries real dated sessions, per site**
     - `marinjcc.org/preschool/jym-babies/` — **carries real dated sessions, per site**
     - `marinjcc.org/preschool/tot-pool-parties/` — publishes the actual date list (e.g. "July 17th, August 21st, September 25th, October 9th")
-    - `marinjcc.org/preschool/shabbat-shababies/`
+    - `marinjcc.org/preschool/shabbat-shababies/` — lists the full San Rafael season (2026-27: Sep 25, Oct 23, Nov 13, Dec 4, Jan 22, Feb 26, Mar 5, Apr 16; all in the database as of 2026-10-05, ids 1205-1206 and 1363-1367). Registration required. **Watch for the Mill Valley dates ("coming soon")** and add them when they appear.
     - `marinjcc.org/preschool/family-connections/`
     - `marinjcc.org/preschool/side-by-side/`
     - `marinjcc.org/events/` — still fetch it, but treat it as the ADULT/special-event feed
