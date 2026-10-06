@@ -13822,6 +13822,37 @@
       "notes": "Tuesdays 5 PM to close, with each adult meal. Not on holidays. Phone (415) 455-9777.",
       "internal_notes": "Added 2026-10-05 from marinmommies.com/kids-eat-free-marin, sent by Alexandra 2026-10-05 ('only show Amici's, Asian Box, Finnegan's and Hotboys'). Confirmed on amicis.com/specials (read in full): 'TUESDAY KIDS EAT FREE ...w/ purchase of each adult meal (5 pm - close)'. Holiday exclusion and phone from the Marin Mommies list. Toast Novato (also on that list) deliberately not added: Alexandra excluded it, and its offer ran only to May 31, 2026.",
       "id": 1369
+    },
+    {
+      "id": 1370,
+      "organization": "The Home Depot",
+      "venue": "The Home Depot — San Rafael",
+      "event_name": "Kids Workshop (extra November date)",
+      "type": "Kids Programs",
+      "day": "Saturday",
+      "time": "9:00 AM – 12:00 PM",
+      "time_of_day": "Morning",
+      "town": "San Rafael",
+      "address": "111 Shoreline Pkwy, San Rafael, CA 94901",
+      "ages": "5–12 yrs",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Both",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-11-21",
+      "expires": "2026-11-21",
+      "status": "Active",
+      "featured": true,
+      "description": "Free hands-on DIY workshop for kids ages 5–12. Each child builds a take-home wood project with all tools and materials provided, and gets a Kids Workshops apron, an achievement pin, and a certificate. A different take-home project each month (e.g., Goalie Game in June, Go Kart in July). Held the first Saturday of each month, drop in anytime 9 a.m.–noon, while supplies last. A parent or guardian should help their child. Registration recommended to reserve a kit.",
+      "registration": "Not required",
+      "website": "https://www.homedepot.com/c/kids-workshop",
+      "notes": "Extra workshop on Saturday, November 21, 9 a.m.–noon, in addition to the first-Saturday workshops. Free; supplies are limited, so registration is recommended to reserve a kit: homedepot.com/workshops. San Rafael store #657.",
+      "location_group": "San Rafael",
+      "event_name_es": "Taller para niños (fecha extra de noviembre)",
+      "description_es": "Taller práctico y gratuito de bricolaje para niños de 5 a 12 años. Cada niño construye un proyecto de madera para llevar a casa, con todas las herramientas y materiales incluidos, y recibe un delantal, un pin de logro y un certificado. Cada mes hay un proyecto diferente (por ejemplo, Goalie Game en junio, Go Kart en julio). Se realiza el primer sábado de cada mes; pueden llegar en cualquier momento de 9 a. m. a mediodía, hasta agotar existencias. Un padre o tutor debe ayudar al niño. Se recomienda registrarse para reservar un kit.",
+      "internal_notes": "Added 2026-10-06: Alexandra confirmed the extra Nov 21, 2026 workshop on homedepot.com/c/kids-workshop (open item 58k, closed; that site blocks our fetchers). Fields copied from the monthly record id 435, which keeps the first-Saturday rule. Nov 21 is not a first Saturday, so the two never collide. Project theme for this date not known."
     }
   ]
 }
