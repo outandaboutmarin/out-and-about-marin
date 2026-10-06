@@ -13760,6 +13760,37 @@
       "location_group": "San Rafael",
       "internal_notes": "Added 2026-10-05 at Alexandra's request from marinjcc.org/preschool/shabbat-shababies/ (read in full): San Rafael dates Sep 25, Oct 23, Nov 13, Dec 4, Jan 22, Feb 26, Mar 5, Apr 16; Oct 23 and Nov 13 were already ids 1205-1206. Fields copied from id 1205. Mill Valley dates 'coming soon' on the same page; add them when posted (weekly sweep source #6).",
       "id": 1367
+    },
+    {
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "event_date": "",
+      "expires": "",
+      "organization": "Good Fun Stuff (Town of Fairfax)",
+      "venue": "Bolinas Park",
+      "town": "Fairfax",
+      "location_group": "Ross Valley",
+      "address": "Bolinas Park, 124 Bolinas Rd, Fairfax, CA 94930",
+      "event_name": "Kids Activities with Good Fun Stuff in Bolinas Park",
+      "event_name_es": "Actividades para niños con Good Fun Stuff en Bolinas Park",
+      "type": "Kids Programs",
+      "day": "Sunday",
+      "time": "2:00 PM – 4:00 PM",
+      "time_of_day": "Afternoon",
+      "ages": "3-10 yrs",
+      "cost": "Suggested donation $10 per family",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "Monthly",
+      "description": "A two-hour family adventure in Bolinas Park on the last Sunday of the month. Aura and James from Good Fun Stuff lead woodworking, dance, crafts and music for kids 3 to 10, with Spanish and bilingual instruction available. An adult must stay. Drop in; room for 20 to 25 families.",
+      "description_es": "Una aventura familiar de dos horas en Bolinas Park el último domingo de cada mes. Aura y James de Good Fun Stuff dirigen carpintería, baile, manualidades y música para niños de 3 a 10 años, con instrucción en español y bilingüe. Un adulto debe quedarse. Sin inscripción; hay lugar para 20 a 25 familias.",
+      "registration": "Not required: drop in (limited to 20-25 families)",
+      "website": "https://townoffairfaxca.gov/baby-toddler-and-preschool-programs/",
+      "notes": "Last Sunday of each month, year round; no program in December. Adult must be present. skip: 2026-12-27 skip: 2027-12-26",
+      "internal_notes": "Added 2026-10-05 at Alexandra's request, from townoffairfaxca.gov/baby-toddler-and-preschool-programs/ (read in full): 'Kids Activities with Good Fun Stuff in Bolinas Park ... Last Sunday of each month year round, no program in December. Time: 2pm-4pm. Ages 3-10 (adult must be present). Instructors Good Fun Stuff (goodfunstuff.org). Suggested donation of $10 per family. Maximum of 20-25 families. Drop in, no pre-registration required.' Cost is a suggested donation, not 'Free' (rule 22). Address as the Fairfax farmers market in the same park (id 71). December is skipped by two skip dates in notes (Dec 27 2026 and Dec 26 2027); the ordinal rule has no 'except December', so add the December 2028 date when the 2027 one passes.",
+      "id": 1368
     }
   ]
 }
