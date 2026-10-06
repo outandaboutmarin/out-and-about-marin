@@ -544,10 +544,10 @@
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
       "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. Carpet squares provided for family groups; blankets welcome. No session Labor Day, Monday September 7 — Monday storytime resumes September 14. skip: 2026-08-24 skip: 2026-08-31 skip: 2026-09-07",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "event_name_es": "Hora del Cuento para Bebés y Pequeños",
       "description_es": "Cuentos, canciones y rimas al aire libre para bebés y niños pequeños los lunes con sus cuidadores en Imagination Park, San Anselmo.",
-      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value. skip: 2026-09-07 added 2026-08-28 from the library flyer Alexandra sent, which prints \"No Storytime Monday, Sept. 7\" (Labor Day). Without it this record advertised a session on the one Monday it does not run. The flyer also CONFIRMS the three-record split - it names Mondays Storytime, Wednesdays Bilingual Spanish Storytime, Fridays Sing and Stomp - and confirms 10:30am in Imagination Park."
+      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value. skip: 2026-09-07 added 2026-08-28 from the library flyer Alexandra sent, which prints \"No Storytime Monday, Sept. 7\" (Labor Day). Without it this record advertised a session on the one Monday it does not run. The flyer also CONFIRMS the three-record split - it names Mondays Storytime, Wednesdays Bilingual Spanish Storytime, Fridays Sing and Stomp - and confirms 10:30am in Imagination Park. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "id": 24,
@@ -821,10 +821,10 @@
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
       "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. Carpet squares are provided for family groups, and you are welcome to bring your own blanket. skip: 2026-11-11",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "event_name_es": "Hora del Cuento Bilingüe en Español",
       "description_es": "Cuentos bilingües en español e inglés al aire libre en Imagination Park, San Anselmo.",
-      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value. CORRECTED 2026-09-03 (action item 9). notes still read 'On break for the rest of August - programs restart Wednesday September 2', which was live, public and out of date: the record is Active and the programme has resumed. Alexandra: 'if the event has reactivated and is live on the app, then correct the sentence.' Replaced with the venue and inclement-weather logistics, which is the part families actually need. Venue, time and address were re-verified against sananselmo.gov/624/Storytime-Programs today and are correct. 2026-10-01 (sweep 2026-09-30, Alexandra approved): library closed Nov 11 (Veterans Day); Alexandra: assume closed."
+      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value. CORRECTED 2026-09-03 (action item 9). notes still read 'On break for the rest of August - programs restart Wednesday September 2', which was live, public and out of date: the record is Active and the programme has resumed. Alexandra: 'if the event has reactivated and is live on the app, then correct the sentence.' Replaced with the venue and inclement-weather logistics, which is the part families actually need. Venue, time and address were re-verified against sananselmo.gov/624/Storytime-Programs today and are correct. 2026-10-01 (sweep 2026-09-30, Alexandra approved): library closed Nov 11 (Veterans Day); Alexandra: assume closed. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "id": 35,
@@ -1066,10 +1066,10 @@
       "registration": "Required — call (415) 258-4656 or email library@sananselmo.gov",
       "website": "https://townofsananselmo.org",
       "notes": "Second Wednesday of each month. Registration required, call to book 15-min slot. skip: 2026-11-11",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "event_name_es": "Léele a un Perro",
       "description_es": "Programa SHARE A Book de la Sociedad Humanitaria de Marin — los niños se registran para una sesión de 15 minutos leyendo a un perro de terapia. El 3er miércoles de cada mes.",
-      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): rule corrected from 3rd to 2nd Wednesday: the town calendar lists 'SHARE a Book and Read to a Dog' on Oct 14 and Nov 11 (both 2nd Wednesdays). Nov 11 skipped (Veterans Day)."
+      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): rule corrected from 3rd to 2nd Wednesday: the town calendar lists 'SHARE a Book and Read to a Dog' on Oct 14 and Nov 11 (both 2nd Wednesdays). Nov 11 skipped (Veterans Day). 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "id": 45,
@@ -1097,10 +1097,10 @@
       "registration": "Not required",
       "website": "https://townofsananselmo.org",
       "notes": "Monthly — last Wednesday of the month skip: 2026-10-28 skip: 2026-11-25",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "event_name_es": "Tarde Creativa",
       "description_es": "Manualidades para soltar la creatividad el último miércoles de cada mes en la Biblioteca de San Anselmo. Todos los materiales incluidos.",
-      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): library calendar has Crafternoon on Oct 21 (separate one-off) and none Oct 28 or in November."
+      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): library calendar has Crafternoon on Oct 21 (separate one-off) and none Oct 28 or in November. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "id": 46,
@@ -1889,10 +1889,10 @@
       "registration": "Not required",
       "website": "https://www.sananselmo.gov/624/Storytime-Programs",
       "notes": "Held outside in Imagination Park; moves to Council Chambers in inclement weather. Carpet squares are provided for family groups, and you are welcome to bring your own blanket.",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "event_name_es": "Canta y Zapatea con Emily Bonn",
       "description_es": "¡Canta, baila, salta y juega con la música de Emily Bonn en este grupo de música y movimiento! Bienvenidos a sentarse, pero las melodías de Emily te harán levantarte a bailar. Para niños de 0 a 5 años.",
-      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value. CORRECTED 2026-09-03 (action item 9). notes still read 'On break for the rest of August - programs restart Wednesday September 2', which was live, public and out of date: the record is Active and the programme has resumed. Alexandra: 'if the event has reactivated and is live on the app, then correct the sentence.' Replaced with the venue and inclement-weather logistics, which is the part families actually need. Venue, time and address were re-verified against sananselmo.gov/624/Storytime-Programs today and are correct."
+      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value. CORRECTED 2026-09-03 (action item 9). notes still read 'On break for the rest of August - programs restart Wednesday September 2', which was live, public and out of date: the record is Active and the programme has resumed. Alexandra: 'if the event has reactivated and is live on the app, then correct the sentence.' Replaced with the venue and inclement-weather logistics, which is the part families actually need. Venue, time and address were re-verified against sananselmo.gov/624/Storytime-Programs today and are correct. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "id": 90,
@@ -2594,9 +2594,10 @@
       "registration": "None",
       "website": "https://www.marinmommies.com/free-summer-outdoor-concerts-marin-2026",
       "notes": "Fridays Jun 20 – Sep 12. Free outdoor summer concert series.",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "event_name_es": "Live on the Avenue — San Anselmo (Viernes)",
-      "description_es": "Música en vivo gratuita todos los viernes por la noche en el centro de San Anselmo, del 20 de junio al 12 de septiembre."
+      "description_es": "Música en vivo gratuita todos los viernes por la noche en el centro de San Anselmo, del 20 de junio al 12 de septiembre.",
+      "internal_notes": " 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "id": 273,
@@ -2624,9 +2625,10 @@
       "registration": "None",
       "website": "https://www.marinmommies.com/free-summer-outdoor-concerts-marin-2026",
       "notes": "Saturdays Jun 20 – Sep 12. Free outdoor summer concert series.",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "event_name_es": "Live on the Avenue — San Anselmo (Sábados)",
-      "description_es": "Música en vivo gratuita todos los sábados por la noche en el centro de San Anselmo, del 20 de junio al 12 de septiembre."
+      "description_es": "Música en vivo gratuita todos los sábados por la noche en el centro de San Anselmo, del 20 de junio al 12 de septiembre.",
+      "internal_notes": " 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "id": 285,
@@ -3086,8 +3088,8 @@
       "registration": "None",
       "website": "https://www.nextgenpurpose.com/ross-valley-farm-walk/",
       "notes": "Last Sunday of each month, 8 AM-1 PM. 2026 dates: Jun 28 (kickoff), Jul 26, Aug 30, Sep 27. Participating neighborhoods: Palm Hill (founding), Pacheco Valley, Lagunitas Ross, Alexander Avenue, Elm Avenue. No fixed meeting point - neighborhood walk.",
-      "location_group": "San Anselmo",
-      "internal_notes": "Corrected 2026-07-29: was labelled summer-only (Jun-Aug) and sourced to a generic nextdoor.com link; the official page shows it runs through Sep 27. Sourced from nextgenpurpose.com/ross-valley-farm-walk, which is already in `website`. The 2026 date list was verified against that official site."
+      "location_group": "San Anselmo/Ross",
+      "internal_notes": "Corrected 2026-07-29: was labelled summer-only (Jun-Aug) and sourced to a generic nextdoor.com link; the official page shows it runs through Sep 27. Sourced from nextgenpurpose.com/ross-valley-farm-walk, which is already in `website`. The 2026 date list was verified against that official site. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "id": 486,
@@ -7405,8 +7407,8 @@
       "registration": "Not required",
       "website": "https://www.sandomenico.org/about/garden-fair",
       "notes": "Music: Nobody from Nashville and Mission Hill (Harvest Stage), Michael Brown and Steve & Jill Pierce (Garden Stage). Raffle tickets at the fair.",
-      "location_group": "San Anselmo",
-      "internal_notes": "Added 2026-09-09 from Alexandra's ad-hoc batch, which gave the date as Oct 25. CORRECTED to Oct 17 against the school's own Veracross calendar feed (sandomenico.org/about/calendar/upcoming, read in-browser 2026-09-09), which lists 'Garden Fair, October 17, 2026, all day, Garden'. Oct 25 2026 is a Sunday; this fair has run on a Saturday in every prior year found. Hours are NOT yet published anywhere - time left as TBA rather than carried over from a prior year. See open_items. 2026-10-06: hours confirmed by Alexandra (open item 58e, closed) and on sandomenico.org/about/garden-fair (read in full): 'San Domenico's 20th Annual Garden Fair! Saturday, October 17 | 11:00 a.m.-3:00 p.m.', with the music lineup, raffle and Witches' Apothecary plant sale. No price published, so cost 'Not listed' (was 'See website', which the page does not answer). Website now the Garden Fair page.",
+      "location_group": "San Anselmo/Ross",
+      "internal_notes": "Added 2026-09-09 from Alexandra's ad-hoc batch, which gave the date as Oct 25. CORRECTED to Oct 17 against the school's own Veracross calendar feed (sandomenico.org/about/calendar/upcoming, read in-browser 2026-09-09), which lists 'Garden Fair, October 17, 2026, all day, Garden'. Oct 25 2026 is a Sunday; this fair has run on a Saturday in every prior year found. Hours are NOT yet published anywhere - time left as TBA rather than carried over from a prior year. See open_items. 2026-10-06: hours confirmed by Alexandra (open item 58e, closed) and on sandomenico.org/about/garden-fair (read in full): 'San Domenico's 20th Annual Garden Fair! Saturday, October 17 | 11:00 a.m.-3:00 p.m.', with the music lineup, raffle and Witches' Apothecary plant sale. No price published, so cost 'Not listed' (was 'See website', which the page does not answer). Website now the Garden Fair page. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo).",
       "id": 1100
     },
     {
@@ -8366,8 +8368,8 @@
       "registration": "Not required",
       "website": "http://www.sananselmo.gov/Calendar.aspx?CID=22",
       "notes": "skip: 2026-11-11",
-      "location_group": "San Anselmo",
-      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): library closed Nov 11 (Veterans Day).",
+      "location_group": "San Anselmo/Ross",
+      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): library closed Nov 11 (Veterans Day). 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo).",
       "id": 1140
     },
     {
@@ -8427,8 +8429,8 @@
       "registration": "Poets sign up online in advance or at the door; space is limited to the first 25 readers",
       "website": "https://www.sananselmo.gov/1662/Library",
       "notes": "Readers each choose one poem and have two minutes. The first 25 poets get a slot.",
-      "location_group": "San Anselmo",
-      "internal_notes": "Added 2026-09-15 from the library's own Instagram flyer (@sananselmolibrary), supplied by Alexandra, and confirmed on the town's notice sananselmo.gov/CivicAlerts.aspx?AID=4083: 'Thursday, October 8 at 7pm', all ages welcome, sign up online or at the door, first 25 poets, one poem in two minutes or less, refreshments after. ⚠ ADDRESS CONFLICT, rule 25: the flyer footer and the library's own contact page both say 110 Tunstead Ave, while the CivicAlerts notice says 'San Anselmo Library (525 San Anselmo Avenue)' - 525 is the Town Council Chambers (see id 999). Stored the two-source address, 110 Tunstead; tracked in open item 58 so the room can be confirmed before the date. No cost is stated anywhere; library programmes are free and the flyer advertises none, so Free (rule 22 - nothing is sold at the door). | 2026-09-25, RESOLVED by Alexandra (open item 58p): the venue is the LIBRARY at 110 Tunstead Ave, in the reading room — not the 525 San Anselmo Avenue address the town’s own CivicAlerts notice printed, which is the Council Chambers. Address unchanged, room added. 2026-10-06: location_group Ross Valley -> San Anselmo, matching the other 15 San Anselmo records; 'Ross Valley' retired as a group.",
+      "location_group": "San Anselmo/Ross",
+      "internal_notes": "Added 2026-09-15 from the library's own Instagram flyer (@sananselmolibrary), supplied by Alexandra, and confirmed on the town's notice sananselmo.gov/CivicAlerts.aspx?AID=4083: 'Thursday, October 8 at 7pm', all ages welcome, sign up online or at the door, first 25 poets, one poem in two minutes or less, refreshments after. ⚠ ADDRESS CONFLICT, rule 25: the flyer footer and the library's own contact page both say 110 Tunstead Ave, while the CivicAlerts notice says 'San Anselmo Library (525 San Anselmo Avenue)' - 525 is the Town Council Chambers (see id 999). Stored the two-source address, 110 Tunstead; tracked in open item 58 so the room can be confirmed before the date. No cost is stated anywhere; library programmes are free and the flyer advertises none, so Free (rule 22 - nothing is sold at the door). | 2026-09-25, RESOLVED by Alexandra (open item 58p): the venue is the LIBRARY at 110 Tunstead Ave, in the reading room — not the 525 San Anselmo Avenue address the town’s own CivicAlerts notice printed, which is the Council Chambers. Address unchanged, room added. 2026-10-06: location_group Ross Valley -> San Anselmo, matching the other 15 San Anselmo records; 'Ross Valley' retired as a group. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo).",
       "id": 1152,
       "expires": "2026-10-08"
     },
@@ -9482,8 +9484,8 @@
       "registration": "Not required",
       "website": "https://www.sananselmo.gov/Calendar.aspx?CID=22",
       "notes": "",
-      "location_group": "San Anselmo",
-      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. id 685 holds the September session. Address follows id 685, which places this club at the Historical Museum rather than the main library.",
+      "location_group": "San Anselmo/Ross",
+      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. id 685 holds the September session. Address follows id 685, which places this club at the Historical Museum rather than the main library. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo).",
       "id": 1200
     },
     {
@@ -10774,8 +10776,8 @@
       "registration": "Not required",
       "website": "https://pixiepark.org/",
       "notes": "Open to members and non-members alike.",
-      "location_group": "San Anselmo",
-      "internal_notes": "Added 2026-09-28 from @pixieparkross's own Instagram post, supplied by Alexandra: 'Open House Saturday, October 10 from 10-11am', 'Open to members & non-members alike'. Address from pixiepark.org / Marin Art and Garden Center. Town Ross stored under location_group San Anselmo, matching the existing Ross record.",
+      "location_group": "San Anselmo/Ross",
+      "internal_notes": "Added 2026-09-28 from @pixieparkross's own Instagram post, supplied by Alexandra: 'Open House Saturday, October 10 from 10-11am', 'Open to members & non-members alike'. Address from pixiepark.org / Marin Art and Garden Center. Town Ross stored under location_group San Anselmo, matching the existing Ross record. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo).",
       "id": 1261
     },
     {
@@ -11031,7 +11033,7 @@
       "time_of_day": "Evening",
       "town": "San Anselmo",
       "address": "San Anselmo Avenue, Downtown San Anselmo, CA 94960",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "ages": "All ages",
       "cost": "Free",
       "indoor_outdoor": "Outdoor",
@@ -11042,7 +11044,7 @@
       "description_es": "La querida tradición familiar de Halloween del centro de San Anselmo: ven disfrazado y pide dulces por San Anselmo Avenue, donde los comercios locales reciben a los niños para una noche segura y festiva. La avenida se cierra a los autos esa noche.",
       "registration": "Not required",
       "website": "https://www.sananselmo.gov/787/Goblins-BOOtacular",
-      "internal_notes": "Added 2026-09-30 from a Marin Magazine Instagram carousel slide Alexandra sent (San Anselmo, Oct. 23). Town page sananselmo.gov/787 confirms Fri Oct 23 2026, trick-or-treating downtown, no times. 5-7 PM is from Creekside Pizza's community calendar and the Archie Williams HS paper (Avenue closed from 4 PM, pedestrian zone 5-7 PM). 'Free' because it is public street trick-or-treating with no ticket, registration 'Not required' per the town page."
+      "internal_notes": "Added 2026-09-30 from a Marin Magazine Instagram carousel slide Alexandra sent (San Anselmo, Oct. 23). Town page sananselmo.gov/787 confirms Fri Oct 23 2026, trick-or-treating downtown, no times. 5-7 PM is from Creekside Pizza's community calendar and the Archie Williams HS paper (Avenue closed from 4 PM, pedestrian zone 5-7 PM). 'Free' because it is public street trick-or-treating with no ticket, registration 'Not required' per the town page. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "id": 1274,
@@ -11089,7 +11091,7 @@
       "day": "Friday",
       "town": "Ross",
       "address": "30 Sir Francis Drake Blvd, Ross, CA 94957",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "ages": "0-24 months",
       "cost": "$30 per class",
       "indoor_outdoor": "Both",
@@ -11104,7 +11106,7 @@
       "id": 1275,
       "time": "8:30 AM – 9:15 AM",
       "time_of_day": "Morning",
-      "internal_notes": "Added 2026-09-30 from a @marin_mommies Instagram post Alexandra sent (Evergreen's own flyer in it): 'Fridays starting October 16, 8:30am-9:15am or 1:30pm-2:15pm', '$30 per class', up to 24 months with their grown-ups, 'Scan the QR code to reserve your spot', website evergreenchildrensacademy.com/sprout-and-play-1, 30 Sir Francis Drake Blvd, Ross. Two records, one per session (ids 1275 and 1276). No end date published: stored as Seasonal 10/16-12/31 because a season cannot cross New Year (see the year-wrap note); re-add for 2027 in December if it is still running. Indoor/outdoor not stated ('nature-inspired'), so 'Both'."
+      "internal_notes": "Added 2026-09-30 from a @marin_mommies Instagram post Alexandra sent (Evergreen's own flyer in it): 'Fridays starting October 16, 8:30am-9:15am or 1:30pm-2:15pm', '$30 per class', up to 24 months with their grown-ups, 'Scan the QR code to reserve your spot', website evergreenchildrensacademy.com/sprout-and-play-1, 30 Sir Francis Drake Blvd, Ross. Two records, one per session (ids 1275 and 1276). No end date published: stored as Seasonal 10/16-12/31 because a season cannot cross New Year (see the year-wrap note); re-add for 2027 in December if it is still running. Indoor/outdoor not stated ('nature-inspired'), so 'Both'. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "season_start": "10/16",
@@ -11120,7 +11122,7 @@
       "day": "Friday",
       "town": "Ross",
       "address": "30 Sir Francis Drake Blvd, Ross, CA 94957",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "ages": "0-24 months",
       "cost": "$30 per class",
       "indoor_outdoor": "Both",
@@ -11135,7 +11137,7 @@
       "id": 1276,
       "time": "1:30 PM – 2:15 PM",
       "time_of_day": "Afternoon",
-      "internal_notes": "Added 2026-09-30 from a @marin_mommies Instagram post Alexandra sent (Evergreen's own flyer in it): 'Fridays starting October 16, 8:30am-9:15am or 1:30pm-2:15pm', '$30 per class', up to 24 months with their grown-ups, 'Scan the QR code to reserve your spot', website evergreenchildrensacademy.com/sprout-and-play-1, 30 Sir Francis Drake Blvd, Ross. Two records, one per session (ids 1275 and 1276). No end date published: stored as Seasonal 10/16-12/31 because a season cannot cross New Year (see the year-wrap note); re-add for 2027 in December if it is still running. Indoor/outdoor not stated ('nature-inspired'), so 'Both'."
+      "internal_notes": "Added 2026-09-30 from a @marin_mommies Instagram post Alexandra sent (Evergreen's own flyer in it): 'Fridays starting October 16, 8:30am-9:15am or 1:30pm-2:15pm', '$30 per class', up to 24 months with their grown-ups, 'Scan the QR code to reserve your spot', website evergreenchildrensacademy.com/sprout-and-play-1, 30 Sir Francis Drake Blvd, Ross. Two records, one per session (ids 1275 and 1276). No end date published: stored as Seasonal 10/16-12/31 because a season cannot cross New Year (see the year-wrap note); re-add for 2027 in December if it is still running. Indoor/outdoor not stated ('nature-inspired'), so 'Both'. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "season_start": "",
@@ -11754,8 +11756,8 @@
       "registration": "Not required",
       "website": "https://www.sananselmo.gov/Calendar.aspx?CID=22&Month=10&Year=2026",
       "notes": "Designed for ages 4 and up.",
-      "location_group": "San Anselmo",
-      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: San Anselmo town calendar. October session of the Crafternoon series (id 45 now skips Oct 28 / Nov 25)."
+      "location_group": "San Anselmo/Ross",
+      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: San Anselmo town calendar. October session of the Crafternoon series (id 45 now skips Oct 28 / Nov 25). 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "id": 1303,
@@ -12467,8 +12469,8 @@
       "registration": "Not required",
       "website": "https://www.sananselmo.gov/Calendar.aspx?CID=22&Month=11&Year=2026",
       "notes": "",
-      "location_group": "San Anselmo",
-      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: San Anselmo town calendar."
+      "location_group": "San Anselmo/Ross",
+      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: San Anselmo town calendar. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
     },
     {
       "id": 1326,
@@ -12877,7 +12879,7 @@
       "organization": "Glitter Up Market",
       "venue": "Convert Studio",
       "town": "San Anselmo",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "address": "306 Sir Francis Drake Blvd, San Anselmo, CA 94960",
       "event_name": "Glitter Up Market",
       "event_name_es": "Mercado Glitter Up",
@@ -12893,7 +12895,7 @@
       "description_es": "Compra local y con estilo: un mercado vintage pop-up con ropa de diseño, joyería y artículos para el hogar de vendedores locales, en Convert Studio, San Anselmo.",
       "registration": "Not required",
       "website": "https://www.instagram.com/glitterupmarket/",
-      "internal_notes": "Added 2026-10-02 from a @thelocalhypegirl Story screenshot Alexandra sent. Her note said 10 AM-5 PM at 806 Sir Francis Drake; the flyer and the organizer's own caption (@sbglitter post of 2026-09-30, co-posted with @glitterupmarket: '10/17, 10-3, Convert Studio, 306 Sir Francis Drake blvd, San Anselmo, CA 94960') both say 10-3 at 306, so the source wins and Alexandra is told. Produced by Shawn Burke (@glitterupmarket bio). Free to browse: a market, goods for sale.",
+      "internal_notes": "Added 2026-10-02 from a @thelocalhypegirl Story screenshot Alexandra sent. Her note said 10 AM-5 PM at 806 Sir Francis Drake; the flyer and the organizer's own caption (@sbglitter post of 2026-09-30, co-posted with @glitterupmarket: '10/17, 10-3, Convert Studio, 306 Sir Francis Drake blvd, San Anselmo, CA 94960') both say 10-3 at 306, so the source wins and Alexandra is told. Produced by Shawn Burke (@glitterupmarket bio). Free to browse: a market, goods for sale. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo).",
       "day": "Saturday",
       "id": 1339
     },
@@ -13588,7 +13590,7 @@
       "organization": "em-j",
       "venue": "Beach House Style",
       "town": "San Anselmo",
-      "location_group": "San Anselmo",
+      "location_group": "San Anselmo/Ross",
       "address": "300 Sir Francis Drake Blvd, San Anselmo, CA 94960",
       "event_name": "Vintage Demystified: A Style Session",
       "event_name_es": "Vintage sin misterios: una sesión de estilo",
@@ -13606,7 +13608,7 @@
       "description_es": "Aprende a combinar tus prendas vintage con una experta de la casa en Beach House, San Anselmo. Ven con energía de brunch: se sirven bocadillos ligeros y café. Organizado por em-j.",
       "registration": "See the host's Instagram (Visit website)",
       "website": "https://www.instagram.com/em_jazzzy/",
-      "internal_notes": "Hosted by em-j (@em_jazzzy). Added 2026-10-05 from event copy Alexandra pasted. 'Vintage Demystified, a style session at Beach House in San Anselmo, Sunday 10/25 10-12pm.' 'Beach House' matched to the Beach House Style store, 300 Sir Francis Drake Blvd (Google listing); confirm if the host meant another venue. Grown-Ups Only!; no price given (rule 22).",
+      "internal_notes": "Hosted by em-j (@em_jazzzy). Added 2026-10-05 from event copy Alexandra pasted. 'Vintage Demystified, a style session at Beach House in San Anselmo, Sunday 10/25 10-12pm.' 'Beach House' matched to the Beach House Style store, 300 Sir Francis Drake Blvd (Google listing); confirm if the host meant another venue. Grown-Ups Only!; no price given (rule 22). 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo).",
       "expires": "2026-10-25",
       "id": 1362
     },
