@@ -4558,7 +4558,7 @@
       "event_name": "Spanish Sing-along and Storytime | Música y Cuentos en español",
       "type": "Library",
       "day": "Wednesday",
-      "time": "10:30 AM",
+      "time": "10:00 AM – 10:30 AM",
       "time_of_day": "Morning",
       "town": "San Rafael",
       "address": "5800 Northgate Drive, San Rafael, CA 94903",
@@ -4571,7 +4571,7 @@
       "location_group": "San Rafael",
       "event_name_es": "Música y Cuentos en español",
       "id": 853,
-      "internal_notes": "Added 2026-08-18 from @sanrafaellibraryrec's August programming flyer. NOTE: distinct from id 27 (Northgate Storytime, Monday), which was retired 2026-08-13 in the library audit as absent from srpubliclibrary.org — this is a different day AND a different program, so id 27 stays retired. Worth confirming the branch's full Northgate lineup on the next sweep, since the website and Instagram disagree. Time corrected 2026-08-20 from 10:30 AM to 10:00 AM - srpubliclibrary.org lists 10:00-10:30 AM on every date. CORRECTED 2026-09-01 from the San Rafael Library & Rec flyer, which resolves the third bullet of open item 44. TWO errors were live: the time was stored as 10:00 AM and the flyer says 10:30am; and the cadence was Weekly, so the record advertised EVERY Wednesday. The flyer lists 9/9, 9/23 and 9/30 only. Cross-checked against SRPL's own calendar read during the 2026-08-27 sweep, which showed Sep 9, 23, 30 and then Oct 14 and 28 - so 2nd and 4th Wednesdays fits four of those five exactly, and Sep 30 is an extra fifth-Wednesday session held as its own dated one-off. Weekly would have advertised Sep 2 and Sep 16, neither of which runs.",
+      "internal_notes": "Added 2026-08-18 from @sanrafaellibraryrec's August programming flyer. NOTE: distinct from id 27 (Northgate Storytime, Monday), which was retired 2026-08-13 in the library audit as absent from srpubliclibrary.org — this is a different day AND a different program, so id 27 stays retired. Worth confirming the branch's full Northgate lineup on the next sweep, since the website and Instagram disagree. Time corrected 2026-08-20 from 10:30 AM to 10:00 AM - srpubliclibrary.org lists 10:00-10:30 AM on every date. CORRECTED 2026-09-01 from the San Rafael Library & Rec flyer, which resolves the third bullet of open item 44. TWO errors were live: the time was stored as 10:00 AM and the flyer says 10:30am; and the cadence was Weekly, so the record advertised EVERY Wednesday. The flyer lists 9/9, 9/23 and 9/30 only. Cross-checked against SRPL's own calendar read during the 2026-08-27 sweep, which showed Sep 9, 23, 30 and then Oct 14 and 28 - so 2nd and 4th Wednesdays fits four of those five exactly, and Sep 30 is an extra fifth-Wednesday session held as its own dated one-off. Weekly would have advertised Sep 2 and Sep 16, neither of which runs. 2026-10-06: TIME SETTLED at 10:00 AM. Alexandra confirmed by phone with the library (open item 58s, closed). End 10:30 from srpubliclibrary.org. The August flyer's 10:30 was wrong.",
       "notes": "2nd and 4th Wednesdays of each month."
     },
     {
