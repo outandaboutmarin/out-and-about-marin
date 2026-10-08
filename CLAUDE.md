@@ -66,7 +66,7 @@ File is a JSON object, **not** a flat array:
 ```
 Always load/save through the pattern in `scraper.py` (`load_existing_events()` / `save_events()` — reuse `events_io.py`, see below) rather than hand-editing JSON text. The file has Spanish-accented characters — always read/write with `encoding="utf-8"` or you'll corrupt them (confirmed failure mode: default Windows `cp1252` encoding mangles é/í/ñ etc.).
 
-As of 2026-10-06: **464 events, max ID 1383.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 450 events / max 1369 on 2026-10-05; 446 events / max 1354 on 2026-10-04; 466 events / max 1350 on 2026-10-02; 406 events / max 1097 on 2026-09-09; 330 events / max 907 on 2026-08-21; 505 events / max 565 on 2026-07-02; 366 on 2026-08-09; 341 after the library audit; 353 after the Aug 13 sweep. The drop to 305 on 2026-08-14 was the **first automated purge in 98 days** — 48 expired one-offs cleared by the newly-repaired `daily.yml`. Expiry is automatic again; it should no longer need purging by hand. See State of play.)
+As of 2026-10-08: **507 events, max ID 1436.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 464 events / max 1383 on 2026-10-06; 450 events / max 1369 on 2026-10-05; 446 events / max 1354 on 2026-10-04; 466 events / max 1350 on 2026-10-02; 406 events / max 1097 on 2026-09-09; 330 events / max 907 on 2026-08-21; 505 events / max 565 on 2026-07-02; 366 on 2026-08-09; 341 after the library audit; 353 after the Aug 13 sweep. The drop to 305 on 2026-08-14 was the **first automated purge in 98 days** — 48 expired one-offs cleared by the newly-repaired `daily.yml`. Expiry is automatic again; it should no longer need purging by hand. See State of play.)
 
 **Fields on every event** (confirmed against actual `index.html` usage, not just assumed from old docs):
 
@@ -771,11 +771,11 @@ The shape worth noticing: all three cleared the mechanical filters and were stil
 
 Read this first, then the sections above as needed.
 
-**Health** (re-run and verified 2026-10-06, not copied forward): `events.json` is **464 events,
-max id 1383**, all committed and pushed, level with `origin/main`.
+**Health** (re-run and verified 2026-10-08, not copied forward): `events.json` is **507 events,
+max id 1436**, all committed and pushed, level with `origin/main`.
 `check_duplicates.py --self-test` is **91/91**; `--notes-lint --all` and `--bilingual-lint` are
 clean; the duplicate scans show only the known, legitimate finding: the Pavilion Play Group's two
-season halves 1156/1158 (the Southern Marin open houses 1153–1155 dropped off after their Oct 4 date). (466 events / max 1350 on 2026-10-02 — the drop is the daily purge of past one-offs; 440 events /
+season halves 1156/1158 (the Southern Marin open houses 1153–1155 dropped off after their Oct 4 date). (464 events / max 1383 on 2026-10-06; 466 events / max 1350 on 2026-10-02 — the drop is the daily purge of past one-offs; 440 events /
 max 1145 on 2026-09-10; 406 events / max 1097 on 2026-09-09. The count moves both
 ways — the daily job purges expired one-offs, so a fall is the system working. **Re-run the scans
 rather than trusting this sentence**; a hard-coded count in prose goes stale silently, and this
