@@ -190,6 +190,7 @@ Always follow these when adding or editing events — they exist because of spec
     Found 2026-08-15 immediately after adding exactly such a note to id 6 (Preschool & Family Storytime, Weekly Tuesday, cancelled only on Sep 22 when the bilingual storytime replaces it). Fixed by adding the optional scope marker:
 
     - `ALERT[2026-09-22]: <text>` — shows **only** on that date.
+    - Several dated alerts may sit on one record, separated by ` | ` (added 2026-10-08, id 24); `getAlertNote()` returns the one for the date being drawn.
     - `ALERT: <text>` — shows on **every** occurrence. Correct for genuinely open-ended callouts, e.g. "on break for all of August", and the reason the bare form still works.
 
     Choose by asking *does this apply to one date or to an ongoing state?* Single date → always bracket it. `cardHTML()` and `openDetail()` each pass the date of the occurrence they're drawing; `localDateStr()` builds it from local calendar fields, deliberately not `toISOString()`, which converts to UTC first and names the following day when the Date carries an evening time.

@@ -3829,13 +3829,20 @@ function localDateStr(d) {
 // genuinely open-ended callouts, and it keeps existing notes working unchanged.
 // `dateStr` is the local YYYY-MM-DD of the occurrence being drawn; when a caller
 // can't determine one, a dated alert is shown rather than silently dropped.
-const ALERT_RE = /ALERT(?:\[(\d{4}-\d{2}-\d{2})\])?:\s*([^|]+)/i;
+//
+// A record may carry SEVERAL dated alerts (e.g. a weekly storytime cancelled on
+// two separate closure days), separated by " | ". Each alert's text runs to the
+// next "|", the next ALERT marker, or a trailing "skip: YYYY-MM-DD"; the first
+// alert that applies to `dateStr` wins. Added 2026-10-08 for id 24.
+const ALERT_RE = /ALERT(?:\[(\d{4}-\d{2}-\d{2})\])?:\s*((?:(?!ALERT(?:\[\d{4}-\d{2}-\d{2}\])?:|skip:\s*\d{4}-)[^|])+)/gi;
 
 function getAlertNote(e, dateStr) {
-  const m = e.notes && e.notes.match(ALERT_RE);
-  if (!m) return null;
-  if (m[1] && dateStr && m[1] !== dateStr) return null;
-  return m[2].trim();
+  if (!e.notes) return null;
+  for (const m of e.notes.matchAll(ALERT_RE)) {
+    if (m[1] && dateStr && m[1] !== dateStr) continue;
+    return m[2].trim();
+  }
+  return null;
 }
 
 function changeWeek(dir) {
@@ -4703,7 +4710,7 @@ function openDetail(id) {
   if (e.notes) {
     // Strip the "[YYYY-MM-DD]" scope marker for display — it's routing
     // information for the renderer, not something to show a reader.
-    notesEl.textContent = '⚠ ' + e.notes.replace(/ALERT\[\d{4}-\d{2}-\d{2}\]:/i, 'ALERT:');
+    notesEl.textContent = '⚠ ' + e.notes.replace(/ALERT\[\d{4}-\d{2}-\d{2}\]:/gi, 'ALERT:');
     notesEl.style.display = 'block';
     notesEl.classList.toggle('notes-alert', !!getAlertNote(e, detailDateLocal));
   } else { notesEl.style.display = 'none'; }
