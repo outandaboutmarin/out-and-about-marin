@@ -5072,14 +5072,14 @@
       "town": "Fairfax",
       "address": "1966 Sir Francis Drake Blvd, Fairfax, CA 94930",
       "ages": "All ages",
-      "cost": "See website",
+      "cost": "$25–$60",
       "cadence": "One-off",
       "event_date": "2026-10-10",
       "expires": "2026-10-10",
       "description": "Fairfax's bike-and-beer street festival returns for its 20th anniversary, with live music, food and family activities at the Marin Museum of Bicycling.",
       "description_es": "El festival callejero de bicicletas y cerveza de Fairfax regresa para su 20.º aniversario, con música en vivo, comida y actividades familiares.",
       "location_group": "Fairfax",
-      "internal_notes": "Added 2026-08-27 from Alexandra's list, corroborated against Marin Mommies."
+      "internal_notes": "Added 2026-08-27 from Alexandra's list, corroborated against Marin Mommies. 2026-10-08: Cost $25-60 per Alexandra (Instagram week of Oct 8 picks). biketoberfestmarin.com is a spam domain, do not link it."
     },
     {
       "id": 917,
@@ -6897,7 +6897,7 @@
       "town": "Larkspur",
       "address": "250 Doherty Dr, Larkspur, CA 94939",
       "ages": "All ages",
-      "cost": "Unconfirmed",
+      "cost": "Free",
       "indoor_outdoor": "Outdoor",
       "active_sedentary": "Active",
       "cadence": "One-off",
@@ -6909,7 +6909,7 @@
       "website": "https://www.cityoflarkspur.org",
       "notes": "",
       "location_group": "Larkspur/Greenbrae/Kentfield",
-      "internal_notes": "Added 2026-09-03 from a City of Larkspur announcement Alexandra pasted in chat - not from any of the 44 checklist sources. Venue scan run first: NOTHING on file at Piper Park, so this is genuinely new, and no existing Larkspur Recreation records exist either. Five other events already sit on 2026-10-10 (ids 916, 917, 919, 947, 973) and none is this one. COST: the announcement says 'a fun and affordable fall day', which implies a charge but names no figure, so cost is 'Unconfirmed' rather than guessed at as Free - worth one check at cityoflarkspur.org before the date. 2026-10-06: location_group Larkspur/Greenbrae -> Larkspur/Greenbrae/Kentfield (Alexandra: 'Larkspur should be with Greenbrae and Kentfield')."
+      "internal_notes": "Added 2026-09-03 from a City of Larkspur announcement Alexandra pasted in chat - not from any of the 44 checklist sources. Venue scan run first: NOTHING on file at Piper Park, so this is genuinely new, and no existing Larkspur Recreation records exist either. Five other events already sit on 2026-10-10 (ids 916, 917, 919, 947, 973) and none is this one. COST: the announcement says 'a fun and affordable fall day', which implies a charge but names no figure, so cost is 'Unconfirmed' rather than guessed at as Free - worth one check at cityoflarkspur.org before the date. 2026-10-06: location_group Larkspur/Greenbrae -> Larkspur/Greenbrae/Kentfield (Alexandra: 'Larkspur should be with Greenbrae and Kentfield'). 2026-10-08: Cost Free per Alexandra."
     },
     {
       "id": 1043,
@@ -11254,10 +11254,10 @@
       "description": "The Mill Valley Film Festival’s free family day: face painting and glitter tattoos, balloon art, an optical-toy and flip-book workshop and local vendors, alongside family films at CinéArts Sequoia.",
       "description_es": "El día familiar gratuito del Mill Valley Film Festival: pintacaras y tatuajes de brillantina, globos, un taller de juguetes ópticos y flip-books y vendedores locales, junto con películas familiares en CinéArts Sequoia.",
       "registration": "Not required",
-      "website": "https://www.ronniesawesomelist.com/blog/mvff2026",
+      "website": "https://www.mvff.com/family-films/",
       "notes": "Activities are free; film screenings are ticketed.",
       "location_group": "Mill Valley",
-      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: Ronnie's MVFF family page. Separate from the declined MVFF adult slate."
+      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: Ronnie's MVFF family page. Separate from the declined MVFF adult slate. 2026-10-08: Website -> mvff.com/family-films/ (\"Family Film Day at the OAC, Sunday, Oct. 11, noon-4:00 PM ... Free & open to the public\")."
     },
     {
       "id": 1296,
