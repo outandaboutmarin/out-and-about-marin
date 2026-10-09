@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-08",
+  "last_updated": "2026-10-09",
   "events": [
     {
       "id": 1,
@@ -15338,37 +15338,6 @@
       "website": "https://www.instagram.com/weeyogis/",
       "internal_notes": "Added 2026-10-08 at Alexandra's request from a screenshot she sent: @weeyogis Instagram post: \"singing group performing tomorrow Friday October 9th @eatpizzalina at 4:30pm\". Address = PizzaLina, 914 Sir Francis Drake Blvd, San Anselmo.",
       "id": 1436
-    },
-    {
-      "season_start": "",
-      "season_end": "",
-      "status": "Active",
-      "featured": false,
-      "notes": "Bring a dish to share for the 4:30 potluck. Performances from 5:15 PM; final dance at 6:00.",
-      "cadence": "One-off",
-      "indoor_outdoor": "Both",
-      "active_sedentary": "Active",
-      "cost": "Free",
-      "organization": "West Marin-Inverness School PTSA",
-      "venue": "West Marin School",
-      "address": "11550 State Route 1, Point Reyes Station, CA 94956",
-      "town": "Point Reyes Station",
-      "location_group": "West Marin",
-      "event_name": "Hispanic Heritage Night: La Vecindad de West Marin-Inverness",
-      "event_name_es": "Noche de la Herencia Hispana: La Vecindad de West Marin-Inverness",
-      "type": "Community Event",
-      "day": "Thursday",
-      "time": "4:30 PM – 6:15 PM",
-      "time_of_day": "Afternoon",
-      "ages": "All ages",
-      "event_date": "2026-10-08",
-      "description": "The West Marin-Inverness school community celebrates Hispanic Heritage Night: a family potluck with a photo booth, raffle and music, then student performances from TK to 5th grade, La Bamba and a final dance for everyone. Come dressed as a character.",
-      "description_es": "La comunidad escolar de West Marin-Inverness celebra la Noche de la Herencia Hispana: una comida compartida en familia con cabina de fotos, rifa y música, luego presentaciones de los estudiantes de TK a 5.º grado, La Bamba y un baile final para todos. Ven disfrazado de un personaje.",
-      "registration": "Not required",
-      "website": "https://www.instagram.com/thewestmarinfeed/",
-      "internal_notes": "Added 2026-10-08 at Alexandra's request from a screenshot she sent: @thewestmarinfeed Instagram story (\"Tonight at the West Marin School!\") with the PTSA flyer: \"Hispanic Heritage Night / Noche de la Herencia Hispana, La Vecindad de West Marin-Inverness, Thursday, October 8, 2026, 4:30 PM\", potluck, student performances, photo booth, raffle, music; and the program (4:30-5:15 potluck, 5:15 welcome, 5:25-5:50 class performances, 6:00 \"La Vaca\" final dance). End time 6:15 estimated from the program. Address: West Marin School, 11550 State Route 1, Point Reyes Station (Google Maps). A school community night; the flyer invites families generally (\"Bring your family\").",
-      "expires": "2026-10-08",
-      "id": 1437
     },
     {
       "season_start": "",
