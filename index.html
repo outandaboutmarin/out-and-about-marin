@@ -1262,6 +1262,10 @@ function mapDbUser(dbUser) {
   #adScreen { display: none; flex-direction: column; min-height: 100vh; background: var(--off-white); }
   .ad-logo { display: flex; justify-content: center; padding: 1rem 0 0.85rem; background: #fff; border-bottom: 0.5px solid #EDEAE4; }
   .ad-logo img { width: 118px; height: 118px; display: block; object-fit: contain; }
+  /* Wordmark-shaped logos (FIT4MOM, 2026-10-09): wide, not square. Used on the ad page and on partner event pages. */
+  .ad-logo.wide img { width: 210px; height: auto; }
+  .ad-contact { font-size: 0.78rem; line-height: 1.5; margin-top: 0.6rem; color: var(--text-primary); }
+  .ad-contact a { color: var(--navy); }
   .ad-hours { display: grid; grid-template-columns: auto 1fr; column-gap: 0.9rem; row-gap: 0.3rem; font-size: 0.82rem; margin: 0; }
   .ad-hours dt { font-weight: 500; color: var(--text-primary); }
   .ad-hours dd { margin: 0; font-weight: 300; color: #333; }
@@ -2493,6 +2497,7 @@ function mapDbUser(dbUser) {
   </div>
   <div class="detail-body">
     <div class="detail-card">
+      <div class="ad-logo wide" id="detailLogo" style="display:none"><img alt=""></div>
       <div class="detail-section">
         <div class="section-label" id="detailSectionWhen">When</div>
         <div class="detail-row">
@@ -4327,7 +4332,7 @@ function withAds(sel) {
 }
 function adTileHTML(a) {
   var style = '--ad-color:' + adEsc(a.color || '#AACDCF') + ';--ad-ink:' + adEsc(a.color_ink || '#3E6E72');
-  return '<div class="feat-card" onclick="openAd(\'' + adEsc(a.id) + '\')"><div class="feat-tile ad" style="' + style + '"><div class="ft-top"><span class="ft-icon"><img src="' + adEsc(a.logo) + '" alt=""></span><div class="ft-kicker">' + (currentLang === 'es' ? 'Patrocinado' : 'Sponsored') + '</div></div><div class="ft-name">' + adEsc(a.name) + '</div><div class="ft-meta"><b>' + adEsc(adText(a.tile_meta)) + '</b>' + (a.town ? ' · ' + adEsc(a.town) : '') + '</div></div></div>';
+  return '<div class="feat-card" onclick="openAd(\'' + adEsc(a.id) + '\')"><div class="feat-tile ad" style="' + style + '"><div class="ft-top"><span class="ft-icon"><img src="' + adEsc(a.tile_icon || a.logo) + '" alt=""></span><div class="ft-kicker">' + (currentLang === 'es' ? 'Patrocinado' : 'Sponsored') + '</div></div><div class="ft-name">' + adEsc(a.name) + '</div><div class="ft-meta"><b>' + adEsc(adText(a.tile_meta)) + '</b>' + (a.town ? ' · ' + adEsc(a.town) : '') + '</div></div></div>';
 }
 function adEl(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
 function adSection(label) { var s = adEl('div', 'detail-section'); s.appendChild(adEl('div', 'section-label', label)); return s; }
@@ -4337,6 +4342,8 @@ var AD_ICONS = {
   phone: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 1.5h2l1 3-1.5 1a7 7 0 0 0 4 4l1-1.5 3 1v2a1.5 1.5 0 0 1-1.5 1.5A10.5 10.5 0 0 1 1.5 3 1.5 1.5 0 0 1 3 1.5z" stroke="#0D1B3E" stroke-width="1.2" stroke-linejoin="round"/></svg>',
   maps: '<svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z" stroke="#0D1B3E" stroke-width="1.3"/></svg>',
   web: '<svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c-1.5 2-2 3.5-2 5.5s.5 3.5 2 5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c1.5 2 2 3.5 2 5.5s-.5 3.5-2 5.5" stroke="white" stroke-width="1.2"/><line x1="1.5" y1="7" x2="12.5" y2="7" stroke="white" stroke-width="1.2"/></svg>',
+  webdark: '<svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#0D1B3E" stroke-width="1.2"/><path d="M7 1.5c-1.5 2-2 3.5-2 5.5s.5 3.5 2 5.5" stroke="#0D1B3E" stroke-width="1.2"/><path d="M7 1.5c1.5 2 2 3.5 2 5.5s-.5 3.5-2 5.5" stroke="#0D1B3E" stroke-width="1.2"/><line x1="1.5" y1="7" x2="12.5" y2="7" stroke="#0D1B3E" stroke-width="1.2"/></svg>',
+  fb: '<svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="2.5" stroke="#1A1A1A" stroke-width="1.2"/><path d="M8.6 12.5V8h1.5l.3-1.7H8.6v-1c0-.5.2-.9.9-.9h.9V2.9c-.3 0-.8-.1-1.4-.1-1.4 0-2.2.8-2.2 2.3v1.2H5.4V8h1.4v4.5" stroke="#1A1A1A" stroke-width="1.1" stroke-linejoin="round"/></svg>',
   ig: '<svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="3.2" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="7" cy="7" r="2.6" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="10.3" cy="3.7" r=".7" fill="#1A1A1A"/></svg>',
   share: '<svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="11" cy="2.5" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="11" cy="11.5" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="3" cy="7" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><line x1="4.4" y1="6.2" x2="9.6" y2="3.3" stroke="#1A1A1A" stroke-width="1.2"/><line x1="4.4" y1="7.8" x2="9.6" y2="10.7" stroke="#1A1A1A" stroke-width="1.2"/></svg>'
 };
@@ -4374,22 +4381,26 @@ function openAd(id) {
 
   var body = document.getElementById('adBody'); body.textContent = '';
   var card = adEl('div', 'detail-card');
-  if (a.logo) { var lg = adEl('div', 'ad-logo'); var im = document.createElement('img'); im.src = a.logo; im.alt = a.name + ' logo'; lg.appendChild(im); card.appendChild(lg); }
+  if (a.logo) { var lg = adEl('div', a.logo_wide ? 'ad-logo wide' : 'ad-logo'); var im = document.createElement('img'); im.src = a.logo; im.alt = a.name + ' logo'; lg.appendChild(im); card.appendChild(lg); }
 
+  // An ad with no single address (a class that moves between parks, 2026-10-09) skips Where and
+  // carries its places in the hours table instead; it also gets no Directions button below.
   var where = adSection(es ? 'Dónde' : 'Where');
-  var w = adRow('pin', es ? 'Lugar y dirección' : 'Venue & address');
-  w.content.appendChild(adEl('div', 'detail-row-value', a.venue || a.name));
-  w.content.appendChild(adEl('div', 'detail-row-sub', a.address + (a.address_note ? ' · ' + adText(a.address_note) : '')));
-  where.appendChild(w.row);
+  if (a.address) {
+    var w = adRow('pin', es ? 'Lugar y dirección' : 'Venue & address');
+    w.content.appendChild(adEl('div', 'detail-row-value', a.venue || a.name));
+    w.content.appendChild(adEl('div', 'detail-row-sub', a.address + (a.address_note ? ' · ' + adText(a.address_note) : '')));
+    where.appendChild(w.row);
+  }
   if (a.phone) {
     var ph = adRow('phone', es ? 'Teléfono' : 'Phone');
     var pv = adEl('div', 'detail-row-value ad-phone'); var pl = adEl('a', null, a.phone); pl.href = 'tel:' + a.phone.replace(/[^\d+]/g, '');
     pv.appendChild(pl); ph.content.appendChild(pv); where.appendChild(ph.row);
   }
-  card.appendChild(where);
+  if (a.address || a.phone) card.appendChild(where);
 
   if (a.hours && a.hours.length) {
-    var hs = adSection(es ? 'Horario' : 'Hours');
+    var hs = adSection(adText(a.hours_label) || (es ? 'Horario' : 'Hours'));
     var h = adRow('clock', null); var dl = adEl('dl', 'ad-hours');
     a.hours.forEach(function (x) { dl.appendChild(adEl('dt', null, adText(x.days))); dl.appendChild(adEl('dd', null, adText(x.time))); });
     h.content.appendChild(dl);
@@ -4399,6 +4410,14 @@ function openAd(id) {
 
   var ab = adSection(es ? 'Acerca de' : 'About');
   ab.appendChild(adEl('div', 'description-text', adText(a.about)));
+  if (a.contact && (a.contact.phone || a.contact.email)) {
+    var ct = adEl('div', 'ad-contact'); ct.appendChild(adEl('b', null, (es ? '¿Preguntas? Contacta a ' : 'Questions? Contact ') + (a.contact.name || a.name)));
+    ct.appendChild(document.createElement('br'));
+    if (a.contact.phone) { var cp = adEl('a', null, a.contact.phone); cp.href = 'tel:' + a.contact.phone.replace(/[^\d+]/g, ''); ct.appendChild(cp); }
+    if (a.contact.phone && a.contact.email) ct.appendChild(document.createTextNode(' · '));
+    if (a.contact.email) { var ce = adEl('a', null, a.contact.email); ce.href = 'mailto:' + a.contact.email; ct.appendChild(ce); }
+    ab.appendChild(ct);
+  }
   if (a.note) ab.appendChild(adEl('div', 'notes-text', adText(a.note)));
   card.appendChild(ab);
 
@@ -4408,6 +4427,7 @@ function openAd(id) {
       var box = adEl('div', 'offer');
       box.appendChild(adEl('div', 'offer-title', adText(o.title)));
       if (o.sub) box.appendChild(adEl('div', 'offer-sub', adText(o.sub)));
+      if (!o.code) { of.appendChild(box); return; }   // an offer with no code (e.g. first class free)
       var row = adEl('div', 'offer-code'); row.appendChild(adEl('span', 'code', o.code));
       var b = adEl('button', 'copy', es ? 'Copiar código' : 'Copy code'); b.type = 'button';
       b.addEventListener('click', function () { copyAdCode(b, o.code); });
@@ -4425,11 +4445,13 @@ function openAd(id) {
   body.appendChild(card);
 
   var r1 = adEl('div', 'action-row');
-  r1.appendChild(adBtn('action-btn btn-maps', 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(a.address), 'maps', es ? 'Cómo llegar' : 'Directions'));
-  if (a.website) r1.appendChild(adBtn('action-btn btn-website', a.website, 'web', (es ? 'Visita ' : 'Visit ') + (a.website_label || a.website)));
+  if (a.cta && a.cta.url) r1.appendChild(adBtn('action-btn btn-website', a.cta.url, 'web', adText(a.cta.label)));
+  if (a.address) r1.appendChild(adBtn('action-btn btn-maps', 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(a.address), 'maps', es ? 'Cómo llegar' : 'Directions'));
+  if (a.website) r1.appendChild(adBtn(a.cta ? 'action-btn btn-maps' : 'action-btn btn-website', a.website, a.cta ? 'webdark' : 'web', (es ? 'Visita ' : 'Visit ') + (a.website_label || a.website)));
   body.appendChild(r1);
   var r2 = adEl('div', 'secondary-row');
   if (a.instagram) r2.appendChild(adBtn('action-btn secondary-btn', 'https://www.instagram.com/' + a.instagram + '/', 'ig', '@' + a.instagram));
+  if (a.facebook) r2.appendChild(adBtn('action-btn secondary-btn', 'https://www.facebook.com/' + a.facebook, 'fb', a.facebook));
   var sh = adBtn('action-btn secondary-btn', null, 'share', es ? 'Compartir' : 'Share'); sh.style.cursor = 'pointer';
   sh.addEventListener('click', function () { shareAd(a); });
   r2.appendChild(sh); body.appendChild(r2);
@@ -4494,6 +4516,14 @@ function renderPartnerExtras(e) {
     disc.textContent = es ? 'Anuncio patrocinado. Out AND About Marin recibe un pago por destacar este negocio local.'
                           : 'Sponsored listing. Out AND About Marin is paid to feature this local business.';
     disc.style.display = e.partner === true ? 'block' : 'none';
+  }
+
+  // Partner logo at the top of the event card (FIT4MOM, 2026-10-09). Optional `logo` on a partner record.
+  const lg = document.getElementById('detailLogo');
+  if (lg) {
+    const show = e.partner === true && !!e.logo;
+    lg.style.display = show ? 'flex' : 'none';
+    if (show) { const im = lg.querySelector('img'); im.src = e.logo; im.alt = (e.organization || '') + ' logo'; }
   }
 
   const box = document.getElementById('detailContact');

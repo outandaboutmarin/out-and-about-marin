@@ -56,6 +56,164 @@
       "website_label": "thesocialklub.com",
       "instagram": "the.social.klub",
       "internal_notes": "Posted live 2026-09-30 at Alexandra's instruction, from the approved mockup in OAA Sponsorship and Partners/Social Klub/. Alexandra confirmed both codes are live in the Klub's booking system (PLAY50, PARTY100), chose the open-window hours (not the bookable sessions), and chose the phone on thesocialklub.com, (415) 599-3440, over the Nextdoor number (415) 261-7977. Billing: item 22 (Stripe) not set up."
+    },
+    {
+      "id": "fit4mom-marin",
+      "active": true,
+      "start": "2026-10-09",
+      "end": "",
+      "name": "Stroller Strides by FIT4MOM",
+      "logo": "assets/ads/fit4mom_marin_logo.png",
+      "logo_wide": true,
+      "tile_icon": "assets/ads/fit4mom_mark.png",
+      "color": "#FF585D",
+      "color_ink": "#B23A3E",
+      "tile_meta": {
+        "en": "Mon–Sat",
+        "es": "Lun–Sáb"
+      },
+      "town": "across Marin",
+      "badge": {
+        "en": "Sponsored · Local partner",
+        "es": "Patrocinado · Colaborador local"
+      },
+      "subtitle": {
+        "en": "Prenatal and postnatal fitness for moms",
+        "es": "Ejercicio prenatal y posparto para mamás"
+      },
+      "venue": "Parks across Marin",
+      "address": "",
+      "hours_label": {
+        "en": "Where & when",
+        "es": "Dónde y cuándo"
+      },
+      "hours": [
+        {
+          "days": {
+            "en": "Mon",
+            "es": "Lun"
+          },
+          "time": {
+            "en": "10 – 11 AM · Corte Madera Town Park, Corte Madera",
+            "es": "10 – 11 AM · Corte Madera Town Park, Corte Madera"
+          }
+        },
+        {
+          "days": {
+            "en": "Tue",
+            "es": "Mar"
+          },
+          "time": {
+            "en": "10 – 11 AM · South Hamilton Park, Novato",
+            "es": "10 – 11 AM · South Hamilton Park, Novato"
+          }
+        },
+        {
+          "days": {
+            "en": "Wed",
+            "es": "Mié"
+          },
+          "time": {
+            "en": "10 – 11 AM · Corte Madera Town Park, Corte Madera",
+            "es": "10 – 11 AM · Corte Madera Town Park, Corte Madera"
+          }
+        },
+        {
+          "days": {
+            "en": "Thu",
+            "es": "Jue"
+          },
+          "time": {
+            "en": "9:30 – 10:30 AM · Marin Civic Center, San Rafael",
+            "es": "9:30 – 10:30 AM · Marin Civic Center, San Rafael"
+          }
+        },
+        {
+          "days": {
+            "en": "Sat",
+            "es": "Sáb"
+          },
+          "time": {
+            "en": "9:30 – 10:30 AM · Robin Sweeney Park, Sausalito",
+            "es": "9:30 – 10:30 AM · Robin Sweeney Park, Sausalito"
+          }
+        }
+      ],
+      "hours_note": {
+        "en": "Every class runs about an hour, outdoors. No classes on Fridays or Sundays.",
+        "es": "Cada clase dura alrededor de una hora, al aire libre. No hay clases los viernes ni los domingos."
+      },
+      "about": {
+        "en": "FIT4MOM is the nation's leading prenatal and postnatal fitness program, providing fitness classes and a network for moms to support every stage of motherhood. Stroller Strides: a 60-minute outdoor total-body workout (strength, cardio and core) designed for prenatal and postpartum moms. Babies can ride in a stroller and/or front pack. A jogging stroller is not required. Toddlers and big kids are welcome and can participate in the workout next to their mama or ride a scooter or bike. Please bring an exercise mat if you have one. First class free! Please sign up by downloading the Glofox app and searching for Fit4mom Marin.",
+        "es": "FIT4MOM es el principal programa de ejercicio prenatal y posparto del país, con clases y una red de apoyo para las mamás en cada etapa de la maternidad. Stroller Strides: un entrenamiento de cuerpo completo al aire libre de 60 minutos (fuerza, cardio y abdomen) pensado para mamás embarazadas y en el posparto. Los bebés pueden ir en la carriola o en un portabebés. No se necesita una carriola para correr. Los niños pequeños y mayores son bienvenidos: pueden hacer el ejercicio junto a su mamá o andar en patineta o bicicleta. Trae una colchoneta si tienes una. ¡Primera clase gratis! Inscríbete descargando la app Glofox y buscando Fit4mom Marin."
+      },
+      "contact": {
+        "name": "Hannah Austin",
+        "phone": "415-696-4255",
+        "email": "hannahaustin@fit4mom.com"
+      },
+      "note": {
+        "en": "After your free first class: $20 a class, $85 a month unlimited, or $175 for 10 classes.",
+        "es": "Después de tu primera clase gratis: $20 por clase, $85 al mes ilimitado o $175 por 10 clases."
+      },
+      "offers_label": {
+        "en": "Offer for Out AND About Marin readers",
+        "es": "Oferta para lectores de Out AND About Marin"
+      },
+      "offers": [
+        {
+          "title": {
+            "en": "Your first class is free",
+            "es": "Tu primera clase es gratis"
+          },
+          "sub": {
+            "en": "Pick any class on the schedule as your free intro class. Sign up in the Glofox app (search Fit4mom Marin). No code needed.",
+            "es": "Elige cualquier clase del horario como tu clase de prueba gratis. Inscríbete en la app Glofox (busca Fit4mom Marin). No necesitas código."
+          }
+        }
+      ],
+      "tags": [
+        {
+          "text": {
+            "en": "Fitness",
+            "es": "Ejercicio"
+          },
+          "class": "tag-fitness"
+        },
+        {
+          "text": {
+            "en": "Prenatal & postpartum moms",
+            "es": "Mamás embarazadas y en el posparto"
+          },
+          "class": "tag-age"
+        },
+        {
+          "text": {
+            "en": "Kids welcome",
+            "es": "Niños bienvenidos"
+          },
+          "class": "tag-age"
+        },
+        {
+          "text": {
+            "en": "$20 · first class free",
+            "es": "$20 · primera clase gratis"
+          },
+          "class": "tag-paid"
+        }
+      ],
+      "cta": {
+        "url": "https://marin.fit4mom.com/schedule",
+        "label": {
+          "en": "Sign up on Glofox",
+          "es": "Inscríbete en Glofox"
+        }
+      },
+      "website": "https://marin.fit4mom.com/",
+      "website_label": "website",
+      "instagram": "fit4mommarin",
+      "facebook": "Fit4MomMarin",
+      "internal_notes": "Posted live 2026-10-09 at Alexandra's instruction ('commit both the feature and the events'), from the mockup in OAA Sponsorship and Partners/Stroller Strides/ as revised 2026-10-09 per Hannah Austin's feedback (no 'caregivers'; her FIT4MOM and Stroller Strides text; Glofox sign-up; logo). Thursday and Saturday classes are 9:30-10:30 AM (Alexandra, 2026-10-09). The sign-up button points at marin.fit4mom.com/schedule until a direct Glofox link is supplied. Billing: item 22 (Stripe) not set up."
     }
   ]
 }
