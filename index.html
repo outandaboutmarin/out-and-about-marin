@@ -2613,6 +2613,7 @@ function mapDbUser(dbUser) {
           <button class="tide-today-btn" id="tideTodayBtn" onclick="tideToday()" style="display:none">Today</button>
         </div>
         <div class="tide-wrap"><table class="tide-grid"><thead id="tideHead"></thead><tbody id="tideBody"><tr><td class="tide-loading">Loading tides…</td></tr></tbody></table></div>
+        <p style="margin:0.45rem 0 0;font-size:0.66rem;color:#6b7791;line-height:1.4"><span data-es="Se han sumado 1.07 ft a los valores estándar de la tabla de mareas para tener en cuenta la onda Kelvin de El Niño y el aumento del nivel del mar.">1.07ft has been added to the standard tide table values, to account for the El Niño Kelvin Wave and sea level rise.</span></p>
         <p id="tideSampleNote" style="display:none;margin:0.5rem 0 0;font-size:0.7rem;color:#b08900;font-style:italic"></p>
       </div>
     </div>
@@ -3165,9 +3166,13 @@ function ensureTides(){
 function tideStep(n){ _tideOffset += n; renderTides(); }
 function tideToday(){ _tideOffset = 0; renderTides(); }
 function _tideFmt12(hhmm){ var p = hhmm.split(':'), h = +p[0]; var ap = h < 12 ? 'AM' : 'PM'; var h12 = h % 12; if (h12 === 0) h12 = 12; return h12 + ':' + p[1] + ' ' + ap; }
+// Added to every NOAA height before display (Alexandra, 2026-10-09): accounts for the El Niño
+// Kelvin wave and sea-level rise. tides.json keeps the raw NOAA values, so regenerating it is safe.
+const TIDE_ADJUST_FT = 1.07;
+function _tideHt(slot){ return Number(slot[2]) + TIDE_ADJUST_FT; }
 function _tideCell(slot){
   if (!slot) return '<span style="color:#c2cad8">—</span>';
-  return '<div class="tide-ht">'+Number(slot[2]).toFixed(1)+' ft</div><div class="tide-tm">'+_tideFmt12(slot[0])+'</div>';
+  return '<div class="tide-ht">'+_tideHt(slot).toFixed(1)+' ft</div><div class="tide-tm">'+_tideFmt12(slot[0])+'</div>';
 }
 function renderTides(){
   if (!_tideData) return;
@@ -3202,7 +3207,7 @@ function renderTides(){
     body += '<tr><td class="trl '+rdef.cls+'">'+(rdef.cls==='hi'?'▲ ':'▼ ')+rdef.lab+'</td>';
     cols.forEach(function(c){
       var slot = rdef.get(c);
-      var flood = rdef.hi && slot && Number(slot[2]) > 6;
+      var flood = rdef.hi && slot && _tideHt(slot) > 6;
       body += '<td'+(flood?' class="flood"':'')+'>'+_tideCell(slot)+'</td>';
     });
     body += '</tr>';

@@ -595,6 +595,10 @@ Monthly (not every sweep): napavintners.com/events/index.asp, festivalnapavalley
 
 > ⚠️ **Also new 2026-08-21: `notes` is public (rule 19).** Napa records are as exposed as Marin ones — several currently publish sourcing commentary naming Alexandra. Run `check_duplicates.py --notes-lint --all` before committing any Napa sweep.
 
+## Resources tide table (live)
+
+The "Tides & Driving in Marin" table on Resources reads `tides.json` (raw NOAA CO-OPS predictions, MLLW, built by `generate_tides.py`; stations Tam Junction, Corte Madera, Hwy 37, Bolinas). **Since 2026-10-09 every height is shown +1.07 ft** (`TIDE_ADJUST_FT` in `index.html`, applied in `_tideHt()`), at Alexandra's request, to account for the El Niño Kelvin wave and sea-level rise; a note under the table says so (bilingual). The red "flood" shading on high tides (> 6 ft) uses the adjusted height. **Do not bake the offset into `tides.json`**: the file stays raw NOAA so it can be regenerated; change or remove the offset in one place.
+
 ## Tide Pool Table (proposed third dataset — NOT started)
 
 Open item 33, created 2026-08-15. **Name only so far — scope deliberately not guessed.** Recorded here so a new session doesn't invent a design for it.
