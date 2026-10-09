@@ -1853,6 +1853,14 @@ function mapDbUser(dbUser) {
   .tide-date { min-width:168px; text-align:center; font-weight:600; color:var(--navy); font-size:0.84rem; }
   .tide-today-btn { background:none; border:none; color:#3a5a9c; font-size:0.72rem; font-weight:600;
     cursor:pointer; text-decoration:underline; font-family:inherit; padding:0; }
+  .dine-wrap { border:1px solid #E2E8F2; border-radius:var(--radius-sm); background:#fff; overflow:hidden; }
+  .dine-grid { border-collapse:collapse; width:100%; table-layout:fixed; font-size:0.74rem; line-height:1.4; }
+  .dine-grid th, .dine-grid td { padding:0.4rem 0.45rem; text-align:left; vertical-align:top; border-bottom:1px solid #EEF2F8; overflow-wrap:anywhere; }
+  .dine-grid thead th { font-size:0.68rem; font-weight:600; color:var(--navy); background:#F1F5FB; border-bottom:1px solid #DCE4F0; }
+  .dine-grid tbody tr:last-child td { border-bottom:none; }
+  .dine-grid col.dn { width:28%; } .dine-grid col.dc { width:22%; } .dine-grid col.dd { width:50%; }
+  .dine-grid td a { color:var(--navy); text-decoration:underline; font-weight:600; }
+  .dine-grid td.dc { color:#6b7791; }
   .tide-wrap { overflow-x:auto; border:1px solid #E2E8F2; border-radius:var(--radius-sm); background:#fff; }
   .tide-grid { border-collapse:collapse; width:100%; table-layout:fixed; font-size:0.76rem; }
   .tide-grid th, .tide-grid td { padding:0.42rem 0.35rem; text-align:center; border-bottom:1px solid #EEF2F8; }
@@ -2661,6 +2669,25 @@ function mapDbUser(dbUser) {
         <p style="margin:0;line-height:1.5">• Panda Express · <a href="https://maps.google.com/?q=Panda+Express+975+Diablo+Ave+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">975 Diablo Ave</a></p>
         <p style="margin:0;line-height:1.5">• Starbucks · <a href="https://maps.google.com/?q=Starbucks+5800+Nave+Dr+Novato+CA" target="_blank" style="color:var(--navy);text-decoration:underline">5800 Nave Dr</a></p>
 
+      </div>
+    </div>
+    <div class="about-section" style="margin-bottom:0.75rem">
+      <div class="about-title" data-es="🍽️ Restaurantes para Niños en Marin">🍽️ Kid-Friendly Dining in Marin</div>
+      <div class="about-text">
+        <div class="dine-wrap"><table class="dine-grid">
+          <colgroup><col class="dn"><col class="dc"><col class="dd"></colgroup>
+          <thead><tr><th data-es="Restaurante">Restaurant</th><th data-es="Ciudad">City</th><th data-es="Por qué ir">Why go</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://www.bluebarngourmet.com/corte-madera-1" target="_blank" rel="noopener">Blue Barn</a></td><td class="dc">Corte Madera <span style="white-space:nowrap">(Town Center)</span></td><td data-es="Ensaladas al gusto y sándwiches a la plancha; se pide en el mostrador en Town Center.">Build-your-own salads and grilled sandwiches, ordered at the counter in Town Center.</td></tr>
+            <tr><td><a href="https://www.gotts.com/location/marin/" target="_blank" rel="noopener">Gott's Roadside</a></td><td class="dc">Greenbrae</td><td data-es="Hamburguesas, papas fritas y malteadas en Bon Air Center: una cena familiar fácil y relajada.">Burgers, fries and shakes at Bon Air Center: an easy, casual family dinner.</td></tr>
+            <tr><td><a href="https://www.hookfishco.com/" target="_blank" rel="noopener">Hook Fish Co.</a></td><td class="dc">Mill Valley</td><td data-es="Tacos de pescado y fish &amp; chips en el beer garden de Proof Lab, con mucho espacio al aire libre.">Fish tacos and fish &amp; chips in the Proof Lab beer garden, with plenty of outdoor seating.</td></tr>
+            <tr><td><a href="https://eatmamahuhu.com/pages/restaurants" target="_blank" rel="noopener">Mamahuhu</a></td><td class="dc">Mill Valley</td><td data-es="Clásicos chino-americanos como pollo agridulce y chow mein, en el centro de Mill Valley.">Chinese-American takeout classics like sweet-and-sour chicken and chow mein, in downtown Mill Valley.</td></tr>
+            <tr><td><a href="https://tartinebakery.com/san-francisco/mill-valley" target="_blank" rel="noopener">Tartine</a></td><td class="dc">Mill Valley <span style="white-space:nowrap">(Strawberry)</span></td><td data-es="La famosa panadería en Strawberry Village, con pasteles, desayunos y una cocina abierta donde los niños pueden ver a los panaderos.">The famous bakery at Strawberry Village, with pastries, breakfast and an open kitchen where kids can watch the bakers.</td></tr>
+            <tr><td><a href="https://www.pizzahacker.com/" target="_blank" rel="noopener">The Junction</a></td><td class="dc">Mill Valley <span style="white-space:nowrap">(Tam Jct.)</span></td><td data-es="Beer garden con mesas de picnic, área de juegos para niños y pizza de PizzaHacker.">Beer garden with picnic tables, a kids' play area and PizzaHacker pizza.</td></tr>
+            <tr><td><a href="https://kitschandsync.com/" target="_blank" rel="noopener">Kitsch + Sync</a></td><td class="dc">Novato</td><td data-es="Restaurante pensado para familias con zonas de juego interiores y exteriores, comida de verdad y cerveza y vino para los papás.">Family-first restaurant with indoor and outdoor play spaces, real food, and beer and wine for the grown-ups.</td></tr>
+            <tr><td><a href="https://www.joineryca.com/" target="_blank" rel="noopener">Joinery</a></td><td class="dc">Sausalito</td><td data-es="Cervecería frente al agua con pollo rostizado, hamburguesas, mesas comunitarias y un patio con vista a la marina.">Waterfront beer hall with rotisserie chicken, burgers, communal tables and a patio overlooking the marina.</td></tr>
+          </tbody>
+        </table></div>
       </div>
     </div>
     <div class="about-section" style="margin-bottom:0.75rem">
