@@ -2815,10 +2815,11 @@ function mapDbUser(dbUser) {
     <!-- County toggle -->
     <div class="profile-section" style="margin-bottom:0.625rem">
       <div style="padding:0.75rem 0.875rem;display:flex;align-items:center;justify-content:space-between;gap:0.75rem">
-        <div style="font-family:var(--font-serif);font-size:0.8rem;font-weight:600;color:var(--navy)">County</div>
-        <div class="county-toggle" role="group" aria-label="Choose county">
+        <div style="font-family:var(--font-serif);font-size:0.8rem;font-weight:600;color:var(--navy)">Region</div>
+        <div class="county-toggle" role="group" aria-label="Choose region">
           <button class="county-btn active" id="countyBtnMarin" onclick="setCounty('marin')">🌉 Marin</button>
           <button class="county-btn" id="countyBtnNapa" onclick="setCounty('napa')">🍇 Napa</button>
+          <button class="county-btn" id="countyBtnTelluride" onclick="setCounty('telluride')">⛰️ Telluride</button>
         </div>
       </div>
     </div>
@@ -2931,7 +2932,15 @@ let currentEventId = null;
 let activeDropdown = null;
 let toastShown = false;
 let userHasInteracted = false;
-let activeCounty = localStorage.getItem('oaam_county') || 'marin'; // 'marin' | 'napa'
+let activeCounty = localStorage.getItem('oaam_county') || 'marin'; // 'marin' | 'napa' | 'telluride'
+// Region of a record, from its county field (added 2026-10-09 with the Telluride region).
+// Marin is everything that is neither Napa nor Telluride+; "Marin" itself is never stored.
+function regionOf(e) { return e.county === 'Napa' ? 'napa' : e.county === 'Telluride+' ? 'telluride' : 'marin'; }
+function syncCountyButtons() {
+  [['marin','countyBtnMarin'],['napa','countyBtnNapa'],['telluride','countyBtnTelluride']].forEach(([k,id]) => {
+    const b = document.getElementById(id); if (b) b.classList.toggle('active', activeCounty === k);
+  });
+}
 
 const filterDefaultsEN = { type: 'Type', location: 'Location', day: 'Day', time: 'Time', age: 'Age', cost: 'Cost' };
 const filterDefaultsES = { type: 'Tipo', location: 'Lugar', day: 'Día', time: 'Hora', age: 'Edad', cost: 'Costo' };
@@ -2977,10 +2986,7 @@ const typeTagClass = {
 document.addEventListener('DOMContentLoaded', () => {
   buildDropdowns();
   // Restore county toggle visual state
-  if (activeCounty === 'napa') {
-    document.getElementById('countyBtnMarin').classList.remove('active');
-    document.getElementById('countyBtnNapa').classList.add('active');
-  }
+  syncCountyButtons();
   const saved = localStorage.getItem('oaam_user');
   if (saved) {
     currentUser = JSON.parse(saved);
@@ -3299,7 +3305,7 @@ function buildLocationOptions() {
   // 'Larkspur/Corte Madera' group in this menu.
   const countyEvents = allEvents.filter(e =>
     e.status !== 'Inactive' &&
-    (activeCounty === 'napa' ? e.county === 'Napa' : e.county !== 'Napa')
+    regionOf(e) === activeCounty
   );
   const groups = [...new Set(countyEvents.map(e => e.location_group || e.town))].sort();
   buildFilterOptions('location', groups.map(v => ({ value: v })));
@@ -3726,9 +3732,7 @@ function getFilteredEvents() {
   const { start: weekStart, end: weekEnd } = getWeekRange(currentWeekOffset);
   return allEvents.filter(e => {
     // ── County filter ──
-    const isNapa = e.county === 'Napa';
-    if (activeCounty === 'napa' && !isNapa) return false;
-    if (activeCounty === 'marin' && isNapa) return false;
+    if (regionOf(e) !== activeCounty) return false;
     // Hide expired events — hide only after the event date has fully passed
     if (e.expires) { const exp = new Date(e.expires + 'T23:59:59'); if (exp < today) return false; }
     // Hide seasonal events outside their season
@@ -3903,8 +3907,7 @@ function setCounty(county) {
   activeCounty = county;
   localStorage.setItem('oaam_county', county);
   // Update button states
-  document.getElementById('countyBtnMarin').classList.toggle('active', county === 'marin');
-  document.getElementById('countyBtnNapa').classList.toggle('active', county === 'napa');
+  syncCountyButtons();
   // Reset location filter (towns differ between counties)
   selections.location.clear();
   // Rebuild location dropdown with county-appropriate towns
@@ -4007,7 +4010,8 @@ function renderCards() {
   const __wl = weekLabelText.replace(/\s*\([^)]*\)\s*$/, "");
   if (__hs) __hs.innerHTML = `<strong>${filtered.length} ${filtered.length !== 1 ? evtWordPlural : evtWord}</strong> ·`;
   const __wsl = document.getElementById('weekSubLabel');
-  if (__wsl) __wsl.innerHTML = `${__wl} <span class="wk-range">(${__fmtD(__wk.start)}–${__fmtD(__wk.end)})</span>`;
+  if (__wsl) __wsl.innerHTML = `${__wl} <span class="wk-range">(${__fmtD(__wk.start)}–${__fmtD(__wk.end)})</span>`
+    + (activeCounty === 'telluride' ? ` <span class="wk-range" style="white-space:nowrap" title="All times Mountain Time">· MT</span>` : '');
   renderFeatured();
 
   if (filtered.length === 0) {
@@ -4242,7 +4246,7 @@ function selectFeatured(){
   var BOOST=['festival','fair','parade','pride','mountain play','juneteenth','western weekend','father'];
   var DEM=['fundraiser','garage sale','popsicle','rummage','yard sale'];
   function pd(x){if(!x)return null;var p=x.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
-  function elig(e){var n=e.event_name||'';if(n.indexOf('Learning Bus')>=0)return false;if(e.type==='Farmers Market')return false;
+  function elig(e){var n=e.event_name||'';if(regionOf(e)!==activeCounty)return false;if(n.indexOf('Learning Bus')>=0)return false;if(e.type==='Farmers Market')return false;
     // PINNED records bypass the cadence rule entirely and are held at the front
     // of the strip. Added 2026-09-03 for Dolly Parton's Imagination Library, which
     // is a standing sign-up programme rather than a dated event, so it has no
@@ -4252,13 +4256,8 @@ function selectFeatured(){
     var isStorytimeReserve=e.featured===true&&e.cadence==='Monthly'&&e.type==='Kids Programs';
     if(e.cadence!=='One-off'&&!isStorytimeReserve)return false;
     if(e.type==='Music and Movies'&&e.time_of_day==='Evening'&&n.toLowerCase().indexOf('movie')<0)return false;
-    // Napa County music is out of the carousel (2026-09-01, Alexandra).
-    // Every Napa record is type 'Music and Movies', and the evening rule above
-    // already blocked the evening ones -- but the AFTERNOON winery sets were
-    // still eligible and could surface in the strip for a Marin viewer, since
-    // elig() never looked at county at all. Scoped to music rather than to the
-    // whole county so a future Napa festival or kids' event can still feature.
-    if(e.county==='Napa'&&e.type==='Music and Movies')return false;
+    // The 2026-09-01 "no Napa music" rule was retired 2026-10-09 (Alexandra): the strip is now
+    // region-scoped (first line of elig), so Napa music can only appear in the Napa view.
     return ['Festival','Music and Movies','Community Event','Kids Programs','Library','Fitness'].indexOf(e.type)>=0;}
   function occ(e,lo,hi){if(e.pinned===true)return new Date(lo);if(e.cadence==='One-off'){var d=pd(e.event_date);return (d&&d>=lo&&d<=hi)?d:null;}var c=new Date(lo);while(c<=hi){if(typeof doesEventOccurOnDate==='function'&&doesEventOccurOnDate(e,new Date(c)))return new Date(c);c.setDate(c.getDate()+1);}return null;}
   function isLibHi(e){var o=(e.organization||'').toLowerCase();return e.type==='Library'&&e.cadence==='One-off'&&(o.indexOf('mill valley public library')>=0||o.indexOf('sausalito public library')>=0);}
@@ -4355,7 +4354,7 @@ function adEsc(t) { return String(t).replace(/[&<>"']/g, function (c) { return {
 // Live ads take their slots out of the nine; the ad goes second so the strip
 // still opens on an event, then rotateFeatured() moves it through every slot.
 function withAds(sel) {
-  var ads = (activeAds || []).slice(0, 2);
+  var ads = activeCounty !== 'marin' ? [] : (activeAds || []).slice(0, 2);
   if (!ads.length) return sel;
   var out = sel.slice(0, Math.max(0, 9 - ads.length));
   ads.forEach(function (a, i) { out.splice(Math.min(1 + i, out.length), 0, { ad: a }); });
@@ -4651,7 +4650,7 @@ function renderComingUp() {
   const today = new Date();
   const in30 = new Date(today); in30.setDate(today.getDate() + 30);
   const upcoming = allEvents.filter(e => {
-    if (!e.event_date) return false;
+    if (!e.event_date || regionOf(e) !== activeCounty) return false;
     const d = new Date(e.event_date + 'T00:00:00');
     return d >= today && d <= in30;
   }).sort((a, b) => new Date(a.event_date + 'T12:00:00') - new Date(b.event_date + 'T12:00:00'));
@@ -5188,13 +5187,13 @@ function searchEvents(query) {
 
   if (!q) { resultsDiv.innerHTML = ''; return; }
 
-  const results = allEvents.filter(e =>
+  const results = allEvents.filter(e => regionOf(e) === activeCounty && (
     e.event_name.toLowerCase().includes(q) ||
     e.venue.toLowerCase().includes(q) ||
     e.town.toLowerCase().includes(q) || (e.location_group || '').toLowerCase().includes(q) ||
     e.type.toLowerCase().includes(q) ||
     (e.description && e.description.toLowerCase().includes(q))
-  );
+  ));
 
   if (results.length === 0) {
     resultsDiv.innerHTML = '<div style="padding:2rem;text-align:center;font-family:Jost,sans-serif;color:#999">No events found</div>';
