@@ -5969,6 +5969,35 @@ function swimInitTopScrollSync() {
   });
 }
 
+// ═══════════════════════════════════════════
+// AUTO-UPDATE (added 2026-10-10). A reload keeps the visitor's region: oaam_county stays in localStorage.
+// ═══════════════════════════════════════════
+// APP_BUILD must match version.json. Bump BOTH on every index.html change: python bump_build.py
+// When the page comes back to the foreground (or every 30 min while open) it reads version.json;
+// if a newer build is live it reloads, so a tab left open never runs old code against new data.
+// That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
+// Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
+const APP_BUILD = '2026-10-10.1';
+let lastBuildCheck = 0;
+function checkForNewBuild(force) {
+  const now = Date.now();
+  if (!force && now - lastBuildCheck < 30 * 60 * 1000) return;
+  lastBuildCheck = now;
+  fetch('version.json?v=' + now, { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : null)
+    .then(v => {
+      if (!v || !v.build || v.build === APP_BUILD) return;
+      let tried = null; try { tried = sessionStorage.getItem('oaam_reloaded_for'); } catch (e) {}
+      if (tried === v.build) return;
+      try { sessionStorage.setItem('oaam_reloaded_for', v.build); } catch (e) {}
+      location.reload();
+    })
+    .catch(() => {});
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkForNewBuild(false); });
+window.addEventListener('pageshow', e => { if (e.persisted) checkForNewBuild(true); });   // restored from the back/forward cache
+setInterval(() => { if (document.visibilityState === 'visible') checkForNewBuild(false); }, 5 * 60 * 1000);
+checkForNewBuild(true);
 </script>
 
 <!-- Edit Details Modal -->

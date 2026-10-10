@@ -58,6 +58,15 @@ Three consequences of this split. All are normal; none need fixing:
 - **Bigger/riskier changes** (schema changes to `events.json`, major `index.html` rewrites or new features, batch deletions, edits to `scraper.py`/`library_review.py`/`daily.yml` logic): stop and confirm with Alexandra before pushing.
 - Always check `git status`/`git pull` state before starting work — the Desktop path is and should stay the **only** local clone. A second clone once lived at `…\PROJECTS\OAA Marin\out-and-about-marin\`; its contents were deleted 2026-07 and the leftover empty folder was removed 2026-08-12. **Never clone or copy repo files into the Documents project folder** — that folder is for working files only (see "Where things live"). Two clones with the same name is how edits get made to the wrong copy.
 
+- **⚠ After ANY `index.html` change, run `python bump_build.py` before committing** (added 2026-10-10). It bumps `APP_BUILD` in
+  `index.html` and `version.json` together. Open tabs and home-screen apps read `version.json` when they come back to the
+  foreground (and every 30 min) and reload once if the build differs, so nobody keeps running old code against new data.
+  Why it exists: on 2026-10-10 Colorado events showed in someone's Marin feed because their tab still ran the pre-Telluride
+  page, which treats every non-Napa record as Marin, while fetching the new `events.json`. Forget the bump and stale tabs are
+  not told to update. `events.json`-only commits need no bump (data is always fetched fresh). A reload keeps the visitor's
+  region: `oaam_county` stays in localStorage, and new visitors default to Marin. Alexandra 2026-10-10: always reopen on the
+  region the visitor last chose; never switch it because another region was updated.
+
 ## `events.json` schema
 
 File is a JSON object, **not** a flat array:
