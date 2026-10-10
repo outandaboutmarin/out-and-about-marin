@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Social Klub Ad</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Shell colours are the web app's (index.html), same as the weekly decks.
+     The --klub-* tokens are The Social Klub's own, read off thesocialklub.com
+     on 2026-09-26: headings rgb(82,62,46), page ground rgb(245,242,239),
+     accent grey rgb(143,141,140). The soft accents are ours, chosen to sit
+     with that brown. The advertiser's palette lives INSIDE the card; the
+     navy bar stays ours, so the slide still reads as part of our deck. */
+  :root{
+    --navy:#0D1B3E; --off-white:#F4F3EF; --card-border:#E2DED6;
+    --ink-2:#333; --ink-3:#444; --muted:#6b6b73;
+    --kids-text:#993C1D; --age-text:#3C3489; --paid-text:#633806;
+
+    --klub-brown:#523E2E; --klub-cream:#F5F2EF; --klub-taupe:#8F8D8C;
+    --klub-clay:#D4A487; --klub-sage:#A7B39A; --klub-sand:#E6D6BF;
+
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'Jost','Helvetica Neue',Arial,sans-serif;
+    --page:#EDEBE5; --page-ink:#1c1c22; --panel:#fff; --panel-border:#dcd8d0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --page:#15161a; --page-ink:#e9e7e2; --panel:#1e2026; --panel-border:#33353d; --muted:#9b99a3;
+    }
+  }
+  :root[data-theme="dark"]{
+    --page:#15161a; --page-ink:#e9e7e2; --panel:#1e2026; --panel-border:#33353d; --muted:#9b99a3;
+  }
+  body{margin:0;background:var(--page);color:var(--page-ink);font-family:var(--sans);
+       -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1180px;margin:0 auto;padding:40px 16px 80px;}
+  .kicker{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;}
+  h1.top{font-family:var(--serif);font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);margin:0 0 12px;letter-spacing:-.01em;}
+  .lede{max-width:66ch;margin:0;font-size:.95rem;line-height:1.65;color:var(--muted);font-weight:300;}
+  h2{font-family:var(--serif);font-size:1.4rem;font-weight:600;margin:48px 0 16px;padding-top:24px;
+     border-top:1px solid var(--panel-border);}
+  .deck{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;}
+  .slot{display:flex;flex-direction:column;gap:9px;}
+  .slot cap{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;display:block;}
+
+  /* ── the slide shell (Treatment C) ── */
+  .slide{container-type:inline-size;aspect-ratio:1/1;border-radius:4px;overflow:hidden;position:relative;
+         box-shadow:0 6px 22px rgba(13,27,62,.16);font-family:var(--sans);
+         background:var(--off-white);display:flex;flex-direction:column;}
+  .bar{background:var(--navy);color:#fff;padding:3.6cqw 5cqw;display:flex;align-items:center;
+       justify-content:space-between;flex:0 0 auto;}
+  .bar .wm{font-family:var(--serif);font-size:3.5cqw;font-weight:600;letter-spacing:.01em;}
+  .bar .wm .and{font-family:var(--sans);font-size:1.85cqw;font-weight:600;letter-spacing:.2em;
+                vertical-align:middle;position:relative;top:-.3cqw;margin:0 .35cqw;}
+  .bar .url{font-size:2cqw;font-weight:300;letter-spacing:.06em;color:rgba(255,255,255,.62);}
+  .foot{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
+        padding:2.6cqw 6cqw 3.8cqw;font-size:2.1cqw;letter-spacing:.1em;text-transform:uppercase;
+        color:var(--muted);font-weight:500;}
+  .counter{display:flex;gap:1.4cqw;align-items:center;}
+  .dot{width:1.5cqw;height:1.5cqw;border-radius:50%;background:#cdc9c1;display:block;}
+  .dot.on{background:var(--navy);}
+
+  /* tags, copied from the app: white pill, tinted border, dot in the type colour */
+  .tags{display:flex;flex-wrap:wrap;gap:1.4cqw;}
+  .tag{font-size:2.2cqw;font-weight:500;padding:1cqw 2.7cqw;border-radius:999px;display:inline-flex;
+       align-items:center;gap:1.4cqw;background:#fff;border:1px solid var(--card-border);line-height:1;}
+  .tag::before{content:"";width:1.4cqw;height:1.4cqw;border-radius:50%;background:currentColor;flex:0 0 auto;}
+  .t-kids{color:var(--kids-text);border-color:#d6b2a3;}
+  .t-age{color:var(--age-text);border-color:#b3b0d5;}
+  .t-paid{color:var(--paid-text);border-color:#c1a98d;}
+
+  /* ── the disclosure: always visible, always the first thing on the card ── */
+  .sponsor{display:inline-flex;align-items:center;gap:1.6cqw;font-size:2cqw;font-weight:600;
+           letter-spacing:.2em;text-transform:uppercase;color:var(--klub-brown);}
+  .sponsor b{font-weight:600;padding:.9cqw 2.4cqw;border-radius:999px;border:1px solid var(--klub-brown);}
+  .sponsor span{font-weight:400;letter-spacing:.14em;color:var(--muted);}
+
+  .ad-name{font-family:var(--serif);font-weight:600;color:var(--klub-brown);letter-spacing:-.012em;
+           line-height:1.08;margin:0;}
+  .ad-where{font-size:2.7cqw;color:var(--ink-2);line-height:1.4;}
+  .ad-where b{font-weight:500;}
+
+  .label{font-size:1.85cqw;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+         color:var(--klub-taupe);margin:0 0 1.2cqw;}
+  .hours{display:grid;grid-template-columns:auto 1fr;column-gap:2.4cqw;row-gap:.5cqw;
+         font-size:2.35cqw;line-height:1.4;color:var(--ink-2);}
+  .hours dt{font-weight:500;color:var(--klub-brown);}
+  .hours dd{margin:0;font-weight:300;}
+  .about{font-size:2.35cqw;line-height:1.55;color:var(--ink-3);font-weight:300;margin:0;}
+
+  .cta{display:flex;align-items:center;justify-content:space-between;gap:2cqw;}
+  .cta .go{font-size:2.8cqw;font-weight:600;letter-spacing:.02em;color:#fff;background:var(--klub-brown);
+           padding:1.8cqw 3.6cqw;border-radius:999px;white-space:nowrap;}
+  .cta .ig{font-size:2.3cqw;color:var(--klub-brown);font-weight:500;letter-spacing:.04em;}
+
+  /* ── Layout A: the event card, with a picture ── */
+  .A .body{flex:1;display:flex;flex-direction:column;padding:4.6cqw 6cqw 0;gap:3.6cqw;min-height:0;}
+  .A .top{display:grid;grid-template-columns:32cqw 1fr;gap:4.4cqw;align-items:center;}
+  .A .art{width:32cqw;height:32cqw;border-radius:2.4cqw;overflow:hidden;background:#fff;
+          border:1px solid #e7dfd5;}
+  .A .art img{display:block;width:100%;height:100%;object-fit:contain;padding:2.6cqw;box-sizing:border-box;}
+  .A .id{display:flex;flex-direction:column;gap:2.2cqw;}
+  .A .ad-name{font-size:6.6cqw;}
+  .A .mid{display:grid;grid-template-columns:40% 1fr;gap:4.4cqw;border-top:1px solid var(--card-border);
+          padding-top:3.4cqw;}
+
+
+  .panel{background:var(--panel);border:1px solid var(--panel-border);border-radius:6px;padding:20px 22px;}
+  .caption{font-size:.9rem;line-height:1.75;white-space:pre-wrap;font-weight:300;margin:0;}
+  ul.notes{margin:0;padding-left:1.15rem;font-size:.87rem;line-height:1.7;font-weight:300;}
+  ul.notes li{margin-bottom:9px;}
+  ul.notes b{font-weight:600;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">Advertiser slide · mockup · 2026-09-26</p>
+  <h1 class="top">The Social Klub, as a sponsored card</h1>
+  <p class="lede">One slide that drops into a weekly carousel beside the event cards. No date and no cadence:
+    it carries where, the opening hours, what it is, and the website. Layout A, chosen 2026-09-26, with the Klub's
+    own logo. It keeps our navy bar so the slide still belongs to the deck, and puts <b>Sponsored</b> where the
+    day pill would be.</p>
+
+  
+  <div class="deck">
+
+    <div class="slot">
+      <cap>Approved layout · the event card, with their logo</cap>
+      <div class="slide A">
+        <div class="bar"><span class="wm">Out <span class="and">AND</span> About Marin</span>
+          <span class="url">outandaboutmarin.com</span></div>
+        <div class="body">
+          <div class="top">
+            <div class="art"><img src="assets/social_klub_logo.png" alt="The Social Klub logo"></div>
+            <div class="id">
+              <div class="sponsor"><b>Sponsored</b><span>Local partner</span></div>
+              <h3 class="ad-name">The Social Klub</h3>
+              <div class="ad-where"><b>2650 Bridgeway</b> · Sausalito</div>
+              <div class="tags"><span class="tag t-kids">Indoor Play</span><span class="tag t-age">0-7 yrs</span><span class="tag t-paid">$30 per child</span></div>
+            </div>
+          </div>
+          <div class="mid">
+            <div>
+              <p class="label">Hours</p>
+              <dl class="hours">
+                <dt>Mon–Fri</dt><dd>9 AM – 5 PM</dd>
+                <dt>Sat</dt><dd>10 AM – 4 PM</dd>
+                <dt>Sun</dt><dd>Private parties</dd>
+              </dl>
+            </div>
+            <div>
+              <p class="label">About</p>
+              <p class="about">An indoor play space for kids up to 7, built for calm, child-led play. Book a session, or walk in when there is room. In the evenings it belongs to the grown-ups: workshops, talks and gatherings.</p>
+            </div>
+          </div>
+          <div class="cta"><span class="go">thesocialklub.com</span><span class="ig">@the.social.klub</span></div>
+        </div>
+        <div class="foot"><span class="counter"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot on"></i><i class="dot"></i></span><span>Sponsored</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Caption line, if the ad rides in a weekly post</h2>
+  <div class="panel"><p class="caption">🧸 Sponsored: The Social Klub · 2650 Bridgeway, Sausalito · indoor play for kids 0-7 · Mon–Fri 9am–5pm, Sat 10am–4pm · thesocialklub.com @the.social.klub</p></div>
+
+  <h2>Notes for review</h2>
+  <ul class="notes">
+    <li><b>Everything on the card is from their own site</b> (thesocialklub.com, read 2026-09-26): address, the
+      Mon–Fri 9–5 and Sat 10–4 opening window, Sunday private parties only, ages 0–7, $30 per child plus one
+      caregiver, and their tagline "Play. Connect. Grow." The about text is our wording, not theirs.</li>
+    <li><b>The picture is their own logo</b>, supplied by Alexandra on 2026-09-26 and kept in <code>templates/assets/social_klub_logo.png</code> (500×500, transparent). It sits on a white tile so the pale-blue bubble reads against our off-white card.</li>
+    <li><b>"Sponsored" appears twice on purpose</b>: top of the card and in the footer. A paid slide has to
+      be labelled as paid, and Instagram's own "Paid partnership" label covers the post, not a single slide
+      inside it.</li>
+    <li><b>Their hours come in two layers.</b> The card uses the open window. The bookable sessions are
+      narrower (weekday slots 9–11:30, 11:45–2:15, 2:30–5; Saturday 10–12, 12–2, 2–4), and they may close
+      at 4:15 on quiet weekdays. Worth confirming with them which they want advertised.</li>
+    <li>The name is <b>Klub</b> with a K throughout, matching their branding.</li>
+    <li><b>Their phone number differs between channels</b>: (415) 599-3440 on their website, (415) 261-7977 on
+      Nextdoor. The card carries no phone number, so nothing to fix on the slide, but ask which is current.</li>
+  </ul>
+</div>
+</body>
+</html>

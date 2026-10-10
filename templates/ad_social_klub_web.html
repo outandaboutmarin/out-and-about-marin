@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Social Klub Featured Ad</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Everything inside .phone is the web app's own CSS, copied from index.html
+     (:root 834-870, Featured strip 1252-1270, tags 1317-1355, detail screen
+     1420-1570). The only new rules are the ones marked AD. */
+  :root{
+    --navy:#0D1B3E; --white:#ffffff; --off-white:#F4F3EF; --card-bg:#ffffff; --card-border:#E2DED6;
+    --text-primary:#1A1A1A; --text-secondary:#333333; --text-muted:#555555;
+    --font-serif:'Playfair Display',serif; --font-sans:'Jost',sans-serif;
+    --radius-sm:8px; --radius-md:12px; --radius-pill:999px;
+    --kids-text:#993C1D; --kids-bg:#FAECE7; --community-text:#72243E; --music-text:#4B2E83; --festival-text:#633806;
+    /* AD: The Social Klub's logo blue, sampled from their logo file */
+    --klub-blue:#AACDCF; --klub-blue-ink:#3E6E72;
+
+    --page:#E9E7E1; --page-ink:#1c1c22; --muted:#6b6b73; --panel:#fff; --panel-border:#dcd8d0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --page:#15161a; --page-ink:#e9e7e2; --muted:#9b99a3; --panel:#1e2026; --panel-border:#33353d; }
+  }
+  :root[data-theme="dark"]{ --page:#15161a; --page-ink:#e9e7e2; --muted:#9b99a3; --panel:#1e2026; --panel-border:#33353d; }
+
+  body{margin:0;background:var(--page);color:var(--page-ink);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1100px;margin:0 auto;padding:36px 16px 72px;}
+  .kicker{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;}
+  h1.top{font-family:var(--font-serif);font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);margin:0 0 12px;}
+  .lede{max-width:70ch;margin:0 0 28px;font-size:.95rem;line-height:1.65;color:var(--muted);font-weight:300;}
+  .stage{display:flex;flex-wrap:wrap;gap:34px;justify-content:center;align-items:flex-start;}
+  .col{display:flex;flex-direction:column;gap:10px;align-items:center;}
+  .col cap{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;}
+
+  /* phone frame (presentation only) */
+  .phone{width:375px;max-width:100%;border-radius:28px;overflow:hidden;background:var(--off-white);color:var(--text-primary);
+         box-shadow:0 10px 34px rgba(13,27,62,.18);border:1px solid #d9d5cc;}
+
+  /* ── the home screen, trimmed to the top of the list ── */
+  .app-top{background:var(--navy);color:#fff;padding:14px 16px 12px;}
+  .app-top .wm{font-family:var(--font-serif);font-size:1.15rem;font-weight:600;}
+  .app-top .wm .and{font-family:var(--font-sans);font-size:.6rem;font-weight:600;letter-spacing:.2em;vertical-align:middle;margin:0 .15rem;}
+  .app-top .sub{font-size:.68rem;color:rgba(255,255,255,.62);font-weight:300;margin-top:2px;}
+
+  .featured-wrap{padding:0.05rem 0.5rem 0;}
+  .featured-head{font-size:0.82rem;font-weight:600;color:var(--navy);padding:0.6rem 0.25rem 0.15rem;}
+  .featured-row{display:flex;gap:10px;overflow-x:auto;padding:0.4rem 0.25rem 0.8rem;scrollbar-width:none;}
+  .featured-row::-webkit-scrollbar{display:none;}
+  .feat-card{flex:0 0 156px;cursor:pointer;}
+  .feat-tile{height:124px;border-radius:var(--radius-md);padding:12px 12px 11px;display:flex;flex-direction:column;overflow:hidden;
+             background:var(--white);border:1px solid var(--card-border);box-shadow:0 3px 12px rgba(13,27,62,0.08);box-sizing:border-box;}
+  .ft-top{display:flex;align-items:center;gap:7px;margin-bottom:8px;}
+  .ft-icon{width:27px;height:27px;flex-shrink:0;border-radius:50%;background:rgba(13,27,62,0.06);color:var(--navy);display:flex;align-items:center;justify-content:center;}
+  .ft-kicker{font-size:0.56rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#9AA6BD;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0;margin:0;}
+  .ft-name{font-size:0.85rem;font-weight:600;color:var(--navy);line-height:1.24;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .ft-meta{font-size:0.7rem;color:var(--text-muted);margin-top:auto;}
+  .ft-meta b{font-weight:600;color:#3D4A63;}
+
+  /* AD: the tile. Same size and anatomy as its neighbours, so it sits in the
+     strip without breaking it; told apart by the logo in the icon circle, the
+     SPONSORED kicker and a border in the Klub's blue. */
+  .feat-tile.ad{border:1.5px solid var(--klub-blue);}
+  .feat-tile.ad .ft-icon{background:#fff;border:1px solid #e3eeef;overflow:hidden;}
+  .feat-tile.ad .ft-icon img{width:100%;height:100%;object-fit:contain;display:block;}
+  .feat-tile.ad .ft-kicker{color:var(--klub-blue-ink);}
+
+  .list-stub{padding:.2rem .75rem 1rem;}
+  .section-day-label{font-size:0.68rem;font-weight:600;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 0.25rem 0.35rem;}
+  .stub-card{background:#fff;border:0.5px solid var(--card-border);border-radius:10px;height:58px;margin-bottom:6px;opacity:.55;}
+
+  /* ── the detail screen ── */
+  .detail-header{background:var(--navy);padding:0.875rem 1rem 1.25rem;}
+  .detail-back{display:flex;align-items:center;gap:8px;color:#fff;font-size:1.15rem;font-weight:600;background:none;border:none;
+               font-family:var(--font-sans);padding:0;margin:0 0 .6rem;}
+  .detail-type-badge{display:inline-block;font-size:0.575rem;font-weight:600;padding:2px 8px;border-radius:var(--radius-pill);
+                     background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.5rem;}
+  .detail-title{font-family:var(--font-serif);font-size:1.25rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:0.25rem;}
+  .detail-org{font-size:0.7rem;color:rgba(255,255,255,0.6);font-weight:300;}
+  .detail-body{padding:0.625rem 0.625rem 1.2rem;}
+  .detail-card{background:var(--white);border-radius:var(--radius-md);border:0.5px solid var(--card-border);overflow:hidden;margin-bottom:0.625rem;}
+  .detail-section{padding:0.75rem 0.875rem;border-bottom:0.5px solid #EDEAE4;}
+  .detail-section:last-child{border-bottom:none;}
+  .section-label{font-size:0.68rem;font-weight:600;color:#555555;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.625rem;}
+  .detail-row{display:flex;align-items:flex-start;gap:0.625rem;margin-bottom:0.5rem;}
+  .detail-row:last-child{margin-bottom:0;}
+  .detail-icon{width:28px;height:28px;border-radius:var(--radius-sm);background:#F0EEE8;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .detail-row-content{flex:1;}
+  .detail-row-label{font-size:0.68rem;color:#555555;margin-bottom:2px;font-weight:400;}
+  .detail-row-value{font-size:0.82rem;color:var(--text-primary);font-weight:500;}
+  .detail-row-sub{font-size:0.625rem;color:var(--text-muted);margin-top:1px;}
+  .detail-tags{display:flex;flex-wrap:wrap;gap:5px;}
+  .tag{font-size:0.65rem;font-weight:500;padding:2px 8px;border-radius:var(--radius-pill);display:inline-flex;align-items:center;gap:5px;
+       background:var(--white);border:1px solid var(--card-border);}
+  .tag::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;flex:0 0 auto;}
+  .tag-kids{color:var(--kids-text);border-color:color-mix(in srgb,var(--kids-text) 34%,#fff);}
+  .tag-paid{color:#633806;border-color:color-mix(in srgb,#633806 32%,#fff);}
+  .tag-age{color:#3C3489;border-color:color-mix(in srgb,#3C3489 30%,#fff);}
+  .description-text{font-size:0.82rem;color:#333333;line-height:1.65;font-weight:300;}
+  .notes-text{font-size:0.7rem;color:#854F0B;line-height:1.5;font-weight:400;background:#FAEEDA;border-radius:var(--radius-sm);padding:0.5rem 0.75rem;margin-top:0.5rem;}
+  .action-row,.secondary-row{display:flex;gap:0.5rem;padding:0.5rem 0.625rem 0;}
+  .action-btn{flex:1;border-radius:var(--radius-sm);min-height:44px;padding:0.75rem 0.5rem;font-size:0.7rem;font-weight:600;font-family:var(--font-sans);
+              letter-spacing:0.04em;text-align:center;display:flex;align-items:center;justify-content:center;gap:5px;text-decoration:none;box-sizing:border-box;}
+  .btn-maps{background:var(--white);color:var(--navy);border:1px solid var(--navy);}
+  .btn-website{background:var(--navy);color:var(--white);border:none;}
+  .secondary-btn{flex:1;text-decoration:none;border-radius:var(--radius-sm);min-height:44px;padding:0.625rem 0.5rem;font-size:0.7rem;font-weight:500;font-family:var(--font-sans);
+                 display:flex;align-items:center;justify-content:center;gap:5px;background:#F4F3EF;color:var(--text-primary);border:0.5px solid #DDD9D0;box-sizing:border-box;}
+
+  /* AD: offers. A coupon look (dashed border in the Klub's blue) so the codes read as
+     something to use, not more description. The code is a button: tap copies it. */
+  .offer{border:1.5px dashed var(--klub-blue);border-radius:var(--radius-sm);padding:.7rem .75rem;background:#F6FAFA;}
+  .offer + .offer{margin-top:.55rem;}
+  .offer-title{font-size:.82rem;font-weight:600;color:var(--text-primary);line-height:1.35;}
+  .offer-sub{font-size:.66rem;color:var(--text-muted);margin-top:2px;line-height:1.45;}
+  .offer-code{margin-top:.55rem;display:flex;align-items:center;gap:.5rem;}
+  .code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem;font-weight:700;letter-spacing:.12em;color:var(--klub-blue-ink);
+        background:#fff;border:1px solid var(--klub-blue);border-radius:6px;padding:.3rem .6rem;}
+  .copy{font-family:var(--font-sans);font-size:.66rem;font-weight:600;letter-spacing:.04em;color:var(--navy);background:none;
+        border:1px solid var(--navy);border-radius:var(--radius-pill);padding:.3rem .75rem;cursor:pointer;min-height:30px;}
+  .copy.done{background:var(--navy);color:#fff;}
+  .offer-how{font-size:.62rem;color:var(--text-muted);margin-top:.6rem;line-height:1.5;}
+
+  /* AD: the logo panel that opens the card, and the hours table */
+  .ad-logo{display:flex;justify-content:center;padding:1rem 0 .85rem;background:#fff;border-bottom:0.5px solid #EDEAE4;}
+  .ad-logo img{width:118px;height:118px;display:block;}
+  .hours{display:grid;grid-template-columns:auto 1fr;column-gap:.9rem;row-gap:.3rem;font-size:0.82rem;}
+  .hours dt{font-weight:500;color:var(--text-primary);}
+  .hours dd{margin:0;font-weight:300;color:#333;}
+  .ad-disclose{font-size:.62rem;color:var(--text-muted);text-align:center;padding:.75rem .75rem 0;line-height:1.5;}
+
+  .panel{background:var(--panel);border:1px solid var(--panel-border);border-radius:6px;padding:20px 22px;margin-top:40px;}
+  .panel h2{font-family:var(--font-serif);font-size:1.2rem;font-weight:600;margin:0 0 12px;}
+  ul.notes{margin:0;padding-left:1.15rem;font-size:.87rem;line-height:1.7;font-weight:300;}
+  ul.notes li{margin-bottom:9px;}
+  ul.notes b{font-weight:600;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">Advertiser card · web app mockup · 2026-09-26</p>
+  <h1 class="top">The Social Klub, in the Featured strip</h1>
+  <p class="lede">The ad takes one of the nine Featured slots. In the strip it is a tile like its neighbours, marked
+    Sponsored; tapped, it opens its own page with the logo, where, the hours, what it is and the website. No date and
+    no cadence, because it is a place, not an event. The neighbouring tiles are real events from this weekend.</p>
+
+  <div class="stage">
+
+    <div class="col">
+      <cap>1 · the strip on the home screen</cap>
+      <div class="phone">
+        <div class="app-top"><div class="wm">Out <span class="and">AND</span> About Marin</div>
+          <div class="sub">Family events across Marin</div></div>
+        <div class="featured-wrap">
+          <div class="featured-head">Featured</div>
+          <div class="featured-row">
+            <div class="feat-card"><div class="feat-tile"><div class="ft-top"><span class="ft-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2v3"/><path d="M12 7.2 4.5 19h15L12 7.2z"/><path d="M12 7.2V19"/><path d="M12 4.2h3v2h-3"/></svg></span><div class="ft-kicker">Festival</div></div><div class="ft-name">Oyster Festival</div><div class="ft-meta"><b>Sun, Sep 27</b> · Sausalito</div></div></div>
+
+            <div class="feat-card"><div class="feat-tile ad"><div class="ft-top"><span class="ft-icon"><img src="assets/social_klub_logo.png" alt=""></span><div class="ft-kicker">Sponsored</div></div><div class="ft-name">The Social Klub</div><div class="ft-meta"><b>Indoor play</b> · Sausalito</div></div></div>
+
+            <div class="feat-card"><div class="feat-tile"><div class="ft-top"><span class="ft-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="2.5"/><path d="M4.5 19c0-3 2-4.8 4.5-4.8S13.5 16 13.5 19"/><circle cx="16.5" cy="10" r="2"/><path d="M14.6 14.7c2.1-.5 4.5 1 4.5 4.3"/></svg></span><div class="ft-kicker">Community</div></div><div class="ft-name">Mill Valley Community Block Party - 28th Annual “Larry the Hat's”</div><div class="ft-meta"><b>Sun, Sep 27</b> · Mill Valley</div></div></div>
+
+            <div class="feat-card"><div class="feat-tile"><div class="ft-top"><span class="ft-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="16.6" r="2.4"/><circle cx="16.2" cy="14.8" r="2.4"/><path d="M10.4 16.6V6l8.2-2v8.8"/></svg></span><div class="ft-kicker">Music and Movies</div></div><div class="ft-name">Movie Night — Tangled</div><div class="ft-meta"><b>Fri, Oct 2</b> · Mill Valley</div></div></div>
+          </div>
+        </div>
+        <div class="list-stub">
+          <div class="section-day-label">Today · Saturday, Sep 26</div>
+          <div class="stub-card"></div><div class="stub-card"></div><div class="stub-card"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <cap>2 · the ad page, opened from the tile</cap>
+      <div class="phone">
+        <div class="detail-header">
+          <button class="detail-back">‹ Back to events</button>
+          <div class="detail-type-badge">Sponsored · Local partner</div>
+          <div class="detail-title">The Social Klub</div>
+          <div class="detail-org">Indoor play space for kids 0-7</div>
+        </div>
+        <div class="detail-body">
+          <div class="detail-card">
+            <div class="ad-logo"><img src="assets/social_klub_logo.png" alt="The Social Klub logo"></div>
+
+            <div class="detail-section">
+              <div class="section-label">Where</div>
+              <div class="detail-row">
+                <div class="detail-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z" stroke="#0D1B3E" stroke-width="1.2"/><circle cx="7" cy="5" r="1.5" stroke="#0D1B3E" stroke-width="1.2"/></svg></div>
+                <div class="detail-row-content">
+                  <div class="detail-row-label">Venue &amp; address</div>
+                  <div class="detail-row-value">The Social Klub · Sausalito</div>
+                  <div class="detail-row-sub">2650 Bridgeway, Sausalito, CA 94965 · free parking</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-section">
+              <div class="section-label">Hours</div>
+              <div class="detail-row">
+                <div class="detail-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#0D1B3E" stroke-width="1.2"/><polyline points="7,4 7,7 9,9" stroke="#0D1B3E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="detail-row-content">
+                  <dl class="hours">
+                    <dt>Mon–Fri</dt><dd>9 AM – 5 PM</dd>
+                    <dt>Saturday</dt><dd>10 AM – 4 PM</dd>
+                    <dt>Sunday</dt><dd>Private parties only</dd>
+                  </dl>
+                  <div class="detail-row-sub" style="margin-top:6px">Closed on major public holidays.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-section">
+              <div class="section-label">About</div>
+              <div class="description-text">An indoor play space for kids up to 7, built for calm, child-led play. Play sessions run every weekday and on Saturdays: book ahead to guarantee a spot, or walk in when there is room. In the evenings it belongs to the grown-ups, with workshops, wellness talks and gatherings, and there is a shop stocked with the toys the kids love most.</div>
+              <div class="notes-text">$30 per child with one caregiver; extra adults $10. Babies under 12 months free with an older sibling. Bring grip socks for kids and socks for grown-ups.</div>
+            </div>
+
+            <div class="detail-section">
+              <div class="section-label">Offers for Out AND About Marin readers</div>
+              <div class="offer">
+                <div class="offer-title">50% off your first Open Play session</div>
+                <div class="offer-sub">For families visiting for the first time.</div>
+                <div class="offer-code"><span class="code">PLAY50</span><button class="copy" data-code="PLAY50">Copy code</button></div>
+              </div>
+              <div class="offer">
+                <div class="offer-title">$100 off a Dream Theme party, or a free Arch w/Balloons with any DIY party</div>
+                <div class="offer-sub">Birthdays, baby showers and every milestone in between.</div>
+                <div class="offer-code"><span class="code">PARTY100</span><button class="copy" data-code="PARTY100">Copy code</button></div>
+              </div>
+              <div class="offer-how">Enter the code when you book at thesocialklub.com.</div>
+            </div>
+
+            <div class="detail-section">
+              <div class="section-label">Details</div>
+              <div class="detail-tags"><span class="tag tag-kids">Indoor Play</span><span class="tag tag-age">0-7 yrs</span><span class="tag tag-paid">$30 per child</span></div>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <a class="action-btn btn-maps" href="#"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z" stroke="#0D1B3E" stroke-width="1.3"/></svg>Directions</a>
+            <a class="action-btn btn-website" href="#"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c-1.5 2-2 3.5-2 5.5s.5 3.5 2 5.5" stroke="white" stroke-width="1.2"/><path d="M7 1.5c1.5 2 2 3.5 2 5.5s-.5 3.5-2 5.5" stroke="white" stroke-width="1.2"/><line x1="1.5" y1="7" x2="12.5" y2="7" stroke="white" stroke-width="1.2"/></svg>Visit thesocialklub.com</a>
+          </div>
+          <div class="secondary-row">
+            <a class="action-btn secondary-btn" href="https://www.instagram.com/the.social.klub/" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="3.2" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="7" cy="7" r="2.6" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="10.3" cy="3.7" r=".7" fill="#1A1A1A"/></svg>@the.social.klub</a>
+            <div class="action-btn secondary-btn"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="11" cy="2.5" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="11" cy="11.5" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><circle cx="3" cy="7" r="1.5" stroke="#1A1A1A" stroke-width="1.2"/><line x1="4.4" y1="6.2" x2="9.6" y2="3.3" stroke="#1A1A1A" stroke-width="1.2"/><line x1="4.4" y1="7.8" x2="9.6" y2="10.7" stroke="#1A1A1A" stroke-width="1.2"/></svg>Share</div>
+          </div>
+          <div class="ad-disclose">Sponsored listing. Out AND About Marin is paid to feature this local business.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="panel">
+    <h2>Notes for review</h2>
+    <ul class="notes">
+      <li><b>The tile follows the strip's own rules</b>: same 156×124 size, icon circle, kicker, name, one meta
+        line. Their logo takes the icon circle, the kicker reads <b>Sponsored</b>, and a border in their logo blue
+        marks it out without shouting. The meta line says "Indoor play · Sausalito" where an event would carry a date.</li>
+      <li><b>The ad page reuses the event page</b> and swaps only what a place needs. <b>When</b> and
+        <b>Cadence</b> become one <b>Hours</b> section; the logo opens the card; <b>Save</b> and <b>Calendar</b>
+        are dropped because there is no date to save or add. Directions, the website and Share stay.</li>
+      <li><b>Labelled as paid twice</b>: the Sponsored badge in the header and a one-line disclosure under the
+        buttons. A paid listing has to say so where people will see it.</li>
+      <li><b>Everything is from their own site</b> (thesocialklub.com, 2026-09-26): address, open window, Sunday
+        private parties only, holidays, pricing, sibling rule and socks. The about text is our wording.</li>
+      <li><b>Placement.</b> The strip rotates one slot every five minutes, so a sponsor in the nine moves through
+        every position over the day, the same as the events. A paid slot will need to be exempt from the rules that
+        choose the nine (dates, town caps, scoring), the way the Imagination Library pin already is. That is a
+        build decision for after you approve the look.</li>
+      <li><b>Two offers, shown as coupons</b> between About and Details, each with a Copy button so a parent on a
+        phone can paste the code at checkout. <b>PLAY50</b>: 50% off a first Open Play session. <b>PARTY100</b>: $100
+        off a Dream Theme party, or a free Arch w/Balloons with any DIY party.</li>
+      <li><b>The Klub has to create both codes in their own booking system</b>; we only display them. Worth
+        confirming they are live before the ad runs, since a code that fails at checkout reflects on us too.</li>
+      <li><b>PARTY100</b> replaced PARTY50 on 2026-09-27, so the code now matches its $100 value. The Klub needs to set PARTY100 up in its own booking system.</li>
+      <li><b>Missing terms for both codes</b>: an end date, whether they stack with memberships or 10-packs, one per
+        family or not, and for PLAY50 whether "first time" means per child or per family. Add them in the grey line
+        under each offer once the Klub confirms.</li>
+      <li><b>Instagram</b> is a button beside Share, opening @the.social.klub.</li>
+      <li><b>Hours question still open</b>: this shows the open window (Mon–Fri 9–5, Sat 10–4). Their bookable
+        sessions are narrower, and they may close at 4:15 on quiet weekdays. Confirm which they want.</li>
+    </ul>
+  </div>
+</div>
+<script>
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click', function(){
+      var c = b.getAttribute('data-code');
+      function done(){ b.textContent = 'Copied'; b.classList.add('done');
+        setTimeout(function(){ b.textContent = 'Copy code'; b.classList.remove('done'); }, 1800); }
+      try { navigator.clipboard.writeText(c).then(done, done); } catch (e) { done(); }
+    });
+  });
+</script>
+</body>
+</html>

@@ -600,6 +600,32 @@ Monthly (not every sweep): napavintners.com/events/index.asp, festivalnapavalley
 
 The "Tides & Driving in Marin" table on Resources reads `tides.json` (raw NOAA CO-OPS predictions, MLLW, built by `generate_tides.py`; stations Tam Junction, Corte Madera, Hwy 37, Bolinas). **Since 2026-10-09 every height is shown +1.07 ft** (`TIDE_ADJUST_FT` in `index.html`, applied in `_tideHt()`), at Alexandra's request, to account for the El Niño Kelvin wave and sea-level rise; a note under the table says so (bilingual). The red "flood" shading on high tides (> 6 ft) uses the adjusted height. **Do not bake the offset into `tides.json`**: the file stays raw NOAA so it can be regenerated; change or remove the offset in one place.
 
+## Resources tab: static sections, including the Kid-Friendly Dining table
+
+The Resources screen in `index.html` is hand-written HTML, in this order: Tides & Driving in Marin (reads `tides.json`,
+section above), Drive-Thrus in Marin County, **Kid-Friendly Dining in Marin**, Yoto Player Cards (Google Drive link),
+Family Swimming in Marin (external guide), Swim Lesson Vendor Directory (`swim_vendors.json`, below), Donate Baby
+Essentials (Postpartum Support Center), About. None of it is in `events.json` and no sweep touches it. Every visible
+string carries a `data-es` Spanish translation.
+
+**Kid-Friendly Dining table** (`<table class="dine-grid">`, columns Restaurant | City | Why go):
+- Rows sorted **by city, then by name**. A neighbourhood goes in the City cell as
+  `<span style="white-space:nowrap">(Town Center)</span>`.
+- Restaurant name links to the restaurant's own site (`target="_blank" rel="noopener"`); prefer a location or specials
+  page that shows the deal.
+- "Why go" = one or two plain sentences (food, what makes it work for kids, any kids-eat-free deal), with a matching
+  `data-es` Spanish version. No em dashes.
+- **Kids-eat-free deals:** state only what the restaurant publishes or confirms. Aggregator-only deals (Marin Mommies'
+  "Kids Eat Free in Marin" list) get a to-confirm in open item 58.
+- Rows as of 2026-10-09 (12): Asian Box and Blue Barn (Corte Madera, Town Center); Gott's Roadside (Greenbrae); Hook
+  Fish Co., Mamahuhu, Tartine (Strawberry), The Junction (Tam Jct.) (Mill Valley); Finnegan's Marin (Old Town), Kitsch +
+  Sync, World Famous Hotboys (Novato); Amici's (San Rafael, Downtown); Joinery (Sausalito).
+- Deals on the table (added 2026-10-09): **Finnegan's Marin**, kids 12 and under eat free all day every Sunday with an
+  adult who buys an entrée (**confirmed by the restaurant**); **Amici's**, Tuesdays from 5 PM with each adult meal, not
+  on holidays (amicis.com/specials); **World Famous Hotboys** (5800 Nave Dr, Novato), Tuesdays from 4 PM (Marin Mommies);
+  **Asian Box**, kids 12 and under with an adult meal, all day Sunday and Wednesdays after 5 PM (Marin Mommies only,
+  **unconfirmed**: item 58zf). Toast Novato was left out: its deal ended May 31, 2026.
+
 ## Tide Pool Table (proposed third dataset — NOT started)
 
 Open item 33, created 2026-08-15. **Name only so far — scope deliberately not guessed.** Recorded here so a new session doesn't invent a design for it.
@@ -772,7 +798,7 @@ The shape worth noticing: all three cleared the mechanical filters and were stil
 
 ---
 
-# ⇢ START HERE — state of play for a new session (2026-09-10)
+# ⇢ START HERE — state of play for a new session (2026-10-09)
 
 Read this first, then the sections above as needed.
 
@@ -787,26 +813,38 @@ rather than trusting this sentence**; a hard-coded count in prose goes stale sil
 line has been wrong before.) GitHub Pages deploys off `main`, so **committing `events.json` IS
 publishing** — there is no staging.
 
-**Nothing is blocking and nothing is half-finished.** The Instagram week of Sep 11 is fully
-scheduled, the weekly sweep is run and applied, and the working tree is clean.
+**Nothing is half-finished in the repo.** Everything is committed and pushed. Untracked scratch files
+(`kidrows.txt`, `*.bak_*` copies of CLAUDE.md and run-sweep.md) can be deleted once Alexandra agrees.
 
-## Where to pick up — four small things, all waiting on Alexandra
+## Where to pick up (2026-10-09)
 
-None is urgent and none blocks anything else. All four are on the dashboard; the first is the only
-one with a user-facing cost.
+The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH). In order:
 
-1. **id 853, Spanish Sing-along at Northgate: 10:00 or 10:30 AM?** See rule 25 and open item 54.
-   If 10:00 is right, families are being sent as the session ends. One word settles it.
-2. **Home Depot's Nov 21 extra Kids Workshop.** The monthly record (id 435, first Saturday) already
-   generates Oct 3, Nov 7 and Dec 5; **Nov 21 is a third Saturday and is genuinely missing**. Not
-   added because `homedepot.com` is **Akamai-blocked at all three fetch tiers** — WebFetch, the
-   in-app browser and real Chrome all returned an empty document — so the date rests on aggregator
-   flyers alone, and the flyer names no store.
-3. **The Fibershed natural-fibre clothing swap, Wed Sep 16** at the MWPCA Clubhouse (40 Ridge Ave,
-   the same venue as id 1043). Venue confirmed; **no time published**, sign-up is an Instagram bio
-   link, and the audience reads adult rather than family.
-4. **The Monarch Butterflies seminar** (Point Reyes Library, Oct 10). The sweep workbook's Decision
-   column said Approve but the answer to its own Question 10 said skip — held rather than guessed.
+1. **Instagram, week of Oct 15 (item 15).** Thu Oct 15 5 PM, Sat Oct 17 7 AM, Sun Oct 18 5 PM, Template B, scheduled
+   in **Metricool**. Start from `social_media_and_marketing.md`, "STATE OF PLAY" at the bottom, then section 3e.
+2. **Confirm Metricool's first auto-publishes went live** (Sat Oct 10 7 AM, Sun Oct 11 5 PM), then delete repo
+   `ig/week_of_oct8/`. `ig/README.md` lists every staged folder and its delete date.
+3. **Next weekly sweep** (`/run-sweep`). The 2026-10-08 sweep covered Oct 9 to Nov 30.
+4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
+5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
+
+## What changed 2026-10-06 to 2026-10-09, in one pass
+
+- **Weekly sweep (Oct 9 to Nov 30) applied:** 44 events added (ids 1384–1427) plus record fixes; holidays rely on the
+  app's holiday banner (no skips); confirmed closures get a dated `ALERT[YYYY-MM-DD]:`, and one record can now carry
+  several dated ALERTs (rule 17).
+- **Many events added from screenshots and links**, with duplicates retired (Makers Market 1217 → kept 470; the weekly
+  Cinelounge movie 736 retired). MVFF family screenings added.
+- **FIT4MOM Marin went live:** Featured ad `fit4mom-marin` in `ads.json` and Stroller Strides partner events
+  1445–1449 (ages "Prenatal & postpartum moms; 0-5 yrs"). The ad renderer gained optional fields (tile_icon, logo_wide,
+  hours_label, blank address, contact, code-less offers, cta, facebook) and partner events can carry a `logo`.
+- **Tides shown +1.07 ft** (`TIDE_ADJUST_FT`) with a bilingual note under the table.
+- **Kid-Friendly Dining table:** 4 restaurants added (see the Resources section above).
+- **Instagram moved to Metricool** (brand 7335950). Approved PNGs are staged in this repo under `ig/` so Metricool can
+  fetch them by URL. Three series are scheduled: weekly event posts, "Weekly Wednesday Hot Tip!" (item 61, to Dec 2)
+  and "Tag Out and About" Tuesdays 2nd/4th (item 62, to Dec 8).
+- **Partner ad mockups** in `templates/` (Social Klub, FIT4MOM, GG Mahjong, plus `templates/assets/` logos) are now
+  committed.
 
 ## What changed 2026-09-10, in one pass
 
