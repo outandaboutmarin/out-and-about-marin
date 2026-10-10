@@ -637,9 +637,15 @@ string carries a `data-es` Spanish translation.
   `data-es` Spanish version. No em dashes.
 - **Kids-eat-free deals:** state only what the restaurant publishes or confirms. Aggregator-only deals (Marin Mommies'
   "Kids Eat Free in Marin" list) get a to-confirm in open item 58.
-- Rows as of 2026-10-09 (12): Asian Box and Blue Barn (Corte Madera, Town Center); Gott's Roadside (Greenbrae); Hook
-  Fish Co., Mamahuhu, Tartine (Strawberry), The Junction (Tam Jct.) (Mill Valley); Finnegan's Marin (Old Town), Kitsch +
-  Sync, World Famous Hotboys (Novato); Amici's (San Rafael, Downtown); Joinery (Sausalito).
+- Rows as of 2026-10-10 (17): Asian Box and Blue Barn (Corte Madera, Town Center); Boudin (Corte Madera, The Village;
+  Alexandra said "Towne Center" but boudinbakery.com lists only The Village); Gott's Roadside (Greenbrae); El Huarache Loco
+  and Souvla (Larkspur, Marin Country Mart); Hook Fish Co., Mamahuhu, Tartine (Strawberry), The Junction (Tam Jct.) (Mill
+  Valley); Blue Barn (Novato, Old Town, 819 Grant Ave), Finnegan's Marin (Old Town), Kitsch + Sync, World Famous Hotboys
+  (Novato); Amici's and Pond Farm Brewing Co. (San Rafael, Downtown); Joinery (Sausalito). Added 2026-10-10 from
+  Alexandra's list: Boudin, El Huarache Loco, Souvla, Blue Barn Novato, Pond Farm; Gott's gained its patios/parklet.
+  The play areas at Blue Barn Novato and "nearby" at Marin Country Mart are Alexandra's own knowledge, not on the
+  restaurants' sites; Pond Farm's play area was "possibly" and is NOT claimed (its site confirms outdoor seating and a
+  kids' menu). Blue Barn's Novato page is /chestnut on bluebarngourmet.com (odd slug, but it is the Novato page).
 - Deals on the table (added 2026-10-09): **Finnegan's Marin**, kids 12 and under eat free all day every Sunday with an
   adult who buys an entrée (**confirmed by the restaurant**); **Amici's**, Tuesdays from 5 PM with each adult meal, not
   on holidays (amicis.com/specials); **World Famous Hotboys** (5800 Nave Dr, Novato), Tuesdays from 4 PM (Marin Mommies);
