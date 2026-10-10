@@ -635,11 +635,14 @@ string carries a `data-es` Spanish translation.
   page that shows the deal.
 - "Why go" = one or two plain sentences (food, what makes it work for kids, any kids-eat-free deal), with a matching
   `data-es` Spanish version. No em dashes.
+- **Asterisk = a kids-eat-free deal** (Alexandra 2026-10-10): every restaurant with one gets `*` right after its name link
+  (`</a>*</td>`), explained by the bilingual footnote under the table. Add or remove the star whenever a deal
+  starts or ends. Starred as of 2026-10-10: Asian Box, Finnegan's Marin, World Famous Hotboys, Amici's.
 - **Kids-eat-free deals:** state only what the restaurant publishes or confirms. Aggregator-only deals (Marin Mommies'
   "Kids Eat Free in Marin" list) get a to-confirm in open item 58.
 - Rows as of 2026-10-10 (17): Asian Box and Blue Barn (Corte Madera, Town Center); Boudin (Corte Madera, The Village;
   Alexandra said "Towne Center" but boudinbakery.com lists only The Village); Gott's Roadside (Greenbrae); El Huarache Loco
-  and Souvla (Larkspur, Marin Country Mart); Hook Fish Co., Mamahuhu, Tartine (Strawberry), The Junction (Tam Jct.) (Mill
+  and Souvla (Larkspur, Marin Country Mart); Hook Fish Co. (Tam Jct.), Mamahuhu, Tartine (Strawberry), The Junction (Tam Jct.) (Mill
   Valley); Blue Barn (Novato, Old Town, 819 Grant Ave), Finnegan's Marin (Old Town), Kitsch + Sync, World Famous Hotboys
   (Novato); Amici's and Pond Farm Brewing Co. (San Rafael, Downtown); Joinery (Sausalito). Added 2026-10-10 from
   Alexandra's list: Boudin, El Huarache Loco, Souvla, Blue Barn Novato, Pond Farm; Gott's gained its patios/parklet.
