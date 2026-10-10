@@ -850,6 +850,9 @@ one with a user-facing cost.
   `templates/` and `slides/`. They are in the Documents project folder, `OAA marketing\Instagram templates\`
   and `OAA marketing\Instagram slides\` (Alexandra's request). Run `render_slides.py` from here with full paths.
   Partner ad mockups stay in `templates/`. Path map: `social_media_and_marketing.md`, "Where the Instagram files live".
+  ⚠ **Changed 2026-10-09: Instagram posts are scheduled through Metricool, not Business Suite** (procedure in
+  `social_media_and_marketing.md` section 3e). Metricool fetches images by public URL, so approved PNGs are staged in this
+  repo under `ig/<folder>/` and served from outandaboutmarin.com/ig/; `ig/README.md` lists each folder and when to delete it.
 - **⚠ "We're having trouble completing your request" CAN MEAN IT WORKED.** Two of the three
   carousels showed that error on a hung spinner and **both had scheduled successfully**. Retrying
   would have double-posted. **On any error or hang from a Business Suite composer, check the
