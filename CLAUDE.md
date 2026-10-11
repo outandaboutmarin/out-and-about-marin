@@ -884,7 +884,7 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
   ⚠ **`--check` NO LONGER EXISTS. Do not put it in a command line — the script takes no arguments and will silently ignore it and just build.** It used to compare the markdown's open item numbers against the script's `ITEMS` list and fail on either kind of drift, and this file recorded it as "verified capable of failing". That guard went away with the two lists it compared; there is nothing left for it to check. **The lesson worth keeping from its removal:** a documented safety check is worth exactly as much as its last verification, and a rewrite can delete one without deleting the paragraph that promises it.
 - Items resolved by a **policy decision** should be encoded where the policy actually executes — e.g. item 9 (stale Megan Schoenbohm source) and item 10 (add Slide Ranch) were both written into the sweep procedure ("Weekly sweep")'s source list so they enforce themselves every sweep, not just sit in a tracker.
 
-# ⇢ START HERE — state of play for a new session (2026-10-10)
+# ⇢ START HERE — state of play for a new session (2026-10-11)
 
 Read this first, then the sections above as needed.
 
@@ -918,6 +918,23 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
 6. **~2026-10-17 (Alexandra, item 71):** delete the two `(MOVED…)` folders left by the Dropbox move, then empty the Recycle Bin.
+
+## What changed 2026-10-11, in one pass
+
+- **Fixes from the 2026-10-11 test run** (report: `Downloads\telluride_partner_sweep_chat_test_2026-10-11.md`). Alexandra tested the partner prompt in **Claude Chat** by
+  mistake; the partner uses **Claude Code** desktop (confirmed). Chat's cloud workspace cannot reach the library feeds or
+  Dropbox, so those findings do not apply. Kept: retry each download up to 3 times, 30 s apart, before stopping (GitHub
+  answered one 429); `check_docs.py` now says a missing region file probably means a failed download; neutral wording
+  (`python`/`python3`, `/` or `\`, browsers named by what they are); setup page says use the prompt as written, in Claude
+  Code. **New rule for every region: feeds (iCal, JSON APIs, long paged lists) must be read raw and in full; a
+  summarizing fetch never counts, and an unreadable feed is attested INCOMPLETE while the sweep finishes** (Alexandra:
+  record and finish).
+
+**Older "What changed" logs, the 2026-08-21 state of play and the documentation-drift notes are in `HISTORY.md`.**
+- **Sponsor Leadsheet** (night of 2026-10-10): new first tab `Leadsheet` in
+  `OAA Sponsorship and Partners\Advertising Partners Upload.xlsx` listing sponsors that are live on the site:
+  Golden Gate Mahjong (09/28/2026, Community), The Social Klub (09/30/2026, Community + Featured), FIT4MOM Marin
+  (10/09/2026, Community + Featured). See "Where the non-repo files live".
 
 ## What changed 2026-10-10, in one pass
 
@@ -960,17 +977,6 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   ("Today's date is MM/DD/YYYY, and the sweep should cover MM/DD/YYYY - MM/DD/YYYY") as its first sentence; "Telluride
   partner sweep" step 2 takes the window from those dates and asks her if they are missing or look wrong. The full
   six-line prompt is on `Telluride\PARTNER_SETUP.md`; keep that page and this section in step.
-- **Fixes from the 2026-10-11 test run** (report: `Downloads\telluride_partner_sweep_chat_test_2026-10-11.md`). Alexandra tested the partner prompt in **Claude Chat** by
-  mistake; the partner uses **Claude Code** desktop (confirmed). Chat's cloud workspace cannot reach the library feeds or
-  Dropbox, so those findings do not apply. Kept: retry each download up to 3 times, 30 s apart, before stopping (GitHub
-  answered one 429); `check_docs.py` now says a missing region file probably means a failed download; neutral wording
-  (`python`/`python3`, `/` or `\`, browsers named by what they are); setup page says use the prompt as written, in Claude
-  Code. **New rule for every region: feeds (iCal, JSON APIs, long paged lists) must be read raw and in full; a
-  summarizing fetch never counts, and an unreadable feed is attested INCOMPLETE while the sweep finishes** (Alexandra:
-  record and finish).
-
-**Older "What changed" logs, the 2026-08-21 state of play and the documentation-drift notes are in `HISTORY.md`.**
-
 ## The pattern worth carrying into the next session
 
 **Every significant problem in this stretch was found by Alexandra asking a question, not by a scan.** The 109 leaking notes, the nine duplicate candidates, the JCC's entire family programme missing from a sweep, id 493's broken type, and id 853 advertising two Wednesdays that do not run — all of them surfaced because she asked "is this right?", and every one had been passing every automated check at the time.
@@ -1017,7 +1023,12 @@ Full list in `OAA maintence and content/open_items.md`; the dashboard renders it
 
 **`OAA Sponsorship and Partners/`** (sibling of `OAA maintence and content/`, created by Alexandra
 2026-09-26) — everything advertiser-facing:
-- `Advertising Partners Upload.xlsx` — a `template` tab plus one tab per vendor (`TSK`,
+- `Advertising Partners Upload.xlsx` — **first tab `Leadsheet` (added 2026-10-10)**: one row per sponsor that is LIVE on the
+  site, columns Sponsor name | Date sponsorship went live on the site | Community Partner (x = partner events with the
+  PARTNER badge) | Featured Partner (x = a sponsored card in the Featured carousel, `ads.json`). Dates come from the
+  first commit that put them live; add a row the day a new sponsor goes live. **This workbook has embedded logo images:
+  edit it through Excel (COM automation), never openpyxl, which drops images on save.** Then a `template` tab plus one
+  tab per vendor (`TSK`,
   `Stroller Strides`, `GGMahj`). Events table in rows 4+ with columns she extended on 2026-09-26
   (Time, Town, Cost, Instagram, phone, Notes / questions for the vendor); a **Featured Partner Ads**
   block below (Ad title, Graphic, Verbiage, Mockup file).
