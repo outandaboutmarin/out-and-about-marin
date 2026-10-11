@@ -546,15 +546,18 @@ the shared procedure below**. Added 2026-10-10 (Alexandra); no Git, and her only
    `C:\Users\<her Windows user>\OAA-rules` (outside Dropbox), keeping the `sources` subfolder:
    `CLAUDE.md`, `check_duplicates.py`, `check_docs.py`, `events_io.py`, `events.json`, `sources/marin.md`,
    `sources/napa.md`, `sources/telluride.md`, from `https://raw.githubusercontent.com/outandaboutmarin/out-and-about-marin/main/`
-   with `curl -fsSL --create-dirs -o <file> <address>`. If any download fails, stop and tell her. First run only:
-   `python -m pip install openpyxl`. Then `python check_docs.py` in `OAA-rules` must say "clean".
+   with `curl -fsSL --create-dirs -o <file> <address>`. **If a download fails (GitHub sometimes answers "429 too many
+   requests"), wait 30 seconds and retry, up to 3 tries per file**; stop and tell her only if a file still fails. First run
+   only: `python -m pip install openpyxl`. Then `python check_docs.py` in `OAA-rules` must say "clean" (`python3` if
+   `python` is not found; paths may use `/` or `\`).
 2. **`<repo>` in this file means her `OAA-rules` folder.** Region **telluride**; sources `OAA-rules\sources\telluride.md`;
    window = **the dates in her prompt** (she writes today's date and the period to cover, MM/DD/YYYY - MM/DD/YYYY; if they are
    missing or look wrong, e.g. a start date in the past, ask her before sweeping; the usual period is today through about 7
    weeks ahead); all times Mountain Time.
 3. **Run the shared procedure below in full**: every source, full pages, the escalation tiers, venue-based duplicate checks
-   against the fresh `events.json`, and the Attestation Log. **Tier 3 (real Chrome) needs the "Claude in Chrome" extension
-   installed and connected on her computer.** If it is not and a source still fails after tier 2, attest it as blocked,
+   against the fresh `events.json`, and the Attestation Log. Tier 2 is **the Claude desktop app's built-in browser**; tier 3 is **real
+   Chrome through the "Claude in Chrome" extension**, which must be installed and connected on her computer (tool names
+   differ between setups; go by what the tool is, not its name). If it is not and a source still fails after tier 2, attest it as blocked,
    naming the tiers tried; never skip it.
 4. **Save** the workbook to her `Telluride\Sweeps\` folder as `telluride_sweep_YYYY-MM-DD_review.xlsx`, run the completion
    check (procedure step 5), report (step 6), and **stop**.
@@ -569,6 +572,13 @@ the shared procedure below**. Added 2026-10-10 (Alexandra); no Git, and her only
    - **WHEN A FETCH FAILS OR LOOKS EMPTY, ESCALATE THROUGH THESE THREE TIERS BEFORE REPORTING A SOURCE AS BLOCKED. Added 2026-09-03 at Alexandra's request.**
 
      1. **WebFetch** — the default. Fine for server-rendered pages.
+        **⚠ FEEDS MUST BE READ RAW AND IN FULL (added 2026-10-11, every region).** WebFetch passes pages through a small
+        summarizing model, which can silently drop events, cut descriptions and garble times. **For calendar feeds
+        (iCal/.ics), data APIs (JSON, e.g. a WordPress events API) and long paged lists, a summarizing fetch never counts as
+        checked.** Read them raw: a direct download in the shell (`curl` or Python), or the raw text from the in-app browser
+        or Chrome, then parse it in Python. If no raw read is possible, finish the rest of the sweep and **attest that source
+        as INCOMPLETE**, naming the method that was available (Alexandra, 2026-10-11: record and finish, don't stop). The
+        completion check treats "incomplete" as an honest result, so the reviewer sees exactly what was not read.
      2. **The in-app preview browser** (`mcp__Claude_Browser__*`) — use for JS-rendered pages. It also lets you `fetch()` same-origin from inside the page and parse the HTML yourself, which is how all 16 MCFL pages and all 10 Belvedere-Tiburon pages get read in one pass.
      3. **REAL CHROME** (`mcp__claude-in-chrome__*`) — the user's actual browser, with its own fingerprint and logged-in sessions. **This is the last resort and it works when tier 2 does not.**
 
@@ -950,6 +960,14 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   ("Today's date is MM/DD/YYYY, and the sweep should cover MM/DD/YYYY - MM/DD/YYYY") as its first sentence; "Telluride
   partner sweep" step 2 takes the window from those dates and asks her if they are missing or look wrong. The full
   six-line prompt is on `Telluride\PARTNER_SETUP.md`; keep that page and this section in step.
+- **Fixes from the 2026-10-11 test run** (report: `Downloads\telluride_partner_sweep_chat_test_2026-10-11.md`). Alexandra tested the partner prompt in **Claude Chat** by
+  mistake; the partner uses **Claude Code** desktop (confirmed). Chat's cloud workspace cannot reach the library feeds or
+  Dropbox, so those findings do not apply. Kept: retry each download up to 3 times, 30 s apart, before stopping (GitHub
+  answered one 429); `check_docs.py` now says a missing region file probably means a failed download; neutral wording
+  (`python`/`python3`, `/` or `\`, browsers named by what they are); setup page says use the prompt as written, in Claude
+  Code. **New rule for every region: feeds (iCal, JSON APIs, long paged lists) must be read raw and in full; a
+  summarizing fetch never counts, and an unreadable feed is attested INCOMPLETE while the sweep finishes** (Alexandra:
+  record and finish).
 
 **Older "What changed" logs, the 2026-08-21 state of play and the documentation-drift notes are in `HISTORY.md`.**
 

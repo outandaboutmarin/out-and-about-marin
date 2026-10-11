@@ -74,7 +74,8 @@ def check(root):
         if key not in table_files:
             errs.append(f'{tag}: no row for it in CLAUDE.md "Regions" table')
     for k in table_files - {f[:-3] for f in files}:
-        errs.append(f'CLAUDE.md Regions table names sources/{k}.md, which does not exist')
+        errs.append(f'CLAUDE.md Regions table names sources/{k}.md, which does not exist '
+                    f'(if you downloaded these files, that download probably failed: download sources/{k}.md again)')
     return errs
 
 

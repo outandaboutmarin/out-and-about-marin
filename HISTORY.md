@@ -278,3 +278,14 @@ Also caught before shipping: the first-run download needed `curl --create-dirs`,
 date and the period the sweep should cover (xx/xx/xxxx - xx/xx/xxxx). Added as the prompt's first sentence; the setup page
 tells her to fill both in (usually today through about 7 weeks ahead) and CLAUDE.md "Telluride partner sweep" step 2 now
 takes the window from them instead of a fixed "today + 7 weeks". Commit `9701bb0`.
+
+## 2026-10-11: partner sweep test run (in Claude Chat, by mistake)
+
+Alexandra dry-ran the partner prompt in a Claude Chat project instead of Claude Code. Chat reported five issues. Its
+cloud workspace downloaded the rulebook fine (one HTTP 429 from GitHub, fixed by a retry) but could not reach the
+library feeds (network allowlist) or her Dropbox, and its only fetch for those feeds summarizes, which can silently
+drop events. She confirmed the partner will use her own Claude Code desktop, where none of that applies (this machine
+read every feed directly on 2026-10-09). Fixes kept for Claude Code: download retries, a clearer `check_docs.py`
+message, neutral command wording, a "use the prompt as written, in Claude Code" note on the setup page, and a new
+every-region rule that feeds must be read raw and in full, with unreadable ones attested INCOMPLETE rather than
+skipped or passed off as checked. The test was still worth it: the raw-feed rule closes a gap that applied to Marin too.
