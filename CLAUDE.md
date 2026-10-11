@@ -879,7 +879,8 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
    Start from `social_media_and_marketing.md`, "STATE OF PLAY", then section 3e. **Sat Oct 10 auto-publish CONFIRMED live**
    by Alexandra; once Sun Oct 11 is confirmed too, delete repo `ig/week_of_oct8/` (`ig/README.md` lists staged folders).
 2. **Next Marin weekly sweep** ("Weekly sweep" section, `sources/marin.md`). The 2026-10-08 sweep covered Oct 9 to Nov 30.
-3. **Telluride (items 65 to 70):** the partner's Claude Code setup (`Telluride\PARTNER_SETUP.md`), the v2 event sources,
+3. **Telluride (items 65 to 70, 72):** Alexandra shares the Dropbox `Telluride` folder with her partner, who sets up her
+   Claude Code (`Telluride\PARTNER_SETUP.md`) and runs the first partner sweep; then the v2 event sources,
    the Wilkinson Thursday slot clash, November dates, the Ridgway café time, Silly Stories times, Rico (ask Lee).
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
@@ -905,6 +906,17 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`. 3,111 files checksum-verified; repo pushed from its new path.
 - **Claude sidebar:** all OAA sessions are filed under a custom group "Out AND About" (new sessions must be filed by hand).
 - **Metricool:** the first auto-publish (Sat Oct 10, 7 AM) went out as planned.
+- **Docs restructured late 2026-10-10 (commit `f310731`, Alexandra):** one rulebook for every region. CLAUDE.md now holds
+  every rule plus the single "Weekly sweep" procedure and "Processing an approved sweep" (merged from `run-sweep.md` and
+  `process-sweep.md`, now two-line pointers). Region source lists are in `sources/marin.md` (48), `sources/napa.md` (30,
+  rewritten from one paragraph into a numbered list) and `sources/telluride.md` (9), all in one fixed header + numbered
+  format that **`check_docs.py`** enforces (`--self-test` proves it catches 5 kinds of breakage). Dated stories moved to
+  `HISTORY.md`. CLAUDE.md went from 180 KB to 152 KB; all 1,477 old lines were checked against the new files.
+- **Telluride sweeps move to Alexandra's partner:** her own Claude Code works in the shared Dropbox `Telluride` folder with
+  a read-only clone of this repo (outside Dropbox), saves `Telluride\Sweeps\telluride_sweep_YYYY-MM-DD_review.xlsx`, and
+  renames it `…_APPROVED.xlsx` after review. Only Alexandra's Claude Code processes and commits. Setup page:
+  `Dropbox\01. Out AND About Files\Telluride\PARTNER_SETUP.md`. **Rule:** a region never gets its own rule; a rule that
+  seems region-specific is changed in CLAUDE.md for everyone, with Alexandra's OK.
 
 **Older "What changed" logs, the 2026-08-21 state of play and the documentation-drift notes are in `HISTORY.md`.**
 

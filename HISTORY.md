@@ -234,3 +234,22 @@ Covers live music in **Calistoga, St. Helena, and Yountville**, surfaced on the 
 **Scope**: 31 distinct event sources + 16 libraries + the Learning Bus PDF = **48 total** (47 until the Town of Fairfax baby/toddler/preschool programs page was added as source #48 on 2026-10-05; 46 until the Barnes & Noble Corte Madera store calendar was added as source #47 on 2026-10-02 — it 403s headless, browser only; 45 until The Social Klub, a paying sponsor, was added as source #46 on 2026-10-01 — its events always go in as PARTNER records; 44 until the Mill Valley Briefing was added as source #45 on 2026-09-28; was 42; **this line went stale — it still said 42 after source 43 was added on 2026-09-01, and was corrected on 2026-09-02 when 44 was added**). (Numbering in the sweep procedure ("Weekly sweep") is contiguous 1–45 — it previously restarted at 24 for the libraries, so "#24" named two different sources; fixed 2026-08-09. **Sources 43 and 44 are event sources but sit at the END of the list on purpose**: inserting them in sequence would renumber all sixteen libraries and the Learning Bus, and every past sweep's Attestation Log keys its rows off these numbers. The number is a stable identifier, not a running order.) Full list with fetch method lives in the commands themselves (kept there so the checklist and the fetch logic don't drift apart) — this doc just states the ground rules:
 
 Attestation-sheet wording before 2026-10-10: one row per source (**all 48** — the two halves of this sentence used to disagree, reading "all 43" and "the checklist is 42 items"; both are now 48 (47 until the Fairfax programs page was added 2026-10-05, 46 until Barnes & Noble Corte Madera was added 2026-10-02, 45 until The Social Klub was added 2026-10-01, 44 until the Mill Valley Briefing was added 2026-09-28); this line said 38 until 2026-08-27 and a stale count here invites an under-attested sweep)
+
+---
+
+## 2026-10-10: docs restructured into one rulebook
+
+Alexandra wanted the Telluride sweep run by a partner, and asked for **one set of rules for every region**: "I want the
+settings to stay consistent between all the apps... how the age categories work, how we treat holidays... No deviating."
+A separate Telluride MD file was rejected for that reason; separate *source* lists were acceptable if their structure is
+identical. She then asked why CLAUDE.md, run-sweep.md and process-sweep.md could not be one file. The split was only
+historical (they began as slash commands, which never registered because sessions do not start in the repo), so they
+were merged, with the dated narrative moved here to keep the rulebook readable.
+
+**What was done (commit `f310731`):** sections moved verbatim by script, not retyped; new text only for the Regions
+table, the region-neutral procedure wording ("the reviewer", `<repo>` paths) and the source-file headers. Napa's source
+paragraph was rewritten as 30 numbered entries. A line-by-line audit of all 1,477 old lines found two real drops, both
+restored ("then stop; do not touch `events.json` until approval" and the original Napa intro, now here). `check_docs.py`
+added with a self-test. Partner path: Claude Chat online was considered first, then Claude Code on the web; both were
+set aside because neither can see Dropbox, in favour of the partner running her own desktop Claude Code on the shared
+Dropbox folder.
