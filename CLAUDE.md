@@ -946,6 +946,10 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   **New `check_docs.py --attestation <workbook>`** confirms one Attestation Log row per source in the region file, each with
   a Result and none banned; it runs at the end of every sweep (procedure step 5) and before processing (step 0), for
   every region. Self-test covers it; verified on the real Telluride (9/9) and Marin Oct 8 (48/48) workbooks.
+- **Partner prompt carries the dates (Alexandra, late 2026-10-10):** she writes today's date and the sweep period
+  ("Today's date is MM/DD/YYYY, and the sweep should cover MM/DD/YYYY - MM/DD/YYYY") as its first sentence; "Telluride
+  partner sweep" step 2 takes the window from those dates and asks her if they are missing or look wrong. The full
+  six-line prompt is on `Telluride\PARTNER_SETUP.md`; keep that page and this section in step.
 
 **Older "What changed" logs, the 2026-08-21 state of play and the documentation-drift notes are in `HISTORY.md`.**
 

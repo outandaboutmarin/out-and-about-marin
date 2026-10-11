@@ -273,3 +273,8 @@ processing time** (the processing notes literally said it needed no action), so 
 passed straight through. `check_docs.py --attestation` now checks it at both ends. Its first run flagged "Every Marin
 item already in DB" as banned; the banned phrase was narrowed to the rule's actual wording, "recurring already in DB".
 Also caught before shipping: the first-run download needed `curl --create-dirs`, since `OAA-rules` does not exist yet.
+
+**Last change of the night: dates in the partner prompt.** Alexandra asked for a sentence where the partner writes today's
+date and the period the sweep should cover (xx/xx/xxxx - xx/xx/xxxx). Added as the prompt's first sentence; the setup page
+tells her to fill both in (usually today through about 7 weeks ahead) and CLAUDE.md "Telluride partner sweep" step 2 now
+takes the window from them instead of a fixed "today + 7 weeks". Commit `9701bb0`.
