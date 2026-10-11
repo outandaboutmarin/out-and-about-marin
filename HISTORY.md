@@ -253,3 +253,12 @@ restored ("then stop; do not touch `events.json` until approval" and the origina
 added with a self-test. Partner path: Claude Chat online was considered first, then Claude Code on the web; both were
 set aside because neither can see Dropbox, in favour of the partner running her own desktop Claude Code on the shared
 Dropbox folder.
+
+**Same night, later: Git dropped from the partner setup.** Alexandra asked why the partner needed Git and Python just to
+run a sweep. Git was only there to copy and refresh the rulebook and tools, and the repo is public, so her Claude now
+downloads 8 files with `curl` at the start of every sweep (`CLAUDE.md`, `check_duplicates.py`, `check_docs.py`,
+`events_io.py`, `events.json`, `sources/marin.md`, `napa.md`, `telluride.md`) into `C:\Users\<her user>\OAA-rules`, outside
+Dropbox. Python stays: the duplicate checker, the lints, the iCal/API sources and the `.xlsx` workbook all need it (plus
+`openpyxl`). Tested on Alexandra's machine the same night: all 8 downloads arrived, `check_docs.py` passed and
+`check_duplicates.py --venue` ran from the plain folder. Caveat kept on the setup page: if her Claude Code needs Git for
+its own command line on Windows, it is a one-time install and nothing else changes. Commit `f3abd07`.
