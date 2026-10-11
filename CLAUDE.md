@@ -845,11 +845,11 @@ The shape worth noticing: all three cleared the mechanical filters and were stil
 
 ---
 
-# ⇢ START HERE — state of play for a new session (2026-10-09)
+# ⇢ START HERE — state of play for a new session (2026-10-10)
 
 Read this first, then the sections above as needed.
 
-**Health** (re-run and verified late 2026-10-09 after the Telluride commit): `events.json` is **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
+**Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
 max id 1449**, all committed and pushed, level with `origin/main`.
 `check_duplicates.py --self-test` is **91/91**; `--notes-lint --all` and `--bilingual-lint` are
 clean; the duplicate scans show only the known, legitimate finding: the Pavilion Play Group's two
@@ -860,20 +860,45 @@ rather than trusting this sentence**; a hard-coded count in prose goes stale sil
 line has been wrong before.) GitHub Pages deploys off `main`, so **committing `events.json` IS
 publishing** — there is no staging.
 
-**Nothing is half-finished in the repo.** Everything is committed and pushed. Untracked scratch files
-(`kidrows.txt`, `*.bak_*` copies of CLAUDE.md and run-sweep.md) can be deleted once Alexandra agrees.
+**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `3779b45`). The old scratch and `.bak`
+files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and working files MOVED on 2026-10-10**: repo at
+`C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
+record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
 
-## Where to pick up (2026-10-09)
+## Where to pick up (2026-10-10)
 
 The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH). In order:
 
-1. **Instagram, week of Oct 15 (item 15).** Thu Oct 15 5 PM, Sat Oct 17 7 AM, Sun Oct 18 5 PM, Template B, scheduled
-   in **Metricool**. Start from `social_media_and_marketing.md`, "STATE OF PLAY" at the bottom, then section 3e.
-2. **Confirm Metricool's first auto-publishes went live** (Sat Oct 10 7 AM, Sun Oct 11 5 PM), then delete repo
-   `ig/week_of_oct8/`. `ig/README.md` lists every staged folder and its delete date.
-3. **Next weekly sweep** (`/run-sweep`). The 2026-10-08 sweep covered Oct 9 to Nov 30.
+1. **Instagram, week of Oct 15 (item 15).** Thu Oct 15 5 PM, Sat Oct 17 7 AM, Sun Oct 18 5 PM, Template B, in **Metricool**.
+   Start from `social_media_and_marketing.md`, "STATE OF PLAY", then section 3e. **Sat Oct 10 auto-publish CONFIRMED live**
+   by Alexandra; once Sun Oct 11 is confirmed too, delete repo `ig/week_of_oct8/` (`ig/README.md` lists staged folders).
+2. **Next Marin weekly sweep** (`run-sweep.md`). The 2026-10-08 sweep covered Oct 9 to Nov 30.
+3. **Telluride (items 65 to 70):** a `run-sweep-telluride.md` checklist (proposed, awaiting her go), the v2 event sources,
+   the Wilkinson Thursday slot clash, November dates, the Ridgway café time, Silly Stories times, Rico (ask Lee).
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
+6. **~2026-10-17 (Alexandra, item 71):** delete the two `(MOVED…)` folders left by the Dropbox move, then empty the Recycle Bin.
+
+## What changed 2026-10-10, in one pass
+
+- **Colorado events seen in a Marin feed: not a data bug.** The live data and code were clean (0 Telluride records in the
+  Marin view across 9 weeks). The cause was a tab still running the pre-Telluride page against the new `events.json`.
+  **Fix shipped: auto-update** (`05dc754`). Open tabs read `version.json` when they return to the foreground (and every 30
+  min) and reload once if `APP_BUILD` differs. **Run `python bump_build.py` after any `index.html` change** (Git workflow
+  section). Region stays in localStorage: Alexandra wants returning visitors to reopen on the region they last chose, and
+  first visits default to Marin. An attempt to reset everyone to Marin each visit was started and reverted at her request
+  before shipping.
+- **Kid-Friendly Dining table now 17 rows:** added Boudin (The Village, not Town Center as given), El Huarache Loco and
+  Souvla (Marin Country Mart), Blue Barn Novato, Pond Farm; Gott's patios and parklet; Hook Fish Co. at Tam Jct.;
+  **asterisk + footnote** on kids-eat-free restaurants (Resources section).
+- **Events:** Peace, Love & Lullabies (Social Klub partner, Nov 28, id 1610), Belvedere Halloween Carnival (Oct 25, 1611),
+  Music with Megan @ Marin Country Mart (Oct 10, 1612, a deliberate duplicate of the id 56 slot), Bay Club Free Tour Day
+  (Oct 17 and 18, 1613/1614, Bay Club Marin, 10-4, other locations named in the description).
+- **Naming rule:** every Megan Schoenbohm event is titled `Music with Megan @ <venue>` (ids 1353, 1382, 1383 renamed).
+- **The Dropbox move** (night of 2026-10-10): see the top of "Where things live" and the full record in
+  `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`. 3,111 files checksum-verified; repo pushed from its new path.
+- **Claude sidebar:** all OAA sessions are filed under a custom group "Out AND About" (new sessions must be filed by hand).
+- **Metricool:** the first auto-publish (Sat Oct 10, 7 AM) went out as planned.
 
 ## What changed late 2026-10-09: the Telluride+ region went live
 
