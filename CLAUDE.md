@@ -549,7 +549,9 @@ the shared procedure below**. Added 2026-10-10 (Alexandra); no Git, and her only
    with `curl -fsSL --create-dirs -o <file> <address>`. If any download fails, stop and tell her. First run only:
    `python -m pip install openpyxl`. Then `python check_docs.py` in `OAA-rules` must say "clean".
 2. **`<repo>` in this file means her `OAA-rules` folder.** Region **telluride**; sources `OAA-rules\sources\telluride.md`;
-   window today through 7 weeks ahead; all times Mountain Time.
+   window = **the dates in her prompt** (she writes today's date and the period to cover, MM/DD/YYYY - MM/DD/YYYY; if they are
+   missing or look wrong, e.g. a start date in the past, ask her before sweeping; the usual period is today through about 7
+   weeks ahead); all times Mountain Time.
 3. **Run the shared procedure below in full**: every source, full pages, the escalation tiers, venue-based duplicate checks
    against the fresh `events.json`, and the Attestation Log. **Tier 3 (real Chrome) needs the "Claude in Chrome" extension
    installed and connected on her computer.** If it is not and a source still fails after tier 2, attest it as blocked,
