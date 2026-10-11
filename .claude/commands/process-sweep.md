@@ -23,13 +23,13 @@ message.** Do not copy a review workbook's "Notes" or "Rationale" column into th
 Required before committing:
 
 ```bash
-python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py --notes-lint --all
+python C:\Users\AWalter\Code\out-and-about-marin\check_duplicates.py --notes-lint --all
 ```
 
 **Also run the bilingual lint before committing** (added 2026-09-03):
 
 ```bash
-python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py --bilingual-lint
+python C:\Users\AWalter\Code\out-and-about-marin\check_duplicates.py --bilingual-lint
 ```
 
 `description_es` renders to the public exactly as `description` does. This lint catches a `description_es` that is empty, untranslated, names a town no field on the record places it in, or names a weekday that is not the record's `day`. It exists because id 41 spent an unknown period telling Spanish readers to go to **South Novato** when the event was in **Corte Madera** — see rule 20 in `CLAUDE.md`. Every event you write here has two descriptions, and this is the only check that reads the second one.
@@ -42,7 +42,7 @@ a sweep commit.
 
 ## Process
 
-1. **Locate the filled-in review file.** Default location: `C:\Users\AWalter\Documents\2. Claude-Work\PROJECTS\OAA Marin\OAA maintence and content\daily_sweep_YYYY-MM-DD_review.xlsx` (most recent one, unless Alexandra points you at a specific file/path).
+1. **Locate the filled-in review file.** Default location: `C:\Users\AWalter\Dropbox\01. Out AND About Files\OAA maintence and content\daily_sweep_YYYY-MM-DD_review.xlsx` (most recent one, unless Alexandra points you at a specific file/path).
 2. **Read the "Weekly Sweep" sheet.** For each row:
    - `Decision = Approve` → this event gets added.
    - `Decision = Skip` or blank → skip it, no action.

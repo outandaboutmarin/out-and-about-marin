@@ -24,7 +24,7 @@ Read `CLAUDE.md` first for the event schema, data quality rules, and dedup rules
    - **Dedup by VENUE, not by name — this is mandatory, see rule 18 in `CLAUDE.md`.** For every candidate, run:
 
      ```
-     python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py --venue "<the candidate's venue>"
+     python C:\Users\AWalter\Code\out-and-about-marin\check_duplicates.py --venue "<the candidate's venue>"
      ```
 
      Read the **whole** returned list and match on **day + time + cadence**. Do NOT dedup by event name, and do NOT treat `find_event()` as sufficient — it is a substring matcher and its own docstring says so. On 2026-08-20 name-based dedup let **nine already-existing events** through as "new" (a plural, an ampersand, a parenthesis, inserted words, a missing space). Two extra requirements that come out of the same episode: a record with `status: Inactive` is **still a duplicate** (`--venue` lists every status on purpose), and when a match comes back you must **read its `notes`** before deciding it's a different program — one of the nine was a single weekly slot with a rotating weekly theme, not a separate event.
@@ -32,7 +32,7 @@ Read `CLAUDE.md` first for the event schema, data quality rules, and dedup rules
    - **Write `notes` as PUBLIC text — it renders verbatim on the site. Mandatory, see rule 19 in `CLAUDE.md`.** There is no internal field on an event. Everything you put in `notes` appears in an amber callout box on the public event detail screen, which is how 109 records ended up publishing our maintenance log — including sentences naming Alexandra, citing internal ids, and criticising named sources. `notes` may contain **only**: the ordinal recurrence phrase the parser needs, `ALERT:` / `ALERT[YYYY-MM-DD]:`, `skip: YYYY-MM-DD`, `Reopens <date>`, `UNPREDICTABLE`, and short public logistics prose ("Sign up at the children's desk the morning of the event"). **Everything else — the URL you verified against, the date you checked it, what a source got wrong, why you chose a cadence, who told you — goes in the git commit message**, which is the durable internal record and is invisible to the public. Before committing:
 
      ```bash
-     python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py --notes-lint --all
+     python C:\Users\AWalter\Code\out-and-about-marin\check_duplicates.py --notes-lint --all
      ```
 
      It exits non-zero on any leak, prints the offending sentence and why it fired, and prints the public remainder that would survive. Fix every leak you introduced. (Pre-existing leaks on records you did not touch are tracked as open item 38 and need Alexandra's sign-off to batch-clean — don't fold that into a sweep commit.)
@@ -45,7 +45,7 @@ Read `CLAUDE.md` first for the event schema, data quality rules, and dedup rules
 4. **Build the review workbook** with two sheets:
    - **Sheet 1 "Attestation Log"**: one row per source (**all 48** — the two halves of this sentence used to disagree, reading "all 43" and "the checklist is 42 items"; both are now 48 (47 until the Fairfax programs page was added 2026-10-05, 46 until Barnes & Noble Corte Madera was added 2026-10-02, 45 until The Social Klub was added 2026-10-01, 44 until the Mill Valley Briefing was added 2026-09-28); this line said 38 until 2026-08-27 and a stale count here invites an under-attested sweep) — columns: Source | Category (Event Source / Library / Learning Bus) | URL Fetched | Method | Result | # Current Items Reviewed | Newest Item Date Seen.
    - **Sheet 2 "Weekly Sweep"**: one row per genuinely new candidate — columns: Decision (blank, for Alexandra to fill Approve/Skip) | Event Name | Date | Day | Time | Venue | Town | Description | Source URL | Notes | Type | Location Filter | Ages | Cost | Indoor/Outdoor | Cadence. Flag anything genuinely uncertain with "⚠ POSSIBLE DUPE" in Notes rather than silently including or excluding it.
-5. **Save the workbook** to `C:\Users\AWalter\Documents\2. Claude-Work\PROJECTS\OAA Marin\OAA maintence and content\daily_sweep_YYYY-MM-DD_review.xlsx` (today's date). Do not save it inside this repo, and do not commit/push it.
+5. **Save the workbook** to `C:\Users\AWalter\Dropbox\01. Out AND About Files\OAA maintence and content\daily_sweep_YYYY-MM-DD_review.xlsx` (today's date). Do not save it inside this repo, and do not commit/push it.
 6. **Summarize in chat**: how many sources were fully checked, how many candidates were found, any sources you couldn't complete, and where the review file is. Tell Alexandra to fill in the Decision column and let you know when it's ready for `/process-sweep`.
 
 ## Source checklist (48 total: 31 event sources + 16 libraries + Learning Bus)

@@ -10,26 +10,34 @@ This file is the living source of truth for how the app is built and maintained.
 
 ## Where things live — read this first in a new session
 
-Claude Code sessions for this project run with the working directory set to **`C:\Users\AWalter\Documents\2. Claude-Work\PROJECTS\OAA Marin`** — *not* the repo. This is deliberate and has been the setup since the project moved out of Claude Chat on 2026-07-02. **Don't treat it as misconfiguration and don't propose restarting the session inside the repo folder** (asked and settled 2026-08-12).
+> **⚠ MOVED 2026-10-10 (Alexandra).** The working files moved from `Documents\2. Claude-Work\PROJECTS\OAA Marin` to
+> **`C:\Users\AWalter\Dropbox\01. Out AND About Files`** (same subfolders: `OAA maintence and content`, `OAA marketing`,
+> `OAA Sponsorship and Partners`, `Telluride`, plus `Preschool Database`, `Archive\From Downloads`, and the empty `ABOUT ME`,
+> `OUTPUTS`, `TEMPLATES`). The repo moved from the Desktop to **`C:\Users\AWalter\Code\out-and-about-marin`**, deliberately
+> OUTSIDE Dropbox: Dropbox syncing a `.git` folder risks corruption, and GitHub is the repo's backup. Sessions now start in the
+> Dropbox folder. The old folders were renamed `… (MOVED to Dropbox)` / `… (MOVED to Code)` for Alexandra to delete later; never
+> write to them. Inventory and plan: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
+
+Claude Code sessions for this project run with the working directory set to **`C:\Users\AWalter\Dropbox\01. Out AND About Files`** — *not* the repo. This is deliberate (since 2026-07-02; the folder itself moved to Dropbox 2026-10-10). **Don't treat it as misconfiguration and don't propose restarting the session inside the repo folder** (asked and settled 2026-08-12).
 
 | What | Where |
 |---|---|
-| **The repo** — `index.html`, `events.json`, this file, `scraper.py`, `swim_vendors.json`, `.claude/commands/` | `C:\Users\AWalter\Desktop\out-and-about-marin` — the single local clone. Reach it by **absolute path**. |
+| **The repo** — `index.html`, `events.json`, this file, `scraper.py`, `swim_vendors.json`, `.claude/commands/` | `C:\Users\AWalter\Code\out-and-about-marin` — the single local clone. Reach it by **absolute path**. |
 | **Working files** — `open_items.md`, sweep review workbooks, the Napa and swim trackers, process docs | `…\PROJECTS\OAA Marin\OAA maintence and content\` — inside the session's working directory. Never committed to the repo. |
-| Session transcripts + auto-loaded memory | `C:\Users\AWalter\.claude\projects\C--Users-AWalter-Documents-2--Claude-Work-PROJECTS-OAA-Marin\` |
+| Session transcripts + auto-loaded memory | `C:\Users\AWalter\.claude\projects\C--Users-AWalter-Dropbox-01--Out-AND-About-Files\` (before 2026-10-10: `C--Users-AWalter-Documents-2--Claude-Work-PROJECTS-OAA-Marin`, where the older transcripts still live) |
 
 **Run the duplicate checker at the start of a session, and again after any batch write:**
 
 ```
-python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py
+python C:\Users\AWalter\Code\out-and-about-marin\check_duplicates.py
 ```
 
 Exits 0 when clean, 1 when it finds something (so it scripts). `--self-test` verifies its logic still matches `index.html`; `--all` adds the low-signal findings it suppresses by default. Written 2026-08-13 after **five** duplicate pairs were found live in two days — see rule 13 and the script's own header for what each of its **five** scans catches and which real pair motivated it. (Four until 2026-09-03, when SAME-NAME/DATE was added after a live duplicate slipped past the other four; it is stricter again since 2026-09-06, when `_norm()` learned to strip a leading article.)
 
 Three consequences of this split. All are normal; none need fixing:
 
-- **This file does not auto-load.** Because the working directory isn't the repo, `CLAUDE.md` is not injected into context at session start. **Read it from the Desktop path as the first action in a new session.** What *does* auto-load is `memory/MEMORY.md` in the path above, which carries a pointer here.
-- **`/run-sweep` and `/process-sweep` are not available as slash commands.** They live in the repo's `.claude/commands/` and only register when the repo is the working directory. Every sweep to date has been run by **reading `C:\Users\AWalter\Desktop\out-and-about-marin\.claude\commands\run-sweep.md` as a file and following it** — likewise `process-sweep.md`. That is the established method, not a workaround.
+- **This file does not auto-load.** Because the working directory isn't the repo, `CLAUDE.md` is not injected into context at session start. **Read it from the repo path (`C:\Users\AWalter\Code\out-and-about-marin`) as the first action in a new session.** What *does* auto-load is `memory/MEMORY.md` in the path above, which carries a pointer here.
+- **`/run-sweep` and `/process-sweep` are not available as slash commands.** They live in the repo's `.claude/commands/` and only register when the repo is the working directory. Every sweep to date has been run by **reading `C:\Users\AWalter\Code\out-and-about-marin\.claude\commands\run-sweep.md` as a file and following it** — likewise `process-sweep.md`. That is the established method, not a workaround.
 - **`Glob` and `Grep` have failed in at least one session** on this machine (`Executable not found in $PATH`, 2026-08-12). If they error, fall back to PowerShell `Get-ChildItem -Recurse` and `Select-String -LiteralPath` — both work fine. Don't conclude a file is missing on the strength of a failed Glob.
 
 ## Tech stack
@@ -56,7 +64,7 @@ Three consequences of this split. All are normal; none need fixing:
 - Work happens directly in this repo — no more copying files in/out of chat.
 - **Routine changes** (adding events from a sweep, fixing a field, flipping a status, updating a reopening date): commit and push directly. Use a short, present-tense commit summary (e.g. "Add 12 events from Jul 2 sweep", matching the existing commit style — see `git log`).
 - **Bigger/riskier changes** (schema changes to `events.json`, major `index.html` rewrites or new features, batch deletions, edits to `scraper.py`/`library_review.py`/`daily.yml` logic): stop and confirm with Alexandra before pushing.
-- Always check `git status`/`git pull` state before starting work — the Desktop path is and should stay the **only** local clone. A second clone once lived at `…\PROJECTS\OAA Marin\out-and-about-marin\`; its contents were deleted 2026-07 and the leftover empty folder was removed 2026-08-12. **Never clone or copy repo files into the Documents project folder** — that folder is for working files only (see "Where things live"). Two clones with the same name is how edits get made to the wrong copy.
+- Always check `git status`/`git pull` state before starting work — the Code path (`C:\Users\AWalter\Code\out-and-about-marin`) is and should stay the **only** local clone. A second clone once lived at `…\PROJECTS\OAA Marin\out-and-about-marin\`; its contents were deleted 2026-07 and the leftover empty folder was removed 2026-08-12. **Never clone or copy repo files into the Dropbox project folder** — that folder is for working files only (see "Where things live"). Two clones with the same name is how edits get made to the wrong copy.
 
 - **⚠ After ANY `index.html` change, run `python bump_build.py` before committing** (added 2026-10-10). It bumps `APP_BUILD` in
   `index.html` and `version.json` together. Open tabs and home-screen apps read `version.json` when they come back to the
@@ -247,7 +255,7 @@ Always follow these when adding or editing events — they exist because of spec
     So the correct unit of comparison is the **venue**, not the title. A venue name is short, stable, and doesn't get editorialised. Before proposing anything:
 
     ```
-    python C:\Users\AWalter\Desktop\out-and-about-marin\check_duplicates.py --venue "Marin City Library"
+    python C:\Users\AWalter\Code\out-and-about-marin\check_duplicates.py --venue "Marin City Library"
     ```
 
     It prints **every** record at that venue/town with day, time, cadence and status. Read the whole list and match on **day + time + cadence**, never on the name. That check surfaced all nine misses immediately. It matches on **token overlap, not substring** — because venue words get reordered too ("Town Center Corte Madera" vs the stored "Corte Madera Town Center" share every token and no useful substring, and that reordering hid id 69 even on the first version of this scan).
@@ -486,7 +494,7 @@ Everything else — the `BOOST`/`DEM` name-keyword lists, the reserved slots for
 
 Alexandra runs this **on command**, in chat, not on a schedule — she says something like "run the sweep" and it happens in that session. It is the main thing this whole doc exists to support.
 
-**The two command files**: `run-sweep.md` (fetch everything, build a review file) and `process-sweep.md` (apply her Approve/Skip decisions back to `events.json`), both in the repo's `.claude/commands/`. As noted in "Where things live" above, these do **not** register as `/`-commands in a normal session — read the relevant file from its absolute Desktop path and follow it top to bottom.
+**The two command files**: `run-sweep.md` (fetch everything, build a review file) and `process-sweep.md` (apply her Approve/Skip decisions back to `events.json`), both in the repo's `.claude/commands/`. As noted in "Where things live" above, these do **not** register as `/`-commands in a normal session — read the relevant file from its absolute repo path (`C:\Users\AWalter\Code\out-and-about-marin\.claude\commands\`) and follow it top to bottom.
 
 **Scope**: 31 distinct event sources + 16 libraries + the Learning Bus PDF = **48 total** (47 until the Town of Fairfax baby/toddler/preschool programs page was added as source #48 on 2026-10-05; 46 until the Barnes & Noble Corte Madera store calendar was added as source #47 on 2026-10-02 — it 403s headless, browser only; 45 until The Social Klub, a paying sponsor, was added as source #46 on 2026-10-01 — its events always go in as PARTNER records; 44 until the Mill Valley Briefing was added as source #45 on 2026-09-28; was 42; **this line went stale — it still said 42 after source 43 was added on 2026-09-01, and was corrected on 2026-09-02 when 44 was added**). (Numbering in `/run-sweep` is contiguous 1–45 — it previously restarted at 24 for the libraries, so "#24" named two different sources; fixed 2026-08-09. **Sources 43 and 44 are event sources but sit at the END of the list on purpose**: inserting them in sequence would renumber all sixteen libraries and the Learning Bus, and every past sweep's Attestation Log keys its rows off these numbers. The number is a stable identifier, not a running order.) Full list with fetch method lives in the commands themselves (kept there so the checklist and the fetch logic don't drift apart) — this doc just states the ground rules:
 
@@ -511,7 +519,7 @@ Alexandra runs this **on command**, in chat, not on a schedule — she says some
   **The rule that follows, and it generalises past Larkspur:** when a source is written off as empty, record **which route was checked**, not that the venue is silent. Two questions close the gap cheaply — *does this venue plausibly run programming it is not showing me?* and *is there a calendar platform (LibCal, Communico, Bibliocommons, Granicus) behind the CMS page I am reading?* This is the same instinct as the JCC rule directly above — the calendar is the wrong surface — arriving from the opposite direction: there, the right surface existed on the same site; here, it was on a different host entirely.
 
 - **Attestation**: every sweep must show, per source, the URL actually fetched and what was found ("3 candidates: ...", or "none — fetched live list, N items reviewed"). Banned as a result: "recurring already in DB" (that's not a reason to skip — one-off guest performers/specials show up on library calendars constantly), "not reached this pass", "UNVERIFIED — didn't get to it". This exists because of repeated real misses: Sausalito (6 summer guest-performer one-offs missed), Mill Valley Library (recurring-storytime assumption masked new one-offs), San Anselmo (NorCal Bats missed via wrong search surface).
-- Review candidates go into a local Excel file (not committed to this repo) with a Decision column — Alexandra fills Approve/Skip and hands it back for `/process-sweep`. Saved to `OAA maintence and content/` in her Documents project folder, following the existing naming convention `daily_sweep_YYYY-MM-DD_review.xlsx`.
+- Review candidates go into a local Excel file (not committed to this repo) with a Decision column — Alexandra fills Approve/Skip and hands it back for `/process-sweep`. Saved to `OAA maintence and content/` in her Dropbox project folder, following the existing naming convention `daily_sweep_YYYY-MM-DD_review.xlsx`.
 
 ## Ad-hoc event requests (outside the Weekly Sweep)
 
@@ -612,7 +620,7 @@ Monthly (not every sweep): napavintners.com/events/index.asp, festivalnapavalley
 
 Alexandra's request 2026-10-09: bring in the Telluride, CO area "similar to Napa, but a lot more events", with sourcing **standardised on the Marin process**. Libraries first; the other sources in `Telluride/Telluride_Region_Research_v2.xlsx` (markets, community calendars, arts venues, schools, towns, Lee's 18 sources) are the next phase.
 
-- **Files (Documents project folder, NOT the repo):** `Telluride\Telluride_Region_Research_v2.xlsx` (towns, every library, every source, attestation) and `Telluride\Telluride_library_sweep_2026-10-09_review.xlsx` (the first sweep: same three tabs as a Marin review, her decisions in it).
+- **Files (Dropbox project folder, NOT the repo):** `Telluride\Telluride_Region_Research_v2.xlsx` (towns, every library, every source, attestation) and `Telluride\Telluride_library_sweep_2026-10-09_review.xlsx` (the first sweep: same three tabs as a Marin review, her decisions in it).
 - **Sandbox first.** She asked for mockups before anything is committed: candidates go to a review workbook, approved rows become records in a sandbox JSON, and a local copy of the site (demo session, writes stubbed, a "MOCKUP" ribbon) is served for her to click through. Commit only on her explicit go. The first batch went live 2026-10-09 (ids 1450–1609).
 - **The 9 library sources and how each is read** (all fetch with plain Python, no Chrome needed; first window Oct 10 to Nov 30):
   1. **Wilkinson Public Library, Telluride** (LibCal). The page shows about 10 events; read the **iCal feed** `telluridelibrary.libcal.com/ical_subscribe.php?src=p&cid=19928`, which has every event. Times are **UTC**: subtract 6 h before Nov 1 and 7 h after. Open the file with `newline=''` and unfold continuation lines, or the descriptions come out cut short.
@@ -689,7 +697,7 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
 
 ## Open Items tracker (Alexandra's to-do list)
 
-- **Source of truth**: `OAA maintence and content/open_items.md` (her Documents project folder, **not** this repo). Grouped Infrastructure / Data Quality / Marketing, with a "Recently closed" section kept for reference. Edit it directly when she says to add, update, or close an item.
+- **Source of truth**: `OAA maintence and content/open_items.md` (her Dropbox project folder, **not** this repo). Grouped Infrastructure / Data Quality / Marketing, with a "Recently closed" section kept for reference. Edit it directly when she says to add, update, or close an item.
 - **"Show me the dashboard" / "open the open items list"** means render it as a formatted page.
 
   ⚠ **Corrected 2026-10-03: which generator is live.** The script in use is `OAA maintence and content/build_dashboard.py` (with `_dashboard.css` beside it), run from that folder; it writes `open_items_dashboard.html`, published to **https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH**. The `build_dashboard.py` in this repo is an older, larger copy (Sep 9) and is **not** the one to edit. As of 2026-10-03 the parser also renders **indented sub-bullets and wrapped lines** under each bullet (before that they were silently dropped, which hid item 15's open tasks and item 62's blurbs), and the "Waiting on you" cards carry the same full Notes expander as the other items.
@@ -930,7 +938,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   scheduled. `render_slides.py` renders any size, so the square carousel slides and the 9:16 Story
   frames come from the same approved HTML.
   ⚠ **Moved 2026-10-03:** the Instagram mockups and rendered PNGs no longer live in this repo's
-  `templates/` and `slides/`. They are in the Documents project folder, `OAA marketing\Instagram templates\`
+  `templates/` and `slides/`. They are in the Dropbox project folder, `OAA marketing\Instagram templates\`
   and `OAA marketing\Instagram slides\` (Alexandra's request). Run `render_slides.py` from here with full paths.
   Partner ad mockups stay in `templates/`. Path map: `social_media_and_marketing.md`, "Where the Instagram files live".
   ⚠ **Changed 2026-10-09: Instagram posts are scheduled through Metricool, not Business Suite** (procedure in
@@ -1033,7 +1041,7 @@ Full list in `OAA maintence and content/open_items.md`; the dashboard renders it
 - What these mock up is designed but **not built** — see open item **59** and
   `social_media_and_marketing.md` section 6.
 
-`OAA maintence and content/` in her Documents project folder (NOT in this repo, and never commit review workbooks): `open_items.md` (the master to-do list — count it, do not trust a number written here), `Napa_Live_Music_Tracker_v2.xlsx` (has a **Sweep Learnings** tab written 2026-08-21 — read it before a Napa sweep), and the sweep review workbooks.
+`OAA maintence and content/` in her Dropbox project folder (NOT in this repo, and never commit review workbooks): `open_items.md` (the master to-do list — count it, do not trust a number written here), `Napa_Live_Music_Tracker_v2.xlsx` (has a **Sweep Learnings** tab written 2026-08-21 — read it before a Napa sweep), and the sweep review workbooks.
 
 ## Working rhythm
 

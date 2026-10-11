@@ -30,7 +30,7 @@ import json
 import os
 from datetime import date
 
-XLSX_PATH = r"C:\Users\AWalter\Documents\2. Claude-Work\PROJECTS\OAA Marin\OAA maintence and content\Marin_Swim_Lesson_Vendor_Dashboard_v4.xlsx"
+XLSX_PATH = r"C:\Users\AWalter\Dropbox\01. Out AND About Files\OAA maintence and content\Marin_Swim_Lesson_Vendor_Dashboard_v4.xlsx"
 OUT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "swim_vendors.json")
 
 # Per-vendor overrides that can't be safely auto-derived from the raw sheet text.

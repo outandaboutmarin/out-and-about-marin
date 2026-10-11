@@ -36,7 +36,7 @@ import re
 import sys
 
 ARTIFACT = "https://claude.ai/code/artifact/7c27ebfe-6674-4c8d-9b90-a0559d8e483c"
-MD = (r"C:\Users\AWalter\Documents\2. Claude-Work\PROJECTS\OAA Marin"
+MD = (r"C:\Users\AWalter\Dropbox\01. Out AND About Files"
       r"\OAA maintence and content\open_items.md")
 UPDATED = "2026-09-09"
 
