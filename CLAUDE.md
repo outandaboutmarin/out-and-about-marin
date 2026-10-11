@@ -530,17 +530,34 @@ procedure for Marin, Napa and Telluride alike. **Only the source lists differ**,
 cadence, `notes`, Spanish, duplicates and the workbook layout are written here once. **No region deviates; if a region
 seems to need a different rule, change the rule here, for everyone, with Alexandra's OK.**
 
-**Who runs what:** Alexandra runs the Marin and Napa sweeps. The **Telluride sweep is run by her partner's own Claude Code**,
-working in the shared Dropbox `Telluride` folder. **No Git (Alexandra, 2026-10-10):** at the start of every sweep her Claude
-downloads fresh copies of `CLAUDE.md`, `check_duplicates.py`, `check_docs.py`, `events_io.py`, `events.json` and `sources/*.md` from `raw.githubusercontent.com/outandaboutmarin/out-and-about-marin/main/`
-into `C:\Users\<her user>\OAA-rules` (outside Dropbox, read-only for her), so the rules and the event list are always
-current. Her only installs are the Claude app and Python (+ `openpyxl`); Python is needed for the duplicate checker,
-the lints, the iCal/API sources and the `.xlsx` workbook. Tested 2026-10-10: the download works and the checks run there. The partner reviews the workbook; Alexandra's Claude Code processes the approved file and commits.
-The partner never commits. Setup: `Dropbox\01. Out AND About Files\Telluride\PARTNER_SETUP.md`.
+**Who runs what:** Alexandra runs the Marin and Napa sweeps. The **Telluride sweep is run by her partner's own Claude Code**
+on the partner's computer, following "Telluride partner sweep" below. The partner reviews the workbook; Alexandra's
+Claude Code processes the approved file and commits. The partner never commits. Setup and her start-up prompt:
+`Dropbox\01. Out AND About Files\Telluride\PARTNER_SETUP.md`.
 
 ### Starting a sweep
 0. **Name the region** (`marin`, `napa` or `telluride`) and open `sources/<region>.md`. Run `python check_docs.py`; it must
-   pass. On the partner's machine, download the fresh copies first (see "Who runs what").
+   pass. On the partner's machine, do "Telluride partner sweep" step 1 first.
+
+### Telluride partner sweep (runs on the partner's computer)
+Her start-up prompt only downloads this file and points here, so **everything her Claude needs is in this subsection and
+the shared procedure below**. Added 2026-10-10 (Alexandra); no Git, and her only installs are the Claude app and Python.
+1. **Get the current rules and tools, every sweep, before anything else.** Download, overwriting old copies, into
+   `C:\Users\<her Windows user>\OAA-rules` (outside Dropbox), keeping the `sources` subfolder:
+   `CLAUDE.md`, `check_duplicates.py`, `check_docs.py`, `events_io.py`, `events.json`, `sources/marin.md`,
+   `sources/napa.md`, `sources/telluride.md`, from `https://raw.githubusercontent.com/outandaboutmarin/out-and-about-marin/main/`
+   with `curl -fsSL --create-dirs -o <file> <address>`. If any download fails, stop and tell her. First run only:
+   `python -m pip install openpyxl`. Then `python check_docs.py` in `OAA-rules` must say "clean".
+2. **`<repo>` in this file means her `OAA-rules` folder.** Region **telluride**; sources `OAA-rules\sources\telluride.md`;
+   window today through 7 weeks ahead; all times Mountain Time.
+3. **Run the shared procedure below in full**: every source, full pages, the escalation tiers, venue-based duplicate checks
+   against the fresh `events.json`, and the Attestation Log. **Tier 3 (real Chrome) needs the "Claude in Chrome" extension
+   installed and connected on her computer.** If it is not and a source still fails after tier 2, attest it as blocked,
+   naming the tiers tried; never skip it.
+4. **Save** the workbook to her `Telluride\Sweeps\` folder as `telluride_sweep_YYYY-MM-DD_review.xlsx`, run the completion
+   check (procedure step 5), report (step 6), and **stop**.
+5. **Never** edit `OAA-rules`, change `events.json`, commit, push or publish. She reviews and renames the file
+   `…_review_APPROVED.xlsx`; Alexandra's Claude Code processes it.
 
 ### Procedure (every region)
 1. **Load `events.json`** (via `events_io.py` — `load_events()`) so you have the current dataset to dedupe against.
@@ -584,7 +601,7 @@ The partner never commits. Setup: `Dropbox\01. Out AND About Files\Telluride\PAR
 4. **Build the review workbook** in the layout under "Review workbook format" below. The two core sheets:
    - **Sheet 1 "Attestation Log"**: one row per source in the region file (its header gives the Source count) — columns: Source | Category (Event Source / Library / Learning Bus) | URL Fetched | Method | Result | # Current Items Reviewed | Newest Item Date Seen.
    - **Sheet 2 "Weekly Sweep"**: one row per genuinely new candidate — columns: Decision (blank, for the reviewer to fill Approve/Skip) | Event Name | Date | Day | Time | Venue | Town | Description | Source URL | Notes | Type | Location Filter | Ages | Cost | Indoor/Outdoor | Cadence. Flag anything genuinely uncertain with "⚠ POSSIBLE DUPE" in Notes rather than silently including or excluding it.
-5. **Save the workbook** to the path in the region file's header (`Review workbook`) (today's date). Do not save it inside this repo, and do not commit/push it.
+5. **Save the workbook** to the path in the region file's header (`Review workbook`) (today's date). Do not save it inside this repo, and do not commit/push it. **Then run the completion check** (added 2026-10-10): `python <repo>\check_docs.py --attestation <workbook>`. It must say "complete": one Attestation Log row per source in the region file, every row with a Result, none banned. Fix the gaps (finish the source, or attest honestly why it could not be read) before reporting.
 6. **Summarize in chat**: how many sources were fully checked, how many candidates were found, any sources you couldn't complete, and where the review file is. Tell the reviewer to fill in the Decision column and let you know when it is ready for "Processing an approved sweep" below.
 7. **Then stop.** Do not touch `events.json` until the reviewer has filled in the workbook and someone asks for "Processing an approved sweep". `<repo>` above means the local copy of this repo: Alexandra's is `C:\Users\AWalter\Code\out-and-about-marin`; the partner's is her `OAA-rules` download folder.
 
@@ -672,6 +689,7 @@ a sweep commit.
 
 ### Process
 
+0. **Completion check first** (added 2026-10-10, Alexandra): `python check_docs.py --attestation <workbook>` must say "complete". If it does not, **stop**: tell Alexandra (and, for Telluride, the partner) exactly which sources are missing or carry a banned result, and write no events from that workbook unless Alexandra explicitly says to go ahead anyway.
 1. **Locate the filled-in review file** at the path in the region file's header (`Review workbook`): the most recent one, unless Alexandra points at a specific file. For Telluride, process only a file the partner has renamed to end in `_APPROVED.xlsx`.
 2. **Read the "Weekly Sweep" sheet.** For each row:
    - `Decision = Approve` → this event gets added.
@@ -700,7 +718,7 @@ a sweep commit.
 
 ### Notes
 
-- If the review file has an "Attestation Log" sheet, you don't need to do anything with it here — it's just a record of what the sweep procedure ("Weekly sweep") checked.
+- The "Attestation Log" is checked in step 0 (`check_docs.py --attestation`). Until 2026-10-10 this note said it needed no action at processing time, which meant a sweep that skipped sources could pass straight through.
 - If a row is ambiguous (e.g. Decision column has something other than Approve/Skip/blank, or required fields are missing), ask Alexandra rather than guessing at what she meant.
 
 ## Ad-hoc event requests (outside the Weekly Sweep)
@@ -920,6 +938,12 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   renames it `…_APPROVED.xlsx` after review. Only Alexandra's Claude Code processes and commits. Setup page:
   `Dropbox\01. Out AND About Files\Telluride\PARTNER_SETUP.md`. **Rule:** a region never gets its own rule; a rule that
   seems region-specific is changed in CLAUDE.md for everyone, with Alexandra's OK.
+- **Partner sweep made self-contained, and a completion check added (late 2026-10-10):** her start-up prompt is now five
+  sentences that download CLAUDE.md and point to the new subsection "Telluride partner sweep", which holds every
+  partner-specific step (downloads, `OAA-rules` as `<repo>`, the Claude in Chrome extension for tier 3, save, stop).
+  **New `check_docs.py --attestation <workbook>`** confirms one Attestation Log row per source in the region file, each with
+  a Result and none banned; it runs at the end of every sweep (procedure step 5) and before processing (step 0), for
+  every region. Self-test covers it; verified on the real Telluride (9/9) and Marin Oct 8 (48/48) workbooks.
 
 **Older "What changed" logs, the 2026-08-21 state of play and the documentation-drift notes are in `HISTORY.md`.**
 

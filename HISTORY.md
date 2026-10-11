@@ -262,3 +262,14 @@ Dropbox. Python stays: the duplicate checker, the lints, the iCal/API sources an
 `openpyxl`). Tested on Alexandra's machine the same night: all 8 downloads arrived, `check_docs.py` passed and
 `check_duplicates.py --venue` ran from the plain folder. Caveat kept on the setup page: if her Claude Code needs Git for
 its own command line on Windows, it is a one-time install and nothing else changes. Commit `f3abd07`.
+
+**Later still: a shorter partner prompt and a completion check.** Alexandra pointed out that her own prompts are five or
+six sentences and asked why the partner's was so long. It repeated half of CLAUDE.md. The partner-specific steps moved
+into a CLAUDE.md subsection ("Telluride partner sweep") and the prompt shrank to five sentences that download CLAUDE.md
+and point there. Asked whether duplicates, Chrome escalation, full-page reading and the per-source completion record
+were all covered, the check found them all in the shared procedure, plus two gaps, both fixed: tier 3 needs the Claude in
+Chrome extension on the partner's machine (now on her setup page), and **nothing verified the Attestation Log at
+processing time** (the processing notes literally said it needed no action), so a sweep that skipped sources would have
+passed straight through. `check_docs.py --attestation` now checks it at both ends. Its first run flagged "Every Marin
+item already in DB" as banned; the banned phrase was narrowed to the rule's actual wording, "recurring already in DB".
+Also caught before shipping: the first-run download needed `curl --create-dirs`, since `OAA-rules` does not exist yet.
