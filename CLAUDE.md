@@ -531,13 +531,16 @@ cadence, `notes`, Spanish, duplicates and the workbook layout are written here o
 seems to need a different rule, change the rule here, for everyone, with Alexandra's OK.**
 
 **Who runs what:** Alexandra runs the Marin and Napa sweeps. The **Telluride sweep is run by her partner's own Claude Code**,
-working in the shared Dropbox `Telluride` folder with a read-only copy of this repo (`git pull` before every sweep so the
-rules are current). The partner reviews the workbook; Alexandra's Claude Code processes the approved file and commits.
+working in the shared Dropbox `Telluride` folder. **No Git (Alexandra, 2026-10-10):** at the start of every sweep her Claude
+downloads fresh copies of `CLAUDE.md`, `check_duplicates.py`, `check_docs.py`, `events_io.py`, `events.json` and `sources/*.md` from `raw.githubusercontent.com/outandaboutmarin/out-and-about-marin/main/`
+into `C:\Users\<her user>\OAA-rules` (outside Dropbox, read-only for her), so the rules and the event list are always
+current. Her only installs are the Claude app and Python (+ `openpyxl`); Python is needed for the duplicate checker,
+the lints, the iCal/API sources and the `.xlsx` workbook. Tested 2026-10-10: the download works and the checks run there. The partner reviews the workbook; Alexandra's Claude Code processes the approved file and commits.
 The partner never commits. Setup: `Dropbox\01. Out AND About Files\Telluride\PARTNER_SETUP.md`.
 
 ### Starting a sweep
 0. **Name the region** (`marin`, `napa` or `telluride`) and open `sources/<region>.md`. Run `python check_docs.py`; it must
-   pass. If the copy of the repo is not Alexandra's own, `git pull` first.
+   pass. On the partner's machine, download the fresh copies first (see "Who runs what").
 
 ### Procedure (every region)
 1. **Load `events.json`** (via `events_io.py` — `load_events()`) so you have the current dataset to dedupe against.
@@ -583,7 +586,7 @@ The partner never commits. Setup: `Dropbox\01. Out AND About Files\Telluride\PAR
    - **Sheet 2 "Weekly Sweep"**: one row per genuinely new candidate — columns: Decision (blank, for the reviewer to fill Approve/Skip) | Event Name | Date | Day | Time | Venue | Town | Description | Source URL | Notes | Type | Location Filter | Ages | Cost | Indoor/Outdoor | Cadence. Flag anything genuinely uncertain with "⚠ POSSIBLE DUPE" in Notes rather than silently including or excluding it.
 5. **Save the workbook** to the path in the region file's header (`Review workbook`) (today's date). Do not save it inside this repo, and do not commit/push it.
 6. **Summarize in chat**: how many sources were fully checked, how many candidates were found, any sources you couldn't complete, and where the review file is. Tell the reviewer to fill in the Decision column and let you know when it is ready for "Processing an approved sweep" below.
-7. **Then stop.** Do not touch `events.json` until the reviewer has filled in the workbook and someone asks for "Processing an approved sweep". `<repo>` above means the local copy of this repo: Alexandra's is `C:\Users\AWalter\Code\out-and-about-marin`; the partner's is wherever her Claude Code cloned it.
+7. **Then stop.** Do not touch `events.json` until the reviewer has filled in the workbook and someone asks for "Processing an approved sweep". `<repo>` above means the local copy of this repo: Alexandra's is `C:\Users\AWalter\Code\out-and-about-marin`; the partner's is her `OAA-rules` download folder.
 
 ### Ground rules (every region)
 
@@ -913,7 +916,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   format that **`check_docs.py`** enforces (`--self-test` proves it catches 5 kinds of breakage). Dated stories moved to
   `HISTORY.md`. CLAUDE.md went from 180 KB to 152 KB; all 1,477 old lines were checked against the new files.
 - **Telluride sweeps move to Alexandra's partner:** her own Claude Code works in the shared Dropbox `Telluride` folder with
-  a read-only clone of this repo (outside Dropbox), saves `Telluride\Sweeps\telluride_sweep_YYYY-MM-DD_review.xlsx`, and
+  fresh downloads of the rulebook, tools and event list each sweep (no Git), saves `Telluride\Sweeps\telluride_sweep_YYYY-MM-DD_review.xlsx`, and
   renames it `…_APPROVED.xlsx` after review. Only Alexandra's Claude Code processes and commits. Setup page:
   `Dropbox\01. Out AND About Files\Telluride\PARTNER_SETUP.md`. **Rule:** a region never gets its own rule; a rule that
   seems region-specific is changed in CLAUDE.md for everyone, with Alexandra's OK.
