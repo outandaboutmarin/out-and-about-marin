@@ -22,7 +22,7 @@ Claude Code sessions for this project run with the working directory set to **`C
 
 | What | Where |
 |---|---|
-| **The repo** — `index.html`, `events.json`, this file, `scraper.py`, `swim_vendors.json`, `.claude/commands/` | `C:\Users\AWalter\Code\out-and-about-marin` — the single local clone. Reach it by **absolute path**. |
+| **The repo** — `index.html`, `events.json`, this file, `HISTORY.md`, `sources/` (one sweep source list per region), `check_docs.py`, `scraper.py`, `swim_vendors.json` | `C:\Users\AWalter\Code\out-and-about-marin` — the single local clone. Reach it by **absolute path**. |
 | **Working files** — `open_items.md`, sweep review workbooks, the Napa and swim trackers, process docs | `…\PROJECTS\OAA Marin\OAA maintence and content\` — inside the session's working directory. Never committed to the repo. |
 | Session transcripts + auto-loaded memory | `C:\Users\AWalter\.claude\projects\C--Users-AWalter-Dropbox-01--Out-AND-About-Files\` (before 2026-10-10: `C--Users-AWalter-Documents-2--Claude-Work-PROJECTS-OAA-Marin`, where the older transcripts still live) |
 
@@ -37,7 +37,7 @@ Exits 0 when clean, 1 when it finds something (so it scripts). `--self-test` ver
 Three consequences of this split. All are normal; none need fixing:
 
 - **This file does not auto-load.** Because the working directory isn't the repo, `CLAUDE.md` is not injected into context at session start. **Read it from the repo path (`C:\Users\AWalter\Code\out-and-about-marin`) as the first action in a new session.** What *does* auto-load is `memory/MEMORY.md` in the path above, which carries a pointer here.
-- **`/run-sweep` and `/process-sweep` are not available as slash commands.** They live in the repo's `.claude/commands/` and only register when the repo is the working directory. Every sweep to date has been run by **reading `C:\Users\AWalter\Code\out-and-about-marin\.claude\commands\run-sweep.md` as a file and following it** — likewise `process-sweep.md`. That is the established method, not a workaround.
+- **The sweep procedure is a section of this file, not a command file** (merged 2026-10-10 at Alexandra's request: one rulebook for every region). Read "Weekly sweep (one procedure for every region)" and "Processing an approved sweep" below; each region's sources are in `sources/<region>.md`. `.claude/commands/run-sweep.md` and `process-sweep.md` are now two-line pointers here. Dated stories behind the rules live in `HISTORY.md`.
 - **`Glob` and `Grep` have failed in at least one session** on this machine (`Executable not found in $PATH`, 2026-08-12). If they error, fall back to PowerShell `Get-ChildItem -Recurse` and `Select-String -LiteralPath` — both work fine. Don't conclude a file is missing on the strength of a failed Glob.
 
 ## Tech stack
@@ -473,6 +473,38 @@ Always follow these when adding or editing events — they exist because of spec
     acts on — a start time, a date — and neither is clearly fresher, **ask rather than pick.**
 
 
+## Regions (Marin, Napa, Telluride+)
+
+The app has three regions, chosen with the Profile **Region** toggle. Every record's region comes from its `county`
+field via `regionOf()` (see the schema). **All rules in this file apply to every region**; the only region-specific
+material is listed here and in `sources/<region>.md`.
+
+| Region | `county` | Location groups | Sources | Notes |
+|---|---|---|---|---|
+| Marin | blank | see the schema's `location_group` row | `sources/marin.md` | default for first-time visitors |
+| Napa | `Napa` | `Calistoga`, `St. Helena`, `Yountville` | `sources/napa.md` | live music; see Napa specifics below |
+| Telluride+ | `Telluride+` | `Telluride`, `Mountain Village`, `Norwood`, `Ridgway`, `Ouray`, `Montrose/Olathe`, `West End`, `Dolores`, `Virtual` | `sources/telluride.md` | all times Mountain Time; swept by the partner |
+
+### Napa specifics
+**Schema specifics for Napa events** (on top of the standard schema above):
+- `county`: always `"Napa"`.
+- `id`: Napa IDs historically started at 500, but **they are not a reserved range and never were** — they come off the same global sequence as Marin. As of 2026-08-21 the highest Napa id is **907** and the file's max id is also **907**; the Aug 21 sweep's Napa records landed at 888–907, well past any "Napa block". Do not reason about a record's county from its id. Napa IDs share the same global sequence as Marin events in practice (`next_id()` in `events_io.py` already handles this correctly by taking the max across all events) — don't hand-roll a separate Napa-only counter.
+- `type`: always `"Music and Movies"` for Napa music events (not the legacy `"Music"` value).
+- `location_group`: must exactly match the town — `"Calistoga"`, `"St. Helena"`, or `"Yountville"`.
+- `cadence`: `"One-off"` for dated events, `"Weekly"` for recurring venue nights, and **`"Monthly"` with an ordinal phrase in `notes`** for venue series that run on an nth-weekday rule. Monthly is NOT a Marin-only cadence — this doc said so until 2026-08-21 and it was wrong. Lincoln Avenue Brewery alone needs three of them: ids 905 (Jam Night, "First and third Thursdays"), 906 (Don Cameron Acoustic, "Third Friday") and 907 (Mark Shuttleworth Acoustic, "Last Wednesday"), alongside the Weekly Saturday id 530. **Rule 9a applies exactly as it does in Marin** — each record's `notes` must contain only its own ordinal words, `last` is tested first and short-circuits, and you must verify the rule parses to what you intended before committing.
+- `event_date`/`expires`: for one-offs, both must be set to the *same* `YYYY-MM-DD` — a range will make the event display on every day in between. For `Weekly` recurring venues, leave both blank.
+- `featured`: `true` only for marquee events (park-series openers, major one-offs); default `false`.
+
+### Telluride+ specifics (added 2026-10-09)
+
+Alexandra's request 2026-10-09: bring in the Telluride, CO area "similar to Napa, but a lot more events", with sourcing **standardised on the Marin process**. Libraries first; the other sources in `Telluride/Telluride_Region_Research_v2.xlsx` (markets, community calendars, arts venues, schools, towns, Lee's 18 sources) are the next phase.
+
+- **Files (Dropbox project folder, NOT the repo):** `Telluride\Telluride_Region_Research_v2.xlsx` (towns, every library, every source, attestation) and `Telluride\Telluride_library_sweep_2026-10-09_review.xlsx` (the first sweep: same three tabs as a Marin review, her decisions in it).
+- **Sandbox first.** She asked for mockups before anything is committed: candidates go to a review workbook, approved rows become records in a sandbox JSON, and a local copy of the site (demo session, writes stubbed, a "MOCKUP" ribbon) is served for her to click through. Commit only on her explicit go. The first batch went live 2026-10-09 (ids 1450–1609).
+- **Decisions (Alexandra 2026-10-09):** teen programs IN; adult programs IN as `Grown-Ups Only!` (`ages` "Adults" or "21+"); approved one-offs that repeat on a visible pattern become Weekly/Monthly records ("add the other events as recurring"), but a single date is not a pattern and a series that ends stays as one-offs; region-scoped carousel; Marin-only ads; header stays "Out AND About Marin" for now.
+- **Open items:** 65 (umbrella), 66 (Wilkinson Thursday 10:30 Storytime vs Books Alive), 67 (November dates not yet posted), 68 (Ridgway Tween Café time), 69 (Dolores Silly Stories times), 70 (Rico).
+- **Sources:** `sources/telluride.md`. The v2 event sources are listed there as "Not yet verified".
+
 ## Homepage Featured strip
 
 The horizontal card row at the top of the homepage (`#featuredWrap` / `#featuredRow`). Selection logic is `selectFeatured()` in `index.html` (~line 3981) — a client-side scoring pass over `allEvents`, not a stored list. `featured: true` on a record does **not** put it in the strip by itself; it only adds a scoring boost (`+10` in `score()`) among records that are otherwise eligible, plus one specific reserved-slot exception (below).
@@ -490,19 +522,80 @@ The horizontal card row at the top of the homepage (`#featuredWrap` / `#featured
 
 Everything else — the `BOOST`/`DEM` name-keyword lists, the reserved slots for Mill Valley/Sausalito Library one-offs (`isLibHi()`), the per-town cap of 3, the widening date window if fewer than 9 candidates are found — is unchanged.
 
-## Weekly Sweep — the core recurring exercise
+## Weekly sweep (one procedure for every region)
+
+**Restructured 2026-10-10 at Alexandra's request:** one rulebook for every region. This section is the whole sweep
+procedure for Marin, Napa and Telluride alike. **Only the source lists differ**, and they live in `sources/marin.md`,
+`sources/napa.md` and `sources/telluride.md`, all in one fixed format that `check_docs.py` enforces. Ages, holidays,
+cadence, `notes`, Spanish, duplicates and the workbook layout are written here once. **No region deviates; if a region
+seems to need a different rule, change the rule here, for everyone, with Alexandra's OK.**
+
+**Who runs what:** Alexandra runs the Marin and Napa sweeps. The **Telluride sweep is run by her partner's own Claude Code**,
+working in the shared Dropbox `Telluride` folder with a read-only copy of this repo (`git pull` before every sweep so the
+rules are current). The partner reviews the workbook; Alexandra's Claude Code processes the approved file and commits.
+The partner never commits. Setup: `Dropbox\01. Out AND About Files\Telluride\PARTNER_SETUP.md`.
+
+### Starting a sweep
+0. **Name the region** (`marin`, `napa` or `telluride`) and open `sources/<region>.md`. Run `python check_docs.py`; it must
+   pass. If the copy of the repo is not Alexandra's own, `git pull` first.
+
+### Procedure (every region)
+1. **Load `events.json`** (via `events_io.py` — `load_events()`) so you have the current dataset to dedupe against.
+2. **Go through every source in `sources/<region>.md`, in order.** For each one:
+   - Fetch the URL using the method specified — a web search snippet alone is NOT sufficient, you must fetch the actual live page/calendar and read every current/upcoming event off it. If a source is marked with a workaround (JS-rendered, robots-blocked, etc.), use that workaround — do not stop at "JS-rendered, no list."
+
+   - **WHEN A FETCH FAILS OR LOOKS EMPTY, ESCALATE THROUGH THESE THREE TIERS BEFORE REPORTING A SOURCE AS BLOCKED. Added 2026-09-03 at Alexandra's request.**
+
+     1. **WebFetch** — the default. Fine for server-rendered pages.
+     2. **The in-app preview browser** (`mcp__Claude_Browser__*`) — use for JS-rendered pages. It also lets you `fetch()` same-origin from inside the page and parse the HTML yourself, which is how all 16 MCFL pages and all 10 Belvedere-Tiburon pages get read in one pass.
+     3. **REAL CHROME** (`mcp__claude-in-chrome__*`) — the user's actual browser, with its own fingerprint and logged-in sessions. **This is the last resort and it works when tier 2 does not.**
+
+     **These are NOT the same browser, and the difference is not cosmetic.** Older wording in this file said "use the Chrome browser tools", which is ambiguous now that both exist — and on 2026-09-03 that ambiguity cost a whole source. Sources 8 and 40 were reported INCOMPLETE after tier 2 failed; the identical URLs returned full months on the first try in tier 3.
+
+     **THE FAILURE MODE THAT MATTERS: a bot-management WAF may serve a STRIPPED PAGE RATHER THAN AN ERROR.** Sausalito's Akamai WAF returned HTTP 200 with the calendar's day-number grid intact and every event row silently removed. There was no 403, no exception, nothing to catch. It reads exactly like a genuinely empty calendar. **That is far more dangerous than an outright block**, because a sweep can attest "checked, no events found" in perfect good faith and be completely wrong — which is the same class of silent under-reporting as the per-branch MCFL pages and the 5-of-14 Marin Mommies episode.
+
+     **So: an empty-looking calendar is a TRIGGER TO ESCALATE, never a result.** Before writing "no events" for any month, ask whether a venue that runs weekly storytimes plausibly has a blank month. If not, go to tier 3. Two other tells that you are being served a stripped page rather than a real one: same-origin `fetch()` from inside the page returns a JS-challenge or meta-refresh document instead of HTML, and navigation starts being refused after a handful of requests.
+
+     Only after tier 3 also fails should a source be attested as blocked — and say which tiers you tried.
+   - **Dedup by VENUE, not by name — this is mandatory, see rule 18 in `CLAUDE.md`.** For every candidate, run:
+
+     ```
+     python <repo>\check_duplicates.py --venue "<the candidate's venue>"
+     ```
+
+     Read the **whole** returned list and match on **day + time + cadence**. Do NOT dedup by event name, and do NOT treat `find_event()` as sufficient — it is a substring matcher and its own docstring says so. On 2026-08-20 name-based dedup let **nine already-existing events** through as "new" (a plural, an ampersand, a parenthesis, inserted words, a missing space). Two extra requirements that come out of the same episode: a record with `status: Inactive` is **still a duplicate** (`--venue` lists every status on purpose), and when a match comes back you must **read its `notes`** before deciding it's a different program — one of the nine was a single weekly slot with a rotating weekly theme, not a separate event.
+
+   - **Write `notes` as PUBLIC text — it renders verbatim on the site. Mandatory, see rule 19 in `CLAUDE.md`.** There is no internal field on an event. Everything you put in `notes` appears in an amber callout box on the public event detail screen, which is how 109 records ended up publishing our maintenance log — including sentences naming Alexandra, citing internal ids, and criticising named sources. `notes` may contain **only**: the ordinal recurrence phrase the parser needs, `ALERT:` / `ALERT[YYYY-MM-DD]:`, `skip: YYYY-MM-DD`, `Reopens <date>`, `UNPREDICTABLE`, and short public logistics prose ("Sign up at the children's desk the morning of the event"). **Everything else — the URL you verified against, the date you checked it, what a source got wrong, why you chose a cadence, who told you — goes in the git commit message**, which is the durable internal record and is invisible to the public. Before committing:
+
+     ```bash
+     python <repo>\check_duplicates.py --notes-lint --all
+     ```
+
+     It exits non-zero on any leak, prints the offending sentence and why it fired, and prints the public remainder that would survive. Fix every leak you introduced. (Pre-existing leaks on records you did not touch are tracked as open item 38 and need Alexandra's sign-off to batch-clean — don't fold that into a sweep commit.)
+
+   - **Never write a reminder-to-self into `notes` using a phrase the app parses.** Two live incidents on 2026-08-21, both self-inflicted while documenting the very rules they broke: the words "the THIRD Saturday" inside explanatory prose made `parseOccurrenceRule()` emit `{nths:[2,3]}` and generate a phantom occurrence that duplicated another record; and writing "add skip: 2026-09-18 here" as a to-do **immediately suppressed that date**, because `parseSkipDates()` matches anywhere in the string. `parseOccurrenceRule()` scans the entire notes field, ignores grammar, and tests `/\blast\b/` **first**, short-circuiting every other ordinal. After writing any `Monthly` record, verify the rule actually parses to what you intended before committing.
+
+   - Record: source name, URL fetched, method used, # of current items reviewed, newest item date seen, and the result (candidates found, or "none — fetched live list, N items reviewed").
+   - Do NOT report a source as done from assumption. If you could not complete a source, say so explicitly rather than silently skipping it.
+3. **If you cannot complete all sources in one session**, tell the reviewer (Alexandra; the partner for Telluride) upfront before starting, rather than silently presenting a partial sweep as complete.
+4. **Build the review workbook** in the layout under "Review workbook format" below. The two core sheets:
+   - **Sheet 1 "Attestation Log"**: one row per source in the region file (its header gives the Source count) — columns: Source | Category (Event Source / Library / Learning Bus) | URL Fetched | Method | Result | # Current Items Reviewed | Newest Item Date Seen.
+   - **Sheet 2 "Weekly Sweep"**: one row per genuinely new candidate — columns: Decision (blank, for the reviewer to fill Approve/Skip) | Event Name | Date | Day | Time | Venue | Town | Description | Source URL | Notes | Type | Location Filter | Ages | Cost | Indoor/Outdoor | Cadence. Flag anything genuinely uncertain with "⚠ POSSIBLE DUPE" in Notes rather than silently including or excluding it.
+5. **Save the workbook** to the path in the region file's header (`Review workbook`) (today's date). Do not save it inside this repo, and do not commit/push it.
+6. **Summarize in chat**: how many sources were fully checked, how many candidates were found, any sources you couldn't complete, and where the review file is. Tell the reviewer to fill in the Decision column and let you know when it is ready for "Processing an approved sweep" below.
+7. **Then stop.** Do not touch `events.json` until the reviewer has filled in the workbook and someone asks for "Processing an approved sweep". `<repo>` above means the local copy of this repo: Alexandra's is `C:\Users\AWalter\Code\out-and-about-marin`; the partner's is wherever her Claude Code cloned it.
+
+### Ground rules (every region)
 
 Alexandra runs this **on command**, in chat, not on a schedule — she says something like "run the sweep" and it happens in that session. It is the main thing this whole doc exists to support.
 
-**The two command files**: `run-sweep.md` (fetch everything, build a review file) and `process-sweep.md` (apply her Approve/Skip decisions back to `events.json`), both in the repo's `.claude/commands/`. As noted in "Where things live" above, these do **not** register as `/`-commands in a normal session — read the relevant file from its absolute repo path (`C:\Users\AWalter\Code\out-and-about-marin\.claude\commands\`) and follow it top to bottom.
-
-**Scope**: 31 distinct event sources + 16 libraries + the Learning Bus PDF = **48 total** (47 until the Town of Fairfax baby/toddler/preschool programs page was added as source #48 on 2026-10-05; 46 until the Barnes & Noble Corte Madera store calendar was added as source #47 on 2026-10-02 — it 403s headless, browser only; 45 until The Social Klub, a paying sponsor, was added as source #46 on 2026-10-01 — its events always go in as PARTNER records; 44 until the Mill Valley Briefing was added as source #45 on 2026-09-28; was 42; **this line went stale — it still said 42 after source 43 was added on 2026-09-01, and was corrected on 2026-09-02 when 44 was added**). (Numbering in `/run-sweep` is contiguous 1–45 — it previously restarted at 24 for the libraries, so "#24" named two different sources; fixed 2026-08-09. **Sources 43 and 44 are event sources but sit at the END of the list on purpose**: inserting them in sequence would renumber all sixteen libraries and the Learning Bus, and every past sweep's Attestation Log keys its rows off these numbers. The number is a stable identifier, not a running order.) Full list with fetch method lives in the commands themselves (kept there so the checklist and the fetch logic don't drift apart) — this doc just states the ground rules:
+**History note:** until 2026-10-10 the procedure lived in two command files (`run-sweep.md`, `process-sweep.md`); they were merged here so every region follows one procedure.
 
 - **"Fetch, don't snippet"**: a source only counts as checked once its actual live list/calendar page has been fetched and every current/upcoming event read off it. A search snippet is only for *locating* the fetch URL.
 - **Pre-registered weekly classes are OUT of scope (settled 2026-09-03).** Alexandra's rule, in her words: *"we don't usually include pre-registered weekly classes on this app."* The test is whether a family can simply turn up. A drop-in session stays in scope even when it charges at the door — that is why the JCC's JymBabies and Tot Pool Parties qualify. A course you enrol in for a term does not, however family-shaped it looks: the JCC's Side by Side publishes a full schedule for ages 15–30 months and is still excluded, because it states *"we cannot accommodate drop-in attendance"* and costs $352 for eleven classes. This is the same boundary source #1's standing venue-drop-in exclusion draws from the commercial side, and it applies to every source.
 - **Not every source is equally trustworthy on CADENCE, and one is known bad.** Source 44, the Novato Mothers Club community list, is hand-curated by a volunteer and is a **discovery source only**. On the day it was added (2026-09-02) it listed Books & Bubbles at Novato Library as "Every other Wednesday" — the exact error corrected in id 859 that same morning against the library's own Instagram, where the real rule is the 2nd, 4th and 5th Wednesdays. Take names, dates, venues and times from it as leads; confirm cadence at the venue before writing it to a record. It is still worth reading every sweep: it is the best Novato coverage on the list, and because it repeats programmes already in the database it doubles as a cross-check — a disagreement is a signal in one direction or the other.
 - **Three fetch tiers, and the third one is a DIFFERENT browser (added 2026-09-03).** WebFetch → the in-app preview browser (`mcp__Claude_Browser__*`) → **real Chrome (`mcp__claude-in-chrome__*`)**. Older notes said "use the Chrome browser tools", which was unambiguous when only one browser existed and is not any more; on 2026-09-03 that ambiguity made sources 8 and 40 get reported INCOMPLETE when tier 3 read them perfectly. **The important part is the failure mode: a bot-management WAF can answer HTTP 200 with a stripped page rather than an error.** Sausalito's returned the calendar's day-number grid with every event row removed — no 403, no exception, indistinguishable from a genuinely empty month. That is worse than a hard block, because a sweep can attest "no events found" in good faith and be wrong, the same silent-under-reporting class as the per-branch MCFL pages. **Treat an implausibly empty calendar as a trigger to escalate, never as a result** — a branch running weekly storytimes does not have a blank month. Other tells: same-origin `fetch()` returning a JS-challenge/meta-refresh document instead of HTML, and navigation being refused after a few requests. Escalate to real Chrome for ANY source that fails or looks suspiciously empty, not just Sausalito.
-- Several sources are JS-rendered or robots-blocked and need specific workarounds (documented in `/run-sweep`) — e.g. Sausalito's Granicus month-grid (`sausalitolibrary.org/kids/library-calendar`, paged via the "Next Month >" link), Mill Valley Library's `site:millvalleylibrary.libcal.com/event` search-around, Marin County Parks via `onetam.org/calendar` (not the JS Trumba widget), CivicEngage town calendars via `calendar.aspx?CID=NN`. Don't fall back to "JS-rendered, no list" as an acceptable result — there's a documented workaround for every source.
+- Several sources are JS-rendered or robots-blocked and need specific workarounds (documented in `sources/marin.md`) — e.g. Sausalito's Granicus month-grid (`sausalitolibrary.org/kids/library-calendar`, paged via the "Next Month >" link), Mill Valley Library's `site:millvalleylibrary.libcal.com/event` search-around, Marin County Parks via `onetam.org/calendar` (not the JS Trumba widget), CivicEngage town calendars via `calendar.aspx?CID=NN`. Don't fall back to "JS-rendered, no list" as an acceptable result — there's a documented workaround for every source.
 - **Akamai/bot-management blocks** (confirmed 2026-07 on both sausalito.gov and sausalitolibrary.org — same underlying Granicus calendar, both 403 any WebFetch/curl request regardless of headers): use the Chrome browser tools (`navigate` + `get_page_text` + `find`) instead of WebFetch — a real rendered browser session passes through fine since this is fingerprint/behavior-based blocking, not a header check. Requires the Claude in Chrome extension to be connected for that session; if it's not connected, report the source as blocked via attestation rather than retrying WebFetch (it will just 403 again).
 - **A venue's "events calendar" is not automatically the source of record for its recurring programs.** Added 2026-08-27 after the JCC miss. `marinjcc.org/events/` returned 13 items and **not one** of the JCC's six JBaby family programs; the sweep fetched it, found nothing, and reported "none new" while a brand-new fall program (MusicBabies, both sites) went unproposed. Alexandra caught it by asking. The old checklist wording — absence from that calendar is "weak evidence" — was too soft to stop it.
 
@@ -518,8 +611,94 @@ Alexandra runs this **on command**, in chat, not on a schedule — she says some
 
   **The rule that follows, and it generalises past Larkspur:** when a source is written off as empty, record **which route was checked**, not that the venue is silent. Two questions close the gap cheaply — *does this venue plausibly run programming it is not showing me?* and *is there a calendar platform (LibCal, Communico, Bibliocommons, Granicus) behind the CMS page I am reading?* This is the same instinct as the JCC rule directly above — the calendar is the wrong surface — arriving from the opposite direction: there, the right surface existed on the same site; here, it was on a different host entirely.
 
+- **A guide is not a venue (2026-09-26, from Napa).** Before adding a recurring venue night, find it on the VENUE's own channel and record the source's date. Six Napa weekly records had rested only on a June 2022 tourism guide and had to be paused.
 - **Attestation**: every sweep must show, per source, the URL actually fetched and what was found ("3 candidates: ...", or "none — fetched live list, N items reviewed"). Banned as a result: "recurring already in DB" (that's not a reason to skip — one-off guest performers/specials show up on library calendars constantly), "not reached this pass", "UNVERIFIED — didn't get to it". This exists because of repeated real misses: Sausalito (6 summer guest-performer one-offs missed), Mill Valley Library (recurring-storytime assumption masked new one-offs), San Anselmo (NorCal Bats missed via wrong search surface).
-- Review candidates go into a local Excel file (not committed to this repo) with a Decision column — Alexandra fills Approve/Skip and hands it back for `/process-sweep`. Saved to `OAA maintence and content/` in her Dropbox project folder, following the existing naming convention `daily_sweep_YYYY-MM-DD_review.xlsx`.
+- Review candidates go into a local Excel file (not committed to this repo) with a Decision column — Alexandra fills Approve/Skip and hands it back for "Processing an approved sweep". Saved to `OAA maintence and content/` in her Dropbox project folder, following the existing naming convention `daily_sweep_YYYY-MM-DD_review.xlsx`.
+
+### Review workbook format (every region)
+
+The file handed to Alexandra each sweep (named and saved as the region file's header says, never committed) now carries **three** sheets, in this order:
+
+1. **Weekly Sweep** — one row per new candidate, `Decision` column blank for her Approve/Skip. Flag genuine uncertainty with `⚠ POSSIBLE DUPE` in Notes rather than silently including or dropping it.
+2. **Questions** — anything needing her judgement, with columns: `#`, Category, Question, What I Found, My Recommendation, Affects, and a shaded **YOUR ANSWER** column. Added 2026-08-06 at her request; it works well and should be kept. Give a real recommendation in every row, not just the question.
+3. **Attestation Log** — one row per source, every source in the region file (its header gives the count).
+
+She fills `Decision` and `YOUR ANSWER` and hands it back for "Processing an approved sweep". Note she may also **append her own rows** to the Weekly Sweep sheet with extra asks (she added two on 2026-08-06 pointing at a Slide Ranch page and asking for a closer re-read of a roundup) — always read past the last candidate row.
+
+## Processing an approved sweep (every region)
+
+Apply the approved Decision rows of a review workbook to `events.json`, then commit and push. Only Alexandra's own
+Claude Code does this step (the repo at `C:\Users\AWalter\Code\out-and-about-marin`).
+
+### Before you commit — `notes` is PUBLIC (rule 19)
+
+This file is where Alexandra's Approve/Skip decisions get written into `events.json`, which
+means it is where `notes` values get authored. **`notes` renders verbatim in an amber callout
+box on the public event detail screen.** There is no internal field on an event.
+
+On 2026-08-21 a scan found **109 of 330 records** publishing maintenance commentary — sentences
+naming Alexandra, citing internal ids and filenames, and criticising named third-party sources.
+That accumulated one sweep at a time, through this file.
+
+When applying a decision, `notes` may contain **only**: the ordinal recurrence phrase the parser
+needs, `ALERT:` / `ALERT[YYYY-MM-DD]:`, `skip: YYYY-MM-DD`, `Reopens <date>`, `UNPREDICTABLE`,
+and short public logistics prose. **Everything else — the workbook row it came from, the source
+URL, the date verified, who confirmed it, why a cadence was chosen — goes in the git commit
+message.** Do not copy a review workbook's "Notes" or "Rationale" column into the record's
+`notes` field; that column is internal by nature.
+
+Required before committing:
+
+```bash
+python C:\Users\AWalter\Code\out-and-about-marin\check_duplicates.py --notes-lint --all
+```
+
+**Also run the bilingual lint before committing** (added 2026-09-03):
+
+```bash
+python C:\Users\AWalter\Code\out-and-about-marin\check_duplicates.py --bilingual-lint
+```
+
+`description_es` renders to the public exactly as `description` does. This lint catches a `description_es` that is empty, untranslated, names a town no field on the record places it in, or names a weekday that is not the record's `day`. It exists because id 41 spent an unknown period telling Spanish readers to go to **South Novato** when the event was in **Corte Madera** — see rule 20 in `CLAUDE.md`. Every event you write here has two descriptions, and this is the only check that reads the second one.
+
+It exits non-zero on any leak, prints the offending sentence and why it fired, and prints the
+public remainder that would survive. Fix every leak you introduce. Pre-existing leaks on records
+you did not touch are open item 36 and need Alexandra's sign-off — do not fold that cleanup into
+a sweep commit.
+
+
+### Process
+
+1. **Locate the filled-in review file** at the path in the region file's header (`Review workbook`): the most recent one, unless Alexandra points at a specific file. For Telluride, process only a file the partner has renamed to end in `_APPROVED.xlsx`.
+2. **Read the "Weekly Sweep" sheet.** For each row:
+   - `Decision = Approve` → this event gets added.
+   - `Decision = Skip` or blank → skip it, no action.
+3. **For each approved row, build a full event object** per the schema in `CLAUDE.md`:
+   - Assign the next `id` via `events_io.py`'s `next_id()`.
+   - Map the review row's columns to event fields (Event Name → `event_name`, Venue → `venue`, Town → `town`, Type → `type`, etc.).
+   - Write real Spanish translations for `event_name_es` and `description_es` — never leave these blank or copy the English text unchanged.
+   - Set `location_group` to an existing value from the current dataset (check live values — don't assume the old fixed list).
+   - Fill `indoor_outdoor` and `active_sedentary` even though the frontend doesn't currently read them (keep data consistent — see CLAUDE.md).
+   - For `One-off` cadence: set `event_date` and `expires`. Apply the multi-day festival rule if relevant (all entries in a multi-day series get `expires` = the last day).
+   - For `Seasonal` cadence: `season_start`/`season_end` in `MM/DD` format with slashes.
+   - Before finalizing, run `find_event()` from `events_io.py` one more time as a final dedup check — the sweep file should already be deduped, but confirm nothing slipped through.
+4. **If the workbook has a "Record Fixes" sheet, process it too** (added 2026-08-13, first used by the library audit). This sheet proposes changes to **existing** records rather than new events. Columns: `Decision` | `id` | `Branch` | `Field` | `Current Value` | `Proposed Value` | `Source URL` | `Why`. For each row where `Decision` is Approve (or any affirmative — Alexandra often writes "follow your proposal"):
+   - **Read `Current Value` and confirm it still matches the record** before changing anything. If it doesn't, the record moved since the workbook was built — stop and ask, don't overwrite.
+   - `Field = status` + a "retire" proposal → set `status` to `Inactive` and append a dated RETIRED note explaining why. **This genuinely hides the record** — `shouldShowEvent()` returns `'hide'` for `Inactive` (fixed 2026-08-13; before that Inactive records still rendered).
+   - `Field = ... / delete` → remove the record entirely. Reserve this for events the source says are CANCELED; prefer retiring otherwise, so the record survives for reference.
+   - Any other `Field` → set that field to `Proposed Value`.
+   - `id = 0` means the row is a **bulk** instruction across many records (e.g. organization normalization, batch translations), not a single record. Work out the affected set yourself and report the count.
+   - **After a cadence change, re-check rule 9.** A `Monthly` or `Bi-weekly` record needs an ordinal phrase in `notes` or it renders wrongly — `Monthly` without one disappears entirely, `Bi-weekly` without one fires on *every* matching weekday. Add the ordinal in the same edit.
+   - **Never let a "convert to one-off" instruction create a duplicate.** If another record already covers that date, retire the recurring record instead and say so — this happened with id 177, where id 827 already held the Sep 2 date.
+5. **Save** via `events_io.py`'s `save_events()` — this preserves the `{last_updated, events: [...]}` wrapper and bumps `last_updated` automatically.
+6. **Verify before reporting.** Run `python check_duplicates.py` from the repo root — it does all four dedup scans from data-quality rule 13, including the one-off-vs-recurring-occurrence collision that plain string comparison cannot see. It exits non-zero if it finds anything. Every real duplicate this project has hit was one of those four shapes, and three of them were introduced by exactly this step: adding a dated one-off on top of a recurring record that already covered the date. For any `Monthly`/`Bi-weekly` record you touched, also evaluate `parseOccurrenceRule(e.notes)` and confirm it returns exactly the intended rule; watch for stray ordinal words in prose (rule 9a).
+7. **Report a summary in chat**: how many events were added (with names), how many were skipped, what Record Fixes were applied, and any rows you couldn't confidently map (ask Alexandra rather than guessing).
+8. **Git**: this is a routine change — commit and push directly per CLAUDE.md's git workflow. Commit summary should be short and present-tense, e.g. `Add 12 events from Jul 2 sweep`. Confirm with `git status`/`git pull` first if there's any doubt about repo state.
+
+### Notes
+
+- If the review file has an "Attestation Log" sheet, you don't need to do anything with it here — it's just a record of what the sweep procedure ("Weekly sweep") checked.
+- If a row is ambiguous (e.g. Decision column has something other than Approve/Skip/blank, or required fields are missing), ask Alexandra rather than guessing at what she meant.
 
 ## Ad-hoc event requests (outside the Weekly Sweep)
 
@@ -576,63 +755,6 @@ Separate from the recurring Weekly Sweep: Alexandra sometimes hands over a curat
   **3 vs 952** and **3 vs 1183** (Belvedere-Tiburon runs several programmes for different ages in
   its Wednesday 3:30 slot — confirmed on the library's own calendar for Oct 21, 2026-09-26).
 - **When she asks to see them before posting**: draft full bilingual records matching the schema and present them as a list for her Approve/Skip — same shape as a sweep review, just for a handful of events instead of 37 sources. Don't write to `events.json` or push until she confirms, even though this isn't a schema/logic change (the kind of edit rule normally gates on) — the review-first ask itself is what gates it here.
-
-## Napa County Music — separate sweep process
-
-Covers live music in **Calistoga, St. Helena, and Yountville**, surfaced on the webapp via the 🍇 Napa County toggle on the Profile screen. This is entirely separate from the Marin Weekly Sweep above — different sources, different ID range, different cadence. Source of this section: `napa_music_process.md` (Alexandra, originally dated 2026-06-27), integrated here 2026-08-05. The full source tracker lives at `OAA maintence and content/Napa_Live_Music_Tracker_v2.xlsx` (4 tabs: Napa Live Music Tracker, Venues Reference, Weekly Sweep Log, Sources) — read it before making changes, same as `events.json`.
-
-**Schema specifics for Napa events** (on top of the standard schema above):
-- `county`: always `"Napa"`.
-- `id`: Napa IDs historically started at 500, but **they are not a reserved range and never were** — they come off the same global sequence as Marin. As of 2026-08-21 the highest Napa id is **907** and the file's max id is also **907**; the Aug 21 sweep's Napa records landed at 888–907, well past any "Napa block". Do not reason about a record's county from its id. Napa IDs share the same global sequence as Marin events in practice (`next_id()` in `events_io.py` already handles this correctly by taking the max across all events) — don't hand-roll a separate Napa-only counter.
-- `type`: always `"Music and Movies"` for Napa music events (not the legacy `"Music"` value).
-- `location_group`: must exactly match the town — `"Calistoga"`, `"St. Helena"`, or `"Yountville"`.
-- `cadence`: `"One-off"` for dated events, `"Weekly"` for recurring venue nights, and **`"Monthly"` with an ordinal phrase in `notes`** for venue series that run on an nth-weekday rule. Monthly is NOT a Marin-only cadence — this doc said so until 2026-08-21 and it was wrong. Lincoln Avenue Brewery alone needs three of them: ids 905 (Jam Night, "First and third Thursdays"), 906 (Don Cameron Acoustic, "Third Friday") and 907 (Mark Shuttleworth Acoustic, "Last Wednesday"), alongside the Weekly Saturday id 530. **Rule 9a applies exactly as it does in Marin** — each record's `notes` must contain only its own ordinal words, `last` is tested first and short-circuits, and you must verify the rule parses to what you intended before committing.
-- `event_date`/`expires`: for one-offs, both must be set to the *same* `YYYY-MM-DD` — a range will make the event display on every day in between. For `Weekly` recurring venues, leave both blank.
-- `featured`: `true` only for marquee events (park-series openers, major one-offs); default `false`.
-
-**Venues & known recurring series** (as of 2026-06-27 — reverify schedules each sweep, especially "check site"/TBA rows):
-
-*Calistoga* — Pioneer Park "Concerts in the Park" (Thu, Jun 18–Aug 20, 6:30–8:30 PM, free, visitcalistoga.com/concerts-in-the-park); Calistoga Inn & Brewery (Fri/Sat 6–9 PM, May–Oct); Buster's Southern BBQ (Sun 3–6 PM); **Lincoln Avenue Brewery / LAB — Sat 7–10 PM plus three monthly series, see ids 530 and 905–907; the live site is `lincolnavenuebrewery.com`, NOT the dead `lincolnavebrewerycalistoga.com` that sat in this checklist until 2026-08-21 and made the venue read as "down" for two sweeps**; Cami Art + Wine (Sat/Sun 3–5 PM); Hydro Bar & Grill (Sun 6–9 PM, The Tritones); Lincoln Avenue Brewery / the LAB (Sat “Lincoln Avenue Live!” 7–10 PM; Jam Night 1st & 3rd Thu; acoustic 3rd Fri and last Wed — schedule established 2026-08-21, previously recorded only as “varies”, which left id 530 unrenderable); Pacífico Restaurante Mexicano (Fri steel drums 5:30 PM + DJ 10 PM / Sat acoustic 5:30 PM); Picayune Cellars (Fri 6–8 PM); Sam's Social Club at Indian Springs (Sun 10 AM–1 PM brunch); Fleetwood at Calistoga Motor Lodge (Thu 5–7 PM, May–Oct); Girard Winery (select Saturdays only — confirmed 2026: Jul 25, Aug 29, Sep 26, 12–2 PM); **Calistoga Depot Distillery / "Depot Live"** (1458 Lincoln Ave, 707-963-6925 — Fri 6–9 PM, Sat 6–9 PM, Sun 5–8 PM, no season stated; added 2026-08-12).
-
-*St. Helena* — Lyman Park "Summer Concert Series" (Wed, Jun 17–Aug 12, 6–8 PM, free, cityofsthelena.gov/517); The Saint Napa Valley (Tue "Bluesy Tuesday" 3–9 PM / Fri 8–11 PM — **21+ only**); Farmstead at Long Meadow Ranch (Wed 4–7 PM, seasonal Jun–Sep); Merryvale Vineyards (1st & 3rd Fridays, May–Sep, 5–7 PM — **JS-rendered site, will not fetch programmatically; use the Chrome browser tools or call 877-887-7763**).
-
-*Yountville* — Veterans Memorial Park "Music in the Park" (select Sundays, 5–7 PM, free, townofyountville.com/648); Napa Valley Vine Trail Rest Stop "Music Moves You!" (one-off dates via festivalnapavalley.org); Kitchen at Priest Ranch "Thursday Night Live" (select Thursdays, Jul–Sep, 6–9 PM); RO Restaurant & Lounge (Fri 6:30–9:30 PM).
-
-**Excluded — do not add without a fresh confirmation call**: Freemark Abbey Winery (piano music only referenced in old travel guides, not on their current site — 707-302-3717) and Lucy Restaurant & Bar at Bardessono (mentioned in third-party sources only, not confirmed on lucyyountville.com or bardessono.com — 707-204-6030). Re-verify before ever adding either.
-
-**Sweep source checklist** — fetch every sweep, 8 weeks ahead of today, same "fetch don't snippet" and attestation rules as the Marin sweep:
-
-Every sweep: calistogadepot.com/distillery/events (**Calistoga Depot Distillery / Depot Live** — added 2026-08-12; recurring Fri/Sat 6–9 PM and Sun 5–8 PM are held as two Weekly records, so what this fetch is *for* is the dated performer lineup and any change to the recurring nights or the addition of a season — do not re-add the weekly nights as one-offs), visitcalistoga.com/concerts-in-the-park/, visitcalistoga.com/events-calendar/ (catch-all), cityofsthelena.gov/517/2026-St-Helena-Summer-Concerts-Series, sthelena.com/**events/** (catch-all — **use this URL, not the music-category one**. The checklist previously said `/events/category/st-helena-events/music/`, which simply **redirects to `/events/`**: the category filter does not stick, so that URL was never actually filtering to music. Confirmed 2026-08-21. It is a large list — 255 entries in Aug 2026 — paginated behind a 'Load more' button that adds ~6 at a time, so reaching a date six weeks out takes ~20 clicks in the browser; WebFetch only ever sees the first 6. Worth the effort: on the 2026-08-21 sweep this single source produced 5 of 8 candidates and independently validated Merryvale's 1st/3rd-Friday pattern when merryvale.com itself rendered empty.), townofyountville.com/648/Music-in-the-Park, thekitchenatpr.com/events/, longmeadowranch.com/farmstead-locals-night/, thesaintnapavalley.com/events, calistogainn.com/restaurant, busterssouthernbbq.com/, hydrogrillnapavalley.com/, lincolnavenuebrewery.com/ (**URL corrected 2026-08-21** — the checklist previously said `lincolnavebrewerycalistoga.com`, a DEAD domain returning HTTP 521. That wrong URL made this venue report as “blocked” for two consecutive sweeps. The real site works fine and publishes a full schedule: Saturday “Lincoln Avenue Live!” 7–10 PM, Jam Night 1st/3rd Thursdays, Don Cameron Acoustic 3rd Friday, Mark Shuttleworth Acoustic last Wednesday, plus Trivia Tuesdays), pacificomexicanrestaurant.com/, picayunecellars.com/, indianspringscalistoga.com/samssocialclub, fleetwoodcalistoga.com/, girardwinery.com/events/, rorestaurantandlounge.com/, bardessono.com/dining.htm (monitor for a Lucy music announcement — see Excluded above), visitnapavalley.com/blog/post/outdoor-concerts-in-the-napa-valley/ (season overview), **brannancenter.org/events** (added 2026-09-26: Brannan Center, 1407 3rd St, Calistoga, a performing-arts venue with concerts and the Kids Rock U music class; the listing renders fully in the browser and each event page gives the real start time and member price; sthelena.com mirrors it but shows pre-concert-talk times), **Clif Family Winery** (709 Main St, St. Helena; Wednesday street food with patio music 4-7 PM; its own site timed out and 404'd on 2026-09-26, so its sthelena.com listings are the working route), ronniesawesomelist.com/**theawesomelist** (the old /ronnies-awesome-list URL 404s since Sep 2026). **JS-rendered, needs the Chrome browser tools**: merryvale.com/events/ (rendered EMPTY on both 2026-09-06 and 2026-09-26; Merryvale posts its own Music on the Terrace dates to sthelena.com, use those).
-
-**Dead or seasonal, as of 2026-09-26 — do not spend time on them each sweep:** the Napa Valley Register community-calendar article now redirects to the news homepage (calendar gone); cityofsthelena.gov/517 and townofyountville.gov/648 (the summer park series) return 404 out of season, and the Yountville domain moved from .com to .gov (town events: townofyountville.gov/241/Events); napavintners.com/events renders blank even in the browser; festivalnapavalley.org/calendar was still showing fall 2025.
-
-**⚠ A guide is not a venue. Visit Calistoga's "hot spots" live-music guide is dated JUNE 2022**, and six weekly records (Picayune 511, Cami 529, Pacífico 531/532, Sam's 533, Hydro 510) rested on it alone. On 2026-09-26 the venues' own sites said nothing about music (Hydro: HTTP 500 for a third sweep), and Alexandra had all six set to `Temp. paused` pending a phone check (open item 38). Buster's (509) and Fleetwood (534) were already paused. **Before adding a recurring venue night, find it on the VENUE's own channel, and record the source's date.**
-
-Monthly (not every sweep): napavintners.com/events/index.asp, festivalnapavalley.org/calendar/ (filter to admission-free), bandsintown.com/c/calistoga-ca, bandsintown.com/c/yountville-ca, yountville.com/events/special-events/.
-
-**Process**: same shape as the Marin sweep — fetch every source, **dedupe by VENUE using `check_duplicates.py --venue "<venue>"` (rule 18), never by event name**, draft new candidates matching the schema, log the sweep in the Weekly Sweep Log tab of `Napa_Live_Music_Tracker_v2.xlsx`, and present the list to Alexandra for Approve/Skip before touching `events.json` or pushing anything live. Never delete a Napa event without her explicit approval.
-
-> ⚠️ **Corrected 2026-08-21.** This paragraph told sweeps to dedupe on *"name + venue + date"* until that date, which is precisely the instruction that let **nine already-existing events** through as "new" on the 2026-08-20 Marin sweep. Name-based dedup is defeated by a plural, an ampersand, a parenthesis or an inserted word. **Napa is more exposed to this than Marin, not less**, because wine-country venue names share generic tokens — Ballentine, Romeo and Markham all matched Merryvale on the single word "Vineyards" until the GENERIC token set was extended. Use `--venue`, read the whole returned list, and match on **day + time + cadence**.
-
-> ⚠️ **Also new 2026-08-21: `notes` is public (rule 19).** Napa records are as exposed as Marin ones — several currently publish sourcing commentary naming Alexandra. Run `check_duplicates.py --notes-lint --all` before committing any Napa sweep.
-
-## Telluride+ region (third dataset region, added 2026-10-09)
-
-Alexandra's request 2026-10-09: bring in the Telluride, CO area "similar to Napa, but a lot more events", with sourcing **standardised on the Marin process**. Libraries first; the other sources in `Telluride/Telluride_Region_Research_v2.xlsx` (markets, community calendars, arts venues, schools, towns, Lee's 18 sources) are the next phase.
-
-- **Files (Dropbox project folder, NOT the repo):** `Telluride\Telluride_Region_Research_v2.xlsx` (towns, every library, every source, attestation) and `Telluride\Telluride_library_sweep_2026-10-09_review.xlsx` (the first sweep: same three tabs as a Marin review, her decisions in it).
-- **Sandbox first.** She asked for mockups before anything is committed: candidates go to a review workbook, approved rows become records in a sandbox JSON, and a local copy of the site (demo session, writes stubbed, a "MOCKUP" ribbon) is served for her to click through. Commit only on her explicit go. The first batch went live 2026-10-09 (ids 1450–1609).
-- **The 9 library sources and how each is read** (all fetch with plain Python, no Chrome needed; first window Oct 10 to Nov 30):
-  1. **Wilkinson Public Library, Telluride** (LibCal). The page shows about 10 events; read the **iCal feed** `telluridelibrary.libcal.com/ical_subscribe.php?src=p&cid=19928`, which has every event. Times are **UTC**: subtract 6 h before Nov 1 and 7 h after. Open the file with `newline=''` and unfold continuation lines, or the descriptions come out cut short.
-  2. **Lone Cone Library, Norwood**: `lonecone.librarycalendar.com/events/list?page=0..8` (mixes room bookings with programs; the yoga classes are outside instructors' bookings) plus `lcld.specialdistrict.org/ongoing-programs`. The weekly update is a Canva embed and cannot be read as text.
-  3. **Ridgway Library**: `ridgwaylibrary.specialdistrict.org/calendar` and `?month=YYYY-MM` (titles only), plus each program page for times.
-  4. **Ouray Public Library**: `ouray.colibraries.org/lib-cal/` (use its own next-month link, which carries a `cid`). Monthly toddler storytime is sign-up by email.
-  5. **Montrose Regional Library**, 6. **Naturita** branch, 7. **Outreach/Bookmobile**: one WordPress events API, `montroselibrary.org/wp-json/tribe/events/v1/events?start_date=&end_date=&per_page=50&page=N`. The main branch is **closed Saturdays**.
-  8. **Dolores Public Library**: `doloreslibrary.specialdistrict.org/calendar?month=YYYY-MM` plus the monthly newsletter, whose program flyers are **images** (read them as images).
-  9. **Rico Public Library**: no web presence (open item 70, ask Lee).
-- **Decisions (Alexandra 2026-10-09):** teen programs IN; adult programs IN as `Grown-Ups Only!` (`ages` "Adults" or "21+"); approved one-offs that repeat on a visible pattern become Weekly/Monthly records ("add the other events as recurring"), but a single date is not a pattern and a series that ends stays as one-offs; region-scoped carousel; Marin-only ads; header stays "Out AND About Marin" for now.
-- **Open items:** 65 (umbrella), 66 (Wilkinson Thursday 10:30 Storytime vs Books Alive), 67 (November dates not yet posted), 68 (Ridgway Tween Café time), 69 (Dolores Silly Stories times), 70 (Rico).
-- **Not yet built:** a `run-sweep-telluride.md` checklist (proposed, awaiting her go) and the v2 event sources.
 
 ## Resources tide table (live)
 
@@ -727,123 +849,7 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
 - **There is nothing to keep in sync any more, and that is the point.** The drift this section used to warn about (item 25 stayed open on the dashboard after being closed in the markdown) is now structurally impossible, because there is only one copy of the content. **Closing an item** means: move it out of the open list in `open_items.md`, add a `- ✅ **Item NN, …**` line under "Recently closed", regenerate, and republish the Artifact. **Adding one** means writing the item into the right `## Section` with a `Status:` and `Created:` bullet. No Python edit either way.
 
   ⚠ **`--check` NO LONGER EXISTS. Do not put it in a command line — the script takes no arguments and will silently ignore it and just build.** It used to compare the markdown's open item numbers against the script's `ITEMS` list and fail on either kind of drift, and this file recorded it as "verified capable of failing". That guard went away with the two lists it compared; there is nothing left for it to check. **The lesson worth keeping from its removal:** a documented safety check is worth exactly as much as its last verification, and a rewrite can delete one without deleting the paragraph that promises it.
-- Items resolved by a **policy decision** should be encoded where the policy actually executes — e.g. item 9 (stale Megan Schoenbohm source) and item 10 (add Slide Ranch) were both written into `/run-sweep`'s source list so they enforce themselves every sweep, not just sit in a tracker.
-
-## Sweep review workbook format
-
-The file handed to Alexandra each sweep (`daily_sweep_YYYY-MM-DD_review.xlsx`, saved to `OAA maintence and content/`, never committed) now carries **three** sheets, in this order:
-
-1. **Weekly Sweep** — one row per new candidate, `Decision` column blank for her Approve/Skip. Flag genuine uncertainty with `⚠ POSSIBLE DUPE` in Notes rather than silently including or dropping it.
-2. **Questions** — anything needing her judgement, with columns: `#`, Category, Question, What I Found, My Recommendation, Affects, and a shaded **YOUR ANSWER** column. Added 2026-08-06 at her request; it works well and should be kept. Give a real recommendation in every row, not just the question.
-3. **Attestation Log** — one row per source, all 42.
-
-She fills `Decision` and `YOUR ANSWER` and hands it back for `/process-sweep`. Note she may also **append her own rows** to the Weekly Sweep sheet with extra asks (she added two on 2026-08-06 pointing at a Slide Ranch page and asking for a closer re-read of a roundup) — always read past the last candidate row.
-
-## Known documentation-drift items (found 2026-07, not yet acted on)
-
-- `location_group` values have drifted from what old docs claimed (see schema table above) — always check live values, don't hardcode a list.
-- `type` includes both legacy `Music` and current `Music and Movies` — new entries should use `Music and Movies`.
-- Napa-area events exist with no documented sweep process (see Napa note above) — flagged to Alexandra, awaiting direction.
-- **Bollywood Beats Dance Party** (Mill Valley Library, `millvalleylibrary.libcal.com/event/16544594`): WebFetch on this page reported additional dates (Jul 2/9/16/23/30) beyond the visible June 25 date, attributed to an "expandable date list." Alexandra checked the page directly and does not see those additional dates. Do not propose any Bollywood Beats date beyond the one already in the DB (id 149, June 25) unless Alexandra can independently confirm a specific new date from the source herself.
-- **Two Monthly events are currently invisible for want of an ordinal phrase (found 2026-07-29, NOT yet fixed — needs Alexandra's approval).** Both violate data-quality rule 9 and therefore render nowhere:
-  - **id 586 Corte Madera Town Center Summer Music Series** — `cadence: Monthly`, `day: Thursday`, notes say only "Next date: Aug 6, 2026." Aug 6 is a real future Thursday, so this is live user-facing loss. Cleanest fix is a dated One-off for Aug 6 rather than forcing an ordinal.
-  - ~~**id 588 Movies on the Green — Mill Valley**~~ — **RESOLVED 2026-07-29**, see the `/outdoor-movies` entry below. (My initial guess that it carried 2023 dates was wrong; they were 2017 dates.)
-  - **id 31 Belvedere-Tiburon Family Storytime** is the same failure but honestly unfixable: it is genuinely "bi-monthly on select Sundays" with no published dates. It stays invisible until the library publishes dates. Leaving it flagged `UNPREDICTABLE` is the correct state, not a bug to fix.
-- **`season_start`/`season_end` month-name format is VALID — do not "fix" it.** Nine active records (ids 71–76, 508, 509, 534) store bare month names like `"May"`/`"October"` instead of `MM/DD`. `parseSeasonDate()` in `index.html` (~line 3178) explicitly handles both forms, mapping a month name to the 1st (start) or last day (end) of that month in the viewed year. These records render correctly. Prefer `MM/DD` for new entries, but a validator flagging the month-name records as malformed is producing false positives.
-- **NEVER USE `ronniesawesomelist.com/outdoor-movies` — it serves 2017 content (proven 2026-07-29).** This single URL injected multiple bad records into the DB, all with confidently-worded notes claiming they had been verified:
-  - **id 588** was entered as "Movies on the Green — Mill Valley", Monthly/Friday/Dusk, with notes listing "Jul 7, Aug 4, Sep 8, Oct 6" — **all four are 2017 Fridays**. The real event is the City of Mill Valley's **"Movies in the Park"**, on **2nd Tuesdays** at dusk (~7 PM), Jun 2 – Oct 13 2026. Rebuilt as per-film One-off records (588 Finding Nemo Aug 11 at the **Community Center Lawn** — the only 2026 date not at Old Mill Park — plus Monsters University Sep 8 and Pirates of the Caribbean Oct 13 at Old Mill Park).
-  - **id 587** was entered as "Movies on the Green — Larkspur", Weekly/**Wednesday**/Dusk at Marin Country Mart, with a note justifying itself as "distinct from the existing Friday Movie Nights at the Mart (ID 433) — different day of week." The Wednesday was fabricated; the Mart series is Fridays 6 PM. Deleted.
-  - **Where the wrong names came from**: **Novato** genuinely calls its series "Movies on the Green" (Civic Green, 901 Sherman Ave) and "Movies at the Pocket Park." The stale page applied Novato's series name to Mill Valley and Larkspur.
-  - **ids 589, 590, 591 still carry this source** and are flagged in-record as unverified. They are probably real Novato events but their dates, times and names are all untrustworthy. Verify against novato.gov (novatofun@novato.org) before trusting. Not deleted, because the underlying events likely exist.
-- **Stale-year re-dating defeats weekday-vs-date validation — check the source's printed year, not just internal consistency.** id 450 "Movies in the Park: Luca" was stored as `2026-08-01` / `Saturday`. marinarts.org confirms the screening was **Friday, August 1 2025**. Whoever entered it kept the month and day, bumped the year, and re-derived the weekday to match 2026 — so `day` and `event_date` agreed perfectly and no consistency check could catch it. Deleted 2026-07-29. When a source omits the year, weekday alignment proves the year (see the Slide Ranch note); when a source *states* a year, read it.
-- **`marincountrymart.com/movie-night` publishes its schedule ONLY as a PNG** (`MCM_MovieNightWebSchedule_2026.png`) with no text equivalent, so WebFetch returns navigation chrome and no dates. The lineup must come from a screenshot or a secondary source. Full 2026 series read off the graphic 2026-07-29: 20 Fridays, Jun 19 – Oct 30, 6 PM under the big tent, confirming id 433's existing `06/19`–`10/30` season bounds. Correct title is **"Movie Nights at the Mart"**.
-- **Movie series are stored as per-film One-off records elsewhere in the DB** (Mill Valley Summer Movie Series ids 150/154/158/161/166/170; San Rafael Movies in the Park ids 451–454; Mill Valley Movies in the Park ids 588/788/789), because families choose by film title. id 433 (Marin Country Mart) is the one exception, deliberately left as a single Weekly record with the full lineup in its description — splitting it into 14 remaining per-film records is an open option for Alexandra, not an oversight.
-- **Creekside Unplugged (Tam Valley Cabin) has phantom calendar repeats.** `marinmommies.com` per-day pages render "Creekside Fridays" on Jul 31, Aug 14 and Aug 28 — these are NOT real events. The authoritative lineup is six dates only: Jun 19, Jul 10, Jul 24, Aug 7, Aug 21, Sep 4 (ids 304–309). Do not propose the phantom dates.
-- **Slide Ranch and touristclubsf.org publish dates with NO year.** Always confirm the year by weekday alignment before entering (e.g. "Aug 29, Saturday" is 2026; Aug 29 2025 was a Friday). Slide Ranch became a source in sweep 5 (2026-07-29) and runs Family Farm Days roughly monthly — worth converting to a recurring series if the pattern holds.
-- **Marin Mommies weekend roundup post is a REQUIRED primary source (corrected 2026-07-23).** Earlier documentation told sweeps to AVOID the "Weekend Family Fun for [dates]" blog-post URLs (over-correcting for a past stale-cache incident) and use only the per-day `/calendar/` pages. This caused real misses: the Jul 24–26 2026 roundup post listed Cricket & the Wren Circus (Sausalito), Lucky Break concert (Corte Madera), a China Camp Junior Ranger Nature Ramble, and an Inflatable Pool Obstacle Course (Novato) — none of which were on the per-day calendar pages or in the DB. The curated roundup contains editorially-selected events the raw calendar never shows. Verify the printed year on the roundup page first (the slug-cache staleness risk is real, so gate on year before trusting it). Never revert to avoiding these pages. **Scope corrected 2026-08-09** — see the two Marin Mommies entries in `/run-sweep`: source #1 is the curated roundup for the **upcoming weekend only** (the posts publish ~2 days ahead, so asking for "every weekend in the window" guaranteed 404s), and source #2 is the per-day calendar for **all 14 days**, mandatory. The two no longer overlap. Also: **Marin Mommies' day-of-week labels are unreliable** — it labelled five Slide Ranch Family Farm Days as Thursday/Friday when all five are Saturdays. Always re-derive the weekday from the date.
-
----
-
-## State of play — last updated 2026-08-21
-
-Where a new session should pick up.
-
-### What happened 2026-08-20 → 2026-08-21 (two sweeps + a public-data incident)
-
-**Marin Weekly Sweep, window Aug 21 – Oct 4.** All 42 sources fetched. 28 verified-clean candidates added as ids 863–887 (`570b50b`), plus 8 corrections, 5 of which were live-wrong records. Review file: `daily_sweep_2026-08-20_review.xlsx`.
-
-**That sweep initially proposed 9 duplicates** — a 24% false-new rate, which Alexandra caught in review and called unacceptable work product. The cause was structural, not carelessness: `find_event()` is a *substring* matcher and was the only candidate-stage tool, while `check_duplicates.py` only audits records already in the file. Nine real programs were re-proposed under slightly different wording (Friday **Night**/Nights on Main, Wiggles **and**/& Wonder, Corte Madera **Town Center** Farmers, Fairfax **Community** Farmers, Storytime in the Park **(with Riva)**, 2nd Saturdays **Family** Storytime, **Marin MOCA**/MarinMOCA, Bookworms **by Gordon Korman**, and "Encanto", which was one week's edition of id 46's rotating theme). Fixed by **rule 18** and `check_duplicates.py --venue`; those nine ids are now a regression suite inside `--self-test`. **Do not dedup by name.**
-
-**Napa sweep, window Aug 22 – Oct 4.** 24 sources. 16 events added as ids 888–903 (`1d0e200`), 4 corrections, plus Salvia (id 904, `7325b1a`) and the Lincoln Ave monthly series (ids 905–907, `cfeec4c`). Review file: `napa_sweep_2026-08-21_review.xlsx`. Logged in the Weekly Sweep Log tab of `Napa_Live_Music_Tracker_v2.xlsx`.
-
-**⚠ THE INCIDENT — internal notes were public, on 109 records.** Alexandra spotted the amber box on id 530's detail screen and asked why the public was seeing our maintenance log. `notes` renders verbatim; it always has. See **rule 19**, which is now the most important rule in this file for anyone running a sweep. `check_duplicates.py --notes-lint` was added the same day. **RESOLVED 2026-08-21 in `e451268`** — she chose the structural fix, `internal_notes` was added, and all 109 records were migrated with rendered dates provably unchanged (open items 36 and 40, both now closed). Every new record written from here must still pass the lint.
-
-**Two source corrections found by Alexandra, not by us:**
-- **Lincoln Avenue Brewery** was reported "down two sweeps." It was not. Our checklist pointed at `lincolnavebrewerycalistoga.com`, a **dead domain returning HTTP 521**; the real site is `lincolnavenuebrewery.com`. Separately id 530 had `day: "Varies"`, which matches no weekday, so the record had **never rendered since it was created**. Both fixed. **Lesson: when a venue reads as "down", verify the URL itself before recording the venue as down** — and when a record reads as present-but-invisible, check `day` is a real weekday name.
-- **Farmstead / Long Meadow Ranch** had ZERO records despite being a documented venue. Alexandra supplied `https://www.longmeadowranch.com/things-to-do/seasonal-events/`, which is the authoritative calendar and is now in the Napa checklist. It resolved a Sep 18 anomaly (a Live Fire chef dinner, not Locals Night) and surfaced Sep 23 Locals Night.
-- **`https://www.sthelena.com/events/` added as a Napa source** at Alexandra's request. Note the music-category URL redirects to `/events/` — link to `/events/` directly.
-
-**Self-inflicted parser traps hit AGAIN this stretch — all three are in the rules, and I still walked into them:**
-- **Rule 9a, twice.** Writing "the THIRD Saturday" inside a *prose* note on id 208 made `parseOccurrenceRule()` return `{nths:[2,3]}` and generate a phantom Sep 19 that duplicated id 870. The parser scans the **entire** notes string and does not care about grammar. `/\blast\b/` is tested **first** and short-circuits everything else.
-- **`parseSkipDates` prose trap.** Writing "add skip: 2026-09-18 here" as a *reminder to myself* suppressed that date immediately — the regex matches anywhere in the string, including inside a sentence about what someone should do later.
-- Both traps are the same shape as rule 19: **`notes` is not scratch space.** It is parsed by three separate mechanisms and rendered to the public. Treat every character in it as load-bearing.
-
-**A tooling blind spot worth knowing.** The COLLISION scan compared raw time strings, so `"12:30 PM – 2:00 PM"` never matched `"12:30 PM"` and real double-bookings were invisible. Fixed with `_start_time()` normalization, which immediately surfaced two live Larkspur collisions (resolved in `bf69112`, `6c039eb`). If a scan reports clean, confirm it is capable of reporting dirty — `--self-test` is 33 checks for exactly this reason.
-
-**Still open going into the next sweep:**
-- ~~109 records with leaking notes~~ — **done 2026-08-21**, see rule 19 and `e451268`.
-- **Oct 4 LMR Jazz Orchestra** at Farmstead — **declined 2026-08-21.** Not added, and not to be re-proposed; it stays on Long Meadow Ranch's page, so treat it as deliberately declined (open item 38).
-- **Hydro Bar & Grill (Calistoga)** — genuinely down, HTTP 500, verified. Passed this month; retry next Napa sweep.
-- Item 26 (San Anselmo Imagination Park address, 535 vs 541 conflict), item 30 (Sep 1 seasonal flip verification), item 32 (first real scraper findings notification, ~Aug 27 with the Corte Madera reopening).
-
-
-**Health**: `events.json` is 305 events / max id 850, all committed and pushed. Live site is current — GitHub Pages deploys straight off `main`, so **committing `events.json` IS publishing**; there is no build step and no staging. Verify locally before pushing, not after. **One known user-facing problem**: 39 *non-library* expired one-offs are still rendering (see open item 1 below) — found during the library audit but left alone, since batch deletions need Alexandra's sign-off and they're outside that audit's scope.
-
-**Last sweep: 2026-08-13**, window Aug 14 – Sep 30. All 25 event sources fetched; libraries (26–41) and the Learning Bus skipped at Alexandra's direction, since the 16-branch library audit had just covered them. 22 candidates proposed, 13 approved, 12 added (ids 839–850) — one approval was conditional and turned out to be a duplicate of an existing Seasonal record. Review file: `daily_sweep_2026-08-13_review.xlsx`. **Four standing scope rules came out of it and are now written into `/run-sweep`** (venue drop-ins, Sweetwater filter, stewardship work-parties, Marin Magazine slug reuse) — those questions should not need re-asking.
-
-**COMPLETE — open item 28, the library audit.** All 16 branches read for Aug 13 – Sep 20 across **124 library-hosted records** (not just the 94 typed `Library`), reviewed by Alexandra, and applied. Deliverable was `OAA maintence and content/library_audit_2026-08-13_review.xlsx` (four sheets, including the new **Record Fixes** type); working notes and the per-branch live inventory are in `library_audit_2026-08-12_progress.md`. `/process-sweep` now knows how to read a Record Fixes sheet.
-
-Shipped across `0870cab`, `a018e5e`, `3ee9645`: 21 expired one-offs deleted; **four duplicate pairs removed** (766/799, 767/800, 768/801, 34/627 — every one rendering the same event twice publicly, see rule 13); ids 42/43's conflicting `Reopens` dates fixed (**second occurrence of the rule 9b bug after id 8 — it recurs, check every sweep**); 2 CANCELED events deleted; 9 recurring records retired; Novato's real resume dates applied (Sep 1/Sep 2, not the Aug 19 we'd assumed); organizations normalized 28 → 17 values; 32 Spanish names written.
-
-**A real frontend bug surfaced while verifying**: `shouldShowEvent()` had no `Inactive` branch, so retiring a record did nothing and 11 records rendered that shouldn't have — one of them Inactive since 2026-07-29. Fixed in `3ee9645`; see the `status` row in the schema table.
-
-**Two near-misses worth remembering**, both caught by the guards rather than by reading: an approved "new" candidate (In Harmony) was already held as id 36 — missed at audit time because its `organization` is the performer and its `venue` is a park, so it sat outside a library-scoped record set. And a note written *about* id 36 contained the word "second", which `parseOccurrenceRule()` lifted out of plain prose and turned into `{nths:[2,3]}` — rule 9a, walked into while documenting rule 9a.
-
-**The biggest single finding is methodological**: three "known-flaky" library sources were never flaky — they were being fetched the wrong way, and every past sweep using those routes was under-reporting without any attestation revealing it. All three are now fixed in `/run-sweep` (sources 26, 37, 39, plus the MCFL block). One prescribed instruction was actively harmful and has been deleted — see the Mill Valley note in source 37.
-
-**Closed this stretch** (open items 2, 3, 4, 6, 9, 10, 11, 13, 14, 16, 18, 25): the swim directory table redesign; the Napa music process integration + its first sweep; the expired-event purge (730 → 335 records, One-off only, recurring templates preserved); several fabricated/stale event records deleted or corrected.
-
-**Open items still live** — full list in `OAA maintence and content/open_items.md`:
-- **1** — **daily.yml scraper FIXED 2026-08-13** (`3c98d25`), after ~110 green runs that committed nothing since May 8. Proven on manual run #127: first bot commit in 98 days, 48 expired one-offs purged. A second, older bug was found and fixed the same day (`15c3418`): the seasonal flip had **never** worked for any record — see rule 16. **Still to verify:** the 6 AM *scheduled* run (the manual one skips the weekly-sweep steps, which are gated on the cron trigger), and the Sep 1 seasonal flips, which will be the first time that code path has ever run successfully. Notification design is deliberately deferred until the scheduled run shows how noisy the library hash check really is.
-- **5** — verify two Bolinas + one Inverness library programs. **Sharpened 2026-08-12**: Bolinas is absent from MCFL's bibliocommons calendar system entirely, so ids 175/176 cannot be verified online at all — the phone check is the only route. Inverness shows **no** children's programming in the Aug 13 – Sep 20 window, so id 284 is likely defunct.
-- **7** — **effectively answered 2026-08-12, pending write-up.** Novato has reopened and *is* running children's programming, but later than assumed: Stories & Rhyme Wiggle Time resumes **Sep 1** (not Aug 19), Música y Movimiento **Sep 2**. ids 11/12 still sit `Temp. closed` and id 486 (the temporary Pioneer Park listing) should retire. Queued in the audit workbook.
-- **8** — Corte Madera reopening **Sep 3 confirmed** from the branch page 2026-08-12 ("closed July 6 through September 2. Reopening September 3, 2026"). Still re-check after that date for new fall programming. **Two specific things to do on that visit** (Alexandra's ask, 2026-08-13): (a) **id 43** ("Read to a Dog with Stinson") is `Monthly` with **no ordinal phrase**, so per rule 9 it renders nowhere — the rule was deliberately not invented, because the branch was closed and had no live instance to infer from. Once reopened it will publish real dates; capture the actual monthly rule then. (b) Confirm id 8 (Family Storytime) actually resumes — it did **not** appear on the live calendar for Sep 3–20 as of 2026-08-13.
-- **12** — **on hold**: Learning Bus still running but with no firm timeline; the program told Alexandra 2026-08-12 to expect a resumption sometime in September. Nothing to do until a September PDF posts at marinlibrary.org/learning-bus/.
-- **17, 19–24, 26–28** — preschool/daycare DB, Rebecca's feedback (her mobile card report is now shipped), marketing items, the San Anselmo address fix scheduled for late August, the analytics work (item 27, mostly shipped), the library audit (28), and **24 (users-table lockdown)**, which is a real security item: the site still talks to Supabase `users` with the public key, so phone numbers and hashed PINs are readable by anyone holding it. Full checklist in `table_lockdown_checklist.md`. Deferred, not started.
-
-**Known-flaky sweep sources** (all failed or partially failed on the 2026-08-06 sweep and will likely recur):
-- Mill Valley Community Center — CivicEngage grid returns nothing for the window; needs browser paging.
-- Belvedere-Tiburon Library — `/events` renders only ~6 of 25 pages.
-- Mill Valley Library libcal — renders empty, unresolved across several sweeps.
-- SRPL monthly newsletter PDF — served corrupted/binary; the `/events/` HTML is the reliable surface instead.
-- Sausalito city + library need the **Chrome browser** workaround (Akamai). This works reliably — use it, don't retry WebFetch.
-- **SOLVED 2026-08-12 — the 10 MCFL branches.** They were never "flaky" so much as fetched the wrong way: the per-branch `/locations/XX/` pages only list the next few days, so any multi-week sweep window using them alone was structurally under-reporting and no attestation would reveal it. Use `marinlibrary.bibliocommons.com/v2/events?startDate=…&endDate=…` paged with `&page=N` — one surface, every branch, and the **only** place CANCELED events are marked. Written up as a shortcut block at the top of `/run-sweep`'s Libraries section. Keep `/locations/XX/` only for a branch's own closure notice.
-- **SOLVED 2026-08-13 — Belvedere-Tiburon, Mill Valley, SRPL, Sausalito.** Same story as MCFL: not flaky, just fetched wrong. Belvedere-Tiburon accepts a date range as URL params (`/events?start=&end=`), cutting 25 pages to 7 with plain WebFetch. Mill Valley's libcal renders fully in the **browser** at `…/calendar?…&t=m`. SRPL needs the month-nav URL for anything past the current month. Sausalito's month URL is directly addressable (`/-curm-M/-cury-YYYY`). All four rewritten in `/run-sweep` sources 26, 37, 39, 40.
-- **⚠ REMOVED 2026-08-13 — the Mill Valley `site:…libcal.com` search-around.** This was a *prescribed* step in `/run-sweep` and it returned **2023-dated events mixed with current ones**. Do not reinstate it under any circumstance; it is the same stale-content failure class that produced the fabricated Novato movie records.
-- **Larkspur — CORRECTED, this entry was wrong.** It said "fully UNREACHABLE" and it is not. The site **moved**: use `larkspur.ca.gov/296/Larkspur-Library` and `/718/Programs`, plus `calendar.aspx?...&CID=24` (CID 24 is the library — read it off the "Select a Calendar" list, do not guess). `/run-sweep` source 41 has the working routes and has been right about this since 2026-08-13, while this list stayed stale — **when the two disagree, trust `/run-sweep`, it is closer to the fetch.** The real limitation is narrower: the library posts essentially nothing to its city calendar, so its ~6 records cannot be verified against dated listings and the phone (415-927-5005) is the only route for that. Its Programs page does confirm id 15 ("Story Time takes place on Fridays at 10 AM").
-
-**Deliberately declined, do not silently redo**: Alexandra passed on backfilling the Marin Mommies 14-day gap from the 2026-08-06 sweep (Aug 10–19 went uncovered because only 5 out-of-range days were fetched), and on re-paging Belvedere-Tiburon. Both are known and accepted, not oversights to fix unprompted.
-
-**Declined 2026-08-28, and these three WILL come back round — do not re-propose them without asking:**
-- **Sweetwater's Moonalice Sunday Matinee.** This is the one to watch, because it is a *standing monthly slot* — Nov 8 and Dec 6 are already on Sweetwater's calendar and more will follow. It passes the source #5 filter cleanly (free/matinee, All Ages, 1 pm), and id 704 holds the Sep 6 edition, so it looks approvable every single sweep. It is not. Ask before proposing another one.
-- **"Movies at Marin City Library" screenings.** The Sep 17 edition (*Michael*, the Michael Jackson biopic) was declined because MCFL categorises it for **Adults**. The series itself is ongoing, so the rule to apply is: check the audience MCFL assigns each film rather than assuming a library film night is a family film night.
-- **Musical Yoga with JAMaROO Kids at Larkspur Library.** Appears on Marin Mommies but on none of Larkspur's own pages, and its one listed date had already passed by the time it was reviewed. Not added, and the offer to phone the branch (415-927-5005) to find out whether it is a real series was declined too.
-
-The shape worth noticing: all three cleared the mechanical filters and were still wrong for the site. **A candidate passing the source's own filter is not the same as belonging here**, and that judgement is hers, not the checklist's.
-
-**Working rhythm**: she runs the sweep on command, usually Wednesday or Thursday. Ad-hoc event batches arrive between sweeps (Instagram screenshots, links, plain text) — research each, dedup, and present for review before writing. She reviews in Excel and hands it back.
-
----
+- Items resolved by a **policy decision** should be encoded where the policy actually executes — e.g. item 9 (stale Megan Schoenbohm source) and item 10 (add Slide Ranch) were both written into the sweep procedure ("Weekly sweep")'s source list so they enforce themselves every sweep, not just sit in a tracker.
 
 # ⇢ START HERE — state of play for a new session (2026-10-10)
 
@@ -872,8 +878,8 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 1. **Instagram, week of Oct 15 (item 15).** Thu Oct 15 5 PM, Sat Oct 17 7 AM, Sun Oct 18 5 PM, Template B, in **Metricool**.
    Start from `social_media_and_marketing.md`, "STATE OF PLAY", then section 3e. **Sat Oct 10 auto-publish CONFIRMED live**
    by Alexandra; once Sun Oct 11 is confirmed too, delete repo `ig/week_of_oct8/` (`ig/README.md` lists staged folders).
-2. **Next Marin weekly sweep** (`run-sweep.md`). The 2026-10-08 sweep covered Oct 9 to Nov 30.
-3. **Telluride (items 65 to 70):** a `run-sweep-telluride.md` checklist (proposed, awaiting her go), the v2 event sources,
+2. **Next Marin weekly sweep** ("Weekly sweep" section, `sources/marin.md`). The 2026-10-08 sweep covered Oct 9 to Nov 30.
+3. **Telluride (items 65 to 70):** the partner's Claude Code setup (`Telluride\PARTNER_SETUP.md`), the v2 event sources,
    the Wilkinson Thursday slot clash, November dates, the Ridgway café time, Silly Stories times, Rico (ask Lee).
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
@@ -900,103 +906,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 - **Claude sidebar:** all OAA sessions are filed under a custom group "Out AND About" (new sessions must be filed by hand).
 - **Metricool:** the first auto-publish (Sat Oct 10, 7 AM) went out as planned.
 
-## What changed late 2026-10-09: the Telluride+ region went live
-
-- **160 Telluride-region library events** (ids 1450–1609) from 8 libraries, reviewed by Alexandra in a workbook and a sandbox mockup first. See "Telluride+ region" above.
-- **`index.html`:** third Region button (⛰️ Telluride); `regionOf()` drives the feed, Location menu, Featured carousel, search and Coming Up; ads are Marin-only; "· MT" in the Telluride week bar; the Sep 1 Napa-music carousel rule is retired.
-- `check_duplicates.py` shows 5 COLLISION findings at Wilkinson and Montrose that are different programs in different rooms; each carries a dated CHECKED note in `internal_notes`.
-
-## What changed 2026-10-06 to 2026-10-09, in one pass
-
-- **Weekly sweep (Oct 9 to Nov 30) applied:** 44 events added (ids 1384–1427) plus record fixes; holidays rely on the
-  app's holiday banner (no skips); confirmed closures get a dated `ALERT[YYYY-MM-DD]:`, and one record can now carry
-  several dated ALERTs (rule 17).
-- **Many events added from screenshots and links**, with duplicates retired (Makers Market 1217 → kept 470; the weekly
-  Cinelounge movie 736 retired). MVFF family screenings added.
-- **FIT4MOM Marin went live:** Featured ad `fit4mom-marin` in `ads.json` and Stroller Strides partner events
-  1445–1449 (ages "Prenatal & postpartum moms; 0-5 yrs"). The ad renderer gained optional fields (tile_icon, logo_wide,
-  hours_label, blank address, contact, code-less offers, cta, facebook) and partner events can carry a `logo`.
-- **Tides shown +1.07 ft** (`TIDE_ADJUST_FT`) with a bilingual note under the table.
-- **Kid-Friendly Dining table:** 4 restaurants added (see the Resources section above).
-- **Instagram moved to Metricool** (brand 7335950). Approved PNGs are staged in this repo under `ig/` so Metricool can
-  fetch them by URL. Three series are scheduled: weekly event posts, "Weekly Wednesday Hot Tip!" (item 61, to Dec 2)
-  and "Tag Out and About" Tuesdays 2nd/4th (item 62, to Dec 8).
-- **Partner ad mockups** in `templates/` (Social Klub, FIT4MOM, GG Mahjong, plus `templates/assets/` logos) are now
-  committed.
-
-## What changed 2026-09-10, in one pass
-
-- **Weekly sweep run, applied and pushed — all 44 sources checked**, which took two sessions: the
-  first covered 21 and honestly attested the other 18 as not reached rather than presenting a
-  partial sweep as complete. **41 events added**, plus 3 from Instagram flyers and 3 existing
-  records enriched from organisers' own flyers instead of being duplicated.
-- **The sweep's biggest finding was a hole in the checklist, not in the data.** `/run-sweep` source
-  41 said Larkspur Library "posts essentially NOTHING", verified three ways in August. True of its
-  **city** calendar; false of the venue — the library runs a **LibCal on a different host** that no
-  sweep had ever fetched, found only because Marin Mommies linked one of its event pages. One pass
-  produced four candidates, a cancelled storytime and the id 15 defect behind new rule 24. The
-  route is now in `run-sweep.md` source 41, and the general rule — **"this venue publishes nothing"
-  is a claim about a ROUTE, not about a venue** — is in the Weekly Sweep section above.
-- **`check_duplicates.py` caught a collision introduced in the same batch that created it** (ids
-  1108/1111, Inverness). Worth noting because three of this project's four historic duplicate pairs
-  were introduced by exactly this step — adding a dated one-off on top of a recurring record. Run
-  it after every batch write, not just before a commit.
-- **Rules 24 and 25 added.** 24: one slot shared by two named programmes, where a `Weekly` record
-  over-advertises and **no scan fires unless the other programme is also a record**. 25: what to do
-  when an organisation's own two channels contradict each other, which is not the same problem as
-  an unreliable third party.
-- **Two documentation corrections, and they were the same error in two places.** `CLAUDE.md` and
-  `open_items.md` both described `build_dashboard.py`'s old curated-`ITEMS` design and a `--check`
-  guard that no longer exists — the script now parses `open_items.md` directly and takes no
-  arguments, so a command line carrying `--check` looks like it verified something and did not.
-  CLAUDE.md was fixed first and `open_items.md` was missed, then caught the same day. **One fact
-  written down twice will be corrected once.**
-- **The dashboard's own header was stale all day**, reading 2026-09-09 while the file was edited
-  four times. Nothing computes that date; it is prose in `open_items.md` and the page prints it
-  verbatim. Alexandra caught it on the published page. That file now carries an explicit
-  update-it-in-the-same-edit warning.
-
-## What changed 2026-09-07 to 2026-09-09, in one pass
-
-- **Instagram went from designed to running.** Both Business Suite composers — feed carousel and
-  Story — were driven end to end for real, and five of the six assets for the week of Sep 11 are
-  scheduled. `render_slides.py` renders any size, so the square carousel slides and the 9:16 Story
-  frames come from the same approved HTML.
-  ⚠ **Moved 2026-10-03:** the Instagram mockups and rendered PNGs no longer live in this repo's
-  `templates/` and `slides/`. They are in the Dropbox project folder, `OAA marketing\Instagram templates\`
-  and `OAA marketing\Instagram slides\` (Alexandra's request). Run `render_slides.py` from here with full paths.
-  Partner ad mockups stay in `templates/`. Path map: `social_media_and_marketing.md`, "Where the Instagram files live".
-  ⚠ **Changed 2026-10-09: Instagram posts are scheduled through Metricool, not Business Suite** (procedure in
-  `social_media_and_marketing.md` section 3e). Metricool fetches images by public URL, so approved PNGs are staged in this
-  repo under `ig/<folder>/` and served from outandaboutmarin.com/ig/; `ig/README.md` lists each folder and when to delete it.
-- **⚠ "We're having trouble completing your request" CAN MEAN IT WORKED.** Two of the three
-  carousels showed that error on a hung spinner and **both had scheduled successfully**. Retrying
-  would have double-posted. **On any error or hang from a Business Suite composer, check the
-  Planner before touching anything.**
-- **A stale event was published for a day.** Id 788, a Mill Valley movie night, was live and
-  cancelled; it now carries an `ALERT[2026-09-08]:` banner. Auditing its source found a **2017
-  article still being scraped as current** — `/outdoor-movies` on Ronnie's Awesome List, now
-  flagged in `run-sweep.md` source 11. Id 789 was retired in the same pass.
-- **Rules 21, 22 and 23 added.** 21: correcting `time` is not the whole job, because `description`
-  repeats the hours and nothing checks they agree. 22: `cost: "Free"` must mean free to a family
-  who walks up. 23: **never write a file in place** — temp file, verify the round-trip, back up,
-  then `os.replace`. Rule 23 exists because `open_items.md` was truncated to zero bytes on
-  2026-09-07 and only recovered from another session's transcript log.
-- **The duplicate scans now skip retired one-offs** (item 45), which they never had, though they
-  had always skipped retired *recurring* records. 87 → 92 self-tests.
-- **`build_dashboard.py` is a real file in the repo.** It had been described in CLAUDE.md as a
-  scratchpad script for weeks; when it was finally looked for it **did not exist**, and every
-  "show me the dashboard" had been a hand-rebuild. It had a `--check` guard, tested in both drift
-  directions before being trusted. **That guard is gone as of 2026-09-10** — the script now parses
-  `open_items.md` directly, so there are no longer two copies for it to compare.
-
-## What changed since 2026-08-21, in one pass
-
-- **The `notes` leak is fixed properly.** `internal_notes` exists, is never rendered and never parsed, and all 158 leaking records across two waves were migrated with rendered dates provably unchanged. See rule 19 — including **wave 2**, which existed because the first lint tested `_KEEP` before `_INTERNAL` and so could not see a leak fused to a control pattern.
-- **The 2026-08-27 sweep is applied**: 32 events added, 6 record fixes, and a live duplicate (ids 310/854, Concerts in the Plaza) removed.
-- **`Fitness` is in use.** It had been fully wired in `index.html` with zero records for months. The hikes now carry it, and it was added to `elig()` AND `score()` — see the type row in the schema table for why both were needed.
-- **Napa music is out of the Featured carousel**, and the carousel deliberately ignores the county toggle — see the Featured strip section, that is a recorded decision, not a bug.
-- **A type-vocabulary check now runs with every `check_duplicates.py`**, after id 493 sat live with `type: "Music"` — unfilterable, unstyled, and ineligible for the strip, raising nothing anywhere.
+**Older "What changed" logs, the 2026-08-21 state of play and the documentation-drift notes are in `HISTORY.md`.**
 
 ## The pattern worth carrying into the next session
 
