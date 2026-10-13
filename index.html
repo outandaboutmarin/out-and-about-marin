@@ -4255,7 +4255,7 @@ function selectFeatured(){
   var BOOST=['festival','fair','parade','pride','mountain play','juneteenth','western weekend','father'];
   var DEM=['fundraiser','garage sale','popsicle','rummage','yard sale'];
   function pd(x){if(!x)return null;var p=x.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
-  function elig(e){var n=e.event_name||'';if(regionOf(e)!==activeCounty)return false;if(n.indexOf('Learning Bus')>=0)return false;if(e.type==='Farmers Market')return false;
+  function elig(e){var n=e.event_name||'';if(regionOf(e)!==activeCounty)return false;if(shouldShowEvent(e)==='hide')return false;/* 2026-10-13: the strip never checked status, so retired (Inactive) records such as id 789 still featured */if(n.indexOf('Learning Bus')>=0)return false;if(e.type==='Farmers Market')return false;
     // PINNED records bypass the cadence rule entirely and are held at the front
     // of the strip. Added 2026-09-03 for Dolly Parton's Imagination Library, which
     // is a standing sign-up programme rather than a dated event, so it has no
@@ -5999,7 +5999,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-13.1';
+const APP_BUILD = '2026-10-13.2';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
