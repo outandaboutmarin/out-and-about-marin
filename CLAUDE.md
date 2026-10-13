@@ -884,7 +884,7 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
   ⚠ **`--check` NO LONGER EXISTS. Do not put it in a command line — the script takes no arguments and will silently ignore it and just build.** It used to compare the markdown's open item numbers against the script's `ITEMS` list and fail on either kind of drift, and this file recorded it as "verified capable of failing". That guard went away with the two lists it compared; there is nothing left for it to check. **The lesson worth keeping from its removal:** a documented safety check is worth exactly as much as its last verification, and a rewrite can delete one without deleting the paragraph that promises it.
 - Items resolved by a **policy decision** should be encoded where the policy actually executes — e.g. item 9 (stale Megan Schoenbohm source) and item 10 (add Slide Ranch) were both written into the sweep procedure ("Weekly sweep")'s source list so they enforce themselves every sweep, not just sit in a tracker.
 
-# ⇢ START HERE — state of play for a new session (2026-10-11)
+# ⇢ START HERE — state of play for a new session (2026-10-12)
 
 Read this first, then the sections above as needed.
 
@@ -918,6 +918,23 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
 6. **~2026-10-17 (Alexandra, item 71):** delete the two `(MOVED…)` folders left by the Dropbox move, then empty the Recycle Bin.
+
+## What changed 2026-10-12, in one pass
+
+- **9 events added from screenshots and a link** (ids 1615–1623, commits `2e04846`, `3dc40b9`): Lair of the Dragon Queen
+  haunted house (Stinson Beach, Oct 31), Move Better, Live Better (Mill Valley Downtown Plaza, Oct 15), Free estate planning
+  talk / Numbered with the Saints (Church of Our Saviour, Nov 1, Grown-Ups Only!), Novato Mothers Club family hike (Nov 7,
+  meeting place unknown: item 58zl), Walk: Mom Life on the Move Walk (Dr. Insomniac's, Nov 14), Blood Drive at the Bay Model
+  (Nov 19, Grown-Ups Only!), and three Our Sisters Keeper December events in Marin City (wreath making Dec 14, pajama sip &
+  paint brunch Dec 16, Christmas Eve toy drive; website = their Upcoming Events page, as Alexandra asked).
+- **Not added because already covered:** Sausalito Art & Harbor Days Oct 24 (id 97, 4th Saturday) and the Marin Hiking Moms
+  hike Nov 14 (id 255, 2nd Saturday). **Held:** Our Sisters Keeper's Dec 30 movie day (no time; public access unclear).
+- **Undated organiser page:** Our Sisters Keeper lists dates with no year; held until Alexandra confirmed 2026 (the
+  stale-year rule). Assumptions to verify are in each record's `internal_notes` (Stinson Beach Community Center address,
+  the blood drive's sign-up site).
+- **Retitled at Alexandra's request (`a6e6f41`):** "Walk: Mom Life on the Move Walk" and "Free estate planning talk /
+  Numbered with the Saints" (cost now "Free (lunch included)" to match).
+- Health: `events.json` 640 events, max id 1623; checks clean apart from the documented findings.
 
 ## What changed 2026-10-11, in one pass
 
