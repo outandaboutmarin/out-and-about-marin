@@ -7095,7 +7095,7 @@
       "season_end": "",
       "event_date": "",
       "expires": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "description": "Kids eat free on Tuesdays from 4 PM to close at World Famous Hotboys, the Oakland hot-chicken spot, at its Novato location only.",
       "description_es": "Los niños comen gratis los martes desde las 4 PM hasta el cierre en World Famous Hotboys, el local de pollo picante de Oakland, solo en su sucursal de Novato.",
@@ -7103,7 +7103,7 @@
       "website": "https://worldfamoushotboys.com/",
       "notes": "Tuesdays 4 PM to close. Novato location only.",
       "location_group": "Novato",
-      "internal_notes": "2026-10-05: updated from marinmommies.com/kids-eat-free-marin, sent by Alexandra 2026-10-05 ('only show Amici's, Asian Box, Finnegan's and Hotboys'): Tuesdays 4-10 PM, Novato only. Address corrected from 1535 S Novato Blvd to 5800 Nave Dr Suite D, per worldfamoushotboys.com/locations (read in full); Sun-Thu close is 10 PM.",
+      "internal_notes": "2026-10-05: updated from marinmommies.com/kids-eat-free-marin, sent by Alexandra 2026-10-05 ('only show Amici's, Asian Box, Finnegan's and Hotboys'): Tuesdays 4-10 PM, Novato only. Address corrected from 1535 S Novato Blvd to 5800 Nave Dr Suite D, per worldfamoushotboys.com/locations (read in full); Sun-Thu close is 10 PM. RETIRED 2026-10-13 (Alexandra): weekly kids-eat-free listings removed from the event feed; the deal stays on the Resources Kid-Friendly Dining table (starred row).",
       "id": 1118
     },
     {
@@ -7126,7 +7126,7 @@
       "season_end": "",
       "event_date": "",
       "expires": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "description": "Kids 12 and under eat free all day on Sundays, from 10 AM, at Finnegan's Marin in Old Town Novato.",
       "description_es": "Los niños de 12 años o menos comen gratis todo el domingo, desde las 10 AM, en Finnegan's Marin, en el centro histórico de Novato.",
@@ -7134,7 +7134,7 @@
       "website": "https://www.finnegansmarin.com/about/",
       "notes": "All day Sunday from 10 AM. Kids 12 and under.",
       "location_group": "Novato",
-      "internal_notes": "2026-10-05: updated from marinmommies.com/kids-eat-free-marin, sent by Alexandra 2026-10-05 ('only show Amici's, Asian Box, Finnegan's and Hotboys') ('free dining for kids 12 and under all day on Sundays starting at 10 am'); finnegansmarin.com/about says 'Kids Eat Free All Day Sunday'. Time was wrongly 5 PM.",
+      "internal_notes": "2026-10-05: updated from marinmommies.com/kids-eat-free-marin, sent by Alexandra 2026-10-05 ('only show Amici's, Asian Box, Finnegan's and Hotboys') ('free dining for kids 12 and under all day on Sundays starting at 10 am'); finnegansmarin.com/about says 'Kids Eat Free All Day Sunday'. Time was wrongly 5 PM. RETIRED 2026-10-13 (Alexandra): weekly kids-eat-free listings removed from the event feed; the deal stays on the Resources Kid-Friendly Dining table (starred row).",
       "id": 1119
     },
     {
@@ -11894,7 +11894,7 @@
     {
       "season_start": "",
       "season_end": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "event_date": "",
       "expires": "",
@@ -11919,13 +11919,13 @@
       "time_of_day": "Morning",
       "description": "Kids eat free at Asian Box in Town Center Corte Madera all day Sunday: one free kids box with every regular box. A limited-time offer.",
       "description_es": "Los niños comen gratis en Asian Box de Town Center Corte Madera todo el domingo: una caja infantil gratis con cada caja regular. Oferta por tiempo limitado.",
-      "internal_notes": "Added 2026-10-05 from an @asianbox ad reposted in a @marin_mommies Instagram story Alexandra sent, location-tagged Town Center Corte Madera: 'Kids eat free, all day Sunday and Wednesdays after 5pm'. Fine print: 'Enjoy one free kids box for every regular box purchase. Valid Wednesdays after 5pm and all day Sunday at participating locations, for a limited time only.' Asian Box is listed in shoptowncenter.com's directory (no unit number published) but not yet on asianbox.com/locations. Cost spelled out rather than 'Free' (rule 22). LIMITED TIME with no end date: retire both records (this and its twin) when the offer ends. 2026-10-05: unit number (147 Corte Madera Town Center) and 'kids 12 and under' from marinmommies.com/kids-eat-free-marin, sent by Alexandra 2026-10-05 ('only show Amici's, Asian Box, Finnegan's and Hotboys').",
+      "internal_notes": "Added 2026-10-05 from an @asianbox ad reposted in a @marin_mommies Instagram story Alexandra sent, location-tagged Town Center Corte Madera: 'Kids eat free, all day Sunday and Wednesdays after 5pm'. Fine print: 'Enjoy one free kids box for every regular box purchase. Valid Wednesdays after 5pm and all day Sunday at participating locations, for a limited time only.' Asian Box is listed in shoptowncenter.com's directory (no unit number published) but not yet on asianbox.com/locations. Cost spelled out rather than 'Free' (rule 22). LIMITED TIME with no end date: retire both records (this and its twin) when the offer ends. 2026-10-05: unit number (147 Corte Madera Town Center) and 'kids 12 and under' from marinmommies.com/kids-eat-free-marin, sent by Alexandra 2026-10-05 ('only show Amici's, Asian Box, Finnegan's and Hotboys'). RETIRED 2026-10-13 (Alexandra): weekly kids-eat-free listings removed from the event feed; the deal stays on the Resources Kid-Friendly Dining table (starred row).",
       "id": 1356
     },
     {
       "season_start": "",
       "season_end": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "event_date": "",
       "expires": "",
@@ -11950,7 +11950,7 @@
       "time_of_day": "Evening",
       "description": "Kids eat free at Asian Box in Town Center Corte Madera on Wednesdays after 5 PM: one free kids box with every regular box. A limited-time offer.",
       "description_es": "Los niños comen gratis en Asian Box de Town Center Corte Madera los miércoles después de las 5 PM: una caja infantil gratis con cada caja regular. Oferta por tiempo limitado.",
-      "internal_notes": "Added 2026-10-05 from an @asianbox ad reposted in a @marin_mommies Instagram story Alexandra sent, location-tagged Town Center Corte Madera: 'Kids eat free, all day Sunday and Wednesdays after 5pm'. Fine print: 'Enjoy one free kids box for every regular box purchase. Valid Wednesdays after 5pm and all day Sunday at participating locations, for a limited time only.' Asian Box is listed in shoptowncenter.com's directory (no unit number published) but not yet on asianbox.com/locations. Cost spelled out rather than 'Free' (rule 22). LIMITED TIME with no end date: retire both records (this and its twin) when the offer ends. 2026-10-05: unit number (147 Corte Madera Town Center) and 'kids 12 and under' from marinmommies.com/kids-eat-free-marin, sent by Alexandra 2026-10-05 ('only show Amici's, Asian Box, Finnegan's and Hotboys').",
+      "internal_notes": "Added 2026-10-05 from an @asianbox ad reposted in a @marin_mommies Instagram story Alexandra sent, location-tagged Town Center Corte Madera: 'Kids eat free, all day Sunday and Wednesdays after 5pm'. Fine print: 'Enjoy one free kids box for every regular box purchase. Valid Wednesdays after 5pm and all day Sunday at participating locations, for a limited time only.' Asian Box is listed in shoptowncenter.com's directory (no unit number published) but not yet on asianbox.com/locations. Cost spelled out rather than 'Free' (rule 22). LIMITED TIME with no end date: retire both records (this and its twin) when the offer ends. 2026-10-05: unit number (147 Corte Madera Town Center) and 'kids 12 and under' from marinmommies.com/kids-eat-free-marin, sent by Alexandra 2026-10-05 ('only show Amici's, Asian Box, Finnegan's and Hotboys'). RETIRED 2026-10-13 (Alexandra): weekly kids-eat-free listings removed from the event feed; the deal stays on the Resources Kid-Friendly Dining table (starred row).",
       "id": 1357
     },
     {
@@ -12297,7 +12297,7 @@
     {
       "season_start": "",
       "season_end": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "event_date": "",
       "expires": "",
@@ -12322,7 +12322,7 @@
       "registration": "Not required",
       "website": "https://www.amicis.com/specials",
       "notes": "Tuesdays 5 PM to close, with each adult meal. Not on holidays. Phone (415) 455-9777.",
-      "internal_notes": "Added 2026-10-05 from marinmommies.com/kids-eat-free-marin, sent by Alexandra 2026-10-05 ('only show Amici's, Asian Box, Finnegan's and Hotboys'). Confirmed on amicis.com/specials (read in full): 'TUESDAY KIDS EAT FREE ...w/ purchase of each adult meal (5 pm - close)'. Holiday exclusion and phone from the Marin Mommies list. Toast Novato (also on that list) deliberately not added: Alexandra excluded it, and its offer ran only to May 31, 2026.",
+      "internal_notes": "Added 2026-10-05 from marinmommies.com/kids-eat-free-marin, sent by Alexandra 2026-10-05 ('only show Amici's, Asian Box, Finnegan's and Hotboys'). Confirmed on amicis.com/specials (read in full): 'TUESDAY KIDS EAT FREE ...w/ purchase of each adult meal (5 pm - close)'. Holiday exclusion and phone from the Marin Mommies list. Toast Novato (also on that list) deliberately not added: Alexandra excluded it, and its offer ran only to May 31, 2026. RETIRED 2026-10-13 (Alexandra): weekly kids-eat-free listings removed from the event feed; the deal stays on the Resources Kid-Friendly Dining table (starred row).",
       "id": 1369
     },
     {
