@@ -9825,14 +9825,14 @@
       "season_start": "",
       "season_end": "",
       "status": "Active",
-      "featured": false,
+      "featured": true,
       "cadence": "One-off",
       "id": 1270,
       "organization": "Southern Marin Mothers Club (SMMC)",
       "venue": "Strawberry Recreation Center",
       "event_name": "SMMC's 2026 Preschool Fair",
       "event_name_es": "Feria de preescolares 2026 de SMMC",
-      "type": "Grown-Ups Only!",
+      "type": "Community Event",
       "day": "Wednesday",
       "time": "7:30 PM – 9:00 PM",
       "time_of_day": "Evening",
@@ -9850,7 +9850,7 @@
       "registration": "Required: register at southernmarinmoms.com",
       "website": "https://www.southernmarinmoms.com",
       "notes": "Questions: preschoolfair@southernmarinmoms.com",
-      "internal_notes": "Added 2026-09-29 from screenshots of @smmcfriends' Instagram post Alexandra sent: Wednesday Oct 14th, 7:30-9pm, Strawberry Recreation Center, 'Register now! southernmarinmoms.com', parent registration fee $10/SMMC member, $15/non-member (caption cut off after that line; anything further unseen). 'Designed for adults, though babies in arms or carriers are welcome' is why the type is Grown-Ups Only!. Address is the Strawberry Recreation District's, as on id 90."
+      "internal_notes": "Added 2026-09-29 from screenshots of @smmcfriends' Instagram post Alexandra sent: Wednesday Oct 14th, 7:30-9pm, Strawberry Recreation Center, 'Register now! southernmarinmoms.com', parent registration fee $10/SMMC member, $15/non-member (caption cut off after that line; anything further unseen). 'Designed for adults, though babies in arms or carriers are welcome' is why the type is Grown-Ups Only!. Address is the Strawberry Recreation District's, as on id 90. 2026-10-13 (Alexandra): put in the Featured carousel. Type changed Grown-Ups Only! -> Community Event (Grown-Ups Only! is deliberately never featured) and featured=true for the score boost."
     },
     {
       "season_start": "",
