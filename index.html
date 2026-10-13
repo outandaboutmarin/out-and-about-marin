@@ -4247,6 +4247,9 @@ var FEAT_ICONS={
 function featIcon(e){var p=FEAT_ICONS[(e&&e.type)]||FEAT_ICONS._default;return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>';}
 function featEmoji(e){var n=(e.event_name||'').toLowerCase();var map=[['pride','\U0001F308'],['juneteenth','\u270A'],['parade','\U0001F3C7'],['western weekend','\U0001F920'],['mountain play','\U0001F3AD'],['theatre','\U0001F3AD'],['fair','\U0001F3A1'],['fourth of july','\U0001F386'],['4th of july','\U0001F386'],['july 4','\U0001F386'],['brits','\U0001F697'],['car show','\U0001F697'],['plein air','\U0001F3A8'],['art','\U0001F3A8'],['birds','\U0001F426'],['nature','\U0001F33F'],['bbq','\U0001F354'],['movie','\U0001F3AC'],['film','\U0001F3AC'],['jazz','\U0001F3B7'],['concert','\U0001F3A4'],['music','\U0001F3B5'],['festival','\U0001F3AA'],['storytime','\U0001F4D6'],['camp','\u26FA'],['swim','\U0001F3CA'],['cooking','\U0001F373']];for(var i=0;i<map.length;i++){if(n.indexOf(map[i][0])>=0)return map[i][1];}return {Festival:'\U0001F3AA','Music and Movies':'\U0001F3B5','Community Event':'\U0001F389','Kids Programs':'\U0001F9F8',Library:'\U0001F4DA'}[e.type]||'\u2B50';}
 function featDateStr(d){return d.toLocaleDateString(currentLang==='es'?'es-MX':'en-US',{weekday:'short',month:'short',day:'numeric'});}
+// Number of cards in the Featured strip (was 9 until 2026-10-13; Alexandra asked for 12). Sponsor ads and the
+// Community Resources card take slots from this total; events fill the rest.
+var FEAT_SLOTS=12;
 function selectFeatured(){
   var WD={Sunday:0,Monday:1,Tuesday:2,Wednesday:3,Thursday:4,Friday:5,Saturday:6};
   var BOOST=['festival','fair','parade','pride','mountain play','juneteenth','western weekend','father'];
@@ -4289,11 +4292,11 @@ function selectFeatured(){
     for(var i=0;i<lib.length&&reserved.length<nPins+2;i++){if(reserved.indexOf(lib[i])<0)reserved.push(lib[i]);}
     var ws=c.filter(function(x){var e=x.e;return e.featured===true&&e.cadence==='Monthly'&&e.type==='Kids Programs';});
     for(var i=0;i<ws.length&&reserved.length<nPins+4;i++){if(reserved.indexOf(ws[i])<0)reserved.push(ws[i]);}
-    reserved.forEach(function(it){if(out.length<9)tryAdd(it,true);});
-    for(var i=0;i<c.length&&out.length<9;i++)tryAdd(c[i],false);
+    reserved.forEach(function(it){if(out.length<FEAT_SLOTS)tryAdd(it,true);});
+    for(var i=0;i<c.length&&out.length<FEAT_SLOTS;i++)tryAdd(c[i],false);
     return out;
   }
-  var sel=pick(6),ext=0;while(sel.length<9&&ext<8){ext++;sel=pick(6+7*ext);}return sel;}
+  var sel=pick(6),ext=0;while(sel.length<FEAT_SLOTS&&ext<8){ext++;sel=pick(6+7*ext);}return sel;}
 function scrollFeatured(dir){var row=document.getElementById('featuredRow');if(!row)return;var dx=dir*320;if(typeof row.scrollBy==='function'){row.scrollBy({left:dx,behavior:'smooth'});}else{row.scrollLeft+=dx;}setTimeout(updateFeatArrows,360);}
 function updateFeatArrows(){var row=document.getElementById('featuredRow');var L=document.getElementById('featArrowL'),Rg=document.getElementById('featArrowR');if(!row||!L||!Rg)return;var max=row.scrollWidth-row.clientWidth-2;L.classList.toggle('show',row.scrollLeft>4);Rg.classList.toggle('show',max>2&&row.scrollLeft<max);}
 window.addEventListener('resize',function(){if(typeof updateFeatArrows==='function')updateFeatArrows();});
@@ -4362,9 +4365,27 @@ function adEsc(t) { return String(t).replace(/[&<>"']/g, function (c) { return {
 function withAds(sel) {
   var ads = activeCounty !== 'marin' ? [] : (activeAds || []).slice(0, 2);
   if (!ads.length) return sel;
-  var out = sel.slice(0, Math.max(0, 9 - ads.length));
+  var out = sel.slice(0, Math.max(0, FEAT_SLOTS - ads.length));
   ads.forEach(function (a, i) { out.splice(Math.min(1 + i, out.length), 0, { ad: a }); });
   return out;
+}
+// "Community Resources!" card (Alexandra 2026-10-13): one slot in the Marin strip that opens the Resources tab at the
+// top. It takes the last event slot, so the strip stays at FEAT_SLOTS cards, and it rotates like every other card.
+function withResourcesCard(sel) {
+  if (activeCounty !== 'marin') return sel;
+  var out = sel.slice(0, Math.max(0, FEAT_SLOTS - 1));
+  out.splice(Math.min(3, out.length), 0, { res: true });
+  return out;
+}
+function resTileHTML() {
+  var es = currentLang === 'es';
+  return '<div class="feat-card" onclick="openResourcesTop()"><div class="feat-tile"><div class="ft-top"><span class="ft-icon">🧭</span><div class="ft-kicker">' + (es ? 'Recursos' : 'Resources') + '</div></div><div class="ft-name">' + (es ? '¡Recursos Comunitarios!' : 'Community Resources!') + '</div><div class="ft-meta">' + (es ? 'Mareas, restaurantes, natación y más' : 'Tides, dining, swim lessons &amp; more') + '</div></div></div>';
+}
+function openResourcesTop() {
+  showScreen('resources');
+  var rs = document.getElementById('resourcesScreen');
+  if (rs) { rs.scrollTop = 0; Array.prototype.forEach.call(rs.querySelectorAll('*'), function (el) { if (el.scrollTop) el.scrollTop = 0; }); }
+  window.scrollTo(0, 0);
 }
 function adTileHTML(a) {
   var style = '--ad-color:' + adEsc(a.color || '#AACDCF') + ';--ad-ink:' + adEsc(a.color_ink || '#3E6E72');
@@ -4518,8 +4539,9 @@ function renderFeatured(){
   if(!sel.length){wrap.style.display='none';return;}
   wrap.style.display='block';
   sel=withAds(sel);
+  sel=withResourcesCard(sel);
   sel=rotateFeatured(sel);
-  row.innerHTML=sel.map(function(o,i){if(o.ad)return adTileHTML(o.ad);var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
+  row.innerHTML=sel.map(function(o,i){if(o.res)return resTileHTML();if(o.ad)return adTileHTML(o.ad);var e=o.e;var name=currentLang==='es'?(e.event_name_es||e.event_name):e.event_name;
     return '<div class="feat-card" onclick="openDetail('+e.id+')"><div class="feat-tile"><div class="ft-top"><span class="ft-icon">'+featIcon(e)+'</span><div class="ft-kicker">'+featKicker(e)+'</div></div><div class="ft-name">'+name+'</div><div class="ft-meta">'+featMeta(o)+'</div></div></div>';
   }).join('');
   row.onscroll=updateFeatArrows;
@@ -5977,7 +5999,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-10.1';
+const APP_BUILD = '2026-10-13.1';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
