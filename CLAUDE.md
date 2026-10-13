@@ -808,6 +808,9 @@ string carries a `data-es` Spanish translation.
   page that shows the deal.
 - "Why go" = one or two plain sentences (food, what makes it work for kids, any kids-eat-free deal), with a matching
   `data-es` Spanish version. No em dashes.
+- **Kids-eat-free deals live ONLY on this table, never as event listings** (Alexandra 2026-10-13: the five weekly
+  "Kids Eat Free at …" records, ids 1118, 1119, 1356, 1357, 1369, were retired). Do not add a restaurant deal to
+  `events.json`, even if a sweep source lists it as a recurring event; add or update its row here instead.
 - **Asterisk = a kids-eat-free deal** (Alexandra 2026-10-10): every restaurant with one gets `*` right after its name link
   (`</a>*</td>`), explained by the bilingual footnote under the table. Add or remove the star whenever a deal
   starts or ends. Starred as of 2026-10-10: Asian Box, Finnegan's Marin, World Famous Hotboys, Amici's.
@@ -884,7 +887,7 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
   ⚠ **`--check` NO LONGER EXISTS. Do not put it in a command line — the script takes no arguments and will silently ignore it and just build.** It used to compare the markdown's open item numbers against the script's `ITEMS` list and fail on either kind of drift, and this file recorded it as "verified capable of failing". That guard went away with the two lists it compared; there is nothing left for it to check. **The lesson worth keeping from its removal:** a documented safety check is worth exactly as much as its last verification, and a rewrite can delete one without deleting the paragraph that promises it.
 - Items resolved by a **policy decision** should be encoded where the policy actually executes — e.g. item 9 (stale Megan Schoenbohm source) and item 10 (add Slide Ranch) were both written into the sweep procedure ("Weekly sweep")'s source list so they enforce themselves every sweep, not just sit in a tracker.
 
-# ⇢ START HERE — state of play for a new session (2026-10-12)
+# ⇢ START HERE — state of play for a new session (2026-10-13)
 
 Read this first, then the sections above as needed.
 
@@ -918,6 +921,12 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
 6. **~2026-10-17 (Alexandra, item 71):** delete the two `(MOVED…)` folders left by the Dropbox move, then empty the Recycle Bin.
+
+## What changed 2026-10-13, in one pass
+
+- **Kids Eat Free listings removed from the event feed** (`4362c54`): ids 1118 (Hotboys), 1119 (Finnegan's),
+  1356/1357 (Asian Box), 1369 (Amici's) set Inactive. The deals stay on the Resources dining table (starred rows);
+  rule added to the dining section so a sweep does not re-add them.
 
 ## What changed 2026-10-12, in one pass
 
