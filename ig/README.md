@@ -4,6 +4,7 @@ Temporary: delete each folder after its posts have published. Not linked from th
 
 Current folders and when to delete them:
 - week_of_oct8/    weekly event posts; after Sun Oct 11
+- week_of_oct15/   weekly event posts (Template A); after Sun Oct 18
 - hot_tips_v2/     Weekly Wednesday Hot Tips 1-8; after Wed Dec 2
 - tag_oaa_blurb2/  "Tag Out and About" Tuesdays, Blurb 2 (Oct 27); after Tue Dec 8
 - tag_oaa_posts/   "Tag Out and About" Tuesdays (Oct 13, Nov 10, Nov 24, Dec 8); after Tue Dec 8
