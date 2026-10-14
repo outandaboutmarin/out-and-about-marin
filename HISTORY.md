@@ -289,3 +289,29 @@ read every feed directly on 2026-10-09). Fixes kept for Claude Code: download re
 message, neutral command wording, a "use the prompt as written, in Claude Code" note on the setup page, and a new
 every-region rule that feeds must be read raw and in full, with unreadable ones attested INCOMPLETE rather than
 skipped or passed off as checked. The test was still worth it: the raw-feed rule closes a gap that applied to Marin too.
+
+## 2026-10-14: Marin weekly sweep (Oct 14 - Dec 1)
+
+Alexandra asked for the sweep as "Thursday 8/27"; the system date was Wednesday Oct 14, and the Marin Mommies roundup
+(posted Oct 14 for Oct 16-18) confirmed it, so the window was today plus seven weeks and the date went to the top of the
+Questions tab. She confirmed it. All 48 sources were read in full; the attestation check passed 48/48.
+
+**What the sweep found:** 29 candidates and 15 questions. She approved 26 rows (27 records once dated series were split),
+skipped six, and answered every question "follow your recommendation" except three: the Nicasio movie night and the Elf
+Hunt went to the open items list to watch, and the Social Klub free play sponsored by the Yes on Measure X campaign was
+kept, to be highlighted on Instagram. Committed as `8f4ba49`.
+
+**Lessons, each now in `sources/marin.md`:**
+- **A month grid can be incomplete without being blocked.** Sausalito's revize calendar showed "+2 more" on busy days,
+  so its page text silently dropped events; the list view (`view=list`) prints them all. Same failure class as the
+  stripped Akamai page, with a different cause.
+- **Raw feeds exist for two more sources:** Marin Humane's WordPress events API, and MCFL's `gateway.bibliocommons.com`
+  JSON (594 events in six pages, with cancellations and audiences as fields). Both make the raw-feed rule easy to meet.
+- **The in-app browser was refused on Barnes & Noble**; real Chrome read it. The store calendar no longer shows per-day
+  counts, so each day was opened in turn. It also found the LEGO build's real time (5 PM, not 7 PM).
+- **Third-party listings were wrong twice in one sweep:** Marin Mommies listed a Monday Graveyard Stroll (the Parks
+  page shows only Sunday, now wait-listed) and put the Hauke pop-up storytime on Thursdays. Checking the organiser
+  caught both, which is the rule working.
+- **Venues stop programmes without saying so:** the Village's Acoustic Weekends, Larkspur's Games morning, Mahjong at
+  the Mart and one Slide Ranch farm day had simply vanished from their own pages, and were retired on that basis.
+

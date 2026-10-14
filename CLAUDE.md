@@ -83,7 +83,7 @@ File is a JSON object, **not** a flat array:
 ```
 Always load/save through the pattern in `scraper.py` (`load_existing_events()` / `save_events()` — reuse `events_io.py`, see below) rather than hand-editing JSON text. The file has Spanish-accented characters — always read/write with `encoding="utf-8"` or you'll corrupt them (confirmed failure mode: default Windows `cp1252` encoding mangles é/í/ñ etc.).
 
-As of 2026-10-09 (evening): **670 events, max ID 1609** (160 Telluride+ records, ids 1450–1609, added that day). Earlier on 2026-10-09: **510 events, max ID 1449.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 507 events / max 1436 on 2026-10-08; 464 events / max 1383 on 2026-10-06; 450 events / max 1369 on 2026-10-05; 446 events / max 1354 on 2026-10-04; 466 events / max 1350 on 2026-10-02; 406 events / max 1097 on 2026-09-09; 330 events / max 907 on 2026-08-21; 505 events / max 565 on 2026-07-02; 366 on 2026-08-09; 341 after the library audit; 353 after the Aug 13 sweep. The drop to 305 on 2026-08-14 was the **first automated purge in 98 days** — 48 expired one-offs cleared by the newly-repaired `daily.yml`. Expiry is automatic again; it should no longer need purging by hand. See State of play.)
+As of 2026-10-14: **664 events, max ID 1650** (27 added from the Oct 14 sweep, ids 1624–1650). As of 2026-10-09 (evening): **670 events, max ID 1609** (160 Telluride+ records, ids 1450–1609, added that day). Earlier on 2026-10-09: **510 events, max ID 1449.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 507 events / max 1436 on 2026-10-08; 464 events / max 1383 on 2026-10-06; 450 events / max 1369 on 2026-10-05; 446 events / max 1354 on 2026-10-04; 466 events / max 1350 on 2026-10-02; 406 events / max 1097 on 2026-09-09; 330 events / max 907 on 2026-08-21; 505 events / max 565 on 2026-07-02; 366 on 2026-08-09; 341 after the library audit; 353 after the Aug 13 sweep. The drop to 305 on 2026-08-14 was the **first automated purge in 98 days** — 48 expired one-offs cleared by the newly-repaired `daily.yml`. Expiry is automatic again; it should no longer need purging by hand. See State of play.)
 
 **Fields on every event** (confirmed against actual `index.html` usage, not just assumed from old docs):
 
@@ -890,11 +890,11 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
   ⚠ **`--check` NO LONGER EXISTS. Do not put it in a command line — the script takes no arguments and will silently ignore it and just build.** It used to compare the markdown's open item numbers against the script's `ITEMS` list and fail on either kind of drift, and this file recorded it as "verified capable of failing". That guard went away with the two lists it compared; there is nothing left for it to check. **The lesson worth keeping from its removal:** a documented safety check is worth exactly as much as its last verification, and a rewrite can delete one without deleting the paragraph that promises it.
 - Items resolved by a **policy decision** should be encoded where the policy actually executes — e.g. item 9 (stale Megan Schoenbohm source) and item 10 (add Slide Ranch) were both written into the sweep procedure ("Weekly sweep")'s source list so they enforce themselves every sweep, not just sit in a tracker.
 
-# ⇢ START HERE — state of play for a new session (2026-10-13)
+# ⇢ START HERE — state of play for a new session (2026-10-14)
 
 Read this first, then the sections above as needed.
 
-**Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
+**Health 2026-10-14** (after the Oct 14 sweep): `events.json` is **664 events, max id 1650**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all known (1156/1158 and the 5 Telluride room collisions). **Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
 max id 1449**, all committed and pushed, level with `origin/main`.
 `check_duplicates.py --self-test` is **91/91**; `--notes-lint --all` and `--bilingual-lint` are
 clean; the duplicate scans show only the known, legitimate finding: the Pavilion Play Group's two
@@ -905,7 +905,7 @@ rather than trusting this sentence**; a hard-coded count in prose goes stale sil
 line has been wrong before.) GitHub Pages deploys off `main`, so **committing `events.json` IS
 publishing** — there is no staging.
 
-**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `3779b45`). The old scratch and `.bak`
+**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `8f4ba49`, the Oct 14 sweep; `4ce56da` staged the week of Oct 15 Instagram slides). The old scratch and `.bak`
 files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and working files MOVED on 2026-10-10**: repo at
 `C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
 record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
@@ -917,13 +917,33 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 1. **Instagram, week of Oct 15 (item 15).** Thu Oct 15 5 PM, Sat Oct 17 7 AM, Sun Oct 18 5 PM, Template B, in **Metricool**.
    Start from `social_media_and_marketing.md`, "STATE OF PLAY", then section 3e. **Sat Oct 10 auto-publish CONFIRMED live**
    by Alexandra; once Sun Oct 11 is confirmed too, delete repo `ig/week_of_oct8/` (`ig/README.md` lists staged folders).
-2. **Next Marin weekly sweep** ("Weekly sweep" section, `sources/marin.md`). The 2026-10-08 sweep covered Oct 9 to Nov 30.
+2. **Next Marin weekly sweep** ("Weekly sweep" section, `sources/marin.md`). The 2026-10-14 sweep covered Oct 14 to Dec 1 (processed and committed the same day).
 3. **Telluride (items 65 to 70, 72):** Alexandra shares the Dropbox `Telluride` folder with her partner, who sets up her
    Claude Code (`Telluride\PARTNER_SETUP.md`) and runs the first partner sweep; then the v2 event sources,
    the Wilkinson Thursday slot clash, November dates, the Ridgway café time, Silly Stories times, Rico (ask Lee).
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
 6. **~2026-10-17 (Alexandra, item 71):** delete the two `(MOVED…)` folders left by the Dropbox move, then empty the Recycle Bin.
+
+## What changed 2026-10-14, in one pass
+
+- **Marin weekly sweep, Oct 14 - Dec 1** (workbook `daily_sweep_2026-10-14_review.xlsx`, attestation 48/48). Alexandra's
+  decisions applied in `8f4ba49`: **27 events added** (ids 1624–1650: Marin Girls Chorus, Indigenous Storytelling x2, South
+  Novato Ingrid Dec 23/30, Belvedere-Tiburon crafts / Sewing Bee / THE HANGOUT x4, Larkspur Chess Club x3, San Rafael extra
+  Sing-Along and Books Beyond Borders, San Anselmo Read to a Dog Nov 4 and Seed Fair, Summit Sips hike, San Rafael Day of
+  the Dead, Bolinas Día de los Muertos, Veterans Day program, Pink Halloween Tea, JCC Shabbat Shmooze (monthly) and
+  Festival of Lights, Social Klub free play, Mill Valley Panel to Panel). **Record fixes:** 980 D&D Fairfax made Monthly
+  (3rd Wed); 1156/1158 playgroup no-class skips; 829 retired, 830 retitled Thankful Bellies; 1124 wait-list note; 1419 time
+  5 PM; 951 time 6-7:30 PM; 474/475, 707, 129 retired (no longer listed); Dec cancellation ALERTs on 6 and 7.
+- **Fetch routes learned, now written into `sources/marin.md`:** Sausalito city and library calendars must be read in
+  **list view** (the month grid hides events behind "+2 more"); Marin Humane has a raw JSON events feed; MCFL's
+  `gateway.bibliocommons.com` API is the raw route for all ten branches; Barnes & Noble needs real Chrome and a
+  click on each day; FIT4MOM's schedule is a Glofox frame; Mill Valley's calendar IDs changed again (source 7).
+- **Marin Mommies proved mostly a cross-check this week:** the roundup and all 14 days gave one new event; nearly
+  everything else was already in the database. Two of its listings were wrong (a Monday Graveyard Stroll that does not
+  exist; Hauke pop-up storytime shown on Thursdays), caught by checking the organiser.
+- **Open items:** 58zm (Nicasio movie night, organiser unconfirmed), 58zn (Elf Hunt 2026 dates), 58zo (Instagram:
+  highlight the Sausalito Thrive free play), 58m updated.
 
 ## What changed 2026-10-13, in one pass
 
