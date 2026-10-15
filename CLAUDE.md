@@ -83,7 +83,7 @@ File is a JSON object, **not** a flat array:
 ```
 Always load/save through the pattern in `scraper.py` (`load_existing_events()` / `save_events()` — reuse `events_io.py`, see below) rather than hand-editing JSON text. The file has Spanish-accented characters — always read/write with `encoding="utf-8"` or you'll corrupt them (confirmed failure mode: default Windows `cp1252` encoding mangles é/í/ñ etc.).
 
-As of 2026-10-14: **664 events, max ID 1650** (27 added from the Oct 14 sweep, ids 1624–1650). As of 2026-10-09 (evening): **670 events, max ID 1609** (160 Telluride+ records, ids 1450–1609, added that day). Earlier on 2026-10-09: **510 events, max ID 1449.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 507 events / max 1436 on 2026-10-08; 464 events / max 1383 on 2026-10-06; 450 events / max 1369 on 2026-10-05; 446 events / max 1354 on 2026-10-04; 466 events / max 1350 on 2026-10-02; 406 events / max 1097 on 2026-09-09; 330 events / max 907 on 2026-08-21; 505 events / max 565 on 2026-07-02; 366 on 2026-08-09; 341 after the library audit; 353 after the Aug 13 sweep. The drop to 305 on 2026-08-14 was the **first automated purge in 98 days** — 48 expired one-offs cleared by the newly-repaired `daily.yml`. Expiry is automatic again; it should no longer need purging by hand. See State of play.)
+As of 2026-10-15: **645 events, max ID 1661** (11 added from screenshots; the daily purge removed past one-offs). As of 2026-10-14: **664 events, max ID 1650** (27 added from the Oct 14 sweep, ids 1624–1650). As of 2026-10-09 (evening): **670 events, max ID 1609** (160 Telluride+ records, ids 1450–1609, added that day). Earlier on 2026-10-09: **510 events, max ID 1449.** Next new event gets the next ID via `next_id()` (max existing ID + 1) — this is a single global sequence shared by Marin and Napa records, don't hand-roll a per-county counter. (Was 507 events / max 1436 on 2026-10-08; 464 events / max 1383 on 2026-10-06; 450 events / max 1369 on 2026-10-05; 446 events / max 1354 on 2026-10-04; 466 events / max 1350 on 2026-10-02; 406 events / max 1097 on 2026-09-09; 330 events / max 907 on 2026-08-21; 505 events / max 565 on 2026-07-02; 366 on 2026-08-09; 341 after the library audit; 353 after the Aug 13 sweep. The drop to 305 on 2026-08-14 was the **first automated purge in 98 days** — 48 expired one-offs cleared by the newly-repaired `daily.yml`. Expiry is automatic again; it should no longer need purging by hand. See State of play.)
 
 **Fields on every event** (confirmed against actual `index.html` usage, not just assumed from old docs):
 
@@ -890,11 +890,11 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
   ⚠ **`--check` NO LONGER EXISTS. Do not put it in a command line — the script takes no arguments and will silently ignore it and just build.** It used to compare the markdown's open item numbers against the script's `ITEMS` list and fail on either kind of drift, and this file recorded it as "verified capable of failing". That guard went away with the two lists it compared; there is nothing left for it to check. **The lesson worth keeping from its removal:** a documented safety check is worth exactly as much as its last verification, and a rewrite can delete one without deleting the paragraph that promises it.
 - Items resolved by a **policy decision** should be encoded where the policy actually executes — e.g. item 9 (stale Megan Schoenbohm source) and item 10 (add Slide Ranch) were both written into the sweep procedure ("Weekly sweep")'s source list so they enforce themselves every sweep, not just sit in a tracker.
 
-# ⇢ START HERE — state of play for a new session (2026-10-14)
+# ⇢ START HERE — state of play for a new session (2026-10-15)
 
 Read this first, then the sections above as needed.
 
-**Health 2026-10-14** (after the Oct 14 sweep): `events.json` is **664 events, max id 1650**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all known (1156/1158 and the 5 Telluride room collisions). **Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
+**Health 2026-10-15**: `events.json` is **645 events, max id 1661**; notes-lint and bilingual-lint clean; duplicate scan 3 findings, all known (1156/1158 and two Telluride room collisions; the others dropped off as their dates passed). **Health 2026-10-14** (after the Oct 14 sweep): `events.json` is **664 events, max id 1650**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all known (1156/1158 and the 5 Telluride room collisions). **Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
 max id 1449**, all committed and pushed, level with `origin/main`.
 `check_duplicates.py --self-test` is **91/91**; `--notes-lint --all` and `--bilingual-lint` are
 clean; the duplicate scans show only the known, legitimate finding: the Pavilion Play Group's two
@@ -905,7 +905,7 @@ rather than trusting this sentence**; a hard-coded count in prose goes stale sil
 line has been wrong before.) GitHub Pages deploys off `main`, so **committing `events.json` IS
 publishing** — there is no staging.
 
-**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `8f4ba49`, the Oct 14 sweep; `4ce56da` staged the week of Oct 15 Instagram slides). The old scratch and `.bak`
+**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `7718b72`, the Oct 15 screenshot events; before that `8f4ba49`, the Oct 14 sweep; `4ce56da` staged the week of Oct 15 Instagram slides). The old scratch and `.bak`
 files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and working files MOVED on 2026-10-10**: repo at
 `C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
 record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
@@ -924,6 +924,21 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
 6. **~2026-10-17 (Alexandra, item 71):** delete the two `(MOVED…)` folders left by the Dropbox move, then empty the Recycle Bin.
+
+## What changed 2026-10-15, in one pass
+
+- **11 events added from Alexandra's screenshots** (ids 1651–1661, `7718b72`): Pini Kid's Club Halloween sun catchers
+  (Oct 17, San Marin store; the flyer graphic said Sept 17, the caption Oct 17, caption used), Free Art Lessons / ArtBridge
+  kickoff with CoachArt (Oct 17, MV Community Center, ages 6-15), Sing! Marin World Singing Day (Oct 17, Marin Country
+  Mart), Michaels Halloween Fest (Oct 17, San Rafael, the only Marin Michaels; national promo, "call ahead" in notes),
+  thRED TENT pop-up sale (Oct 18, Green Door Design, Community Event), Sound Bath with Blue Muse Healing (Oct 22, Church
+  of Our Saviour, Grown-Ups Only!, time TBA), Jewelry Pop Up Fundraiser for Fire Foundation (Oct 25, Lumber Yard, title
+  as the maker asked), Witch's Brews and Stews (Oct 31, Toby's Feed Barn, WMI PTSA), Bolinas Winter Faire x3 (Dec 11-13,
+  all expire Dec 13; Santa Sunday Dec 13 2-4 PM in the Dec 13 record).
+- **Updated 1160 Downtown Getdown** (Oct 17): ends 6:00 PM, not 6:30; band Danny's Live Dead. **Not added:** the Play-Well
+  Haunted House LEGO workshop, already id 1215.
+- **Assumptions to confirm** (in open items 58zp): Pini Kid's Club cost set to Free (not stated); Sound Bath time and price
+  unknown; Michaels details not confirmed by the San Rafael store.
 
 ## What changed 2026-10-14, in one pass
 
