@@ -10,7 +10,7 @@
 | `county` value on records | (blank) |
 | Sweep window | today through 7 weeks ahead (matches past sweeps) |
 | Review workbook | `Dropbox\01. Out AND About Files\OAA maintence and content\daily_sweep_YYYY-MM-DD_review.xlsx` |
-| Source count | 48 |
+| Source count | 49 |
 
 
 ## Sources
@@ -175,7 +175,9 @@
 
 48. **Town of Fairfax — Baby, Toddler & Preschool Programs** — **added 2026-10-05 at Alexandra's request.** Fetch `townoffairfaxca.gov/baby-toddler-and-preschool-programs/` and read the whole page (headless works). Fairfax Recreation lists its standing family programs here, each with location, dates, time, ages and cost. Records already from this page: **Pavilion Play Group** (Fridays 9:30, Oct 2 – Mar 26; ids 1156/1158, split at New Year), **New Parents, Babies and Toddlers Support Group** (Thursdays 11–12:30; id 1157) and **Kids Activities with Good Fun Stuff in Bolinas Park** (last Sundays 2–4 PM, no December; id 1368, which needs a new December skip each year). Use `location_group: Fairfax` for Fairfax venues, never `Ross Valley` (2026-10-05 fix: Ross Valley records vanished under a Fairfax filter). Check for new programs, changed seasons and new term dates each sweep.
 
-(Note: the numbering here is now contiguous end-to-end — event sources 1–25, libraries 26–41, Learning Bus 42, then later additions (43, 44, 45, 46, 47, 48) kept at the end to protect the historical Attestation Logs — Downtown San Rafael 43 and Novato Mothers Club 44, both of which are event sources and should be worked with 1–25. It previously restarted at 24 for the libraries, so #24 meant two different sources; fixed 2026-08-09 when Marin Magazine was added. Treat each numbered line as one checklist item — that's the working granularity, and it is what the Attestation Log rows key off.)
+49. **Katie Mae — parent coaching events (online)** — **added 2026-10-16 at Alexandra's request** ("free events from here and add to source list"). Fetch `withkatiemae.com/events` (Squarespace; headless reads it whole, and the list mixes upcoming and past events, so filter by date). **Take only the FREE events**: *Coaching Conversations* (free parent-coaching drop-in, recently the 3rd Tuesday, 12-1 PM) and the *Conscious Parenting Lab* (recently the 2nd Thursday, 12-1 PM), both on Zoom. The $35 Parent Workshops on the same page are not added. Records are online: `town` and `location_group` `Virtual`, type `Community Event`, ages "Parents and caregivers", one dated record per session (first ones: ids 1664-1666), `website` = the event's own page on withkatiemae.com.
+
+(Note: the numbering here is now contiguous end-to-end — event sources 1–25, libraries 26–41, Learning Bus 42, then later additions (43, 44, 45, 46, 47, 48, 49) kept at the end to protect the historical Attestation Logs — Downtown San Rafael 43 and Novato Mothers Club 44, both of which are event sources and should be worked with 1–25. It previously restarted at 24 for the libraries, so #24 meant two different sources; fixed 2026-08-09 when Marin Magazine was added. Treat each numbered line as one checklist item — that's the working granularity, and it is what the Attestation Log rows key off.)
 
 ### Libraries (16) — every sweep, no exceptions, even though programs are "recurring/already in DB" — one-off guest performers and specials show up on these calendars constantly
 
