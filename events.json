@@ -19968,6 +19968,40 @@
       "registration": "Required: free registration; the Zoom link appears on the thank-you page",
       "website": "https://www.withkatiemae.com/events/coaching-conversations-june-zwf5n-sehfb-n9g8r-xtkr9",
       "internal_notes": "Added 2026-10-16 at Alexandra's request. Free events from withkatiemae.com/events (new standing source #49). Paid workshops ($35) on the same page are not added."
+    },
+    {
+      "id": 1667,
+      "organization": "The Local Hype Girl",
+      "venue": "Creekside Bakery",
+      "event_name": "Coffee + Community @ Creekside Bakery",
+      "event_name_es": "Café y Comunidad @ Creekside Bakery",
+      "type": "Community Event",
+      "day": "Wednesday",
+      "time": "10:00 AM - 11:30 AM",
+      "time_of_day": "Morning",
+      "town": "Novato",
+      "address": "Creekside Bakery, Novato, CA",
+      "ages": "All ages",
+      "cost": "Free (drinks at own cost)",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-10-21",
+      "expires": "2026-10-21",
+      "status": "Active",
+      "featured": false,
+      "description": "Drop-in coffee meetup at Creekside Bakery in Novato, hosted by local Instagram creator The Local Hype Girl. Hot or iced, come say hi and connect with neighbors.",
+      "description_es": "Encuentro informal de café en Creekside Bakery en Novato, organizado por la creadora local de Instagram The Local Hype Girl. Caliente o helado, ven a saludar y conectar con tus vecinos.",
+      "registration": "Not required",
+      "website": "",
+      "contact": {
+        "instagram": "thelocalhypegirl"
+      },
+      "notes": "Drop-in, no RSVP needed.",
+      "internal_notes": "Added 2026-10-17 from an Instagram Story screenshot (@thelocalhypegirl), posted the evening before the event. Exact street address for Creekside Bakery, Novato was not given on the flyer - confirm and fill in before next sweep touches this venue. Audience/ages not stated on flyer; classified as All ages / Community Event since it reads as an open neighborhood meetup rather than an explicitly adult-only one - flag to Alexandra to confirm or recategorize as Grown-Ups Only! if that is wrong.",
+      "location_group": "Novato"
     }
   ]
 }
