@@ -980,7 +980,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
    Start from `social_media_and_marketing.md`, "STATE OF PLAY", then section 3e. **Sat Oct 10 auto-publish CONFIRMED live**
    by Alexandra; once Sun Oct 11 is confirmed too, delete repo `ig/week_of_oct8/` (`ig/README.md` lists staged folders).
 2. **Next Marin weekly sweep** ("Weekly sweep" section, `sources/marin.md`, now 49 sources with Katie Mae as #49). The 2026-10-14 sweep covered Oct 14 to Dec 1 (processed and committed the same day).
-3. **Telluride (items 65 to 70, 72):** Alexandra shares the Dropbox `Telluride` folder with her partner, who sets up her
+3. **Telluride (items 65, 66 and 72; 66 now holds the five library questions, 66a–66e):** Alexandra shares the Dropbox `Telluride` folder with her partner, who sets up her
    Claude Code (`Telluride\PARTNER_SETUP.md`) and runs the first partner sweep; then the v2 event sources,
    the Wilkinson Thursday slot clash, November dates, the Ridgway café time, Silly Stories times, Rico (ask Lee).
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
