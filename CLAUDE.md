@@ -989,6 +989,14 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 
 ## What changed 2026-10-16/17, in one pass
 
+- **Search results now run soonest first** (`970fb94`, build 2026-10-17.1, tried locally by Alexandra first).
+  `searchEvents()` sorts by next occurrence date (new helper `getNextOccurrenceDate()`, also used by
+  `getNextOccurrenceLabel()`), then start time, then name; events with no upcoming date go last. "and", "&" and "+"
+  now match each other. Search also skips retired (Inactive) records, which it had been showing (the same
+  `shouldShowEvent` fix the Featured strip got on Oct 13). **To try a change locally**: the `oaa-local` preview needs a
+  saved profile, or the app stops at sign-up; set `localStorage.oaam_user` in that localhost tab only.
+- **Also added:** Pottery Barn Kids Halloween Craft Event, Sat Oct 24, 10 AM (id 1676, `af602a6`). The pull hook's
+  time limit is 20 seconds (Alexandra).
 - **First phone (cloud) sessions** (Oct 16-17). Events added from the phone: **1667** Coffee + Community @ Creekside Bakery
   with The Local Hype Girl (Wed Oct 21, 10-11:30 AM, Novato; retitled once; street address and audience still open, item
   58zq); **1668/1669** Marin Ski & Snowboard Swap (Sat Oct 17 / Sun Oct 18, 10 AM-4 PM at Alexandra's instruction though
