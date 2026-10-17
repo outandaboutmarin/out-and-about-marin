@@ -989,6 +989,11 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 
 ## What changed 2026-10-16/17, in one pass
 
+- **Housekeeping, later on Oct 17:** the leftover phone-session branch `claude/push-events-marin-app-cz0p19` was deleted
+  from GitHub (everything on it was already in `main`; only `main` and `lockdown-edge-functions` remain). In open items:
+  the GitHub / cloud-session issue is **closed** (Alexandra confirmed phone sessions read, commit and push); new **item 73,
+  "Apply for the Anthropic startup program"** (name only so far); and Telluride items **66-70 merged into item 66**
+  (entries 66a-66e; numbers 67-70 retired).
 - **Search results now run soonest first** (`970fb94`, build 2026-10-17.1, tried locally by Alexandra first).
   `searchEvents()` sorts by next occurrence date (new helper `getNextOccurrenceDate()`, also used by
   `getNextOccurrenceLabel()`), then start time, then name; events with no upcoming date go last. "and", "&" and "+"
