@@ -10,7 +10,7 @@
 | `county` value on records | `Telluride+` |
 | Sweep window | today through about 7 weeks ahead (first sweep: Oct 10 to Nov 30, 2026) |
 | Review workbook | `Dropbox\01. Out AND About Files\Telluride\Sweeps\telluride_sweep_YYYY-MM-DD_review.xlsx` (renamed `…_review_APPROVED.xlsx` by the partner when reviewed; setup in `Telluride\PARTNER_SETUP.md`) |
-| Source count | 9 |
+| Source count | 10 |
 
 All times are Mountain Time. Region facts (location groups, decisions) are in CLAUDE.md, "Regions".
 
@@ -27,7 +27,11 @@ All times are Mountain Time. Region facts (location groups, decisions) are in CL
 6. **Naturita Community Library (MRLD branch)**: same WordPress events API as source 5; Naturita events carry the `Naturita` category.
 7. **MRLD Outreach / Bookmobile**: same API as source 5, category `Outreach/Bookmobile` (Olathe Town Park 1st & 3rd Wed, Northbrook Villas Park 1st & 3rd Thu, 3:15–4:15 PM, Sep–Dec).
 8. **Dolores Public Library**: `doloreslibrary.specialdistrict.org/calendar?month=YYYY-MM` plus the monthly newsletter, whose program flyers are **images** (read them as images).
-9. **Rico Public Library**: no web presence (open item 70, ask Lee).
+9. **Rico Public Library**: no web presence (open item 66e, ask Lee).
+
+### Event sources
+
+10. **Visit Telluride (Telluride Tourism Board) — Festivals & Events calendar** (added 2026-10-17 at Alexandra's request): `telluride.com/festivals-events/events/` (the Events tab; the Festivals tab, `/festivals-events/festivals/`, is a subset of it). **The list is built by script, so a plain fetch shows an empty "Showing 0 of 0" list.** Open it in the in-app browser and read the page's own data (the Vue component's `items` array: title, `attrs.dates`, type, category, area, url; 68 items through Sep 2027 on 2026-10-17). Then fetch each event page in the window (`telluride.com/event/<slug>/`, plain fetch works) for time, venue, address (the Get Directions link) and the organiser's own link under "Learn More"; use that link as `website` where there is one. Category ids: 1076 Kids, 1081 Theatre, 1073 Film, 1078 Live Music, 1074 Fundraiser, 50191 Holidays, 1079 Local Government. Much of it is adult or evening (bars, concerts, talks); Alexandra expects Telluride content to skew more adult. Library events listed here (Wilkinson) duplicate sources 1-9: dedupe by venue. First pass: workbook `Telluride\Sweeps	elluride_sweep_2026-10-17_review.xlsx`, ids 1679-1694.
 
 ## Not yet verified
 
