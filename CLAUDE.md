@@ -952,11 +952,11 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
   ⚠ **`--check` NO LONGER EXISTS. Do not put it in a command line — the script takes no arguments and will silently ignore it and just build.** It used to compare the markdown's open item numbers against the script's `ITEMS` list and fail on either kind of drift, and this file recorded it as "verified capable of failing". That guard went away with the two lists it compared; there is nothing left for it to check. **The lesson worth keeping from its removal:** a documented safety check is worth exactly as much as its last verification, and a rewrite can delete one without deleting the paragraph that promises it.
 - Items resolved by a **policy decision** should be encoded where the policy actually executes — e.g. item 9 (stale Megan Schoenbohm source) and item 10 (add Slide Ranch) were both written into the sweep procedure ("Weekly sweep")'s source list so they enforce themselves every sweep, not just sit in a tracker.
 
-# ⇢ START HERE — state of play for a new session (2026-10-16)
+# ⇢ START HERE — state of play for a new session (2026-10-17)
 
 Read this first, then the sections above as needed.
 
-**Health 2026-10-16**: `events.json` is **640 events, max id 1666**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings (1156/1158 and two Telluride room collisions); `check_docs.py` clean with **Marin at 49 sources**. **Health 2026-10-15**: `events.json` is **645 events, max id 1661**; notes-lint and bilingual-lint clean; duplicate scan 3 findings, all known (1156/1158 and two Telluride room collisions; the others dropped off as their dates passed). **Health 2026-10-14** (after the Oct 14 sweep): `events.json` is **664 events, max id 1650**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all known (1156/1158 and the 5 Telluride room collisions). **Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
+**Health 2026-10-17**: `events.json` is **649 events, max id 1675**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings. **Health 2026-10-16**: `events.json` is **640 events, max id 1666**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings (1156/1158 and two Telluride room collisions); `check_docs.py` clean with **Marin at 49 sources**. **Health 2026-10-15**: `events.json` is **645 events, max id 1661**; notes-lint and bilingual-lint clean; duplicate scan 3 findings, all known (1156/1158 and two Telluride room collisions; the others dropped off as their dates passed). **Health 2026-10-14** (after the Oct 14 sweep): `events.json` is **664 events, max id 1650**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all known (1156/1158 and the 5 Telluride room collisions). **Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
 max id 1449**, all committed and pushed, level with `origin/main`.
 `check_duplicates.py --self-test` is **91/91**; `--notes-lint --all` and `--bilingual-lint` are
 clean; the duplicate scans show only the known, legitimate finding: the Pavilion Play Group's two
@@ -967,7 +967,7 @@ rather than trusting this sentence**; a hard-coded count in prose goes stale sil
 line has been wrong before.) GitHub Pages deploys off `main`, so **committing `events.json` IS
 publishing** — there is no staging.
 
-**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `1787396`, the Oct 16 events and source 49; then `7718b72`, the Oct 15 screenshot events; before that `8f4ba49`, the Oct 14 sweep; `4ce56da` staged the week of Oct 15 Instagram slides). The old scratch and `.bak`
+**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `448f182`, Village end dates and the Social Klub refresh; before that the phone commits `18432df`–`d2112a5` and `1787396`, the Oct 16 events and source 49; then `7718b72`, the Oct 15 screenshot events; before that `8f4ba49`, the Oct 14 sweep; `4ce56da` staged the week of Oct 15 Instagram slides). The old scratch and `.bak`
 files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and working files MOVED on 2026-10-10**: repo at
 `C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
 record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
@@ -986,6 +986,27 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
 6. **~2026-10-17 (Alexandra, item 71):** delete the two `(MOVED…)` folders left by the Dropbox move, then empty the Recycle Bin.
+
+## What changed 2026-10-16/17, in one pass
+
+- **First phone (cloud) sessions** (Oct 16-17). Events added from the phone: **1667** Coffee + Community @ Creekside Bakery
+  with The Local Hype Girl (Wed Oct 21, 10-11:30 AM, Novato; retitled once; street address and audience still open, item
+  58zq); **1668/1669** Marin Ski & Snowboard Swap (Sat Oct 17 / Sun Oct 18, 10 AM-4 PM at Alexandra's instruction though
+  the flyer says 9-4, Demosport, 1101 Francisco Blvd. E, San Rafael; "Free entry" and indoors approved assumptions);
+  **1670** Black Canyon Model Garden Railroad Open Day (Sat Oct 17, 10 AM-3 PM, 35 Bradcliff Court, San Rafael, from
+  bsrr.net). New CLAUDE.md section **"Phone / cloud sessions (Claude Code on the web)"** explains how they work.
+- **Phone sessions can now push to GitHub.** Reconnecting GitHub in claude.ai settings did not fix it; **installing the
+  Claude GitHub App on the repo did.** (Details in the Phone / cloud sessions section.)
+- **Desktop sessions now pull first, automatically:** a SessionStart hook in the Dropbox project folder's
+  `.claude/settings.json` runs `git -C "C:\Users\AWalter\Code\out-and-about-marin" pull --ff-only` when a session starts.
+  It never merges or overwrites: if the local repo has its own commits or conflicting edits, the pull just stops and
+  says so, and the session carries on. Remove the hook from that file to turn it off.
+- **The Village at Corte Madera** (`448f182`): Pottery Barn Kids storytime ends Oct 31 and the Mahjong Social (Thursdays,
+  11-1) ends Oct 29. Both are now dated one-offs (1671-1674); seasonal 750 retired so it does not return next summer. There
+  was no Village mahjong record before.
+- **The Social Klub refreshed** (`448f182`): new The Awakening Breathwork (Oct 29, 1675, Grown-Ups Only!); 1334 now
+  7-8:30 PM, $35 / $60 for two; 1648 (Sausalito Thrive free play) now says it includes a presentation and Q&A and that
+  booking is for Sausalito voters.
 
 ## What changed 2026-10-16, in one pass
 
