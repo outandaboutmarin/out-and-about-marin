@@ -716,6 +716,8 @@ Alexandra runs this **on command**, in chat, not on a schedule — she says some
 **One template for every region (standardised 2026-10-17, Alexandra).** The file handed to the reviewer each sweep
 (named and saved as the region file's header says, never committed) carries **four** sheets, in this order, with these
 exact columns. Marin, Napa and Telluride all use it, and so does a one-source review (e.g. trying out a new source).
+(The one deliberate extra: a Napa sweep also logs a line in the Weekly Sweep Log tab of `Napa_Live_Music_Tracker_v2.xlsx`, as
+`sources/napa.md` says. Alexandra kept it on 2026-10-17; it is an extra log, not a change to the workbook.)
 
 1. **Weekly Sweep** — one row per new candidate (one row per date when an event runs on several days). Columns:
    `Decision` | Event Name | Date | Day | Time | Venue | Address | Town | Description | Source URL | Notes (public) | Type |
