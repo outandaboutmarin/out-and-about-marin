@@ -595,7 +595,7 @@ procedure for Marin, Napa and Telluride alike. **Only the source lists differ**,
 cadence, `notes`, Spanish, duplicates and the workbook layout are written here once. **No region deviates; if a region
 seems to need a different rule, change the rule here, for everyone, with Alexandra's OK.**
 
-**Who runs what:** Alexandra runs the Marin and Napa sweeps. The **Telluride sweep is run by her partner's own Claude Code**
+**Who runs what:** Alexandra runs the Marin and Napa sweeps. The **Telluride sweep is run by her partner, Lee, on Lee's own Claude Code**
 on the partner's computer, following "Telluride partner sweep" below. The partner reviews the workbook; Alexandra's
 Claude Code processes the approved file and commits. The partner never commits. Setup and her start-up prompt:
 `Dropbox\01. Out AND About Files\Telluride\PARTNER_SETUP.md`.
@@ -980,7 +980,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
    Start from `social_media_and_marketing.md`, "STATE OF PLAY", then section 3e. **Sat Oct 10 auto-publish CONFIRMED live**
    by Alexandra; once Sun Oct 11 is confirmed too, delete repo `ig/week_of_oct8/` (`ig/README.md` lists staged folders).
 2. **Next Marin weekly sweep** ("Weekly sweep" section, `sources/marin.md`, now 49 sources with Katie Mae as #49). The 2026-10-14 sweep covered Oct 14 to Dec 1 (processed and committed the same day).
-3. **Telluride (items 65, 66 and 72; 66 now holds the five library questions, 66a–66e):** Alexandra shares the Dropbox `Telluride` folder with her partner, who sets up her
+3. **Telluride (items 65, 66 and 72; 66 now holds the five library questions, 66a–66e):** Alexandra shares the Dropbox `Telluride` folder with her partner, Lee, who sets up her
    Claude Code (`Telluride\PARTNER_SETUP.md`) and runs the first partner sweep; then the v2 event sources,
    the Wilkinson Thursday slot clash, November dates, the Ridgway café time, Silly Stories times, Rico (ask Lee).
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
@@ -1137,7 +1137,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   rewritten from one paragraph into a numbered list) and `sources/telluride.md` (9), all in one fixed header + numbered
   format that **`check_docs.py`** enforces (`--self-test` proves it catches 5 kinds of breakage). Dated stories moved to
   `HISTORY.md`. CLAUDE.md went from 180 KB to 152 KB; all 1,477 old lines were checked against the new files.
-- **Telluride sweeps move to Alexandra's partner:** her own Claude Code works in the shared Dropbox `Telluride` folder with
+- **Telluride sweeps move to Alexandra's partner, Lee:** her own Claude Code works in the shared Dropbox `Telluride` folder with
   fresh downloads of the rulebook, tools and event list each sweep (no Git), saves `Telluride\Sweeps\telluride_sweep_YYYY-MM-DD_review.xlsx`, and
   renames it `…_APPROVED.xlsx` after review. Only Alexandra's Claude Code processes and commits. Setup page:
   `Dropbox\01. Out AND About Files\Telluride\PARTNER_SETUP.md`. **Rule:** a region never gets its own rule; a rule that
