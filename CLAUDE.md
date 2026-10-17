@@ -10,6 +10,9 @@ This file is the living source of truth for how the app is built and maintained.
 
 ## Where things live — read this first in a new session
 
+> **📱 Working directory `/home/user/out-and-about-marin` on Linux = a PHONE / CLOUD session.** The Windows paths
+> below do not exist there. Read "Phone / cloud sessions" (directly after this section) and follow it instead.
+
 > **⚠ MOVED 2026-10-10 (Alexandra).** The working files moved from `Documents\2. Claude-Work\PROJECTS\OAA Marin` to
 > **`C:\Users\AWalter\Dropbox\01. Out AND About Files`** (same subfolders: `OAA maintence and content`, `OAA marketing`,
 > `OAA Sponsorship and Partners`, `Telluride`, plus `Preschool Database`, `Archive\From Downloads`, and the empty `ABOUT ME`,
@@ -39,6 +42,62 @@ Three consequences of this split. All are normal; none need fixing:
 - **This file does not auto-load.** Because the working directory isn't the repo, `CLAUDE.md` is not injected into context at session start. **Read it from the repo path (`C:\Users\AWalter\Code\out-and-about-marin`) as the first action in a new session.** What *does* auto-load is `memory/MEMORY.md` in the path above, which carries a pointer here.
 - **The sweep procedure is a section of this file, not a command file** (merged 2026-10-10 at Alexandra's request: one rulebook for every region). Read "Weekly sweep (one procedure for every region)" and "Processing an approved sweep" below; each region's sources are in `sources/<region>.md`. `.claude/commands/run-sweep.md` and `process-sweep.md` are now two-line pointers here. Dated stories behind the rules live in `HISTORY.md`.
 - **`Glob` and `Grep` have failed in at least one session** on this machine (`Executable not found in $PATH`, 2026-08-12). If they error, fall back to PowerShell `Get-ChildItem -Recurse` and `Select-String -LiteralPath` — both work fine. Don't conclude a file is missing on the strength of a failed Glob.
+
+## Phone / cloud sessions (Claude Code on the web) — added 2026-10-17
+
+Alexandra works from her phone (claude.ai or the Claude app, the Code tab) in **cloud sessions**. **You are in one if
+the working directory is `/home/user/out-and-about-marin` on Linux.** Everything else in this file applies; this
+section says what is different. Alexandra asked for it here so she does not have to explain it at the start of every
+phone session.
+
+### Standing instructions for a cloud session (Alexandra, 2026-10-16/17)
+- **Get the latest `main` before touching anything**: `git fetch origin main`, then
+  `git checkout -B <session branch> origin/main`. The desktop and the nightly bot push to `main` too, and `next_id()`
+  hands out a duplicate id from a stale copy.
+- **Routine event changes go straight to `main`** once the checks pass: `python3 check_duplicates.py`,
+  `--venue "<venue>"` for every new candidate (rule 18), `--notes-lint`, `--bilingual-lint`. Commit, then
+  `git push origin HEAD:main`, then `git push origin HEAD:<session branch>` so the session branch matches (otherwise a
+  stop-hook warning about "unpushed commits" keeps firing). Cloud sessions are given a `claude/…` branch by default;
+  **this standing instruction is the permission to push to `main`.** App changes (`index.html`) still follow the
+  normal Git workflow rules: show Alexandra first, and run `bump_build.py`.
+- **Dropbox is unreachable.** `open_items.md`, the review workbooks and Claude's memory notes are not here. Do not try
+  to update them; at the end, give Alexandra the exact lines to add on the computer. The open-items dashboard page can be
+  READ (Artifact `read`, URL in "Open Items tracker"), but never republish it from a cloud session: the desktop rebuilds
+  it from `open_items.md` and would overwrite the edit.
+- **Use `python3`**, not `python`.
+- **Push in the same session.** After long idle gaps the cloud copy can be reset, and anything committed but not pushed
+  is lost (a July 2026 event commit disappeared this way).
+
+### GitHub access
+- Through the **Claude GitHub App**, installed 2026-10-16 on the personal account `outandaboutmarin` for **this repo
+  only**. Read and write on code, issues, pull requests, actions and workflows; **read-only administration, so a cloud
+  session cannot delete branches** (403).
+- The fix that made pushing work was **installing the app** (github.com/apps/claude/installations/select_target).
+  Reconnecting GitHub under claude.ai → Customize → Connectors did NOT fix it. Symptom before: reading the repo worked,
+  every push returned 403 ("Claude doesn't have GitHub access…").
+- The desktop pushes with its own git credentials; the app does not affect it.
+
+### Website access (network)
+- Both cloud environments named "Default" are **limited ("trusted") network access**: outside websites return
+  EGRESS_BLOCKED / 403 / DNS failure, and WebFetch fails. Alexandra is setting up a new environment with **Full**
+  network access (created from the phone start screen: environment chip → Create environment → Network access: Full).
+- **Without full access, a cloud session cannot do a weekly sweep** ("fetch, don't snippet" cannot be met) and cannot
+  check a flyer's web page. Single events from a screenshot or pasted text still work: the screenshot IS the source.
+  Say plainly when a link could not be opened, and ask for a screenshot.
+- **Even with full access there are no Chrome browser tools** (tier 3) in a cloud session. Sources that need real Chrome
+  (Sausalito's calendars) get attested as blocked, naming the tiers tried.
+- Headless Chromium IS available (Node `playwright`, run with `NODE_PATH=$(npm root -g)`) for testing `index.html`
+  against the local `events.json`, e.g. calling `loadEvents()` then `searchEvents('coffee')`. Serve the repo with
+  `python3 -m http.server` and block Supabase/analytics requests so a test never writes to production.
+
+### What belongs on the computer instead
+Weekly sweeps (until full network access, and Chrome-only sources always), app changes Alexandra wants to try before
+they go live, and anything in Dropbox (open items, workbooks, memory). When a phone session changes events, the next
+desktop session must pull first; tell Alexandra which ids changed so she can mention them.
+
+### Usage
+Tell Alexandra to close the cloud tab when finished. A session left waiting on a plan-mode approval once produced dozens
+of automatic "Continue from where you left off" retries that used up usage while nobody was there.
 
 ## Tech stack
 
