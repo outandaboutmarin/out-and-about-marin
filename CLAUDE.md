@@ -78,9 +78,12 @@ phone session.
 - The desktop pushes with its own git credentials; the app does not affect it.
 
 ### Website access (network)
-- Both cloud environments named "Default" are **limited ("trusted") network access**: outside websites return
-  EGRESS_BLOCKED / 403 / DNS failure, and WebFetch fails. Alexandra is setting up a new environment with **Full**
-  network access (created from the phone start screen: environment chip → Create environment → Network access: Full).
+- **For phone sessions, use the "OAA - Full" environment** (created 2026-10-17, full website access). It is picked on
+  the phone start screen: tap the cloud chip, choose "OAA - Full", then type the request. A session keeps the
+  environment it started with; switching applies only to sessions started afterwards.
+- The two cloud environments named **"Default"** are **limited ("trusted") network access**: outside websites return
+  EGRESS_BLOCKED / 403 / DNS failure, and WebFetch fails. Do not use them. If a session finds outside sites blocked, it
+  was probably started on a "Default"; tell Alexandra to start a new one on "OAA - Full".
 - **Without full access, a cloud session cannot do a weekly sweep** ("fetch, don't snippet" cannot be met) and cannot
   check a flyer's web page. Single events from a screenshot or pasted text still work: the screenshot IS the source.
   Say plainly when a link could not be opened, and ask for a screenshot.
@@ -91,7 +94,7 @@ phone session.
   `python3 -m http.server` and block Supabase/analytics requests so a test never writes to production.
 
 ### What belongs on the computer instead
-Weekly sweeps (until full network access, and Chrome-only sources always), app changes Alexandra wants to try before
+Weekly sweeps (unless the session is on "OAA - Full"; Chrome-only sources always), app changes Alexandra wants to try before
 they go live, and anything in Dropbox (open items, workbooks, memory). When a phone session changes events, the next
 desktop session must pull first; tell Alexandra which ids changed so she can mention them.
 
