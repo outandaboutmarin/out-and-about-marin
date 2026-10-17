@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16",
+  "last_updated": "2026-10-17",
   "events": [
     {
       "id": 1,
@@ -20074,6 +20074,37 @@
       "day": "Sunday",
       "event_name": "Marin Ski & Snowboard Swap — Sunday",
       "event_name_es": "Intercambio de Esquí y Snowboard de Marin — domingo"
+    },
+    {
+      "id": 1670,
+      "organization": "Black Canyon Model Garden Railroad",
+      "venue": "Black Canyon Model Garden Railroad",
+      "address": "35 Bradcliff Court, San Rafael, CA",
+      "event_name": "Black Canyon Model Garden Railroad Open Day",
+      "event_name_es": "Día de Puertas Abiertas del Ferrocarril en Miniatura Black Canyon",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "10:00 AM - 3:00 PM",
+      "time_of_day": "Morning",
+      "town": "San Rafael",
+      "location_group": "San Rafael",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-10-17",
+      "expires": "2026-10-17",
+      "status": "Active",
+      "featured": false,
+      "registration": "Not required",
+      "website": "https://www.bsrr.net/",
+      "description": "Open day at the Black Canyon Model Garden Railroad in San Rafael: model trains running through a miniature Old West landscape of towns, depots and canyons in an outdoor garden. Free, and families are welcome.",
+      "description_es": "Día de puertas abiertas en el ferrocarril en miniatura Black Canyon en San Rafael: trenes a escala que recorren un paisaje en miniatura del Viejo Oeste, con pueblos, estaciones y cañones, en un jardín al aire libre. Gratis, y las familias son bienvenidas.",
+      "notes": "",
+      "internal_notes": "Source: bsrr.net (the railroad's own site; screenshot sent by Alexandra 2026-10-16 from the phone session: \"Open Saturday October 17 2026, 10:00am-3:00pm, 35 Bradcliff Court, San Rafael\") plus a Nextdoor post the day before (\"Free. Families welcome.\"). The site could not be fetched from the cloud session; the screenshot is the source. ZIP not shown, so left off the address."
     }
   ]
 }
