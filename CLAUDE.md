@@ -675,9 +675,8 @@ the shared procedure below**. Added 2026-10-10 (Alexandra); no Git, and her only
    - Record: source name, URL fetched, method used, # of current items reviewed, newest item date seen, and the result (candidates found, or "none — fetched live list, N items reviewed").
    - Do NOT report a source as done from assumption. If you could not complete a source, say so explicitly rather than silently skipping it.
 3. **If you cannot complete all sources in one session**, tell the reviewer (Alexandra; the partner for Telluride) upfront before starting, rather than silently presenting a partial sweep as complete.
-4. **Build the review workbook** in the layout under "Review workbook format" below. The two core sheets:
-   - **Sheet 1 "Attestation Log"**: one row per source in the region file (its header gives the Source count) — columns: Source | Category (Event Source / Library / Learning Bus) | URL Fetched | Method | Result | # Current Items Reviewed | Newest Item Date Seen.
-   - **Sheet 2 "Weekly Sweep"**: one row per genuinely new candidate — columns: Decision (blank, for the reviewer to fill Approve/Skip) | Event Name | Date | Day | Time | Venue | Town | Description | Source URL | Notes | Type | Location Filter | Ages | Cost | Indoor/Outdoor | Cadence. Flag anything genuinely uncertain with "⚠ POSSIBLE DUPE" in Notes rather than silently including or excluding it.
+4. **Build the review workbook** exactly as "Review workbook format" below says: the same four sheets, in the same order,
+   with the same columns, for Marin, Napa and Telluride alike. Do not drop, rename or reorder a column for one region.
 5. **Save the workbook** to the path in the region file's header (`Review workbook`) (today's date). Do not save it inside this repo, and do not commit/push it. **Then run the completion check** (added 2026-10-10): `python <repo>\check_docs.py --attestation <workbook>`. It must say "complete": one Attestation Log row per source in the region file, every row with a Result, none banned. Fix the gaps (finish the source, or attest honestly why it could not be read) before reporting.
 6. **Summarize in chat**: how many sources were fully checked, how many candidates were found, any sources you couldn't complete, and where the review file is. Tell the reviewer to fill in the Decision column and let you know when it is ready for "Processing an approved sweep" below.
 7. **Then stop.** Do not touch `events.json` until the reviewer has filled in the workbook and someone asks for "Processing an approved sweep". `<repo>` above means the local copy of this repo: Alexandra's is `C:\Users\AWalter\Code\out-and-about-marin`; the partner's is her `OAA-rules` download folder.
@@ -714,13 +713,34 @@ Alexandra runs this **on command**, in chat, not on a schedule — she says some
 
 ### Review workbook format (every region)
 
-The file handed to Alexandra each sweep (named and saved as the region file's header says, never committed) now carries **three** sheets, in this order:
+**One template for every region (standardised 2026-10-17, Alexandra).** The file handed to the reviewer each sweep
+(named and saved as the region file's header says, never committed) carries **four** sheets, in this order, with these
+exact columns. Marin, Napa and Telluride all use it, and so does a one-source review (e.g. trying out a new source).
 
-1. **Weekly Sweep** — one row per new candidate, `Decision` column blank for her Approve/Skip. Flag genuine uncertainty with `⚠ POSSIBLE DUPE` in Notes rather than silently including or dropping it.
-2. **Questions** — anything needing her judgement, with columns: `#`, Category, Question, What I Found, My Recommendation, Affects, and a shaded **YOUR ANSWER** column. Added 2026-08-06 at her request; it works well and should be kept. Give a real recommendation in every row, not just the question.
-3. **Attestation Log** — one row per source, every source in the region file (its header gives the count).
+1. **Weekly Sweep** — one row per new candidate (one row per date when an event runs on several days). Columns:
+   `Decision` | Event Name | Date | Day | Time | Venue | Address | Town | Description | Source URL | Notes (public) | Type |
+   Location Filter | Ages | Cost | Indoor/Outdoor | Cadence | **Source #** | For your review (internal).
+   `Decision` is left blank for the reviewer (Approve/Skip). `Source #` is the source's number in `sources/<region>.md`
+   (or "Ad hoc" for something Alexandra sent), and must match a row on the Sources Used sheet. `Notes (public)` follows
+   rule 19 (it becomes public `notes`); everything internal goes in the last column. Flag genuine uncertainty with
+   `⚠ POSSIBLE DUPE` in the internal column rather than silently including or dropping it.
+2. **Questions** — anything needing the reviewer's judgement. Columns: `#` | Category | Question | What I Found |
+   My Recommendation | Affects | **YOUR ANSWER** (shaded). Added 2026-08-06 at her request. Give a real recommendation in
+   every row, not just the question.
+3. **Sources Used** (added 2026-10-17, Alexandra) — one row per source that **produced at least one candidate** on the
+   Weekly Sweep sheet, so the reviewer can see at a glance where the content came from. Columns: Source # | Source |
+   URL(s) read | Candidates (count) | Candidate events (names) | Also checked (organiser pages read to confirm details).
+   It complements the Attestation Log, which lists every source read, including the ones that produced nothing.
+4. **Attestation Log** — one row per source in the region file (its header gives the count). Columns: `#` | Source |
+   Category (Event Source / Library / Learning Bus) | URL Fetched | Method | Result | # Current Items Reviewed |
+   Newest Item Date Seen.
 
-She fills `Decision` and `YOUR ANSWER` and hands it back for "Processing an approved sweep". Note she may also **append her own rows** to the Weekly Sweep sheet with extra asks (she added two on 2026-08-06 pointing at a Slide Ranch page and asking for a closer re-read of a roundup) — always read past the last candidate row.
+`check_docs.py --attestation <workbook>` checks sheets 3 and 4 (a Sources Used sheet that names a source for every
+candidate's `Source #`, and one Attestation Log row per source). For a one-source review add `--partial`, which skips the
+per-source row count but still checks the Sources Used sheet. She fills `Decision` and `YOUR ANSWER` and hands it back
+for "Processing an approved sweep". Note she may also **append her own rows** to the Weekly Sweep sheet with extra asks
+(she added two on 2026-08-06 pointing at a Slide Ranch page and asking for a closer re-read of a roundup) — always read
+past the last candidate row.
 
 ## Processing an approved sweep (every region)
 
@@ -989,6 +1009,15 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 
 ## What changed 2026-10-16/17, in one pass
 
+- **Review workbook template standardised, with a new "Sources Used" tab** (Alexandra, Oct 17). Every region (Marin,
+  Napa, Telluride) now uses the same four sheets and columns: Weekly Sweep (now with a `Source #` column), Questions,
+  **Sources Used** (each source that produced a candidate, with the events it gave), Attestation Log. See "Review
+  workbook format". `check_docs.py --attestation` now checks the Sources Used sheet too (`--partial` for a one-source
+  review); self-test 12/12.
+- **Telluride source #10, Visit Telluride's Festivals & Events calendar** (`4e1fa44`): first pass approved in full, 16
+  events (ids 1679-1694: Pumpkins & Peaks, Adventures in Acting, Mountain Sprouts party, Mountainfilm for Locals, KOTO Ski
+  Swap x3, Young Frankenstein x3, Lamplight Cemetery Tour x2, Ski Resort Opening Day, Freeski Film Night, gondola notice).
+  Alexandra: Telluride content will skew more adult. The page must be read in a browser (see `sources/telluride.md`).
 - **Housekeeping, later on Oct 17:** the leftover phone-session branch `claude/push-events-marin-app-cz0p19` was deleted
   from GitHub (everything on it was already in `main`; only `main` and `lockdown-edge-functions` remain). In open items:
   the GitHub / cloud-session issue is **closed** (Alexandra confirmed phone sessions read, commit and push); new **item 73,

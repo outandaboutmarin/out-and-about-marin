@@ -87,8 +87,9 @@ def region_from_name(path):
     return None
 
 
-def check_attestation(xlsx, region=None, root=HERE):
-    """Completion check of one review workbook against the region's source count."""
+def check_attestation(xlsx, region=None, root=HERE, partial=False):
+    """Completion check of one review workbook: the Sources Used sheet, and (unless partial, i.e. a one-source review)
+    one Attestation Log row per source in the region file."""
     import openpyxl
     region = region or region_from_name(xlsx)
     if not region:
@@ -106,7 +107,7 @@ def check_attestation(xlsx, region=None, root=HERE):
     si, ri = head.index('source'), head.index('result')
     data = [r for r in rows[1:] if r and len(r) > si and str(r[si] or '').strip()]
     errs = []
-    if len(data) != expected:
+    if len(data) != expected and not partial:
         errs.append(f'Attestation Log has {len(data)} source rows, but sources/{region}.md lists {expected}')
     for r in data:
         name = str(r[si]).strip()
@@ -115,6 +116,37 @@ def check_attestation(xlsx, region=None, root=HERE):
             errs.append(f'no Result for "{name}"')
         elif any(b in res.lower() for b in BANNED_RESULTS):
             errs.append(f'banned Result for "{name}": {res[:80]}')
+    errs += check_sources_used(wb)
+    return errs
+
+
+def check_sources_used(wb):
+    """Sources Used sheet (template 2026-10-17): present, with a row for every Source # on the Weekly Sweep sheet."""
+    if 'Sources Used' not in wb.sheetnames:
+        return ['workbook has no "Sources Used" sheet (one row per source that produced a candidate)']
+    rows = [r for r in wb['Sources Used'].iter_rows(values_only=True)]
+    head = [str(c or '').strip().lower() for c in (rows[0] if rows else [])]
+    if 'source #' not in head or 'source' not in head:
+        return ['Sources Used needs "Source #" and "Source" columns']
+    ni = head.index('source #')
+    listed = {str(r[ni]).strip().lower() for r in rows[1:] if r and len(r) > ni and str(r[ni] or '').strip()}
+    errs = []
+    if 'Weekly Sweep' in wb.sheetnames:
+        ws = [r for r in wb['Weekly Sweep'].iter_rows(values_only=True)]
+        wh = [str(c or '').strip().lower() for c in (ws[0] if ws else [])]
+        cand = [r for r in ws[1:] if r and len(r) > 1 and str(r[1] or '').strip()]
+        if cand and not listed:
+            errs.append('Sources Used is empty, but the Weekly Sweep sheet has candidates')
+        if 'source #' in wh:
+            si = wh.index('source #')
+            for r in cand:
+                v = str(r[si] or '').strip().lower() if len(r) > si else ''
+                if not v:
+                    errs.append(f'no Source # for candidate "{r[1]}"')
+                elif v not in listed:
+                    errs.append(f'Source # {v} (candidate "{r[1]}") is not on the Sources Used sheet')
+        elif cand:
+            errs.append('Weekly Sweep needs a "Source #" column')
     return errs
 
 
@@ -146,10 +178,13 @@ def self_test():
         # attestation completion check: a complete workbook passes, a short one and a banned result fail
         import openpyxl
         n = int(re.search(r'^\| Source count \| (\d+) \|', orig, re.M).group(1))
-        def wb(rows, name):
-            w = openpyxl.Workbook(); ws = w.active; ws.title = 'Attestation Log'
-            ws.append(['#', 'Source', 'Result'])
-            for r in rows: ws.append(r)
+        def wb(rows, name, used=True, src_no='1'):
+            w = openpyxl.Workbook(); ws = w.active; ws.title = 'Weekly Sweep'
+            ws.append(['Decision', 'Event Name', 'Source #']); ws.append(['', 'Test event', src_no])
+            if used:
+                su = w.create_sheet('Sources Used'); su.append(['Source #', 'Source', 'Candidates (count)']); su.append(['1', 'Source 1', 1])
+            a = w.create_sheet('Attestation Log'); a.append(['#', 'Source', 'Result'])
+            for r in rows: a.append(r)
             path = os.path.join(tmp, name); w.save(path); return path
         full = [[i + 1, f'Source {i + 1}', 'DONE. fetched live list'] for i in range(n)]
         good = not check_attestation(wb(full, 'telluride_sweep_ok.xlsx'), root=HERE)
@@ -159,6 +194,12 @@ def self_test():
                             ('a blank result', full[:-1] + [[n, 'Source N', '']])]:
             caught = bool(check_attestation(wb(rows, 'telluride_sweep_bad.xlsx'), root=HERE))
             print(f'  {"PASS" if caught else "FAIL"}: attestation check catches {label}'); ok &= caught
+        for label, path in [('a missing Sources Used sheet', wb(full, 'telluride_sweep_nosu.xlsx', used=False)),
+                            ('a candidate whose Source # is not on Sources Used', wb(full, 'telluride_sweep_badsrc.xlsx', src_no='7'))]:
+            caught = bool(check_attestation(path, root=HERE))
+            print(f'  {"PASS" if caught else "FAIL"}: attestation check catches {label}'); ok &= caught
+        good = not check_attestation(wb(full[:1], 'telluride_sweep_partial.xlsx'), root=HERE, partial=True)
+        print(f'  {"PASS" if good else "FAIL"}: --partial accepts a one-source review'); ok &= good
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
     print('self-test:', 'all passed' if ok else 'FAILED')
@@ -171,7 +212,7 @@ if __name__ == '__main__':
     if '--attestation' in sys.argv:
         x = sys.argv[sys.argv.index('--attestation') + 1]
         reg = sys.argv[sys.argv.index('--region') + 1] if '--region' in sys.argv else None
-        errs = check_attestation(x, reg)
+        errs = check_attestation(x, reg, partial='--partial' in sys.argv)
         for e in errs:
             print('  ✗', e)
         print(f'attestation: {"complete" if not errs else f"{len(errs)} problem(s)"} ({os.path.basename(x)})')
