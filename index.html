@@ -3629,19 +3629,23 @@ function doesEventOccurOnDate(e, date) {
 // Next real calendar date this event occurs on, for display where showing
 // just "Saturday" is ambiguous (e.g. search results) — a recurring monthly
 // hike and a one-off hike on the same weekday otherwise look identical.
-function getNextOccurrenceLabel(e) {
-  let d;
+// Next date this event happens (a one-off returns its own date even if it has passed); null if none in 120 days.
+function getNextOccurrenceDate(e) {
   if (e.event_date) {
-    d = new Date(e.event_date + 'T00:00:00');
-  } else {
-    d = null;
-    const today = new Date(); today.setHours(0, 0, 0, 0);
-    for (let i = 0; i < 120; i++) {
-      const cand = new Date(today); cand.setDate(today.getDate() + i);
-      if (doesEventOccurOnDate(e, cand)) { d = cand; break; }
-    }
+    const d = new Date(e.event_date + 'T00:00:00');
+    return isNaN(d) ? null : d;
   }
-  if (!d || isNaN(d)) return null;
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  for (let i = 0; i < 120; i++) {
+    const cand = new Date(today); cand.setDate(today.getDate() + i);
+    if (doesEventOccurOnDate(e, cand)) return cand;
+  }
+  return null;
+}
+
+function getNextOccurrenceLabel(e) {
+  const d = getNextOccurrenceDate(e);
+  if (!d) return null;
   return d.toLocaleDateString(currentLang === 'es' ? 'es-MX' : 'en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 }
 
@@ -5210,18 +5214,29 @@ function toggleSearch() {
 }
 
 function searchEvents(query) {
-  const q = query.toLowerCase().trim();
+  // "and", "&" and "+" all match each other (2026-10-17): "Coffee & Community" finds "Coffee + Community".
+  const norm = s => (s || '').toLowerCase().replace(/\s*(?:&|\+|\band\b)\s*/g, ' and ').replace(/\s+/g, ' ').trim();
+  const q = norm(query);
   const resultsDiv = document.getElementById('searchResults');
 
   if (!q) { resultsDiv.innerHTML = ''; return; }
 
-  const results = allEvents.filter(e => regionOf(e) === activeCounty && (
-    e.event_name.toLowerCase().includes(q) ||
-    e.venue.toLowerCase().includes(q) ||
-    e.town.toLowerCase().includes(q) || (e.location_group || '').toLowerCase().includes(q) ||
-    e.type.toLowerCase().includes(q) ||
-    (e.description && e.description.toLowerCase().includes(q))
+  // shouldShowEvent: retired (Inactive) records were turning up in search (2026-10-17), as they once did in the Featured strip.
+  const results = allEvents.filter(e => regionOf(e) === activeCounty && shouldShowEvent(e) !== 'hide' && (
+    norm(e.event_name).includes(q) ||
+    norm(e.venue).includes(q) ||
+    norm(e.town).includes(q) || norm(e.location_group).includes(q) ||
+    norm(e.type).includes(q) ||
+    norm(e.description).includes(q)
   ));
+
+  // Soonest next date first (2026-10-17); events with no upcoming date (a past one-off, or nothing in 120 days) go last.
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const nextKey = e => { const d = getNextOccurrenceDate(e); return d && d >= today ? d.getTime() : Infinity; };
+  const startMin = e => { const t = parseEventTimes(e.time)[0]; return t ? t.h * 60 + t.mi : 9999; };
+  const keyed = results.map(e => [nextKey(e), startMin(e), e]);
+  keyed.sort((a, b) => (a[0] === b[0] ? 0 : a[0] - b[0]) || a[1] - b[1] || a[2].event_name.localeCompare(b[2].event_name));
+  results.splice(0, results.length, ...keyed.map(k => k[2]));
 
   if (results.length === 0) {
     resultsDiv.innerHTML = '<div style="padding:2rem;text-align:center;font-family:Jost,sans-serif;color:#999">No events found</div>';
@@ -5999,7 +6014,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-13.2';
+const APP_BUILD = '2026-10-17.1';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
