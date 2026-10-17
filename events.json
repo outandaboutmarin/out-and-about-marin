@@ -20271,6 +20271,37 @@
       "status": "Active",
       "expires": "2026-10-29",
       "day": "Thursday"
+    },
+    {
+      "organization": "Pottery Barn Kids",
+      "venue": "Pottery Barn Kids, The Village at Corte Madera",
+      "event_name": "Pottery Barn Kids Halloween Craft Event",
+      "event_name_es": "Manualidades de Halloween en Pottery Barn Kids",
+      "type": "Kids Programs",
+      "day": "Saturday",
+      "time": "10:00 AM",
+      "time_of_day": "Morning",
+      "town": "Corte Madera",
+      "address": "1618 Redwood Hwy, Corte Madera, CA 94925",
+      "ages": "Kids",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-10-24",
+      "expires": "2026-10-24",
+      "status": "Active",
+      "featured": false,
+      "description": "A morning of Halloween crafts for little ones at Pottery Barn Kids in The Village at Corte Madera. Free, but space is limited.",
+      "description_es": "Una mañana de manualidades de Halloween para los más pequeños en Pottery Barn Kids, en The Village at Corte Madera. Gratis, pero el cupo es limitado.",
+      "registration": "RSVP requested (Village events page)",
+      "website": "https://www.villageatcortemadera.com/Events/Details/580724",
+      "notes": "Free; space is limited, so RSVP.",
+      "location_group": "Corte Madera",
+      "id": 1676,
+      "internal_notes": "Added 2026-10-17 at Alexandra's request, from the Village events page (event 580724: Sat Oct 24, 10 AM, free, space limited)."
     }
   ]
 }
