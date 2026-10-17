@@ -20067,7 +20067,7 @@
       "time_of_day": "Morning",
       "town": "San Rafael",
       "address": "Golden Gate Gymnastics, 55 Mitchell Blvd #23, San Rafael, CA 94903",
-      "ages": "3-6 yrs",
+      "ages": "1-6 yrs",
       "cost": "Free",
       "indoor_outdoor": "Indoor",
       "active_sedentary": "Active",
@@ -20078,8 +20078,8 @@
       "expires": "2026-10-23",
       "status": "Active",
       "featured": false,
-      "description": "One day only: free trial gymnastics classes for 3- to 6-year-olds who want to give it a try. Meet the coaches, check out the gym and join the fun. Preregistration is required; email the gym to grab a spot.",
-      "description_es": "Solo por un día: clases de prueba gratis de gimnasia para niños de 3 a 6 años que quieran probarla. Conoce a los entrenadores, visita el gimnasio y únete a la diversión. Se requiere inscripción previa; escribe al gimnasio para reservar tu lugar.",
+      "description": "One day only: free trial gymnastics classes for kids ages 1 to 6 who want to give it a try. Meet the coaches, check out the gym and join the fun. Preregistration is required; email the gym to grab a spot.",
+      "description_es": "Solo por un día: clases de prueba gratis de gimnasia para niños de 1 a 6 años que quieran probarla. Conoce a los entrenadores, visita el gimnasio y únete a la diversión. Se requiere inscripción previa; escribe al gimnasio para reservar tu lugar.",
       "registration": "Required: email info@goldengategymnastics.com",
       "website": "https://www.goldengategymnastics.com/class-schedule",
       "contact": {
@@ -20088,7 +20088,7 @@
         "instagram": "goldengategymnastics"
       },
       "notes": "Preregistration required. Email to reserve a trial spot.",
-      "internal_notes": "Added 2026-10-17 from an Instagram post screenshot (@goldengategymnastics: 'FREE TRIAL CLASSES! Offer ONLY available for this Friday, 10/23', ages 3-6, preregistration required). Address, email and phone from goldengategymnastics.com. Time 9 AM - 6 PM set by Alexandra 2026-10-17 (post gives none; the gym's Friday 3-6 classes run 11:15 AM to 5:45 PM). Added as a one-off free trial at Alexandra's call, though it leads into paid weekly classes.",
+      "internal_notes": "Added 2026-10-17 from an Instagram post screenshot (@goldengategymnastics: 'FREE TRIAL CLASSES! Offer ONLY available for this Friday, 10/23', ages 3-6 on the post, preregistration required). Address, email and phone from goldengategymnastics.com. Time 9 AM - 6 PM set by Alexandra 2026-10-17 (post gives none; the gym's Friday 3-6 classes run 11:15 AM to 5:45 PM). Added as a one-off free trial at Alexandra's call, though it leads into paid weekly classes. Ages changed to 1-6 by Alexandra 2026-10-17.",
       "location_group": "San Rafael"
     }
   ]
