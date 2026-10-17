@@ -19698,7 +19698,7 @@
       "time": "10:00 AM - 11:30 AM",
       "time_of_day": "Morning",
       "town": "Novato",
-      "address": "Creekside Bakery, Novato, CA",
+      "address": "Creekside Bakery, 1719 Grant Ave, Novato, CA 94945",
       "ages": "All ages",
       "cost": "Free (drinks at own cost)",
       "indoor_outdoor": "Indoor",
@@ -19718,7 +19718,7 @@
         "instagram": "thelocalhypegirl"
       },
       "notes": "Drop-in, no RSVP needed.",
-      "internal_notes": "Added 2026-10-17 from an Instagram Story screenshot (@thelocalhypegirl), posted the evening before the event. Exact street address for Creekside Bakery, Novato was not given on the flyer - confirm and fill in before next sweep touches this venue. Audience/ages not stated on flyer; classified as All ages / Community Event since it reads as an open neighborhood meetup rather than an explicitly adult-only one - flag to Alexandra to confirm or recategorize as Grown-Ups Only! if that is wrong.",
+      "internal_notes": "Added 2026-10-17 from an Instagram Story screenshot (@thelocalhypegirl), posted the evening before the event. Street address confirmed 2026-10-17 on creeksidebakery.com/contact (1719 Grant Ave, Novato 94945; open Wed-Fri 7am-3pm, so the meetup is in opening hours). Audience/ages not stated on flyer; classified as All ages / Community Event since it reads as an open neighborhood meetup rather than an explicitly adult-only one - flag to Alexandra to confirm or recategorize as Grown-Ups Only! if that is wrong.",
       "location_group": "Novato"
     },
     {
@@ -20020,6 +20020,40 @@
       "location_group": "Corte Madera",
       "id": 1676,
       "internal_notes": "Added 2026-10-17 at Alexandra's request, from the Village events page (event 580724: Sat Oct 24, 10 AM, free, space limited)."
+    },
+    {
+      "id": 1677,
+      "organization": "Tam Tavern (East Brother Beer Company)",
+      "venue": "Tam Tavern",
+      "event_name": "Tam Tavern's First Birthday Oktoberfest",
+      "event_name_es": "Oktoberfest del primer aniversario de Tam Tavern",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "4:00 PM - 9:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Mill Valley",
+      "address": "Tam Tavern, 152 Shoreline Hwy, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "cost": "Free entry; food and drinks for purchase",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-10-24",
+      "expires": "2026-10-24",
+      "status": "Active",
+      "featured": false,
+      "description": "Tam Tavern turns one with an Oktoberfest-style party: live music, East Brother beer, food, and games with prizes for a little friendly competition. Come for a round or stay for the evening.",
+      "description_es": "Tam Tavern cumple un año con una fiesta al estilo Oktoberfest: música en vivo, cerveza East Brother, comida y juegos con premios para un poco de competencia amistosa. Ven a tomar algo o quédate toda la tarde.",
+      "registration": "Not required",
+      "website": "https://tamtavernmv.com",
+      "contact": {
+        "phone": "415-843-4545"
+      },
+      "notes": "",
+      "internal_notes": "Added 2026-10-17 from a flyer screenshot (Nextdoor post by a Tamalpais Valley neighbour) at Alexandra's request. Flyer: Saturday October 24, 4:00PM-9:00PM, 152 Shoreline Hwy, 415.843.4545. tamtavernmv.com returned 403 to the cloud session, so date/time rest on the flyer only. Venue opened Sept 2025 in the former Floodwater space (Pacific Sun, Oct 1 2025), consistent with a first-birthday party. Assumptions approved by Alexandra 2026-10-17: All ages / Community Event (7x7 describes the hall as family- and dog-friendly), cost 'Free entry; food and drinks for purchase' (flyer silent), indoor_outdoor Both.",
+      "location_group": "Mill Valley"
     }
   ]
 }
