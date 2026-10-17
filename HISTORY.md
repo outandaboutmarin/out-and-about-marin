@@ -315,3 +315,33 @@ kept, to be highlighted on Instagram. Committed as `8f4ba49`.
 - **Venues stop programmes without saying so:** the Village's Acoustic Weekends, Larkspur's Games morning, Mahjong at
   the Mart and one Slide Ranch farm day had simply vanished from their own pages, and were retired on that basis.
 
+## 2026-10-16/17: phone sessions, search order, and one review template for every region
+
+**Phone (cloud) sessions.** Alexandra started working from her phone in Claude Code on the web. Reading the repo worked
+but every push failed (403) until the **Claude GitHub App was installed on the repo**; reconnecting GitHub in claude.ai
+settings alone did not fix it. Phone sessions also need the "OAA - Full" environment for website access. The rules are in
+CLAUDE.md, "Phone / cloud sessions". Because the phone and the nightly bot push to `main`, desktop sessions now **pull at
+start** through a SessionStart hook (20-second limit, `--ff-only`, so it never merges or overwrites). The leftover
+phone-session branch was deleted once everything on it was in `main`.
+
+**Search order.** Results came back in database order, so the newest event sat at the bottom. They now sort by the next
+date, soonest first, then start time; events with no upcoming date go last; "and", "&" and "+" match each other. Testing it
+turned up a second bug, fixed in the same change: **search was showing retired records**, the same gap the Featured strip
+had until Oct 13. Lesson for local testing: the `oaa-local` preview stops at the sign-up screen unless a profile is saved
+in that localhost tab, which is why Alexandra first could not try it.
+
+**Village records.** Asked to end-date the Village's weekly mahjong and storytime, the database turned out to have no
+mahjong record at all, and the storytime was a Seasonal record (Jul 31 - Sep 25) that would have come back every summer.
+Both became dated one-offs. A Seasonal record is the wrong shape for a series that will not recur next year.
+
+**Telluride source #10.** The Visit Telluride calendar was the first new Telluride event source. Its list is built by
+script, so a plain fetch shows "Showing 0 of 0"; the events were read from the page's own data in a browser. Alexandra
+asked for a review workbook before anything was added (rather than adding straight from a chat list), approved all 16
+events, and noted that Telluride content will skew more adult.
+
+**One review template.** She asked for a tab listing the sources the content came from, as part of the template for
+every region. The old procedure and the format section described two different column sets; there is now one
+definition (four sheets: Weekly Sweep with a Source # column, Questions, Sources Used, Attestation Log), and
+`check_docs.py --attestation` enforces the Sources Used sheet (`--partial` for a one-source review). Napa keeps its extra
+line in the live-music tracker on purpose.
+
