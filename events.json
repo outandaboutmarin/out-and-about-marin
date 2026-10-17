@@ -20054,6 +20054,42 @@
       "notes": "",
       "internal_notes": "Added 2026-10-17 from a flyer screenshot (Nextdoor post by a Tamalpais Valley neighbour) at Alexandra's request. Flyer: Saturday October 24, 4:00PM-9:00PM, 152 Shoreline Hwy, 415.843.4545. tamtavernmv.com returned 403 to the cloud session, so date/time rest on the flyer only. Venue opened Sept 2025 in the former Floodwater space (Pacific Sun, Oct 1 2025), consistent with a first-birthday party. Assumptions approved by Alexandra 2026-10-17: All ages / Community Event (7x7 describes the hall as family- and dog-friendly), cost 'Free entry; food and drinks for purchase' (flyer silent), indoor_outdoor Both.",
       "location_group": "Mill Valley"
+    },
+    {
+      "id": 1678,
+      "organization": "Golden Gate Gymnastics",
+      "venue": "Golden Gate Gymnastics",
+      "event_name": "Free Trial Gymnastics Class at Golden Gate Gymnastics",
+      "event_name_es": "Clase de prueba gratis de gimnasia en Golden Gate Gymnastics",
+      "type": "Kids Programs",
+      "day": "Friday",
+      "time": "9:00 AM - 6:00 PM",
+      "time_of_day": "Morning",
+      "town": "San Rafael",
+      "address": "Golden Gate Gymnastics, 55 Mitchell Blvd #23, San Rafael, CA 94903",
+      "ages": "3-6 yrs",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-10-23",
+      "expires": "2026-10-23",
+      "status": "Active",
+      "featured": false,
+      "description": "One day only: free trial gymnastics classes for 3- to 6-year-olds who want to give it a try. Meet the coaches, check out the gym and join the fun. Preregistration is required; email the gym to grab a spot.",
+      "description_es": "Solo por un día: clases de prueba gratis de gimnasia para niños de 3 a 6 años que quieran probarla. Conoce a los entrenadores, visita el gimnasio y únete a la diversión. Se requiere inscripción previa; escribe al gimnasio para reservar tu lugar.",
+      "registration": "Required: email info@goldengategymnastics.com",
+      "website": "https://www.goldengategymnastics.com/class-schedule",
+      "contact": {
+        "email": "info@goldengategymnastics.com",
+        "phone": "(415) 306-7072",
+        "instagram": "goldengategymnastics"
+      },
+      "notes": "Preregistration required. Email to reserve a trial spot.",
+      "internal_notes": "Added 2026-10-17 from an Instagram post screenshot (@goldengategymnastics: 'FREE TRIAL CLASSES! Offer ONLY available for this Friday, 10/23', ages 3-6, preregistration required). Address, email and phone from goldengategymnastics.com. Time 9 AM - 6 PM set by Alexandra 2026-10-17 (post gives none; the gym's Friday 3-6 classes run 11:15 AM to 5:45 PM). Added as a one-off free trial at Alexandra's call, though it leads into paid weekly classes.",
+      "location_group": "San Rafael"
     }
   ]
 }
