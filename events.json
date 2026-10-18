@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17",
+  "last_updated": "2026-10-18",
   "events": [
     {
       "id": 1,
@@ -20602,6 +20602,86 @@
       "notes": "Back in service at 6:30 AM on Friday, November 20.",
       "county": "Telluride+",
       "internal_notes": "From the Visit Telluride calendar (telluride.com/festivals-events/events/, new source #10), review workbook Telluride\\Sweeps\\telluride_sweep_2026-10-17_review.xlsx; Alexandra marked approve 2026-10-17. A notice, not an event; approved. Shows on Oct 26 (one-off); expires Nov 19."
+    },
+    {
+      "id": 1695,
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "organization": "Golden Gate Mahjong",
+      "venue": "Mog Asu Wine Bar",
+      "event_name": "Mahjong Open Play w/ Golden Gate Mahjong",
+      "event_name_es": "Mahjong libre con Golden Gate Mahjong",
+      "type": "Grown-Ups Only!",
+      "day": "Monday",
+      "time": "6:00 PM – 8:00 PM",
+      "time_of_day": "Evening",
+      "town": "Tiburon",
+      "address": "1 Blackfield Dr Ste 14, Belvedere Tiburon, CA 94920",
+      "ages": "Adults",
+      "cost": "$20",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-10-19",
+      "expires": "2026-10-19",
+      "description": "Chinese and American tables, for anyone who's played before. Kendall is there all night to seat people and help mid-hand. Reserve a seat in advance. The game is the excuse.",
+      "description_es": "Mesas de mahjong chino y americano, para quien ya haya jugado. Kendall está toda la noche para acomodar a la gente y ayudar a mitad de partida. Reserva tu lugar con antelación. El juego es la excusa.",
+      "registration": "Required: book your seat online (Visit website)",
+      "website": "https://goldengatemahjongscheduling.as.me/?appointmentType=95685358",
+      "notes": "$20 a seat; reserve in advance.",
+      "location_group": "Tiburon/Belvedere",
+      "internal_notes": "Added 2026-10-18 at Alexandra's instruction (from the sponsor): the Mon Oct 12 Mog Asu night (id 1268, since purged) moved to Mon Oct 19, same time. All other fields copied from 1268; booking link is the Acuity 'Social Play' type ($20, 120 min). Partner event (open items 21, 59).",
+      "partner": true,
+      "contact": {
+        "name": "Golden Gate Mahjong",
+        "instagram": "goldengatemahj",
+        "form_url": "https://www.goldengatemahjong.com/inquire"
+      },
+      "socials": {
+        "instagram": "goldengatemahj"
+      }
+    },
+    {
+      "id": 1696,
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "organization": "Golden Gate Mahjong",
+      "venue": "Flora & Henri",
+      "event_name": "American Mahjong 101 + Open Play at Flora & Henri",
+      "event_name_es": "Mahjong americano 101 + juego libre en Flora & Henri",
+      "type": "Grown-Ups Only!",
+      "day": "Thursday",
+      "time": "6:00 PM – 8:30 PM",
+      "time_of_day": "Evening",
+      "town": "Larkspur",
+      "address": "Flora & Henri, 2229 Larkspur Landing Cir, Larkspur, CA 94939",
+      "ages": "Adults",
+      "cost": "$65, food and a drink included",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-10-29",
+      "expires": "2026-10-29",
+      "description": "New to mahjong? Start here. Tiles are in front of you from the first minute as you learn the American game hands-on, with open play alongside for those who already know it. Food and a drink are included. Doors open at 5:30 to enjoy bites and browse the shop; play starts at 6.",
+      "description_es": "¿Nuevo en el mahjong? Empieza aquí. Tendrás las fichas delante desde el primer minuto mientras aprendes el juego americano de forma práctica, con juego libre al lado para quienes ya saben jugar. Incluye comida y una bebida. Las puertas abren a las 5:30 para disfrutar de bocados y recorrer la tienda; el juego empieza a las 6.",
+      "registration": "Required: book your seat online (Visit website)",
+      "website": "https://goldengatemahjongscheduling.as.me/?appointmentType=95647437",
+      "notes": "Doors 5:30 PM for shopping; play starts 6 PM. Reserve in advance.",
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "internal_notes": "Added 2026-10-18 at Alexandra's instruction (sponsor update): 'American 101 and open play at Flora & Henri in Larkspur, Thursday, October 29. Doors at 5:30 for shopping, play at 6.' Acuity type 95647437 'American mahjong - intro night at Flora & Henri': $65, 150 min, class size 16, food and a drink included (so 6-8:30 PM). Cost $65 confirmed by Alexandra 2026-10-18. Address from florahenri.com (Marin Country Mart). Partner event (open items 21, 59).",
+      "partner": true,
+      "contact": {
+        "name": "Golden Gate Mahjong",
+        "instagram": "goldengatemahj",
+        "form_url": "https://www.goldengatemahjong.com/inquire"
+      },
+      "socials": {
+        "instagram": "goldengatemahj"
+      }
     }
   ]
 }
