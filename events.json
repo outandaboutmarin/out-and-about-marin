@@ -19877,6 +19877,41 @@
       "socials": {
         "instagram": "goldengatemahj"
       }
+    },
+    {
+      "id": 1697,
+      "organization": "Friends of the San Rafael Public Library",
+      "venue": "Friends Books",
+      "event_name": "Friends Books Open House and Volunteer Mixer",
+      "event_name_es": "Jornada de puertas abiertas y encuentro de voluntarios en Friends Books",
+      "type": "Grown-Ups Only!",
+      "day": "Thursday",
+      "time": "5:00 PM - 7:00 PM",
+      "time_of_day": "Evening",
+      "town": "San Rafael",
+      "address": "Friends Books, 1016 C Street, San Rafael, CA 94901",
+      "ages": "Adults",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-10-22",
+      "expires": "2026-10-22",
+      "status": "Active",
+      "featured": false,
+      "description": "Looking for a low-key volunteer opportunity that also supports a valuable community resource? The Friends of the San Rafael Public Library run a used bookstore that helps fund library programs. Drop by the open house to browse, meet the volunteers and find out how to get involved.",
+      "description_es": "¿Buscas una forma tranquila de hacer voluntariado y a la vez apoyar un recurso valioso de la comunidad? Los Amigos de la Biblioteca Pública de San Rafael tienen una librería de libros usados que ayuda a financiar los programas de la biblioteca. Pasa por la jornada de puertas abiertas para curiosear, conocer a los voluntarios y descubrir cómo participar.",
+      "registration": "Not required",
+      "website": "https://srpubliclibrary.org/support-the-library/friends-of-the-library/",
+      "contact": {
+        "phone": "(415) 453-1443",
+        "email": "friendssanrafael@gmail.com"
+      },
+      "notes": "",
+      "internal_notes": "Added 2026-10-18 from a screenshot of a community-app event post (created by Ron Evans): Thu Oct 22, 5-7 PM, 1016 C Street; description truncated at 'see more', so the listing uses the visible text only. Store address, phone and email confirmed on srpubliclibrary.org's Friends of the Library page (regular hours Tue-Sat 10:30-4:30, so this is after-hours). friendssrpl.org returned 502. Type Grown-Ups Only! set by Alexandra 2026-10-18.",
+      "location_group": "San Rafael"
     }
   ]
 }
