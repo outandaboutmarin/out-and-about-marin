@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18",
+  "last_updated": "2026-10-19",
   "events": [
     {
       "id": 1,
@@ -19912,6 +19912,42 @@
       "notes": "",
       "internal_notes": "Added 2026-10-18 from a screenshot of a community-app event post (created by Ron Evans): Thu Oct 22, 5-7 PM, 1016 C Street; description truncated at 'see more', so the listing uses the visible text only. Store address, phone and email confirmed on srpubliclibrary.org's Friends of the Library page (regular hours Tue-Sat 10:30-4:30, so this is after-hours). friendssrpl.org returned 502. Type Grown-Ups Only! set by Alexandra 2026-10-18.",
       "location_group": "San Rafael"
+    },
+    {
+      "id": 1698,
+      "organization": "Performing Arts Academy of Marin (PAAM Arts)",
+      "venue": "Performing Arts Academy of Marin",
+      "event_name": "PAAM Pumpkin Bash",
+      "event_name_es": "Pumpkin Bash de PAAM (fiesta de calabazas)",
+      "type": "Kids Programs",
+      "day": "Saturday",
+      "time": "3:00 PM - 5:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Mill Valley",
+      "address": "Performing Arts Academy of Marin, 60 Belvedere Drive, Mill Valley, CA 94941 (behind Strawberry Village)",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-10-24",
+      "expires": "2026-10-24",
+      "status": "Active",
+      "featured": false,
+      "description": "Performing Arts Academy of Marin's 5th annual Pumpkin Bash: pumpkin decorating, carnival games, trick-or-treating, a bounce house, a Monster Mash dance party and a prize wheel, plus a live Halloween performance by the PAAM Dance Squad. Free; come in costume!",
+      "description_es": "El 5.º Pumpkin Bash anual de la Performing Arts Academy of Marin: decoración de calabazas, juegos de feria, truco o trato, castillo inflable, fiesta de baile Monster Mash y ruleta de premios, además de una actuación de Halloween en vivo del PAAM Dance Squad. Gratis; ¡ven disfrazado!",
+      "registration": "RSVP requested (QR code on the organiser's flyer)",
+      "website": "https://www.paamarts.com",
+      "contact": {
+        "phone": "(415) 380-0887",
+        "email": "hello@paamarts.com",
+        "instagram": "paamarts"
+      },
+      "notes": "Wear a costume! RSVP requested.",
+      "internal_notes": "Added 2026-10-19 from a screenshot of @strawberryvillagemv's Instagram story resharing @paamarts' flyer (5th annual Pumpkin Bash, Sat Oct 24, 3-5 PM, free, 60 Belvedere Dr). Address, phone and email confirmed on paamarts.com. RSVP is a QR code not readable from the screenshot; website set to paamarts.com. Ages All ages set by Alexandra 2026-10-19.",
+      "location_group": "Mill Valley"
     }
   ]
 }
