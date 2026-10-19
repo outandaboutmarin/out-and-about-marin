@@ -19627,6 +19627,40 @@
       "notes": "Wear a costume! RSVP requested.",
       "internal_notes": "Added 2026-10-19 from a screenshot of @strawberryvillagemv's Instagram story resharing @paamarts' flyer (5th annual Pumpkin Bash, Sat Oct 24, 3-5 PM, free, 60 Belvedere Dr). Address, phone and email confirmed on paamarts.com. RSVP is a QR code not readable from the screenshot; website set to paamarts.com. Ages All ages set by Alexandra 2026-10-19.",
       "location_group": "Mill Valley"
+    },
+    {
+      "id": 1699,
+      "organization": "Outerknown + Salted Roots",
+      "venue": "Outerknown, Marin Country Mart",
+      "event_name": "End of Summer Celebration: Surf Film with Outerknown + Salted Roots",
+      "event_name_es": "Celebración de fin de verano: película de surf con Outerknown + Salted Roots",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "6:00 PM - 8:30 PM",
+      "time_of_day": "Evening",
+      "town": "Larkspur",
+      "address": "Outerknown, Marin Country Mart, 1009 Larkspur Landing Circle, Suite 5A, Larkspur, CA 94939",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-10-24",
+      "expires": "2026-10-24",
+      "status": "Active",
+      "featured": false,
+      "description": "Outerknown and Salted Roots, an Oakland nonprofit surf community expanding ocean access for girls, women and gender-expansive people of color, host an end-of-summer celebration of surf, film and community: a screening of Wipeouts, giveaways, light refreshments and popcorn, plus a one-time 20% off storewide.",
+      "description_es": "Outerknown y Salted Roots, una comunidad de surf sin fines de lucro de Oakland que amplía el acceso al océano para niñas, mujeres y personas de color de género expansivo, organizan una celebración de fin de verano dedicada al surf, el cine y la comunidad: proyección de Wipeouts, regalos, refrigerios ligeros y palomitas, además de un 20 % de descuento en toda la tienda por única vez.",
+      "registration": "Not required",
+      "website": "",
+      "contact": {
+        "instagram": "marincountrymart"
+      },
+      "notes": "",
+      "internal_notes": "Added 2026-10-19 from a screenshot of @marincountrymart's Instagram story (Outerknown + Salted Roots flyer: Oct 24, 6-8:30 PM, 1009 Larkspur Landing Circle Suite 5A). No cost or RSVP on the flyer; listed Free / Not required. Community Event, All ages per Alexandra 2026-10-19.",
+      "location_group": "Larkspur/Greenbrae/Kentfield"
     }
   ]
 }
