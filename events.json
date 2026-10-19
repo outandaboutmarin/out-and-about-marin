@@ -9978,7 +9978,8 @@
       "notes": "Free; RSVP required. Drop in any time 3–5 PM.",
       "id": 1331,
       "expires": "2026-10-21",
-      "internal_notes": "Added 2026-10-01 at Alexandra's request ('The Social Klub is a sponsor ... add these five events ... add the PARTNER badge'), from thesocialklub.com/events-and-activities. Partner event (PARTNER badge, contact line, Follow row, sponsored-listing line). Booking link: https://thesocialklub.bookpsb.com#/cx/register/e8e8d893-ab1d-4028-9d64-ebd174400578. 2026-10-01: website changed to the Klub's events page at Alexandra's request (was the direct booking link https://thesocialklub.bookpsb.com#/cx/register/e8e8d893-ab1d-4028-9d64-ebd174400578). 2026-10-01: 'Hosted by The Social Klub.' appended to the About text at Alexandra's request (all Social Klub events)."
+      "internal_notes": "Added 2026-10-01 at Alexandra's request ('The Social Klub is a sponsor ... add these five events ... add the PARTNER badge'), from thesocialklub.com/events-and-activities. Partner event (PARTNER badge, contact line, Follow row, sponsored-listing line). Booking link: https://thesocialklub.bookpsb.com#/cx/register/e8e8d893-ab1d-4028-9d64-ebd174400578. 2026-10-01: website changed to the Klub's events page at Alexandra's request (was the direct booking link https://thesocialklub.bookpsb.com#/cx/register/e8e8d893-ab1d-4028-9d64-ebd174400578). 2026-10-01: 'Hosted by The Social Klub.' appended to the About text at Alexandra's request (all Social Klub events). Kept out of the Featured carousel with no_feature at Alexandra's request 2026-10-19.",
+      "no_feature": true
     },
     {
       "season_start": "",

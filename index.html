@@ -4265,6 +4265,8 @@ function selectFeatured(){
     // is a standing sign-up programme rather than a dated event, so it has no
     // occurrence for occ() to find and would never otherwise qualify. Use this
     // sparingly: a pin costs a slot every single day, and the strip holds nine.
+    // no_feature: keeps a record out of the strip while it stays in the list (2026-10-19, Alexandra, id 1331).
+    if(e.no_feature===true)return false;
     if(e.pinned===true)return true;
     var isStorytimeReserve=e.featured===true&&e.cadence==='Monthly'&&e.type==='Kids Programs';
     if(e.cadence!=='One-off'&&!isStorytimeReserve)return false;
@@ -6014,7 +6016,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-17.1';
+const APP_BUILD = '2026-10-19.1';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
