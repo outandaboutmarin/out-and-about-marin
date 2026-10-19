@@ -1,13 +1,13 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-10-19
-Time: 18:52:45
+Time: 23:31:05
 
-Total events in events.json: 627
-Active events: 579
+Total events in events.json: 628
+Active events: 580
 Temp. closed: 0
 
 Events by type:
-  Community Event: 125
+  Community Event: 126
   Farmers Market: 14
   Festival: 17
   Fitness: 23
@@ -25,7 +25,7 @@ Events by town:
   Fairfax: 14
   Inverness: 3
   Kentfield: 1
-  Larkspur: 28
+  Larkspur: 29
   Marin City: 8
   Marin County: 1
   Mill Valley: 71
@@ -57,7 +57,6 @@ Events by town:
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
-  🔔 PAGE CHANGED: Mill Valley Public Library
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library
