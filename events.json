@@ -15453,10 +15453,10 @@
       "description_es": "Una clase interactiva para adultos mayores sobre tecnología, ciencia, medio ambiente, arte y música. 1:30 p. m.–2:30 p. m..",
       "registration": "Not required",
       "website": "https://telluridelibrary.libcal.com/event/17622974",
-      "notes": "skip: 2026-10-26",
+      "notes": "skip: 2026-10-26 | skip: 2026-11-30",
       "location_group": "Telluride",
       "county": "Telluride+",
-      "internal_notes": "Telluride library sweep 2026-10-09 (window Oct 10-Nov 30), approved by Alexandra 2026-10-09 ('add'). Room: Meeting Room #6 - large.  5 dates 10-19 to 11-23.Missing weeks (cancelled or holiday) would need: skip: 2026-10-26 CHECKED 2026-10-09: check_duplicates COLLISION with id 1531 is two different programs in different rooms of the same library; both real."
+      "internal_notes": "Telluride library sweep 2026-10-09 (window Oct 10-Nov 30), approved by Alexandra 2026-10-09 ('add'). Room: Meeting Room #6 - large.  5 dates 10-19 to 11-23.Missing weeks (cancelled or holiday) would need: skip: 2026-10-26 CHECKED 2026-10-09: check_duplicates COLLISION with id 1531 is two different programs in different rooms of the same library; both real. skip: 2026-11-30 added 2026-10-20 at Alexandra's instruction: the library's listing (sweep window to Nov 30) showed dates only to Nov 23, so the Weekly record was over-generating Nov 30. Re-check on the next Telluride sweep in case Nov 30 is added."
     },
     {
       "id": 1550,
