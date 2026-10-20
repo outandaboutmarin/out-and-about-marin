@@ -19696,6 +19696,40 @@
       "notes": "",
       "internal_notes": "Added 2026-10-20 (same day) from a screenshot of @cineloungetiburon's Instagram post (Cry Baby Cinema, Tue Oct 20, 2:30 PM, screening You Can See Everything). Address from listings (Tiburon Chamber, The Ark); cinelounge.com had no page for this screening or a price, so cost is 'Movie ticket'. Ages 0-5 yrs set by Alexandra 2026-10-20.",
       "location_group": "Tiburon/Belvedere"
+    },
+    {
+      "id": 1701,
+      "organization": "CineLounge Tiburon",
+      "venue": "CineLounge Tiburon",
+      "event_name": "Cry Baby Cinema: You Can See Everything",
+      "event_name_es": "Cry Baby Cinema: cine para padres con bebés (You Can See Everything)",
+      "type": "Music and Movies",
+      "day": "Thursday",
+      "time": "2:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Tiburon",
+      "address": "CineLounge Tiburon, 40 Main Street, Tiburon, CA 94920",
+      "ages": "0-5 yrs",
+      "cost": "Movie ticket",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-10-22",
+      "expires": "2026-10-22",
+      "status": "Active",
+      "featured": false,
+      "description": "A parent-and-little-one screening of You Can See Everything: lower volume, gentle lights, and crying babies welcome.",
+      "description_es": "Una proyección para padres con sus pequeños de You Can See Everything: volumen más bajo, luces suaves y bebés que lloran bienvenidos.",
+      "registration": "Tickets at the box office or online",
+      "website": "https://www.cinelounge.com",
+      "contact": {
+        "instagram": "cineloungetiburon"
+      },
+      "notes": "",
+      "internal_notes": "Added 2026-10-20 at Alexandra's instruction: the same Cry Baby Cinema screening (You Can See Everything) also runs Thu Oct 22 at 2 PM at CineLounge Tiburon. Other fields copied from id 1700.",
+      "location_group": "Tiburon/Belvedere"
     }
   ]
 }
