@@ -560,12 +560,12 @@ material is listed here and in `sources/<region>.md`.
 
 ### Telluride+ specifics (added 2026-10-09)
 
-Alexandra's request 2026-10-09: bring in the Telluride, CO area "similar to Napa, but a lot more events", with sourcing **standardised on the Marin process**. Libraries first; the other sources in `Telluride/Telluride_Region_Research_v2.xlsx` (markets, community calendars, arts venues, schools, towns, Lee's 18 sources) are the next phase.
+Alexandra's request 2026-10-09: bring in the Telluride, CO area "similar to Napa, but a lot more events", with sourcing **standardised on the Marin process**. Libraries first; the other sources in `Telluride/Telluride_Region_Research_v2.xlsx` (markets, community calendars, arts venues, schools, towns, Lee Shea's 18 sources) are the next phase.
 
 - **Files (Dropbox project folder, NOT the repo):** `Telluride\Telluride_Region_Research_v2.xlsx` (towns, every library, every source, attestation) and `Telluride\Telluride_library_sweep_2026-10-09_review.xlsx` (the first sweep: same three tabs as a Marin review, her decisions in it).
 - **Sandbox first.** She asked for mockups before anything is committed: candidates go to a review workbook, approved rows become records in a sandbox JSON, and a local copy of the site (demo session, writes stubbed, a "MOCKUP" ribbon) is served for her to click through. Commit only on her explicit go. The first batch went live 2026-10-09 (ids 1450–1609).
 - **Decisions (Alexandra 2026-10-09):** teen programs IN; adult programs IN as `Grown-Ups Only!` (`ages` "Adults" or "21+"); approved one-offs that repeat on a visible pattern become Weekly/Monthly records ("add the other events as recurring"), but a single date is not a pattern and a series that ends stays as one-offs; region-scoped carousel; Marin-only ads; header stays "Out AND About Marin" for now.
-- **Open items:** 65 (umbrella), 66 (the five library questions, 66a-66e: Wilkinson Thursday 10:30 Storytime vs Books Alive, November dates not yet posted, Ridgway Tween Café time, Dolores Silly Stories times, Rico; items 67-70 merged in 2026-10-17), 72 (Lee, the partner, sets up her Claude Code).
+- **Open items:** 65 (umbrella), 66 (the five library questions, 66a-66e: Wilkinson Thursday 10:30 Storytime vs Books Alive, November dates not yet posted, Ridgway Tween Café time, Dolores Silly Stories times, Rico; items 67-70 merged in 2026-10-17), 72 (Lee Shea, the partner, sets up her Claude Code).
 - **Sources:** `sources/telluride.md`: 10 sources since 2026-10-17 (the 9 libraries, plus #10, the Visit Telluride Festivals & Events calendar). The other v2 event sources are listed there as "Not yet verified"; add them one at a time, each with a one-source review workbook first.
 
 ## Homepage Featured strip
@@ -596,7 +596,7 @@ procedure for Marin, Napa and Telluride alike. **Only the source lists differ**,
 cadence, `notes`, Spanish, duplicates and the workbook layout are written here once. **No region deviates; if a region
 seems to need a different rule, change the rule here, for everyone, with Alexandra's OK.**
 
-**Who runs what:** Alexandra runs the Marin and Napa sweeps. The **Telluride sweep is run by her partner, Lee, on Lee's own Claude Code**
+**Who runs what:** Alexandra runs the Marin and Napa sweeps. The **Telluride sweep is run by her partner, Lee Shea, on Lee Shea's own Claude Code**
 on the partner's computer, following "Telluride partner sweep" below. The partner reviews the workbook; Alexandra's
 Claude Code processes the approved file and commits. The partner never commits. Setup and her start-up prompt:
 `Dropbox\01. Out AND About Files\Telluride\PARTNER_SETUP.md`.
@@ -1003,9 +1003,9 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
    Start from `social_media_and_marketing.md`, "STATE OF PLAY", then section 3e. **Sat Oct 10 auto-publish CONFIRMED live**
    by Alexandra; once Sun Oct 11 is confirmed too, delete repo `ig/week_of_oct8/` (`ig/README.md` lists staged folders).
 2. **Next Marin weekly sweep** ("Weekly sweep" section, `sources/marin.md`, now 49 sources with Katie Mae as #49). The 2026-10-14 sweep covered Oct 14 to Dec 1 (processed and committed the same day).
-3. **Telluride (items 65, 66 and 72; 66 now holds the five library questions, 66a–66e):** Alexandra shares the Dropbox `Telluride` folder with her partner, Lee, who sets up her
+3. **Telluride (items 65, 66 and 72; 66 now holds the five library questions, 66a–66e):** Alexandra shares the Dropbox `Telluride` folder with her partner, Lee Shea, who sets up her
    Claude Code (`Telluride\PARTNER_SETUP.md`) and runs the first partner sweep (10 sources now; source #10, Visit Telluride, added 2026-10-17); then the other v2 event sources,
-   the Wilkinson Thursday slot clash, November dates, the Ridgway café time, Silly Stories times, Rico (ask Lee).
+   the Wilkinson Thursday slot clash, November dates, the Ridgway café time, Silly Stories times, Rico (ask Lee Shea).
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
 6. **~2026-10-17 (Alexandra, item 71):** delete the two `(MOVED…)` folders left by the Dropbox move, then empty the Recycle Bin.
@@ -1026,8 +1026,8 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   the GitHub / cloud-session issue is **closed** (Alexandra confirmed phone sessions read, commit and push); new **item 73,
   "Apply for the Anthropic startup program"** (name only so far); and Telluride items **66-70 merged into item 66**
   (entries 66a-66e; numbers 67-70 retired).
-- **The Telluride partner is now named: Lee** (Alexandra, Oct 17), in this file, item 72 and `Telluride\PARTNER_SETUP.md`.
-  The section title "Telluride partner sweep" is unchanged on purpose: Lee's start-up prompt names it.
+- **The Telluride partner is now named: Lee Shea** (Alexandra, Oct 17; "Lee Shea" is her first name, so use both words, corrected Oct 20), in this file, item 72 and `Telluride\PARTNER_SETUP.md`.
+  The section title "Telluride partner sweep" is unchanged on purpose: Lee Shea's start-up prompt names it.
 - **Search results now run soonest first** (`970fb94`, build 2026-10-17.1, tried locally by Alexandra first).
   `searchEvents()` sorts by next occurrence date (new helper `getNextOccurrenceDate()`, also used by
   `getNextOccurrenceLabel()`), then start time, then name; events with no upcoming date go last. "and", "&" and "+"
@@ -1171,7 +1171,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   rewritten from one paragraph into a numbered list) and `sources/telluride.md` (9), all in one fixed header + numbered
   format that **`check_docs.py`** enforces (`--self-test` proves it catches 5 kinds of breakage). Dated stories moved to
   `HISTORY.md`. CLAUDE.md went from 180 KB to 152 KB; all 1,477 old lines were checked against the new files.
-- **Telluride sweeps move to Alexandra's partner, Lee:** her own Claude Code works in the shared Dropbox `Telluride` folder with
+- **Telluride sweeps move to Alexandra's partner, Lee Shea:** her own Claude Code works in the shared Dropbox `Telluride` folder with
   fresh downloads of the rulebook, tools and event list each sweep (no Git), saves `Telluride\Sweeps\telluride_sweep_YYYY-MM-DD_review.xlsx`, and
   renames it `…_APPROVED.xlsx` after review. Only Alexandra's Claude Code processes and commits. Setup page:
   `Dropbox\01. Out AND About Files\Telluride\PARTNER_SETUP.md`. **Rule:** a region never gets its own rule; a rule that

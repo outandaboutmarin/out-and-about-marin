@@ -27,7 +27,7 @@ All times are Mountain Time. Region facts (location groups, decisions) are in CL
 6. **Naturita Community Library (MRLD branch)**: same WordPress events API as source 5; Naturita events carry the `Naturita` category.
 7. **MRLD Outreach / Bookmobile**: same API as source 5, category `Outreach/Bookmobile` (Olathe Town Park 1st & 3rd Wed, Northbrook Villas Park 1st & 3rd Thu, 3:15–4:15 PM, Sep–Dec).
 8. **Dolores Public Library**: `doloreslibrary.specialdistrict.org/calendar?month=YYYY-MM` plus the monthly newsletter, whose program flyers are **images** (read them as images).
-9. **Rico Public Library**: no web presence (open item 66e, ask Lee).
+9. **Rico Public Library**: no web presence (open item 66e, ask Lee Shea).
 
 ### Event sources
 
@@ -37,5 +37,5 @@ All times are Mountain Time. Region facts (location groups, decisions) are in CL
 
 The event sources in `Dropbox\01. Out AND About Files\Telluride\Telluride_Region_Research_v2.xlsx`
 (Event Sources and Attestation Log tabs: markets, community calendars, arts venues, schools, government, community orgs,
-including Lee's 18) are NOT yet in the sweep. Move each one up into "Sources" only after its live page has been read
+including Lee Shea's 18) are NOT yet in the sweep. Move each one up into "Sources" only after its live page has been read
 and its fetch method written down, in the same numbered format.
