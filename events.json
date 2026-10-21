@@ -19623,6 +19623,40 @@
       "expires": "2026-11-01",
       "town": "Mill Valley",
       "location_group": "Mill Valley"
+    },
+    {
+      "id": 1711,
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "organization": "Wee Yogis",
+      "venue": "Wee Yogis",
+      "event_name": "K-Pop Demon Hunters Sing-Along with Wee Yogis' Early Stars",
+      "event_name_es": "Canciones de K-Pop Demon Hunters con las Early Stars de Wee Yogis",
+      "type": "Kids Programs",
+      "day": "Saturday",
+      "time": "1:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "San Anselmo",
+      "address": "Wee Yogis, 135 Tunstead Ave, San Anselmo, CA 94960",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-10-24",
+      "expires": "2026-10-24",
+      "description": "Wee Yogis' Early Stars singing series (ages 4-6) performs all your K-Pop Demon Hunters favorites in a free show. Bring the kids to get inspired and cheer on these young performers!",
+      "description_es": "La serie de canto Early Stars de Wee Yogis (de 4 a 6 años) interpreta todas tus canciones favoritas de K-Pop Demon Hunters en un espectáculo gratuito. ¡Trae a los niños a inspirarse y a animar a estos jóvenes artistas!",
+      "registration": "Not required",
+      "website": "https://weeyogis.com",
+      "contact": {
+        "instagram": "weeyogis"
+      },
+      "notes": "",
+      "internal_notes": "Added 2026-10-21 at Alexandra's instruction from @weeyogis' Instagram post (free singing event, Sat Oct 24, 1 PM, Early Stars series ages 4-6). Venue assumed to be the Wee Yogis studio (135 Tunstead Ave, from weeyogis.com); the post did not name a location.",
+      "location_group": "San Anselmo/Ross"
     }
   ]
 }
