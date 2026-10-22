@@ -402,7 +402,7 @@
       "event_name": "Storytime",
       "type": "Library",
       "day": "Friday",
-      "time": "10:00 AM",
+      "time": "10:30 AM",
       "time_of_day": "Morning",
       "town": "Larkspur",
       "address": "10 Rose Lane, Larkspur, CA 94939",
@@ -420,11 +420,11 @@
       "description": "Friday Family Storytime at Larkspur Library — songs, rhymes, and books for children ages 0–5 and their caregivers. A great way to introduce little ones to early literacy skills: talk, sing, read, write, and play. 10–10:30 am. Now at the new library location on Rose Lane. Special themed storytimes (bilingual, puppet shows, drumming) are posted separately.",
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/333/Story-Times",
-      "notes": "Weekly Friday storytime, 0-5 yrs. New location: 10 Rose Lane (moved from Doherty Drive). Special themed weeks (bilingual, puppet shows etc.) are listed separately. On Aug 21 and Sep 18 the Cuentos con Ritmo bilingual session replaces the regular storytime. skip: 2026-08-21 skip: 2026-09-18 skip: 2026-09-25 skip: 2026-10-02 skip: 2026-10-16 skip: 2026-11-20",
+      "notes": "Weekly Friday storytime, 0-5 yrs. New location: 10 Rose Lane (moved from Doherty Drive). Special themed weeks (bilingual, puppet shows etc.) are listed separately. On Aug 21 and Sep 18 the Cuentos con Ritmo bilingual session replaces the regular storytime. skip: 2026-08-21 skip: 2026-09-18 skip: 2026-09-25 skip: 2026-10-02 skip: 2026-10-16 skip: 2026-11-20 ALERT[2026-10-30]: Storytime is at 10:00 AM on October 23 and 30, then 10:30 AM from November 6.",
       "location_group": "Larkspur/Greenbrae/Kentfield",
       "event_name_es": "Hora del Cuento",
       "description_es": "Cuentos semanales para niños de 0 a 5 años los viernes por la mañana en la Biblioteca de Larkspur.",
-      "internal_notes": "Replacement confirmed by Alexandra 2026-08-20; ids 699 (August) and 700 (September) carry those two dates. SKIPS ADDED 2026-09-10 (sweep Question 4). Larkspur's LibCal shows Storytime CANCELLED on Sep 25, and the Friday 10 AM slot given to Cuentos con Ritmo on Oct 2 and Oct 16. Without these the record advertised Storytime on three Fridays it does not run. 2026-10-01 (sweep 2026-09-30, Alexandra approved): Nov 20 is Cuentos con Ritmo instead. 2026-10-06: location_group Larkspur/Greenbrae -> Larkspur/Greenbrae/Kentfield (Alexandra: 'Larkspur should be with Greenbrae and Kentfield')."
+      "internal_notes": "Replacement confirmed by Alexandra 2026-08-20; ids 699 (August) and 700 (September) carry those two dates. SKIPS ADDED 2026-09-10 (sweep Question 4). Larkspur's LibCal shows Storytime CANCELLED on Sep 25, and the Friday 10 AM slot given to Cuentos con Ritmo on Oct 2 and Oct 16. Without these the record advertised Storytime on three Fridays it does not run. 2026-10-01 (sweep 2026-09-30, Alexandra approved): Nov 20 is Cuentos con Ritmo instead. 2026-10-06: location_group Larkspur/Greenbrae -> Larkspur/Greenbrae/Kentfield (Alexandra: 'Larkspur should be with Greenbrae and Kentfield'). 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): LibCal: Oct 23 and 30 at 10:00-10:30; Nov 6, 13, Dec 4, 11 at 10:30-11:00."
     },
     {
       "id": 16,
@@ -595,9 +595,9 @@
       "cost": "Free",
       "indoor_outdoor": "Indoor",
       "active_sedentary": "Active",
-      "cadence": "Seasonal",
-      "season_start": "06/01",
-      "season_end": "10/31",
+      "cadence": "Weekly",
+      "season_start": "",
+      "season_end": "",
       "event_date": "",
       "expires": "",
       "status": "Active",
@@ -609,7 +609,7 @@
       "location_group": "San Rafael",
       "event_name_es": "Sábados de Lego",
       "description_es": "¡Construye con LEGO los sábados en la Biblioteca Northgate de San Rafael! Todos los sábados de 10 AM a 3 PM. Abierto a todas las edades. Gratis, sin inscripción.",
-      "internal_notes": "Frequency and time settled 2026-08-21 by Alexandra: EVERY Saturday, 10 AM - 3 PM, with the branch calendar populated only through Aug 29 2026 (after that it is simply not updated, which is not evidence the program stopped). This replaces the stored twice-a-month rule (deliberately reworded here without the ordinal words, so the notes lint does not read it as a rule that went missing), which had contradicted SRPL's own live calendar since 2026-07-29 (Jul 11/18/25, Aug 1/8/15/22/29 all listed) and disagreed with the description on time as well (10am-3pm header vs 11am-3:30pm body). No phone call was needed. cadence stays Seasonal with season_start 06/01 / season_end 08/31: with no ordinal in notes the record now renders every Saturday inside the season, and the Sep 1 flip retires it. NOTE: the seasonal Active/Inactive flip is done by scraper.py (open item 1, fixed 2026-08-13 but the Sep 1 path has never run successfully) - verify this record's status manually in September. season_end tightened 08/31 -> 08/29 the same day: with no ordinal rule the record now matches every Saturday, and the week-aware season filter in getFilteredEvents() keeps a week that merely OVERLAPS the season, so an 08/31 end would have rendered Sep 5 - a date the branch calendar does not cover. Ending on the final covered Saturday closes that week. UPDATED 2026-08-27: SRPL now publishes Lego Saturdays every Saturday through September AND October (Sep 5/12/19/26, Oct 3/10/17/24/31), which supersedes the Aug 29 cut-off set on 2026-08-24 when SRPL had published nothing past August. season_end moved 08/29 -> 10/31, which is the final Saturday the library has actually published — deliberately not extended past the evidence. Re-verify when SRPL posts November; this now looks like a year-round weekly programme rather than a summer one, and if November confirms that, the record should stop being Seasonal at all."
+      "internal_notes": "Frequency and time settled 2026-08-21 by Alexandra: EVERY Saturday, 10 AM - 3 PM, with the branch calendar populated only through Aug 29 2026 (after that it is simply not updated, which is not evidence the program stopped). This replaces the stored twice-a-month rule (deliberately reworded here without the ordinal words, so the notes lint does not read it as a rule that went missing), which had contradicted SRPL's own live calendar since 2026-07-29 (Jul 11/18/25, Aug 1/8/15/22/29 all listed) and disagreed with the description on time as well (10am-3pm header vs 11am-3:30pm body). No phone call was needed. cadence stays Seasonal with season_start 06/01 / season_end 08/31: with no ordinal in notes the record now renders every Saturday inside the season, and the Sep 1 flip retires it. NOTE: the seasonal Active/Inactive flip is done by scraper.py (open item 1, fixed 2026-08-13 but the Sep 1 path has never run successfully) - verify this record's status manually in September. season_end tightened 08/31 -> 08/29 the same day: with no ordinal rule the record now matches every Saturday, and the week-aware season filter in getFilteredEvents() keeps a week that merely OVERLAPS the season, so an 08/31 end would have rendered Sep 5 - a date the branch calendar does not cover. Ending on the final covered Saturday closes that week. UPDATED 2026-08-27: SRPL now publishes Lego Saturdays every Saturday through September AND October (Sep 5/12/19/26, Oct 3/10/17/24/31), which supersedes the Aug 29 cut-off set on 2026-08-24 when SRPL had published nothing past August. season_end moved 08/29 -> 10/31, which is the final Saturday the library has actually published — deliberately not extended past the evidence. Re-verify when SRPL posts November; this now looks like a year-round weekly programme rather than a summer one, and if November confirms that, the record should stop being Seasonal at all. 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): Seasonal 06/01-10/31 -> Weekly: the city calendar lists it every Saturday through Dec 19 (\"new winter schedule\"); closed Thanksgiving weekend per city holidays."
     },
     {
       "id": 26,
@@ -1157,13 +1157,14 @@
       "description": "Bilingual Spanish/English music, movement, and storytime for kids 0-5. Runs twice each morning — attend only one session. Held outdoors under the oak trees, weather permitting.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "",
+      "notes": "ALERT[2026-11-24]: Cancelled Tuesday, November 24: the library has cancelled this session.",
       "id": 48,
       "day": "Tuesday",
       "time": "9:30 AM",
       "location_group": "Fairfax",
       "event_name_es": "Bilingual Storytime (Tue 9:30)",
-      "description_es": "Cuentos bilingüe en español e inglés para niños de 0 a 5 años los martes a las 9:30 AM en la Biblioteca de Fairfax."
+      "description_es": "Cuentos bilingüe en español e inglés para niños de 0 a 5 años los martes a las 9:30 AM en la Biblioteca de Fairfax.",
+      "internal_notes": "2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): Nov 24 marked cancelled in the MCFL feed."
     },
     {
       "organization": "Marin County Free Library — Fairfax",
@@ -1994,7 +1995,7 @@
       "event_name": "Winterfest",
       "type": "Festival",
       "day": "Sunday",
-      "time": "1:00 PM – 5:00 PM",
+      "time": "1:00 PM – 4:00 PM",
       "time_of_day": "Afternoon",
       "town": "Mill Valley",
       "address": "Downtown Mill Valley Plaza, Mill Valley, CA 94941",
@@ -2016,21 +2017,21 @@
       "location_group": "Mill Valley",
       "event_name_es": "Winterfest",
       "description_es": "La mayor celebración anual de fiestas de Mill Valley con aproximadamente 2,500 asistentes. Tren eléctrico para niños, actuaciones festivas en vivo y espíritu comunitario. Una tradición amada de Mill Valley.",
-      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): time 1-5 PM per the Mill Valley Chamber listing."
+      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): time 1-5 PM per the Mill Valley Chamber listing. 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): time 1-4 PM per the Chamber Winterfest page (new holiday lighting at Depot Plaza)."
     },
     {
       "id": 100,
       "organization": "Mill Valley Chamber of Commerce",
-      "venue": "Mill Valley (venue TBD)",
+      "venue": "Assembly Wealth Event Space",
       "event_name": "Gingerbread House Decorating Party",
       "type": "Community Event",
       "day": "Sunday",
       "time": "11:00 AM – 2:00 PM",
       "time_of_day": "Morning",
       "town": "Mill Valley",
-      "address": "Mill Valley, CA 94941",
+      "address": "319 Miller Ave, Mill Valley, CA 94941",
       "ages": "All ages",
-      "cost": "Paid",
+      "cost": "$65 per gingerbread house; adult caregivers free",
       "indoor_outdoor": "Indoor",
       "active_sedentary": "Sedentary",
       "cadence": "One-off",
@@ -2047,7 +2048,7 @@
       "location_group": "Mill Valley",
       "event_name_es": "Gingerbread House Decorating Party",
       "description_es": "Experiencia íntima y festiva de decoración de casas de pan de jengibre para familias. ¡Se agotó en su temporada de debut — inscríbete temprano! Organizado por la Cámara de Comercio de Mill Valley.",
-      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): moved to Sun Dec 6, 11 AM-2 PM per the Mill Valley Chamber listing (info.enjoymillvalley.com, gingerbread-house-decorating-party-1686007)."
+      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): moved to Sun Dec 6, 11 AM-2 PM per the Mill Valley Chamber listing (info.enjoymillvalley.com, gingerbread-house-decorating-party-1686007). 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): venue and price from the Chamber page and Eventbrite."
     },
     {
       "id": 110,
@@ -4024,10 +4025,10 @@
       "description_es": "Club semanal de entrada libre después de clases para niños y preadolescentes con una actividad rotativa cada semana: Club de LEGO el 1er y 3er miércoles, juegos de mesa el 2do miércoles, y manualidades el 4to y 5to miércoles. Todos los materiales incluidos, sin inscripción. De 2:30 a 3:30 pm.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events?locations=MF",
-      "notes": "New Fairfax program — runs every Wednesday through Oct 14.",
+      "notes": "Every Wednesday: 1st & 3rd LEGO Club, 2nd board games, 4th & 5th crafts.",
       "location_group": "Fairfax",
       "id": 765,
-      "internal_notes": "Distinct from the Civic Center 'Wednesday Kids' Club' (id 46), a different branch. First session Aug 19, confirmed running every Wednesday through Oct 14. The date field is the START date, not a one-off."
+      "internal_notes": "Distinct from the Civic Center 'Wednesday Kids' Club' (id 46), a different branch. First session Aug 19, confirmed running every Wednesday through Oct 14. The date field is the START date, not a one-off. 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): stale \"through Oct 14\" note replaced; feed lists it every Wednesday through Dec 2."
     },
     {
       "organization": "Belvedere-Tiburon Library",
@@ -4367,8 +4368,8 @@
       "location_group": "Fairfax",
       "event_name_es": "Hora del Cuento Bilingüe",
       "description_es": "Sesión más larga de hora del cuento bilingüe en español e inglés los martes por la mañana, después de la sesión de las 9:30.",
-      "internal_notes": "Fairfax runs TWO distinct Tuesday bilingual sessions — 9:30–10:30 (id 48) and this 10:15–11:45 one. Added 2026-08-13 from the library audit; only the 9:30 session had been held.",
-      "notes": ""
+      "internal_notes": "Fairfax runs TWO distinct Tuesday bilingual sessions — 9:30–10:30 (id 48) and this 10:15–11:45 one. Added 2026-08-13 from the library audit; only the 9:30 session had been held. 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): Nov 24 marked cancelled in the MCFL feed.",
+      "notes": "ALERT[2026-11-24]: Cancelled Tuesday, November 24: the library has cancelled this session."
     },
     {
       "id": 838,
@@ -7375,7 +7376,7 @@
     {
       "season_start": "",
       "season_end": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "event_date": "2026-11-07",
       "expires": "2026-11-07",
@@ -7400,7 +7401,7 @@
       "website": "https://marinlibrary.bibliocommons.com/v2/events",
       "notes": "",
       "location_group": "West Marin",
-      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Source: the MCFL events feed for the sweep window, read through the bibliocommons shortcut that covers every branch in one pass.",
+      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Source: the MCFL events feed for the sweep window, read through the bibliocommons shortcut that covers every branch in one pass. 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): RETIRED: Nov 7 swap marked CANCELLED in the MCFL feed.",
       "id": 1177
     },
     {
@@ -9186,7 +9187,7 @@
       "id": 1313,
       "season_start": "",
       "season_end": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "organization": "Mill Valley Public Library — Creekside Room",
       "venue": "Mill Valley Public Library — Creekside Room",
@@ -9211,7 +9212,7 @@
       "website": "https://millvalleylibrary.libcal.com/event/17266851",
       "notes": "Ages 9–13 only.",
       "location_group": "Mill Valley",
-      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: MV libcal event 17266851 (special date; same series as 993)."
+      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: MV libcal event 17266851 (special date; same series as 993). 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): RETIRED: LibCal title now \"Canceled: Tween Hangout ... Beauty and the Beast\"."
     },
     {
       "id": 1314,
@@ -11731,7 +11732,7 @@
       "season_end": "",
       "status": "Active",
       "featured": false,
-      "notes": "New date this year. Time to be announced (last year it ran in the early evening).",
+      "notes": "New date this year.",
       "cadence": "One-off",
       "event_date": "2026-12-05",
       "expires": "2026-12-05",
@@ -11747,14 +11748,14 @@
       "event_name_es": "Holiday of Lights y Winter Wonderland de San Rafael",
       "type": "Festival",
       "day": "Saturday",
-      "time": "TBD",
+      "time": "1:00 PM – 6:00 PM",
       "time_of_day": "Evening",
       "ages": "All ages",
       "description": "Downtown San Rafael's 45th annual Holiday of Lights: the holiday tree lighting, warm drinks, twinkling lights, a lighted archway, costumed characters and live entertainment for all ages.",
       "description_es": "El 45.º Holiday of Lights anual del centro de San Rafael: encendido del árbol navideño, bebidas calientes, luces brillantes, un arco iluminado, personajes disfrazados y entretenimiento en vivo para todas las edades.",
       "registration": "Not required",
       "website": "https://sanrafaelwinterwonderland.com/",
-      "internal_notes": "Added 2026-10-08 from the Oct 8 weekly sweep (daily_sweep_2026-10-08_review.xlsx, approved by Alexandra). Questions tab: \"add now\". downtownsanrafael.org/events lists \"45th Annual San Rafael Holiday of Lights & Winter Wonderland, December 5, 2026 (NEW DATE!)\"; the detail page still shows the 2025 edition (Nov 29, 5-7 PM, Downtown Plaza), used for the description. Update the time when the 2026 page posts. Website switched 2026-10-20 at Alexandra's instruction to the city's 2026 event site, sanrafaelwinterwonderland.com (no time posted there yet).",
+      "internal_notes": "Added 2026-10-08 from the Oct 8 weekly sweep (daily_sweep_2026-10-08_review.xlsx, approved by Alexandra). Questions tab: \"add now\". downtownsanrafael.org/events lists \"45th Annual San Rafael Holiday of Lights & Winter Wonderland, December 5, 2026 (NEW DATE!)\"; the detail page still shows the 2025 edition (Nov 29, 5-7 PM, Downtown Plaza), used for the description. Update the time when the 2026 page posts. Website switched 2026-10-20 at Alexandra's instruction to the city's 2026 event site, sanrafaelwinterwonderland.com (no time posted there yet). 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): time 1-6 PM per sanrafael.gov/event/winter-wonderland-45th-anniversary/ (City Recreation with the BID).",
       "id": 1425
     },
     {
@@ -17519,7 +17520,7 @@
       "event_name_es": "Juego libre patrocinado por Sausalito Thrive",
       "type": "Kids Programs",
       "day": "Saturday",
-      "time": "2:00 PM – 4:00 PM",
+      "time": "1:00 PM – 3:00 PM",
       "time_of_day": "Afternoon",
       "ages": "0-7 yrs, with a Sausalito voter",
       "cost": "Free",
@@ -17537,7 +17538,7 @@
       "notes": "Free; RSVP. Booking is for adults who vote in Sausalito.",
       "event_date": "2026-10-24",
       "expires": "2026-10-24",
-      "internal_notes": "Added 2026-10-14 from the weekly sweep (window Oct 14 - Dec 1), workbook daily_sweep_2026-10-14_review.xlsx, Alexandra marked add. Partner event. Sponsor Sausalito Thrive is the Yes on Measure X campaign; Alexandra: \"keep, but highlight in any instagrams\" (logged in open items). Description kept neutral. 2026-10-17: Klub page now says \"A short presentation and Q&A, then open play. Please only book if you are an adult who votes in Sausalito.\" Description and notes updated to say so.",
+      "internal_notes": "Added 2026-10-14 from the weekly sweep (window Oct 14 - Dec 1), workbook daily_sweep_2026-10-14_review.xlsx, Alexandra marked add. Partner event. Sponsor Sausalito Thrive is the Yes on Measure X campaign; Alexandra: \"keep, but highlight in any instagrams\" (logged in open items). Description kept neutral. 2026-10-17: Klub page now says \"A short presentation and Q&A, then open play. Please only book if you are an adult who votes in Sausalito.\" Description and notes updated to say so. 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): Klub page now says Sat Oct 24, 1-3 PM.",
       "partner": true,
       "contact": {
         "name": "The Social Klub",
