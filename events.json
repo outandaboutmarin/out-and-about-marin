@@ -6145,9 +6145,9 @@
       "description_es": "Una reunión dominical relajada, estilo brunch, en el club de la Muir Woods Park Community Association en el Monte Tamalpais, con buena comida, música en vivo y un ambiente acogedor y tranquilo.",
       "registration": "Not required",
       "website": "https://mounttam.org/sunday-cafe",
-      "notes": "",
+      "notes": "skip: 2026-10-25 | skip: 2026-11-15 | ALERT[2026-11-08]: Special hours this week: 2-5 PM.",
       "location_group": "Mill Valley",
-      "internal_notes": "Added 2026-09-03 from a flyer Alexandra sent in chat - not from any of the 44 checklist sources; no MWPCA source is on the list. Venue scan run first: nothing on file at this venue or organisation, and none of the five events already on 2026-09-06 is this one.\nCONFIRMED WEEKLY 2026-09-05 by Alexandra, sourced to https://mounttam.org/sunday-cafe, which states 'Every week, people show up' and lists dates across multiple months. Converted from the one-off holding pattern this record was deliberately stored in (open item 49) - no season_start/end given by the source, so left indefinite; revisit if MWPCA ever states a break.\nADDRESS CORRECTED to 40 Ridge Ave per the same source - the flyer that created this record gave only 'on Mount Tamalpais', and 375 Edgewood Ave (guessed from the MWPCA name) was wrong.\nCOST CORRECTED to Free per the same source; flyer had named no price so it was held as Unconfirmed."
+      "internal_notes": "Added 2026-09-03 from a flyer Alexandra sent in chat - not from any of the 44 checklist sources; no MWPCA source is on the list. Venue scan run first: nothing on file at this venue or organisation, and none of the five events already on 2026-09-06 is this one.\nCONFIRMED WEEKLY 2026-09-05 by Alexandra, sourced to https://mounttam.org/sunday-cafe, which states 'Every week, people show up' and lists dates across multiple months. Converted from the one-off holding pattern this record was deliberately stored in (open item 49) - no season_start/end given by the source, so left indefinite; revisit if MWPCA ever states a break.\nADDRESS CORRECTED to 40 Ridge Ave per the same source - the flyer that created this record gave only 'on Mount Tamalpais', and 375 Edgewood Ave (guessed from the MWPCA name) was wrong.\nCOST CORRECTED to Free per the same source; flyer had named no price so it was held as Unconfirmed.\n2026-10-22: per mounttam.org/events, Oct 25 is Jazz Fest (no Sunday Cafe; Jazz Fest is id 1715), Nov 15 closed for rental, Nov 8 new hours 2-5 PM. Nov 1 is a Day of the Dead edition with Easy Winners (no banner, Alexandra did not ask)."
     },
     {
       "id": 1048,
@@ -19268,6 +19268,37 @@
       "notes": "Bring a picnic.",
       "internal_notes": "Added 2026-10-22 at Alexandra's instruction from @pointreyesadventureco's Instagram post (Sun Oct 25, 11 AM-3 PM, White House Pool, everything free, advance registration encouraged via a Marin County Parks Trumba sign-up link that was cut off in the screenshot). Address is the park's location, no street number. parks.marincounty.gov returned 403; website set to Point Reyes Adventure Co.",
       "location_group": "West Marin"
+    },
+    {
+      "id": 1715,
+      "featured": false,
+      "status": "Active",
+      "season_start": "",
+      "season_end": "",
+      "organization": "Muir Woods Park Community Association",
+      "venue": "Muir Woods Park Community Association Clubhouse",
+      "event_name": "Jazz Fest 2026 & BBQ",
+      "event_name_es": "Jazz Fest 2026 y Barbacoa",
+      "type": "Music and Movies",
+      "day": "Sunday",
+      "time": "1:00 PM – dusk",
+      "time_of_day": "Afternoon",
+      "town": "Mill Valley",
+      "address": "40 Ridge Ave, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "cost": "$10 donation",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-10-25",
+      "expires": "2026-10-25",
+      "description": "The Muir Woods Park Community Association's annual Jazz Fest at its clubhouse on Mt. Tam: live jazz, BBQ, food and dancing until dark.",
+      "description_es": "El Jazz Fest anual de la Muir Woods Park Community Association en su club del Monte Tamalpais: jazz en vivo, barbacoa, comida y baile hasta el anochecer.",
+      "registration": "Not required",
+      "website": "https://mounttam.org/events",
+      "notes": "Free parking.",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-10-22 from a Nextdoor flyer Alexandra sent; confirmed on mounttam.org/events (\"Jazz Fest is Sunday, October 25 ... dancing til dark\"; \"OCTOBER 25 - JAZZFEST - NO SUNDAY CAFE\"). Weekday checked (Sunday). The Sunday Cafe (1043) skips this date."
     }
   ]
 }
