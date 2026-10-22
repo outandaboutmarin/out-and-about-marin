@@ -19657,6 +19657,37 @@
       "notes": "",
       "internal_notes": "Added 2026-10-21 at Alexandra's instruction from @weeyogis' Instagram post (free singing event, Sat Oct 24, 1 PM, Early Stars series ages 4-6). Venue assumed to be the Wee Yogis studio (135 Tunstead Ave, from weeyogis.com); the post did not name a location.",
       "location_group": "San Anselmo/Ross"
+    },
+    {
+      "id": 1712,
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "organization": "Nicasio School Foundation",
+      "venue": "Nicasio Square Ballfield",
+      "event_name": "Nicasio Outdoor Movie Night: Halloweentown",
+      "event_name_es": "Noche de cine al aire libre en Nicasio: Halloweentown",
+      "type": "Music and Movies",
+      "day": "Friday",
+      "time": "6:00 PM",
+      "time_of_day": "Evening",
+      "town": "Nicasio",
+      "address": "Nicasio Square Ballfield, 1 Old Rancheria Road, Nicasio, CA 94946",
+      "ages": "All ages",
+      "cost": "Free; food and snacks for purchase",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-10-23",
+      "expires": "2026-10-23",
+      "description": "A family-friendly outdoor screening of Halloweentown on the Nicasio Square ballfield, presented by the Nicasio School Foundation. Bring a picnic blanket and enjoy a fall evening under the stars while supporting the school.",
+      "description_es": "Una proyección al aire libre de Halloweentown para toda la familia en el campo de béisbol de Nicasio Square, presentada por la Nicasio School Foundation. Trae una manta de picnic y disfruta de una noche de otoño bajo las estrellas mientras apoyas a la escuela.",
+      "registration": "Not required",
+      "website": "https://www.marinmommies.com/calendar/nicasio-outdoor-movie-night-halloweentown",
+      "notes": "Bring a picnic blanket. Dinner from 6 PM, movie at 7 PM.",
+      "internal_notes": "Added 2026-10-22 at Alexandra's instruction from her Google search screenshot and the Marin Mommies listing (dinner 6 PM, movie 7 PM, 1 Old Rancheria Road, food for purchase, all ages, presented by the Nicasio School Foundation). The Foundation's own site did not list it on 2026-10-22 (open item 58zm). Admission price not stated; listed as Free with food for purchase.",
+      "location_group": "Nicasio/San Geronimo"
     }
   ]
 }
