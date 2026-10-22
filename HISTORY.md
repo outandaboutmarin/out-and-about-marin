@@ -358,3 +358,13 @@ each with listing mockups and, for Kitsch + Sync, a Featured carousel ad. Three 
 - **Logos go into the shared assets folder only when she asks.** Mockups first load the logo from the vendor's site;
   she then asked to save each one, so both Kitsch + Sync logos and The Cave's are now in `assets/`.
 
+## 2026-10-22: Marin sweep, and one listing for irregular dates
+
+The Oct 22 sweep (all 49 sources, Oct 22 - Dec 3) produced 41 new records. Two things worth keeping. First, a duplicate
+almost went out: San Rafael's Day of the Dead was already in the database as "San Rafael Day of the Dead Celebration"
+(1642), and name searches for "muertos" missed it; the venue check (rule 18) caught it before the workbook was sent. The
+venue check is the one that matters. Second, Alexandra asked for the Mill Valley ShaBabies to be one recurring listing
+rather than seven one-offs, although its dates follow no ordinal. The app has no "list of dates" field, so it became a
+Weekly record with seasons split at New Year and the other Fridays skipped, with `expires` so it does not return next
+year: the Pavilion Playgroup shape, now written down as the pattern.
+

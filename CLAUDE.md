@@ -980,7 +980,7 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
 
 Read this first, then the sections above as needed.
 
-**Health 2026-10-21**: `events.json` is **628 events, max id 1711**; notes-lint and bilingual-lint clean; duplicate scan 3 findings; `check_docs.py` clean. **Health 2026-10-17 (end of day)**: `events.json` is **659 events, max id 1694**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings. **Health 2026-10-16**: `events.json` is **640 events, max id 1666**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings (1156/1158 and two Telluride room collisions); `check_docs.py` clean with **Marin at 49 sources**. **Health 2026-10-15**: `events.json` is **645 events, max id 1661**; notes-lint and bilingual-lint clean; duplicate scan 3 findings, all known (1156/1158 and two Telluride room collisions; the others dropped off as their dates passed). **Health 2026-10-14** (after the Oct 14 sweep): `events.json` is **664 events, max id 1650**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all known (1156/1158 and the 5 Telluride room collisions). **Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
+**Health 2026-10-22 (after the sweep)**: `events.json` is **658 events, max id 1756**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all reviewed (two genuinely separate same-afternoon library programs, three New-Year split pairs, 1643/1710). **Health 2026-10-21**: `events.json` is **628 events, max id 1711**; notes-lint and bilingual-lint clean; duplicate scan 3 findings; `check_docs.py` clean. **Health 2026-10-17 (end of day)**: `events.json` is **659 events, max id 1694**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings. **Health 2026-10-16**: `events.json` is **640 events, max id 1666**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings (1156/1158 and two Telluride room collisions); `check_docs.py` clean with **Marin at 49 sources**. **Health 2026-10-15**: `events.json` is **645 events, max id 1661**; notes-lint and bilingual-lint clean; duplicate scan 3 findings, all known (1156/1158 and two Telluride room collisions; the others dropped off as their dates passed). **Health 2026-10-14** (after the Oct 14 sweep): `events.json` is **664 events, max id 1650**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all known (1156/1158 and the 5 Telluride room collisions). **Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
 max id 1449**, all committed and pushed, level with `origin/main`.
 `check_duplicates.py --self-test` is **91/91**; `--notes-lint --all` and `--bilingual-lint` are
 clean; the duplicate scans show only the known, legitimate finding: the Pavilion Play Group's two
@@ -1010,6 +1010,26 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
 6. **~2026-10-17 (Alexandra, item 71):** delete the two `(MOVED…)` folders left by the Dropbox move, then empty the Recycle Bin.
+
+## What changed 2026-10-22, in one pass
+
+- **Marin weekly sweep, Oct 22 - Dec 3** (workbook `daily_sweep_2026-10-22_review.xlsx`; all 49 sources, Ronnie's
+  skipped at Alexandra's instruction). **41 records added (ids 1716-1756)**, among them: Mill Valley Shabbat ShaBabies
+  (1716/1717), Marin Humane adoption events, Elf Hunt (1723/1724), Civic Center kids' movies, Fairfax DrawBridge, BelTib
+  Afterschool Lounge, Tween D&D (Monthly, 1737), Village Santa photos and Pet Nights, Social Klub and Golden Gate Mahjong
+  partner events, Kitsch + Sync movie night, Marinwood Night Camp (4 dates), and four December events found past the
+  window (Rock and Roll Playhouse, Holiday Craft Fair, Menorah Lighting, JCC Chanukah). Record fixes applied: skips on 46,
+  ALERTs on 815 and 861, 776 retired, San Anselmo storytimes (21/33/82) move to Council Chambers Nov-Mar, 1696 links to
+  goldengatemahjong.com/play. **The other Record Fixes rows had no Decision and were not applied** (asked).
+- **Pattern for a recurring program with irregular dates** (Alexandra asked for one recurring listing, not one-offs):
+  Weekly on its weekday with `season_start`/`season_end`, **split at New Year (seasons do not wrap the year)**, every
+  non-session date as `skip:`, and `expires` on the last date so the season does not come back next year. Same shape as
+  Pavilion Playgroup (1156/1158). Used for ShaBabies Mill Valley, the Elf Hunt and Village Santa photos (daily: `day` lists
+  all seven weekdays).
+- **San Rafael Public Library moved to sanrafael.gov/events** (source #39 updated). Sausalito list views read fine in the
+  in-app browser (sources #8/#40 noted).
+- **Sponsorship (Oct 21-22):** Advertising Partners Upload now has `Kitsch + Sync` (Featured) and `The Cave` (Community)
+  tabs; `Marin JCC` marked prospect; the Leadsheet lists all three as "(prospect)" with no live date.
 
 ## What changed 2026-10-21, in one pass
 
