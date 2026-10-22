@@ -19719,6 +19719,40 @@
       "notes": "Donors are entered to win one of two $10,000 prizes.",
       "internal_notes": "Added 2026-10-22 at Alexandra's instruction from @sanrafaellibraryrec's Instagram flyer (Fri Oct 23, 11 AM-3 PM, 618 B Street, code SRComm, 'Two will win $10,000'). Ages 18+ chosen as the general adult-donor rule; Vitalant allows 16-17 with parental consent. Same pattern as the Bay Model blood drive (Grown-Ups Only!).",
       "location_group": "San Rafael"
+    },
+    {
+      "id": 1714,
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "organization": "Point Reyes Adventure Co. with Marin County Parks, In Place and the Alliance for Felix Cove",
+      "venue": "White House Pool Park",
+      "event_name": "Community Day at White House Pool",
+      "event_name_es": "Día comunitario en White House Pool",
+      "type": "Community Event",
+      "day": "Sunday",
+      "time": "11:00 AM - 3:00 PM",
+      "time_of_day": "Morning",
+      "town": "Point Reyes Station",
+      "address": "White House Pool Park, Sir Francis Drake Blvd, Point Reyes Station, CA 94956",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-10-25",
+      "expires": "2026-10-25",
+      "description": "A free family day by the water with Point Reyes Adventure Co., Marin County Parks, In Place and the Alliance for Felix Cove: free kayaking and paddleboarding, ranger-led nature hikes, nature activities for kids, miniature tule boat making with Theresa Harlan, lawn games and snacks.",
+      "description_es": "Un día familiar gratuito junto al agua con Point Reyes Adventure Co., Marin County Parks, In Place y la Alliance for Felix Cove: kayak y paddleboard gratis, caminatas por la naturaleza guiadas, actividades de naturaleza para niños, elaboración de barcos de tule en miniatura con Theresa Harlan, juegos de jardín y bocadillos.",
+      "registration": "Advance registration encouraged (Marin County Parks sign-up)",
+      "website": "https://pointreyesadventureco.com/",
+      "contact": {
+        "instagram": "pointreyesadventureco"
+      },
+      "notes": "Bring a picnic.",
+      "internal_notes": "Added 2026-10-22 at Alexandra's instruction from @pointreyesadventureco's Instagram post (Sun Oct 25, 11 AM-3 PM, White House Pool, everything free, advance registration encouraged via a Marin County Parks Trumba sign-up link that was cut off in the screenshot). Address is the park's location, no street number. parks.marincounty.gov returned 403; website set to Point Reyes Adventure Co.",
+      "location_group": "West Marin"
     }
   ]
 }
