@@ -991,7 +991,7 @@ rather than trusting this sentence**; a hard-coded count in prose goes stale sil
 line has been wrong before.) GitHub Pages deploys off `main`, so **committing `events.json` IS
 publishing** — there is no staging.
 
-**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `17c2a4a`, Oct 21, phone and bot commits; the Oct 21 sponsor mockups live only in Dropbox; earlier `bcae7cf`, end of Oct 17: Telluride source #10 and its 16 events `4e1fa44`, the standard review workbook `25a2f5b`; earlier `448f182`, Village end dates and the Social Klub refresh; before that the phone commits `18432df`–`d2112a5` and `1787396`, the Oct 16 events and source 49; then `7718b72`, the Oct 15 screenshot events; before that `8f4ba49`, the Oct 14 sweep; `4ce56da` staged the week of Oct 15 Instagram slides). The old scratch and `.bak`
+**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `a3d65ab`, Oct 22, GG Mahjong titles, after the Oct 22 sweep `b6114d0` and its record fixes `41e8f96`; the Oct 21-22 sponsor mockups live only in Dropbox; earlier `17c2a4a`, Oct 21, phone and bot commits; earlier `bcae7cf`, end of Oct 17: Telluride source #10 and its 16 events `4e1fa44`, the standard review workbook `25a2f5b`; earlier `448f182`, Village end dates and the Social Klub refresh; before that the phone commits `18432df`–`d2112a5` and `1787396`, the Oct 16 events and source 49; then `7718b72`, the Oct 15 screenshot events; before that `8f4ba49`, the Oct 14 sweep; `4ce56da` staged the week of Oct 15 Instagram slides). The old scratch and `.bak`
 files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and working files MOVED on 2026-10-10**: repo at
 `C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
 record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
@@ -1020,7 +1020,12 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   partner events, Kitsch + Sync movie night, Marinwood Night Camp (4 dates), and four December events found past the
   window (Rock and Roll Playhouse, Holiday Craft Fair, Menorah Lighting, JCC Chanukah). Record fixes applied: skips on 46,
   ALERTs on 815 and 861, 776 retired, San Anselmo storytimes (21/33/82) move to Council Chambers Nov-Mar, 1696 links to
-  goldengatemahjong.com/play. **The other Record Fixes rows had no Decision and were not applied** (asked).
+  goldengatemahjong.com/play. The Record Fixes tab came back blank; Alexandra then said "apply all 11", and all 11 went
+  live in `41e8f96` (cancellation ALERTs on 48/837, 1177 and 1313 retired, Winterfest and Winter Wonderland times,
+  Gingerbread venue, Lego Saturdays Weekly, Larkspur storytime 10:30 AM, Social Klub free play 1-3 PM).
+- **Golden Gate Mahjong titles end "w/ GG Mahjong"** (Spanish "con GG Mahjong"), ids 1696 and 1747 (`a3d65ab`); both link
+  to goldengatemahjong.com/play. Search is region-scoped: a visitor whose last-tapped region is Telluride will not find
+  Marin events until they switch back.
 - **Pattern for a recurring program with irregular dates** (Alexandra asked for one recurring listing, not one-offs):
   Weekly on its weekday with `season_start`/`season_end`, **split at New Year (seasons do not wrap the year)**, every
   non-session date as `skip:`, and `expires` on the last date so the season does not come back next year. Same shape as
