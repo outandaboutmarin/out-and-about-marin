@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-21",
+  "last_updated": "2026-10-22",
   "events": [
     {
       "id": 1,
@@ -18033,7 +18033,7 @@
     },
     {
       "id": 1654,
-      "organization": "Blue Muse Healing",
+      "organization": "Blue Muse Sound Healing & The Celestial Voice",
       "venue": "Church of Our Saviour",
       "address": "10 Old Mill Street, Mill Valley, CA 94941",
       "town": "Mill Valley",
@@ -18042,10 +18042,10 @@
       "event_name_es": "Baño de sonido con Blue Muse Healing",
       "type": "Grown-Ups Only!",
       "day": "Thursday",
-      "time": "Time TBA",
+      "time": "6:00 PM - 7:00 PM",
       "time_of_day": "Evening",
       "ages": "Adults",
-      "cost": "See website",
+      "cost": "$34-$39",
       "indoor_outdoor": "Indoor",
       "active_sedentary": "Sedentary",
       "cadence": "One-off",
@@ -18055,12 +18055,12 @@
       "expires": "2026-10-22",
       "status": "Active",
       "featured": false,
-      "description": "An evening sound bath in the candlelit Church of Our Saviour with Blue Muse Healing. Time and tickets to be announced; check Blue Muse on Instagram.",
-      "description_es": "Un baño de sonido nocturno en la iglesia Church of Our Saviour, iluminada con velas, con Blue Muse Healing. Horario y entradas por anunciar; consulta a Blue Muse en Instagram.",
-      "registration": "See website",
-      "website": "https://www.instagram.com/bluemusesound/",
-      "notes": "",
-      "internal_notes": "Added 2026-10-15 at Alexandra's request (\"Please add the following events\"), from screenshots she sent. Source: @cos_mv Instagram story resharing @bluemusesound (\"October 22nd @cos_mv\"). No time or price found online (web search 2026-10-15)."
+      "description": "An evening sound bath in the sanctuary of Church of Our Saviour with Blue Muse Sound Healing and The Celestial Voice: four Paiste gongs, crystal bowls, rainsticks, an ocean drum, chimes and more, for an hour of relaxation and sound healing.",
+      "description_es": "Un baño de sonido al atardecer en el santuario de Church of Our Saviour con Blue Muse Sound Healing y The Celestial Voice: cuatro gongs Paiste, cuencos de cristal, palos de lluvia, tambor oceánico, campanillas y más, para una hora de relajación y sanación con sonido.",
+      "registration": "Tickets on Eventbrite",
+      "website": "https://www.eventbrite.com/e/sound-bath-experience-at-church-of-our-saviour-in-mill-valley-tickets-1979121301088",
+      "notes": "Bring a mat or cushion. Floor space for lying down is limited; there is plenty of seating on the pews.",
+      "internal_notes": "Added 2026-10-15 at Alexandra's request (\"Please add the following events\"), from screenshots she sent. Source: @cos_mv Instagram story resharing @bluemusesound (\"October 22nd @cos_mv\"). No time or price found online (web search 2026-10-15). Updated 2026-10-22 at Alexandra's instruction from the Eventbrite listing (series 1979121301088, Blue Muse Sound Healing & The Celestial Voice): next session 2026-10-22 18:00, series end times 19:00 so 6-7 PM; tickets $33.85-$39.19 incl. fees; refunds up to 7 days before. Eventbrite shows this as a recurring series (Jan 30 - Dec 19, 2026); other session dates were not listed in the page."
     },
     {
       "id": 1656,
