@@ -19688,6 +19688,37 @@
       "notes": "Bring a picnic blanket. Dinner from 6 PM, movie at 7 PM.",
       "internal_notes": "Added 2026-10-22 at Alexandra's instruction from her Google search screenshot and the Marin Mommies listing (dinner 6 PM, movie 7 PM, 1 Old Rancheria Road, food for purchase, all ages, presented by the Nicasio School Foundation). The Foundation's own site did not list it on 2026-10-22 (open item 58zm). Admission price not stated; listed as Free with food for purchase.",
       "location_group": "Nicasio/San Geronimo"
+    },
+    {
+      "id": 1713,
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "organization": "San Rafael Library & Recreation / Vitalant",
+      "venue": "San Rafael Community Center",
+      "event_name": "Blood Drive at the San Rafael Community Center",
+      "event_name_es": "Donación de sangre en el San Rafael Community Center",
+      "type": "Grown-Ups Only!",
+      "day": "Friday",
+      "time": "11:00 AM - 3:00 PM",
+      "time_of_day": "Morning",
+      "town": "San Rafael",
+      "address": "San Rafael Community Center, 618 B Street, San Rafael, CA 94901",
+      "ages": "18+",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-10-23",
+      "expires": "2026-10-23",
+      "description": "Give blood at the San Rafael Community Center in a Halloween-season drive run by San Rafael Library & Recreation with Vitalant. Book your appointment at Vitalant.org with blood drive code SRComm.",
+      "description_es": "Dona sangre en el San Rafael Community Center en una campaña de temporada de Halloween organizada por San Rafael Library & Recreation con Vitalant. Reserva tu cita en Vitalant.org con el código de campaña SRComm.",
+      "registration": "Book at Vitalant.org with blood drive code SRComm",
+      "website": "https://www.vitalant.org",
+      "notes": "Donors are entered to win one of two $10,000 prizes.",
+      "internal_notes": "Added 2026-10-22 at Alexandra's instruction from @sanrafaellibraryrec's Instagram flyer (Fri Oct 23, 11 AM-3 PM, 618 B Street, code SRComm, 'Two will win $10,000'). Ages 18+ chosen as the general adult-donor rule; Vitalant allows 16-17 with parental consent. Same pattern as the Bay Model blood drive (Grown-Ups Only!).",
+      "location_group": "San Rafael"
     }
   ]
 }
