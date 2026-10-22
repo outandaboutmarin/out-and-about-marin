@@ -345,3 +345,16 @@ definition (four sheets: Weekly Sweep with a Source # column, Questions, Sources
 `check_docs.py --attestation` enforces the Sources Used sheet (`--partial` for a one-source review). Napa keeps its extra
 line in the live-music tracker on purpose.
 
+## 2026-10-21: three sponsor prospects in one evening (JCC, Kitsch + Sync, The Cave)
+
+Alexandra spent the evening on sponsorship: the Osher Marin JCC, Kitsch + Sync in Novato and The Cave in Corte Madera,
+each with listing mockups and, for Kitsch + Sync, a Featured carousel ad. Three things worth keeping:
+
+- **Build from what is already live.** For the JCC, a logo download was stopped and the answer was "there are already
+  live JCC events in the app": the JymBabies mockup was drawn from the live record, which also exposed two errors in
+  it (wrong end time, wrong price on the San Rafael card).
+- **Two versions of every mockup.** One with notes for her review, one clean to send to the vendor. Asked what the
+  difference was, so the file names now say it: `mockup` vs `(for <vendor>)`.
+- **Logos go into the shared assets folder only when she asks.** Mockups first load the logo from the vendor's site;
+  she then asked to save each one, so both Kitsch + Sync logos and The Cave's are now in `assets/`.
+

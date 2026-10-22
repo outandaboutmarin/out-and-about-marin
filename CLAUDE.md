@@ -980,7 +980,7 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
 
 Read this first, then the sections above as needed.
 
-**Health 2026-10-17 (end of day)**: `events.json` is **659 events, max id 1694**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings. **Health 2026-10-16**: `events.json` is **640 events, max id 1666**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings (1156/1158 and two Telluride room collisions); `check_docs.py` clean with **Marin at 49 sources**. **Health 2026-10-15**: `events.json` is **645 events, max id 1661**; notes-lint and bilingual-lint clean; duplicate scan 3 findings, all known (1156/1158 and two Telluride room collisions; the others dropped off as their dates passed). **Health 2026-10-14** (after the Oct 14 sweep): `events.json` is **664 events, max id 1650**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all known (1156/1158 and the 5 Telluride room collisions). **Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
+**Health 2026-10-21**: `events.json` is **628 events, max id 1711**; notes-lint and bilingual-lint clean; duplicate scan 3 findings; `check_docs.py` clean. **Health 2026-10-17 (end of day)**: `events.json` is **659 events, max id 1694**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings. **Health 2026-10-16**: `events.json` is **640 events, max id 1666**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings (1156/1158 and two Telluride room collisions); `check_docs.py` clean with **Marin at 49 sources**. **Health 2026-10-15**: `events.json` is **645 events, max id 1661**; notes-lint and bilingual-lint clean; duplicate scan 3 findings, all known (1156/1158 and two Telluride room collisions; the others dropped off as their dates passed). **Health 2026-10-14** (after the Oct 14 sweep): `events.json` is **664 events, max id 1650**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all known (1156/1158 and the 5 Telluride room collisions). **Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
 max id 1449**, all committed and pushed, level with `origin/main`.
 `check_duplicates.py --self-test` is **91/91**; `--notes-lint --all` and `--bilingual-lint` are
 clean; the duplicate scans show only the known, legitimate finding: the Pavilion Play Group's two
@@ -991,7 +991,7 @@ rather than trusting this sentence**; a hard-coded count in prose goes stale sil
 line has been wrong before.) GitHub Pages deploys off `main`, so **committing `events.json` IS
 publishing** — there is no staging.
 
-**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `bcae7cf`, end of Oct 17: Telluride source #10 and its 16 events `4e1fa44`, the standard review workbook `25a2f5b`; earlier `448f182`, Village end dates and the Social Klub refresh; before that the phone commits `18432df`–`d2112a5` and `1787396`, the Oct 16 events and source 49; then `7718b72`, the Oct 15 screenshot events; before that `8f4ba49`, the Oct 14 sweep; `4ce56da` staged the week of Oct 15 Instagram slides). The old scratch and `.bak`
+**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `17c2a4a`, Oct 21, phone and bot commits; the Oct 21 sponsor mockups live only in Dropbox; earlier `bcae7cf`, end of Oct 17: Telluride source #10 and its 16 events `4e1fa44`, the standard review workbook `25a2f5b`; earlier `448f182`, Village end dates and the Social Klub refresh; before that the phone commits `18432df`–`d2112a5` and `1787396`, the Oct 16 events and source 49; then `7718b72`, the Oct 15 screenshot events; before that `8f4ba49`, the Oct 14 sweep; `4ce56da` staged the week of Oct 15 Instagram slides). The old scratch and `.bak`
 files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and working files MOVED on 2026-10-10**: repo at
 `C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
 record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
@@ -1010,6 +1010,32 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 4. **Item 58**, events needing one fact each, including 58zf (is Asian Box's kids-eat-free deal real?).
 5. **FIT4MOM:** Hannah still owes the direct Glofox sign-up link (item 21).
 6. **~2026-10-17 (Alexandra, item 71):** delete the two `(MOVED…)` folders left by the Dropbox move, then empty the Recycle Bin.
+
+## What changed 2026-10-21, in one pass
+
+- **Phone sessions synced** (Oct 18-21, 25 commits by the phone and the nightly bot; listed in the repo log).
+- **Three new sponsor prospects, mockups only; nothing about them is in `events.json` or `ads.json`.** All files are in
+  `OAA Sponsorship and Partners\`, each vendor in its own subfolder, built in the app's own CSS and rendered with Edge
+  headless. Each listing comes in two versions: `... mockup.png` has the review notes for Alexandra, and
+  `... (for <vendor>).png` has no notes and is the one to send.
+  - **Osher Marin JCC** (`JCC/`): JymBabies Mill Valley as a partner listing, built from the live record (id 59) with
+    the JCC logo. The `Marin JCC` tab of `Advertising Partners Upload.xlsx` holds the 6 recurring JBaby programs plus
+    the 2 ad hoc ones (Tot Pool Parties, Family Connections); Side by Side is left out (a pre-registered course). The tab
+    was written via Excel COM, with time cells set to text (`NumberFormat '@'`) so "10:30 AM" is not converted.
+    **Live-record fixes still owed:** 59's description says "Runs until 12:00 PM" (ends 11:00) and lacks the waiver
+    note; 58's card shows $15 (now $20).
+  - **Kitsch + Sync** (`Kitsch + Sync/`, family restaurant and play space, 1757 Grant Ave, Novato): Halloween Movie Night
+    (The Haunted Mansion, Fri Oct 23, 5:00-6:30 PM, $18 with play and popcorn) as a partner listing, plus a **Featured
+    carousel ad** modelled on the Social Klub ad, with a "Coming up" list of their events in place of offer codes.
+    Their site sits behind a Cloudflare check: read it in the in-app browser.
+  - **The Cave** (`The Cave/`, gymnastics, parkour and CrossFit; 412 Tamal Plaza, Corte Madera, and 25 Dodie St, San
+    Rafael): three separate listings, Kids' Night Out (Halloween Night, Sat Oct 24, 4:30-9 PM, ages 5-12, $75.25 early
+    bird / $86.20), Ninja Night (Sat Nov 14, 4:30-8:30 PM, ages 5-12, $99) and Sunday Open Gym (9-11 AM, ages 6+).
+    inthecave.com reads fine with a plain fetch.
+- **Logos saved to the shared `assets/` folder, at Alexandra's request:** `kitsch_sync_logo_long.png`,
+  `kitsch_sync_logo_stacked.png` (their site serves WebP; converted to PNG) and `the_cave_logo.png`. The JCC logo
+  (`marin_jcc_logo.png`) was copied there from the repo. The OAA logo was copied to
+  `OAA marketing\Instagram templates\assets\`.
 
 ## What changed 2026-10-16/17, in one pass
 
@@ -1250,7 +1276,8 @@ Full list in `OAA maintence and content/open_items.md`; the dashboard renders it
     name, added columns) and a row she deleted in Excel had shifted only some columns, leaving one
     row's values under another row's highlight. Verify row by row.
 - The mockups, as `<Vendor> - <what> mockup.png` + `.html`, **one subfolder per vendor** (`Social Klub/`, `Stroller Strides/`,
-  `Golden Gate Mahj/`, reorganised by Alexandra 2026-09-27) with the logos in a single shared `assets/` folder at the top.
+  `Golden Gate Mahj/`, reorganised by Alexandra 2026-09-27; since 2026-10-21 also `JCC/`, `Kitsch + Sync/` and `The Cave/`, where each listing
+  has a `... mockup` version with review notes and a `... (for <vendor>)` version without them, for sending) with the logos in a single shared `assets/` folder at the top.
   **A copy written into a vendor subfolder must reference `../assets/...`**, or its logo breaks; the repo sources keep
   `assets/...`. When re-rendering a PNG into her folder fails with `OSError [Errno 22]`, the old PNG is open in a viewer:
   render to the scratchpad and copy over it. The HTML
