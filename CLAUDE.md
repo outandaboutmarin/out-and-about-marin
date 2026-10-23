@@ -890,7 +890,12 @@ Separate from the recurring Weekly Sweep: Alexandra sometimes hands over a curat
 
 ## Resources tide table (live)
 
-The "Tides & Driving in Marin" table on Resources reads `tides.json` (raw NOAA CO-OPS predictions, MLLW, built by `generate_tides.py`; stations Tam Junction, Corte Madera, Hwy 37, Bolinas). **Since 2026-10-09 every height is shown +1.07 ft** (`TIDE_ADJUST_FT` in `index.html`, applied in `_tideHt()`), at Alexandra's request, to account for the El Niño Kelvin wave and sea-level rise; a note under the table says so (bilingual). The red "flood" shading on high tides (> 6 ft) uses the adjusted height. **Do not bake the offset into `tides.json`**: the file stays raw NOAA so it can be regenerated; change or remove the offset in one place.
+The "Tides & Driving in Marin" table on Resources reads `tides.json` (raw NOAA CO-OPS predictions, MLLW, built by `generate_tides.py`; stations Tam Junction, Corte Madera, Hwy 37, Bolinas). **Since 2026-10-09 every height is shown +1.07 ft** (`TIDE_ADJUST_FT` in `index.html`, applied in `_tideHt()`), at Alexandra's request, to account for the El Niño Kelvin wave and sea-level rise; a note under the table says so (bilingual). The red "flood" shading on high tides (**6.9 ft and above as shown**, since 2026-10-23; was > 6 ft) uses the adjusted height.
+**Rows line the stations up by time, not by order within a day** (2026-10-23, `_tideGroups()`): each tide is grouped with
+the same-type tides of the other stations within 4.5 hours, and the group shows on the day of its earliest member, so a
+tide that falls just past midnight upstream shows on the evening it belongs to, marked "(next day)". Checked over all of
+2026-27: every tide appears exactly once. **The Hwy 37 column is NOAA 9415252, Petaluma River entrance** (0.7 km from the
+Hwy 37 bridge; since 2026-10-23, was 9414290 San Francisco), which peaks about 1-1.5 hours after Tam Junction. **Do not bake the offset into `tides.json`**: the file stays raw NOAA so it can be regenerated; change or remove the offset in one place.
 
 ## Resources tab: static sections, including the Kid-Friendly Dining table
 
