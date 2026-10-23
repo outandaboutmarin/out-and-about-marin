@@ -2,7 +2,7 @@
 Converts the "Choose your own adventure" spreadsheet into adventure.json.
 
 Same idea as swim_vendors_io.py: the spreadsheet lives outside this repo (in
-Alexandra's "OAA maintence and content" folder) and stays the source. When it
+Alexandra's Dropbox "Resources" folder, beside the swim spreadsheet) and stays the source. When it
 changes: update XLSX_PATH below if the filename changed, re-run this script,
 commit the resulting adventure.json.
 
@@ -36,7 +36,7 @@ from datetime import date, datetime
 
 import openpyxl
 
-XLSX_PATH = r"C:\Users\AWalter\Dropbox\01. Out AND About Files\OAA maintence and content\create_your_own_adventure_v2.xlsx"
+XLSX_PATH = r"C:\Users\AWalter\Dropbox\01. Out AND About Files\Resources\create_your_own_adventure_v2.xlsx"
 SHEET = "Create Your Own Adventure"
 HEADER_ROW = 4
 OUT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "adventure.json")

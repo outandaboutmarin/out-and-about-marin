@@ -1,8 +1,8 @@
 """
 Converts the Marin swim lesson vendor spreadsheet into swim_vendors.json.
 
-Source spreadsheet lives outside this repo (in Alexandra's "OAA maintence and
-content" folder, not checked into git — matches how sweep review Excels are
+Source spreadsheet lives outside this repo (in Alexandra's Dropbox "Resources"
+folder since 2026-10-22, not checked into git — matches how sweep review Excels are
 kept out of the repo). Workflow when the spreadsheet changes: update the
 XLSX_PATH below if the filename changed, re-run this script, commit the
 resulting swim_vendors.json.
@@ -30,7 +30,7 @@ import json
 import os
 from datetime import date
 
-XLSX_PATH = r"C:\Users\AWalter\Dropbox\01. Out AND About Files\OAA maintence and content\Marin_Swim_Lesson_Vendor_Dashboard_v4.xlsx"
+XLSX_PATH = r"C:\Users\AWalter\Dropbox\01. Out AND About Files\Resources\Marin_Swim_Lesson_Vendor_Dashboard_v4.xlsx"
 OUT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "swim_vendors.json")
 
 # Per-vendor overrides that can't be safely auto-derived from the raw sheet text.

@@ -26,7 +26,8 @@ Claude Code sessions for this project run with the working directory set to **`C
 | What | Where |
 |---|---|
 | **The repo** — `index.html`, `events.json`, this file, `HISTORY.md`, `sources/` (one sweep source list per region), `check_docs.py`, `scraper.py`, `swim_vendors.json` | `C:\Users\AWalter\Code\out-and-about-marin` — the single local clone. Reach it by **absolute path**. |
-| **Working files** — `open_items.md`, sweep review workbooks, the Napa and swim trackers, process docs | `…\PROJECTS\OAA Marin\OAA maintence and content\` — inside the session's working directory. Never committed to the repo. |
+| **Working files** — `open_items.md`, sweep review workbooks, the Napa tracker, process docs | `…\PROJECTS\OAA Marin\OAA maintence and content\` — inside the session's working directory. Never committed to the repo. |
+| **Resources-tab source spreadsheets** — swim directory and Choose your own adventure (since 2026-10-22) | `C:\Users\AWalter\Dropbox\01. Out AND About Files\Resources\`. Never committed to the repo. |
 | Session transcripts + auto-loaded memory | `C:\Users\AWalter\.claude\projects\C--Users-AWalter-Dropbox-01--Out-AND-About-Files\` (before 2026-10-10: `C--Users-AWalter-Documents-2--Claude-Work-PROJECTS-OAA-Marin`, where the older transcripts still live) |
 
 **Run the duplicate checker at the start of a session, and again after any batch write:**
@@ -935,7 +936,7 @@ A phone-first Resources sub-page (`#adventureScreen`) listing Marin indoor playg
 of `events.json` and not touched by any sweep**: a place being listed here (The Social Klub, Bay Area Discovery Museum,
 Kitsch + Sync) does NOT put it in the events feed. No special treatment for sponsors.
 
-- **Source spreadsheet**: `OAA maintence and content\create_your_own_adventure_v2.xlsx` (Dropbox, not the repo). Sheet
+- **Source spreadsheet**: `Resources\create_your_own_adventure_v2.xlsx` (Dropbox, not the repo; moved there 2026-10-22). Sheet
   "Create Your Own Adventure" only; "Beyond Marin" (Sonoma/SF) is unpublished, "Checks & gaps" is working notes.
 - **Converter**: `python adventure_io.py` writes `adventure.json`. Columns found by header name, rows matched by a slug of
   the Place name, so inserted rows/columns are safe. **Never copied to the JSON (it is public):** "Check status" and the
@@ -958,7 +959,7 @@ Kitsch + Sync) does NOT put it in the events feed. No special treatment for spon
 
 A separate reference dataset reachable from the Resources screen. **Not part of `events.json` and not touched by any sweep.**
 
-- **Data**: `swim_vendors.json` (21 Marin swim-lesson providers). Built from `Marin_Swim_Lesson_Vendor_Dashboard_v4.xlsx` (in `OAA maintence and content/`) by the converter `swim_vendors_io.py`.
+- **Data**: `swim_vendors.json` (21 Marin swim-lesson providers). Built from `Marin_Swim_Lesson_Vendor_Dashboard_v4.xlsx` (in the Dropbox `Resources\` folder since 2026-10-22; was `OAA maintence and content/`) by the converter `swim_vendors_io.py`.
 - **Corrections go in the converter, not the JSON.** `swim_vendors_io.py` holds an `OVERRIDES` dict keyed by vendor slug; a correction added there survives re-running the converter, whereas hand-editing `swim_vendors.json` is silently wiped on the next run. Example: `strawberry-recreation-district` carries `hoursSeason_override`.
 - **`towns` (plural) is what the UI reads** for display and filtering — not the raw `town` field. Populate both.
 - **UI** (in `index.html`, `#swimScreen`): a table, not cards. There is **no detail/drill-down screen** — a `#swimDetailScreen` existed and was deleted 2026-08-03. If you reintroduce one, note that `showScreen()` once kept a hard reference to it that threw on *every* screen change after deletion.
