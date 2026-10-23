@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22",
+  "last_updated": "2026-10-23",
   "events": [
     {
       "id": 1,
@@ -7283,7 +7283,7 @@
     {
       "season_start": "",
       "season_end": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "event_date": "2026-10-24",
       "expires": "2026-10-24",
@@ -7308,7 +7308,7 @@
       "website": "https://www.novato.gov/government/parks-recreation-community-services/registration",
       "notes": "Space is limited. Ages 14 and up.",
       "location_group": "Novato",
-      "internal_notes": "Added 2026-09-24 from the City of Novato's own @novatofun Instagram post, supplied by Alexandra: 'Saturday, October 24 at 9 AM', 'Margaret Todd Senior Center | 1560 Hill Rd', 'Ages 14+', 'Space is limited! Click the link in our bio to register today.' No end time and NO PRICE are given; Novato Parks & Rec courses are paid and this is a certification course, so cost says 'Paid course - price at registration' rather than claiming Free (rule 22). novato.gov returns 403 to WebFetch and search did not surface the individual class page, so the price is not confirmable from here; the Fall/Winter activity guide would have it.",
+      "internal_notes": "Added 2026-09-24 from the City of Novato's own @novatofun Instagram post, supplied by Alexandra: 'Saturday, October 24 at 9 AM', 'Margaret Todd Senior Center | 1560 Hill Rd', 'Ages 14+', 'Space is limited! Click the link in our bio to register today.' No end time and NO PRICE are given; Novato Parks & Rec courses are paid and this is a certification course, so cost says 'Paid course - price at registration' rather than claiming Free (rule 22). novato.gov returns 403 to WebFetch and search did not surface the individual class page, so the price is not confirmable from here; the Fall/Winter activity guide would have it.\nRETIRED 2026-10-23 at Alexandra's request (removed from the site; reason not given). Set status back to Active to restore.",
       "id": 1168
     },
     {
