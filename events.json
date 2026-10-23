@@ -20609,6 +20609,37 @@
       "website": "https://luma.com/tn798h3r",
       "notes": "Time to be announced; see the event page before you go.",
       "internal_notes": "Added 2026-10-23 at Alexandra's request from The Swel Club's Luma calendar (source 50); event page luma.com/tn798h3r says 'Time is TBD' (Luma shows 12-3 PM, likely a placeholder). Luma lists the ticket as free; cost not otherwise stated. Update the time when posted."
+    },
+    {
+      "id": 1768,
+      "featured": false,
+      "status": "Active",
+      "season_start": "",
+      "season_end": "",
+      "organization": "Le Petit Jardin",
+      "venue": "Milkweed Kids",
+      "event_name": "Free Story Time at LPJ",
+      "event_name_es": "Hora del Cuento Gratis en LPJ",
+      "type": "Kids Programs",
+      "day": "Monday",
+      "time": "10:30 AM",
+      "time_of_day": "Morning",
+      "town": "Mill Valley",
+      "address": "12 Miller Ave, Mill Valley, CA 94941",
+      "ages": "0-5 yrs",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-02",
+      "expires": "2026-11-02",
+      "description": "A free, interactive French storytime at Milkweed in Mill Valley, led by Le Petit Jardin (LPJ), a French immersion program for children. Bonjour!",
+      "description_es": "Una hora del cuento interactiva y gratuita en francés en Milkweed, en Mill Valley, dirigida por Le Petit Jardin (LPJ), un programa de inmersión en francés para niños. ¡Bonjour!",
+      "registration": "Not stated",
+      "website": "https://www.instagram.com/milkweedmillvalley/",
+      "notes": "",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-10-23 from an Instagram story by @littlevillagemarin crediting @milkweedmillvalley and @lpjkids: 'FREE interactive French storytime, Monday, Nov 2 @ 10:30am'. Weekday checked (Monday). Title as Alexandra asked. Ages not stated; 0-5 yrs assumed to match Milkweed's other listing (1353). End time and sign-up not stated."
     }
   ]
 }
