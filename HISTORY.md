@@ -368,3 +368,21 @@ rather than seven one-offs, although its dates follow no ordinal. The app has no
 Weekly record with seasons split at New Year and the other Fridays skipped, with `expires` so it does not return next
 year: the Pavilion Playgroup shape, now written down as the pattern.
 
+## 2026-10-22 (evening): Kitsch + Sync goes live, and a sponsor cap nobody knew about
+
+Kitsch + Sync signed a 3-month Featured sponsorship. The same evening their flyers became 8 partner events (after four
+rounds of mockup edits: titles, "Food/PlayZone passes for sale", Families, Community Event) and their Featured ad went
+live. Three things worth keeping:
+
+- **The strip could only ever show two sponsors.** `withAds()` sliced `activeAds` to 2, a limit written when there was
+  one sponsor. The third ad loaded without error and simply never appeared; it was caught only because the ad was
+  previewed locally before pushing. Now `MAX_FEAT_ADS = 9` (Alexandra). Lesson: preview a new sponsor on the real page,
+  not just the mockup, because a silent cap looks exactly like "nothing to show".
+- **`socials.facebook` needs a page slug.** Their Facebook page is a `/people/<name>/<number>/` URL, and the Follow
+  button took the first path segment, so 8 live listings showed a button reading "people" until it was removed.
+- **A hand-typed "Coming up" list on an ad page goes stale.** It was built from code-less offers, then removed at
+  Alexandra's request; an automatic version (reading the sponsor's partner events) was offered and not taken.
+
+The same day, a backspace byte landed in a CLAUDE.md path again (a `\b` inside a Python string written through a shell
+heredoc), the trap the rulebook already describes. Caught by `cat -A` and fixed in `97314e7`. Write doc edits from a
+script file, or check for control bytes before committing.
