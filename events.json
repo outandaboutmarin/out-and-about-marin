@@ -20351,9 +20351,19 @@
       "website": "https://kitschandsync.com/",
       "description": "A Halloween screening of Disney's The Haunted Mansion at Kitsch + Sync, Novato's family restaurant and play space. The ticket includes play time before the movie and popcorn.",
       "description_es": "Proyección de Halloween de La mansión embrujada de Disney en Kitsch + Sync, el restaurante familiar con zona de juegos de Novato. El boleto incluye tiempo de juego antes de la película y palomitas.",
-      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. Plain listing; Kitsch + Sync is a Featured-sponsor prospect (not signed).",
+      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. Made a partner record 2026-10-22 at Alexandra's instruction, after Kitsch + Sync signed a 3-month Featured sponsorship.",
       "day": "Friday",
-      "time_of_day": "Evening"
+      "time_of_day": "Evening",
+      "partner": true,
+      "logo": "assets/ads/kitsch_sync_logo.png",
+      "contact": {
+        "name": "Kitsch + Sync",
+        "phone": "(415) 408-3158",
+        "instagram": "kitschandsync"
+      },
+      "socials": {
+        "instagram": "kitschandsync"
+      }
     },
     {
       "id": 1749,
@@ -20627,8 +20637,7 @@
         "instagram": "kitschandsync"
       },
       "socials": {
-        "instagram": "kitschandsync",
-        "facebook": "https://www.facebook.com/people/Kitsch-Sync/61583055145909/"
+        "instagram": "kitschandsync"
       },
       "id": 1757,
       "day": "Tuesday",
@@ -20669,8 +20678,7 @@
         "instagram": "kitschandsync"
       },
       "socials": {
-        "instagram": "kitschandsync",
-        "facebook": "https://www.facebook.com/people/Kitsch-Sync/61583055145909/"
+        "instagram": "kitschandsync"
       },
       "id": 1758,
       "day": "Wednesday",
@@ -20711,8 +20719,7 @@
         "instagram": "kitschandsync"
       },
       "socials": {
-        "instagram": "kitschandsync",
-        "facebook": "https://www.facebook.com/people/Kitsch-Sync/61583055145909/"
+        "instagram": "kitschandsync"
       },
       "id": 1759,
       "day": "Thursday",
@@ -20753,8 +20760,7 @@
         "instagram": "kitschandsync"
       },
       "socials": {
-        "instagram": "kitschandsync",
-        "facebook": "https://www.facebook.com/people/Kitsch-Sync/61583055145909/"
+        "instagram": "kitschandsync"
       },
       "id": 1760,
       "day": "Friday",
@@ -20795,8 +20801,7 @@
         "instagram": "kitschandsync"
       },
       "socials": {
-        "instagram": "kitschandsync",
-        "facebook": "https://www.facebook.com/people/Kitsch-Sync/61583055145909/"
+        "instagram": "kitschandsync"
       },
       "id": 1761,
       "day": "Saturday",
@@ -20837,8 +20842,7 @@
         "instagram": "kitschandsync"
       },
       "socials": {
-        "instagram": "kitschandsync",
-        "facebook": "https://www.facebook.com/people/Kitsch-Sync/61583055145909/"
+        "instagram": "kitschandsync"
       },
       "id": 1762,
       "day": "Wednesday",
@@ -20879,8 +20883,7 @@
         "instagram": "kitschandsync"
       },
       "socials": {
-        "instagram": "kitschandsync",
-        "facebook": "https://www.facebook.com/people/Kitsch-Sync/61583055145909/"
+        "instagram": "kitschandsync"
       },
       "id": 1763,
       "day": "Thursday",
@@ -20921,8 +20924,7 @@
         "instagram": "kitschandsync"
       },
       "socials": {
-        "instagram": "kitschandsync",
-        "facebook": "https://www.facebook.com/people/Kitsch-Sync/61583055145909/"
+        "instagram": "kitschandsync"
       },
       "id": 1764,
       "day": "Friday",

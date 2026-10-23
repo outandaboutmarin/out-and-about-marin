@@ -214,6 +214,115 @@
       "instagram": "fit4mommarin",
       "facebook": "Fit4MomMarin",
       "internal_notes": "Posted live 2026-10-09 at Alexandra's instruction ('commit both the feature and the events'), from the mockup in OAA Sponsorship and Partners/Stroller Strides/ as revised 2026-10-09 per Hannah Austin's feedback (no 'caregivers'; her FIT4MOM and Stroller Strides text; Glofox sign-up; logo). Thursday and Saturday classes are 9:30-10:30 AM (Alexandra, 2026-10-09). The sign-up button points at marin.fit4mom.com/schedule until a direct Glofox link is supplied. Billing: item 22 (Stripe) not set up."
+    },
+    {
+      "id": "kitsch-sync",
+      "active": true,
+      "start": "2026-10-22",
+      "end": "2027-01-21",
+      "name": "Kitsch + Sync",
+      "logo": "assets/ads/kitsch_sync_logo.png",
+      "logo_wide": true,
+      "tile_icon": "assets/ads/kitsch_sync_mark.png",
+      "color": "#FFD200",
+      "color_ink": "#0D1B3E",
+      "tile_meta": {
+        "en": "Play & eat",
+        "es": "Jugar y comer"
+      },
+      "town": "Novato",
+      "badge": {
+        "en": "Sponsored · Local partner",
+        "es": "Patrocinado · Colaborador local"
+      },
+      "subtitle": {
+        "en": "Family restaurant and play space",
+        "es": "Restaurante familiar con zona de juegos"
+      },
+      "venue": "Kitsch + Sync · Novato",
+      "address": "1757 Grant Ave, Novato, CA 94945",
+      "address_note": {
+        "en": "Downtown Novato Center, Grant & 7th, between Lucky and Icon Fit",
+        "es": "Downtown Novato Center, Grant y 7th, entre Lucky e Icon Fit"
+      },
+      "phone": "(415) 408-3158",
+      "hours": [
+        {
+          "days": {
+            "en": "Thu–Sun",
+            "es": "Jue–Dom"
+          },
+          "time": {
+            "en": "9 AM – 8 PM",
+            "es": "9 AM – 8 PM"
+          }
+        },
+        {
+          "days": {
+            "en": "Wednesday",
+            "es": "Miércoles"
+          },
+          "time": {
+            "en": "2 PM – 8 PM",
+            "es": "2 PM – 8 PM"
+          }
+        },
+        {
+          "days": {
+            "en": "Tuesday",
+            "es": "Martes"
+          },
+          "time": {
+            "en": "4 PM – 8 PM",
+            "es": "4 PM – 8 PM"
+          }
+        },
+        {
+          "days": {
+            "en": "Monday",
+            "es": "Lunes"
+          },
+          "time": {
+            "en": "Closed",
+            "es": "Cerrado"
+          }
+        }
+      ],
+      "about": {
+        "en": "Pronounced \"kitchen sink\": a family-first restaurant with an indoor and outdoor play zone, so the kids can play while the grown-ups eat. Food all day, with beer and wine for the adults. Drop in for an all-day play pass, or join for the month.",
+        "es": "Se pronuncia como \"kitchen sink\": un restaurante pensado para familias, con zona de juegos interior y exterior, para que los niños jueguen mientras los adultos comen. Comida todo el día, con cerveza y vino para los adultos. Ven por un pase de juego de todo el día o hazte miembro por mes."
+      },
+      "note": {
+        "en": "All-day play pass $13 per kid; monthly memberships available. Socks required in the play zone. Sign the waiver online before your first visit.",
+        "es": "Pase de juego de todo el día: $13 por niño; hay membresías mensuales. Se requieren calcetines en la zona de juegos. Firma la exención de responsabilidad en línea antes de tu primera visita."
+      },
+      "tags": [
+        {
+          "text": {
+            "en": "Indoor & outdoor play",
+            "es": "Juego interior y exterior"
+          },
+          "class": "tag-kids"
+        },
+        {
+          "text": {
+            "en": "Families",
+            "es": "Familias"
+          },
+          "class": "tag-age"
+        },
+        {
+          "text": {
+            "en": "$13 play pass",
+            "es": "Pase de juego $13"
+          },
+          "class": "tag-paid"
+        }
+      ],
+      "website": "https://kitschandsync.com/",
+      "website_label": "kitschandsync.com",
+      "instagram": "kitschandsync",
+      "internal_notes": "Built 2026-10-22 at Alexandra's instruction from the approved mockup OAA Sponsorship and Partners/Kitsch + Sync/Kitsch + Sync - Featured card mockup (2026-10-21). Kitsch + Sync signed a 3-month Featured sponsorship 2026-10-22 (Leadsheet), so start 2026-10-22 and end 2027-01-21. Address, hours, $13 pass, memberships, socks, waiver from kitschandsync.com read 2026-10-21. Coming-up list removed 2026-10-22 at Alexandra's request (it was hand-typed and would go stale). Tile border bright yellow #FFD200 per Alexandra (their logo's own gold is #EABD4F); kicker text stays navy for contrast. Facebook left off: their page has no slug, only /people/Kitsch-Sync/61583055145909/. Billing: item 22."
     }
   ]
 }

@@ -4368,8 +4368,10 @@ function adText(v) { if (v == null) return ''; if (typeof v === 'string') return
 function adEsc(t) { return String(t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 // Live ads take their slots out of the nine; the ad goes second so the strip
 // still opens on an event, then rotateFeatured() moves it through every slot.
+// Up to MAX_FEAT_ADS live Featured sponsors get a tile (Alexandra 2026-10-22: up to 9; was a fixed 2).
+var MAX_FEAT_ADS = 9;
 function withAds(sel) {
-  var ads = activeCounty !== 'marin' ? [] : (activeAds || []).slice(0, 2);
+  var ads = activeCounty !== 'marin' ? [] : (activeAds || []).slice(0, MAX_FEAT_ADS);
   if (!ads.length) return sel;
   var out = sel.slice(0, Math.max(0, FEAT_SLOTS - ads.length));
   ads.forEach(function (a, i) { out.splice(Math.min(1 + i, out.length), 0, { ad: a }); });
@@ -6016,7 +6018,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-19.1';
+const APP_BUILD = '2026-10-22.1';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
