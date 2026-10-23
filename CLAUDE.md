@@ -885,7 +885,7 @@ The "Tides & Driving in Marin" table on Resources reads `tides.json` (raw NOAA C
 ## Resources tab: static sections, including the Kid-Friendly Dining table
 
 The Resources screen in `index.html` is hand-written HTML, in this order: Tides & Driving in Marin (reads `tides.json`,
-section above), Drive-Thrus in Marin County, **Kid-Friendly Dining in Marin**, Yoto Player Cards (Google Drive link),
+section above), Drive-Thrus in Marin County, **Kid-Friendly Dining in Marin**, Choose your own adventure (`adventure.json`, below), Yoto Player Cards (Google Drive link),
 Family Swimming in Marin (external guide), Swim Lesson Vendor Directory (`swim_vendors.json`, below), Donate Baby
 Essentials (Postpartum Support Center), About. None of it is in `events.json` and no sweep touches it. Every visible
 string carries a `data-es` Spanish translation.
@@ -928,6 +928,31 @@ Open item 33, created 2026-08-15. **Name only so far — scope deliberately not 
 - **The design question that has to be settled first**: tide pool information is *time-dependent* in a way swim vendors are not. A spot is only worth visiting at low tide, so a static table of locations may be close to useless — the useful artifact is probably "good low-tide windows in the next N days per spot." That is a different shape from anything else in this app: it is neither an event nor a static directory row.
 - **Data is gettable free**: NOAA publishes tide predictions for Marin stations, so this does not need a paid service.
 - **Two questions are outstanding with Alexandra** and should be asked before any code: (a) static list of locations, or upcoming good low-tide windows? (b) a Resources page like the swim table, or something that feeds entries into the main event feed?
+
+## Choose your own adventure (third dataset, not events; live 2026-10-22, open item 56)
+
+A phone-first Resources sub-page (`#adventureScreen`) listing Marin indoor playgrounds, open gyms and museums. **Not part
+of `events.json` and not touched by any sweep**: a place being listed here (The Social Klub, Bay Area Discovery Museum,
+Kitsch + Sync) does NOT put it in the events feed. No special treatment for sponsors.
+
+- **Source spreadsheet**: `OAA maintence and content\create_your_own_adventure_v2.xlsx` (Dropbox, not the repo). Sheet
+  "Create Your Own Adventure" only; "Beyond Marin" (Sonoma/SF) is unpublished, "Checks & gaps" is working notes.
+- **Converter**: `python adventure_io.py` writes `adventure.json`. Columns found by header name, rows matched by a slug of
+  the Place name, so inserted rows/columns are safe. **Never copied to the JSON (it is public):** "Check status" and the
+  "INTERNAL: Sponsor status" column.
+- **Corrections go in the converter's `OVERRIDES`, not the JSON** (same rule as the swim directory). It holds per place:
+  `days` (for the Days filter), `hoursEs`, and `hours` where the sheet was wrong. On 2026-10-22 all 12 sites were checked
+  and 5 rows overridden (Cal Star from its Jackrabbit calendar, Playland Mondays from Nov 2, Fox & Kit weekend hours posted
+  weekly, Little Marin, Bay Area Discovery Museum). The sheet still has the old hours for those 5.
+- **Three categories only** (Alexandra 2026-10-22): Indoor playground/drop-in, Open Gym, Museum. `CATEGORY` in the
+  converter maps each sheet Program to one; an unmapped Program stops the run. The UI shows `category` under the header
+  "Program"; `program` keeps the sheet's wording.
+- **UI**: four columns (Place, Program, Location, Days & hours), no sideways scroll at 360 to 390px. Each header opens one
+  shared popover (`#advPop`): sort plus a filter (Place: name search; Program/Location: checkboxes; Days & hours: "Open
+  on" weekdays, sorted by days open). Place links to its website (`target="_blank" rel="noopener"`). **Default order and
+  "Clear filters" = Location A to Z, then Place** (`ADV_DEFAULT_SORT`, Alexandra 2026-10-22). Bilingual: rendered from
+  `currentLang`, re-rendered by `setLanguage()`.
+- Data shape is meant to grow: `region` is "Marin" today; Napa/Sonoma, and items 17 and 33, may later share this directory.
 
 ## Swim Lesson Directory (second dataset — not events)
 
