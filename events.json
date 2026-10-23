@@ -20768,6 +20768,41 @@
       "description_es": "Cada domingo de la temporada de fútbol americano, Kitsch + Sync pone los partidos: disfruta del juego mientras los niños juegan en la PlayZone.",
       "registration": "Not required",
       "notes": "Every Sunday during football season. Food and PlayZone passes for sale. Socks required in the play zone."
+    },
+    {
+      "id": 1772,
+      "featured": false,
+      "status": "Active",
+      "season_start": "10/22",
+      "season_end": "12/31",
+      "organization": "MarinHealth Lactation Services",
+      "venue": "Online (Microsoft Teams)",
+      "event_name": "MarinHealth Mom's Support Group (online)",
+      "event_name_es": "Grupo de Apoyo para Mamás de MarinHealth (en línea)",
+      "type": "Community Event",
+      "day": "Thursday",
+      "time": "10:30 AM – 11:45 AM",
+      "time_of_day": "Morning",
+      "town": "Virtual",
+      "address": "Online — Teams link sent on registration",
+      "ages": "New moms and babies",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "Weekly",
+      "event_date": "",
+      "expires": "2026-12-31",
+      "description": "A free weekly online group where new moms and their babies connect, share the joys and challenges of new motherhood, and talk through nursing, newborn care and parenting. Led by a Registered Nurse and International Board Certified Lactation Consultant (IBCLC).",
+      "description_es": "Un grupo semanal gratuito en línea donde las nuevas mamás y sus bebés se conectan, comparten las alegrías y los retos de la maternidad, y hablan de lactancia, cuidado del recién nacido y crianza. Lo dirige una enfermera titulada y consultora de lactancia certificada (IBCLC).",
+      "registration": "Required: call MarinHealth Lactation Services at 415-925-7522",
+      "website": "https://www.instagram.com/mymarinhealth/",
+      "notes": "To register and get the Teams link, call MarinHealth Lactation Services at 415-925-7522. May not meet on holidays.",
+      "contact": {
+        "name": "MarinHealth Lactation Services",
+        "phone": "415-925-7522"
+      },
+      "location_group": "Virtual",
+      "internal_notes": "Added 2026-10-23 at Alexandra's request from a @mymarinhealth Instagram post (2 days old): free, weekly, every Thursday 10:30-11:45 AM through the end of the year, online via Microsoft Teams, facilitated by an RN/IBCLC; register by phone. Season to 12/31 and expires 2026-12-31 so it drops off with the year. Holiday line (Nov 26, Dec 24) added at Alexandra's request; the post names no skips."
     }
   ]
 }
