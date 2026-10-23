@@ -30,6 +30,13 @@ Claude Code sessions for this project run with the working directory set to **`C
 | **Resources-tab source spreadsheets** — swim directory and Choose your own adventure (since 2026-10-22) | `C:\Users\AWalter\Dropbox\01. Out AND About Files\Resources\`. Never committed to the repo. |
 | Session transcripts + auto-loaded memory | `C:\Users\AWalter\.claude\projects\C--Users-AWalter-Dropbox-01--Out-AND-About-Files\` (before 2026-10-10: `C--Users-AWalter-Documents-2--Claude-Work-PROJECTS-OAA-Marin`, where the older transcripts still live) |
 
+**Phone inbox: check it at the start of every desktop session** (added 2026-10-23, Alexandra). Phone/cloud sessions
+cannot reach Dropbox, so they leave their to-dos for `open_items.md`, memory and other Dropbox files in
+`C:\Users\AWalter\Code\out-and-about-marin\phone_inbox.md`. If its "Pending" list has entries: apply each one (skip any
+the target already has; write `open_items.md` the safe way, rule 23), then empty the list, commit
+("Apply phone inbox") and push, and tell Alexandra in one line what was applied. She should never have to relay these
+herself. Event changes need no inbox entry: they arrive with the pull, and their reasons are in `internal_notes`.
+
 **Run the duplicate checker at the start of a session, and again after any batch write:**
 
 ```
@@ -62,7 +69,9 @@ phone session.
   **this standing instruction is the permission to push to `main`.** App changes (`index.html`) still follow the
   normal Git workflow rules: show Alexandra first, and run `bump_build.py`.
 - **Dropbox is unreachable.** `open_items.md`, the review workbooks and Claude's memory notes are not here. Do not try
-  to update them; at the end, give Alexandra the exact lines to add on the computer. The open-items dashboard page can be
+  to update them, and do not hand Alexandra lines to paste: **write them into `phone_inbox.md`** (repo root, "Pending"
+  list) and push it with the session's other commits. The desktop applies them (see "Phone inbox", Alexandra
+  2026-10-23: she does not want to relay messages between sessions). The open-items dashboard page can be
   READ (Artifact `read`, URL in "Open Items tracker"), but never republish it from a cloud session: the desktop rebuilds
   it from `open_items.md` and would overwrite the edit.
 - **Use `python3`**, not `python`.
