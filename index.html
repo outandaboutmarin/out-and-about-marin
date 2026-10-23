@@ -337,6 +337,7 @@ function setLanguage(lang) {
   ['day','time','cost','type','age','location'].forEach(syncCheckboxes);
   renderCards();
   if (currentUser) renderProfile();
+  if (advLoaded) { advClosePop(); advRender(); }
 }
 
 function applyLanguage() {
@@ -1861,6 +1862,44 @@ function mapDbUser(dbUser) {
   .dine-grid col.dn { width:28%; } .dine-grid col.dc { width:22%; } .dine-grid col.dd { width:50%; }
   .dine-grid td a { color:var(--navy); text-decoration:underline; font-weight:600; }
   .dine-grid td.dc { color:#6b7791; }
+  /* Choose your own adventure: phone-first (fits a 360px screen with no sideways scroll). */
+  #adventureScreen { min-height:100vh; }
+  .adv-body { flex:1; padding:0.625rem 0.625rem calc(3rem + env(safe-area-inset-bottom)); width:100%; max-width:640px; margin:0 auto; box-sizing:border-box; }
+  .adv-intro { margin:0 0 0.5rem; font-size:0.74rem; color:#6b7791; line-height:1.4; }
+  .adv-bar { display:flex; align-items:center; justify-content:space-between; gap:0.5rem; margin-bottom:0.4rem; min-height:28px; }
+  .adv-count { font-size:0.74rem; font-weight:600; color:var(--navy); }
+  .adv-clear { display:none; font-family:var(--font-sans); font-size:0.72rem; font-weight:600; color:var(--navy); background:#fff; border:1px solid var(--navy); border-radius:99px; padding:0.25rem 0.75rem; cursor:pointer; }
+  .adv-clear.show { display:inline-block; }
+  .adv-chips { display:flex; flex-wrap:wrap; gap:0.3rem; margin-bottom:0.45rem; }
+  .adv-chips:empty { display:none; }
+  .adv-chip { font-family:var(--font-sans); font-size:0.68rem; color:var(--navy); background:#EEF2F8; border:1px solid #DCE4F0; border-radius:99px; padding:0.2rem 0.55rem; cursor:pointer; }
+  .adv-grid { border-collapse:collapse; width:100%; table-layout:fixed; font-size:0.72rem; line-height:1.35; }
+  .adv-grid th, .adv-grid td { padding:0.45rem 0.35rem; text-align:left; vertical-align:top; border-bottom:1px solid #EEF2F8; overflow-wrap:break-word; hyphens:auto; }
+  .adv-grid thead th { padding:0; background:#F1F5FB; border-bottom:1px solid #DCE4F0; vertical-align:bottom; }
+  .adv-grid tbody tr:last-child td { border-bottom:none; }
+  .adv-grid col.ap { width:28%; } .adv-grid col.ag { width:23%; } .adv-grid col.al { width:18%; } .adv-grid col.ah { width:31%; }
+  .adv-grid td a { color:var(--navy); text-decoration:underline; font-weight:600; }
+  .adv-grid td.al { color:#6b7791; }
+  .adv-th { display:flex; align-items:flex-end; gap:2px; width:100%; min-height:40px; padding:0.45rem 0.35rem; box-sizing:border-box; background:none; border:none; cursor:pointer; text-align:left; font-family:var(--font-sans); font-size:0.68rem; font-weight:600; color:var(--navy); line-height:1.2; }
+  .adv-th.on { background:#E2EAF6; }
+  .adv-th-ind { font-size:0.6rem; color:#6b7791; flex-shrink:0; }
+  .adv-th.on .adv-th-ind { color:var(--navy); }
+  .adv-empty { text-align:center !important; color:#6b7791; padding:1rem !important; }
+  .adv-note { margin:0.5rem 0 0; font-size:0.66rem; color:#6b7791; line-height:1.4; }
+  .adv-pop { display:none; position:absolute; z-index:300; width:240px; max-width:calc(100vw - 16px); box-sizing:border-box; background:#fff; border:1px solid var(--card-border); border-radius:var(--radius-sm); box-shadow:0 8px 24px rgba(13,27,62,0.18); padding:0.5rem 0; font-family:var(--font-sans); }
+  .adv-pop.open { display:block; }
+  .adv-pop-h { font-size:0.62rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:#6b7791; padding:0.3rem 0.75rem 0.2rem; }
+  .adv-pop-sort { display:flex; gap:0.35rem; padding:0.2rem 0.75rem 0.4rem; }
+  .adv-pop-sort button { flex:1; font-family:var(--font-sans); font-size:0.72rem; color:var(--navy); background:#fff; border:1px solid #DCE4F0; border-radius:var(--radius-sm); padding:0.4rem 0.3rem; cursor:pointer; }
+  .adv-pop-sort button.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+  .adv-pop label { display:flex; align-items:center; gap:0.55rem; padding:0.4rem 0.75rem; font-size:0.78rem; color:var(--text-primary); cursor:pointer; }
+  .adv-pop label input { width:16px; height:16px; accent-color:var(--navy); margin:0; flex-shrink:0; }
+  .adv-pop label .n { margin-left:auto; color:#6b7791; font-size:0.68rem; }
+  .adv-pop-list { max-height:240px; overflow-y:auto; }
+  .adv-pop input[type=search] { display:block; width:calc(100% - 1.5rem); margin:0.2rem 0.75rem 0.4rem; box-sizing:border-box; font-family:var(--font-sans); font-size:16px; padding:0.4rem 0.5rem; border:1px solid #DCE4F0; border-radius:var(--radius-sm); }
+  .adv-pop-foot { display:flex; justify-content:space-between; gap:0.5rem; padding:0.45rem 0.75rem 0.1rem; border-top:1px solid #EEF2F8; margin-top:0.3rem; }
+  .adv-pop-foot button { font-family:var(--font-sans); font-size:0.74rem; font-weight:600; background:none; border:none; color:var(--navy); cursor:pointer; padding:0.3rem 0; }
+  .adv-pop-foot button.done { background:var(--navy); color:#fff; border-radius:99px; padding:0.3rem 0.9rem; }
   .tide-wrap { overflow-x:auto; border:1px solid #E2E8F2; border-radius:var(--radius-sm); background:#fff; }
   .tide-grid { border-collapse:collapse; width:100%; table-layout:fixed; font-size:0.76rem; }
   .tide-grid th, .tide-grid td { padding:0.42rem 0.35rem; text-align:center; border-bottom:1px solid #EEF2F8; }
@@ -2701,6 +2740,13 @@ function mapDbUser(dbUser) {
       </div>
     </div>
     <div class="about-section" style="margin-bottom:0.75rem">
+      <div class="about-title" data-es="🧭 Elige tu propia aventura">🧭 Choose your own adventure</div>
+      <div class="about-text">
+        <p style="margin:0 0 0.5rem;line-height:1.5" data-es="Parques infantiles cubiertos, gimnasios abiertos y museos en todo Marin, con días y horarios. Ordena o filtra por cualquier columna.">Indoor playgrounds, open gyms and museums across Marin, with days and hours. Sort or filter by any column.</p>
+        <p style="margin:0;line-height:1.5"><a href="javascript:void(0)" onclick="showScreen('adventure')" style="color:var(--navy);text-decoration:underline;font-weight:600" data-es="Abrir Elige tu propia aventura →">Open Choose your own adventure →</a></p>
+      </div>
+    </div>
+    <div class="about-section" style="margin-bottom:0.75rem">
       <div class="about-title" data-es="🎧 Tarjetas para Yoto Player: Biblioteca de Préstamo de Archivos MP4 DIY/MYO">🎧 Yoto Player Cards: DIY/MYO MP4 File Lending Library</div>
       <div class="about-text">
         <p style="margin:0 0 0.5rem;line-height:1.5" data-es="Una carpeta compartida de Google Drive con archivos MP4 para tarjetas Yoto MYO (házlas tú mismo). Descarga un archivo, cárgalo en una tarjeta en blanco y tu pequeño tendrá una nueva historia o lista para escuchar.">A shared Google Drive folder of MP4 files for Make-Your-Own (MYO) Yoto cards. Download a file, load it onto a blank card, and your little one has a new story or playlist to listen to.</p>
@@ -2811,6 +2857,33 @@ function mapDbUser(dbUser) {
     </div>
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════════════
+     CHOOSE YOUR OWN ADVENTURE (Resources sub-page)
+     Phone-first table from adventure.json. Every header is a button that
+     opens one shared popover with that column's sort and filter.
+═══════════════════════════════════════════════════ -->
+<div id="adventureScreen" style="display:none">
+  <div class="detail-header">
+    <button class="detail-back" onclick="showScreen('resources')" data-es="‹ Volver a Recursos">‹ Back to Resources</button>
+    <div class="detail-title" data-es="Elige tu propia aventura">Choose your own adventure</div>
+  </div>
+  <div class="adv-body">
+    <p class="adv-intro" data-es="Toca el encabezado de una columna para ordenar o filtrar. Toca un lugar para abrir su sitio web.">Tap a column header to sort or filter. Tap a place to open its website.</p>
+    <div class="adv-bar">
+      <span class="adv-count" id="advCount"></span>
+      <button class="adv-clear" id="advClear" type="button" onclick="advClearAll()"></button>
+    </div>
+    <div class="adv-chips" id="advChips"></div>
+    <div class="dine-wrap"><table class="adv-grid">
+      <colgroup><col class="ap"><col class="ag"><col class="al"><col class="ah"></colgroup>
+      <thead><tr id="advHead"></tr></thead>
+      <tbody id="advBody"><tr><td colspan="4" class="adv-empty">Loading…</td></tr></tbody>
+    </table></div>
+    <p class="adv-note" id="advNote"></p>
+  </div>
+</div>
+<div class="adv-pop" id="advPop"></div>
 
 <div id="profileScreen">
   <div class="profile-header">
@@ -3272,6 +3345,8 @@ function showScreen(screen) {
   document.getElementById('signupScreen2').style.display = 'none';
   document.getElementById('resourcesScreen').style.display = 'none';
   document.getElementById('swimScreen').style.display = 'none';
+  document.getElementById('adventureScreen').style.display = 'none';
+  advClosePop();
 
   if (screen === 'app') {
     document.getElementById('appScreen').style.display = 'flex';
@@ -3288,6 +3363,11 @@ function showScreen(screen) {
     document.getElementById('swimScreen').style.display = 'flex';
     document.getElementById('swimScreen').style.flexDirection = 'column';
     ensureSwimVendors();
+  } else if (screen === 'adventure') {
+    document.getElementById('adventureScreen').style.display = 'flex';
+    document.getElementById('adventureScreen').style.flexDirection = 'column';
+    window.scrollTo(0, 0);
+    ensureAdventure();
   } else if (screen === 'settings') {
     showScreen('profile'); // For now settings goes to profile
   }
@@ -5444,6 +5524,222 @@ function normalizePhone(phone) {
 }
 
 // ═══════════════════════════════════════════
+// CHOOSE YOUR OWN ADVENTURE (Resources sub-page)
+//
+// Phone-first table read from adventure.json (built by adventure_io.py from
+// Alexandra's spreadsheet). Each header opens one shared popover (#advPop)
+// with that column's sort and filter. Own state, like the swim directory,
+// so nothing here touches the events feed. `var`, not `let`: setLanguage()
+// can reach advRender() before this block has run.
+// ═══════════════════════════════════════════
+
+var advPlaces = [];
+var advLoaded = false;
+var advLoading = false;
+var ADV_DEFAULT_SORT = { key: 'locationGroup', dir: 1 };  // Location A to Z, then Place (Alexandra 2026-10-22)
+var advSort = { key: 'locationGroup', dir: 1 };
+var advFilters = { name: '', category: new Set(), locationGroup: new Set(), days: new Set() };
+var advPopKey = null;
+var ADV_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+var ADV_DAYS_ES = { Mon: 'Lun', Tue: 'Mar', Wed: 'Mié', Thu: 'Jue', Fri: 'Vie', Sat: 'Sáb', Sun: 'Dom' };
+var ADV_COLS = [
+  { key: 'name', en: 'Place', es: 'Lugar' },
+  { key: 'category', en: 'Program', es: 'Programa' },
+  { key: 'locationGroup', en: 'Location', es: 'Zona' },
+  { key: 'hours', en: 'Days & hours', es: 'Días y horario' }
+];
+
+function advEs() { return currentLang === 'es'; }
+function advCategory(p) { return advEs() ? (p.categoryEs || p.category) : p.category; }
+
+function ensureAdventure() {
+  if (advLoaded) { advRender(); return; }
+  if (advLoading) return;
+  advLoading = true;
+  fetch('adventure.json?v=' + Date.now())
+    .then(function (r) { return r.json(); })
+    .then(function (d) { advPlaces = d.places || []; advLoaded = true; advRender(); })
+    .catch(function () {
+      document.getElementById('advBody').innerHTML = '<tr><td colspan="4" class="adv-empty">' +
+        (advEs() ? 'No se pudo cargar la lista. Inténtalo de nuevo.' : 'Could not load the list. Please try again.') + '</td></tr>';
+    })
+    .finally(function () { advLoading = false; });
+}
+
+function advFilterCount(key) {
+  if (key === 'name') return advFilters.name ? 1 : 0;
+  if (key === 'hours') return advFilters.days.size;
+  return advFilters[key].size;
+}
+
+function advVisible() {
+  var q = advFilters.name.trim().toLowerCase();
+  var rows = advPlaces.filter(function (p) {
+    if (q && p.name.toLowerCase().indexOf(q) === -1) return false;
+    if (advFilters.category.size && !advFilters.category.has(p.category)) return false;
+    if (advFilters.locationGroup.size && !advFilters.locationGroup.has(p.locationGroup)) return false;
+    if (advFilters.days.size && !(p.days || []).some(function (d) { return advFilters.days.has(d); })) return false;
+    return true;
+  });
+  var k = advSort.key, dir = advSort.dir;
+  rows.sort(function (a, b) {
+    var c;
+    if (k === 'hours') c = ((a.days || []).length - (b.days || []).length) * -1;
+    else if (k === 'category') c = advCategory(a).localeCompare(advCategory(b));
+    else c = String(a[k]).localeCompare(String(b[k]));
+    return (c * dir) || a.name.localeCompare(b.name);
+  });
+  return rows;
+}
+
+function advRender() {
+  if (!advLoaded) return;
+  var es = advEs();
+  document.getElementById('advHead').innerHTML = ADV_COLS.map(function (c) {
+    var sorted = advSort.key === c.key, n = advFilterCount(c.key);
+    var ind = (sorted ? (advSort.dir === 1 ? '▲' : '▼') : '') + (n ? ' ●' : '') || '▾';
+    return '<th><button type="button" class="adv-th' + (sorted || n ? ' on' : '') + '" onclick="advOpenPop(\'' + c.key + '\', this)">' +
+      '<span>' + (es ? c.es : c.en) + '</span><span class="adv-th-ind">' + ind + '</span></button></th>';
+  }).join('');
+
+  var rows = advVisible();
+  document.getElementById('advBody').innerHTML = rows.length ? rows.map(function (p) {
+    var name = p.website
+      ? '<a href="' + adEsc(p.website) + '" target="_blank" rel="noopener">' + adEsc(p.name) + '</a>'
+      : adEsc(p.name);
+    return '<tr><td>' + name + '</td><td>' + adEsc(advCategory(p)).replace(/\//g, '/<wbr>') + '</td><td class="al">' + adEsc(p.locationGroup) +
+      '</td><td>' + adEsc(es ? (p.hoursEs || p.hours) : p.hours) + '</td></tr>';
+  }).join('') : '<tr><td colspan="4" class="adv-empty">' +
+    (es ? 'Ningún lugar coincide con estos filtros.' : 'No places match these filters.') + '</td></tr>';
+
+  var total = advPlaces.length, active = ADV_COLS.some(function (c) { return advFilterCount(c.key); });
+  document.getElementById('advCount').textContent = active
+    ? (es ? 'Mostrando ' + rows.length + ' de ' + total + ' lugares' : 'Showing ' + rows.length + ' of ' + total + ' places')
+    : (es ? total + ' lugares' : total + ' places');
+  var clr = document.getElementById('advClear');
+  clr.textContent = es ? 'Borrar filtros' : 'Clear filters';
+  clr.classList.toggle('show', active);
+
+  var chips = [];
+  if (advFilters.name) chips.push(['name', '', '“' + advFilters.name + '”']);
+  advFilters.category.forEach(function (v) {
+    var p = advPlaces.find(function (x) { return x.category === v; });
+    chips.push(['category', v, p ? advCategory(p) : v]);
+  });
+  advFilters.locationGroup.forEach(function (v) { chips.push(['locationGroup', v, v]); });
+  advFilters.days.forEach(function (v) { chips.push(['days', v, (es ? 'Abierto: ' + ADV_DAYS_ES[v] : 'Open ' + v)]); });
+  document.getElementById('advChips').innerHTML = chips.map(function (c) {
+    return '<button type="button" class="adv-chip" data-k="' + c[0] + '" data-v="' + adEsc(c[1]) + '" onclick="advRemoveChip(this)">✕ ' + adEsc(c[2]) + '</button>';
+  }).join('');
+
+  var dates = advPlaces.map(function (p) { return p.lastVerified; }).filter(Boolean).sort();
+  var note = es ? 'Los horarios cambian, así que revisa el sitio web de cada lugar antes de ir.' : 'Hours change, so check each place’s website before you go.';
+  if (dates.length) {
+    var ymd = dates[0].split('-'), d = new Date(+ymd[0], +ymd[1] - 1, +ymd[2]);
+    var when = d.toLocaleDateString(es ? 'es-US' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    note = (es ? 'Horarios revisados el ' + when + '. ' : 'Hours checked ' + when + '. ') + note;
+  }
+  document.getElementById('advNote').textContent = note;
+}
+
+function advRemoveChip(btn) {
+  var k = btn.getAttribute('data-k'), v = btn.getAttribute('data-v');
+  if (k === 'name') advFilters.name = ''; else advFilters[k].delete(v);
+  advClosePop();
+  advRender();
+}
+
+function advClearAll() {
+  advFilters.name = '';
+  advFilters.category.clear(); advFilters.locationGroup.clear(); advFilters.days.clear();
+  advSort = { key: ADV_DEFAULT_SORT.key, dir: ADV_DEFAULT_SORT.dir };
+  advClosePop();
+  advRender();
+}
+
+function advClosePop() {
+  var pop = document.getElementById('advPop');
+  if (pop) pop.classList.remove('open');
+  advPopKey = null;
+}
+
+function advOpenPop(key, btn) {
+  if (advPopKey === key) { advClosePop(); return; }
+  advPopKey = key;
+  advFillPop();
+  var pop = document.getElementById('advPop'), r = btn.getBoundingClientRect();
+  pop.classList.add('open');
+  var w = pop.offsetWidth, vw = document.documentElement.clientWidth;
+  var left = Math.max(8, Math.min(r.left, vw - w - 8));
+  pop.style.left = (left + window.scrollX) + 'px';
+  pop.style.top = (r.bottom + window.scrollY + 4) + 'px';
+}
+
+function advFillPop() {
+  var es = advEs(), key = advPopKey, h = '';
+  var sortLbl = key === 'hours'
+    ? (es ? ['Más días', 'Menos días'] : ['Most days', 'Fewest days'])
+    : (es ? ['A a Z', 'Z a A'] : ['A to Z', 'Z to A']);
+  h += '<div class="adv-pop-h">' + (es ? 'Ordenar' : 'Sort') + '</div><div class="adv-pop-sort">' +
+    [1, -1].map(function (d, i) {
+      return '<button type="button" class="' + (advSort.key === key && advSort.dir === d ? 'on' : '') + '" onclick="advSetSort(' + d + ')">' + sortLbl[i] + '</button>';
+    }).join('') + '</div>';
+
+  if (key === 'name') {
+    h += '<div class="adv-pop-h">' + (es ? 'Buscar' : 'Search') + '</div>' +
+      '<input type="search" id="advSearch" autocomplete="off" placeholder="' + (es ? 'Nombre del lugar' : 'Place name') + '" value="' + adEsc(advFilters.name) + '" oninput="advFilters.name=this.value;advRender()">';
+  } else {
+    var opts;
+    if (key === 'hours') {
+      opts = ADV_DAYS.map(function (d) {
+        return { v: d, label: es ? ADV_DAYS_ES[d] : d, n: advPlaces.filter(function (p) { return (p.days || []).indexOf(d) !== -1; }).length };
+      });
+    } else {
+      var seen = {};
+      advPlaces.forEach(function (p) {
+        var v = p[key];
+        if (!seen[v]) seen[v] = { v: v, label: key === 'category' ? advCategory(p) : v, n: 0 };
+        seen[v].n++;
+      });
+      opts = Object.keys(seen).map(function (k) { return seen[k]; })
+        .sort(function (a, b) { return a.label.localeCompare(b.label); });
+    }
+    var set = key === 'hours' ? advFilters.days : advFilters[key];
+    h += '<div class="adv-pop-h">' + (key === 'hours' ? (es ? 'Abierto el' : 'Open on') : (es ? 'Mostrar' : 'Show')) + '</div><div class="adv-pop-list">' +
+      opts.map(function (o) {
+        return '<label><input type="checkbox" data-v="' + adEsc(o.v) + '"' + (set.has(o.v) ? ' checked' : '') +
+          ' onchange="advToggle(this)"><span>' + adEsc(o.label) + '</span><span class="n">' + o.n + '</span></label>';
+      }).join('') + '</div>';
+  }
+  h += '<div class="adv-pop-foot"><button type="button" onclick="advClearCol()">' + (es ? 'Borrar' : 'Clear') + '</button>' +
+    '<button type="button" class="done" onclick="advClosePop()">' + (es ? 'Listo' : 'Done') + '</button></div>';
+  document.getElementById('advPop').innerHTML = h;
+}
+
+function advSetSort(dir) {
+  advSort = { key: advPopKey, dir: dir };
+  advRender();
+  advFillPop();
+}
+
+function advToggle(cb) {
+  var set = advPopKey === 'hours' ? advFilters.days : advFilters[advPopKey], v = cb.getAttribute('data-v');
+  if (cb.checked) set.add(v); else set.delete(v);
+  advRender();
+}
+
+function advClearCol() {
+  if (advPopKey === 'name') advFilters.name = '';
+  else (advPopKey === 'hours' ? advFilters.days : advFilters[advPopKey]).clear();
+  advRender();
+  advFillPop();
+}
+
+document.addEventListener('click', function (e) {
+  if (advPopKey && !e.target.closest('#advPop') && !e.target.closest('.adv-th')) advClosePop();
+});
+
+// ═══════════════════════════════════════════
 // SWIM LESSON DIRECTORY (Resources sub-page)
 //
 // Table view — sortable/resizable columns, a frozen name column, filters
@@ -6018,7 +6314,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-22.1';
+const APP_BUILD = '2026-10-22.2';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
