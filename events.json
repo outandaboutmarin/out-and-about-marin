@@ -20940,6 +20940,37 @@
       "description_es": "Come en Kitsch + Sync y apoya a la escuela San Ramon Elementary: el 20% de las ventas de comida y bebida se destina a la escuela.",
       "registration": "Not required",
       "notes": "20% of food and beverage sales go to San Ramon Elementary School. Food and PlayZone passes for sale. Socks required in the play zone."
+    },
+    {
+      "id": 1765,
+      "featured": false,
+      "status": "Active",
+      "season_start": "",
+      "season_end": "",
+      "organization": "Marin Museum of Bicycling",
+      "venue": "Marin Museum of Bicycling",
+      "event_name": "Fall Cycles Swap at Marin Museum of Bicycling",
+      "event_name_es": "Intercambio de Bicicletas de Otoño en el Marin Museum of Bicycling",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "9:00 AM – 2:00 PM",
+      "time_of_day": "Morning",
+      "town": "Fairfax",
+      "address": "1966 Sir Francis Drake Blvd, Fairfax, CA 94930",
+      "ages": "All ages",
+      "cost": "Free to browse; items for sale",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-10-24",
+      "expires": "2026-10-24",
+      "description": "The Marin Museum of Bicycling's biannual Cycles Swap: great deals on bikes, parts, accessories and cycling gear, and a community celebration of all things cycling. A good chance to find a kid's bike or the next size up.",
+      "description_es": "El intercambio semestral de bicicletas del Marin Museum of Bicycling: buenas ofertas en bicicletas, piezas, accesorios y equipo de ciclismo, y una celebración comunitaria de todo lo relacionado con el ciclismo. Una buena oportunidad para encontrar una bicicleta infantil o la siguiente talla.",
+      "registration": "Not required",
+      "website": "https://mmbhof.org/events/",
+      "notes": "Half-price museum entry during the swap. Refreshments available by donation.",
+      "location_group": "Fairfax",
+      "internal_notes": "Added 2026-10-23 from a Marin Magazine Instagram post Alexandra sent; confirmed on mmbhof.org/events ('The biannual Cycles Swap is set for October 24th, 2026'). Weekday checked (Saturday). Cost for shoppers not stated; 'Free to browse' is an assumption. Half-price entry and refreshments read from the flyer's small print."
     }
   ]
 }
