@@ -27,7 +27,7 @@ import json, sys, datetime, urllib.request
 STATIONS = [
     {"key": "tam",     "noaa_id": "9414806", "short": "Tam Junction",
      "name": "Tam Junction / Sausalito", "name_es": "Tam Junction / Sausalito"},
-    {"key": "corte",   "noaa_id": "9414874", "short": "Corte Madera",
+    {"key": "corte",   "noaa_id": "9414874", "short": "Corte Madera/Lucky Drive",
      "name": "Corte Madera Creek", "name_es": "Corte Madera Creek"},
     # Petaluma River entrance, 0.7 km from Hwy 37 (2026-10-23, Alexandra; was 9414290, San Francisco / Golden Gate)
     {"key": "hwy37",   "noaa_id": "9415252", "short": "Hwy 37",
