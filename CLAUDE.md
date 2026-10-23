@@ -966,7 +966,7 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
 - Features: sortable + resizable + wrap-text columns, a frozen Vendor Name column, dropdown filters (town / class type / facility type / indoor-outdoor / age), drag-to-reorder columns with a "Default order" reset, and a user-added custom column. Column order and custom columns persist in `localStorage` under the `oaam_swim_*` keys (`oaam_swim_col_order`, `oaam_swim_custom_cols`, `oaam_swim_custom_data`), matching the existing `oaam_*` convention (`oaam_user`, `oaam_lang`, `oaam_county`).
 - The page carries a "not mobile friendly, best on a computer" note by design — desktop-first was Alexandra's explicit call.
 - **CSS trap worth remembering**: a container with `overflow-x:auto` computes `overflow-y:auto` too, which makes it the containing block for `position:sticky` and silently kills page-level sticky headers. The table's sticky header works because `.swim-table-scroll` is a height-bounded box with `thead` sticky at `top:0` *inside* it.
-- `Swim_Dashboard_Integration_Spec.md` describes the original card-based design and is **superseded** — the header says so.
+- `Swim_Dashboard_Integration_Spec.md` (Dropbox `Resources\` since 2026-10-22) describes the original card-based design and is **superseded** — the header says so.
 
 ## Open Items tracker (Alexandra's to-do list)
 
