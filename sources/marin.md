@@ -10,7 +10,7 @@
 | `county` value on records | (blank) |
 | Sweep window | today through 7 weeks ahead (matches past sweeps) |
 | Review workbook | `Dropbox\01. Out AND About Files\OAA maintence and content\daily_sweep_YYYY-MM-DD_review.xlsx` |
-| Source count | 49 |
+| Source count | 50 |
 
 
 ## Sources
@@ -177,7 +177,9 @@
 
 49. **Katie Mae — parent coaching events (online)** — **added 2026-10-16 at Alexandra's request** ("free events from here and add to source list"). Fetch `withkatiemae.com/events` (Squarespace; headless reads it whole, and the list mixes upcoming and past events, so filter by date). **Take only the FREE events**: *Coaching Conversations* (free parent-coaching drop-in, recently the 3rd Tuesday, 12-1 PM) and the *Conscious Parenting Lab* (recently the 2nd Thursday, 12-1 PM), both on Zoom. The $35 Parent Workshops on the same page are not added. Records are online: `town` and `location_group` `Virtual`, type `Community Event`, ages "Parents and caregivers", one dated record per session (first ones: ids 1664-1666), `website` = the event's own page on withkatiemae.com.
 
-(Note: the numbering here is now contiguous end-to-end — event sources 1–25, libraries 26–41, Learning Bus 42, then later additions (43, 44, 45, 46, 47, 48, 49) kept at the end to protect the historical Attestation Logs — Downtown San Rafael 43 and Novato Mothers Club 44, both of which are event sources and should be worked with 1–25. It previously restarted at 24 for the libraries, so #24 meant two different sources; fixed 2026-08-09 when Marin Magazine was added. Treat each numbered line as one checklist item — that's the working granularity, and it is what the Attestation Log rows key off.)
+50. **The Swel Club — events calendar (Luma)** — **added 2026-10-23 at Alexandra's request.** Fetch `luma.com/theswelclub`. A Tiburon-based community club ("stuff we love") whose Luma calendar lists its own Marin events: family walks, a holiday movie pajama party, watch parties with a holiday market, classes. **Read it raw, not with WebFetch**: plain `curl` returns the page with a `__NEXT_DATA__` JSON block holding every upcoming event (`name`, `start_at`/`end_at` in UTC with a `timezone`, `url`, `geo_address_info`); each event's own page (`luma.com/<url>`) carries the description and `ticket_info` (`is_free`, `spots_remaining`, `is_near_capacity`). Convert times to Pacific. **Many listings start as placeholders** ("Time is TBD", "Location TBD", a Luma time that is only a default): hold those until the description gives a real time and place, and re-check each sweep. `website` = the event's own luma.com page.
+
+(Note: the numbering here is now contiguous end-to-end — event sources 1–25, libraries 26–41, Learning Bus 42, then later additions (43, 44, 45, 46, 47, 48, 49, 50) kept at the end to protect the historical Attestation Logs — Downtown San Rafael 43 and Novato Mothers Club 44, both of which are event sources and should be worked with 1–25. It previously restarted at 24 for the libraries, so #24 meant two different sources; fixed 2026-08-09 when Marin Magazine was added. Treat each numbered line as one checklist item — that's the working granularity, and it is what the Attestation Log rows key off.)
 
 ### Libraries (16) — every sweep, no exceptions, even though programs are "recurring/already in DB" — one-off guest performers and specials show up on these calendars constantly
 
