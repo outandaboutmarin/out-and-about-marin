@@ -3328,7 +3328,7 @@ function renderTides(){
     body += '<tr><td class="trl '+rdef.cls+'">'+(rdef.cls==='hi'?'▲ ':'▼ ')+rdef.lab+'</td>';
     cols.forEach(function(c){
       var slot = rdef.get(c);
-      var flood = rdef.hi && slot && _tideHt(slot) > 6;
+      var flood = rdef.hi && slot && Number(_tideHt(slot).toFixed(1)) >= 6.9; // pink at 6.9 ft shown and above (Alexandra 2026-10-23)
       body += '<td'+(flood?' class="flood"':'')+'>'+_tideCell(slot)+'</td>';
     });
     body += '</tr>';
@@ -6314,7 +6314,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-22.2';
+const APP_BUILD = '2026-10-23.1';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
