@@ -3291,9 +3291,37 @@ function _tideFmt12(hhmm){ var p = hhmm.split(':'), h = +p[0]; var ap = h < 12 ?
 // Kelvin wave and sea-level rise. tides.json keeps the raw NOAA values, so regenerating it is safe.
 const TIDE_ADJUST_FT = 1.07;
 function _tideHt(slot){ return Number(slot[2]) + TIDE_ADJUST_FT; }
-function _tideCell(slot){
+function _tideCell(slot, nextDay){
   if (!slot) return '<span style="color:#c2cad8">—</span>';
-  return '<div class="tide-ht">'+_tideHt(slot).toFixed(1)+' ft</div><div class="tide-tm">'+_tideFmt12(slot[0])+'</div>';
+  var nd = nextDay ? '<div class="tide-tm">'+(currentLang==='es'?'(día siguiente)':'(next day)')+'</div>' : '';
+  return '<div class="tide-ht">'+_tideHt(slot).toFixed(1)+' ft</div><div class="tide-tm">'+_tideFmt12(slot[0])+'</div>'+nd;
+}
+// Rows line the stations up BY TIME, not by order within the day (2026-10-23, Alexandra). Upstream
+// stations (Corte Madera, Hwy 37) peak 25-90 min after Tam Junction, so a late-night tide can fall
+// just past midnight there; ordering per day then put it in the wrong row the next day. Each tide is
+// grouped with the same-type tides of the other stations within 4.5 hours (same-type tides at one station are 9+ hours apart), and the group belongs to the
+// day of its earliest tide, so a past-midnight member shows on the evening it goes with, "(next day)".
+function _tideGroups(sts, base, type){
+  var items = [];
+  [-1, 0, 1].forEach(function(off){
+    var d = new Date(base); d.setDate(d.getDate() + off);
+    var k = _tideYmd(d);
+    sts.forEach(function(st, si){
+      (((_tideData.tides||{})[st.key]||{})[k] || []).forEach(function(r){
+        if (r[1] !== type) return;
+        var p = r[0].split(':');
+        items.push({ si: si, t: off*1440 + (+p[0])*60 + (+p[1]), slot: r, off: off });
+      });
+    });
+  });
+  items.sort(function(a, b){ return a.t - b.t; });
+  var groups = [];
+  items.forEach(function(it){
+    var g = groups.length ? groups[groups.length-1] : null;
+    if (g && !g.m[it.si] && it.t - g.t0 <= 270) g.m[it.si] = it;
+    else { var m = {}; m[it.si] = it; groups.push({ t0: it.t, m: m }); }
+  });
+  return groups.filter(function(g){ return g.t0 >= 0 && g.t0 < 1440; }).slice(0, 2);
 }
 function renderTides(){
   if (!_tideData) return;
@@ -3313,23 +3341,20 @@ function renderTides(){
   var head = '<tr><th class="trl">'+(es?'Marea':'Tide')+'</th>';
   sts.forEach(function(st){ head += '<th>'+st.short+'</th>'; }); head += '</tr>';
   var hd = document.getElementById('tideHead'); if (hd) hd.innerHTML = head;
-  var cols = sts.map(function(st){
-    var rows = ((_tideData.tides||{})[st.key]||{})[key] || [];
-    return { H: rows.filter(function(r){ return r[1]==='H'; }), L: rows.filter(function(r){ return r[1]==='L'; }) };
-  });
+  var gH = _tideGroups(sts, base, 'H'), gL = _tideGroups(sts, base, 'L');
   var defs = [
-    { lab: es?'Marea 1 · Alta':'Tide 1 · High', cls:'hi', hi:true,  get:function(c){ return c.H[0]; } },
-    { lab: es?'Marea 1 · Baja':'Tide 1 · Low',  cls:'lo', hi:false, get:function(c){ return c.L[0]; } },
-    { lab: es?'Marea 2 · Alta':'Tide 2 · High', cls:'hi', hi:true,  get:function(c){ return c.H[1]; } },
-    { lab: es?'Marea 2 · Baja':'Tide 2 · Low',  cls:'lo', hi:false, get:function(c){ return c.L[1]; } }
+    { lab: es?'Marea 1 · Alta':'Tide 1 · High', cls:'hi', hi:true,  g: gH[0] },
+    { lab: es?'Marea 1 · Baja':'Tide 1 · Low',  cls:'lo', hi:false, g: gL[0] },
+    { lab: es?'Marea 2 · Alta':'Tide 2 · High', cls:'hi', hi:true,  g: gH[1] },
+    { lab: es?'Marea 2 · Baja':'Tide 2 · Low',  cls:'lo', hi:false, g: gL[1] }
   ];
   var body = '';
   defs.forEach(function(rdef){
     body += '<tr><td class="trl '+rdef.cls+'">'+(rdef.cls==='hi'?'▲ ':'▼ ')+rdef.lab+'</td>';
-    cols.forEach(function(c){
-      var slot = rdef.get(c);
+    sts.forEach(function(st, si){
+      var it = rdef.g ? rdef.g.m[si] : null, slot = it ? it.slot : null;
       var flood = rdef.hi && slot && Number(_tideHt(slot).toFixed(1)) >= 6.9; // pink at 6.9 ft shown and above (Alexandra 2026-10-23)
-      body += '<td'+(flood?' class="flood"':'')+'>'+_tideCell(slot)+'</td>';
+      body += '<td'+(flood?' class="flood"':'')+'>'+_tideCell(slot, it && it.off === 1)+'</td>';
     });
     body += '</tr>';
   });
@@ -6314,7 +6339,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-23.1';
+const APP_BUILD = '2026-10-23.2';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();

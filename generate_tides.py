@@ -29,8 +29,9 @@ STATIONS = [
      "name": "Tam Junction / Sausalito", "name_es": "Tam Junction / Sausalito"},
     {"key": "corte",   "noaa_id": "9414874", "short": "Corte Madera",
      "name": "Corte Madera Creek", "name_es": "Corte Madera Creek"},
-    {"key": "hwy37",   "noaa_id": "9414290", "short": "Hwy 37",
-     "name": "Hwy 37 (Golden Gate reference)", "name_es": "Hwy 37 (referencia Golden Gate)"},
+    # Petaluma River entrance, 0.7 km from Hwy 37 (2026-10-23, Alexandra; was 9414290, San Francisco / Golden Gate)
+    {"key": "hwy37",   "noaa_id": "9415252", "short": "Hwy 37",
+     "name": "Hwy 37 (Petaluma River entrance)", "name_es": "Hwy 37 (entrada del río Petaluma)"},
     {"key": "bolinas", "noaa_id": "9414958", "short": "Bolinas",
      "name": "Bolinas Lagoon", "name_es": "Laguna de Bolinas"},
 ]
