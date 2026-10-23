@@ -1028,7 +1028,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   "people" (`index.html` takes the first path segment as the label). Kitsch + Sync has no slug, so their records carry
   Instagram only.
 - **Instagram: Template A is the weekly standard** from the week of Oct 22, built with
-  `OAA marketing\Instagram templates\Template A - Thu Sat Sun postsuild_week_of_oct22.py` (see
+  `OAA marketing\Instagram templates\Template A - Thu Sat Sun posts\build_week_of_oct22.py` (see
   `social_media_and_marketing.md`, "Template A standard").
 
 - **Marin weekly sweep, Oct 22 - Dec 3** (workbook `daily_sweep_2026-10-22_review.xlsx`; all 49 sources, Ronnie's
