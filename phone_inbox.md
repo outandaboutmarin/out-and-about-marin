@@ -20,3 +20,4 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
   site does not list it.
 - **"Lee" → "Lee Shea"** (her first name, Alexandra 2026-10-20) in `Telluride\PARTNER_SETUP.md`,
   open items 66e and 72, and memory notes.
+- **open_items.md, item 21 (Kitsch + Sync), 2026-10-23 from the phone:** the Bingo/Trivia reservation email (info@kitschandsync.com, preferred not required) and the Candy Comedown Playdate hours (Sun Nov 1, 9:00-11:30 AM) are both in, as ids 1757/1758 and new id 1769. Still open: brand colour, and check 1769's description against their November flyer (written without it).

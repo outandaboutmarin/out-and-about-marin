@@ -20642,6 +20642,48 @@
       "notes": "",
       "location_group": "Mill Valley",
       "internal_notes": "Added 2026-10-23 from an Instagram story by @littlevillagemarin crediting @milkweedmillvalley and @lpjkids: 'FREE interactive French storytime, Monday, Nov 2 @ 10:30am'. Weekday checked (Monday). Title as Alexandra asked. Ages not stated; 0-5 yrs assumed to match Milkweed's other listing (1353). End time and sign-up not stated.\nRetitled 2026-10-23 at Alexandra's request (was 'Free Story Time at LPJ')."
+    },
+    {
+      "organization": "Kitsch + Sync",
+      "venue": "Kitsch + Sync",
+      "address": "1757 Grant Ave, Novato, CA 94945",
+      "town": "Novato",
+      "location_group": "Novato",
+      "type": "Community Event",
+      "ages": "Families",
+      "cost": "Food/PlayZone passes for sale",
+      "indoor_outdoor": "Indoor",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "website": "https://kitschandsync.com/",
+      "partner": true,
+      "logo": "assets/ads/kitsch_sync_logo.png",
+      "contact": {
+        "name": "Kitsch + Sync",
+        "phone": "(415) 408-3158",
+        "instagram": "kitschandsync",
+        "email": "info@kitschandsync.com"
+      },
+      "socials": {
+        "instagram": "kitschandsync"
+      },
+      "id": 1769,
+      "day": "Sunday",
+      "expires": "2026-11-01",
+      "internal_notes": "Added 2026-10-23 at Alexandra's instruction. From Kitsch + Sync's November 'Upcoming Events' flyer (held 2026-10-22 for want of a time); time 9:00-11:30 AM given by Alexandra from the sponsor. Weekday checked (Sunday). Description is general wording (flyer wording not available in the phone session): check against the flyer on the desktop. Partner record like 1757-1764.",
+      "event_date": "2026-11-01",
+      "time": "9:00 AM – 11:30 AM",
+      "time_of_day": "Morning",
+      "active_sedentary": "Active",
+      "event_name": "Candy Comedown Playdate @ Kitsch + Sync",
+      "event_name_es": "Playdate para Bajar el Azúcar @ Kitsch + Sync",
+      "description": "The morning after Halloween, burn off the candy at a Candy Comedown Playdate at Kitsch + Sync, with play time in the PlayZone and breakfast in the restaurant.",
+      "description_es": "La mañana después de Halloween, quema el azúcar en el Candy Comedown Playdate de Kitsch + Sync, con juego en la PlayZone y desayuno en el restaurante.",
+      "registration": "Not stated",
+      "notes": "Food and PlayZone passes for sale. Socks required in the play zone."
     }
   ]
 }
