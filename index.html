@@ -2665,7 +2665,7 @@ function mapDbUser(dbUser) {
           <button class="tide-today-btn" id="tideTodayBtn" onclick="tideToday()" style="display:none">Today</button>
         </div>
         <div class="tide-wrap"><table class="tide-grid"><thead id="tideHead"></thead><tbody id="tideBody"><tr><td class="tide-loading">Loading tides…</td></tr></tbody></table></div>
-        <p style="margin:0.45rem 0 0;font-size:0.66rem;color:#6b7791;line-height:1.4"><span data-es="Se han sumado 1.07 ft a los valores estándar de la tabla de mareas para tener en cuenta la onda Kelvin de El Niño y el aumento del nivel del mar.">1.07ft has been added to the standard tide table values, to account for the El Niño Kelvin Wave and sea level rise.</span></p>
+        <p style="margin:0.45rem 0 0;font-size:0.66rem;color:#6b7791;line-height:1.4"><span data-es="Se han sumado 1.25 ft a los valores estándar de la tabla de mareas para tener en cuenta la onda Kelvin de El Niño y el aumento del nivel del mar.">1.25 ft has been added to the standard tide table values, to account for the El Niño Kelvin Wave and sea level rise.</span></p>
         <p id="tideSampleNote" style="display:none;margin:0.5rem 0 0;font-size:0.7rem;color:#b08900;font-style:italic"></p>
       </div>
     </div>
@@ -3289,7 +3289,7 @@ function tideToday(){ _tideOffset = 0; renderTides(); }
 function _tideFmt12(hhmm){ var p = hhmm.split(':'), h = +p[0]; var ap = h < 12 ? 'AM' : 'PM'; var h12 = h % 12; if (h12 === 0) h12 = 12; return h12 + ':' + p[1] + ' ' + ap; }
 // Added to every NOAA height before display (Alexandra, 2026-10-09): accounts for the El Niño
 // Kelvin wave and sea-level rise. tides.json keeps the raw NOAA values, so regenerating it is safe.
-const TIDE_ADJUST_FT = 1.07;
+const TIDE_ADJUST_FT = 1.25; // was 1.07 until 2026-10-23 (Alexandra)
 function _tideHt(slot){ return Number(slot[2]) + TIDE_ADJUST_FT; }
 function _tideCell(slot, nextDay){
   if (!slot) return '<span style="color:#c2cad8">—</span>';
@@ -6339,7 +6339,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-23.2';
+const APP_BUILD = '2026-10-23.3';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
