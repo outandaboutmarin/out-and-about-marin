@@ -1257,6 +1257,7 @@ function mapDbUser(dbUser) {
      told apart by the sponsor's logo in the icon circle, a SPONSORED kicker and a border
      in the sponsor's colour (--ad-color / --ad-ink, set per ad from ads.json). */
   .feat-tile.ad { border: 1.5px solid var(--ad-color, #AACDCF); }
+  #adBody .description-text { white-space: pre-line; }  /* a blank line in an ad's about text starts a new paragraph */
   .feat-tile.ad .ft-icon { background: #fff; border: 1px solid #e3eeef; overflow: hidden; }
   .feat-tile.ad .ft-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .feat-tile.ad .ft-kicker { color: var(--ad-ink, #3E6E72); }
@@ -6371,7 +6372,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-24.1';
+const APP_BUILD = '2026-10-24.2';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
