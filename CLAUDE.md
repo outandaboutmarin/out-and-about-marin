@@ -899,7 +899,7 @@ Hwy 37 bridge; since 2026-10-23, was 9414290 San Francisco), which peaks about 1
 
 ## Resources tab: static sections, including the Kid-Friendly Dining table
 
-The Resources screen in `index.html` is hand-written HTML, in this order: Tides & Driving in Marin (reads `tides.json`,
+The Resources screen in `index.html` is hand-written HTML, in this order: **(temporary) Flood Watch** (`#floodWatch`, added 2026-10-24, `ecda119`: the king tide Instagram slides as a swipeable strip, images in `assets/flood/`; the section carries `data-until="YYYY-MM-DD"` and hides itself after that local date, so a new tide week means new images and a new date, nothing to remove), Tides & Driving in Marin (reads `tides.json`,
 section above), Drive-Thrus in Marin County, **Kid-Friendly Dining in Marin**, Choose your own adventure (`adventure.json`, below), Yoto Player Cards (Google Drive link),
 Family Swimming in Marin (external guide), Swim Lesson Vendor Directory (`swim_vendors.json`, below), Donate Baby
 Essentials (Postpartum Support Center), About. None of it is in `events.json` and no sweep touches it. Every visible
