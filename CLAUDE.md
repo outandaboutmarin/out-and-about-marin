@@ -1020,7 +1020,7 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
 
 Read this first, then the sections above as needed.
 
-**Health 2026-10-22 (end of day)**: `events.json` is **666 events, max id 1764**; notes-lint and bilingual-lint clean; duplicate scan 6 findings (the same ones reviewed after the sweep); self-test 91/91; `check_docs.py` clean. **Health 2026-10-22 (after the sweep)**: `events.json` is **658 events, max id 1756**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all reviewed (two genuinely separate same-afternoon library programs, three New-Year split pairs, 1643/1710). **Health 2026-10-21**: `events.json` is **628 events, max id 1711**; notes-lint and bilingual-lint clean; duplicate scan 3 findings; `check_docs.py` clean. **Health 2026-10-17 (end of day)**: `events.json` is **659 events, max id 1694**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings. **Health 2026-10-16**: `events.json` is **640 events, max id 1666**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings (1156/1158 and two Telluride room collisions); `check_docs.py` clean with **Marin at 49 sources**. **Health 2026-10-15**: `events.json` is **645 events, max id 1661**; notes-lint and bilingual-lint clean; duplicate scan 3 findings, all known (1156/1158 and two Telluride room collisions; the others dropped off as their dates passed). **Health 2026-10-14** (after the Oct 14 sweep): `events.json` is **664 events, max id 1650**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all known (1156/1158 and the 5 Telluride room collisions). **Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
+**Health 2026-10-24**: `events.json` is **642 events, max id 1772**; notes-lint and bilingual-lint clean; duplicate scan 7 findings, all known (1770/1771 Sunday Football is a New-Year split pair like 1716/1717 and 1723/1724). **Health 2026-10-22 (end of day)**: `events.json` is **666 events, max id 1764**; notes-lint and bilingual-lint clean; duplicate scan 6 findings (the same ones reviewed after the sweep); self-test 91/91; `check_docs.py` clean. **Health 2026-10-22 (after the sweep)**: `events.json` is **658 events, max id 1756**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all reviewed (two genuinely separate same-afternoon library programs, three New-Year split pairs, 1643/1710). **Health 2026-10-21**: `events.json` is **628 events, max id 1711**; notes-lint and bilingual-lint clean; duplicate scan 3 findings; `check_docs.py` clean. **Health 2026-10-17 (end of day)**: `events.json` is **659 events, max id 1694**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings. **Health 2026-10-16**: `events.json` is **640 events, max id 1666**; notes-lint and bilingual-lint clean; duplicate scan 3 known findings (1156/1158 and two Telluride room collisions); `check_docs.py` clean with **Marin at 49 sources**. **Health 2026-10-15**: `events.json` is **645 events, max id 1661**; notes-lint and bilingual-lint clean; duplicate scan 3 findings, all known (1156/1158 and two Telluride room collisions; the others dropped off as their dates passed). **Health 2026-10-14** (after the Oct 14 sweep): `events.json` is **664 events, max id 1650**; notes-lint and bilingual-lint clean; duplicate scan 6 findings, all known (1156/1158 and the 5 Telluride room collisions). **Health** (re-run and verified late 2026-10-10 from the NEW repo path `C:\Users\AWalter\Code\out-and-about-marin`): `events.json` is **665 events, max id 1614** (Marin 462, Telluride+ 160, Napa 43); self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan 7 findings, all documented (1156/1158, the 5 Telluride room collisions, and 1612 vs 56, the deliberate Megan listing). Late 2026-10-09: **670 events, max id 1609**; self-test 91/91, notes-lint and bilingual-lint clean; duplicate scan shows 1156/1158 plus the 5 documented Telluride room collisions. (Earlier the same day: **510 events,
 max id 1449**, all committed and pushed, level with `origin/main`.
 `check_duplicates.py --self-test` is **91/91**; `--notes-lint --all` and `--bilingual-lint` are
 clean; the duplicate scans show only the known, legitimate finding: the Pavilion Play Group's two
@@ -1031,27 +1031,50 @@ rather than trusting this sentence**; a hard-coded count in prose goes stale sil
 line has been wrong before.) GitHub Pages deploys off `main`, so **committing `events.json` IS
 publishing** — there is no staging.
 
-**Nothing is half-finished in the repo.** Everything is committed and pushed (last: `493e413`, Oct 22, Kitsch + Sync socks note; before it the Kitsch + Sync ad and 9-sponsor strip `4c6ac8d`, its 8 partner events `5322dd0`, record fixes 476/1125 `e994fdc`, the Instagram images `91c65c0`; earlier `a3d65ab`, GG Mahjong titles, after the Oct 22 sweep `b6114d0` and its record fixes `41e8f96`; the Oct 21-22 sponsor mockups live only in Dropbox; earlier `17c2a4a`, Oct 21, phone and bot commits; earlier `bcae7cf`, end of Oct 17: Telluride source #10 and its 16 events `4e1fa44`, the standard review workbook `25a2f5b`; earlier `448f182`, Village end dates and the Social Klub refresh; before that the phone commits `18432df`–`d2112a5` and `1787396`, the Oct 16 events and source 49; then `7718b72`, the Oct 15 screenshot events; before that `8f4ba49`, the Oct 14 sweep; `4ce56da` staged the week of Oct 15 Instagram slides). The old scratch and `.bak`
+**Nothing is half-finished in the repo.** Everything is committed and pushed (last: the Oct 24 docs commit, after `9be5ba1` king tide images and `ecda119` Flood Watch; Oct 22 ended with `493e413`, Kitsch + Sync socks note; before it the Kitsch + Sync ad and 9-sponsor strip `4c6ac8d`, its 8 partner events `5322dd0`, record fixes 476/1125 `e994fdc`, the Instagram images `91c65c0`; earlier `a3d65ab`, GG Mahjong titles, after the Oct 22 sweep `b6114d0` and its record fixes `41e8f96`; the Oct 21-22 sponsor mockups live only in Dropbox; earlier `17c2a4a`, Oct 21, phone and bot commits; earlier `bcae7cf`, end of Oct 17: Telluride source #10 and its 16 events `4e1fa44`, the standard review workbook `25a2f5b`; earlier `448f182`, Village end dates and the Social Klub refresh; before that the phone commits `18432df`–`d2112a5` and `1787396`, the Oct 16 events and source 49; then `7718b72`, the Oct 15 screenshot events; before that `8f4ba49`, the Oct 14 sweep; `4ce56da` staged the week of Oct 15 Instagram slides). The old scratch and `.bak`
 files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and working files MOVED on 2026-10-10**: repo at
 `C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
 record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
 
-## Where to pick up (2026-10-22)
+## Where to pick up (2026-10-24)
 
 The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH). In order:
 
 1. **Instagram, week of Oct 29 (item 15):** Thu Oct 29 5 PM, Sat Oct 31 7 AM, Sun Nov 1 5 PM, in **Template A** (the
    standard every week since Oct 22): copy `OAA marketing\Instagram templates\Template A - Thu Sat Sun posts\build_week_of_oct22.py`
-   and follow `social_media_and_marketing.md`, "Template A standard" and section 3e (Metricool). After Sun Oct 25, confirm
-   the week of Oct 22 went live and delete repo `ig/week_of_oct15/` and `ig/week_of_oct22/` (`ig/README.md`).
-2. **Kitsch + Sync (item 21):** ask them for the email to reserve Bingo and Trivia, the Candy Comedown Playdate hours (Nov 1,
-   held), and a brand colour if they want one; the Featured ad ends Jan 21, 2027 (renew or let it lapse).
+   and follow `social_media_and_marketing.md`, "Template A standard" and section 3e (Metricool). First confirm what went
+   live: the king tide post (Sat Oct 24, 4 PM) and the week of Oct 22 (Sun Oct 25, 5 PM), then delete repo
+   `ig/king_tide_oct25/`, `ig/week_of_oct15/` and `ig/week_of_oct22/` (`ig/README.md`).
+2. **Kitsch + Sync (item 21):** only a brand colour (if they want one) and whether their events page becomes a sweep
+   source are still open; the Featured ad ends Jan 21, 2027 (renew or let it lapse).
 3. **Next Marin weekly sweep** (`sources/marin.md`, 49 sources). The Oct 22 sweep covered Oct 22 to Dec 3; the Learning Bus
    November PDF and Marin Magazine's November edition were not yet posted.
 4. **Item 58:** zr (Diwali at Mill Valley Library) and zs (Mill Valley ShaBabies venue, ask Rachel Weiss), plus the rest.
 5. **Telluride (items 65, 66, 72):** Lee Shea's setup and first partner sweep; the five library questions 66a-66e.
 6. **Sponsor prospects:** Osher Marin JCC and The Cave (mockups ready); FIT4MOM still owes the direct Glofox link.
-7. **Item 71:** delete the two `(MOVED…)` folders from the Dropbox move, then empty the Recycle Bin.
+7. **Items 71 and 75:** delete the two `(MOVED…)` folders; upload context-transfer.zip in Claude settings.
+
+## What changed 2026-10-23/24, in one pass
+
+- **Phone sessions, Oct 23** (pulled at start): the tide table's adjustment went from +1.07 to **+1.25 ft** (`2575516`);
+  Free Story Time at Milkweed (1768); Kitsch + Sync Candy Comedown Playdate (1769, Nov 1, 9-11:30 AM) and **Sunday
+  Football @ Kitsch + Sync** (1770/1771, split at New Year, to Jan 10); Bingo and Trivia reservations by email
+  (info@kitschandsync.com, preferred not required); MarinHealth Mothers Support Group, online Thursdays (1772).
+- **Phone inbox applied** (Oct 24): open items 75 (Context Transfer skill; folder already in `~\.claude\skills`) and 76
+  (Golden Gate Gymnastics as a possible source), 58zq address, 58zm closed, Kitsch + Sync notes in item 21. The inbox
+  numbered Golden Gate Gymnastics 74, which "Beyond Marin" already held, so it became 76: **check the highest item number
+  in `open_items.md` before numbering a new one.**
+- **King tide flood post** (Oct 25-30), drafted in a cloud session (`OAA maintence and content\HANDOFF_king_tide_post.md`)
+  and finished here: times recomputed at the new +1.25 ft, a new slide 4 ("Want more *resources?*"), end slide reworded
+  to "Family events in Marin, all in one place." (never "every" event), scheduled in Metricool for Sat Oct 24, 4 PM
+  (id 405268548). Slide sources are untracked in `templates/tide_flood_*_oct25.html`.
+- **Flood Watch on Resources** (`ecda119`, build 2026-10-24.1): slides 1-3 as a swipeable strip at the top of Resources,
+  hiding itself after Oct 30 (`data-until`). See the Resources section.
+- **Tide heights must round like the app.** `_tideCell()` uses `toFixed(1)`, which rounds the exact value half up (7.25
+  shows as 7.3); Python's `round()` rounds half to even (7.2). Anything printed from `tides.json` for the public (slides,
+  captions) must use Decimal ROUND_HALF_UP to match the table.
+- Health: 642 events, max id 1772; notes-lint and bilingual-lint clean; duplicate scan 7 findings, all known (1770/1771 is
+  a new New-Year split pair).
 
 ## What changed 2026-10-22, in one pass
 

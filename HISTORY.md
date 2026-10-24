@@ -386,3 +386,18 @@ live. Three things worth keeping:
 The same day, a backspace byte landed in a CLAUDE.md path again (a `\b` inside a Python string written through a shell
 heredoc), the trap the rulebook already describes. Caught by `cat -A` and fixed in `97314e7`. Write doc edits from a
 script file, or check for control bytes before committing.
+
+## 2026-10-24: a cloud-drafted post meets a changed offset
+
+The king tide post was drafted on the phone on Oct 23/24 with the tide table's +1.07 ft adjustment. The same day another
+phone session raised the adjustment to +1.25 ft, so by the time the post reached the desktop its closure windows were
+15-35 minutes short of what the web app's own table implied. Caught only because the windows were recomputed from
+`tides.json` before scheduling rather than taken from the handoff. Recomputing also exposed a rounding mismatch: the
+app's `toFixed(1)` shows 7.25 as 7.3, Python's `round()` gave 7.2. **A handoff's numbers are a snapshot; re-derive them
+from the current data before publishing.**
+
+The phone inbox worked as designed for its first real batch, with one snag: it proposed item 74 for Golden Gate
+Gymnastics after another session had already taken 74. Item numbers are not reserved across sessions.
+
+Also: Alexandra asked that public copy never say "every family event", because the web app leaves out many paid events.
+
