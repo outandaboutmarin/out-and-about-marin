@@ -1900,6 +1900,16 @@ function mapDbUser(dbUser) {
   .adv-pop-foot { display:flex; justify-content:space-between; gap:0.5rem; padding:0.45rem 0.75rem 0.1rem; border-top:1px solid #EEF2F8; margin-top:0.3rem; }
   .adv-pop-foot button { font-family:var(--font-sans); font-size:0.74rem; font-weight:600; background:none; border:none; color:var(--navy); cursor:pointer; padding:0.3rem 0; }
   .adv-pop-foot button.done { background:var(--navy); color:#fff; border-radius:99px; padding:0.3rem 0.9rem; }
+  /* Flood Watch carousel at the top of Resources (king tides, 2026-10-24). Swipeable slides from the Instagram
+     post; the section hides itself after data-until (local date), so it needs no cleanup to disappear. */
+  .flood-strip { display:flex; gap:0.6rem; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+                 scrollbar-width:none; margin:0 -0.25rem; padding:0 0.25rem 0.2rem; }
+  .flood-strip::-webkit-scrollbar { display:none; }
+  .flood-strip img { flex:0 0 86%; max-width:420px; width:86%; aspect-ratio:4/5; border-radius:var(--radius-sm);
+                     scroll-snap-align:center; box-shadow:0 2px 10px rgba(13,27,62,0.14); display:block; background:#F4F3EF; }
+  .flood-dots { display:flex; justify-content:center; gap:6px; margin-top:0.55rem; }
+  .flood-dots i { width:7px; height:7px; border-radius:50%; background:#cdc9c1; display:block; }
+  .flood-dots i.on { background:var(--navy); }
   .tide-wrap { overflow-x:auto; border:1px solid #E2E8F2; border-radius:var(--radius-sm); background:#fff; }
   .tide-grid { border-collapse:collapse; width:100%; table-layout:fixed; font-size:0.76rem; }
   .tide-grid th, .tide-grid td { padding:0.42rem 0.35rem; text-align:center; border-bottom:1px solid #EEF2F8; }
@@ -2653,6 +2663,28 @@ function mapDbUser(dbUser) {
     <div class="profile-header-sub" id="resourcesHeaderSub">Handy stuff for Marin parents</div>
   </div>
   <div class="profile-body">
+    <div class="about-section" style="margin-bottom:0.75rem" id="floodWatch" data-until="2026-10-30">
+      <div class="about-title">⚠️ <span data-es="Alerta de inundaciones de esta semana... ¡desliza antes de manejar!">Flood Watch Alert for this week... swipe before you drive!</span></div>
+      <div class="flood-strip" id="floodStrip">
+        <img src="assets/flood/king_tide_oct25_1.jpg" alt="Flood alert: king tides are back in Marin, Sun Oct 25 to Fri Oct 30" loading="lazy">
+        <img src="assets/flood/king_tide_oct25_2.jpg" alt="Manzanita (Shoreline Hwy at Hwy 101, Mill Valley): estimated closure times for each day, Oct 25 to 30" loading="lazy">
+        <img src="assets/flood/king_tide_oct25_3.jpg" alt="Lucky Drive (at Hwy 101, Larkspur): estimated closure times for each day, Oct 25 to 30" loading="lazy">
+      </div>
+      <div class="flood-dots" id="floodDots"><i class="on"></i><i></i><i></i></div>
+    </div>
+    <script>
+    (function () {
+      var sec = document.getElementById('floodWatch'); if (!sec) return;
+      var d = new Date(), today = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+      if (today > sec.getAttribute('data-until')) { sec.style.display = 'none'; return; }
+      var strip = document.getElementById('floodStrip'), dots = document.querySelectorAll('#floodDots i');
+      strip.addEventListener('scroll', function () {
+        var imgs = strip.querySelectorAll('img'), mid = strip.scrollLeft + strip.clientWidth / 2, k = 0, best = 1e9;
+        imgs.forEach(function (im, i) { var c = im.offsetLeft + im.offsetWidth / 2, dd = Math.abs(c - mid); if (dd < best) { best = dd; k = i; } });
+        dots.forEach(function (dt, i) { dt.classList.toggle('on', i === k); });
+      }, { passive: true });
+    })();
+    </script>
     <div class="about-section" style="margin-bottom:0.75rem" id="tidesSection">
       <div class="about-title">🌊 <span data-es="Mareas y carreteras en Marin">Tides &amp; Driving in Marin</span></div>
       <div class="about-text">
@@ -6339,7 +6371,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-23.3';
+const APP_BUILD = '2026-10-24.1';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
