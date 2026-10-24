@@ -20196,6 +20196,42 @@
       },
       "location_group": "Virtual",
       "internal_notes": "Added 2026-10-23 at Alexandra's request from a @mymarinhealth Instagram post (2 days old): free, weekly, every Thursday 10:30-11:45 AM through the end of the year, online via Microsoft Teams, facilitated by an RN/IBCLC; register by phone. Season to 12/31 and expires 2026-12-31 so it drops off with the year. Holiday line (Nov 26, Dec 24) added at Alexandra's request; the post names no skips.\nRetitled 2026-10-23 at Alexandra's request (was \"MarinHealth Mom's Support Group (online)\")."
+    },
+    {
+      "id": 1773,
+      "featured": false,
+      "status": "Active",
+      "season_start": "",
+      "season_end": "",
+      "organization": "Art Barn Mill Valley",
+      "venue": "Art Barn",
+      "event_name": "Halloween Celebration at Art Barn",
+      "event_name_es": "Celebración de Halloween en Art Barn",
+      "type": "Kids Programs",
+      "day": "Sunday",
+      "time": "9:30 AM",
+      "time_of_day": "Morning",
+      "town": "Mill Valley",
+      "address": "10e Locust Ave, Mill Valley, CA 94941",
+      "ages": "Kids",
+      "cost": "$45",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-10-25",
+      "expires": "2026-10-25",
+      "description": "A Halloween art celebration at Art Barn, Mill Valley's children's art and creative space. Two morning sessions; kids 5 and up can be dropped off.",
+      "description_es": "Una celebración artística de Halloween en Art Barn, el espacio creativo y de arte infantil de Mill Valley. Dos sesiones por la mañana; los niños de 5 años en adelante pueden quedarse solos.",
+      "registration": "Required: book at artbarnmillvalley.com/book-now",
+      "website": "https://artbarnmillvalley.com/book-now",
+      "notes": "Two sessions: 9:30 and 10:30 AM. Drop-off available for kids 5 and up.",
+      "location_group": "Mill Valley",
+      "contact": {
+        "name": "Art Barn",
+        "email": "hello@artbarnmillvalley.com",
+        "instagram": "artbarnmillvalley"
+      },
+      "internal_notes": "Added 2026-10-24 at Alexandra's request from an @artbarnmillvalley Instagram story: Sunday October 25, 9:30 AM & 10:30 AM, drop-off for kids 5 and up, 'Get your spot'. Price $45 and address from artbarnmillvalley.com (book-now lists 'Halloween Celebration $45.00'; footer 10e Locust Avenue). Weekday checked (Sunday). Ages not stated; 'Kids' used."
     }
   ]
 }
