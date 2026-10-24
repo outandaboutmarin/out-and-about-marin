@@ -1,9 +1,9 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-10-24
-Time: 16:19:28
+Time: 22:23:36
 
-Total events in events.json: 642
-Active events: 591
+Total events in events.json: 643
+Active events: 592
 Temp. closed: 0
 
 Events by type:
@@ -12,7 +12,7 @@ Events by type:
   Festival: 18
   Fitness: 23
   Grown-Ups Only!: 90
-  Kids Programs: 131
+  Kids Programs: 132
   Library: 146
   Music and Movies: 71
 
@@ -29,7 +29,7 @@ Events by town:
   Larkspur: 28
   Marin City: 7
   Marin County: 1
-  Mill Valley: 81
+  Mill Valley: 82
   Montrose: 23
   Mountain Village: 2
   Muir Beach: 5
