@@ -5608,7 +5608,7 @@ var ADV_COST_BANDS = [
   { v: 'u25', en: '$15 to $24', es: 'De $15 a $24', max: 25 },
   { v: 'p25', en: '$25 and up', es: '$25 o más', max: Infinity }
 ];
-function advCostMin(p) { var m = String(p.cost || '').match(/\$\s?(\d+(?:\.\d+)?)/); return m ? parseFloat(m[1]) : Infinity; }
+function advCostMin(p) { if (/^free\b/i.test(p.cost || '')) return 0; var m = String(p.cost || '').match(/\$\s?(\d+(?:\.\d+)?)/); return m ? parseFloat(m[1]) : Infinity; }
 function advCostBand(p) { var n = advCostMin(p); for (var i = 0; i < ADV_COST_BANDS.length; i++) if (n < ADV_COST_BANDS[i].max) return ADV_COST_BANDS[i].v; return 'p25'; }
 var advPopKey = null;
 var ADV_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -6395,7 +6395,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-24.4';
+const APP_BUILD = '2026-10-24.5';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();

@@ -6,9 +6,11 @@ Alexandra's Dropbox "Resources" folder, beside the swim spreadsheet) and stays t
 changes: update XLSX_PATH below if the filename changed, re-run this script,
 commit the resulting adventure.json.
 
-Only the first sheet ("Create Your Own Adventure", the Marin places) is read.
-The "Beyond Marin" sheet is out-of-area and unpublished for now; the
-"Checks & gaps" sheet is working notes. Two columns are deliberately NEVER
+The first sheet ("Create Your Own Adventure", the Marin places) is read in
+full. From the "Beyond Marin" sheet only the San Francisco rows are read
+(Alexandra 2026-10-24); its Sonoma rows stay unpublished. That sheet has its own
+"Category" column instead of a location group, so each San Francisco place's
+area comes from SF_AREA below. The "Checks & gaps" sheet is working notes. Two columns are deliberately NEVER
 copied into the JSON, because adventure.json is public:
   - "Check status" (internal verification state)
   - "INTERNAL: Sponsor status (delete before publishing)"
@@ -38,6 +40,7 @@ import openpyxl
 
 XLSX_PATH = r"C:\Users\AWalter\Dropbox\01. Out AND About Files\Resources\create_your_own_adventure_v2.xlsx"
 SHEET = "Create Your Own Adventure"
+BEYOND_SHEET = "Beyond Marin"
 HEADER_ROW = 4
 OUT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "adventure.json")
 
@@ -56,6 +59,15 @@ CATEGORY_ES = {
     "Indoor playground/drop-in": "Parque infantil cubierto / sin cita",
     "Open Gym": "Gimnasio abierto",
     "Museum": "Museo",
+    "Zoo": "Zoológico",
+}
+
+# Location for each San Francisco place: "San Francisco/<area>" (Alexandra 2026-10-24).
+SF_AREA = {
+    "curiosity-grove-at-the-california-academy-of-sciences": "Golden Gate Park",
+    "randall-museum": "Corona Heights",
+    "exploratorium": "Embarcadero",
+    "san-francisco-zoo-gardens": "Ocean Beach",
 }
 
 ALL_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -116,6 +128,20 @@ OVERRIDES = {
     "art-barn": dict(
         days=["Sun"],
         hoursEs="Dom 9:30 a 10:30 a. m. y 10:30 a 11:30 a. m. (estudio abierto de fin de semana)"),
+    # San Francisco places, checked on their own websites 2026-10-24. Curiosity Grove is open
+    # 10 to 4 daily but the Academy itself opens at 11 on Sundays.
+    "curiosity-grove-at-the-california-academy-of-sciences": dict(
+        days=ALL_DAYS,
+        hoursEs="Todos los días 10 a. m. a 4 p. m. (la Academia abre a las 11 a. m. los domingos)"),
+    "randall-museum": dict(
+        days=["Tue", "Wed", "Thu", "Fri", "Sat"],
+        hoursEs="Mar a sáb 10 a. m. a 5 p. m.; cerrado dom y lun"),
+    "exploratorium": dict(
+        days=["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        hoursEs="Mar a sáb 10 a. m. a 5 p. m.; dom 12 a 5 p. m.; cerrado lun"),
+    "san-francisco-zoo-gardens": dict(
+        days=ALL_DAYS,
+        hoursEs="Todos los días 10 a. m. a 5 p. m.; última entrada 4 p. m."),
     "gravity-vault-marin": dict(
         days=ALL_DAYS,
         hours="Mon to Fri 9am to 10pm; Sat and Sun 9am to 8pm. Kids 5 and up climb with a booked staff belay",
@@ -142,6 +168,10 @@ AGES_ES = {
     "play-well-teknologies": "Todas las edades; menores de 5 con supervisión",
     "gravity-vault-marin": "5 años en adelante para escalar con un asegurador del personal",
     "art-barn": "Todas las edades",
+    "curiosity-grove-at-the-california-academy-of-sciences": "Bebés y niños pequeños",
+    "randall-museum": "Todas las edades; casa del árbol para los más pequeños",
+    "exploratorium": "Todas las edades",
+    "san-francisco-zoo-gardens": "Todas las edades",
 }
 
 
@@ -168,18 +198,26 @@ def _iso(v):
     return s
 
 
-def load_places():
-    ws = openpyxl.load_workbook(XLSX_PATH, read_only=True)[SHEET]
-    rows = list(ws.iter_rows(min_row=HEADER_ROW, values_only=True))
+def _sheet_rows(wb, sheet):
+    rows = list(wb[sheet].iter_rows(min_row=HEADER_ROW, values_only=True))
     idx = {_clean(h): i for i, h in enumerate(rows[0]) if _clean(h)}
+    return [(row, idx) for row in rows[1:]]
 
-    def col(row, header):
-        return _clean(row[idx[header]]) if header in idx else ""
+
+def load_places():
+    wb = openpyxl.load_workbook(XLSX_PATH, read_only=True)
+    rows = [(r, i, False) for r, i in _sheet_rows(wb, SHEET)]
+    rows += [(r, i, True) for r, i in _sheet_rows(wb, BEYOND_SHEET)]
 
     places, seen = [], set()
-    for row in rows[1:]:
+    for row, idx, beyond in rows:
+        def col(row, header):
+            return _clean(row[idx[header]]) if header in idx else ""
+
         name = col(row, "Place")
         if not name:
+            continue
+        if beyond and col(row, "Region") != "San Francisco":
             continue
         pid = _slug(name)
         if pid in seen:
@@ -190,9 +228,20 @@ def load_places():
             print(f"WARNING: no OVERRIDES entry for '{pid}': English hours used for Spanish, no days for the day filter")
             ov = {}
         program = col(row, "Program")
-        if program not in CATEGORY:
-            sys.exit(f"Program '{program}' ({name}) has no category: add it to CATEGORY")
-        category = CATEGORY[program]
+        if beyond:
+            # Beyond Marin names its category directly
+            category = col(row, "Category")
+            if category not in CATEGORY_ES:
+                sys.exit(f"Category '{category}' ({name}) is not one the web app shows: add it to CATEGORY_ES")
+            if pid not in SF_AREA:
+                sys.exit(f"No SF_AREA entry for '{pid}'")
+            location = "San Francisco/" + SF_AREA[pid]
+        else:
+            if program not in CATEGORY:
+                sys.exit(f"Program '{program}' ({name}) has no category: add it to CATEGORY")
+            category = CATEGORY[program]
+            # Region prefix on every location ("Marin/Novato") (Alexandra 2026-10-24).
+            location = "Marin/" + col(row, "Location group (app filter)")
         website = col(row, "Website")
         if not website.startswith("http"):
             print(f"WARNING: no website for {name}")
@@ -204,9 +253,8 @@ def load_places():
             "category": category,
             "categoryEs": CATEGORY_ES[category],
             "town": col(row, "Town"),
-            # Region prefix on every location ("Marin/Novato"), so Phase 2 can add "Sonoma/..." (Alexandra 2026-10-24).
-            "locationGroup": "Marin/" + col(row, "Location group (app filter)"),
-            "region": "Marin",
+            "locationGroup": location,
+            "region": "San Francisco" if beyond else "Marin",
             "days": ov.get("days", []),
             "hours": hours,
             # Non-breaking space inside "a. m." / "p. m." so a narrow phone column never splits them.
