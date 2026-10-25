@@ -18,7 +18,7 @@ This file is the living source of truth for how the app is built and maintained.
 > `OAA Sponsorship and Partners`, `Telluride`, plus `Preschool Database`, `Archive\From Downloads`, and the empty `ABOUT ME`,
 > `OUTPUTS`, `TEMPLATES`). The repo moved from the Desktop to **`C:\Users\AWalter\Code\out-and-about-marin`**, deliberately
 > OUTSIDE Dropbox: Dropbox syncing a `.git` folder risks corruption, and GitHub is the repo's backup. Sessions now start in the
-> Dropbox folder. The old folders were renamed `… (MOVED to Dropbox)` / `… (MOVED to Code)` for Alexandra to delete later; never
+> Dropbox folder. The old folders were renamed `… (MOVED to Dropbox)` / `… (MOVED to Code)` and **deleted by Alexandra on 2026-10-24** (item 71, after a file-by-file check); never
 > write to them. Inventory and plan: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
 
 Claude Code sessions for this project run with the working directory set to **`C:\Users\AWalter\Dropbox\01. Out AND About Files`** — *not* the repo. This is deliberate (since 2026-07-02; the folder itself moved to Dropbox 2026-10-10). **Don't treat it as misconfiguration and don't propose restarting the session inside the repo folder** (asked and settled 2026-08-12).
@@ -1052,7 +1052,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 4. **Item 58:** zr (Diwali at Mill Valley Library) and zs (Mill Valley ShaBabies venue, ask Rachel Weiss), plus the rest.
 5. **Telluride (items 65, 66, 72):** Lee Shea's setup and first partner sweep; the five library questions 66a-66e.
 6. **Sponsor prospects:** Osher Marin JCC and The Cave (mockups ready); FIT4MOM still owes the direct Glofox link.
-7. **Items 71 and 75:** delete the two `(MOVED…)` folders; upload context-transfer.zip in Claude settings.
+7. **Item 75:** upload context-transfer.zip in Claude settings. (Item 71 closed 2026-10-24: the old folders are deleted.)
 
 ## What changed 2026-10-23/24, in one pass
 
