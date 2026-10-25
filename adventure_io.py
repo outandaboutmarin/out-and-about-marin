@@ -174,7 +174,8 @@ def load_places():
             "category": category,
             "categoryEs": CATEGORY_ES[category],
             "town": col(row, "Town"),
-            "locationGroup": col(row, "Location group (app filter)"),
+            # Region prefix on every location ("Marin/Novato"), so Phase 2 can add "Sonoma/..." (Alexandra 2026-10-24).
+            "locationGroup": "Marin/" + col(row, "Location group (app filter)"),
             "region": "Marin",
             "days": ov.get("days", []),
             "hours": hours,

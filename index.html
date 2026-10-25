@@ -1863,7 +1863,8 @@ function mapDbUser(dbUser) {
   .dine-grid col.dn { width:28%; } .dine-grid col.dc { width:22%; } .dine-grid col.dd { width:50%; }
   .dine-grid td a { color:var(--navy); text-decoration:underline; font-weight:600; }
   .dine-grid td.dc { color:#6b7791; }
-  /* Choose your own adventure: phone-first (fits a 360px screen with no sideways scroll). */
+  /* Choose your own adventure: phone-first. The table scrolls sideways inside .adv-scroll while the Place column
+     stays frozen on the left (Phase 1A, 2026-10-24: the Cost column made it wider than a phone). */
   #adventureScreen { min-height:100vh; }
   .adv-body { flex:1; padding:0.625rem 0.625rem calc(3rem + env(safe-area-inset-bottom)); width:100%; max-width:640px; margin:0 auto; box-sizing:border-box; }
   .adv-intro { margin:0 0 0.5rem; font-size:0.74rem; color:#6b7791; line-height:1.4; }
@@ -1874,11 +1875,14 @@ function mapDbUser(dbUser) {
   .adv-chips { display:flex; flex-wrap:wrap; gap:0.3rem; margin-bottom:0.45rem; }
   .adv-chips:empty { display:none; }
   .adv-chip { font-family:var(--font-sans); font-size:0.68rem; color:var(--navy); background:#EEF2F8; border:1px solid #DCE4F0; border-radius:99px; padding:0.2rem 0.55rem; cursor:pointer; }
-  .adv-grid { border-collapse:collapse; width:100%; table-layout:fixed; font-size:0.72rem; line-height:1.35; }
+  .adv-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain; }
+  .adv-grid { border-collapse:separate; border-spacing:0; width:690px; min-width:100%; table-layout:fixed; font-size:0.72rem; line-height:1.35; }
   .adv-grid th, .adv-grid td { padding:0.45rem 0.35rem; text-align:left; vertical-align:top; border-bottom:1px solid #EEF2F8; overflow-wrap:break-word; hyphens:auto; }
   .adv-grid thead th { padding:0; background:#F1F5FB; border-bottom:1px solid #DCE4F0; vertical-align:bottom; }
   .adv-grid tbody tr:last-child td { border-bottom:none; }
-  .adv-grid col.ap { width:28%; } .adv-grid col.ag { width:23%; } .adv-grid col.al { width:18%; } .adv-grid col.ah { width:31%; }
+  .adv-grid col.ap { width:118px; } .adv-grid col.ag { width:104px; } .adv-grid col.al { width:112px; } .adv-grid col.ah { width:160px; } .adv-grid col.ac { width:196px; }
+  .adv-grid th:first-child, .adv-grid td:first-child { position:sticky; left:0; z-index:2; background:#fff; box-shadow:1px 0 0 #DCE4F0, 4px 0 6px -4px rgba(13,27,62,0.18); }
+  .adv-grid thead th:first-child { z-index:3; background:#F1F5FB; }
   .adv-grid td a { color:var(--navy); text-decoration:underline; font-weight:600; }
   .adv-grid td.al { color:#6b7791; }
   .adv-th { display:flex; align-items:flex-end; gap:2px; width:100%; min-height:40px; padding:0.45rem 0.35rem; box-sizing:border-box; background:none; border:none; cursor:pointer; text-align:left; font-family:var(--font-sans); font-size:0.68rem; font-weight:600; color:var(--navy); line-height:1.2; }
@@ -2902,16 +2906,16 @@ function mapDbUser(dbUser) {
     <div class="detail-title" data-es="Elige tu propia aventura">Choose your own adventure</div>
   </div>
   <div class="adv-body">
-    <p class="adv-intro" data-es="Toca el encabezado de una columna para ordenar o filtrar. Toca un lugar para abrir su sitio web.">Tap a column header to sort or filter. Tap a place to open its website.</p>
+    <p class="adv-intro" data-es="Toca el encabezado de una columna para ordenar o filtrar. Desliza la tabla hacia los lados para ver más columnas. Toca un lugar para abrir su sitio web.">Tap a column header to sort or filter. Swipe the table sideways to see more columns. Tap a place to open its website.</p>
     <div class="adv-bar">
       <span class="adv-count" id="advCount"></span>
       <button class="adv-clear" id="advClear" type="button" onclick="advClearAll()"></button>
     </div>
     <div class="adv-chips" id="advChips"></div>
-    <div class="dine-wrap"><table class="adv-grid">
-      <colgroup><col class="ap"><col class="ag"><col class="al"><col class="ah"></colgroup>
+    <div class="dine-wrap adv-scroll"><table class="adv-grid">
+      <colgroup><col class="ap"><col class="ag"><col class="al"><col class="ah"><col class="ac"></colgroup>
       <thead><tr id="advHead"></tr></thead>
-      <tbody id="advBody"><tr><td colspan="4" class="adv-empty">Loading…</td></tr></tbody>
+      <tbody id="advBody"><tr><td colspan="5" class="adv-empty">Loading…</td></tr></tbody>
     </table></div>
     <p class="adv-note" id="advNote"></p>
   </div>
@@ -5596,7 +5600,15 @@ var advLoaded = false;
 var advLoading = false;
 var ADV_DEFAULT_SORT = { key: 'locationGroup', dir: 1 };  // Location A to Z, then Place (Alexandra 2026-10-22)
 var advSort = { key: 'locationGroup', dir: 1 };
-var advFilters = { name: '', category: new Set(), locationGroup: new Set(), days: new Set() };
+var advFilters = { name: '', category: new Set(), locationGroup: new Set(), days: new Set(), cost: new Set() };
+// Cost is free text ("$13 per child..."), so it sorts and filters on the lowest dollar amount it names.
+var ADV_COST_BANDS = [
+  { v: 'u15', en: 'Under $15', es: 'Menos de $15', max: 15 },
+  { v: 'u25', en: '$15 to $24', es: 'De $15 a $24', max: 25 },
+  { v: 'p25', en: '$25 and up', es: '$25 o más', max: Infinity }
+];
+function advCostMin(p) { var m = String(p.cost || '').match(/\$\s?(\d+(?:\.\d+)?)/); return m ? parseFloat(m[1]) : Infinity; }
+function advCostBand(p) { var n = advCostMin(p); for (var i = 0; i < ADV_COST_BANDS.length; i++) if (n < ADV_COST_BANDS[i].max) return ADV_COST_BANDS[i].v; return 'p25'; }
 var advPopKey = null;
 var ADV_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 var ADV_DAYS_ES = { Mon: 'Lun', Tue: 'Mar', Wed: 'Mié', Thu: 'Jue', Fri: 'Vie', Sat: 'Sáb', Sun: 'Dom' };
@@ -5604,7 +5616,8 @@ var ADV_COLS = [
   { key: 'name', en: 'Place', es: 'Lugar' },
   { key: 'category', en: 'Program', es: 'Programa' },
   { key: 'locationGroup', en: 'Location', es: 'Zona' },
-  { key: 'hours', en: 'Days & hours', es: 'Días y horario' }
+  { key: 'hours', en: 'Days & hours', es: 'Días y horario' },
+  { key: 'cost', en: 'Cost', es: 'Costo' }
 ];
 
 function advEs() { return currentLang === 'es'; }
@@ -5618,7 +5631,7 @@ function ensureAdventure() {
     .then(function (r) { return r.json(); })
     .then(function (d) { advPlaces = d.places || []; advLoaded = true; advRender(); })
     .catch(function () {
-      document.getElementById('advBody').innerHTML = '<tr><td colspan="4" class="adv-empty">' +
+      document.getElementById('advBody').innerHTML = '<tr><td colspan="5" class="adv-empty">' +
         (advEs() ? 'No se pudo cargar la lista. Inténtalo de nuevo.' : 'Could not load the list. Please try again.') + '</td></tr>';
     })
     .finally(function () { advLoading = false; });
@@ -5637,12 +5650,14 @@ function advVisible() {
     if (advFilters.category.size && !advFilters.category.has(p.category)) return false;
     if (advFilters.locationGroup.size && !advFilters.locationGroup.has(p.locationGroup)) return false;
     if (advFilters.days.size && !(p.days || []).some(function (d) { return advFilters.days.has(d); })) return false;
+    if (advFilters.cost.size && !advFilters.cost.has(advCostBand(p))) return false;
     return true;
   });
   var k = advSort.key, dir = advSort.dir;
   rows.sort(function (a, b) {
     var c;
     if (k === 'hours') c = ((a.days || []).length - (b.days || []).length) * -1;
+    else if (k === 'cost') c = advCostMin(a) - advCostMin(b);
     else if (k === 'category') c = advCategory(a).localeCompare(advCategory(b));
     else c = String(a[k]).localeCompare(String(b[k]));
     return (c * dir) || a.name.localeCompare(b.name);
@@ -5666,8 +5681,8 @@ function advRender() {
       ? '<a href="' + adEsc(p.website) + '" target="_blank" rel="noopener">' + adEsc(p.name) + '</a>'
       : adEsc(p.name);
     return '<tr><td>' + name + '</td><td>' + adEsc(advCategory(p)).replace(/\//g, '/<wbr>') + '</td><td class="al">' + adEsc(p.locationGroup) +
-      '</td><td>' + adEsc(es ? (p.hoursEs || p.hours) : p.hours) + '</td></tr>';
-  }).join('') : '<tr><td colspan="4" class="adv-empty">' +
+      '</td><td>' + adEsc(es ? (p.hoursEs || p.hours) : p.hours) + '</td><td>' + adEsc(p.cost || '') + '</td></tr>';
+  }).join('') : '<tr><td colspan="5" class="adv-empty">' +
     (es ? 'Ningún lugar coincide con estos filtros.' : 'No places match these filters.') + '</td></tr>';
 
   var total = advPlaces.length, active = ADV_COLS.some(function (c) { return advFilterCount(c.key); });
@@ -5686,6 +5701,7 @@ function advRender() {
   });
   advFilters.locationGroup.forEach(function (v) { chips.push(['locationGroup', v, v]); });
   advFilters.days.forEach(function (v) { chips.push(['days', v, (es ? 'Abierto: ' + ADV_DAYS_ES[v] : 'Open ' + v)]); });
+  advFilters.cost.forEach(function (v) { var b = ADV_COST_BANDS.find(function (x) { return x.v === v; }); chips.push(['cost', v, b ? (es ? b.es : b.en) : v]); });
   document.getElementById('advChips').innerHTML = chips.map(function (c) {
     return '<button type="button" class="adv-chip" data-k="' + c[0] + '" data-v="' + adEsc(c[1]) + '" onclick="advRemoveChip(this)">✕ ' + adEsc(c[2]) + '</button>';
   }).join('');
@@ -5709,7 +5725,7 @@ function advRemoveChip(btn) {
 
 function advClearAll() {
   advFilters.name = '';
-  advFilters.category.clear(); advFilters.locationGroup.clear(); advFilters.days.clear();
+  advFilters.category.clear(); advFilters.locationGroup.clear(); advFilters.days.clear(); advFilters.cost.clear();
   advSort = { key: ADV_DEFAULT_SORT.key, dir: ADV_DEFAULT_SORT.dir };
   advClosePop();
   advRender();
@@ -5737,6 +5753,7 @@ function advFillPop() {
   var es = advEs(), key = advPopKey, h = '';
   var sortLbl = key === 'hours'
     ? (es ? ['Más días', 'Menos días'] : ['Most days', 'Fewest days'])
+    : key === 'cost' ? (es ? ['Menor precio', 'Mayor precio'] : ['Lowest first', 'Highest first'])
     : (es ? ['A a Z', 'Z a A'] : ['A to Z', 'Z to A']);
   h += '<div class="adv-pop-h">' + (es ? 'Ordenar' : 'Sort') + '</div><div class="adv-pop-sort">' +
     [1, -1].map(function (d, i) {
@@ -5748,7 +5765,11 @@ function advFillPop() {
       '<input type="search" id="advSearch" autocomplete="off" placeholder="' + (es ? 'Nombre del lugar' : 'Place name') + '" value="' + adEsc(advFilters.name) + '" oninput="advFilters.name=this.value;advRender()">';
   } else {
     var opts;
-    if (key === 'hours') {
+    if (key === 'cost') {
+      opts = ADV_COST_BANDS.map(function (b) {
+        return { v: b.v, label: es ? b.es : b.en, n: advPlaces.filter(function (p) { return advCostBand(p) === b.v; }).length };
+      });
+    } else if (key === 'hours') {
       opts = ADV_DAYS.map(function (d) {
         return { v: d, label: es ? ADV_DAYS_ES[d] : d, n: advPlaces.filter(function (p) { return (p.days || []).indexOf(d) !== -1; }).length };
       });
@@ -6372,7 +6393,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-24.2';
+const APP_BUILD = '2026-10-24.3';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
