@@ -85,9 +85,11 @@ OVERRIDES = {
         days=["Tue", "Thu", "Sun"],
         hoursEs="Mar y jue 12:30 a 1:15 p. m. y 5:30 a 6:15 p. m.; dom mediodía a 12:45 p. m. (sesión de otoño del 26 de oct. al 19 de dic.)"),
     # Toddler Open Gym is Sat and Sun only; the Friday slot is the All Ages Open Gym.
+    # Toddler and All Ages open gyms combined in one row (Alexandra 2026-10-24, open gym audit); Fri added to the day filter.
     "flying-dutchman-gymnastics": dict(
-        days=["Sat", "Sun"],
-        hoursEs="Sáb y dom 9 a 11 a. m. Después sigue el gimnasio abierto para todas las edades: sáb y dom 11 a. m. a 3 p. m., vie 4:30 a 6:30 p. m."),
+        days=["Fri", "Sat", "Sun"],
+        hours="Toddler Open Gym (ages 0 to 4): Sat and Sun 9 to 11am. All Ages Open Gym: Sat and Sun 11am to 3pm; Fri 4:30 to 6:30pm",
+        hoursEs="Gimnasio abierto para niños pequeños (0 a 4 años): sáb y dom 9 a 11 a. m. Gimnasio abierto para todas las edades: sáb y dom 11 a. m. a 3 p. m.; vie 4:30 a 6:30 p. m."),
     "gymworld-gymnastics-parkour": dict(
         days=["Mon", "Tue", "Wed", "Thu", "Fri", "Sun"],
         hoursEs="Lun a vie 9:30 a 11:30 a. m.; dom 9 a 11 a. m."),
@@ -109,9 +111,11 @@ OVERRIDES = {
     "play-well-teknologies": dict(
         days=ALL_DAYS,
         hoursEs="Lun a vie 10 a. m. a 6 p. m.; sáb y dom 9 a. m. a 5 p. m."),
+    # A climbing gym for everyone, not a kids' open gym: kept, with the age rule in the hours (Alexandra 2026-10-24).
     "gravity-vault-marin": dict(
         days=ALL_DAYS,
-        hoursEs="Lun a vie 9 a. m. a 10 p. m.; sáb y dom 9 a. m. a 8 p. m."),
+        hours="Mon to Fri 9am to 10pm; Sat and Sun 9am to 8pm. Kids 5 and up climb with a booked staff belay",
+        hoursEs="Lun a vie 9 a. m. a 10 p. m.; sáb y dom 9 a. m. a 8 p. m. Niños de 5 años en adelante escalan con un asegurador del personal reservado con antelación"),
 }
 
 

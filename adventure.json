@@ -157,11 +157,12 @@
       "locationGroup": "Marin/San Rafael",
       "region": "Marin",
       "days": [
+        "Fri",
         "Sat",
         "Sun"
       ],
-      "hours": "Sat and Sun 9 to 11am. All Ages Open Gym follows: Sat and Sun 11am to 3pm, Fri 4:30 to 6:30pm",
-      "hoursEs": "Sáb y dom 9 a 11 a. m. Después sigue el gimnasio abierto para todas las edades: sáb y dom 11 a. m. a 3 p. m., vie 4:30 a 6:30 p. m.",
+      "hours": "Toddler Open Gym (ages 0 to 4): Sat and Sun 9 to 11am. All Ages Open Gym: Sat and Sun 11am to 3pm; Fri 4:30 to 6:30pm",
+      "hoursEs": "Gimnasio abierto para niños pequeños (0 a 4 años): sáb y dom 9 a 11 a. m. Gimnasio abierto para todas las edades: sáb y dom 11 a. m. a 3 p. m.; vie 4:30 a 6:30 p. m.",
       "address": "Northgate Shopping Center, 5800 Northgate Dr., San Rafael, CA 94903 (suite not listed)",
       "ages": "0 to 4 years (Toddler Open Gym)",
       "cost": "$25 per child",
@@ -337,8 +338,8 @@
         "Sat",
         "Sun"
       ],
-      "hours": "Mon to Fri 9am to 10pm; Sat and Sun 9am to 8pm",
-      "hoursEs": "Lun a vie 9 a. m. a 10 p. m.; sáb y dom 9 a. m. a 8 p. m.",
+      "hours": "Mon to Fri 9am to 10pm; Sat and Sun 9am to 8pm. Kids 5 and up climb with a booked staff belay",
+      "hoursEs": "Lun a vie 9 a. m. a 10 p. m.; sáb y dom 9 a. m. a 8 p. m. Niños de 5 años en adelante escalan con un asegurador del personal reservado con antelación",
       "address": "440 Smith Ranch Road, San Rafael, CA 94903",
       "ages": "5 and up for staff-belayed climbing",
       "cost": "Day pass $28 (20 and under), $32 adults; full gear rental $11; private staff belay $79 per hour for 1 or 2 climbers",
