@@ -1041,7 +1041,7 @@ record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox
 The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH). In order:
 
 1. **Instagram, week of Oct 29 (item 15):** Thu Oct 29 5 PM, Sat Oct 31 7 AM, Sun Nov 1 5 PM, in **Template A** (the
-   standard every week since Oct 22): copy `OAA marketing\Instagram templates\Template A - Thu Sat Sun posts\build_week_of_oct22.py`
+   standard every week since Oct 22): copy `OAA marketing\Instagram templates\Template A - Thu Sat Sun posts\build_template_a_4x5.py` (Template A is 4:5, 1080x1350, since Oct 24; render with `--size 1080x1350`)
    and follow `social_media_and_marketing.md`, "Template A standard" and section 3e (Metricool). First confirm what went
    live: the king tide post (Sat Oct 24, 4 PM) and the week of Oct 22 (Sun Oct 25, 5 PM), then delete repo
    `ig/king_tide_oct25/`, `ig/week_of_oct15/` and `ig/week_of_oct22/` (`ig/README.md`).
