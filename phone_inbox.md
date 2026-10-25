@@ -11,4 +11,7 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
   `**NN. Flooding resources slide**` / `- Status: Open, to build on the computer` / `- Created: 2026-10-25` /
   `- Notes: an extra slide for the king tide / flood posts listing flooding resources. Include: the webcam (Alexandra said
   "the eve WebCam", voice-typed, so confirm which camera she means, e.g. a Tam Junction / Manzanita or Caltrans Hwy 37 cam);
-  the local alert app (likely AlertMarin, Marin County's emergency alerts; confirm).`
+  the local alert app (likely AlertMarin, Marin County's emergency alerts; confirm). Added the same day: "the EVA WebCam" and
+  "the Sausalito June app" (both voice-typed; likely Sausalito's bayfront flood webcam at Galilee Harbor, run with WebCOOS,
+  Webcams for Coastal Observations, sausalito.gov news 2025, and a Sausalito city app, e.g. its Public Works reporting app;
+  confirm both names with Alexandra).`
