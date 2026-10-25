@@ -1074,6 +1074,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   shows as 7.3); Python's `round()` rounds half to even (7.2). Anything printed from `tides.json` for the public (slides,
   captions) must use Decimal ROUND_HALF_UP to match the table.
 - **Choose your own adventure Phase 1A** (`452d48b`, build 2026-10-24.3): Cost column (sorts and filters on the lowest dollar amount in the cost text, bands in `ADV_COST_BANDS`), the table scrolls sideways inside `.adv-scroll` with a sticky Place column, and `adventure_io.py` writes every location group as `Marin/<group>` so Phase 2 can add `Sonoma/...`.
+- **Choose your own adventure, same day:** open gym audit (`da04cb4`; Flying Dutchman toddler + all-ages in one row with Fri, Gravity Vault's age rule in its hours) and a "Days, Hours & Age" column (`4bf1532`, build 2026-10-24.4) showing `ages` / `agesEs` at the top of each cell. Spanish ages live in `adventure_io.py` `AGES_ES`; the sheet has English only.
 - Health: 642 events, max id 1772; notes-lint and bilingual-lint clean; duplicate scan 7 findings, all known (1770/1771 is
   a new New-Year split pair).
 
