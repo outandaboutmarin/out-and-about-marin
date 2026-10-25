@@ -362,6 +362,32 @@
       "description": "An indoor climbing gym for bigger children and grown-ups, with staff-belayed sessions for beginners ages 5 and up. A good rainy-day pick once little ones have outgrown the toddler gym.",
       "descriptionEs": "Un gimnasio de escalada bajo techo para niños más grandes y adultos, con sesiones guiadas por el personal para principiantes desde los 5 años. Una buena opción para días de lluvia cuando los pequeños ya son más grandes.",
       "lastVerified": "2026-10-22"
+    },
+    {
+      "id": "art-barn",
+      "name": "Art Barn",
+      "program": "Indoor playground/drop-in",
+      "category": "Indoor playground/drop-in",
+      "categoryEs": "Parque infantil cubierto / sin cita",
+      "town": "Mill Valley",
+      "locationGroup": "Marin/Mill Valley",
+      "region": "Marin",
+      "days": [
+        "Sun"
+      ],
+      "hours": "Sun 9:30 to 10:30am and 10:30 to 11:30am (Weekend Open Studio)",
+      "hoursEs": "Dom 9:30 a 10:30 a. m. y 10:30 a 11:30 a. m. (estudio abierto de fin de semana)",
+      "address": "10e Locust Ave, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "agesEs": "Todas las edades",
+      "cost": "$40 per child; class packs from $180",
+      "booking": "Book a session online; waiver required; caregivers stay",
+      "indoorOutdoor": "Indoor and outdoor",
+      "phone": "",
+      "website": "https://www.artbarnmillvalley.com/book-now/p/9-11-am-open-studio-all-ages-welcome",
+      "description": "A Sunday morning open studio at Mill Valley's children's art and creative space. Kids play freely in the indoor studio and outdoor garden and dive into open-ended art, with a new creative theme each week.",
+      "descriptionEs": "Un estudio abierto los domingos por la mañana en el espacio de arte y creatividad para niños de Mill Valley. Los niños juegan libremente en el estudio y en el jardín, y exploran el arte de forma libre, con un tema creativo nuevo cada semana.",
+      "lastVerified": "2026-10-24"
     }
   ]
 }

@@ -112,6 +112,10 @@ OVERRIDES = {
         days=ALL_DAYS,
         hoursEs="Lun a vie 10 a. m. a 6 p. m.; sáb y dom 9 a. m. a 5 p. m."),
     # A climbing gym for everyone, not a kids' open gym: kept, with the age rule in the hours (Alexandra 2026-10-24).
+    # Weekend Open Studio, added 2026-10-24 (Alexandra). The page URL says "9-11 am"; the page itself lists two one-hour Sunday sessions.
+    "art-barn": dict(
+        days=["Sun"],
+        hoursEs="Dom 9:30 a 10:30 a. m. y 10:30 a 11:30 a. m. (estudio abierto de fin de semana)"),
     "gravity-vault-marin": dict(
         days=ALL_DAYS,
         hours="Mon to Fri 9am to 10pm; Sat and Sun 9am to 8pm. Kids 5 and up climb with a booked staff belay",
@@ -137,6 +141,7 @@ AGES_ES = {
     "bay-area-discovery-museum": "Pensado para 0 a 8 años",
     "play-well-teknologies": "Todas las edades; menores de 5 con supervisión",
     "gravity-vault-marin": "5 años en adelante para escalar con un asegurador del personal",
+    "art-barn": "Todas las edades",
 }
 
 
