@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tide Self-Serve Slide</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* King tide follow-up slide (2026-10-25): three self-serve flood resources Alexandra picked.
+     Same palette and type as the tide slides: cream #F4F3EF, navy #0D1B3E, blue #0C447C, mid blue #1A3A6B, grey #555555.
+     Instagram slides can't hold live links, so each resource shows a short address people can type.
+     Render: python render_slides.py templates/tide_flood_selfserve_oct25.html --size 1080x1350 */
+  :root{--navy:#0D1B3E;--cream:#F4F3EF;--blue:#0C447C;--mid:#1A3A6B;--grey:#555555;--rule:#E2DED6;
+        --serif:'Playfair Display',Georgia,serif;--sans:'Jost','Helvetica Neue',Arial,sans-serif;--page:#EDEBE5;}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--page:#15161a;} }
+  :root[data-theme="dark"]{--page:#15161a;}
+  body{margin:0;background:var(--page);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:560px;margin:0 auto;padding:32px 16px 64px;}
+  .slide{container-type:inline-size;aspect-ratio:4/5;overflow:hidden;position:relative;background:var(--cream);
+         color:var(--navy);display:flex;flex-direction:column;box-shadow:0 6px 22px rgba(13,27,62,.16);}
+
+  .head{padding:6cqw 6.5cqw 0;}
+  .kicker{font-size:2.7cqw;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);
+          display:flex;align-items:center;gap:1.6cqw;}
+  .kicker::before{content:"";width:1.8cqw;height:1.8cqw;border-radius:50%;background:var(--blue);}
+  .hook{font-family:var(--serif);font-weight:600;font-size:7cqw;line-height:1.05;letter-spacing:-.015em;margin:2cqw 0 0;}
+  .hook em{font-style:italic;font-weight:400;color:var(--mid);}
+
+  .list{flex:1;display:flex;flex-direction:column;justify-content:center;gap:1.8cqw;padding:4.6cqw 6.5cqw 0;min-height:0;}
+  .item{display:grid;grid-template-columns:11cqw 1fr;column-gap:3.6cqw;align-items:center;
+        background:#fff;border:1px solid var(--rule);border-radius:3cqw;padding:1.9cqw 3.4cqw;}
+  .ico{width:11cqw;height:11cqw;border-radius:50%;background:var(--navy);display:grid;place-items:center;}
+  .ico svg{width:5.6cqw;height:5.6cqw;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .t{font-family:var(--serif);font-weight:600;font-size:4.1cqw;line-height:1.12;}
+  .d{font-size:2.65cqw;color:var(--grey);line-height:1.35;margin-top:.7cqw;}
+  .u{display:inline-block;margin-top:1.3cqw;font-size:2.6cqw;font-weight:600;color:var(--blue);letter-spacing:.01em;
+     border-bottom:.35cqw solid rgba(12,68,124,.25);}
+
+  .joke{margin:3.2cqw 6.5cqw 3cqw;padding-top:2.6cqw;border-top:1px solid var(--rule);
+        font-family:var(--serif);font-style:italic;font-size:4cqw;line-height:1.25;color:var(--mid);text-align:center;}
+  .joke b{font-style:normal;}
+
+  .foot{background:var(--navy);color:#fff;padding:2.2cqw 6.5cqw;flex:0 0 auto;display:flex;justify-content:space-between;align-items:center;}
+  .foot .wm{font-family:var(--serif);font-size:3.8cqw;font-weight:600;}
+  .foot .wm .and{font-family:var(--sans);font-size:1.9cqw;letter-spacing:.2em;vertical-align:middle;margin:0 .35cqw;}
+  .foot .n{font-size:2.1cqw;color:rgba(255,255,255,.62);letter-spacing:.08em;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="slide" id="selfserve">
+    <div class="head">
+      <div class="kicker">King tide toolkit</div>
+      <h1 class="hook">Self-serve, <em>real-time</em> resources for tide flooding</h1>
+    </div>
+    <div class="list">
+      <div class="item">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/><path d="M9 11c1-.9 2-.9 3 0s2 .9 3 0"/></svg></div>
+        <div>
+          <div class="t">WET: Weather, Event, Tide app</div>
+          <div class="d">Flood alerts for Gate 6½, Manzanita, Lucky Drive and more. Formerly MarinFlood.</div>
+          <div class="u">App Store: search “WET Weather Event Tide”</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="13" height="11" rx="2"/><path d="M16 10.5l5-3v9l-5-3"/></svg></div>
+        <div>
+          <div class="t">Club Evexia flood cams</div>
+          <div class="d">Live views of the freeway ramp and Shoreline Hwy in Mill Valley. See it before you drive it.</div>
+          <div class="u">clubevexia.com/live-web-cams</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></div>
+        <div>
+          <div class="t">King Tide Alert</div>
+          <div class="d">Free emails 7 days and 48 hours before the Sausalito Bay Trail floods.</div>
+          <div class="u">kingtidealert.com</div>
+        </div>
+      </div>
+    </div>
+    <div class="joke">Your minivan can do a lot of things.<br><b>Boat</b> is not one of them.</div>
+    <div class="foot">
+      <div class="wm">Out <span class="and">AND</span> About Marin</div>
+      <div class="n">outandaboutmarin.com</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
