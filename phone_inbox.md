@@ -6,6 +6,4 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
 
 ## Pending
 
-- **open_items.md, Marketing, new item, next free number (77 if Golden Gate Gymnastics is 76) (Created 2026-10-24), exactly as Alexandra worded it:**
-  `**NN. Locations to flyer**` / `- Status: Open` / `- Created: 2026-10-24` / then two sub-bullets:
-  `- Milkweed bathroom` and `- Window by Equator, Mill Valley`.
+(none — applied 2026-10-24 by a desktop session)
