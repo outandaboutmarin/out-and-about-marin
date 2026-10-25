@@ -54,15 +54,14 @@ CATEGORY = {
     "Tumbling Tots open gym": "Open Gym",
     "Toddler Open Gym": "Open Gym",
     "Open Gym": "Open Gym",
-    "Museum": "Museum",
+    "Museum": "Museum/Attraction",
 }
 CATEGORY_ES = {
     "Indoor playground/drop-in": "Parque infantil cubierto / sin cita",
     "Open Gym": "Gimnasio abierto",
-    "Museum": "Museo",
+    # Museums plus attractions such as TrainTown and the ice rink (Alexandra 2026-10-25)
+    "Museum/Attraction": "Museo/Atracción",
     "Zoo": "Zoológico",
-    "Rides & play park": "Atracciones y parque de juegos",
-    "Ice skating": "Patinaje sobre hielo",
 }
 
 # The Beyond Marin places that are published, with their "<Region>/<area>" location.
