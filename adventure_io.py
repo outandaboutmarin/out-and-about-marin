@@ -7,10 +7,11 @@ changes: update XLSX_PATH below if the filename changed, re-run this script,
 commit the resulting adventure.json.
 
 The first sheet ("Create Your Own Adventure", the Marin places) is read in
-full. From the "Beyond Marin" sheet only the San Francisco rows are read
-(Alexandra 2026-10-24); its Sonoma rows stay unpublished. That sheet has its own
-"Category" column instead of a location group, so each San Francisco place's
-area comes from SF_AREA below. The "Checks & gaps" sheet is working notes. Two columns are deliberately NEVER
+full. From the "Beyond Marin" sheet only the places listed in BEYOND_LOCATION
+below are published (San Francisco 2026-10-24, Sonoma 2026-10-25, chosen by
+Alexandra); any other row there stays unpublished. That sheet has its own
+"Category" column instead of a location group, so each place's location comes
+from BEYOND_LOCATION. The "Checks & gaps" sheet is working notes. Two columns are deliberately NEVER
 copied into the JSON, because adventure.json is public:
   - "Check status" (internal verification state)
   - "INTERNAL: Sponsor status (delete before publishing)"
@@ -60,14 +61,21 @@ CATEGORY_ES = {
     "Open Gym": "Gimnasio abierto",
     "Museum": "Museo",
     "Zoo": "Zoológico",
+    "Rides & play park": "Atracciones y parque de juegos",
+    "Ice skating": "Patinaje sobre hielo",
 }
 
-# Location for each San Francisco place: "San Francisco/<area>" (Alexandra 2026-10-24).
-SF_AREA = {
-    "curiosity-grove-at-the-california-academy-of-sciences": "Golden Gate Park",
-    "randall-museum": "Corona Heights",
-    "exploratorium": "Embarcadero",
-    "san-francisco-zoo-gardens": "Ocean Beach",
+# The Beyond Marin places that are published, with their "<Region>/<area>" location.
+BEYOND_LOCATION = {
+    "curiosity-grove-at-the-california-academy-of-sciences": "San Francisco/Golden Gate Park",
+    "randall-museum": "San Francisco/Corona Heights",
+    "exploratorium": "San Francisco/Embarcadero",
+    "san-francisco-zoo-gardens": "San Francisco/Ocean Beach",
+    "charles-m-schulz-museum": "Sonoma/Santa Rosa",
+    "pacific-coast-air-museum": "Sonoma/Santa Rosa",
+    "children-s-museum-of-sonoma-county": "Sonoma/Santa Rosa",
+    "snoopy-s-home-ice": "Sonoma/Santa Rosa",
+    "sonoma-traintown-railroad": "Sonoma/Sonoma",
 }
 
 ALL_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -142,6 +150,23 @@ OVERRIDES = {
     "san-francisco-zoo-gardens": dict(
         days=ALL_DAYS,
         hoursEs="Todos los días 10 a. m. a 5 p. m.; última entrada 4 p. m."),
+    # Sonoma places, checked on their own websites 2026-10-25.
+    "charles-m-schulz-museum": dict(
+        days=["Mon", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        hoursEs="Lun, mié, jue y vie 11 a. m. a 5 p. m.; sáb y dom 10 a. m. a 5 p. m.; cerrado mar"),
+    "pacific-coast-air-museum": dict(
+        days=["Thu", "Fri", "Sat", "Sun"],
+        hoursEs="Jue a dom 10 a. m. a 4 p. m.; cerrado lun a mié. Según el clima"),
+    "children-s-museum-of-sonoma-county": dict(
+        days=["Mon", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        hoursEs="Lun 10 a. m. a 4 p. m.; cerrado mar; mié 9 a. m. a 4 p. m.; jue 9 a. m. a 6 p. m.; vie y sáb 9 a. m. a 4 p. m.; dom 10 a. m. a 4 p. m."),
+    "snoopy-s-home-ice": dict(
+        days=["Wed"],
+        hours="Wednesdays 11am to noon (Toddlers on Ice, with a free group lesson)",
+        hoursEs="Miércoles 11 a. m. a 12 p. m. (Toddlers on Ice, con una clase grupal gratis)"),
+    "sonoma-traintown-railroad": dict(
+        days=["Sat", "Sun"],
+        hoursEs="Sáb y dom 10 a. m. a 4 p. m., según el clima"),
     "gravity-vault-marin": dict(
         days=ALL_DAYS,
         hours="Mon to Fri 9am to 10pm; Sat and Sun 9am to 8pm. Kids 5 and up climb with a booked staff belay",
@@ -172,6 +197,11 @@ AGES_ES = {
     "randall-museum": "Todas las edades; casa del árbol para los más pequeños",
     "exploratorium": "Todas las edades",
     "san-francisco-zoo-gardens": "Todas las edades",
+    "charles-m-schulz-museum": "Todas las edades",
+    "pacific-coast-air-museum": "Todas las edades",
+    "children-s-museum-of-sonoma-county": "10 años o menos",
+    "snoopy-s-home-ice": "18 meses a 5 años, con un adulto",
+    "sonoma-traintown-railroad": "Todas las edades",
 }
 
 
@@ -217,7 +247,7 @@ def load_places():
         name = col(row, "Place")
         if not name:
             continue
-        if beyond and col(row, "Region") != "San Francisco":
+        if beyond and _slug(name) not in BEYOND_LOCATION:
             continue
         pid = _slug(name)
         if pid in seen:
@@ -233,9 +263,7 @@ def load_places():
             category = col(row, "Category")
             if category not in CATEGORY_ES:
                 sys.exit(f"Category '{category}' ({name}) is not one the web app shows: add it to CATEGORY_ES")
-            if pid not in SF_AREA:
-                sys.exit(f"No SF_AREA entry for '{pid}'")
-            location = "San Francisco/" + SF_AREA[pid]
+            location = BEYOND_LOCATION[pid]
         else:
             if program not in CATEGORY:
                 sys.exit(f"Program '{program}' ({name}) has no category: add it to CATEGORY")
@@ -254,7 +282,7 @@ def load_places():
             "categoryEs": CATEGORY_ES[category],
             "town": col(row, "Town"),
             "locationGroup": location,
-            "region": "San Francisco" if beyond else "Marin",
+            "region": location.split("/")[0],
             "days": ov.get("days", []),
             "hours": hours,
             # Non-breaking space inside "a. m." / "p. m." so a narrow phone column never splits them.
