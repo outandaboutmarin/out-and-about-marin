@@ -1060,10 +1060,10 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   Free Story Time at Milkweed (1768); Kitsch + Sync Candy Comedown Playdate (1769, Nov 1, 9-11:30 AM) and **Sunday
   Football @ Kitsch + Sync** (1770/1771, split at New Year, to Jan 10); Bingo and Trivia reservations by email
   (info@kitschandsync.com, preferred not required); MarinHealth Mothers Support Group, online Thursdays (1772).
-- **Phone inbox applied** (Oct 24): open items 75 (Context Transfer skill; folder already in `~\.claude\skills`) and 76
-  (Golden Gate Gymnastics as a possible source), 58zq address, 58zm closed, Kitsch + Sync notes in item 21. The inbox
-  numbered Golden Gate Gymnastics 74, which "Beyond Marin" already held, so it became 76: **check the highest item number
-  in `open_items.md` before numbering a new one.**
+- **Phone inbox applied** (Oct 24): open item 75 (Context Transfer skill), 58zq address, 58zm closed, Kitsch + Sync notes
+  in item 21. A Golden Gate Gymnastics item was added as 76 and then deleted by Alexandra ("this isn't correct"). The
+  inbox had numbered it 74, which "Beyond Marin" already held: **check the highest item number in `open_items.md`
+  before numbering a new one.**
 - **King tide flood post** (Oct 25-30), drafted in a cloud session (`OAA maintence and content\HANDOFF_king_tide_post.md`)
   and finished here: times recomputed at the new +1.25 ft, a new slide 4 ("Want more *resources?*"), end slide reworded
   to "Family events in Marin, all in one place." (never "every" event), scheduled in Metricool for Sat Oct 24, 4 PM
