@@ -119,6 +119,27 @@ OVERRIDES = {
 }
 
 
+# Ages, shown in the "Days, Hours & Age" column (Alexandra 2026-10-24). English comes from the sheet's "Ages" column
+# unless AGES overrides it; Spanish is hand-written here, like hoursEs.
+AGES = {
+    "flying-dutchman-gymnastics": "0 to 4 (toddler session), then all ages",
+}
+AGES_ES = {
+    "the-social-klub": "0 a 7 años",
+    "little-marin": "9 meses a 6 años",
+    "kitsch-sync": "Desde bebés hasta edad escolar; Little Zone aparte para bebés y niños pequeños",
+    "cal-star-gymnastics": "1 a 5 años",
+    "novato-gymnastics-center-city-of-novato": "12 meses a 5 años",
+    "flying-dutchman-gymnastics": "0 a 4 años (sesión para niños pequeños), luego todas las edades",
+    "gymworld-gymnastics-parkour": "0 a 13 años",
+    "fox-kit": "9 meses a 11 años (menores de 9 meses con un hermano mayor)",
+    "playland-mt-tam-adventures-and-city-of-sausalito": "6 años y 11 meses o menos (desde el 2 de noviembre)",
+    "bay-area-discovery-museum": "Pensado para 0 a 8 años",
+    "play-well-teknologies": "Todas las edades; menores de 5 con supervisión",
+    "gravity-vault-marin": "5 años en adelante para escalar con un asegurador del personal",
+}
+
+
 def _clean(v):
     if v is None:
         return ""
@@ -186,7 +207,8 @@ def load_places():
             # Non-breaking space inside "a. m." / "p. m." so a narrow phone column never splits them.
             "hoursEs": re.sub(r"\b([ap])\. m\.", "\\1.\u00a0m.", ov.get("hoursEs", hours)),
             "address": col(row, "Address"),
-            "ages": col(row, "Ages"),
+            "ages": AGES.get(pid) or col(row, "Ages"),
+            "agesEs": AGES_ES.get(pid, ""),
             "cost": col(row, "Cost"),
             "booking": col(row, "Drop-in or book ahead"),
             "indoorOutdoor": col(row, "Indoor/Outdoor"),
@@ -196,6 +218,8 @@ def load_places():
             "descriptionEs": col(row, "Description (ES)"),
             "lastVerified": _iso(row[idx["Last verified"]]) if "Last verified" in idx else "",
         })
+    for pid in seen - set(AGES_ES):
+        print(f"WARNING: no Spanish ages (AGES_ES) for '{pid}'")
     unused = set(OVERRIDES) - seen
     if unused:
         print(f"WARNING: OVERRIDES entries with no matching row: {sorted(unused)}")

@@ -1885,6 +1885,7 @@ function mapDbUser(dbUser) {
   .adv-grid thead th:first-child { z-index:3; background:#F1F5FB; }
   .adv-grid td a { color:var(--navy); text-decoration:underline; font-weight:600; }
   .adv-grid td.al { color:#6b7791; }
+  .adv-age { display:block; font-weight:600; color:var(--navy); margin-bottom:0.2rem; }  /* ages line at the top of Days, Hours & Age */
   .adv-th { display:flex; align-items:flex-end; gap:2px; width:100%; min-height:40px; padding:0.45rem 0.35rem; box-sizing:border-box; background:none; border:none; cursor:pointer; text-align:left; font-family:var(--font-sans); font-size:0.68rem; font-weight:600; color:var(--navy); line-height:1.2; }
   .adv-th.on { background:#E2EAF6; }
   .adv-th-ind { font-size:0.6rem; color:#6b7791; flex-shrink:0; }
@@ -5616,7 +5617,7 @@ var ADV_COLS = [
   { key: 'name', en: 'Place', es: 'Lugar' },
   { key: 'category', en: 'Program', es: 'Programa' },
   { key: 'locationGroup', en: 'Location', es: 'Zona' },
-  { key: 'hours', en: 'Days & hours', es: 'Días y horario' },
+  { key: 'hours', en: 'Days, Hours & Age', es: 'Días, horario y edad' },
   { key: 'cost', en: 'Cost', es: 'Costo' }
 ];
 
@@ -5681,7 +5682,8 @@ function advRender() {
       ? '<a href="' + adEsc(p.website) + '" target="_blank" rel="noopener">' + adEsc(p.name) + '</a>'
       : adEsc(p.name);
     return '<tr><td>' + name + '</td><td>' + adEsc(advCategory(p)).replace(/\//g, '/<wbr>') + '</td><td class="al">' + adEsc(p.locationGroup) +
-      '</td><td>' + adEsc(es ? (p.hoursEs || p.hours) : p.hours) + '</td><td>' + adEsc(p.cost || '') + '</td></tr>';
+      '</td><td>' + (p.ages ? '<span class="adv-age">' + (es ? 'Edad: ' : 'Ages: ') + adEsc(es ? (p.agesEs || p.ages) : p.ages) + '</span>' : '') +
+      adEsc(es ? (p.hoursEs || p.hours) : p.hours) + '</td><td>' + adEsc(p.cost || '') + '</td></tr>';
   }).join('') : '<tr><td colspan="5" class="adv-empty">' +
     (es ? 'Ningún lugar coincide con estos filtros.' : 'No places match these filters.') + '</td></tr>';
 
@@ -6393,7 +6395,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-24.3';
+const APP_BUILD = '2026-10-24.4';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
