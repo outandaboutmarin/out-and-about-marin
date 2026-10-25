@@ -1073,6 +1073,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 - **Tide heights must round like the app.** `_tideCell()` uses `toFixed(1)`, which rounds the exact value half up (7.25
   shows as 7.3); Python's `round()` rounds half to even (7.2). Anything printed from `tides.json` for the public (slides,
   captions) must use Decimal ROUND_HALF_UP to match the table.
+- **Choose your own adventure Phase 1A** (`452d48b`, build 2026-10-24.3): Cost column (sorts and filters on the lowest dollar amount in the cost text, bands in `ADV_COST_BANDS`), the table scrolls sideways inside `.adv-scroll` with a sticky Place column, and `adventure_io.py` writes every location group as `Marin/<group>` so Phase 2 can add `Sonoma/...`.
 - Health: 642 events, max id 1772; notes-lint and bilingual-lint clean; duplicate scan 7 findings, all known (1770/1771 is
   a new New-Year split pair).
 
