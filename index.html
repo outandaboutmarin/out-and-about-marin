@@ -1878,14 +1878,17 @@ function mapDbUser(dbUser) {
   .adv-chips { display:flex; flex-wrap:wrap; gap:0.3rem; margin-bottom:0.45rem; }
   .adv-chips:empty { display:none; }
   .adv-chip { font-family:var(--font-sans); font-size:0.68rem; color:var(--navy); background:#EEF2F8; border:1px solid #DCE4F0; border-radius:99px; padding:0.2rem 0.55rem; cursor:pointer; }
-  .adv-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain; }
+  /* The box scrolls both ways so the header row can stick (Alexandra 2026-10-26): a box with overflow-x is the sticky
+     containing block, so a page-level sticky header would not work. Height = screen minus the sticky detail header. */
+  .adv-scroll { overflow:auto; max-height:calc(100vh - 110px); max-height:calc(100dvh - 110px); -webkit-overflow-scrolling:touch; overscroll-behavior:contain; }
+  .adv-grid thead th { position:sticky; top:0; z-index:3; }
   .adv-grid { border-collapse:separate; border-spacing:0; width:690px; min-width:100%; table-layout:fixed; font-size:0.72rem; line-height:1.35; }
   .adv-grid th, .adv-grid td { padding:0.45rem 0.35rem; text-align:left; vertical-align:top; border-bottom:1px solid #EEF2F8; overflow-wrap:break-word; hyphens:auto; }
   .adv-grid thead th { padding:0; background:#F1F5FB; border-bottom:1px solid #DCE4F0; vertical-align:bottom; }
   .adv-grid tbody tr:last-child td { border-bottom:none; }
   .adv-grid col.ap { width:118px; } .adv-grid col.ag { width:104px; } .adv-grid col.al { width:112px; } .adv-grid col.ah { width:160px; } .adv-grid col.ac { width:196px; }
   .adv-grid th:first-child, .adv-grid td:first-child { position:sticky; left:0; z-index:2; background:#fff; box-shadow:1px 0 0 #DCE4F0, 4px 0 6px -4px rgba(13,27,62,0.18); }
-  .adv-grid thead th:first-child { z-index:3; background:#F1F5FB; }
+  .adv-grid thead th:first-child { z-index:4; background:#F1F5FB; }
   .adv-grid td a { color:var(--navy); text-decoration:underline; font-weight:600; }
   .adv-grid td.al { color:#6b7791; }
   .adv-age { display:block; font-weight:600; color:var(--navy); margin-bottom:0.2rem; }  /* ages line at the top of Days, Hours & Age */
@@ -5747,6 +5750,11 @@ function advClosePop() {
   advPopKey = null;
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+  var sc = document.querySelector('.adv-scroll');
+  if (sc) sc.addEventListener('scroll', function () { if (advPopKey) advClosePop(); }, { passive: true });
+});
+
 function advOpenPop(key, btn) {
   if (advPopKey === key) { advClosePop(); return; }
   advPopKey = key;
@@ -6403,7 +6411,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-26.1';
+const APP_BUILD = '2026-10-26.2';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
