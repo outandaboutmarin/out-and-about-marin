@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25",
+  "last_updated": "2026-10-26",
   "events": [
     {
       "id": 1,
@@ -2031,7 +2031,7 @@
       "town": "Mill Valley",
       "address": "319 Miller Ave, Mill Valley, CA 94941",
       "ages": "All ages",
-      "cost": "$65 per gingerbread house; adult caregivers free",
+      "cost": "$65 + fees ($71.21 on Eventbrite) per house; adult caregivers free",
       "indoor_outdoor": "Indoor",
       "active_sedentary": "Sedentary",
       "cadence": "One-off",
@@ -2048,7 +2048,7 @@
       "location_group": "Mill Valley",
       "event_name_es": "Gingerbread House Decorating Party",
       "description_es": "Experiencia íntima y festiva de decoración de casas de pan de jengibre para familias. ¡Se agotó en su temporada de debut — inscríbete temprano! Organizado por la Cámara de Comercio de Mill Valley.",
-      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): moved to Sun Dec 6, 11 AM-2 PM per the Mill Valley Chamber listing (info.enjoymillvalley.com, gingerbread-house-decorating-party-1686007). 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): venue and price from the Chamber page and Eventbrite."
+      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): moved to Sun Dec 6, 11 AM-2 PM per the Mill Valley Chamber listing (info.enjoymillvalley.com, gingerbread-house-decorating-party-1686007). 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): venue and price from the Chamber page and Eventbrite. 2026-10-26 (phone, Alexandra approved): cost now shows Eventbrite's $71.21 total from her Eventbrite screenshot."
     },
     {
       "id": 110,
