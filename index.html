@@ -2710,9 +2710,9 @@ function mapDbUser(dbUser) {
         <p id="tideSampleNote" style="display:none;margin:0.5rem 0 0;font-size:0.7rem;color:#b08900;font-style:italic"></p>
         <!-- Self Serve Resources (Alexandra 2026-10-25, open item 78): live flood checks people can open themselves -->
         <p style="font-weight:600;color:var(--navy);margin-top:0.75rem;margin-bottom:0.2rem"><span data-es="Recursos para consultar por tu cuenta">Self Serve Resources</span></p>
-        <p style="margin:0;line-height:1.5">• <a href="https://clubevexia.com/live-web-cams/" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="Cámara web de la salida Manzanita de la 101 norte">101N Manzanita Exit Webcam</span></a></p>
-        <p style="margin:0;line-height:1.5">• <a href="https://apps.apple.com/us/app/wet-weather-event-tide/id6762913863" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="App WET: Weather, Event, Tide">Weather, Event, Tide App</span></a> (<span data-es="antes MarinFlood">formerly MarinFlood</span>)</p>
-        <p style="margin:0;line-height:1.5">• <a href="https://kingtidealert.com/" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline">King Tide Alert</a></p>
+        <p style="display:flex;align-items:baseline;gap:0.55rem;margin:0 0 0.6rem;line-height:1.5;font-size:1.05rem"><span aria-hidden="true" style="flex:none;width:0.45rem;height:0.45rem;border-radius:50%;background:var(--navy);transform:translateY(-0.15em)"></span><span><a href="https://clubevexia.com/live-web-cams/" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="Cámara web de la salida Manzanita de la 101 norte">101N Manzanita Exit Webcam</span></a></span></p>
+        <p style="display:flex;align-items:baseline;gap:0.55rem;margin:0 0 0.6rem;line-height:1.5;font-size:1.05rem"><span aria-hidden="true" style="flex:none;width:0.45rem;height:0.45rem;border-radius:50%;background:var(--navy);transform:translateY(-0.15em)"></span><span><a href="https://apps.apple.com/us/app/wet-weather-event-tide/id6762913863" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="App WET: Weather, Event, Tide">Weather, Event, Tide App</span></a> (<span data-es="antes MarinFlood">formerly MarinFlood</span>)</span></p>
+        <p style="display:flex;align-items:baseline;gap:0.55rem;margin:0 0 0.6rem;line-height:1.5;font-size:1.05rem"><span aria-hidden="true" style="flex:none;width:0.45rem;height:0.45rem;border-radius:50%;background:var(--navy);transform:translateY(-0.15em)"></span><span><a href="https://kingtidealert.com/" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline">King Tide Alert</a></span></p>
       </div>
     </div>
     <div class="about-section" style="margin-bottom:0.75rem">
@@ -6403,7 +6403,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-25.3';
+const APP_BUILD = '2026-10-26.1';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
