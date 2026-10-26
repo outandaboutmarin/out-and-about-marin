@@ -2705,6 +2705,11 @@ function mapDbUser(dbUser) {
         <div class="tide-wrap"><table class="tide-grid"><thead id="tideHead"></thead><tbody id="tideBody"><tr><td class="tide-loading">Loading tides…</td></tr></tbody></table></div>
         <p style="margin:0.45rem 0 0;font-size:0.66rem;color:#6b7791;line-height:1.4"><span data-es="Se han sumado 1.25 ft a los valores estándar de la tabla de mareas para tener en cuenta la onda Kelvin de El Niño y el aumento del nivel del mar.">1.25 ft has been added to the standard tide table values, to account for the El Niño Kelvin Wave and sea level rise.</span></p>
         <p id="tideSampleNote" style="display:none;margin:0.5rem 0 0;font-size:0.7rem;color:#b08900;font-style:italic"></p>
+        <!-- Self Serve Resources (Alexandra 2026-10-25, open item 78): live flood checks people can open themselves -->
+        <p style="font-weight:600;color:var(--navy);margin-top:0.75rem;margin-bottom:0.2rem"><span data-es="Recursos para consultar por tu cuenta">Self Serve Resources</span></p>
+        <p style="margin:0;line-height:1.5">• <a href="https://clubevexia.com/live-web-cams/" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="Cámara web de la salida Manzanita de la 101 norte">101N Manzanita Exit Webcam</span></a></p>
+        <p style="margin:0;line-height:1.5">• <a href="https://apps.apple.com/us/app/wet-weather-event-tide/id6762913863" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="App WET: Weather, Event, Tide">Weather, Event, Tide App</span></a> (<span data-es="antes MarinFlood">formerly MarinFlood</span>)</p>
+        <p style="margin:0;line-height:1.5">• <a href="https://kingtidealert.com/" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline">King Tide Alert</a></p>
       </div>
     </div>
     <div class="about-section" style="margin-bottom:0.75rem">
@@ -6395,7 +6400,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-10-25.1';
+const APP_BUILD = '2026-10-25.2';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
