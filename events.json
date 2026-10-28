@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27",
+  "last_updated": "2026-10-28",
   "events": [
     {
       "id": 1,
@@ -17444,7 +17444,7 @@
       "event_name": "Your Body After 40: What No One Tells Women Before Midlife",
       "event_name_es": "Tu cuerpo después de los 40: lo que nadie les dice a las mujeres antes de la mediana edad",
       "type": "Grown-Ups Only!",
-      "time": "6:30 PM – 8:00 PM",
+      "time": "6:00 PM – 8:00 PM",
       "ages": "Adults",
       "cost": "Free",
       "registration": "Required: RSVP on the Klub’s events page (Visit website)",
@@ -17452,7 +17452,7 @@
       "description_es": "La especialista en salud funcional Xi Decker guía una conversación franca sobre los cambios que pueden empezar a los 30 y 40 años, y lo que puedes hacer hoy para cuidar tu salud futura, con tiempo de sobra para preguntas. Organizado por The Social Klub.",
       "day": "Wednesday",
       "time_of_day": "Evening",
-      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add."
+      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. 2026-10-28 (phone, Alexandra approved): time 6-8 PM per the Klub page and xidecker.com/masterclass."
     },
     {
       "id": 1746,
@@ -18336,6 +18336,90 @@
       },
       "location_group": "Virtual",
       "internal_notes": "Added 2026-10-23 at Alexandra's request from a @mymarinhealth Instagram post (2 days old): free, weekly, every Thursday 10:30-11:45 AM through the end of the year, online via Microsoft Teams, facilitated by an RN/IBCLC; register by phone. Season to 12/31 and expires 2026-12-31 so it drops off with the year. Holiday line (Nov 26, Dec 24) added at Alexandra's request; the post names no skips.\nRetitled 2026-10-23 at Alexandra's request (was \"MarinHealth Mom's Support Group (online)\")."
+    },
+    {
+      "organization": "The Social Klub",
+      "venue": "The Social Klub",
+      "town": "Sausalito",
+      "address": "2650 Bridgeway, Sausalito, CA 94965",
+      "location_group": "Sausalito/Marin City",
+      "indoor_outdoor": "Indoor",
+      "partner": true,
+      "contact": {
+        "name": "The Social Klub",
+        "phone": "(415) 599-3440",
+        "email": "hello@thesocialklub.com",
+        "instagram": "the.social.klub"
+      },
+      "socials": {
+        "instagram": "the.social.klub",
+        "facebook": "thesocialklubca"
+      },
+      "website": "https://www.thesocialklub.com/events-and-activities",
+      "featured": false,
+      "event_name": "Meet Lulu Bird!",
+      "event_name_es": "¡Conoce a Lulu Bird!",
+      "type": "Kids Programs",
+      "event_date": "2026-11-03",
+      "time": "10:00 AM – 10:20 AM",
+      "time_of_day": "Morning",
+      "ages": "0-7 yrs",
+      "cost": "Included with play session ($30 child + caregiver)",
+      "active_sedentary": "Active",
+      "description": "Lulu Bird, the colorful and lovable character from The Singing Garden puppet show in Mill Valley, flies into the Klub for a special 20-minute meet-and-greet. Come say hello and add a little magic to your morning playtime. Included with the 9 AM play session at no extra charge. Hosted by The Social Klub.",
+      "description_es": "Lulu Bird, el personaje colorido y adorable del espectáculo de títeres The Singing Garden de Mill Valley, llega volando al Klub para un encuentro especial de 20 minutos. Ven a saludar y dale un toque de magia a tu mañana de juego. Incluido con la sesión de juego de las 9 AM, sin costo adicional. Organizado por The Social Klub.",
+      "registration": "Required: book the 9 AM play session on the Klub’s events page (Visit website)",
+      "notes": "Book the 9 AM play session. Socks required in the play space.",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "expires": "2026-11-03",
+      "day": "Tuesday",
+      "internal_notes": "Added 2026-10-28 from thesocialklub.com/events-and-activities, read 2026-10-28 (Alexandra approved, phone). Play session 9-11:30 AM, $30 one child + one caregiver, per bookpsb register page 973e28a2. Partner event.",
+      "id": 1773
+    },
+    {
+      "organization": "The Social Klub",
+      "venue": "The Social Klub",
+      "town": "Sausalito",
+      "address": "2650 Bridgeway, Sausalito, CA 94965",
+      "location_group": "Sausalito/Marin City",
+      "indoor_outdoor": "Indoor",
+      "partner": true,
+      "contact": {
+        "name": "The Social Klub",
+        "phone": "(415) 599-3440",
+        "email": "hello@thesocialklub.com",
+        "instagram": "the.social.klub"
+      },
+      "socials": {
+        "instagram": "the.social.klub",
+        "facebook": "thesocialklubca"
+      },
+      "website": "https://www.thesocialklub.com/events-and-activities",
+      "featured": false,
+      "event_name": "hiccapop Play Lab",
+      "event_name_es": "hiccapop Play Lab: tarde de juego",
+      "type": "Kids Programs",
+      "event_date": "2026-11-23",
+      "time": "2:30 PM – 5:00 PM",
+      "time_of_day": "Afternoon",
+      "ages": "All ages",
+      "cost": "Free",
+      "active_sedentary": "Active",
+      "description": "A complimentary afternoon of play, courtesy of baby-gear maker hiccapop. While your little one plays, have a casual 15-20 minute chat with hiccapop co-founder Davis and share feedback on products the team is working on. Parents, nannies and grandparents welcome; space is limited. Hosted by The Social Klub.",
+      "description_es": "Una tarde de juego gratuita, cortesía de hiccapop, fabricante de artículos para bebés. Mientras tu peque juega, conversa de forma relajada 15-20 minutos con Davis, cofundador de hiccapop, y comparte tu opinión sobre productos que el equipo está desarrollando. Bienvenidos padres, niñeras y abuelos; cupo limitado. Organizado por The Social Klub.",
+      "registration": "Required: reserve on the Klub’s events page (Visit website)",
+      "notes": "One child + one caregiver per reservation. Socks required in the play space.",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "expires": "2026-11-23",
+      "day": "Monday",
+      "internal_notes": "Added 2026-10-28 from thesocialklub.com/events-and-activities, read 2026-10-28 (Alexandra approved, phone). bookpsb register page 5e7b394f: All Ages, 20 spaces, sponsored play session. Product-feedback session, disclosed in description. Partner event.",
+      "id": 1774
     }
   ]
 }
