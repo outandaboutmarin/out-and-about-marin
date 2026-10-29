@@ -18282,6 +18282,37 @@
       "notes": "Rated PG-13. Light refreshments provided.",
       "location_group": "Sausalito/Marin City",
       "internal_notes": "Added 2026-10-29 from a Marin City Library Instagram flyer (phone, Alexandra: title and type Community Event as given). Not found in the MCFL Bibliocommons feed on 2026-10-29, so the website is the library home page named on the flyer. End time not stated (film runs about 2 h 40 min). Info line 415-332-6158."
+    },
+    {
+      "id": 1776,
+      "organization": "West Marin Organizing Project",
+      "venue": "Dance Palace",
+      "event_name": "¡Noche de Baile!",
+      "event_name_es": "¡Noche de Baile!",
+      "type": "Community Event",
+      "day": "Friday",
+      "time": "6:00 PM – 10:00 PM",
+      "time_of_day": "Evening",
+      "town": "Point Reyes Station",
+      "address": "503 B St, Point Reyes Station, CA 94956",
+      "ages": "All ages",
+      "cost": "Free entry; food & drinks for sale",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-10-30",
+      "expires": "2026-10-30",
+      "status": "Active",
+      "featured": false,
+      "description": "A community dance night with live music by the band Tamborazo Altera2, a Halloween costume competition, a kids zone, and appetizers, desserts and drinks for sale (including alcohol). Organized by the people of the community, for the community, with the West Marin Organizing Project.",
+      "description_es": "Una noche de baile comunitaria con música en vivo de la banda Tamborazo Altera2, concurso de disfraces de Halloween, zona para niños, y botanas, postres y bebidas a la venta (incluidas bebidas alcohólicas). Organizada por la gente de la comunidad para la comunidad, con el West Marin Organizing Project.",
+      "registration": "Not required",
+      "website": "",
+      "notes": "Wear your costume for the Halloween costume competition!",
+      "location_group": "West Marin",
+      "internal_notes": "Added 2026-10-29 from an Instagram story flyer (phone, Alexandra approved). Not found online (Dance Palace site rendered empty; web search found nothing). Cost assumed free entry: the flyer names no admission price. Address from existing Point Reyes Station records."
     }
   ]
 }
