@@ -513,7 +513,9 @@ def self_test(events):
 
     # rule parsing, against records verified in-browser 2026-08-13
     known = {74: {"nth": 2}, 705: {"nths": [1, 3]}, 815: {"nths": [2, 4]},
-             824: {"nth": 4}, 36: {"nth": 3}, 45: {"last": True}}
+             824: {"nth": 4}, 36: {"nth": 3}, 45: {"nth": 3}, 1368: {"last": True}}
+    # 45 was "last Wednesday" until 2026-10-29 (the library's real dates are 3rd Wednesdays);
+    # 1368 (last Sunday) now carries the last-weekday case.
     for i, want in known.items():
         if i in evs:
             got = parse_occurrence_rule(evs[i].get("notes"))

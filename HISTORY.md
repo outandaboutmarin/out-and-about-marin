@@ -401,3 +401,24 @@ Gymnastics after another session had already taken 74. Item numbers are not rese
 
 Also: Alexandra asked that public copy never say "every family event", because the web app leaves out many paid events.
 
+## 2026-10-29: the Marin sweep read twice, and a Pittsburgh brewery in the Napa list
+
+Alexandra asked for the weekly sweep (Oct 29 - Dec 15), stepped away, and on her return asked one question before
+reviewing: had every MD file been read, and the process followed exactly? The honest answer was no. The MD files had
+been skimmed, several pages keyword-searched rather than read, the ten MCFL branch pages skipped, and the `--venue`
+lists filtered instead of read whole. She said to read everything in full and update the workbook. The second pass
+changed the result in four ways: two "new" candidates were already records (South Novato Ingrid Dec 23/30, 1627/1628),
+a real event had been missed (Novato's Skeleton Scavenger Hunt, filtered out because it started before the window), a
+"new" San Anselmo Crafternoon was its own record's themed edition (rule 27) and exposed 45's wrong rule, and 626 turned
+out to duplicate 1157. **The shortcuts were exactly where the errors were.** The sweep was processed the same day
+(34 records, 25 fixes, `14dc088`), after the Record Fixes column came back blank twice: the saved file did not yet hold
+her answers.
+
+The Napa sweep the same evening read all 30 sources in full and turned up the bigger problem: the Lincoln Avenue
+Brewery URL that the 2026-08-21 sweep had "corrected" to `lincolnavenuebrewery.com` belongs to a brewery in Bellevue,
+Pennsylvania. Three Monthly records (905-907) and the Saturday time on 530 had come from it, and had sat live for two
+months. Nothing checks that a venue's website is in the venue's town; reading the footer would have. Calistoga's LAB
+runs a GoDaddy site under its BBQ business (LocalQ 707). Alexandra also asked why Napa took so much longer than Marin:
+Marin's biggest sources are raw feeds, while Napa's are script-built lists behind "Load more" buttons, each event on
+its own page.
+

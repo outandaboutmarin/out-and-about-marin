@@ -197,6 +197,7 @@
 > **Raw route (2026-10-14, satisfies the raw-feed rule):** `gateway.bibliocommons.com/v2/libraries/marinlibrary/events?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD&limit=100&page=N`
 > returns JSON (`entities.events`, with `branchLocationId`, `audienceIds`, `isCancelled`); page until `pagination.pages`. It
 > ignores `endDate` and runs into next year, so filter dates yourself. 594 events for Oct 14 - Dec 1 in 6 pages.
+> **Filter on overlap, not on start date (2026-10-29):** multi-day events (e.g. Novato's Skeleton Scavenger Hunt, Oct 17 - Nov 2) carry a `start` before the window and an `end` inside it; keeping only events that START in the window silently drops them. Keep every event whose `end` is on or after the window start.
 > Fetch `marinlibrary.bibliocommons.com/v2/events?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD`
 > with the sweep window, then page with `&page=N` (20 per page; it reports the
 > total, e.g. "1 to 20 of 177"). This returns **every MCFL branch at once** with
