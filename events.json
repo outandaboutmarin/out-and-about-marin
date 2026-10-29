@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28",
+  "last_updated": "2026-10-29",
   "events": [
     {
       "id": 1,
@@ -18251,6 +18251,37 @@
       "day": "Monday",
       "internal_notes": "Added 2026-10-28 from thesocialklub.com/events-and-activities, read 2026-10-28 (Alexandra approved, phone). bookpsb register page 5e7b394f: All Ages, 20 spaces, sponsored play session. Product-feedback session, disclosed in description. Partner event.",
       "id": 1774
+    },
+    {
+      "id": 1775,
+      "organization": "Marin County Free Library — Marin City",
+      "venue": "Marin City Library",
+      "event_name": "Election Night Distraction / Hamilton Movie",
+      "event_name_es": "Distracción para la noche electoral / Película Hamilton",
+      "type": "Community Event",
+      "day": "Tuesday",
+      "time": "5:00 PM",
+      "time_of_day": "Evening",
+      "town": "Marin City",
+      "address": "164 Donahue St, Marin City, CA 94965",
+      "ages": "Teens and adults",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-11-03",
+      "expires": "2026-11-03",
+      "status": "Active",
+      "featured": false,
+      "description": "Looking for an election night distraction? Drop off your ballot, then watch Hamilton on the big screen at the Marin City Library. Light refreshments provided. Suitable for teens and adults; the movie is rated PG-13. Sponsored by the Friends of the Marin City Library.",
+      "description_es": "¿Buscas una distracción para la noche electoral? Deja tu boleta y luego mira Hamilton en la pantalla grande de la Biblioteca de Marin City. Habrá refrigerios ligeros. Apta para adolescentes y adultos; la película tiene clasificación PG-13. Patrocinada por los Amigos de la Biblioteca de Marin City.",
+      "registration": "Not required",
+      "website": "https://marinlibrary.org",
+      "notes": "Rated PG-13. Light refreshments provided.",
+      "location_group": "Sausalito/Marin City",
+      "internal_notes": "Added 2026-10-29 from a Marin City Library Instagram flyer (phone, Alexandra: title and type Community Event as given). Not found in the MCFL Bibliocommons feed on 2026-10-29, so the website is the library home page named on the flyer. End time not stated (film runs about 2 h 40 min). Info line 415-332-6158."
     }
   ]
 }
