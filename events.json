@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29",
+  "last_updated": "2026-10-30",
   "events": [
     {
       "id": 1,
@@ -20279,6 +20279,36 @@
       "season_end": "",
       "expires": "2026-11-07",
       "time_of_day": "Morning"
+    },
+    {
+      "id": 1854,
+      "organization": "City of Mill Valley & Mill Valley Historical Society",
+      "venue": "Mill Valley City Hall",
+      "event_name": "Mill Valley City Hall Historic Plaque Unveiling",
+      "event_name_es": "Develación de la placa histórica del Ayuntamiento de Mill Valley",
+      "type": "Community Event",
+      "day": "Monday",
+      "time": "5:00 PM",
+      "time_of_day": "Evening",
+      "town": "Mill Valley",
+      "address": "26 Corte Madera Ave, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-11-02",
+      "expires": "2026-11-02",
+      "status": "Active",
+      "featured": false,
+      "description": "Celebrate Mill Valley's 1936 City Hall and Fire Station joining the National Register of Historic Places. Mill Valley Historical Society board members, the Historical Preservation Committee, the City Council and city officials unveil the newly installed bronze plaque commemorating the listing.",
+      "description_es": "Celebra que el Ayuntamiento y la Estación de Bomberos de Mill Valley, de 1936, forman parte del Registro Nacional de Lugares Históricos. Miembros de la junta de la Sociedad Histórica de Mill Valley, el Comité de Preservación Histórica, el Concejo Municipal y funcionarios de la ciudad develan la nueva placa de bronce que conmemora este logro.",
+      "registration": "Not required",
+      "website": "",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-10-30 from a Nextdoor post of the invitation flyer (phone, Alexandra approved). Not found online; Patch confirms the National Register listing but has no event page. Cost assumed free (open invitation). Indoor/outdoor assumed outdoor (plaque on the building). End time not stated."
     }
   ]
 }
