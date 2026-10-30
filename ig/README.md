@@ -7,6 +7,7 @@ Current folders and when to delete them:
 - week_of_oct15/   weekly event posts (Template A); after Sun Oct 18
 - week_of_oct22/   weekly event posts (Template A); after Sun Oct 25
 - king_tide_oct25/ king tide flood post, 5 slides (Sat Oct 24, 4 PM); after Sat Oct 24
+- week_of_oct29/   Sat Oct 31 7 AM + Sun Nov 1 5 PM posts (Template A); after Sun Nov 1
 - halloween_oct30/ Halloween weekend post (Thu Oct 29, 8:15 PM); after Thu Oct 29
 - hot_tips_v2/     Weekly Wednesday Hot Tips 1-8; after Wed Dec 2
 - tag_oaa_blurb2/  "Tag Out and About" Tuesdays, Blurb 2 (Oct 27); after Tue Dec 8
