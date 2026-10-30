@@ -422,3 +422,20 @@ runs a GoDaddy site under its BBQ business (LocalQ 707). Alexandra also asked wh
 Marin's biggest sources are raw feeds, while Napa's are script-built lists behind "Load more" buttons, each event on
 its own page.
 
+## 2026-10-29 (evening): a hashtag rule read two ways, and files nobody meant to move
+
+Alexandra asked that every Instagram post carry "only 3 hashtags in the comments". That was read as the first comment:
+templates, docs and memory were changed, and the Halloween post was edited minutes before it published to put its tags in
+the first comment. An hour later, looking at a mockup, she asked for the hashtags "back within the slide", meaning the
+caption. The second change was asked about first (caption, on the image, or both), which settled it in one exchange. **An
+instruction about where something goes, given in a word or two, is worth one question before it is applied everywhere.**
+
+While looking at the SMMC folder she found a `Downloads` folder of tax returns and lab results inside `OAA marketing\SMMC
+Add`. The file times told the story: the review packet was moved into a new folder at 3:00:25 PM on Oct 25, and 21 seconds
+later the first 57 files of her Downloads folder, in alphabetical order, landed beside it within two seconds, the signature
+of a drag that was cancelled partway. The session logs showed no Claude command touching that folder. Windows records only
+the account as owner, and Claude runs under the same account, so **the logs, not the file owner, are what clear or implicate
+a session.** It also produced a filing rule: Sponsorship is money in (advertisers), marketing is money out (SMMC).
+
+Two build traps from the same evening are in `social_media_and_marketing.md`: padding on a `.slide` shrinks every `cqw`
+unit inside it, and `render_slides.py` names files from card labels, so a relabelled card leaves its old PNG behind.

@@ -1043,19 +1043,44 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 
 0. **Napa follow-ups from the Oct 29 sweep (processed the same day, `79fec3a`):** call the Calistoga LAB (707-403-5028) to confirm 530's Saturday start time (7 PM unconfirmed); add Carneros Resort's Jingle & Mingle tree lighting (Nov 28, 6 PM) and Photos with Santa (Nov 28, Dec 5, 3:30-6:30 PM) once price and details are published (carnerosresort.com's events page did not render them); Festival Napa Valley MusicTime Dec 19 falls past the window, so pick it up next Napa sweep.
 0b. **Marin follow-ups from the Oct 29 sweep:** Carol-oke (1808, Dec 12) has no time yet; Slide Ranch workday (1809, Dec 12) time copied from Nov 15; recheck San Rafael Pokémon Club 824 (Nov 25) and Young Readers 1287 (Nov 29, Dec 6, 13), which were absent from the city calendar; Corte Madera Ingrid has no dates after Dec 3 (item 58m); Sausalito Library's calendar (#40) still renders blank in every browser.
-1. **Instagram, week of Oct 29 (item 15), not built as of 2026-10-29:** Thu Oct 29 5 PM, Sat Oct 31 7 AM, Sun Nov 1 5 PM, in **Template A** (the
-   standard every week since Oct 22): copy `OAA marketing\Instagram templates\Template A - Thu Sat Sun posts\build_template_a_4x5.py` (Template A is 4:5, 1080x1350, since Oct 24; render with `--size 1080x1350`)
-   and follow `social_media_and_marketing.md`, "Template A standard" and section 3e (Metricool). First confirm what went
-   live: the king tide post (Sat Oct 24, 4 PM) and the week of Oct 22 (Sun Oct 25, 5 PM), then delete repo
-   `ig/king_tide_oct25/`, `ig/week_of_oct15/` and `ig/week_of_oct22/` (`ig/README.md`).
+1. **Instagram, week of Nov 5 (item 15):** Thu Nov 5 5 PM, Sat Nov 7 7 AM, Sun Nov 8 5 PM, in **Template A** (4:5,
+   1080x1350). Copy `OAA marketing\Instagram templates\Template A - Thu Sat Sun posts\build_week_of_oct29.py` (it reuses the
+   helpers in `build_template_a_4x5.py`), follow `social_media_and_marketing.md` ("Template A standard", section 3e) and
+   **end every caption with exactly 3 hashtags (caption rule 12, settled 2026-10-29; no first comment)**. Clear the slide
+   folder before re-rendering (the renderer names files from card labels). First confirm the Sat Oct 31 and Sun Nov 1 posts
+   went live, then delete repo `ig/week_of_oct29/`, `ig/halloween_oct30/` and the older `ig/week_of_oct8/`, `ig/week_of_oct15/`,
+   `ig/week_of_oct22/`, `ig/king_tide_oct25/` once their posts are confirmed (`ig/README.md`).
+1b. **SMMC $250 post (item 79):** waiting on SMMC's reply to Alexandra's Oct 29 email (collaborator tag, Story link sticker,
+   payment; she wants Thu Dec 3, around noon). **The short link `smmc/index.html` (outandaboutmarin.com/smmc) is untracked in
+   the repo on purpose: commit and push it only when finalizing**, and never sweep it into an unrelated commit.
 2. **Kitsch + Sync (item 21):** only a brand colour (if they want one) and whether their events page becomes a sweep
    source are still open; the Featured ad ends Jan 21, 2027 (renew or let it lapse).
-3. **Next Marin weekly sweep** (`sources/marin.md`, 49 sources). The Oct 22 sweep covered Oct 22 to Dec 3; the Learning Bus
-   November PDF and Marin Magazine's November edition were not yet posted.
+3. **Next Marin weekly sweep** (`sources/marin.md`, 50 sources). The Oct 29 sweep covered Oct 29 to Dec 15; Napa's covered
+   Oct 30 to Dec 15.
 4. **Item 58:** zr (Diwali at Mill Valley Library) and zs (Mill Valley ShaBabies venue, ask Rachel Weiss), plus the rest.
 5. **Telluride (items 65, 66, 72):** Lee Shea's setup and first partner sweep; the five library questions 66a-66e.
 6. **Sponsor prospects:** Osher Marin JCC and The Cave (mockups ready); FIT4MOM still owes the direct Glofox link.
 7. Items 71 and 75 closed 2026-10-24 (old folders deleted; Context Transfer skill uploaded under Customize → Skills and working in regular chats). Say "context transfer" in any chat or Code session to hand off.
+
+## What changed 2026-10-29 (evening), in one pass
+
+- **Instagram:** a one-off **Halloween weekend carousel** (30 Marin events, Halloween plus Día de los Muertos; builder
+  `OAA marketing\Instagram templates\Halloween weekend\build_halloween_weekend.py`) published Thu Oct 29, 8:15 PM via
+  Metricool (410775552). Then the **Sat Oct 31 7 AM** and **Sun Nov 1 5 PM** posts, with no Halloween content, were scheduled
+  (410788148, 410788157; `build_week_of_oct29.py`). Details in `social_media_and_marketing.md`.
+- **Hashtag rule (caption rule 12):** every Instagram post ends its caption with **exactly 3 hashtags**, no first comment.
+  Alexandra first said "only 3 hashtags in the comments", which was read as the first comment and applied; she then asked
+  for them back in the caption. The Halloween post went out with them in the first comment. Earlier-scheduled Hot Tips and Tag
+  posts keep their ~10 caption hashtags (her call). **When a short instruction about placement is ambiguous, ask.**
+- **Open items:** 56 (Choose your own adventure) closed; 59 retitled **Google Analytics ToDos** (two GA4 settings for her);
+  new **80** Stack Sorted / Supplement Mgmt Business (own section; secure website domain); new **81** weekly Monday GA
+  analysis email (not started); 77 gained Sausalito Library; 38 and the CLAUDE.md pick-up list now record the processed
+  Napa sweep (`806f476`).
+- **Folders:** `OAA Sponsorship and Partners` is for advertisers who pay her; `OAA marketing` is for placements she pays
+  for. The SMMC post files moved to `OAA marketing\SMMC Add\SMMC social post\`. A stray partial copy of her Downloads folder
+  (57 personal files) inside `SMMC Add` was traced to File Explorer on Oct 25, 3:00 PM (no Claude session touched it) and
+  was gone by the time deletion was approved.
+- Health unchanged: 644 events, max id 1853; duplicate scan the same 6 known findings; `check_docs.py` clean.
 
 ## What changed 2026-10-25 to 2026-10-29, in one pass
 
