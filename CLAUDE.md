@@ -900,7 +900,7 @@ Hwy 37 bridge; since 2026-10-23, was 9414290 San Francisco), which peaks about 1
 
 ## Resources tab: static sections, including the Kid-Friendly Dining table
 
-The Resources screen in `index.html` is hand-written HTML, in this order: **(temporary) Flood Watch** (`#floodWatch`, added 2026-10-24, `ecda119`: the king tide Instagram slides as a swipeable strip, images in `assets/flood/`; the section carries `data-until="YYYY-MM-DD"` and hides itself after that local date, so a new tide week means new images and a new date, nothing to remove), Tides & Driving in Marin (reads `tides.json`,
+The Resources screen in `index.html` is hand-written HTML, in this order: **(temporary) Flood Watch** (`#floodWatch`, added 2026-10-24, `ecda119`: the king tide Instagram slides as a swipeable strip, images in `assets/flood/`; the section carries `data-until="YYYY-MM-DD"` and hides itself after that local date, so a new tide week means new images and a new date, nothing to remove; hidden since Oct 31, and Alexandra chose on 2026-10-31 to keep the code in place for the next king tide rather than remove it), Tides & Driving in Marin (reads `tides.json`,
 section above), Drive-Thrus in Marin County, **Kid-Friendly Dining in Marin**, Choose your own adventure (`adventure.json`, below), Yoto Player Cards (Google Drive link),
 Family Swimming in Marin (external guide), Swim Lesson Vendor Directory (`swim_vendors.json`, below), Donate Baby
 Essentials (Postpartum Support Center), About. None of it is in `events.json` and no sweep touches it. Every visible
@@ -1061,6 +1061,33 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 5. **Telluride (items 65, 66, 72):** Lee Shea's setup and first partner sweep; the five library questions 66a-66e.
 6. **Sponsor prospects:** Osher Marin JCC and The Cave (mockups ready); FIT4MOM still owes the direct Glofox link.
 7. Items 71 and 75 closed 2026-10-24 (old folders deleted; Context Transfer skill uploaded under Customize → Skills and working in regular chats). Say "context transfer" in any chat or Code session to hand off.
+
+## What changed 2026-10-28 to 2026-10-31 (phone sessions), in one pass
+
+- **Events added from screenshots and links:** Social Klub partner events Meet Lulu Bird! (1773, Nov 3) and hiccapop Play
+  Lab (1774, Nov 23, a disclosed product-feedback session), plus 1745 (Your Body After 40) corrected to 6-8 PM; Election
+  Night Distraction / Hamilton Movie (1775, Marin City Library, Nov 3, title as Alexandra gave it); ¡Noche de Baile! (1776,
+  Dance Palace, Oct 30; cost "Free entry; food & drinks for sale" assumed); Mill Valley City Hall Historic Plaque Unveiling
+  (1854, Nov 2); Free Halloween Face Painting (1855/1856, Bahia park, Novato, Oct 30-31, from a neighbor's Nextdoor post);
+  Bike Fest Marin City (1857, St. Andrew Presbyterian, Oct 31). Gingerbread House Decorating Party (100) cost now
+  "$65 + fees ($71.21 on Eventbrite)". **Ids are reused:** `next_id()` is max + 1, so after the nightly purge removes
+  the highest id, the next record takes its number (1773 was briefly an Art Barn event that expired). Search
+  `internal_notes` dates, not ids, when tracing a record's history.
+- **Passed:** the Get Ready for Super El Niño talks at Belvedere-Tiburon Library (all three dates had already
+  happened). The **Napa sweep** was deferred from the phone and run on the desktop (see the Oct 29 entries).
+- **Instagram, Sat Oct 31 post (Metricool 411930560, was 410788148):** slide 1 and the caption's first line now read
+  "Need a break from Marinoween-Mania?" (Alexandra). The slide was edited in a cloud session without the Dropbox builder by
+  overlaying one line on the existing PNG in headless Chromium (Playfair Display italic 71.6px, matched to the original
+  pixel box); it is `ig/week_of_oct29/sat-1-marinoween.png`. **Trick worth keeping:** when GitHub Pages is slow to deploy,
+  Metricool accepts the `raw.githubusercontent.com/<owner>/<repo>/<commit>/<path>` URL and copies the image into its own
+  storage; download Metricool's copy afterwards and compare it to the file.
+- **Instagram auto-DM to new followers (research only, nothing set up):** Metricool Flows has no new-follower trigger. The
+  only approved route is ManyChat's "Follow to DM" (Pro, about $15/month), which Meta grants account by account and
+  likely not below about 1,000 followers (the account had 256 on Oct 26); tools that scrape followers or log in with
+  the password break Instagram's terms. Instagram's official follower list comes only from "Download your information".
+  Open item 82 (via the phone inbox).
+- Health 2026-10-31: 634 events, max id 1857; self-test 92/92; `check_docs.py` clean; duplicate scan the same 6 known
+  findings.
 
 ## What changed 2026-10-29 (evening), in one pass
 
