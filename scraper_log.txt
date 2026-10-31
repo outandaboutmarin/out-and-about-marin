@@ -1,13 +1,13 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-10-31
-Time: 17:24:57
+Time: 23:16:23
 
-Total events in events.json: 613
-Active events: 558
+Total events in events.json: 614
+Active events: 559
 Temp. closed: 0
 
 Events by type:
-  Community Event: 124
+  Community Event: 125
   Farmers Market: 16
   Festival: 25
   Fitness: 18
@@ -39,7 +39,7 @@ Events by town:
   Paradox: 1
   Point Reyes Station: 11
   Ridgway: 14
-  Ross: 5
+  Ross: 6
   San Anselmo: 13
   San Geronimo: 2
   San Rafael: 70
@@ -55,6 +55,7 @@ Events by town:
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
+  🔔 PAGE CHANGED: Larkspur Library
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library
