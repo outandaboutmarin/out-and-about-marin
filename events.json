@@ -19254,6 +19254,36 @@
       "notes": "Free bikes for kids are first come, first served. Costume bike parade at 1 PM.",
       "location_group": "Sausalito/Marin City",
       "internal_notes": "Added 2026-10-31 from a Play Marin Instagram story flyer (phone, Alexandra approved). Not found online. Sponsors on the flyer include MCBC, Mike's Bikes, Cory's Ride, Bay Area Bicycle Law, Rotary, Spare the Air. Address from id 737 (same church)."
+    },
+    {
+      "id": 1858,
+      "organization": "The Local Hype Girl & Marin Art and Garden Center",
+      "venue": "Marin Art and Garden Center",
+      "event_name": "Marin, Local for the Holidays Market",
+      "event_name_es": "Mercado navideño local de Marin",
+      "type": "Community Event",
+      "day": "Sunday",
+      "time": "11:00 AM – 4:00 PM",
+      "time_of_day": "Morning",
+      "town": "Ross",
+      "address": "30 Sir Francis Drake Blvd, Ross, CA 94957",
+      "location_group": "San Anselmo/Ross",
+      "ages": "All ages",
+      "cost": "Free entry; vendors' goods for sale",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-12-06",
+      "expires": "2026-12-06",
+      "status": "Active",
+      "featured": false,
+      "description": "A local holiday market with more than 20 Marin makers and small businesses, including Roonie's, The Phoenix Used Bookshop, Babaloo Bakes, Rituals for Littles, Mahj On My Mind, Crown & Crumpet, Swampgirl Pottery and Made in Marin. Shop local gifts in the garden.",
+      "description_es": "Un mercado navideño local con más de 20 artesanos y pequeños negocios de Marin, entre ellos Roonie's, The Phoenix Used Bookshop, Babaloo Bakes, Rituals for Littles, Mahj On My Mind, Crown & Crumpet, Swampgirl Pottery y Made in Marin. Compra regalos locales en el jardín.",
+      "registration": "Not required",
+      "website": "",
+      "internal_notes": "Added 2026-10-31 from The Local Hype Girl's Instagram flyer (phone, Alexandra approved). Not found online. Cost assumed free entry (flyer names no admission). Address and location group copied from id 1793 (same venue)."
     }
   ]
 }
