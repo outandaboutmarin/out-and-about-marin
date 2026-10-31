@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30",
+  "last_updated": "2026-10-31",
   "events": [
     {
       "id": 1,
@@ -19904,6 +19904,37 @@
       "day": "Saturday",
       "time": "10:00 AM – 12:00 PM",
       "time_of_day": "Morning"
+    },
+    {
+      "id": 1857,
+      "organization": "Play Marin",
+      "venue": "St. Andrew Presbyterian Church",
+      "event_name": "Bike Fest Marin City",
+      "event_name_es": "Festival de Bicicletas de Marin City",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "11:00 AM – 2:00 PM",
+      "time_of_day": "Morning",
+      "town": "Marin City",
+      "address": "101 Donahue Street, Marin City, CA 94965",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-10-31",
+      "expires": "2026-10-31",
+      "status": "Active",
+      "featured": false,
+      "description": "Grab your helmets and your best costumes! Free bike repairs and tune-ups, free bikes for kids (first come, first served, while supplies last), learn-to-ride classes, and a Halloween costume bike parade at 1 PM. All ages welcome.",
+      "description_es": "¡Trae tu casco y tu mejor disfraz! Reparaciones y ajustes de bicicletas gratis, bicicletas gratis para niños (por orden de llegada, hasta agotar existencias), clases para aprender a andar en bici y un desfile de disfraces de Halloween en bicicleta a la 1 PM. Todas las edades son bienvenidas.",
+      "registration": "Not required",
+      "website": "",
+      "notes": "Free bikes for kids are first come, first served. Costume bike parade at 1 PM.",
+      "location_group": "Sausalito/Marin City",
+      "internal_notes": "Added 2026-10-31 from a Play Marin Instagram story flyer (phone, Alexandra approved). Not found online. Sponsors on the flyer include MCBC, Mike's Bikes, Cory's Ride, Bay Area Bicycle Law, Rotary, Spare the Air. Address from id 737 (same church)."
     }
   ]
 }
