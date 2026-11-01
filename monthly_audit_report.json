@@ -1,6 +1,6 @@
 {
-  "audit_date": "2026-10-01",
-  "total_audited": 159,
+  "audit_date": "2026-11-01",
+  "total_audited": 275,
   "confirmed": [
     {
       "id": 2,
@@ -27,8 +27,12 @@
       "name": "Family Storytime"
     },
     {
+      "id": 13,
+      "name": "Canta Conmigo!"
+    },
+    {
       "id": 16,
-      "name": "Cuentos con Ritmo"
+      "name": "Ingrid's Spanish Storytime"
     },
     {
       "id": 18,
@@ -41,6 +45,10 @@
     {
       "id": 24,
       "name": "Downtown Storytime / Hora de Cuentos"
+    },
+    {
+      "id": 25,
+      "name": "Lego Saturdays / Sabados de Lego"
     },
     {
       "id": 33,
@@ -111,10 +119,6 @@
       "name": "Battery Townsley Open House"
     },
     {
-      "id": 175,
-      "name": "Saturdays at the Library: Crafts and Play"
-    },
-    {
       "id": 176,
       "name": "Lego Club \u2014 Bolinas Library"
     },
@@ -135,40 +139,16 @@
       "name": "Marin County Cars and Coffee"
     },
     {
-      "id": 433,
-      "name": "Movie Nights at the Mart"
-    },
-    {
-      "id": 626,
-      "name": "Babies/Toddler Support Group for New Parents"
-    },
-    {
-      "id": 705,
-      "name": "Hootenanny @ the Library"
-    },
-    {
-      "id": 736,
-      "name": "Movies on Main: Children's Movie"
-    },
-    {
-      "id": 776,
-      "name": "Afterschool Homework Hub"
-    },
-    {
       "id": 837,
       "name": "Bilingual Storytime / Hora del cuento biling\u00fce"
     },
     {
-      "id": 853,
-      "name": "Spanish Sing-along and Storytime | M\u00fasica y Cuentos en espa\u00f1ol"
+      "id": 838,
+      "name": "Baby Bounce \u2014 Novato"
     },
     {
       "id": 876,
       "name": "Toddler Time \u2014 Bolinas Library"
-    },
-    {
-      "id": 951,
-      "name": "Chess Club \u2014 Belvedere-Tiburon Library"
     },
     {
       "id": 965,
@@ -199,6 +179,10 @@
       "name": "THURS-DIY Crafts for Middle Schoolers"
     },
     {
+      "id": 1012,
+      "name": "First Tuesday Artwalk"
+    },
+    {
       "id": 1022,
       "name": "First Fridays on Grant"
     },
@@ -207,12 +191,12 @@
       "name": "Book Passage Storytime \u2014 Corte Madera"
     },
     {
-      "id": 1101,
-      "name": "Novato Mothers Club Monthly Social Stroll - open to all"
-    },
-    {
       "id": 1108,
       "name": "Storytime is calling"
+    },
+    {
+      "id": 1110,
+      "name": "Stories and Palabras for Growing Readers!"
     },
     {
       "id": 1140,
@@ -223,8 +207,40 @@
       "name": "Mart Littles Music \u2014 Wednesdays at Poppy"
     },
     {
-      "id": 1182,
-      "name": "Homework Helpers for Grades 3-10 \u2014 Corte Madera"
+      "id": 1287,
+      "name": "The Young Readers Project"
+    },
+    {
+      "id": 1371,
+      "name": "Read to a Dog with Stinson \u2014 Corte Madera"
+    },
+    {
+      "id": 1649,
+      "name": "Panel to Panel: Tween & Teen Comic Book Club"
+    },
+    {
+      "id": 1716,
+      "name": "Shabbat ShaBabies \u2014 Mill Valley"
+    },
+    {
+      "id": 1717,
+      "name": "Shabbat ShaBabies \u2014 Mill Valley"
+    },
+    {
+      "id": 1723,
+      "name": "Downtown San Rafael Elf Hunt"
+    },
+    {
+      "id": 1724,
+      "name": "Downtown San Rafael Elf Hunt"
+    },
+    {
+      "id": 1737,
+      "name": "Tween Dungeons & Dragons Club (Ages 10-14)"
+    },
+    {
+      "id": 1740,
+      "name": "Photos with Santa at The Village"
     }
   ],
   "not_found": [
@@ -257,12 +273,6 @@
       "name": "Musica y Movimiento",
       "source": "MCFL Novato",
       "url": "https://marinlibrary.org/locations/mn/"
-    },
-    {
-      "id": 13,
-      "name": "Canta Conmigo!",
-      "source": "MCFL Point Reyes",
-      "url": "https://marinlibrary.org/locations/mp/"
     },
     {
       "id": 14,
@@ -349,6 +359,12 @@
       "url": "https://srpubliclibrary.org/events/"
     },
     {
+      "id": 175,
+      "name": "Saturdays at the Library: Crafts and Play",
+      "source": "MCFL Bolinas",
+      "url": "https://marinlibrary.org/locations/mb/"
+    },
+    {
       "id": 177,
       "name": "Read to a Dog \u2014 Belvedere-Tiburon Library",
       "source": "Belvedere-Tiburon Library",
@@ -361,16 +377,22 @@
       "url": "https://marinlibrary.org/locations/mp/"
     },
     {
+      "id": 433,
+      "name": "Movie Nights at the Mart",
+      "source": "Marin Country Mart",
+      "url": "https://marincountrymart.com/events"
+    },
+    {
       "id": 494,
       "name": "M\u00fasica y Movimiento con Colores del Espa\u00f1ol \u2014 South Novato Library",
       "source": "MCFL Novato",
       "url": "https://marinlibrary.org/locations/mn/"
     },
     {
-      "id": 707,
-      "name": "Games - Sudoku, Crosswords, and More!",
-      "source": "Larkspur Library iCal",
-      "url": "https://www.ci.larkspur.ca.us/common/modules/iCalendar/iCalendar.aspx?catID=24&feed=calendar"
+      "id": 705,
+      "name": "Hootenanny @ the Library",
+      "source": "Belvedere-Tiburon Library",
+      "url": "https://www.beltiblibrary.org/events"
     },
     {
       "id": 717,
@@ -415,10 +437,10 @@
       "url": "https://srpubliclibrary.org/events/"
     },
     {
-      "id": 838,
-      "name": "Baby Bounce \u2014 Novato",
-      "source": "MCFL Novato",
-      "url": "https://marinlibrary.org/locations/mn/"
+      "id": 853,
+      "name": "Spanish Sing-along and Storytime | M\u00fasica y Cuentos en espa\u00f1ol",
+      "source": "SRPL Events",
+      "url": "https://srpubliclibrary.org/events/"
     },
     {
       "id": 859,
@@ -445,32 +467,50 @@
       "url": "https://marinlibrary.org/locations/mn/"
     },
     {
+      "id": 951,
+      "name": "Chess Club \u2014 Belvedere-Tiburon Library",
+      "source": "Belvedere-Tiburon Library",
+      "url": "https://www.beltiblibrary.org/events"
+    },
+    {
+      "id": 980,
+      "name": "Dungeons & Dragons at the Fairfax Library",
+      "source": "MCFL Fairfax",
+      "url": "https://marinlibrary.org/locations/mf/"
+    },
+    {
+      "id": 985,
+      "name": "Ukulele Jam",
+      "source": "Belvedere-Tiburon Library",
+      "url": "https://www.beltiblibrary.org/events"
+    },
+    {
+      "id": 991,
+      "name": "Tween LEGO Club",
+      "source": "Mill Valley Library iCal",
+      "url": "https://millvalleylibrary.libcal.com/ical_subscribe.php?src=p&cid=17002&aud=5670,5671"
+    },
+    {
+      "id": 1000,
+      "name": "Children's First Chapter Book Club",
+      "source": "SRPL Events",
+      "url": "https://srpubliclibrary.org/events/"
+    },
+    {
       "id": 1005,
       "name": "2nd Friday Art Walk",
       "source": "SRPL Events",
       "url": "https://srpubliclibrary.org/events/"
     },
     {
-      "id": 1012,
-      "name": "First Tuesday Artwalk",
-      "source": "SRPL Events",
-      "url": "https://srpubliclibrary.org/events/"
+      "id": 1101,
+      "name": "Novato Mothers Club Monthly Social Stroll - open to all",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
     },
     {
       "id": 1117,
       "name": "Meet the Makers",
-      "source": "MCFL Novato",
-      "url": "https://marinlibrary.org/locations/mn/"
-    },
-    {
-      "id": 1118,
-      "name": "Kids Eat Free \u2014 Tuesdays",
-      "source": "MCFL Novato",
-      "url": "https://marinlibrary.org/locations/mn/"
-    },
-    {
-      "id": 1119,
-      "name": "Kids Eat Free \u2014 Sundays",
       "source": "MCFL Novato",
       "url": "https://marinlibrary.org/locations/mn/"
     },
@@ -493,10 +533,88 @@
       "url": "https://marinlibrary.org/locations/mf/"
     },
     {
+      "id": 1173,
+      "name": "Pajama Storytime",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 1182,
+      "name": "Homework Helpers for Grades 3-10 \u2014 Corte Madera",
+      "source": "MCFL Corte Madera",
+      "url": "https://marinlibrary.org/locations/mm/"
+    },
+    {
+      "id": 1183,
+      "name": "Book Snacks!",
+      "source": "Belvedere-Tiburon Library",
+      "url": "https://www.beltiblibrary.org/events"
+    },
+    {
       "id": 1201,
       "name": "Mart Littles Yoga",
       "source": "Marin Country Mart",
       "url": "https://marincountrymart.com/events"
+    },
+    {
+      "id": 1368,
+      "name": "Kids Activities with Good Fun Stuff in Bolinas Park",
+      "source": "MCFL Bolinas",
+      "url": "https://marinlibrary.org/locations/mb/"
+    },
+    {
+      "id": 1382,
+      "name": "Music with Megan @ Sports Basement (10:30 session)",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 1383,
+      "name": "Music with Megan @ Sports Basement (11:30 session)",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 1445,
+      "name": "Stroller Strides",
+      "source": "MCFL Corte Madera",
+      "url": "https://marinlibrary.org/locations/mm/"
+    },
+    {
+      "id": 1446,
+      "name": "Stroller Strides",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 1447,
+      "name": "Stroller Strides",
+      "source": "MCFL Corte Madera",
+      "url": "https://marinlibrary.org/locations/mm/"
+    },
+    {
+      "id": 1448,
+      "name": "Stroller Strides",
+      "source": "MCFL Civic Center",
+      "url": "https://marinlibrary.org/locations/mb/"
+    },
+    {
+      "id": 1646,
+      "name": "Shabbat Shmooze",
+      "source": "Marin JCC",
+      "url": "https://www.marinjcc.org/preschool/jym-babies/"
+    },
+    {
+      "id": 1770,
+      "name": "Sunday Football @ Kitsch + Sync",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
+    },
+    {
+      "id": 1771,
+      "name": "Sunday Football @ Kitsch + Sync",
+      "source": "MCFL Novato",
+      "url": "https://marinlibrary.org/locations/mn/"
     }
   ],
   "manual_check": [
@@ -628,7 +746,7 @@
     {
       "id": 530,
       "name": "Lincoln Avenue Live!",
-      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lincolnavenuebrewery.com/)"
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://localq707atthelab.godaddysites.com/hours-and-events)"
     },
     {
       "id": 531,
@@ -691,21 +809,6 @@
       "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.sthelena.com/event/social-sessions-at-salvia-terrace-bar-8/)"
     },
     {
-      "id": 905,
-      "name": "Jam Night with Jason McKee",
-      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lincolnavenuebrewery.com/)"
-    },
-    {
-      "id": 906,
-      "name": "Don Cameron Acoustic",
-      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lincolnavenuebrewery.com/)"
-    },
-    {
-      "id": 907,
-      "name": "Mark Shuttleworth Acoustic",
-      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lincolnavenuebrewery.com/)"
-    },
-    {
       "id": 953,
       "name": "Marine Science Sunday",
       "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.marinemammalcenter.org/education/adults-families/marine-science-sunday)"
@@ -756,9 +859,499 @@
       "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.everlacedesignco.com/)"
     },
     {
-      "id": 1217,
-      "name": "Makers Market",
-      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.millvalleylumberyard.com/events)"
+      "id": 1337,
+      "name": "Mahjong at Bon Air",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://bonair.com/event-list/)"
+    },
+    {
+      "id": 1340,
+      "name": "Happy Play at Le Lyc\u00e9e (ages 1-2)",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.lelycee.org/learning/happy-play)"
+    },
+    {
+      "id": 1351,
+      "name": "Mill Valley Dads Stroller Walk",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://chat.whatsapp.com/K2ZGslNSSY560n5g5AdnoT)"
+    },
+    {
+      "id": 1353,
+      "name": "Music with Megan @ Milkweed",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.instagram.com/milkweedmillvalley/)"
+    },
+    {
+      "id": 1354,
+      "name": "Live Music on the Depot Patio",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.depotcafeandbookstore.com/about-1)"
+    },
+    {
+      "id": 1449,
+      "name": "Stroller Strides",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://marin.fit4mom.com/schedule)"
+    },
+    {
+      "id": 1450,
+      "name": "Storytime / Hora de Cuentos",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17514627)"
+    },
+    {
+      "id": 1451,
+      "name": "Littles On the Move",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/13960360)"
+    },
+    {
+      "id": 1452,
+      "name": "The Spark Lab",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17292166)"
+    },
+    {
+      "id": 1453,
+      "name": "I Heart Art",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17292101)"
+    },
+    {
+      "id": 1454,
+      "name": "Kids Cook",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17292119)"
+    },
+    {
+      "id": 1455,
+      "name": "Movie and A Snack Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17283035)"
+    },
+    {
+      "id": 1456,
+      "name": "Musik 4 Kinders",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17515440)"
+    },
+    {
+      "id": 1471,
+      "name": "Littles Storytime",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1472,
+      "name": "STEAM After School Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lcld.specialdistrict.org/ongoing-programs)"
+    },
+    {
+      "id": 1473,
+      "name": "Crafternoon",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1474,
+      "name": "Free Family Hot Lunch",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1475,
+      "name": "Teen D&D",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lcld.specialdistrict.org/ongoing-programs)"
+    },
+    {
+      "id": 1478,
+      "name": "Story Time",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://ridgwaylibrary.specialdistrict.org/story-time)"
+    },
+    {
+      "id": 1479,
+      "name": "Lego Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://ridgwaylibrary.specialdistrict.org/lego-club)"
+    },
+    {
+      "id": 1480,
+      "name": "Craft Time",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://ridgwaylibrary.specialdistrict.org/craft-time)"
+    },
+    {
+      "id": 1481,
+      "name": "Craft Time",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://ridgwaylibrary.specialdistrict.org/craft-time)"
+    },
+    {
+      "id": 1482,
+      "name": "Youth Chess Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://ridgwaylibrary.specialdistrict.org/youth-chess-club)"
+    },
+    {
+      "id": 1485,
+      "name": "Baby & Me Storytime",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/baby-me-storytime/)"
+    },
+    {
+      "id": 1486,
+      "name": "Family Storytime",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/family-storytime-9-2-2-2-2/)"
+    },
+    {
+      "id": 1487,
+      "name": "Creation Station",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/creation-station-2-2-2-2-2-2-2/)"
+    },
+    {
+      "id": 1488,
+      "name": "Chess Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/chess-club-2-2-2-2-2/)"
+    },
+    {
+      "id": 1489,
+      "name": "Reading to Rover",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/reading-to-rover-5-2-2-2-2/)"
+    },
+    {
+      "id": 1490,
+      "name": "LEGO Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/lego-club-5/)"
+    },
+    {
+      "id": 1495,
+      "name": "Bookmobile at Olathe Town Park",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/olathe-bookmobile-stop/2026-10-21/)"
+    },
+    {
+      "id": 1496,
+      "name": "Bookmobile at Northbrook Villas Park",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/northbrook-villas-bookmobile-stop-2/2026-10-15/)"
+    },
+    {
+      "id": 1499,
+      "name": "Storytime",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/storytime/2026-10-14/)"
+    },
+    {
+      "id": 1500,
+      "name": "Silly Stories with Ms. Hannah",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://doloreslibrary.specialdistrict.org/october-2026-newsletter)"
+    },
+    {
+      "id": 1501,
+      "name": "Silly Stories with Ms. Hannah (afternoon)",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://doloreslibrary.specialdistrict.org/october-2026-newsletter)"
+    },
+    {
+      "id": 1502,
+      "name": "Brain Builders",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://doloreslibrary.specialdistrict.org/october-2026-newsletter)"
+    },
+    {
+      "id": 1503,
+      "name": "Fantastic Friday",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://doloreslibrary.specialdistrict.org/october-2026-newsletter)"
+    },
+    {
+      "id": 1506,
+      "name": "Teen Cook",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17486119)"
+    },
+    {
+      "id": 1509,
+      "name": "Teen Reimagine Our Community",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17727012)"
+    },
+    {
+      "id": 1510,
+      "name": "Melt and Make: Perler Bead Art",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17732308)"
+    },
+    {
+      "id": 1511,
+      "name": "In-Between Scene",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lcld.specialdistrict.org/ongoing-programs)"
+    },
+    {
+      "id": 1520,
+      "name": "Beans & Books",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/16249444)"
+    },
+    {
+      "id": 1522,
+      "name": "Cancer Support Group",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/16067715)"
+    },
+    {
+      "id": 1523,
+      "name": "Cardio Dance with Kelsey",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17527355)"
+    },
+    {
+      "id": 1532,
+      "name": "Drop-In Tech Time with Oliver",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/15970397)"
+    },
+    {
+      "id": 1534,
+      "name": "Free Legal Clinic (Zoom)",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/16009654)"
+    },
+    {
+      "id": 1537,
+      "name": "Gentle Yoga with Kristen Milord",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/16536462)"
+    },
+    {
+      "id": 1539,
+      "name": "Immersive Sound Journey with Dustin Wells",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17509574)"
+    },
+    {
+      "id": 1541,
+      "name": "Lite Lunch Book Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17493869)"
+    },
+    {
+      "id": 1543,
+      "name": "Mahjongg for Independent Players",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17622568)"
+    },
+    {
+      "id": 1545,
+      "name": "Pilates for All Bodies",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/16536349)"
+    },
+    {
+      "id": 1547,
+      "name": "Savvy Seniors: Open Tech",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17622974)"
+    },
+    {
+      "id": 1550,
+      "name": "Sewing 101 with Melissa",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/15970622)"
+    },
+    {
+      "id": 1551,
+      "name": "Spanish Happy Hour",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/16008004)"
+    },
+    {
+      "id": 1552,
+      "name": "Talking Gourds: Stories and Poems",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/15798228)"
+    },
+    {
+      "id": 1553,
+      "name": "Tea and Tarot",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17347283)"
+    },
+    {
+      "id": 1554,
+      "name": "The Classics Taproom Society",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17298307)"
+    },
+    {
+      "id": 1555,
+      "name": "The Listening Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17298550)"
+    },
+    {
+      "id": 1559,
+      "name": "Yogalates with Lauren",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17482786)"
+    },
+    {
+      "id": 1560,
+      "name": "Zumba with Marlen",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://telluridelibrary.libcal.com/event/17477839)"
+    },
+    {
+      "id": 1561,
+      "name": "Chair Yoga with Helena",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1562,
+      "name": "Restorative Yoga with Helena",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1563,
+      "name": "YogaFlow with Marie Green Yoga",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1564,
+      "name": "Kriya Yoga with Marie",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1565,
+      "name": "Yin Yoga Reset with Marie Green Yoga",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1566,
+      "name": "Yin Yoga with Marie Green Yoga",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1567,
+      "name": "Pilates Fusion with Marie Green Yoga",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1568,
+      "name": "Tech Time with Evan",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1569,
+      "name": "Healing Sound Bath with Wolff",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1570,
+      "name": "Adult Craft Night",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1571,
+      "name": "Journal Your Way with Hollie Marble",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1572,
+      "name": "Craft & Create with Mandee",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://lonecone.librarycalendar.com/events/upcoming)"
+    },
+    {
+      "id": 1573,
+      "name": "Mah Jong",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://ridgwaylibrary.specialdistrict.org/mah-jong)"
+    },
+    {
+      "id": 1574,
+      "name": "Tech Thursdays",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://ridgwaylibrary.specialdistrict.org/tech-thursdays)"
+    },
+    {
+      "id": 1575,
+      "name": "Spanish Conversation Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://ridgwaylibrary.specialdistrict.org/club-de-conversacion)"
+    },
+    {
+      "id": 1576,
+      "name": "Community Book Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://ridgwaylibrary.specialdistrict.org/community-book-club)"
+    },
+    {
+      "id": 1581,
+      "name": "Sewing Class",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://ridgwaylibrary.specialdistrict.org/sewing-room-classes)"
+    },
+    {
+      "id": 1585,
+      "name": "Crafternoon",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/crafternoon/)"
+    },
+    {
+      "id": 1588,
+      "name": "Montrose Library Book Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/adult-book-club-meeting/)"
+    },
+    {
+      "id": 1590,
+      "name": "Libros y Chisme: Bilingual Book Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/libros-y-chisme/)"
+    },
+    {
+      "id": 1591,
+      "name": "Silent Reading Club at The Association",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/event/silent-reading-club/)"
+    },
+    {
+      "id": 1595,
+      "name": "Adult Book Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.montroselibrary.org/events/category/naturita/)"
+    },
+    {
+      "id": 1598,
+      "name": "Qigong at the Library",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://doloreslibrary.specialdistrict.org/calendar)"
+    },
+    {
+      "id": 1599,
+      "name": "Tech Help",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://doloreslibrary.specialdistrict.org/calendar)"
+    },
+    {
+      "id": 1600,
+      "name": "Yoga at the Library",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://doloreslibrary.specialdistrict.org/calendar)"
+    },
+    {
+      "id": 1601,
+      "name": "Mahjong",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://doloreslibrary.specialdistrict.org/calendar)"
+    },
+    {
+      "id": 1602,
+      "name": "Historical Fiction Book Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://doloreslibrary.specialdistrict.org/calendar)"
+    },
+    {
+      "id": 1603,
+      "name": "Second Thursday Book Club",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://doloreslibrary.specialdistrict.org/calendar)"
+    },
+    {
+      "id": 1772,
+      "name": "Mothers Support Group by MarinHealth",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.instagram.com/mymarinhealth/)"
+    },
+    {
+      "id": 1780,
+      "name": "Wednesday Storytime at Sausalito Books by the Bay",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.sausalitobooksbythebay.com/storytime-1)"
+    },
+    {
+      "id": 1811,
+      "name": "Karaoke Night at The LAB",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://localq707atthelab.godaddysites.com/hours-and-events)"
+    },
+    {
+      "id": 1817,
+      "name": "Monflower Jazz Duo at Hydro Bar & Grill",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://hydrogrillnapavalley.com/)"
+    },
+    {
+      "id": 1819,
+      "name": "Open Mic at Hydro Bar & Grill",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://hydrogrillnapavalley.com/)"
+    },
+    {
+      "id": 1844,
+      "name": "Calistoga Farmers Market",
+      "reason": "MANUAL \u2014 Farmers Market (check market website annually)"
+    },
+    {
+      "id": 1847,
+      "name": "Ice Skating at Merry Meritage",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.meritageresort.com/experience/event-calendar/ice-skating/)"
+    },
+    {
+      "id": 1848,
+      "name": "Ice Skating at Merry Meritage",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.meritageresort.com/experience/event-calendar/ice-skating/)"
+    },
+    {
+      "id": 1849,
+      "name": "Santa's Reading Corner at Merry Meritage",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.meritageresort.com/experience/event-calendar/santas-reading-corner/)"
+    },
+    {
+      "id": 1850,
+      "name": "Santa's Workshop: Gingerbread House Decorating",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.meritageresort.com/experience/event-calendar/santas-gingerbread-house-workshop/)"
+    },
+    {
+      "id": 1851,
+      "name": "Building with Ember the Elf",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.meritageresort.com/experience/event-calendar/building-with-ember-the-elf/)"
+    },
+    {
+      "id": 1852,
+      "name": "Tinsel Tea with a Princess at Merry Meritage",
+      "reason": "MANUAL \u2014 no auto-fetch configured (website: https://www.meritageresort.com/merry-meritage/)"
     }
   ],
   "fetch_failed": [
