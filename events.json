@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01",
+  "last_updated": "2026-11-02",
   "events": [
     {
       "id": 1,
@@ -18429,6 +18429,37 @@
       "website": "https://www.marinturkeytrot.com/",
       "notes": "Youth 1 Mile 8:00 AM, 10K 8:25 AM, 5K 8:30 AM. All races start and end by the soccer fields. Pick up bibs in advance at Sports Basement Novato; race-day pickup only with the paid add-on.",
       "internal_notes": "Added 2026-11-01 from a Ronnie's Awesome List screenshot (phone, Alexandra: add); details confirmed on marinturkeytrot.com and raceroster.com/events/2026/125465. Prices not readable (Race Roster form needs JavaScript); 2025 listings showed about $30-73. The site's packet pickup date still says 'Wednesday, November 26, 2025' (stale), so no pickup date is published here."
+    },
+    {
+      "id": 1862,
+      "organization": "The Lark Creek Shops",
+      "venue": "The Lark Creek Shops",
+      "event_name": "Winter Wonderland at The Lark Creek Shops",
+      "event_name_es": "Winter Wonderland en The Lark Creek Shops",
+      "type": "Community Event",
+      "day": "Friday",
+      "time": "4:00 PM – 7:00 PM",
+      "time_of_day": "Evening",
+      "town": "Larkspur",
+      "address": "234–286 Magnolia Avenue, Larkspur, CA 94939",
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "ages": "All ages",
+      "cost": "Free entry; food & drinks for sale",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "2026-12-04",
+      "expires": "2026-12-04",
+      "status": "Active",
+      "featured": false,
+      "description": "An evening among thousands of holiday lights: complimentary professional photos with Santa, holiday cookie decorating for kids, a holiday dog costume contest, mulled wine and hot cocoa, raclette fondue all night, holiday music, local pop-up shops for stocking stuffers, and boutiques open late. A portion of proceeds benefits the SF-Marin Food Bank.",
+      "description_es": "Una velada entre miles de luces navideñas: fotos profesionales gratis con Santa, decoración de galletas navideñas para niños, concurso de disfraces navideños para perros, vino caliente y chocolate caliente, fondue de raclette toda la noche, música navideña, tiendas locales emergentes para regalitos y boutiques abiertas hasta tarde. Parte de lo recaudado beneficia al SF-Marin Food Bank.",
+      "registration": "Not required",
+      "website": "",
+      "notes": "Bring canned goods for the Food Bank donation box. Complimentary valet parking.",
+      "internal_notes": "Added 2026-11-02 from @lark_creek_shops Instagram flyer posted Nov 1 (phone, Alexandra approved). Cost assumed: Santa photos complimentary per flyer; whether drinks/fondue are free is not stated."
     }
   ]
 }
