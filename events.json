@@ -14918,7 +14918,7 @@
       "id": 1744,
       "season_start": "",
       "season_end": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "event_date": "2026-12-14",
       "expires": "2026-12-14",
@@ -14943,7 +14943,7 @@
       "description_es": "Trae a tus mascotas a conocer a Santa para unas fotos navideñas, con golosinas para ellas.",
       "day": "Monday",
       "time_of_day": "Afternoon",
-      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add."
+      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. 2026-11-03: RETIRED at Alexandra's request; villageatcortemadera.com/santaphotos now lists Pet Nights only on Nov 23, 30 and Dec 7."
     },
     {
       "id": 1745,
