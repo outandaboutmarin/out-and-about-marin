@@ -12,3 +12,4 @@ Current folders and when to delete them:
 - hot_tips_v2/     Weekly Wednesday Hot Tips 1-8; after Wed Dec 2
 - tag_oaa_blurb2/  "Tag Out and About" Tuesdays, Blurb 2 (Oct 27); after Tue Dec 8
 - tag_oaa_posts/   "Tag Out and About" Tuesdays (Oct 13, Nov 10, Nov 24, Dec 8); after Tue Dec 8
+- tide_nov4/       Tide flooding post "The tides are back!" (Tue Nov 3, 5 PM); after Tue Nov 3

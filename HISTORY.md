@@ -439,3 +439,13 @@ a session.** It also produced a filing rule: Sponsorship is money in (advertiser
 
 Two build traps from the same evening are in `social_media_and_marketing.md`: padding on a `.slide` shrinks every `cqw`
 unit inside it, and `render_slides.py` names files from card labels, so a relabelled card leaves its old PNG behind.
+
+## 2026-11-02: a tide table that was right in one column and wrong in the other
+
+Alexandra said the Resources tide table didn't look right and asked for proof. NOAA's predictions were downloaded again
+and laid beside `tides.json` and the live page. Every time and every high/low matched, but the heights didn't: the
+generator had rounded NOAA's three decimals to one before saving, and the page then added the adjustment and rounded
+again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1.65 ft it moved 19 of 38 cells by
+0.1 ft, and one 7.0 ft flood high showed as an unshaded 6.9. **Store the source's full precision and round once, at
+display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
+which made the fix easy to trust.

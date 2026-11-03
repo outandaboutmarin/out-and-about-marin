@@ -1037,7 +1037,7 @@ files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and wo
 `C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
 record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
 
-## Where to pick up (2026-10-29)
+## Where to pick up (2026-11-03)
 
 The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH). In order:
 
@@ -1050,9 +1050,12 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
    folder before re-rendering (the renderer names files from card labels). First confirm the Sat Oct 31 and Sun Nov 1 posts
    went live, then delete repo `ig/week_of_oct29/`, `ig/halloween_oct30/` and the older `ig/week_of_oct8/`, `ig/week_of_oct15/`,
    `ig/week_of_oct22/`, `ig/king_tide_oct25/` once their posts are confirmed (`ig/README.md`).
-1b. **SMMC $250 post (item 79):** waiting on SMMC's reply to Alexandra's Oct 29 email (collaborator tag, Story link sticker,
-   payment; she wants Thu Dec 3, around noon). **The short link `smmc/index.html` (outandaboutmarin.com/smmc) is untracked in
-   the repo on purpose: commit and push it only when finalizing**, and never sweep it into an unrelated commit.
+1a. **Tide flooding post (item 15):** scheduled for Tue Nov 3, 5 PM (Metricool 415760200). Confirm it went live, then
+   delete repo `ig/tide_nov4/`. Flood Watch on Resources shows the same slides and hides itself after Nov 11.
+1b. **SMMC $250 post (item 79):** SMMC confirmed **Thu Dec 3, 5:00 PM**, the collaborator tag and a Story link sticker.
+   Short link outandaboutmarin.com/smmc is **live** (7614402). Final graphic, caption, mockup and email are in
+   `OAA marketing\SMMC Add\SMMC social post\final_for_smmc_dec3\`; Alexandra sends them (QR not yet phone-scanned; how
+   to pay still open).
 2. **Kitsch + Sync (item 21):** only a brand colour (if they want one) and whether their events page becomes a sweep
    source are still open; the Featured ad ends Jan 21, 2027 (renew or let it lapse).
 3. **Next Marin weekly sweep** (`sources/marin.md`, 50 sources). The Oct 29 sweep covered Oct 29 to Dec 15; Napa's covered
@@ -1061,6 +1064,21 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 5. **Telluride (items 65, 66, 72):** Lee Shea's setup and first partner sweep; the five library questions 66a-66e.
 6. **Sponsor prospects:** Osher Marin JCC and The Cave (mockups ready); FIT4MOM still owes the direct Glofox link.
 7. Items 71 and 75 closed 2026-10-24 (old folders deleted; Context Transfer skill uploaded under Customize → Skills and working in regular chats). Say "context transfer" in any chat or Code session to hand off.
+
+## What changed 2026-11-02/03, in one pass
+
+- **Tide table audit (Resources).** NOAA's predictions were re-downloaded and compared cell by cell: times and order
+  matched, but `tides.json` stored heights pre-rounded to 0.1 ft, so adding +1.65 ft put 19 of 38 Lucky Drive cells
+  0.1 ft off. Fixed: `generate_tides.py` keeps NOAA's 3 decimals (tides.json regenerated) and the page rounds with
+  `_tideShown()` in whole thousandths, half up. Checked against exact arithmetic on all 11,284 tides for 2026-27.
+- **Adjustments now per station** (`TIDE_ADJUST_BY_STATION`): Tam Junction +1.80 ft, Corte Madera / Lucky Drive +2.20 ft,
+  Hwy 37 and Bolinas +1.50 (`TIDE_ADJUST_FT`). Footnote under the table says so in both languages. Red shading still
+  starts at 7.0 ft shown. Commits 0e2548e, d243499, abba742.
+- **Tide flooding Instagram post** "The tides are back!" (Wed Nov 4 to 11, six slides) scheduled Tue Nov 3, 5 PM
+  (415760200); details and the slide method (cutoffs 7.0 / 7.3 ft, closures +90 min at the end, footnote) are in
+  `social_media_and_marketing.md`, "Tide flooding post, Nov 3 2026". Flood Watch on Resources reuses four of the slides
+  through Nov 11 (ebe3b64).
+- **SMMC (item 79):** short link `smmc/index.html` committed and live (7614402); Dec 3, 5 PM confirmed.
 
 ## What changed 2026-10-28 to 2026-10-31 (phone sessions), in one pass
 
