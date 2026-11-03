@@ -1,24 +1,24 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-11-02
-Time: 21:59:09
+Date: 2026-11-03
+Time: 02:09:03
 
-Total events in events.json: 582
-Active events: 528
+Total events in events.json: 577
+Active events: 524
 Temp. closed: 0
 
 Events by type:
-  Community Event: 115
+  Community Event: 114
   Farmers Market: 16
-  Festival: 18
+  Festival: 17
   Fitness: 19
   Grown-Ups Only!: 70
-  Kids Programs: 115
+  Kids Programs: 114
   Library: 149
-  Music and Movies: 80
+  Music and Movies: 78
 
 Events by town:
   Belvedere: 2
-  Bolinas: 7
+  Bolinas: 6
   Calistoga: 40
   Corte Madera: 45
   Dolores: 10
@@ -28,7 +28,7 @@ Events by town:
   Larkspur: 23
   Marin City: 8
   Marin County: 1
-  Mill Valley: 59
+  Mill Valley: 57
   Montrose: 19
   Muir Beach: 6
   Napa: 8
@@ -45,7 +45,7 @@ Events by town:
   San Rafael: 70
   Sausalito: 26
   St. Helena: 15
-  Telluride: 46
+  Telluride: 44
   Tiburon: 39
   Tomales: 1
   Virtual: 5
