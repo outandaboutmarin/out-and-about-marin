@@ -2675,14 +2675,15 @@ function mapDbUser(dbUser) {
     <div class="profile-header-sub" id="resourcesHeaderSub">Handy stuff for Marin parents</div>
   </div>
   <div class="profile-body">
-    <div class="about-section" style="margin-bottom:0.75rem" id="floodWatch" data-until="2026-10-30">
+    <div class="about-section" style="margin-bottom:0.75rem" id="floodWatch" data-until="2026-11-11">
       <div class="about-title">⚠️ <span data-es="Alerta de inundaciones de esta semana... ¡desliza antes de manejar!">Flood Watch Alert for this week... swipe before you drive!</span></div>
       <div class="flood-strip" id="floodStrip">
-        <img src="assets/flood/king_tide_oct25_1.jpg" alt="Flood alert: king tides are back in Marin, Sun Oct 25 to Fri Oct 30" loading="lazy">
-        <img src="assets/flood/king_tide_oct25_2.jpg" alt="Manzanita (Shoreline Hwy at Hwy 101, Mill Valley): estimated closure times for each day, Oct 25 to 30" loading="lazy">
-        <img src="assets/flood/king_tide_oct25_3.jpg" alt="Lucky Drive (at Hwy 101, Larkspur): estimated closure times for each day, Oct 25 to 30" loading="lazy">
+        <img src="assets/flood/tide_nov4_1.jpg" alt="Flood alert: the tides are back. High tides flood Manzanita and Lucky Drive, Wed Nov 4 to Wed Nov 11" loading="lazy">
+        <img src="assets/flood/tide_nov4_2.jpg" alt="Manzanita (Shoreline Hwy at Hwy 101, Mill Valley): estimated closure times for each day, Nov 4 to 11" loading="lazy">
+        <img src="assets/flood/tide_nov4_3.jpg" alt="Lucky Drive (at Hwy 101, Larkspur): estimated closure times for each day, Nov 4 to 11" loading="lazy">
+        <img src="assets/flood/tide_nov4_4.jpg" alt="Self-serve flood resources: Weather, Event, Tide (WET) app at weathereventtide.com, 101N Manzanita Exit Webcam, King Tide Alert" loading="lazy">
       </div>
-      <div class="flood-dots" id="floodDots"><i class="on"></i><i></i><i></i></div>
+      <div class="flood-dots" id="floodDots"><i class="on"></i><i></i><i></i><i></i></div>
     </div>
     <script>
     (function () {
@@ -6416,7 +6417,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-11-02.7';
+const APP_BUILD = '2026-11-03.1';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
