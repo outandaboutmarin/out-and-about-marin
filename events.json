@@ -18104,6 +18104,45 @@
       "registration": "Not required",
       "website": "",
       "internal_notes": "Added 2026-11-02 from @northbaychildrenscenter's own Instagram flyer ('Saturday November 7th', which fits 2026, not 2025), after Alexandra held it pending confirmation (Marin Mommies Nov 2026 list). Phone, Alexandra approved."
+    },
+    {
+      "id": 1864,
+      "organization": "Happy Talk Song & Sign",
+      "venue": "Kitsch + Sync",
+      "event_name": "Happy Talk Holiday Pop-Up @ Kitsch + Sync",
+      "event_name_es": "Clase navideña de Happy Talk en Kitsch + Sync",
+      "type": "Kids Programs",
+      "day": "Tuesday",
+      "time": "10:00 AM",
+      "time_of_day": "Morning",
+      "town": "Novato",
+      "address": "1757 Grant Ave, Novato, CA 94945",
+      "ages": "5 months - 4 yrs",
+      "cost": "Paid; advance registration required",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-12-08",
+      "expires": "2026-12-08",
+      "status": "Active",
+      "featured": false,
+      "description": "A holly, jolly seasonal class from Happy Talk Song & Sign, filled with singing and sensory play for little ones. Hosted by Kitsch + Sync.",
+      "description_es": "Una clase navideña llena de alegría de Happy Talk Song & Sign, con canciones y juego sensorial para los más pequeños. Organizada por Kitsch + Sync.",
+      "registration": "Required: book through Happy Talk's Instagram link in bio",
+      "website": "https://kitschandsync.com/",
+      "notes": "Advance registration required; book through Happy Talk's Instagram link in bio. Socks required in the play zone.",
+      "location_group": "Novato",
+      "partner": true,
+      "logo": "assets/ads/kitsch_sync_logo.png",
+      "contact": {
+        "name": "Kitsch + Sync",
+        "phone": "(415) 408-3158",
+        "instagram": "kitschandsync"
+      },
+      "socials": {
+        "instagram": "kitschandsync"
+      },
+      "internal_notes": "Added 2026-11-03 from the Happy Talk Song & Sign holiday pop-up flyer reposted by @kitschandsync. The Dec 1 Petaluma session on the same flyer is outside Marin and left out. Price not stated on the flyer. Partner badge per Alexandra 2026-11-03 (Kitsch + Sync sponsor)."
     }
   ]
 }
