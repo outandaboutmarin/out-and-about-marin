@@ -18172,6 +18172,35 @@
       "notes": "Paper collage only; please leave large objects and decoupage projects at home.",
       "location_group": "Mill Valley",
       "internal_notes": "Added 2026-11-03 at Alexandra's request from mysticmv.com product page (Square store API: date option 'Mon., 12/7 (5:30-7pm)'; donation dropdown $5-$60; ages 14+). Type Grown-Ups Only! per Alexandra. The Nov 2 date on the same page had passed."
+    },
+    {
+      "id": 1866,
+      "organization": "Love's Legacy Rescue with Shop Camino",
+      "venue": "Shop Camino",
+      "event_name": "Coffee, Pups & Birthday Love at Shop Camino",
+      "event_name_es": "Café, cachorros y cumpleaños en Shop Camino",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "10:00 AM – 3:00 PM",
+      "time_of_day": "Morning",
+      "town": "Mill Valley",
+      "address": "444 Miller Ave, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-07",
+      "expires": "2026-11-07",
+      "status": "Active",
+      "featured": false,
+      "description": "Meet adoptable dogs from Love's Legacy Rescue, including Mama Sierra and her puppies Denali, Zion and Sequoia, at Shop Camino's 1st anniversary party. Free coffee from 10 AM, art, design and puppy cuddles. Can't adopt? Fostering is free, with food, supplies and vet care covered.",
+      "description_es": "Conoce a los perros en adopción de Love's Legacy Rescue, entre ellos Mama Sierra y sus cachorros Denali, Zion y Sequoia, en la fiesta del primer aniversario de Shop Camino. Café gratis desde las 10 AM, arte, diseño y mimos con cachorros. ¿No puedes adoptar? Ser hogar temporal es gratis: cubren la comida, los suministros y el veterinario.",
+      "registration": "Not required",
+      "website": "https://www.loveslegacyrescue.com/adoptable-dogs",
+      "notes": "No tickets or RSVP needed. The store party continues until 5:30 PM with an afternoon wine tasting for adults.",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-11-03 at Alexandra's request from a Love's Legacy Rescue social post (screenshot). Time is the dog adoption window; the Shop Camino anniversary party runs to 5:30 PM. Indoor/outdoor not stated (Both assumed)."
     }
   ]
 }
