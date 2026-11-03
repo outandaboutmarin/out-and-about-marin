@@ -1922,6 +1922,15 @@ function mapDbUser(dbUser) {
   .flood-dots { display:flex; justify-content:center; gap:6px; margin-top:0.55rem; }
   .flood-dots i { width:7px; height:7px; border-radius:50%; background:#cdc9c1; display:block; }
   .flood-dots i.on { background:var(--navy); }
+  /* Computers: arrow buttons over the strip and clickable dots (phones keep swiping; arrows hidden on touch screens). */
+  .flood-wrap { position:relative; }
+  .flood-arrow { display:none; position:absolute; top:50%; transform:translateY(-50%); z-index:2; width:38px; height:38px;
+                 border-radius:50%; border:1px solid #DCE4F0; background:rgba(255,255,255,0.94); color:var(--navy);
+                 font-size:1.5rem; line-height:1; cursor:pointer; box-shadow:0 2px 8px rgba(13,27,62,0.18); padding:0 0 3px; }
+  .flood-arrow.prev { left:6px; } .flood-arrow.next { right:6px; }
+  .flood-arrow:disabled { opacity:0; pointer-events:none; }
+  .flood-arrow:focus-visible { outline:2px solid var(--navy); outline-offset:2px; }
+  @media (hover:hover) and (pointer:fine) { .flood-arrow { display:block; } .flood-dots i { cursor:pointer; } }
   .tide-wrap { overflow-x:auto; border:1px solid #E2E8F2; border-radius:var(--radius-sm); background:#fff; }
   .tide-grid { border-collapse:collapse; width:100%; table-layout:fixed; font-size:0.76rem; }
   .tide-grid th, .tide-grid td { padding:0.42rem 0.35rem; text-align:center; border-bottom:1px solid #EEF2F8; }
@@ -2677,11 +2686,15 @@ function mapDbUser(dbUser) {
   <div class="profile-body">
     <div class="about-section" style="margin-bottom:0.75rem" id="floodWatch" data-until="2026-11-11">
       <div class="about-title">⚠️ <span data-es="Alerta de inundaciones de esta semana... ¡desliza antes de manejar!">Flood Watch Alert for this week... swipe before you drive!</span></div>
+      <div class="flood-wrap">
+      <button class="flood-arrow prev" id="floodPrev" aria-label="Previous slide" disabled>&#8249;</button>
+      <button class="flood-arrow next" id="floodNext" aria-label="Next slide">&#8250;</button>
       <div class="flood-strip" id="floodStrip">
         <img src="assets/flood/tide_nov4_1.jpg" alt="Flood alert: the tides are back. High tides flood Manzanita and Lucky Drive, Wed Nov 4 to Wed Nov 11" loading="lazy">
         <img src="assets/flood/tide_nov4_2.jpg" alt="Manzanita (Shoreline Hwy at Hwy 101, Mill Valley): estimated closure times for each day, Nov 4 to 11" loading="lazy">
         <img src="assets/flood/tide_nov4_3.jpg" alt="Lucky Drive (at Hwy 101, Larkspur): estimated closure times for each day, Nov 4 to 11" loading="lazy">
         <img src="assets/flood/tide_nov4_4.jpg" alt="Self-serve flood resources: Weather, Event, Tide (WET) app at weathereventtide.com, 101N Manzanita Exit Webcam, King Tide Alert" loading="lazy">
+      </div>
       </div>
       <div class="flood-dots" id="floodDots"><i class="on"></i><i></i><i></i><i></i></div>
     </div>
@@ -2691,11 +2704,19 @@ function mapDbUser(dbUser) {
       var d = new Date(), today = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
       if (today > sec.getAttribute('data-until')) { sec.style.display = 'none'; return; }
       var strip = document.getElementById('floodStrip'), dots = document.querySelectorAll('#floodDots i');
-      strip.addEventListener('scroll', function () {
-        var imgs = strip.querySelectorAll('img'), mid = strip.scrollLeft + strip.clientWidth / 2, k = 0, best = 1e9;
+      var imgs = strip.querySelectorAll('img'), prev = document.getElementById('floodPrev'), next = document.getElementById('floodNext'), cur = 0;
+      function go(i) { i = Math.max(0, Math.min(imgs.length - 1, i)); var im = imgs[i];
+        strip.scrollTo({ left: im.offsetLeft - (strip.clientWidth - im.offsetWidth) / 2, behavior: 'smooth' }); }
+      function sync() {
+        var mid = strip.scrollLeft + strip.clientWidth / 2, k = 0, best = 1e9;
         imgs.forEach(function (im, i) { var c = im.offsetLeft + im.offsetWidth / 2, dd = Math.abs(c - mid); if (dd < best) { best = dd; k = i; } });
-        dots.forEach(function (dt, i) { dt.classList.toggle('on', i === k); });
-      }, { passive: true });
+        cur = k; dots.forEach(function (dt, i) { dt.classList.toggle('on', i === k); });
+        prev.disabled = k === 0; next.disabled = k === imgs.length - 1;
+      }
+      strip.addEventListener('scroll', sync, { passive: true });
+      prev.addEventListener('click', function () { go(cur - 1); });
+      next.addEventListener('click', function () { go(cur + 1); });
+      dots.forEach(function (dt, i) { dt.addEventListener('click', function () { go(i); }); });
     })();
     </script>
     <div class="about-section" style="margin-bottom:0.75rem" id="tidesSection">
@@ -6417,7 +6438,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-11-03.1';
+const APP_BUILD = '2026-11-03.2';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
