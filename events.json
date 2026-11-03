@@ -14799,7 +14799,7 @@
       "event_date": "",
       "expires": "2026-12-24",
       "cadence": "Weekly",
-      "notes": "Visits are free; photo packages are for sale. Longer hours from Dec 11 (see the website). skip: 2026-11-26",
+      "notes": "Hours: Mon-Thu 3-7 PM; Fri-Sat 11 AM-7 PM; Sun 11 AM-6 PM. Longer hours from Dec 11 (see the website). Visits are free; photo packages are for sale. skip: 2026-11-26",
       "indoor_outdoor": "Indoor",
       "active_sedentary": "Sedentary",
       "organization": "The Village at Corte Madera",
@@ -14811,15 +14811,15 @@
       "event_name_es": "Fotos con Santa en The Village",
       "type": "Community Event",
       "day": "Sunday/Monday/Tuesday/Wednesday/Thursday/Friday/Saturday",
-      "time": "Mon-Thu 3-7 PM; Fri-Sat 11 AM-7 PM; Sun 11 AM-6 PM",
+      "time": "Hours vary by day",
       "time_of_day": "Afternoon",
       "ages": "All ages",
-      "cost": "Free visit; photo packages extra",
+      "cost": "Free; photos extra",
       "registration": "Recommended: reserve a time online (Visit website); walk-ins welcome",
       "website": "https://www.villageatcortemadera.com/santaphotos",
       "description": "Share your Christmas wishes with Santa in his South Court workshop. Visits are always free and photo packages are available to buy. Book a time online to skip the line, or walk in.",
       "description_es": "Cuéntale a Santa tus deseos de Navidad en su taller del South Court. Las visitas siempre son gratis y hay paquetes de fotos a la venta. Reserva un horario en línea para evitar la fila, o llega sin cita.",
-      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. Hours Nov 20 - Dec 10 as in the time field; Dec 11 3-7; Dec 12-18 11-7; Dec 19-23 9-9 (Sun 10-8); Dec 24 9-6; closed Thanksgiving."
+      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. Hours Nov 20 - Dec 10 as in the time field; Dec 11 3-7; Dec 12-18 11-7; Dec 19-23 9-9 (Sun 10-8); Dec 24 9-6; closed Thanksgiving. 2026-11-03: time and cost shortened at Alexandra's request (the long strings squeezed the list card on the phone); the hours moved into public notes."
     },
     {
       "id": 1741,
