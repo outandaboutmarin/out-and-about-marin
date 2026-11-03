@@ -18143,6 +18143,35 @@
         "instagram": "kitschandsync"
       },
       "internal_notes": "Added 2026-11-03 from the Happy Talk Song & Sign holiday pop-up flyer reposted by @kitschandsync. The Dec 1 Petaluma session on the same flyer is outside Marin and left out. Price not stated on the flyer. Partner badge per Alexandra 2026-11-03 (Kitsch + Sync sponsor)."
+    },
+    {
+      "id": 1865,
+      "organization": "MYSTIC",
+      "venue": "MYSTIC B-SIDE Studio",
+      "event_name": "Collage Club at MYSTIC",
+      "event_name_es": "Club de collage en MYSTIC",
+      "type": "Grown-Ups Only!",
+      "day": "Monday",
+      "time": "5:30 PM – 7:00 PM",
+      "time_of_day": "Evening",
+      "town": "Mill Valley",
+      "address": "18 E. Blithedale Ave, Suite 12, Mill Valley, CA 94941",
+      "ages": "14+",
+      "cost": "$5–$60 donation",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-07",
+      "expires": "2026-12-07",
+      "status": "Active",
+      "featured": false,
+      "description": "A casual creative hang, not a class: cut paper, make collage and swap ideas with other makers. There is no instruction or set project. Come and go as you like, and stay 20 minutes or the whole time. Scissors, glue, magazines, paper and stickers are provided; bring a sketchbook or something small and flat to work on.",
+      "description_es": "Un encuentro creativo relajado, no una clase: recorta papel, haz collage e intercambia ideas con otras personas creativas. No hay instrucción ni proyecto asignado. Llega y vete cuando quieras, y quédate 20 minutos o todo el tiempo. Se proporcionan tijeras, pegamento, revistas, papel y calcomanías; trae un cuaderno de dibujo o algo pequeño y plano para trabajar.",
+      "registration": "Required: register online at mysticmv.com",
+      "website": "https://www.mysticmv.com/product/collageclub/AURSG73DDGSWJ62YEMMYFMXV",
+      "notes": "Paper collage only; please leave large objects and decoupage projects at home.",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-11-03 at Alexandra's request from mysticmv.com product page (Square store API: date option 'Mon., 12/7 (5:30-7pm)'; donation dropdown $5-$60; ages 14+). Type Grown-Ups Only! per Alexandra. The Nov 2 date on the same page had passed."
     }
   ]
 }
