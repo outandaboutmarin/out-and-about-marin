@@ -18201,6 +18201,35 @@
       "notes": "No tickets or RSVP needed. The store party continues until 5:30 PM with an afternoon wine tasting for adults.",
       "location_group": "Mill Valley",
       "internal_notes": "Added 2026-11-03 at Alexandra's request from a Love's Legacy Rescue social post (screenshot). Time is the dog adoption window; the Shop Camino anniversary party runs to 5:30 PM. Indoor/outdoor not stated (Both assumed)."
+    },
+    {
+      "id": 1867,
+      "organization": "City of Novato Parks & Recreation",
+      "venue": "Margaret Todd Senior Center",
+      "event_name": "Gingerbread Builds",
+      "event_name_es": "Construye tu casita de jengibre",
+      "type": "Kids Programs",
+      "day": "Saturday",
+      "time": "9:30 AM",
+      "time_of_day": "Morning",
+      "town": "Novato",
+      "address": "1560 Hill Rd, Novato, CA 94947",
+      "ages": "Families",
+      "cost": "Paid; registration required",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-12",
+      "expires": "2026-12-12",
+      "status": "Active",
+      "featured": false,
+      "description": "Grab your crew and build a gingerbread house with Novato Parks & Recreation, with holiday music, hot chocolate and coffee. The 1:00 PM session is a new inclusive session.",
+      "description_es": "Reúne a tu grupo y construye una casita de jengibre con Novato Parks & Recreation, con música navideña, chocolate caliente y café. La sesión de la 1:00 PM es una nueva sesión inclusiva.",
+      "registration": "Required; registration opens November 3",
+      "website": "https://www.instagram.com/novatofun/",
+      "notes": "Three sessions: 9:30 AM, 11:00 AM and 1:00 PM (new inclusive session). Register in advance.",
+      "location_group": "Novato",
+      "internal_notes": "Added 2026-11-03 at Alexandra's request from @novatofun Instagram flyer (City of Novato Parks & Recreation). One listing for all three sessions per Alexandra. Price, ages and session length not on the flyer; novato.gov blocked (Akamai 403) so the registration link was not found. Address of Margaret Todd Senior Center from prior knowledge, not the flyer: verify."
     }
   ]
 }
