@@ -2709,7 +2709,7 @@ function mapDbUser(dbUser) {
           <button class="tide-today-btn" id="tideTodayBtn" onclick="tideToday()" style="display:none">Today</button>
         </div>
         <div class="tide-wrap"><table class="tide-grid"><thead id="tideHead"></thead><tbody id="tideBody"><tr><td class="tide-loading">Loading tides…</td></tr></tbody></table></div>
-        <p style="margin:0.45rem 0 0;font-size:0.66rem;color:#6b7791;line-height:1.4"><span data-es="Se han sumado 1.50 ft (1.65 ft en Corte Madera / Lucky Drive) a los valores estándar de la tabla de mareas para tener en cuenta la onda Kelvin de El Niño y el aumento del nivel del mar.">1.50 ft (1.65 ft at Corte Madera / Lucky Drive) has been added to the standard tide table values, to account for the El Niño Kelvin Wave and sea level rise.</span></p>
+        <p style="margin:0.45rem 0 0;font-size:0.66rem;color:#6b7791;line-height:1.4"><span data-es="Se han sumado 1.80 ft en Tam Junction, 2.20 ft en Corte Madera / Lucky Drive y 1.50 ft en las demás estaciones a los valores estándar de la tabla de mareas para tener en cuenta la onda Kelvin de El Niño y el aumento del nivel del mar.">1.80 ft at Tam Junction, 2.20 ft at Corte Madera / Lucky Drive and 1.50 ft elsewhere have been added to the standard tide table values, to account for the El Niño Kelvin Wave and sea level rise.</span></p>
         <p id="tideSampleNote" style="display:none;margin:0.5rem 0 0;font-size:0.7rem;color:#b08900;font-style:italic"></p>
         <!-- Self Serve Resources (Alexandra 2026-10-25, open item 78): live flood checks people can open themselves -->
         <p style="font-weight:600;color:var(--navy);margin-top:0.75rem;margin-bottom:0.2rem"><span data-es="Recursos para consultar por tu cuenta">Self Serve Resources</span></p>
@@ -3339,13 +3339,16 @@ function _tideFmt12(hhmm){ var p = hhmm.split(':'), h = +p[0]; var ap = h < 12 ?
 // Added to every NOAA height before display (Alexandra, 2026-10-09): accounts for the El Niño
 // Kelvin wave and sea-level rise. tides.json keeps the raw NOAA values, so regenerating it is safe.
 const TIDE_ADJUST_FT = 1.50; // 1.07 until 2026-10-23, 1.25 until 2026-11-02, then 1.35 and 1.40 on 2026-11-02 (Alexandra)
-// Per-station override (Alexandra 2026-11-02): Corte Madera Creek sits downstream of Lucky Drive, so it gets more.
-const TIDE_ADJUST_BY_STATION = { corte: 1.65 };
+// Per-station overrides (Alexandra 2026-11-02): Tam Junction +1.80, Corte Madera / Lucky Drive +2.20 (was +1.65, then +2.00);
+// Hwy 37 and Bolinas keep TIDE_ADJUST_FT.
+const TIDE_ADJUST_BY_STATION = { tam: 1.80, corte: 2.20 };
 function _tideHt(slot, key){ var a = TIDE_ADJUST_BY_STATION[key]; return Number(slot[2]) + (a == null ? TIDE_ADJUST_FT : a); }
+// Height as shown, to 0.1 ft, halves rounded up. Works in whole thousandths so float noise (6.549999…) can't flip a digit.
+function _tideShown(slot, key){ return Math.round(Math.round(_tideHt(slot, key) * 1000) / 100) / 10; }
 function _tideCell(slot, nextDay, key){
   if (!slot) return '<span style="color:#c2cad8">—</span>';
   var nd = nextDay ? '<div class="tide-tm">'+(currentLang==='es'?'(día siguiente)':'(next day)')+'</div>' : '';
-  return '<div class="tide-ht">'+_tideHt(slot, key).toFixed(1)+' ft</div><div class="tide-tm">'+_tideFmt12(slot[0])+'</div>'+nd;
+  return '<div class="tide-ht">'+_tideShown(slot, key).toFixed(1)+' ft</div><div class="tide-tm">'+_tideFmt12(slot[0])+'</div>'+nd;
 }
 // Rows line the stations up BY TIME, not by order within the day (2026-10-23, Alexandra). Upstream
 // stations (Corte Madera, Hwy 37) peak 25-90 min after Tam Junction, so a late-night tide can fall
@@ -3404,7 +3407,7 @@ function renderTides(){
     body += '<tr><td class="trl '+rdef.cls+'">'+(rdef.cls==='hi'?'▲ ':'▼ ')+rdef.lab+'</td>';
     sts.forEach(function(st, si){
       var it = rdef.g ? rdef.g.m[si] : null, slot = it ? it.slot : null;
-      var flood = rdef.hi && slot && Number(_tideHt(slot, st.key).toFixed(1)) >= 7.0; // pink at 7.0 ft shown and above (Alexandra 2026-11-02; was 6.9 from 2026-10-23)
+      var flood = rdef.hi && slot && _tideShown(slot, st.key) >= 7.0; // pink at 7.0 ft shown and above (Alexandra 2026-11-02; was 6.9 from 2026-10-23)
       body += '<td'+(flood?' class="flood"':'')+'>'+_tideCell(slot, it && it.off === 1, st.key)+'</td>';
     });
     body += '</tr>';
@@ -6413,7 +6416,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-11-02.4';
+const APP_BUILD = '2026-11-02.7';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();

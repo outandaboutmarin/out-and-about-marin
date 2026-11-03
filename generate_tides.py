@@ -72,7 +72,8 @@ def group(preds):
     byday = {}
     for p in preds:
         date, tm = p["t"].split(" ")
-        byday.setdefault(date, []).append([tm, p["type"], round(float(p["v"]), 1)])
+        byday.setdefault(date, []).append([tm, p["type"], round(float(p["v"]), 3)])  # keep NOAA's 3 decimals: rounding here, then adding
+        # the page's +1.65 ft (Lucky Drive), put 19 of 38 cells 0.1 ft off (audit 2026-11-02)
     return byday
 
 
