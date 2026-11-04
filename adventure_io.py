@@ -117,6 +117,10 @@ OVERRIDES = {
         days=ALL_DAYS,
         hours="Mon to Fri 8am to 5pm; Sat and Sun hours are posted each week on the website",
         hoursEs="Lun a vie 8 a. m. a 5 p. m.; el horario de sáb y dom se publica cada semana en su sitio web"),
+    # Added 2026-11-03 (Alexandra); hours from the Corps of Engineers page that day.
+    "bay-model-visitor-center": dict(
+        days=["Tue", "Wed", "Thu", "Fri", "Sat"],
+        hoursEs="Mar a vie 9 a. m. a 3 p. m.; sáb 9 a. m. a 4 p. m.; cerrado dom, lun y feriados federales"),
     # Mt. Tam Adventures' page: fall/winter open play is Mondays from Nov 2; the
     # Saturday 9:30 to 11:30 slot is its summer schedule.
     "playland-mt-tam-adventures-and-city-of-sausalito": dict(
@@ -201,6 +205,7 @@ AGES_ES = {
     "children-s-museum-of-sonoma-county": "10 años o menos",
     "snoopy-s-home-ice": "18 meses a 5 años, con un adulto",
     "sonoma-traintown-railroad": "Todas las edades",
+    "bay-model-visitor-center": "Todas las edades",
 }
 
 

@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25",
+  "last_updated": "2026-11-03",
   "places": [
     {
       "id": "the-social-klub",
@@ -388,6 +388,36 @@
       "description": "A Sunday morning open studio at Mill Valley's children's art and creative space. Kids play freely in the indoor studio and outdoor garden and dive into open-ended art, with a new creative theme each week.",
       "descriptionEs": "Un estudio abierto los domingos por la mañana en el espacio de arte y creatividad para niños de Mill Valley. Los niños juegan libremente en el estudio y en el jardín, y exploran el arte de forma libre, con un tema creativo nuevo cada semana.",
       "lastVerified": "2026-10-24"
+    },
+    {
+      "id": "bay-model-visitor-center",
+      "name": "Bay Model Visitor Center",
+      "program": "Museum",
+      "category": "Museum/Attraction",
+      "categoryEs": "Museo/Atracción",
+      "town": "Sausalito",
+      "locationGroup": "Marin/Sausalito",
+      "region": "Marin",
+      "days": [
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "hours": "Tue to Fri 9am to 3pm; Sat 9am to 4pm; closed Sun, Mon and federal holidays",
+      "hoursEs": "Mar a vie 9 a. m. a 3 p. m.; sáb 9 a. m. a 4 p. m.; cerrado dom, lun y feriados federales",
+      "address": "2100 Bridgeway, Sausalito, CA 94965",
+      "ages": "All ages",
+      "agesEs": "Todas las edades",
+      "cost": "Free (donations welcome)",
+      "booking": "Drop-in; group tours by arrangement (call the manager)",
+      "indoorOutdoor": "Indoor",
+      "phone": "(415) 289-3007",
+      "website": "https://www.spn.usace.army.mil/Missions/Recreation/Bay-Model-Visitor-Center/",
+      "description": "A working hydraulic model of San Francisco Bay and the Sacramento-San Joaquin River Delta, the only one of its kind in the world, run by the U.S. Army Corps of Engineers. Kids can see the whole bay-delta system at a glance, and admission is free.",
+      "descriptionEs": "Un modelo hidráulico en funcionamiento de la bahía de San Francisco y el delta de los ríos Sacramento y San Joaquín, el único de su tipo en el mundo, administrado por el Cuerpo de Ingenieros del Ejército de EE. UU. Los niños pueden ver todo el sistema de la bahía y el delta de un vistazo, y la entrada es gratuita.",
+      "lastVerified": "2026-11-03"
     },
     {
       "id": "children-s-museum-of-sonoma-county",
