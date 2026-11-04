@@ -17994,6 +17994,35 @@
       "description": "A drop-in meetup for stay-at-home moms and their babies and toddlers, inside the gated playground at Niven Park. Hang out while the littles play and explore; everyone tag-teams keeping an eye on the kids so moms get time to chat.",
       "description_es": "Un encuentro informal para mamás que se quedan en casa con sus bebés y niños pequeños, dentro del área de juegos cercada del Niven Park. Pasa el rato mientras los pequeños juegan y exploran; todas se turnan para cuidar a los niños y así las mamás pueden conversar.",
       "internal_notes": "Added 2026-11-03 at Alexandra's request from pasted text of the group's November post (SAHM Mama & Baby Hangs). Organizer account and website not given. Nov 19 Sip & Swap left out (location TBD); no hang Nov 26. Niven Park street address not confirmed."
+    },
+    {
+      "id": 1870,
+      "organization": "ArtBridge with CoachArt",
+      "venue": "Mill Valley Community Center",
+      "event_name": "Free Art Lessons for Kids: ArtBridge",
+      "event_name_es": "Clases de arte gratis para niños: ArtBridge",
+      "type": "Kids Programs",
+      "day": "Saturday",
+      "time": "12:00 PM – 1:30 PM",
+      "time_of_day": "Afternoon",
+      "town": "Mill Valley",
+      "address": "180 Camino Alto, Mill Valley, CA 94941",
+      "ages": "6-14 yrs",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-07",
+      "expires": "2026-11-07",
+      "status": "Active",
+      "featured": false,
+      "description": "Free, creative art lessons for local kids, started and led by local high school students with CoachArt. This session includes collage making, creative writing and storytelling, and jewelry making.",
+      "description_es": "Clases de arte gratis y creativas para niños de la zona, creadas y dirigidas por estudiantes de secundaria locales junto con CoachArt. Esta sesión incluye collage, escritura creativa y narración de cuentos, y elaboración de joyas.",
+      "registration": "Required; space is limited (sign up on the online form)",
+      "website": "https://docs.google.com/forms/d/e/1FAIpQLSeS2DaqsqU2bZoI4YruONUxaokRd3e9gyvWWAtiTCEw3nfqvA/viewform",
+      "notes": "Ages vary by activity. Space is limited; sign up in advance.",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-11-04 at Alexandra's request from a community post (screenshot) announcing ArtBridge's second session; sign-up link bit.ly/4jY0o1P resolves to the Google Form used as website. First session Oct 17 was id 1652 (expired)."
     }
   ]
 }
