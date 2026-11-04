@@ -2811,7 +2811,7 @@ function mapDbUser(dbUser) {
       </div>
     </div>
     <div class="about-section" style="margin-bottom:0.75rem">
-      <div class="about-title" data-es="🧭 Elige tu propia aventura">🧭 Choose your own adventure</div>
+      <div class="about-title" data-es="🧭 ¿Demasiado mojado para el parque? ¿Demasiado salvaje para la sala? Elige tu propia aventura... antes de que tu peque elija una por ti :-/">🧭 Too wet for the park? Too wild for the living room? Choose your own adventure...before your kiddo chooses one for you :-/</div>
       <div class="about-text">
         <p style="margin:0 0 0.5rem;line-height:1.5" data-es="Parques infantiles cubiertos, gimnasios abiertos y museos en todo Marin, con días y horarios. Ordena o filtra por cualquier columna.">Indoor playgrounds, open gyms and museums across Marin, with days and hours. Sort or filter by any column.</p>
         <p style="margin:0;line-height:1.5"><a href="javascript:void(0)" onclick="showScreen('adventure')" style="color:var(--navy);text-decoration:underline;font-weight:600" data-es="Abrir Elige tu propia aventura →">Open Choose your own adventure →</a></p>
@@ -6438,7 +6438,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-11-03.2';
+const APP_BUILD = '2026-11-03.3';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
