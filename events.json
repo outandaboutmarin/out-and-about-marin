@@ -18023,6 +18023,35 @@
       "notes": "Ages vary by activity. Space is limited; sign up in advance.",
       "location_group": "Mill Valley",
       "internal_notes": "Added 2026-11-04 at Alexandra's request from a community post (screenshot) announcing ArtBridge's second session; sign-up link bit.ly/4jY0o1P resolves to the Google Form used as website. First session Oct 17 was id 1652 (expired)."
+    },
+    {
+      "id": 1871,
+      "organization": "Strawberry Recreation District with Upside Down Yoga Kids",
+      "venue": "Strawberry Recreation District — First Floor Room",
+      "event_name": "Movement Lab: Yoga, Stories & Crafts",
+      "event_name_es": "Movement Lab: yoga, cuentos y manualidades",
+      "type": "Kids Programs",
+      "day": "Saturday",
+      "time": "10:00 AM – 11:30 AM",
+      "time_of_day": "Morning",
+      "town": "Mill Valley",
+      "address": "118 E. Strawberry Drive, Mill Valley, CA 94941",
+      "ages": "3-6 yrs",
+      "cost": "Paid; registration required",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-14",
+      "expires": "2026-11-14",
+      "status": "Active",
+      "featured": false,
+      "description": "Join Patricia from Upside Down Yoga Kids for a 30/30/30 class: 30 minutes of yoga and movement, 30 minutes of storytelling and 30 minutes of hands-on crafts, all away from screens.",
+      "description_es": "Acompaña a Patricia de Upside Down Yoga Kids en una clase 30/30/30: 30 minutos de yoga y movimiento, 30 minutos de cuentos y 30 minutos de manualidades, todo lejos de las pantallas.",
+      "registration": "Required: register with Strawberry Recreation District",
+      "website": "https://strawberry.marin.org/",
+      "notes": "Caregivers are welcome, but drop-off is available.",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-11-04 at Alexandra's request from a Strawberry Recreation District Nextdoor post (screenshot). Not yet on strawberry.marin.org calendar or classes page (checked 2026-11-04); price and direct registration link unknown."
     }
   ]
 }
