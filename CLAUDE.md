@@ -1065,6 +1065,17 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 6. **Sponsor prospects:** Osher Marin JCC and The Cave (mockups ready); FIT4MOM still owes the direct Glofox link.
 7. Items 71 and 75 closed 2026-10-24 (old folders deleted; Context Transfer skill uploaded under Customize → Skills and working in regular chats). Say "context transfer" in any chat or Code session to hand off.
 
+## What changed 2026-11-04 (evening), in one pass
+
+- **Instagram week of Nov 5 scheduled in Metricool** (Template A, `build_week_of_nov5.py`): Thu Nov 5 5 PM (417346028), Sat Nov 7
+  7 AM (417346062), Sun Nov 8 5 PM (417346082); images staged at `ig/week_of_nov5/` (commit 0eee3b8), delete after Nov 8. Details in
+  `social_media_and_marketing.md`, "The week of Nov 5".
+- **New sponsor: Metta Mama Yoga Studio**, 3-month Featured + 8 weekly partner classes. Mockups approved and with Metta; nothing in
+  `ads.json` or `events.json` yet. Waiting on Metta's feedback and start date (open item 21 has the full spec: times, $35/class,
+  code `kidsyoga50`, @mettamamamarin, links to mettayogastudio.com/mama).
+- **Open items:** 78 is now the flood Instagram template (sources copied to `OAA marketing\Instagram templates\Tide flooding	emplates\`);
+  79 SMMC paid and submitted, posts run Dec 3; 59 gained to do 3, a Monday GA4 email (81 merged in).
+
 ## What changed 2026-11-04 (Marin sweep), in one pass
 
 - **Sweep Nov 5 to Jan 10** (`daily_sweep_2026-11-04_review.xlsx`): 48 of 50 sources read; #9 Enjoy Mill Valley (Cloudflare check)
