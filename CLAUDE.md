@@ -1058,12 +1058,26 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
    to pay still open).
 2. **Kitsch + Sync (item 21):** only a brand colour (if they want one) and whether their events page becomes a sweep
    source are still open; the Featured ad ends Jan 21, 2027 (renew or let it lapse).
-3. **Next Marin weekly sweep** (`sources/marin.md`, 50 sources). The Oct 29 sweep covered Oct 29 to Dec 15; Napa's covered
-   Oct 30 to Dec 15.
+3. **Next Marin weekly sweep** (`sources/marin.md`, 50 sources). The Nov 4 sweep covered **Nov 5 to Jan 10** (processed, 37f27e6);
+   recheck the winter-break gaps (item 58zzb) and pick up the Learning Bus December PDF. Napa's last covered Oct 30 to Dec 15.
 4. **Item 58:** zr (Diwali at Mill Valley Library) and zs (Mill Valley ShaBabies venue, ask Rachel Weiss), plus the rest.
 5. **Telluride (items 65, 66, 72):** Lee Shea's setup and first partner sweep; the five library questions 66a-66e.
 6. **Sponsor prospects:** Osher Marin JCC and The Cave (mockups ready); FIT4MOM still owes the direct Glofox link.
 7. Items 71 and 75 closed 2026-10-24 (old folders deleted; Context Transfer skill uploaded under Customize → Skills and working in regular chats). Say "context transfer" in any chat or Code session to hand off.
+
+## What changed 2026-11-04 (Marin sweep), in one pass
+
+- **Sweep Nov 5 to Jan 10** (`daily_sweep_2026-11-04_review.xlsx`): 48 of 50 sources read; #9 Enjoy Mill Valley (Cloudflare check)
+  and #47 Barnes & Noble (page renders only its shell) could not be read: open item 83 has alternatives. 83 candidate rows, 67
+  approved; **70 events added, ids 1873-1942** (incl. the November Learning Bus, Holiday Light Spectacular film nights, Friends of
+  China Camp walks, Marin Humane adoption Saturdays) and **18 record fixes** (ALERTs, skips, 985 to 3rd Friday, 1410 Puzzle Swap to
+  Monthly, Carol-oke and French Market times). Commit 37f27e6.
+- **New raw routes** written into `sources/marin.md`: LibCal JSON per day (#37, #41), tribe/events feeds (#4 Strawberry, #6 JCC),
+  Ronnie's Awesome List JSON (#11), OneTam paged to the end (#13).
+- **Rule 9a bit again:** "For 3rd to 5th graders" in a Monthly note made the parser read 2nd/3rd/5th Fridays (id 1892); caught by
+  checking the parsed rule before committing. Keep ordinal-looking words out of Monthly notes.
+- Health 2026-11-04: **634 events, max id 1942**; notes-lint and bilingual-lint clean; self-test 92/92; duplicate scan 8 findings,
+  all explained (the 5 known, 1416/1941 and 1417/1942 New-Year split pairs, 1932 vs 3 two programmes in one BelTib slot).
 
 ## What changed 2026-11-02 to 11-04, in one pass
 
