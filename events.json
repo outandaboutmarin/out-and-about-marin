@@ -19584,7 +19584,7 @@
     {
       "season_start": "01/05",
       "season_end": "01/31",
-      "status": "Active",
+      "status": "Seasonal - Inactive",
       "notes": "",
       "cadence": "Seasonal",
       "event_date": "",
@@ -19614,7 +19614,7 @@
     {
       "season_start": "01/06",
       "season_end": "01/31",
-      "status": "Active",
+      "status": "Seasonal - Inactive",
       "notes": "",
       "cadence": "Seasonal",
       "event_date": "",
