@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04",
+  "last_updated": "2026-11-05",
   "events": [
     {
       "id": 1,
@@ -19640,6 +19640,35 @@
       "website": "https://millvalleylibrary.libcal.com/calendar",
       "id": 1942,
       "internal_notes": "Added 2026-11-04 (sweep question 17): January continuation of id 1417, whose season cannot cross New Year (rule 16). Extend the end date when the library posts February."
+    },
+    {
+      "id": 1943,
+      "organization": "Chronos Academy",
+      "venue": "Chronos Academy",
+      "event_name": "World's Faire at Chronos Academy",
+      "event_name_es": "Feria Mundial en Chronos Academy",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "2:00 PM – 4:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Larkspur",
+      "address": "110 Magnolia Ave, Larkspur, CA 94939",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-07",
+      "expires": "2026-11-07",
+      "status": "Active",
+      "featured": false,
+      "description": "A community celebration of culture, food and customs from around the world, led by Chronos Academy students. Stamp your passport, taste the food, learn a dance, make a world clock and win prizes.",
+      "description_es": "Una celebración comunitaria de la cultura, la comida y las costumbres de todo el mundo, guiada por los estudiantes de Chronos Academy. Sella tu pasaporte, prueba la comida, aprende un baile, haz un reloj mundial y gana premios.",
+      "registration": "RSVP on the school's website",
+      "website": "https://www.chronos.academy/worlds-faire",
+      "notes": "Please RSVP on the school's website.",
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "internal_notes": "Added 2026-11-05 at Alexandra's request from a Southern Marin Mothers' Club announcement (screenshot); confirmed on chronos.academy/worlds-faire (RSVP form, no price listed, so Free assumed). A school community/recruiting event."
     }
   ]
 }
