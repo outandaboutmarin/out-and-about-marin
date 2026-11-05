@@ -19669,6 +19669,39 @@
       "notes": "Please RSVP on the school's website.",
       "location_group": "Larkspur/Greenbrae/Kentfield",
       "internal_notes": "Added 2026-11-05 at Alexandra's request from a Southern Marin Mothers' Club announcement (screenshot); confirmed on chronos.academy/worlds-faire (RSVP form, no price listed, so Free assumed). A school community/recruiting event."
+    },
+    {
+      "id": 1944,
+      "organization": "Bolinas Community Center",
+      "venue": "Bolinas Community Center",
+      "event_name": "Thanksgiving Potluck Feast at the Bolinas Community Center",
+      "event_name_es": "Potluck de Acción de Gracias en el Centro Comunitario de Bolinas",
+      "type": "Community Event",
+      "day": "Thursday",
+      "time": "3:00 PM – 5:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Bolinas",
+      "address": "14 Wharf Rd, Bolinas, CA 94924",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-26",
+      "expires": "2026-11-26",
+      "status": "Active",
+      "featured": false,
+      "description": "The Bolinas Community Center hosts a community Thanksgiving potluck feast, with dinner served from 3 to 5 PM.",
+      "description_es": "El Centro Comunitario de Bolinas organiza una fiesta comunitaria de Acción de Gracias tipo potluck, con la cena servida de 3 a 5 PM.",
+      "registration": "Not required",
+      "website": "https://www.instagram.com/thebolinascommunitycenter/",
+      "notes": "It's a potluck, so bring a dish to share if you can.",
+      "location_group": "West Marin",
+      "contact": {
+        "name": "Bolinas Community Center",
+        "phone": "415-868-2128"
+      },
+      "internal_notes": "Added 2026-11-05 at Alexandra's request from @thebolinascommunitycenter Instagram post (flyer + bilingual caption). Cost Free assumed (community potluck; not stated)."
     }
   ]
 }
