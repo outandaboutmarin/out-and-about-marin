@@ -1037,7 +1037,7 @@ files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and wo
 `C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
 record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
 
-## Where to pick up (2026-11-03)
+## Where to pick up (2026-11-04)
 
 The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH). In order:
 
@@ -1050,8 +1050,8 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
    folder before re-rendering (the renderer names files from card labels). First confirm the Sat Oct 31 and Sun Nov 1 posts
    went live, then delete repo `ig/week_of_oct29/`, `ig/halloween_oct30/` and the older `ig/week_of_oct8/`, `ig/week_of_oct15/`,
    `ig/week_of_oct22/`, `ig/king_tide_oct25/` once their posts are confirmed (`ig/README.md`).
-1a. **Tide flooding post (item 15):** scheduled for Tue Nov 3, 5 PM (Metricool 415760200). Confirm it went live, then
-   delete repo `ig/tide_nov4/`. Flood Watch on Resources shows the same slides and hides itself after Nov 11.
+1a. **Tide flooding post (item 15):** published Tue Nov 3, 5 PM (https://www.instagram.com/p/DfTO7QWighX/); `ig/tide_nov4/` deleted.
+   Flood Watch on Resources shows the same slides and hides itself after Nov 11.
 1b. **SMMC $250 post (item 79):** SMMC confirmed **Thu Dec 3, 5:00 PM**, the collaborator tag and a Story link sticker.
    Short link outandaboutmarin.com/smmc is **live** (7614402). Final graphic, caption, mockup and email are in
    `OAA marketing\SMMC Add\SMMC social post\final_for_smmc_dec3\`; Alexandra sends them (QR not yet phone-scanned; how
@@ -1065,7 +1065,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 6. **Sponsor prospects:** Osher Marin JCC and The Cave (mockups ready); FIT4MOM still owes the direct Glofox link.
 7. Items 71 and 75 closed 2026-10-24 (old folders deleted; Context Transfer skill uploaded under Customize → Skills and working in regular chats). Say "context transfer" in any chat or Code session to hand off.
 
-## What changed 2026-11-02/03, in one pass
+## What changed 2026-11-02 to 11-04, in one pass
 
 - **Tide table audit (Resources).** NOAA's predictions were re-downloaded and compared cell by cell: times and order
   matched, but `tides.json` stored heights pre-rounded to 0.1 ft, so adding +1.65 ft put 19 of 38 Lucky Drive cells
@@ -1078,7 +1078,17 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
   (415760200); details and the slide method (cutoffs 7.0 / 7.3 ft, closures +90 min at the end, footnote) are in
   `social_media_and_marketing.md`, "Tide flooding post, Nov 3 2026". Flood Watch on Resources reuses four of the slides
   through Nov 11 (ebe3b64).
-- **SMMC (item 79):** short link `smmc/index.html` committed and live (7614402); Dec 3, 5 PM confirmed.
+- **SMMC (item 79):** short link `smmc/index.html` committed and live (7614402); Dec 3, 5 PM confirmed with the collaborator
+  tag and a Story link sticker; final files (graphic, caption, email, `post_mockup_dec3.png`) in `final_for_smmc_dec3\`.
+- **Resources tab:** Flood Watch has arrow buttons and clickable dots on computers, hidden on touch screens (f392261); the
+  Choose your own adventure card title is now "Too wet for the park? Too wild for the living room? Choose your own
+  adventure...before your kiddo chooses one for you :-/" with a Spanish version (86d55b1).
+- **Choose your own adventure:** the Bay Model Visitor Center (Sausalito, free, Tue to Sat) added: spreadsheet row 18 plus
+  its `days`/`hoursEs`/`agesEs` in `adventure_io.py`; 23 places (68a3f3e). Its website blocks plain fetches (403); read
+  it in a browser.
+- **Phone sessions** (Nov 3-4) added 15 events, ids 1858-1872, straight to events.json; phone inbox empty.
+- Health 2026-11-04: 564 events, max id 1872; self-test 92/92; `check_docs.py` clean; duplicate scan 5 findings, all
+  known (1729 vs 286 among them).
 
 ## What changed 2026-10-28 to 2026-10-31 (phone sessions), in one pass
 
