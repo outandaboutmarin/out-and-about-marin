@@ -19464,6 +19464,35 @@
       "website": "https://www.sananselmorecreation.org",
       "notes": "Two seatings: 8:00 AM and 10:00 AM. Tickets go on sale Nov 18 at 10 AM.",
       "internal_notes": "Added 2026-11-06 at Alexandra's request from a @sananselmorec Instagram flyer. Price not yet published; update when tickets go on sale Nov 18."
+    },
+    {
+      "id": 1949,
+      "organization": "YES Foundation",
+      "venue": "Wade Thomas Elementary School",
+      "event_name": "San Anselmo Tutu Turkey Trot",
+      "event_name_es": "Tutu Turkey Trot de San Anselmo (carrera del pavo con tutú)",
+      "type": "Fitness",
+      "day": "Thursday",
+      "time": "8:30 AM – 9:30 AM",
+      "time_of_day": "Morning",
+      "town": "San Anselmo",
+      "address": "150 Ross Ave, San Anselmo, CA 94960",
+      "ages": "All ages",
+      "cost": "Registration fee; proceeds to the YES Foundation",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-26",
+      "expires": "2026-11-26",
+      "status": "Active",
+      "featured": false,
+      "description": "A fun, family-friendly Thanksgiving morning run/walk through downtown San Anselmo, all about color, community and good vibes. Tutus encouraged! All proceeds support the YES Foundation, which funds arts, music and education in Ross Valley schools.",
+      "description_es": "Una carrera/caminata divertida y familiar la mañana de Acción de Gracias por el centro de San Anselmo, llena de color, comunidad y buena onda. ¡Se recomiendan los tutús! Todo lo recaudado apoya a la YES Foundation, que financia arte, música y educación en las escuelas de Ross Valley.",
+      "registration": "Register online through the YES Foundation",
+      "website": "https://www.yestokids.org/events/san-anselmo-tutu-turkey-trot-2026",
+      "notes": "Volunteers needed; sign up through the YES Foundation.",
+      "location_group": "San Anselmo/Ross",
+      "internal_notes": "Added 2026-11-06 at Alexandra's request from a @sananselmorec Instagram story (volunteers needed); confirmed on yestokids.org/events/san-anselmo-tutu-turkey-trot-2026 (2nd annual, Thu Nov 26 2026, 8:30-9:30 AM, Wade Thomas Elementary). Fee not visible without opening registration."
     }
   ]
 }
