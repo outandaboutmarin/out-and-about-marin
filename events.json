@@ -19349,6 +19349,35 @@
         "phone": "415-868-2128"
       },
       "internal_notes": "Added 2026-11-05 at Alexandra's request from @thebolinascommunitycenter Instagram post (flyer + bilingual caption). Cost Free assumed (community potluck; not stated)."
+    },
+    {
+      "id": 1945,
+      "organization": "Peace & Pop (Joey Fortman)",
+      "venue": "Old Mill Park — the redwoods",
+      "event_name": "Stillness + Service: Free Veterans Day Sound Bath",
+      "event_name_es": "Calma + Servicio: baño de sonido gratis por el Día de los Veteranos",
+      "type": "Grown-Ups Only!",
+      "day": "Wednesday",
+      "time": "5:30 PM – 7:00 PM",
+      "time_of_day": "Evening",
+      "town": "Mill Valley",
+      "address": "Old Mill Park, 375 Throckmorton Ave, Mill Valley, CA 94941",
+      "ages": "Adults",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-11",
+      "expires": "2026-11-11",
+      "status": "Active",
+      "featured": false,
+      "description": "A free social and sound bath in the redwoods of Old Mill Park, part of the Peace & Pop-Ups series, honoring Veterans Day and supporting Babies + The Brave. Bring a veteran along if you know one.",
+      "description_es": "Un encuentro social y baño de sonido gratis entre las secuoyas del Old Mill Park, parte de la serie Peace & Pop-Ups, en honor al Día de los Veteranos y en apoyo de Babies + The Brave. Si conoces a algún veterano, tráelo contigo.",
+      "registration": "Required; space is limited, reserve at peaceandpop.com",
+      "website": "https://peaceandpop.com",
+      "notes": "Space is limited; reserve ahead.",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-11-06 at Alexandra's request from a @joeyfortman Instagram story; confirmed on peaceandpop.com (Veterans Day sound bath). Grown-Ups Only! per Alexandra. Address = Old Mill Park street address, as on other Old Mill Park records."
     }
   ]
 }
