@@ -2352,11 +2352,11 @@
       "description": "Every Monday, chalk is set out on the Children's Room patio for open, creative sidewalk chalk drawing. Drop in anytime during library hours and let the creativity flow.",
       "registration": "Not required",
       "website": "https://www.beltiblibrary.org/event/?id=15002654",
-      "notes": "Weekly Monday. Open patio — drop in during library hours. skip: 2026-11-16",
+      "notes": "Weekly Monday. Open patio — drop in during library hours.",
       "location_group": "Tiburon/Belvedere",
       "event_name_es": "Lunes de Mosaico — Tiza en la Acera",
       "description_es": "Todos los lunes se colocan tizas en el patio de la sala infantil para dibujar libremente en la acera. Entra en cualquier momento durante el horario de la biblioteca y deja fluir la creatividad.",
-      "internal_notes": "2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: no Nov 16 on the BelTib calendar."
+      "internal_notes": "2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: no Nov 16 on the BelTib calendar. 2026-11-06: Nov 16 skip removed; the library's November children's calendar (Instagram) shows Mosaic Monday on Nov 16 (Alexandra)."
     },
     {
       "id": 181,
@@ -4022,7 +4022,7 @@
       "expires": "",
       "description": "Sewing and textile craft club for children ages 8 to 12 at the Belvedere-Tiburon Library.",
       "description_es": "Club de costura y manualidades textiles para ninos de 8 a 12 anos en la Biblioteca de Belvedere-Tiburon.",
-      "notes": "2nd and 4th Wednesdays of each month. ALERT[2026-10-28]: No Threads Club on Wednesday, October 28. skip: 2026-12-09 skip: 2026-12-23",
+      "notes": "2nd and 4th Wednesdays of each month. ALERT[2026-10-28]: No Threads Club on Wednesday, October 28. skip: 2026-12-09 skip: 2026-12-23 skip: 2026-11-11",
       "website": "https://beltiblibrary.org/events",
       "location_group": "Tiburon/Belvedere",
       "season_start": "",
@@ -4030,7 +4030,7 @@
       "status": "Active",
       "featured": false,
       "registration": "Not required",
-      "internal_notes": "Converted 2026-08-13 from a single Aug 12 one-off into the recurring record it actually is. 2026-10-22 sweep: Book Snacks took the Oct 28 slot (Alexandra: follow recommendation). 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: Dec 9 slot is the new Pokémon Club on the BelTib calendar (not listed). Removed the internal 'Confirmed on the branch calendar' sentence from notes (rule 19)."
+      "internal_notes": "Converted 2026-08-13 from a single Aug 12 one-off into the recurring record it actually is. 2026-10-22 sweep: Book Snacks took the Oct 28 slot (Alexandra: follow recommendation). 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: Dec 9 slot is the new Pokémon Club on the BelTib calendar (not listed). Removed the internal 'Confirmed on the branch calendar' sentence from notes (rule 19). 2026-11-06: skip Nov 11, library closed for Veterans Day (library website banner + Nov children's calendar on Instagram; Alexandra)."
     },
     {
       "id": 819,
