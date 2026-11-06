@@ -5879,9 +5879,9 @@
       "description_es": "El Novato Mothers Club ha iniciado una caminata mensual abierta a toda la comunidad, no solo a las socias. Reunión a las 8:00 AM en el sendero de San Marin y salida a las 8:30. Se aceptan cochecitos y todos los ritmos: creando conexiones, una caminata a la vez.",
       "registration": "None",
       "website": "https://novatomothersclub.com/",
-      "notes": "Third Sunday of each month. Meet at 8:00 AM; the walk starts at 8:30 AM. Strollers welcome. Open to the whole community, not only club members. October: Saturday Oct 24 instead (see the separate listing). skip: 2026-10-18",
+      "notes": "Third Sunday of each month. Meet at 8:00 AM; the walk starts at 8:30 AM. Strollers welcome. Open to the whole community, not only club members. November: Saturday Nov 21 instead (see the separate listing). skip: 2026-10-18 skip: 2026-11-15",
       "location_group": "Novato",
-      "internal_notes": "Added 2026-09-09 from a flyer screenshot Alexandra forwarded (from Meagan, 8 Sep 2026). The flyer gives: Monthly Social Stroll, Sunday Sept 20, 8:00 AM meet / 8:30 AM walk, '@trailhead'; the covering message says San Marin, Novato. Alexandra supplied the ongoing cadence as monthly on the third Sunday, and Sep 20 2026 is indeed the third Sunday, so the recurring record generates it - deliberately NO separate one-off for Sep 20, which would collide. NOT YET CONFIRMED: the exact trailhead. 'San Marin' most likely means the Mount Burdell open space trailhead at the top of San Marin Drive, but the flyer does not say and no public listing was found, so the address is left unspecific rather than guessed. See open_items. 2026-09-30: October's stroll is Sat Oct 24, 9:00-11:00 AM, at Dr. Insomniac's (club flyer + novatomothersclub.com public events list), not the third Sunday. Added 'skip: 2026-10-18' and a one-off for Oct 24. Whether November returns to the third Sunday is unknown: re-check before Nov 15.",
+      "internal_notes": "Added 2026-09-09 from a flyer screenshot Alexandra forwarded (from Meagan, 8 Sep 2026). The flyer gives: Monthly Social Stroll, Sunday Sept 20, 8:00 AM meet / 8:30 AM walk, '@trailhead'; the covering message says San Marin, Novato. Alexandra supplied the ongoing cadence as monthly on the third Sunday, and Sep 20 2026 is indeed the third Sunday, so the recurring record generates it - deliberately NO separate one-off for Sep 20, which would collide. NOT YET CONFIRMED: the exact trailhead. 'San Marin' most likely means the Mount Burdell open space trailhead at the top of San Marin Drive, but the flyer does not say and no public listing was found, so the address is left unspecific rather than guessed. See open_items. 2026-09-30: October's stroll is Sat Oct 24, 9:00-11:00 AM, at Dr. Insomniac's (club flyer + novatomothersclub.com public events list), not the third Sunday. Added 'skip: 2026-10-18' and a one-off for Oct 24. Whether November returns to the third Sunday is unknown: re-check before Nov 15. 2026-11-06: Nov 15 skipped; Nov stroll moved to Sat Nov 21, 2:30 PM at Marin Coffee Roasters Ignacio (club Instagram story), added as a separate one-off (Alexandra).",
       "id": 1101
     },
     {
@@ -19493,6 +19493,35 @@
       "notes": "Volunteers needed; sign up through the YES Foundation.",
       "location_group": "San Anselmo/Ross",
       "internal_notes": "Added 2026-11-06 at Alexandra's request from a @sananselmorec Instagram story (volunteers needed); confirmed on yestokids.org/events/san-anselmo-tutu-turkey-trot-2026 (2nd annual, Thu Nov 26 2026, 8:30-9:30 AM, Wade Thomas Elementary). Fee not visible without opening registration."
+    },
+    {
+      "id": 1950,
+      "organization": "Novato Mothers Club",
+      "venue": "Marin Coffee Roasters (Ignacio)",
+      "event_name": "Novato Mothers Club Monthly Social Stroll - open to all",
+      "event_name_es": "Paseo social mensual del Novato Mothers Club - abierto a todos",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "2:30 PM – 4:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Novato",
+      "address": "466 Ignacio Blvd, Novato, CA 94949",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-21",
+      "expires": "2026-11-21",
+      "status": "Active",
+      "featured": false,
+      "description": "The Novato Mothers Club's monthly social stroll: meet other families at Marin Coffee Roasters in Ignacio, then walk together with strollers and little ones. Making connections one walk at a time.",
+      "description_es": "El paseo social mensual del Novato Mothers Club: conoce a otras familias en Marin Coffee Roasters en Ignacio y luego caminen juntos con cochecitos y pequeños. Creando conexiones, un paseo a la vez.",
+      "registration": "None",
+      "website": "https://novatomothersclub.com/",
+      "notes": "Meet at 2:30 PM; the walk starts at 3:00 PM. Strollers welcome. Open to the whole community, not only club members.",
+      "location_group": "Novato",
+      "internal_notes": "Added 2026-11-06 at Alexandra's request from @novatomothersclub Instagram story: November stroll moved to Sat Nov 21, meet 2:30 / walk 3:00 at Marin Coffee Roasters Ignacio. End time 4:00 PM estimated. Address 466 Ignacio Blvd from local directories (shoplocalnovato.com, joe.coffee). Monthly record 1101 skips Nov 15."
     }
   ]
 }
