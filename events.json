@@ -19522,6 +19522,35 @@
       "notes": "Meet at 2:30 PM; the walk starts at 3:00 PM. Strollers welcome. Open to the whole community, not only club members.",
       "location_group": "Novato",
       "internal_notes": "Added 2026-11-06 at Alexandra's request from @novatomothersclub Instagram story: November stroll moved to Sat Nov 21, meet 2:30 / walk 3:00 at Marin Coffee Roasters Ignacio. End time 4:00 PM estimated. Address 466 Ignacio Blvd from local directories (shoplocalnovato.com, joe.coffee). Monthly record 1101 skips Nov 15."
+    },
+    {
+      "id": 1951,
+      "organization": "Church of Our Saviour",
+      "venue": "Mill Valley Depot Plaza",
+      "event_name": "Christmas Caroling with Church of Our Saviour",
+      "event_name_es": "Villancicos navideños con Church of Our Saviour",
+      "type": "Community Event",
+      "day": "Sunday",
+      "time": "5:00 PM",
+      "time_of_day": "Evening",
+      "town": "Mill Valley",
+      "address": "Depot Plaza, 87 Throckmorton Ave, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-12-13",
+      "expires": "2026-12-13",
+      "status": "Active",
+      "featured": false,
+      "description": "Sing Christmas carols with Church of Our Saviour at the Depot in downtown Mill Valley. Just show up and join in!",
+      "description_es": "Canta villancicos navideños con Church of Our Saviour en el Depot del centro de Mill Valley. ¡Solo ven y únete!",
+      "registration": "Not required",
+      "website": "https://cosepiscopal.org",
+      "notes": "Just show up! No sign-up needed.",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-11-06 from Alexandra's own text (date, time, place); not yet on cosepiscopal.org."
     }
   ]
 }
