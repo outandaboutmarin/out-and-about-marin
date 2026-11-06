@@ -19378,6 +19378,34 @@
       "notes": "Space is limited; reserve ahead.",
       "location_group": "Mill Valley",
       "internal_notes": "Added 2026-11-06 at Alexandra's request from a @joeyfortman Instagram story; confirmed on peaceandpop.com (Veterans Day sound bath). Grown-Ups Only! per Alexandra. Address = Old Mill Park street address, as on other Old Mill Park records."
+    },
+    {
+      "id": 1946,
+      "organization": "San Anselmo Recreation Department & San Anselmo Chamber of Commerce",
+      "venue": "Imagination Park",
+      "event_name": "San Anselmo Holiday Tree Lighting",
+      "event_name_es": "Encendido del árbol navideño de San Anselmo",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "5:00 PM",
+      "time_of_day": "Evening",
+      "town": "San Anselmo",
+      "address": "541 San Anselmo Ave, San Anselmo, CA 94960",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-05",
+      "expires": "2026-12-05",
+      "status": "Active",
+      "featured": false,
+      "description": "Gather in Imagination Park as San Anselmo lights its holiday tree, hosted by the San Anselmo Recreation Department and Chamber of Commerce.",
+      "description_es": "Reúnete en Imagination Park mientras San Anselmo enciende su árbol navideño, organizado por el Departamento de Recreación y la Cámara de Comercio de San Anselmo.",
+      "registration": "Not required",
+      "website": "https://www.instagram.com/sananselmorec/",
+      "location_group": "San Anselmo/Ross",
+      "internal_notes": "Added 2026-11-06 at Alexandra's request from a @sananselmorec Instagram save-the-date. End time, cost and activities not stated (Free assumed); update when the full announcement is out."
     }
   ]
 }
