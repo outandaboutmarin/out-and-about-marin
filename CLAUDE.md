@@ -1065,6 +1065,21 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 6. **Sponsor prospects:** Osher Marin JCC and The Cave (mockups ready); FIT4MOM still owes the direct Glofox link.
 7. Items 71 and 75 closed 2026-10-24 (old folders deleted; Context Transfer skill uploaded under Customize → Skills and working in regular chats). Say "context transfer" in any chat or Code session to hand off.
 
+## What changed 2026-11-06/07, in one pass
+
+- **Instagram rule (open item 15, Alexandra 2026-11-06):** every post now goes to her as slides + caption + **a funny, witty first
+  comment ending in a brief question**, all approved together; the comment goes in Metricool `firstCommentText` and posts
+  automatically. Hashtags stay as the caption's last line. First used on the Sat Nov 7 / Sun Nov 8 posts (new Metricool ids
+  419514903 / 419515063). Spec in `social_media_and_marketing.md` (rule 12, Template A standard, section 3e).
+- **Events added:** Craft Time with Tia at the Cabin, Tam Valley (1955 Nov 18, $15; 1956 Dec 16 save-the-date); TCSD Speaker
+  Series on groundwater and sea-level rise (1957, Nov 17) and Breakfast with Santa (1958, Dec 12, times assumed from 2025);
+  the six 2027 Marin repair fairs (1959-1964, Reuse Alliance). **Venue note:** the Cabin is 60 Tennessee Valley Rd; the Tam
+  Valley Community Center is 203 Marin Ave. TCSD Game Night (Nov 24) and Mahj, Mingle & Jingle (Dec 2) wait for details
+  (open item 58 zzd; Alexandra: wait for TCSD).
+- **Sweep sources:** #20 The Phoenix now reads its non-profit book sale page too (sales = Community Events, held while "Date
+  TBD"); **#51 Reuse Alliance** added (Marin repair fairs via `/events?format=json`). Source count 51.
+- **Phone inbox applied twice** (item 58 zzc to-confirms; Kitsch + Sync hours in the Resources spreadsheet) and emptied.
+
 ## What changed 2026-11-04 (evening), in one pass
 
 - **Instagram week of Nov 5 scheduled in Metricool** (Template A, `build_week_of_nov5.py`): Thu Nov 5 5 PM (417346028), Sat Nov 7
