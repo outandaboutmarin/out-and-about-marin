@@ -1058,7 +1058,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
    to pay still open).
 2. **Kitsch + Sync (item 21):** only a brand colour (if they want one) and whether their events page becomes a sweep
    source are still open; the Featured ad ends Jan 21, 2027 (renew or let it lapse).
-3. **Next Marin weekly sweep** (`sources/marin.md`, 50 sources). The Nov 4 sweep covered **Nov 5 to Jan 10** (processed, 37f27e6);
+3. **Next Marin weekly sweep** (`sources/marin.md`, 51 sources; #51 Reuse Alliance repair fairs added 2026-11-07, #20 Phoenix now includes its non-profit book sale page). The Nov 4 sweep covered **Nov 5 to Jan 10** (processed, 37f27e6);
    recheck the winter-break gaps (item 58zzb) and pick up the Learning Bus December PDF. Napa's last covered Oct 30 to Dec 15.
 4. **Item 58:** zr (Diwali at Mill Valley Library) and zs (Mill Valley ShaBabies venue, ask Rachel Weiss), plus the rest.
 5. **Telluride (items 65, 66, 72):** Lee Shea's setup and first partner sweep; the five library questions 66a-66e.
