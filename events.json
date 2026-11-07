@@ -19352,6 +19352,37 @@
       "id": 1953,
       "day": "Sunday",
       "event_date": "2026-11-15"
+    },
+    {
+      "id": 1954,
+      "organization": "Lodge at Marconi",
+      "venue": "Lodge at Marconi — meet in the lobby (yoga on Tower Hill)",
+      "event_name": "Hilltop Yoga & Coffee at the Lodge at Marconi",
+      "event_name_es": "Yoga y café en la colina en el Lodge at Marconi",
+      "type": "Grown-Ups Only!",
+      "day": "Saturday",
+      "time": "9:30 AM",
+      "time_of_day": "Morning",
+      "town": "Marshall",
+      "address": "18500 CA-1, Marshall, CA 94940",
+      "ages": "Adults",
+      "cost": "Free / donation-based",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "Weekly",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "",
+      "expires": "",
+      "status": "Active",
+      "featured": false,
+      "description": "A donation-based community yoga session outdoors on Tower Hill above Tomales Bay, open to the public, with coffee. All are welcome.",
+      "description_es": "Una sesión comunitaria de yoga al aire libre en Tower Hill, sobre la bahía de Tomales, a base de donativos y abierta al público, con café. Todos son bienvenidos.",
+      "registration": "Not required",
+      "website": "https://www.instagram.com/lodgeatmarconi/",
+      "notes": "Meet in the lobby at 9:15 AM; yoga starts at 9:30 AM on Tower Hill. Hotel guests can borrow a yoga mat from the front desk.",
+      "location_group": "West Marin",
+      "internal_notes": "Added 2026-11-07 at Alexandra's request (Grown-Ups Only!, free/donation-based) from a @lodgeatmarconi flyer reposted by @thewestmarinfeed: every Saturday 9:30 AM, meet 9:15 in the lobby. Address from CA state parks / venue listings (lodgeatmarconi.com 403s plain fetches)."
     }
   ]
 }
