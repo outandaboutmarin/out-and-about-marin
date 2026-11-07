@@ -19731,6 +19731,35 @@
       "id": 1966,
       "day": "Sunday",
       "event_date": "2026-11-08"
+    },
+    {
+      "id": 1967,
+      "organization": "Play Marin",
+      "venue": "George \"Rocky\" Graham Park",
+      "event_name": "Play Marin Walk-A-Thon 2026",
+      "event_name_es": "Caminata Play Marin 2026",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "10:00 AM – 4:00 PM",
+      "time_of_day": "Morning",
+      "town": "Marin City",
+      "address": "850 Drake Ave, Marin City, CA 94965",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-07",
+      "expires": "2026-11-07",
+      "status": "Active",
+      "featured": false,
+      "description": "Play Marin's community walk-a-thon. Everyone is welcome, of all ages and abilities: walk, roll or just come play. Donations help more kids play, learn and grow.",
+      "description_es": "La caminata comunitaria de Play Marin. Todos son bienvenidos, de todas las edades y capacidades: camina, rueda o simplemente ven a jugar. Las donaciones ayudan a que más niños jueguen, aprendan y crezcan.",
+      "registration": "Free; register online",
+      "website": "https://kindest.com/983582-play-marin-walk-a-thon-2026",
+      "notes": "10 AM kickoff with music and warm-ups at Rocky Graham Park; 11 AM walk or roll at your own pace; 12-4 PM celebration with the Hoop Bus, 3-on-3 and music at the Marin City Rec Center.",
+      "location_group": "Sausalito/Marin City",
+      "internal_notes": "Added 2026-11-07 at Alexandra's request from a Nextdoor post (Play Marin flyer). Registration link tinyurl.com/PMWalkathon26 resolves to the Kindest page used as website."
     }
   ]
 }
