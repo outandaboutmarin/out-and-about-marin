@@ -249,32 +249,12 @@
       "hours": [
         {
           "days": {
-            "en": "Thu–Sun",
-            "es": "Jue–Dom"
+            "en": "Tue–Sun",
+            "es": "Mar–Dom"
           },
           "time": {
             "en": "9 AM – 8 PM",
             "es": "9 AM – 8 PM"
-          }
-        },
-        {
-          "days": {
-            "en": "Wednesday",
-            "es": "Miércoles"
-          },
-          "time": {
-            "en": "2 PM – 8 PM",
-            "es": "2 PM – 8 PM"
-          }
-        },
-        {
-          "days": {
-            "en": "Tuesday",
-            "es": "Martes"
-          },
-          "time": {
-            "en": "4 PM – 8 PM",
-            "es": "4 PM – 8 PM"
           }
         },
         {
