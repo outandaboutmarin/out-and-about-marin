@@ -91,9 +91,11 @@ OVERRIDES = {
         days=ALL_DAYS,
         hours="Daily 9am to 5pm",
         hoursEs="Todos los días 9 a. m. a 5 p. m."),
+    # New hours from kitschandsync.com, 2026-11-07 (Alexandra); the sheet still has the old ones.
     "kitsch-sync": dict(
         days=["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        hoursEs="Jue a dom 9 a. m. a 8 p. m.; mar 4 a 8 p. m.; mié 2 a 8 p. m.; cerrado lun"),
+        hours="Tue to Sun 9am to 8pm; closed Mon",
+        hoursEs="Mar a dom 9 a. m. a 8 p. m.; cerrado lun"),
     # From Cal Star's Power Play calendar (Jackrabbit, Oct and Nov 2026): no Tuesday
     # sessions, a Wednesday 1pm session. The calendar shows start times only.
     "cal-star-gymnastics": dict(
