@@ -6,6 +6,4 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
 
 ## Pending
 
-- **Resources spreadsheet (`Resources\create_your_own_adventure_v2.xlsx`), Kitsch + Sync row:** change "Days & hours" to
-  "Tue to Sun 9am to 8pm; closed Mon" (new hours on kitschandsync.com, 2026-11-07). The phone session already updated
-  `adventure.json` and the `kitsch-sync` entry in `adventure_io.py` OVERRIDES, so a rebuild keeps the new hours either way.
+(none — the 2026-11-07 Kitsch + Sync hours entry was applied to the Resources spreadsheet on the desktop 2026-11-07)
