@@ -19800,6 +19800,46 @@
         "instagram": "kitschandsync"
       },
       "internal_notes": "Added 2026-11-08 at Alexandra's request (Community Event) from a @kitschandsync Instagram post. Partner listing (Kitsch + Sync sponsor). Price not stated."
+    },
+    {
+      "id": 1969,
+      "organization": "Kitsch + Sync",
+      "venue": "Kitsch + Sync",
+      "event_name": "Littles Music with Laurynn @ Kitsch + Sync",
+      "event_name_es": "Música para pequeños con Laurynn en Kitsch + Sync",
+      "type": "Kids Programs",
+      "day": "Thursday",
+      "time": "10:30 AM",
+      "time_of_day": "Morning",
+      "town": "Novato",
+      "address": "1757 Grant Ave, Novato, CA 94945",
+      "ages": "0-5 yrs",
+      "cost": "Food/PlayZone passes for sale",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-12",
+      "expires": "2026-11-12",
+      "status": "Active",
+      "featured": false,
+      "description": "A morning music session for little ones with Laurynn, singing and playing guitar, at Kitsch + Sync.",
+      "description_es": "Una sesión de música matutina para los más pequeños con Laurynn, con canciones y guitarra, en Kitsch + Sync.",
+      "registration": "Not required",
+      "website": "https://kitschandsync.com/",
+      "notes": "Socks required in the play zone.",
+      "location_group": "Novato",
+      "partner": true,
+      "logo": "assets/ads/kitsch_sync_logo.png",
+      "contact": {
+        "name": "Kitsch + Sync",
+        "phone": "(415) 408-3158",
+        "instagram": "kitschandsync",
+        "email": "info@kitschandsync.com"
+      },
+      "socials": {
+        "instagram": "kitschandsync"
+      },
+      "internal_notes": "Added 2026-11-08 at Alexandra's request from a @kitschandsync Instagram flyer (\"Two Events One Fun Thursday\", with the cuVer tasting, id 1968). Partner listing. Ages 0-5 assumed from \"Littles\"; class price not stated."
     }
   ]
 }
