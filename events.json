@@ -19052,6 +19052,35 @@
         "instagram": "kitschandsync"
       },
       "internal_notes": "Added 2026-11-08 at Alexandra's request from a @kitschandsync Instagram flyer (\"Two Events One Fun Thursday\", with the cuVer tasting, id 1968). Partner listing. Ages 0-5 assumed from \"Littles\"; class price not stated."
+    },
+    {
+      "id": 1970,
+      "organization": "The Swel Club",
+      "venue": "Blackie's Pasture",
+      "event_name": "Tiburon Turkey Walk: 10K before Turk(a)y with The Swel Club",
+      "event_name_es": "Caminata del pavo en Tiburon: 10K antes del pavo con The Swel Club",
+      "type": "Fitness",
+      "day": "Thursday",
+      "time": "9:00 AM",
+      "time_of_day": "Morning",
+      "town": "Tiburon",
+      "address": "Blackie's Pasture, Tiburon, CA 94920",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-26",
+      "expires": "2026-11-26",
+      "status": "Active",
+      "featured": false,
+      "description": "Tiburon doesn't have a Turkey Trot, so The Swel Club made one: a free Thanksgiving-morning 10K walk along the waterfront path from Blackie's Pasture. Bring a gently used coat for their coat drive with Marin Foster Care.",
+      "description_es": "Tiburon no tiene un Turkey Trot, así que The Swel Club creó uno: una caminata gratuita de 10K la mañana de Acción de Gracias por el sendero junto al agua desde Blackie's Pasture. Trae un abrigo en buen estado para su colecta de abrigos con Marin Foster Care.",
+      "registration": "Free RSVP on Luma",
+      "website": "https://luma.com/4d2yifr2",
+      "notes": "Meet by the Blackie statue. Please bring a gently used coat for the Marin Foster Care coat drive.",
+      "location_group": "Tiburon/Belvedere",
+      "internal_notes": "Added 2026-11-08 at Alexandra's request from @theswelclub Instagram story; confirmed on luma.com/4d2yifr2 (free, Nov 26 9-10 AM PT, Blackies Pasture). Luma end time 10 AM not shown (likely default). Source #50."
     }
   ]
 }
