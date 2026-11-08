@@ -1,17 +1,17 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-11-08
-Time: 18:07:45
+Time: 23:35:26
 
-Total events in events.json: 616
-Active events: 563
+Total events in events.json: 621
+Active events: 568
 Temp. closed: 0
 
 Events by type:
-  Community Event: 126
+  Community Event: 127
   Farmers Market: 16
   Festival: 19
-  Fitness: 22
-  Grown-Ups Only!: 65
+  Fitness: 23
+  Grown-Ups Only!: 68
   Kids Programs: 118
   Library: 173
   Music and Movies: 77
@@ -43,10 +43,10 @@ Events by town:
   San Anselmo: 16
   San Geronimo: 3
   San Rafael: 85
-  Sausalito: 27
+  Sausalito: 28
   St. Helena: 13
   Telluride: 40
-  Tiburon: 44
+  Tiburon: 48
   Tomales: 1
   Virtual: 6
   Yountville: 5
