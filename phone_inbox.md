@@ -12,3 +12,6 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
   never openpyxl (it drops the embedded logos); check the file is not open first. Also note it in open item 21.
   Nothing on the site needs changing: GG Mahjong had no Featured ad in `ads.json`, and their last partner events (Oct 29,
   Nov 5) have already expired.
+- **Memory note + `social_media`-independent rule (Alexandra 2026-11-09):** Ronnie's Awesome List is not reliable. Any event
+  found there (sweep, ad hoc, or research) must be cross-checked against the organiser's own page or another independent
+  source before it is proposed or added. Already written into `sources/marin.md` source #11; save it as a memory note too.
