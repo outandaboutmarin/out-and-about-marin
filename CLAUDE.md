@@ -547,6 +547,15 @@ Always follow these when adding or editing events — they exist because of spec
     acts on — a start time, a date — and neither is clearly fresher, **ask rather than pick.**
 
 
+29. **RONNIE'S AWESOME LIST IS DISCOVERY ONLY. NEVER ADD AN EVENT ON ITS WORD ALONE.** Alexandra, 2026-11-09:
+    *"Ronnie's list is not reliable."* Every event found there, whether in a weekly sweep (source #11), an ad-hoc batch or
+    a research question ("list all the turkey trots"), must be **cross-checked against the organiser's own page or another
+    independent source** for date, time, place and cost before it is proposed or added. If no second source can be found,
+    report it as unconfirmed (the sweep's Questions tab, or plainly in chat) and do not draft it as a candidate. When
+    presenting a list built partly from Ronnie's, say which items are confirmed elsewhere and which rest on Ronnie's
+    alone. This extends rule 1 and the "third-party listings are not evidence" lesson: Ronnie's has served a 2017 page as
+    current before (see rule 26).
+
 ## Regions (Marin, Napa, Telluride+)
 
 The app has three regions, chosen with the Profile **Region** toggle. Every record's region comes from its `county`
