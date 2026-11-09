@@ -19226,6 +19226,35 @@
       "notes": "8:00 stretch, 8:30 5K run, 9:30 coffee, donuts and raffle. RSVP required.",
       "location_group": "Mill Valley",
       "internal_notes": "Added 2026-11-09 at Alexandra's request from a photo of the flyer in The Yard's window; start location confirmed by Alexandra as The Yard, 215 Shoreline Hwy (address from Wellhub listing). RSVP QR link not read; website is the gym brand site."
+    },
+    {
+      "id": 1976,
+      "organization": "Chabad Lubavitch of Mill Valley",
+      "venue": "Downtown Mill Valley Plaza",
+      "event_name": "Chanukah Celebration of Light & Unity",
+      "event_name_es": "Celebración de Janucá de luz y unidad",
+      "type": "Festival",
+      "day": "Sunday",
+      "time": "5:00 PM",
+      "time_of_day": "Evening",
+      "town": "Mill Valley",
+      "address": "Downtown Mill Valley Plaza, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-06",
+      "expires": "2026-12-06",
+      "status": "Active",
+      "featured": false,
+      "description": "Celebrate the third night of Chanukah on the Plaza with a grand menorah lighting, live music, latkes, sufganiyot, hot drinks, a dreidel craft and a winter food buffet.",
+      "description_es": "Celebra la tercera noche de Janucá en la Plaza con un gran encendido de la menorá, música en vivo, latkes, sufganiyot, bebidas calientes, una manualidad de dreidel y un bufé de comida de invierno.",
+      "registration": "Not required",
+      "website": "https://www.jewishmillvalley.org",
+      "notes": "Rain or shine. Earlier, during Winterfest, visit the Chanukah booths and pop-up store and see the 6-foot ice menorah.",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-11-09 at Alexandra's request from a Chabad of Mill Valley flyer (photo). Cost Free assumed (not stated). The flyer says Winterfest runs 1-5 PM on Dec 6; Winterfest record 99 says 1-4 PM, left unchanged pending the Chamber's own schedule."
     }
   ]
 }
