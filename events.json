@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08",
+  "last_updated": "2026-11-09",
   "events": [
     {
       "id": 1,
@@ -19197,6 +19197,35 @@
       "notes": "Tickets required; spots are limited.",
       "internal_notes": "Added 2026-11-08 at Alexandra's request ('add all') from The Swel Club Luma calendar (source #50): $300, 34 spots left on 2026-11-08.",
       "id": 1974
+    },
+    {
+      "id": 1975,
+      "organization": "The Yard x Upside",
+      "venue": "The Yard",
+      "event_name": "The Yard x Upside Turkey Trot 5K",
+      "event_name_es": "Turkey Trot 5K de The Yard x Upside",
+      "type": "Fitness",
+      "day": "Thursday",
+      "time": "8:00 AM",
+      "time_of_day": "Morning",
+      "town": "Mill Valley",
+      "address": "215 Shoreline Hwy, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "cost": "$10 adults; kids free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-26",
+      "expires": "2026-11-26",
+      "status": "Active",
+      "featured": false,
+      "description": "A Thanksgiving-morning 5K from The Yard strength gym in Mill Valley: warm up together, run the 5K, then stay for coffee, donuts and a raffle. All ages welcome.",
+      "description_es": "Una carrera de 5K la mañana de Acción de Gracias desde el gimnasio The Yard en Mill Valley: calienten juntos, corran los 5K y quédense para café, donas y una rifa. Todas las edades son bienvenidas.",
+      "registration": "RSVP required (QR code on the gym's flyer)",
+      "website": "https://theyardgym.com",
+      "notes": "8:00 stretch, 8:30 5K run, 9:30 coffee, donuts and raffle. RSVP required.",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-11-09 at Alexandra's request from a photo of the flyer in The Yard's window; start location confirmed by Alexandra as The Yard, 215 Shoreline Hwy (address from Wellhub listing). RSVP QR link not read; website is the gym brand site."
     }
   ]
 }
