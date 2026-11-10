@@ -15,3 +15,9 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
 - **Memory note (Alexandra 2026-11-09):** Ronnie's Awesome List is not reliable. Any event
   found there (sweep, ad hoc, or research) must be cross-checked against the organiser's own page or another independent
   source before it is proposed or added. Already written into `sources/marin.md` source #11; save it as a memory note too.
+- **Open item 77 (Locations to flyer), Alexandra 2026-11-10:** add these three places (skip any already there):
+  - **Milkweed, Mill Valley** (the list already has "Milkweed bathroom"; keep that line, or merge the two into one entry).
+  - **"To Topia", Marin Country Mart, Larkspur**: the toy shop's name came through voice dictation; confirm the spelling
+    against the Mart's store list before writing it.
+  - **Depot Bookstore & Cafe, Mill Valley** (the list already has "Mill Valley Depot"; make that entry specific to the
+    bookstore rather than adding a duplicate).
