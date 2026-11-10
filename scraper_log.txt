@@ -1,16 +1,16 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-11-10
-Time: 02:38:09
+Time: 20:03:55
 
-Total events in events.json: 609
-Active events: 557
+Total events in events.json: 614
+Active events: 562
 Temp. closed: 0
 
 Events by type:
-  Community Event: 124
+  Community Event: 127
   Farmers Market: 16
-  Festival: 20
-  Fitness: 23
+  Festival: 21
+  Fitness: 24
   Grown-Ups Only!: 67
   Kids Programs: 116
   Library: 170
@@ -36,7 +36,7 @@ Events by town:
   Naturita: 3
   Nicasio/San Geronimo: 2
   Norwood: 20
-  Novato: 57
+  Novato: 62
   Point Reyes Station: 9
   Ridgway: 13
   Ross: 7
@@ -61,6 +61,9 @@ Library pages changed — review recommended:
   🔔 PAGE CHANGED: MCFL — Novato Library
   🔔 PAGE CHANGED: MCFL — Point Reyes Library
   🔔 PAGE CHANGED: MCFL — South Novato Library
+  🔔 PAGE CHANGED: MCFL — Bolinas Library
+  🔔 PAGE CHANGED: MCFL — Inverness Library
+  🔔 PAGE CHANGED: MCFL — Stinson Beach Library
 
 Unpredictable events needing one-off dates added:
   🔔 NEEDS ONE-OFF DATE: Read to a Dog with Stinson — Corte Madera (monthly Sunday)
