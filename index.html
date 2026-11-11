@@ -2684,7 +2684,7 @@ function mapDbUser(dbUser) {
     <div class="profile-header-sub" id="resourcesHeaderSub">Handy stuff for Marin parents</div>
   </div>
   <div class="profile-body">
-    <div class="about-section" style="margin-bottom:0.75rem" id="floodWatch" data-until="2026-11-11">
+    <div class="about-section" style="margin-bottom:0.75rem" id="floodWatch" data-until="2026-11-10">
       <div class="about-title">⚠️ <span data-es="Alerta de inundaciones de esta semana... ¡desliza antes de manejar!">Flood Watch Alert for this week... swipe before you drive!</span></div>
       <div class="flood-wrap">
       <button class="flood-arrow prev" id="floodPrev" aria-label="Previous slide" disabled>&#8249;</button>
@@ -6438,7 +6438,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-11-03.3';
+const APP_BUILD = '2026-11-11.1';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
