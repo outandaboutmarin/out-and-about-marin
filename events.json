@@ -18987,6 +18987,35 @@
       "expires": "2026-12-05",
       "id": 1993,
       "internal_notes": "Added 2026-11-11 at Alexandra's request; found on Marin Mommies' tree and menorah lighting guide and confirmed on the organizer's page (website). Marin Mommies says Novato City Hall; the Chamber page says Downtown Novato, used here."
+    },
+    {
+      "id": 1994,
+      "organization": "Marin County Free Library",
+      "venue": "Stinson Beach Library",
+      "event_name": "Learn How to Use the WET Flood App",
+      "event_name_es": "Aprende a usar la app de inundaciones WET",
+      "type": "Library",
+      "day": "Saturday",
+      "time": "3:00 PM – 4:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Stinson Beach",
+      "address": "3521 Shoreline Hwy, Stinson Beach, CA 94970",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-14",
+      "expires": "2026-11-14",
+      "status": "Active",
+      "featured": false,
+      "location_group": "West Marin",
+      "description": "Come learn about the free Weather, Events & Tide (WET) phone app, with real-time, accurate tide readings, developed by a Sausalito houseboat dweller. Handy for planning around king tides and flooded roads.",
+      "description_es": "Ven a conocer la app gratuita Weather, Events & Tide (WET), con lecturas de marea precisas y en tiempo real, creada por un residente de una casa flotante de Sausalito. Muy útil para planear alrededor de las mareas reales y las calles inundadas.",
+      "registration": "Not required",
+      "website": "https://marinlibrary.bibliocommons.com/v2/events/6af0a3dbf9d28050ccb20da1",
+      "notes": "Questions: 415-868-0252.",
+      "internal_notes": "Added 2026-11-11 at Alexandra's request (title hers) from a Stinson Beach Library MCFL Nextdoor post; confirmed in the MCFL bibliocommons feed (event 6af0a3dbf9d28050ccb20da1, Nov 14 3 PM). Ages all ages assumed."
     }
   ]
 }
