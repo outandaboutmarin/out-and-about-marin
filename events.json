@@ -18871,6 +18871,35 @@
       "website": "",
       "notes": "Rain or shine. Meet in front of Cafe Aroma on 4th Street.",
       "internal_notes": "Added 2026-11-11 at Alexandra's request from a Nextdoor post by a neighbor, Tim Ryan (screenshot); no web page, so website left blank. Cafe Aroma address 1122 4th St from memory: cafearoma.com did not load, confirm. Distinct from 1808 Carol-oke in the Plaza (same day, 1-4 PM, City Plaza)."
+    },
+    {
+      "id": 1990,
+      "organization": "Kooh Culture, Brave Birds, Katie and the Kiln & Marin Timeless",
+      "venue": "Behind the MYSTIC store",
+      "event_name": "Sip & Shop: Holiday Pop-Up",
+      "event_name_es": "Sip & Shop: mercado navideño pop-up",
+      "type": "Grown-Ups Only!",
+      "day": "Thursday",
+      "time": "7:00 PM – 9:00 PM",
+      "time_of_day": "Evening",
+      "town": "Mill Valley",
+      "address": "31 Sunnyside Ave, Mill Valley, CA 94941",
+      "ages": "Adults",
+      "cost": "Free entry",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-12",
+      "expires": "2026-11-12",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Mill Valley",
+      "description": "Shop small and gift local at an evening pop-up with four women-owned businesses: Kooh Culture (hats, apparel and good energy), Brave Birds (gift wrap, kitchen towels and more; 10% goes to pediatric cancer causes), Katie and the Kiln (handmade pottery) and Marin Timeless (vintage clothing and jewelry). Sip, browse and get a head start on holiday shopping.",
+      "description_es": "Compra en pequeños negocios locales en un pop-up nocturno con cuatro negocios de mujeres: Kooh Culture (gorros, ropa y buena energía), Brave Birds (papel de regalo, paños de cocina y más; el 10% se destina a causas de cáncer infantil), Katie and the Kiln (cerámica hecha a mano) y Marin Timeless (ropa y joyería vintage). Toma algo, mira y adelanta tus compras navideñas.",
+      "registration": "Not required",
+      "website": "",
+      "notes": "Behind the MYSTIC store, 31 Sunnyside, downtown Mill Valley.",
+      "internal_notes": "Added 2026-11-11 at Alexandra's request (Grown-Ups Only!) from a Nextdoor post by Joy Koh (Kooh Culture) with the flyer. No web page; website blank. Cost 'Free entry' and indoors assumed (flyer states neither)."
     }
   ]
 }
