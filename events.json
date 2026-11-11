@@ -18842,6 +18842,35 @@
       "registration": "Required: SanRafael.gov/Register, course #10763",
       "notes": "Register with the City of San Rafael (course #10763). Children must be accompanied by an adult.",
       "internal_notes": "Added 2026-11-11 from the @sanrafaellibraryrec Instagram flyer (Alexandra's screenshot). SanRafael.gov/Register returned 404 to curl and the city's site search does not list it yet; website set to the city events page until the course link is confirmed."
+    },
+    {
+      "id": 1989,
+      "organization": "Downtown San Rafael carolers (community group)",
+      "venue": "Cafe Aroma (meeting point)",
+      "event_name": "Christmas Caroling in Downtown San Rafael",
+      "event_name_es": "Villancicos navideños en el centro de San Rafael",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "5:00 PM",
+      "time_of_day": "Evening",
+      "town": "San Rafael",
+      "address": "1122 4th St, San Rafael, CA 94901",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-12-12",
+      "expires": "2026-12-12",
+      "status": "Active",
+      "featured": false,
+      "location_group": "San Rafael",
+      "description": "Join neighbors for a festive caroling walk through downtown San Rafael, with a pitch pipe and baton to keep everyone on key. Past years have drawn 30+ singers. Not a singer? Come hand out candy canes. Dress festive, and stay for an optional dinner on 4th Street afterwards.",
+      "description_es": "Únete a tus vecinos en una caminata navideña cantando villancicos por el centro de San Rafael, con diapasón y batuta para que todos canten afinados. En años anteriores se juntaron más de 30 cantantes. ¿No cantas? Ven a repartir bastones de caramelo. Vístete con espíritu festivo y quédate, si quieres, a cenar en 4th Street después.",
+      "registration": "Not required",
+      "website": "",
+      "notes": "Rain or shine. Meet in front of Cafe Aroma on 4th Street.",
+      "internal_notes": "Added 2026-11-11 at Alexandra's request from a Nextdoor post by a neighbor, Tim Ryan (screenshot); no web page, so website left blank. Cafe Aroma address 1122 4th St from memory: cafearoma.com did not load, confirm. Distinct from 1808 Carol-oke in the Plaza (same day, 1-4 PM, City Plaza)."
     }
   ]
 }
