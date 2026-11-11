@@ -19831,6 +19831,35 @@
       "internal_notes": "Added 2026-11-11 from the weekly sweep (window Nov 12 - Dec 28), workbook daily_sweep_2026-11-11_review.xlsx, Alexandra marked approve. MAGC event page lists Dec 4, 5, 6, 10, 11, 12, 13 (Thu-Sun inside the 12/04-12/13 season = exactly those dates). Price not shown on Eventbrite (Bay Area Kid Fun calls it free - unverified).",
       "season_start": "12/04",
       "season_end": "12/13"
+    },
+    {
+      "id": 2023,
+      "organization": "Book Passage",
+      "venue": "Book Passage — Corte Madera",
+      "event_name": "Isabel Allende: Perla and the Princess",
+      "event_name_es": "Isabel Allende: Perla y la princesa",
+      "type": "Kids Programs",
+      "day": "Saturday",
+      "time": "1:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Corte Madera",
+      "address": "51 Tamal Vista Blvd, Corte Madera, CA 94925",
+      "ages": "Kids",
+      "cost": "Ticketed",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-14",
+      "expires": "2026-11-14",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Corte Madera",
+      "description": "Isabel Allende and her dog Perla visit Book Passage to read their brand-new picture book, Perla and the Princess.",
+      "description_es": "Isabel Allende y su perrita Perla visitan Book Passage para leer su nuevo libro ilustrado, Perla y la princesa.",
+      "registration": "Required: tickets through Book Passage",
+      "website": "https://bookpassage.com/events-classes-writing-programs",
+      "notes": "Ticketed; tickets through Book Passage.",
+      "internal_notes": "Added 2026-11-11 at Alexandra's request from a @bookpassagekids Instagram post (screenshot). bookpassage.com returned 403, so price and ages unconfirmed; English title of the book used for Spanish title translation."
     }
   ]
 }
