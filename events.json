@@ -19699,6 +19699,35 @@
       "registration": "Not required",
       "website": "https://rosspropertyowners.com/events/2026-autumn-seasonal-showcase",
       "internal_notes": "Added 2026-11-12 at Alexandra's request from the Marin Mommies Nov 13-15 weekend roundup; confirmed on rosspropertyowners.com (Sat Nov 14, 12-5 PM, free food and beverages). Exact street location not given beyond downtown Ross. She declined Mary Poppins (Stapleton) and Novato Gymnastics Kids Night Out from the same list."
+    },
+    {
+      "id": 2025,
+      "organization": "Novato Gymnastics Center (City of Novato)",
+      "venue": "Novato Gymnastics Center",
+      "event_name": "Kids' Night Out at Novato Gymnastics",
+      "event_name_es": "Noche para niños en Novato Gymnastics",
+      "type": "Kids Programs",
+      "day": "Friday",
+      "time": "5:00 PM – 8:00 PM",
+      "time_of_day": "Evening",
+      "town": "Novato",
+      "address": "950 Seventh St, Novato, CA 94945",
+      "ages": "4-12 yrs",
+      "cost": "Paid",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-13",
+      "expires": "2026-11-13",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Novato",
+      "description": "A drop-off kids' night out for ages 4½ to 12: warm-up and gymnastics, dinner, then arts and crafts, games and play, while grown-ups get a night off.",
+      "description_es": "Una noche para niños de 4½ a 12 años, sin padres: calentamiento y gimnasia, cena, y luego manualidades, juegos y diversión, mientras los adultos tienen la noche libre.",
+      "registration": "Required: novato.gov/regforfun",
+      "website": "https://www.novatogymnastics.gov/calendar/2026/11/13/kids-night-out-ages-45-12",
+      "notes": "Ages 4½-12, drop-off. Check-in at 5 PM; dinner included. Register online at novato.gov/regforfun.",
+      "internal_notes": "Added 2026-11-12 at Alexandra's request from the Marin Mommies Nov 13-15 weekend roundup; confirmed on novatogymnastics.gov (Fri Nov 13, 5-8 PM, schedule check-in 5:00, gymnastics 5:10, dinner 6:45, crafts and games 7:15; register at novato.gov/regforfun). Price not published on the event page, so cost 'Paid'. Address 950 Seventh St from the site footer. ages stored as '4-12 yrs' so the age filter reads it."
     }
   ]
 }
