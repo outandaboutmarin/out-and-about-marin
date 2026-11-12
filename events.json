@@ -19671,6 +19671,34 @@
       "website": "https://bookpassage.com/events-classes-writing-programs",
       "notes": "Ticketed; tickets through Book Passage.",
       "internal_notes": "Added 2026-11-11 at Alexandra's request from a @bookpassagekids Instagram post (screenshot). bookpassage.com returned 403, so price and ages unconfirmed; English title of the book used for Spanish title translation."
+    },
+    {
+      "id": 2024,
+      "organization": "Ross Property Owners Association",
+      "venue": "Downtown Ross",
+      "event_name": "Ross Autumn Seasonal Showcase",
+      "event_name_es": "Muestra de temporada de otoño en Ross",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "12:00 PM – 5:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Ross",
+      "address": "Downtown Ross, Ross, CA 94957",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-14",
+      "expires": "2026-11-14",
+      "status": "Active",
+      "featured": false,
+      "location_group": "San Anselmo/Ross",
+      "description": "'Tis the season to shop, sip and stroll! A family celebration of shopping and holiday cheer, with cozy autumn vibes and a festive showcase of the businesses in downtown Ross. Free food, beverages and more.",
+      "description_es": "¡Es temporada de comprar, brindar y pasear! Una celebración familiar de compras y espíritu navideño, con ambiente otoñal y una muestra festiva de los negocios del centro de Ross. Comida, bebidas y más, gratis.",
+      "registration": "Not required",
+      "website": "https://rosspropertyowners.com/events/2026-autumn-seasonal-showcase",
+      "internal_notes": "Added 2026-11-12 at Alexandra's request from the Marin Mommies Nov 13-15 weekend roundup; confirmed on rosspropertyowners.com (Sat Nov 14, 12-5 PM, free food and beverages). Exact street location not given beyond downtown Ross. She declined Mary Poppins (Stapleton) and Novato Gymnastics Kids Night Out from the same list."
     }
   ]
 }
