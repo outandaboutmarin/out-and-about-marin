@@ -19728,6 +19728,33 @@
       "website": "https://www.novatogymnastics.gov/calendar/2026/11/13/kids-night-out-ages-45-12",
       "notes": "Ages 4½-12, drop-off. Check-in at 5 PM; dinner included. Register online at novato.gov/regforfun.",
       "internal_notes": "Added 2026-11-12 at Alexandra's request from the Marin Mommies Nov 13-15 weekend roundup; confirmed on novatogymnastics.gov (Fri Nov 13, 5-8 PM, schedule check-in 5:00, gymnastics 5:10, dinner 6:45, crafts and games 7:15; register at novato.gov/regforfun). Price not published on the event page, so cost 'Paid'. Address 950 Seventh St from the site footer. ages stored as '4-12 yrs' so the age filter reads it."
+    },
+    {
+      "id": 2026,
+      "organization": "parkrun (Larkspur Landing parkrun volunteers)",
+      "venue": "Larkspur Landing",
+      "event_name": "Larkspur Landing parkrun",
+      "event_name_es": "parkrun de Larkspur Landing",
+      "type": "Fitness",
+      "day": "Saturday",
+      "time": "8:00 AM",
+      "time_of_day": "Morning",
+      "town": "Larkspur",
+      "address": "101 E Sir Francis Drake Blvd, Larkspur, CA 94939",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "Weekly",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "description": "A free, fun and friendly weekly 5K community event. Walk, jog, run, volunteer or spectate, it's up to you, and everyone joins in at their own pace.",
+      "description_es": "Un evento comunitario semanal de 5 km, gratis, divertido y amigable. Camina, trota, corre, sé voluntario o mira: tú decides, y cada quien participa a su propio ritmo.",
+      "registration": "Free; register once at parkrun.us before your first visit",
+      "website": "https://www.parkrun.us/larkspurlanding/",
+      "notes": "Free, but register once before your first visit and bring a scannable copy of your barcode to get a time.",
+      "internal_notes": "Added 2026-11-12 at Alexandra's request (as a weekly event) from her screenshots of parkrun.us/larkspurlanding (every Saturday 8:00 AM, 101 E. Sir Francis Drake Blvd, free, register once, bring barcode). The site returns 403 to automated fetches. Course page details not seen."
     }
   ]
 }
