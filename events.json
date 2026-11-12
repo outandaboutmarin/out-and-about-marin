@@ -19783,6 +19783,35 @@
       "registration": "Not required",
       "website": "https://www.bellamarin.com",
       "internal_notes": "Added 2026-11-12 at Alexandra's request (Grown-Ups Only!) from a flyer shared by Evelyn Nichols (host). Street number partly hidden on the flyer; 190 Bon Air Center from bellamarin.com. '10% off all purchases' partly hidden by the message text, read as such. Free entry assumed."
+    },
+    {
+      "id": 2028,
+      "organization": "Local Sausalito parents",
+      "venue": "Dunphy Park (gazebo)",
+      "event_name": "Sausalito Turkey Trot",
+      "event_name_es": "Carrera del pavo de Sausalito",
+      "type": "Fitness",
+      "day": "Thursday",
+      "time": "8:30 AM",
+      "time_of_day": "Morning",
+      "town": "Sausalito",
+      "address": "Dunphy Park, Bridgeway & Napa St, Sausalito, CA 94965",
+      "ages": "Kids",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-26",
+      "expires": "2026-11-26",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Sausalito/Marin City",
+      "description": "A relaxed Thanksgiving-morning trot organized by local parents, with ½-mile and 1-mile courses around Dunphy Park. A fun way for kids to run off some energy before the feast.",
+      "description_es": "Una carrera tranquila la mañana de Acción de Gracias, organizada por padres locales, con recorridos de ½ milla y 1 milla en Dunphy Park. Una forma divertida de que los niños gasten energía antes del banquete.",
+      "registration": "Not required",
+      "website": "",
+      "notes": "No registration required. Meet at the gazebo in Dunphy Park.",
+      "internal_notes": "Added 2026-11-12 at Alexandra's request from a flyer shared in the Sausalito/Marin City Families WhatsApp group (organized by local parents). No web page; website blank. Organizer's phone deliberately left out. Address uses the park's cross streets."
     }
   ]
 }
