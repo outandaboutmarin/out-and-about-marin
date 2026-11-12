@@ -6,4 +6,8 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
 
 ## Pending
 
-(none — the 2026-11-08/09/10 entries (GG Mahjong ended on the Leadsheet, Ronnie's memory note, item 77 places) were applied on the desktop 2026-11-11)
+- **`social_media_and_marketing.md`, week of Nov 12 (2026-11-12):** the Sat Nov 14, 7 AM post (Metricool id now 425834893) was
+  changed from a phone session at Alexandra's request: slide 2 is now Marin Hiking Moms Monthly Hike (King Mountain, 8:30 AM,
+  free), slide 3 is the Librito Concert (moved from slide 2), and Indigenous Storytelling (Fairfax) was dropped. The caption's
+  first event line is the hike. The hike card was rebuilt in the cloud to match Template A (files `ig/week_of_nov12/sat-2-hike.png`,
+  `sat-3-concert.png`); the Dropbox builder's Sat output is now out of date, so do not re-upload it for this post.
