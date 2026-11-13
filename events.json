@@ -19429,6 +19429,35 @@
       "website": "https://www.sausalitott.com/",
       "notes": "Free; enter online beforehand (a unique name and email for each runner). Arrive by 7:45 AM to collect your race number; start at 8:15 AM.",
       "internal_notes": "Added 2026-11-13 at Alexandra's request from sausalitott.com (schedule: show up 7:45 at car park north of Mike's Bikes Sausalito, line up 8:05, 5K start 8:15; free, timed, no support services; entry form at /contact-3). Address 1 Gate 6 Rd is Mike's Bikes' address from memory, not on the site. Separate from 2028, the parents' kids trot at Dunphy Park at 8:30."
+    },
+    {
+      "id": 2030,
+      "organization": "Tamalpais Community Services District (TCSD)",
+      "venue": "Tam Valley Community Center",
+      "event_name": "Community Game Night",
+      "event_name_es": "Noche de juegos comunitaria",
+      "type": "Community Event",
+      "day": "Tuesday",
+      "time": "6:30 PM",
+      "time_of_day": "Evening",
+      "town": "Mill Valley",
+      "address": "203 Marin Ave, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-24",
+      "expires": "2026-11-24",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Mill Valley",
+      "description": "Come meet new friends and play old favorites or learn something new: tables for classic games (Chess, Clue, Life, Rummikub, Scrabble), Euro-style strategy games (Settlers of Catan, Splendor, Ticket to Ride), collaborative games (Forbidden Island) and card games (Exploding Kittens, Monopoly Deal, Uno). A fun evening at the Community Center.",
+      "description_es": "Ven a conocer nuevos amigos y jugar a tus favoritos de siempre o aprender algo nuevo: mesas de juegos clásicos (ajedrez, Clue, Life, Rummikub, Scrabble), juegos de estrategia estilo europeo (Catan, Splendor, Ticket to Ride), juegos cooperativos (Forbidden Island) y juegos de cartas (Exploding Kittens, Monopoly Deal, Uno). Una noche divertida en el Centro Comunitario.",
+      "registration": "Free; RSVP appreciated through TCSD",
+      "website": "https://www.tamcsd.org/",
+      "notes": "Free; RSVP is appreciated so the organizers know who is coming.",
+      "internal_notes": "Added 2026-11-13 at Alexandra's request (title hers) from the Tam Valley News email (TCSD): Nov 24, 6:30 PM, Tam Valley Community Center, free, RSVP link in the email. No end time given; ages not stated (All ages assumed). Closes the open-item 58 zzd wait for Game Night details. No event page found on tamcsd.org, so website is the TCSD home page (/events/ returns 404)."
     }
   ]
 }
