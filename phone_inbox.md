@@ -6,16 +6,4 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
 
 ## Pending
 
-- **`social_media_and_marketing.md`, week of Nov 12 (2026-11-12):** the Sat Nov 14, 7 AM post (Metricool id now 425834893) was
-  changed from a phone session at Alexandra's request: slide 2 is now Marin Hiking Moms Monthly Hike (King Mountain, 8:30 AM,
-  free), slide 3 is the Librito Concert (moved from slide 2), and Indigenous Storytelling (Fairfax) was dropped. The caption's
-  first event line is the hike. The hike card was rebuilt in the cloud to match Template A (files `ig/week_of_nov12/sat-2-hike.png`,
-  `sat-3-concert.png`); the Dropbox builder's Sat output is now out of date, so do not re-upload it for this post.
-- **`open_items.md`, item 58 zzd (2026-11-13):** TCSD Game Night is now listed (id 2030, Tue Nov 24, 6:30 PM, Tam Valley
-  Community Center, free, RSVP appreciated). Remove Game Night from the zzd wait; Mahj, Mingle & Jingle (Dec 2) still waits.
-- **`social_media_and_marketing.md` (2026-11-13, Alexandra):** a one-off turkey trots post now takes the **Sun Nov 15, 5 PM** slot
-  (Metricool id 427425514): 3 slides in the Halloween-post style (cover with a solid turkey replacing the Marin map, "Trot first,
-  gobble later.", all text doubled; list of the 7 Thanksgiving trots; the normal end slide), caption opening "Trot first, gobble
-  later 🦃", first comment "Some of us run for the pie…". Slides built in the cloud, staged at `ig/turkey_trots_nov22/`.
-  The regular Sun Nov 15 "Three events for the week ahead" post (magic workshop, craft time, star party) was set to **draft**
-  in Metricool (id 427425352), not deleted, so it will not publish. Sun Nov 22 is open again: build the regular weekly post as usual.
+(empty)
