@@ -1,16 +1,16 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-11-13
-Time: 00:59:03
+Time: 20:07:58
 
-Total events in events.json: 629
-Active events: 574
+Total events in events.json: 631
+Active events: 576
 Temp. closed: 0
 
 Events by type:
-  Community Event: 133
+  Community Event: 134
   Farmers Market: 16
   Festival: 30
-  Fitness: 25
+  Fitness: 26
   Grown-Ups Only!: 62
   Kids Programs: 123
   Library: 168
@@ -29,7 +29,7 @@ Events by town:
   Marin City: 9
   Marin County: 1
   Marshall: 3
-  Mill Valley: 69
+  Mill Valley: 70
   Montrose: 15
   Muir Beach: 6
   Napa: 7
@@ -43,7 +43,7 @@ Events by town:
   San Anselmo: 17
   San Geronimo: 2
   San Rafael: 83
-  Sausalito: 32
+  Sausalito: 33
   St. Helena: 13
   Stinson Beach: 1
   Telluride: 38
@@ -54,6 +54,7 @@ Events by town:
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
+  🔔 PAGE CHANGED: Mill Valley Public Library
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library
