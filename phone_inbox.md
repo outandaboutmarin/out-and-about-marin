@@ -17,3 +17,5 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
   427413229): 3 slides in the Halloween-post style (cover with a solid turkey replacing the Marin map, "Trot first, gobble later.",
   all text doubled; list of the 7 Thanksgiving trots; the normal end slide), caption opening "Trot first, gobble later 🦃", first
   comment "Some of us run for the pie…". Slides built in the cloud, staged at `ig/turkey_trots_nov22/` (delete after Nov 22).
+- **`social_media_and_marketing.md`, week of Nov 19 (2026-11-13, Alexandra):** do **not** build or schedule the regular Sun Nov 22, 5 PM
+  weekly post. The turkey trots post (Sun Nov 22, 4 PM) replaces it. Thu Nov 19 and Sat Nov 21 posts are unaffected.
