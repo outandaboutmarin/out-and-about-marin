@@ -97,6 +97,16 @@ def alert_dates(notes):
     return set(re.findall(r"ALERT\[(\d{4}-\d{2}-\d{2})\]:", notes, re.I))
 
 
+# (one-off id, recurring id) pairs that the COLLISION scan flags but that are two
+# genuine programs at the same time. Each was confirmed on the venue's calendar.
+CONFIRMED_DISTINCT = {
+    # 2026-11-13: MCFL feed lists both at Point Reyes, Tue Nov 17, 3:00 PM.
+    (1729, 286),   # Marin Master Gardeners Seed Swap vs Reading Buddies
+    # 2026-11-13: beltiblibrary.org lists both Wed Dec 30, 3:30 PM, different rooms.
+    (1932, 3),     # Threads Club (Large Meeting Room) vs Preschool Storytime (Children's Room)
+}
+
+
 def acknowledged_on(event, d):
     """
     True when this record already explains itself on date `d` — a date-scoped
@@ -482,6 +492,11 @@ def scan(events, horizon_days=180):
             # that would make the very first notification a false alarm.
             # First case: ids 781/6, Civic Center, 2026-09-22.
             if acknowledged_on(r, d) and not show_all:
+                continue
+            # Checked by hand and both really run at that time (separate
+            # programs, often separate rooms), so neither a skip nor an ALERT is
+            # right. Add a pair only after reading the venue's own calendar.
+            if (e["id"], r["id"]) in CONFIRMED_DISTINCT and not show_all:
                 continue
             same_time = _start_time(r.get("time")) == _start_time(e.get("time"))
             if not same_time and not show_all:
