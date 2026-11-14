@@ -19378,6 +19378,35 @@
       "website": "https://www.inthecave.com/events-schedule/?eventid=1298",
       "notes": "Free. Registration not required, but appreciated.",
       "internal_notes": "Added 2026-11-13 at Alexandra's request from The Cave's post https://www.inthecave.com/2026/11/10/free-open-gym-11-15-2/ (Nov 15, doors open 12-3 PM, 25 Dodie St, free, 'Though not required, please register'). Website = the post's SIGN UP link (eventid=1298). Partner record with logo. Ages not stated on the page (shown as All ages)."
+    },
+    {
+      "id": 2032,
+      "organization": "Bay Area Discovery Museum",
+      "venue": "Bay Area Discovery Museum",
+      "event_name": "Marin County Free Day at Bay Area Discovery Museum",
+      "event_name_es": "Día gratis para el condado de Marin en el Bay Area Discovery Museum",
+      "type": "Kids Programs",
+      "day": "Sunday",
+      "time": "9:00 AM – 3:00 PM",
+      "time_of_day": "Morning",
+      "town": "Sausalito",
+      "address": "557 McReynolds Rd, Sausalito, CA 94965",
+      "ages": "0-8 yrs",
+      "cost": "Free for Marin residents",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-15",
+      "expires": "2026-11-15",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Sausalito/Marin City",
+      "description": "Take your family on a journey of discovery, right in your own backyard! Marin County families get free admission to the Bay Area Discovery Museum's indoor and outdoor play spaces for children 0-8 years old.",
+      "description_es": "¡Lleva a tu familia a un viaje de descubrimiento, aquí mismo en tu patio! Las familias del condado de Marin entran gratis a los espacios de juego interiores y exteriores del Bay Area Discovery Museum para niños de 0 a 8 años.",
+      "registration": "Not stated; check in at the museum",
+      "website": "https://bayareadiscoverymuseum.org/",
+      "notes": "Check-in times: 9 AM–12 PM and 1–3 PM. The leading adult must bring a photo ID with a Marin County zip code. Rain or shine; dress in layers.",
+      "internal_notes": "Added 2026-11-14 at Alexandra's request from a photo of the museum's own flyer (nursing room, sent by a friend): Sun Nov 15, check-in 9-12 and 1-3, ages 0-8, Marin photo ID, rain or shine. bayareadiscoverymuseum.org returns 403 to automated fetches, so registration/reservation rules not confirmed."
     }
   ]
 }
