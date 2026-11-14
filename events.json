@@ -19336,6 +19336,48 @@
       "website": "https://www.tamcsd.org/",
       "notes": "Free; RSVP is appreciated so the organizers know who is coming.",
       "internal_notes": "Added 2026-11-13 at Alexandra's request (title hers) from the Tam Valley News email (TCSD): Nov 24, 6:30 PM, Tam Valley Community Center, free, RSVP link in the email. No end time given; ages not stated (All ages assumed). Closes the open-item 58 zzd wait for Game Night details. No event page found on tamcsd.org, so website is the TCSD home page (/events/ returns 404)."
+    },
+    {
+      "id": 2031,
+      "organization": "The Cave",
+      "venue": "The Cave (San Rafael)",
+      "event_name": "Free Open Gym at The Cave San Rafael",
+      "event_name_es": "Gimnasio abierto gratis en The Cave San Rafael",
+      "type": "Kids Programs",
+      "day": "Sunday",
+      "time": "12:00 PM – 3:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "San Rafael",
+      "address": "25 Dodie St, San Rafael, CA 94901",
+      "location_group": "San Rafael",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-15",
+      "expires": "2026-11-15",
+      "season_start": "",
+      "season_end": "",
+      "status": "Active",
+      "featured": false,
+      "partner": true,
+      "logo": "assets/ads/the_cave_logo.png",
+      "contact": {
+        "name": "The Cave",
+        "phone": "(415) 927-1630",
+        "email": "staff@inthecave.com",
+        "instagram": "thecavemarin"
+      },
+      "socials": {
+        "instagram": "thecavemarin"
+      },
+      "description": "A free open gym at The Cave's San Rafael location: come and play, train, or just explore the gymnastics and parkour space. Open to everyone; drop in any time between noon and 3 PM.",
+      "description_es": "Gimnasio abierto gratis en la sede de San Rafael de The Cave: ven a jugar, entrenar o simplemente conocer el espacio de gimnasia y parkour. Abierto a todos; pasa cuando quieras entre el mediodía y las 3 PM.",
+      "registration": "Not required; registering online helps them plan",
+      "website": "https://www.inthecave.com/events-schedule/?eventid=1298",
+      "notes": "Free. Registration not required, but appreciated.",
+      "internal_notes": "Added 2026-11-13 at Alexandra's request from The Cave's post https://www.inthecave.com/2026/11/10/free-open-gym-11-15-2/ (Nov 15, doors open 12-3 PM, 25 Dodie St, free, 'Though not required, please register'). Website = the post's SIGN UP link (eventid=1298). Partner record with logo. Ages not stated on the page (shown as All ages)."
     }
   ]
 }
