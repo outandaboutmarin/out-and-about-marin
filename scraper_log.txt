@@ -1,9 +1,9 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-11-14
-Time: 00:49:49
+Time: 18:33:20
 
-Total events in events.json: 627
-Active events: 572
+Total events in events.json: 628
+Active events: 573
 Temp. closed: 0
 
 Events by type:
@@ -12,7 +12,7 @@ Events by type:
   Festival: 30
   Fitness: 26
   Grown-Ups Only!: 62
-  Kids Programs: 119
+  Kids Programs: 120
   Library: 168
   Music and Movies: 72
 
@@ -42,7 +42,7 @@ Events by town:
   Ross: 12
   San Anselmo: 17
   San Geronimo: 2
-  San Rafael: 82
+  San Rafael: 83
   Sausalito: 33
   St. Helena: 13
   Stinson Beach: 1
