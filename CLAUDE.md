@@ -1115,6 +1115,8 @@ Full list in `OAA maintence and content/open_items.md`; the dashboard renders it
 
 ## Where the non-repo files live
 
+**Logo and QR code: `OAA marketing\QR code, logo, etc\`** (folder made by Alexandra 2026-11-13) holds copies of `apple-touch-icon.png` (the OAA logo, the Marin silhouette; the original lives in the repo root and `OAA marketing\Instagram templatesssets\oaa_logo_original_apple-touch-icon.png`) and `outandaboutmarin_qr.png` (the site QR code; original in `OAA marketing\`). Point Alexandra here when she asks for the logo or QR code.
+
 **`OAA Sponsorship and Partners/`** (sibling of `OAA maintence and content/`, created by Alexandra
 2026-09-26) — everything advertiser-facing:
 - `Advertising Partners Upload.xlsx` — **first tab `Leadsheet` (added 2026-10-10)**: one row per sponsor that is LIVE on the
