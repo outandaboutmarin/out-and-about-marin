@@ -1060,11 +1060,11 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
    to pay still open).
 2. **Kitsch + Sync (item 21):** only a brand colour (if they want one) and whether their events page becomes a sweep
    source are still open; the Featured ad ends Jan 21, 2027 (renew or let it lapse).
-3. **Next Marin weekly sweep** (`sources/marin.md`, 53 sources; **every active sponsor has its own numbered source, checked every sweep** (Alexandra 2026-11-11): #46 Social Klub, #52 Kitsch + Sync, #53 FIT4MOM Marin. **Metta is not an approved source** (Alexandra 2026-11-11): do not add it; #51 Reuse Alliance repair fairs added 2026-11-07, #20 Phoenix now includes its non-profit book sale page). The Nov 4 sweep covered **Nov 5 to Jan 10** (processed, 37f27e6);
+3. **Next Marin weekly sweep** (`sources/marin.md`, 53 sources; **every active sponsor has its own numbered source, checked every sweep** (Alexandra 2026-11-11): #46 Social Klub, #52 Kitsch + Sync, #53 FIT4MOM Marin. **The Cave (live 2026-11-13) is not a source yet: ask Alexandra before adding it.** **Metta is not an approved source** (Alexandra 2026-11-11): do not add it; #51 Reuse Alliance repair fairs added 2026-11-07, #20 Phoenix now includes its non-profit book sale page). The Nov 4 sweep covered **Nov 5 to Jan 10** (processed, 37f27e6);
    recheck the winter-break gaps (item 58zzb) and pick up the Learning Bus December PDF. Napa's last covered Oct 30 to Dec 15.
 4. **Item 58:** zr (Diwali at Mill Valley Library) and zs (Mill Valley ShaBabies venue, ask Rachel Weiss), plus the rest.
 5. **Telluride (items 65, 66, 72):** Lee Shea's setup and first partner sweep; the five library questions 66a-66e.
-6. **Sponsor prospects:** Osher Marin JCC and The Cave (mockups ready); FIT4MOM still owes the direct Glofox link.
+6. **Sponsors:** The Cave went live 2026-11-13 as a Community Partner (first listing id 2031, logo `assets/ads/the_cave_logo.png`). **Prospect:** Osher Marin JCC (mockups ready); FIT4MOM still owes the direct Glofox link.
 7. Items 71 and 75 closed 2026-10-24 (old folders deleted; Context Transfer skill uploaded under Customize → Skills and working in regular chats). Say "context transfer" in any chat or Code session to hand off.
 
 ## Dated "What changed" logs
