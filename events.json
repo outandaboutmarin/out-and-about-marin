@@ -11509,7 +11509,7 @@
       "cadence": "One-off",
       "indoor_outdoor": "Outdoor",
       "active_sedentary": "Active",
-      "notes": "",
+      "notes": "ALERT[2026-11-14]: Cancelled due to weather.",
       "event_name": "Walk: Mom Life on the Move Walk",
       "event_name_es": "Caminata: Caminata de Mom Life on the Move",
       "organization": "Mom Life on the Move (Novato)",
@@ -11528,7 +11528,7 @@
       "description_es": "Encuentro en Dr. Insomniac's para tomar café, té y un bocadillo; luego caminata al parque para jugar y regreso. Una caminata para mamás con sus pequeños. Inscripción por mensaje directo en Instagram @momlifeonthemove_novato.",
       "registration": "Required: DM @momlifeonthemove_novato on Instagram",
       "website": "https://www.instagram.com/momlifeonthemove_novato/",
-      "internal_notes": "Added 2026-10-12 from the group's own Instagram post. Separate from the Novato Mothers Club stroll (id 1280), which met at the same café on Oct 24. 2026-10-12: title changed at Alexandra's request. 2026-11-05: time 9:00 → 8:30 AM per the organiser's newer Instagram story (Alexandra).",
+      "internal_notes": "Added 2026-10-12 from the group's own Instagram post. Separate from the Novato Mothers Club stroll (id 1280), which met at the same café on Oct 24. 2026-10-12: title changed at Alexandra's request. 2026-11-05: time 9:00 → 8:30 AM per the organiser's newer Instagram story (Alexandra). 2026-11-14: cancelled due to weather per @momlifeonthemove_novato Instagram story (Alexandra); flagged with a dated ALERT rather than removed.",
       "expires": "2026-11-14",
       "id": 1619
     },
