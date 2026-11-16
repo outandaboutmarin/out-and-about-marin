@@ -9,7 +9,7 @@ Current folders and when to delete them:
 - king_tide_oct25/ king tide flood post, 5 slides (Sat Oct 24, 4 PM); after Sat Oct 24
 - week_of_oct29/   Sat Oct 31 7 AM + Sun Nov 1 5 PM posts (Template A); after Sun Nov 1
 - week_of_nov5/    Thu Nov 5 5 PM, Sat Nov 7 7 AM, Sun Nov 8 5 PM posts (Template A); after Sun Nov 8
-- week_of_nov12/   Thu Nov 12 5 PM, Sat Nov 14 7 AM, Sun Nov 15 5 PM posts (Template A); after Sun Nov 15
+- week_of_nov12/   Thu Nov 12 5 PM, Sat Nov 14 7 AM posts, and the week-ahead post moved to Mon Nov 16 5 PM (Template A); after Mon Nov 16
 - turkey_trots_nov22/ Thanksgiving turkey trots post, 3 slides (moved to Sun Nov 15, 5 PM); after Sun Nov 15
 - halloween_oct30/ Halloween weekend post (Thu Oct 29, 8:15 PM); after Thu Oct 29
 - hot_tips_v2/     Weekly Wednesday Hot Tips 1-8; after Wed Dec 2
