@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15",
+  "last_updated": "2026-11-16",
   "events": [
     {
       "id": 1,
@@ -18835,6 +18835,75 @@
       "website": "https://bayareadiscoverymuseum.org/",
       "notes": "Check-in times: 9 AM–12 PM and 1–3 PM. The leading adult must bring a photo ID with a Marin County zip code. Rain or shine; dress in layers.",
       "internal_notes": "Added 2026-11-14 at Alexandra's request from a photo of the museum's own flyer (nursing room, sent by a friend): Sun Nov 15, check-in 9-12 and 1-3, ages 0-8, Marin photo ID, rain or shine. bayareadiscoverymuseum.org returns 403 to automated fetches, so registration/reservation rules not confirmed."
+    },
+    {
+      "id": 2033,
+      "organization": "Bungalow Kitchen",
+      "venue": "Bungalow Kitchen (upstairs sunroom)",
+      "event_name": "Locals Night: Mahjong & Mingling at Bungalow Kitchen",
+      "event_name_es": "Noche de vecinos: mahjong y convivencia en Bungalow Kitchen",
+      "type": "Grown-Ups Only!",
+      "day": "Tuesday",
+      "time": "5:00 PM – 8:00 PM",
+      "time_of_day": "Evening",
+      "town": "Tiburon",
+      "address": "5 Main St, Tiburon, CA 94920",
+      "ages": "Adults",
+      "cost": "Free; drinks for sale",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-17",
+      "expires": "2026-11-17",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Tiburon/Belvedere",
+      "description": "A few rounds, familiar faces, and nowhere to rush off to. Bring your mahjong board, pull up a chair and make yourself at home with friends old and new. Complimentary crudités and charcuterie between rounds; specialty cocktails and wine by the glass or bottle for purchase.",
+      "description_es": "Unas partidas, caras conocidas y sin prisa. Trae tu tablero de mahjong, acerca una silla y siéntete como en casa con amigos de siempre y nuevos. Crudités y embutidos de cortesía entre partidas; cócteles especiales y vino por copa o botella a la venta.",
+      "registration": "RSVP on OpenTable",
+      "website": "https://www.opentable.com/booking/experiences-availability?rid=1221076&restref=1221076&experienceId=852313",
+      "notes": "Bring your own mahjong board. RSVP on OpenTable.",
+      "internal_notes": "Added 2026-11-16 at Alexandra's request (Grown-Ups Only!) from Bungalow Kitchen's own Nextdoor post (Locals Night, Tue Nov 17, 5-8 PM, upstairs sunroom). Address 5 Main St, Tiburon is from memory, not on the post; OpenTable link not checkable from the cloud."
+    },
+    {
+      "id": 2034,
+      "organization": "Kitsch + Sync",
+      "venue": "Kitsch + Sync",
+      "event_name": "Kitsch + Sync Ribbon Cutting with the Novato Chamber",
+      "event_name_es": "Corte de listón de Kitsch + Sync con la Cámara de Novato",
+      "type": "Community Event",
+      "day": "Tuesday",
+      "time": "5:30 PM – 6:30 PM",
+      "time_of_day": "Evening",
+      "town": "Novato",
+      "address": "1757 Grant Ave, Novato, CA 94945",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-17",
+      "expires": "2026-11-17",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Novato",
+      "description": "Help give Kitsch + Sync a warm Novato welcome! Join the Novato Chamber for a ribbon cutting to meet the team and celebrate a new local business.",
+      "description_es": "¡Ayuda a darle a Kitsch + Sync una cálida bienvenida a Novato! Únete a la Cámara de Comercio de Novato en el corte de listón para conocer al equipo y celebrar un nuevo negocio local.",
+      "registration": "Not required",
+      "website": "https://kitschandsync.com/",
+      "notes": "Socks required in the play zone.",
+      "internal_notes": "Added 2026-11-16 at Alexandra's request (Community Event) from the @novatochamber Instagram post: ribbon cutting Tue Nov 17, 5:30-6:30 PM, 1757 Grant Ave. Partner fields copied from id 1770.",
+      "partner": true,
+      "logo": "assets/ads/kitsch_sync_logo.png",
+      "contact": {
+        "name": "Kitsch + Sync",
+        "phone": "(415) 408-3158",
+        "instagram": "kitschandsync",
+        "email": "info@kitschandsync.com"
+      },
+      "socials": {
+        "instagram": "kitschandsync"
+      }
     }
   ]
 }
