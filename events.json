@@ -18443,6 +18443,35 @@
       "socials": {
         "instagram": "kitschandsync"
       }
+    },
+    {
+      "id": 2035,
+      "organization": "Settled",
+      "venue": "The Art Bloc Sausalito",
+      "event_name": "Caring for Aging Loved Ones: Panel & Community Mixer",
+      "event_name_es": "Cuidar a seres queridos mayores: panel y encuentro comunitario",
+      "type": "Grown-Ups Only!",
+      "day": "Wednesday",
+      "time": "6:00 PM – 8:00 PM",
+      "time_of_day": "Evening",
+      "town": "Sausalito",
+      "address": "200 Gate 5 Rd, Suite 110, Sausalito, CA 94965",
+      "ages": "Adults",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-18",
+      "expires": "2026-11-18",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Sausalito/Marin City",
+      "description": "Caring for an aging loved one? Join people who've been there and professionals who help families navigate aging, caregiving and end-of-life transitions. A panel with a registered nurse and death doula, a family therapist and a digital-estate coach, moderated by Settled founder Jaclyn Ziccardi, followed by Q&A and mingling. Come solo or bring a friend.",
+      "description_es": "¿Cuidas a un ser querido mayor? Únete a personas que han pasado por lo mismo y a profesionales que ayudan a las familias con el envejecimiento, el cuidado y las transiciones al final de la vida. Un panel con una enfermera registrada y doula de fin de vida, una terapeuta familiar y una asesora de patrimonio digital, moderado por Jaclyn Ziccardi, fundadora de Settled, seguido de preguntas y convivencia. Ven solo o con una amistad.",
+      "registration": "Free RSVP on Luma",
+      "website": "https://luma.com/rrzwfw2l",
+      "notes": "Free; RSVP on Luma.",
+      "internal_notes": "Added 2026-11-17 at Alexandra's request (Grown-Ups Only!) from the Luma page luma.com/rrzwfw2l (read via __NEXT_DATA__): Wed Nov 18, 6-8 PM PT, The Art Bloc Sausalito, free ticket. Organizer Settled; no sales pitch on the page."
     }
   ]
 }
