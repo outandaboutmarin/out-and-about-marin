@@ -1,9 +1,9 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-11-16
-Time: 22:36:17
+Date: 2026-11-17
+Time: 02:51:59
 
-Total events in events.json: 599
-Active events: 545
+Total events in events.json: 597
+Active events: 543
 Temp. closed: 0
 
 Events by type:
@@ -13,7 +13,7 @@ Events by type:
   Fitness: 24
   Grown-Ups Only!: 62
   Kids Programs: 111
-  Library: 167
+  Library: 165
   Music and Movies: 69
 
 Events by town:
@@ -35,13 +35,13 @@ Events by town:
   Naturita: 2
   Nicasio/San Geronimo: 2
   Norwood: 20
-  Novato: 57
+  Novato: 56
   Point Reyes Station: 10
   Ridgway: 11
   Ross: 10
   San Anselmo: 17
   San Geronimo: 2
-  San Rafael: 79
+  San Rafael: 78
   Sausalito: 30
   St. Helena: 12
   Telluride: 35
@@ -52,7 +52,6 @@ Events by town:
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
-  🔔 PAGE CHANGED: Mill Valley Public Library
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library

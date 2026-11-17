@@ -1,5 +1,5 @@
 {
-  "sweep_date": "2026-11-16",
+  "sweep_date": "2026-11-17",
   "suggested_events": [
     {
       "date": "TBD",
@@ -89,6 +89,46 @@
       "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
     },
     {
+      "date": "2026-12-02",
+      "day_label": "Wednesday, 2026-12-02",
+      "title": "Loch Lomond",
+      "time": "10:00 AM",
+      "location": "Loch Lomond Marina",
+      "description": "Directions: Meet at the Loch Lomond Marina Park parking lot. From Highway 101 take the downtown San Rafael exit. Turn east onto 2<sup>nd</sup> St .3 mi, continue onto 3<sup>rd</sup> St .4 mi, continue",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-12-06",
+      "day_label": "Sunday, 2026-12-06",
+      "title": "Stafford Lake Birds",
+      "time": "10:00 AM",
+      "location": "Stafford Lake Park",
+      "description": "Directions: Meet at Stafford Lake Park in Novato (3549 Novato Blvd). From Hwy 101 in Novato, take the exit for San Marin Dr west 2.9 miles. Turn right onto Novato Blvd and follow for 2.6 miles. The pa",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-12-13",
+      "day_label": "Sunday, 2026-12-13",
+      "title": "Hamilton Wetlands Birds",
+      "time": "10:00 AM",
+      "location": "Hamilton Wetlands",
+      "description": "Directions: Meet at parking area near the playfield. From Highway 101 take the Ignacio/Bel Marin Keys exit. Stay right onto Nave Drive .7 mi, go left at Main Gate Rd, .4 mi, Main Gate Rd becomes S Pal",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2026-12-15",
+      "day_label": "Tuesday, 2026-12-15",
+      "title": "Senior Stroll: Hamilton Wetlands",
+      "time": "2:00 PM",
+      "location": "Hamilton Wetlands",
+      "description": "Directions: Meet at parking area near the playfield. From Highway 101 take the Ignacio/Bel Marin Keys exit. Stay right onto Nave Drive .7 mi, go left at Main Gate Rd, .4 mi, Main Gate Rd becomes S Pal",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
       "date": "2027-01-20",
       "day_label": "Wednesday, 2027-01-20",
       "title": "Lecture: Raptors",
@@ -105,6 +145,16 @@
       "time": "2:00 PM",
       "location": "Board Chambers, Room 330<br>3501 Civic Center Drive<br>San Rafael, CA 94903",
       "description": "Documents: Agenda TBD<br>Sponsor: Parks<br>Link: https://www.marincountyparks.org/about-us/boards-and-commissions/measure-a-oversight-committee<br><br>The Measure A Community Oversight Committee revie",
+      "source": "Marin County Parks (Trumba iCal)",
+      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
+    },
+    {
+      "date": "2027-02-24",
+      "day_label": "Wednesday, 2027-02-24",
+      "title": "Senior Stroll: Bothin Marsh",
+      "time": "10:00 AM",
+      "location": "Bothin Marsh",
+      "description": "Directions: Meet at the Hauke Park parking area in Mill Valley. From Hwy 101 in Mill Valley, take the Tiburon Blvd/E Blithedale Ave exit west on E Blithedale Ave west 0.6 mile. Turn left onto Roque Mo",
       "source": "Marin County Parks (Trumba iCal)",
       "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
     },
