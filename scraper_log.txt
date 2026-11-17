@@ -1,9 +1,9 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-11-17
-Time: 02:51:59
+Time: 21:25:42
 
-Total events in events.json: 597
-Active events: 543
+Total events in events.json: 598
+Active events: 544
 Temp. closed: 0
 
 Events by type:
@@ -11,7 +11,7 @@ Events by type:
   Farmers Market: 16
   Festival: 30
   Fitness: 24
-  Grown-Ups Only!: 62
+  Grown-Ups Only!: 63
   Kids Programs: 111
   Library: 165
   Music and Movies: 69
@@ -42,7 +42,7 @@ Events by town:
   San Anselmo: 17
   San Geronimo: 2
   San Rafael: 78
-  Sausalito: 30
+  Sausalito: 31
   St. Helena: 12
   Telluride: 35
   Tiburon: 51
@@ -52,6 +52,7 @@ Events by town:
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
+  🔔 PAGE CHANGED: Mill Valley Public Library
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
   🔔 PAGE CHANGED: MCFL — Fairfax Library
@@ -59,9 +60,6 @@ Library pages changed — review recommended:
   🔔 PAGE CHANGED: MCFL — Novato Library
   🔔 PAGE CHANGED: MCFL — Point Reyes Library
   🔔 PAGE CHANGED: MCFL — South Novato Library
-  🔔 PAGE CHANGED: MCFL — Bolinas Library
-  🔔 PAGE CHANGED: MCFL — Inverness Library
-  🔔 PAGE CHANGED: MCFL — Stinson Beach Library
 
 Unpredictable events needing one-off dates added:
   🔔 NEEDS ONE-OFF DATE: Read to a Dog with Stinson — Corte Madera (monthly Sunday)
