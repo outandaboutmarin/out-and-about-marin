@@ -14645,8 +14645,8 @@
       "description": "A local holiday market with more than 20 Marin makers and small businesses, including Roonie's, The Phoenix Used Bookshop, Babaloo Bakes, Rituals for Littles, Mahj On My Mind, Crown & Crumpet, Swampgirl Pottery and Made in Marin. Shop local gifts in the garden.",
       "description_es": "Un mercado navideño local con más de 20 artesanos y pequeños negocios de Marin, entre ellos Roonie's, The Phoenix Used Bookshop, Babaloo Bakes, Rituals for Littles, Mahj On My Mind, Crown & Crumpet, Swampgirl Pottery y Made in Marin. Compra regalos locales en el jardín.",
       "registration": "Not required",
-      "website": "",
-      "internal_notes": "Added 2026-10-31 from The Local Hype Girl's Instagram flyer (phone, Alexandra approved). Not found online. Cost assumed free entry (flyer names no admission). Address and location group copied from id 1793 (same venue)."
+      "website": "https://maringarden.org/winterwonderland/",
+      "internal_notes": "Added 2026-10-31 from The Local Hype Girl's Instagram flyer (phone, Alexandra approved). Not found online. Cost assumed free entry (flyer names no admission). Address and location group copied from id 1793 (same venue). 2026-11-18: merged with duplicate 2019 (same market, same date/time/venue, from the Nov 11 sweep); took its website, the MAGC Winter Wonderland calendar (read in real Chrome, lists 'Local Holiday Market', Dec 6, 11 AM-4 PM). Alexandra approved retiring one."
     },
     {
       "id": 1861,
@@ -17849,7 +17849,7 @@
       "cadence": "One-off",
       "event_date": "2026-12-06",
       "expires": "2026-12-06",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "description": "A shop-local winter market at Marin Art & Garden Center in Ross, part of its Holidays in the Garden season.",
       "description_es": "Un mercado de invierno de comercio local en Marin Art & Garden Center, en Ross, parte de su temporada navideña Holidays in the Garden.",
@@ -17857,7 +17857,7 @@
       "website": "https://maringarden.org/winterwonderland/",
       "notes": "",
       "location_group": "San Anselmo/Ross",
-      "internal_notes": "Added 2026-11-11 from the weekly sweep (window Nov 12 - Dec 28), workbook daily_sweep_2026-11-11_review.xlsx, Alexandra marked approve. MAGC Winter Wonderland calendar (read in real Chrome): 'Local Holiday Market', Dec 6, 11 AM-4 PM. No event page or price found (Eventbrite organiser page and maringarden.org checked). Alexandra: follow recommendation on MAGC."
+      "internal_notes": "Added 2026-11-11 from the weekly sweep (window Nov 12 - Dec 28), workbook daily_sweep_2026-11-11_review.xlsx, Alexandra marked approve. MAGC Winter Wonderland calendar (read in real Chrome): 'Local Holiday Market', Dec 6, 11 AM-4 PM. No event page or price found (Eventbrite organiser page and maringarden.org checked). Alexandra: follow recommendation on MAGC. RETIRED 2026-11-18: duplicate of 1858 (same market, Dec 6, 11 AM-4 PM, MAGC); 1858 kept for its fuller vendor description and given this record's website (Alexandra approved)."
     },
     {
       "id": 2020,
