@@ -18120,6 +18120,34 @@
       "registration": "Not required",
       "website": "https://www.sweetwatermusichall.com/",
       "internal_notes": "Added 2026-11-18 at Alexandra's request from the flyer (Women's Art Alliance / Marin Arts, reposted by @marin.dad): Sat Dec 5, 11:30 AM-3:30 PM. Not yet on sweetwatermusichall.com. Free entry assumed (flyer names no admission)."
+    },
+    {
+      "id": 2037,
+      "organization": "Made in Marin",
+      "venue": "Made in Marin Workshop",
+      "event_name": "Workshop Wonderland Pop-Up at Made in Marin",
+      "event_name_es": "Mercado pop-up \"Workshop Wonderland\" en Made in Marin",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "12:00 PM – 4:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Novato",
+      "address": "35 Santa Maria Dr, Novato, CA 94947",
+      "ages": "All ages",
+      "cost": "Free entry; goods for sale",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-21",
+      "expires": "2026-11-21",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Novato",
+      "description": "Shop local for the family at Made in Marin's holiday pop-up in their workshop, with local makers' gifts and holiday cheer.",
+      "description_es": "Compra local para la familia en el mercado navideño pop-up de Made in Marin en su taller, con regalos de artesanos locales y espíritu festivo.",
+      "registration": "Not required",
+      "website": "https://www.instagram.com/themadeinmarin/",
+      "internal_notes": "Added 2026-11-18 at Alexandra's request from the Made in Marin flyer reposted by @sanrafaeltheplacetobe: Sat Nov 21, 12-4 PM, in the MIM workshop ('our garage'), 35 Santa Maria Dr, Novato; also tags @redbballoon. Free entry assumed; zip 94947 assumed for Santa Maria Dr."
     }
   ]
 }
