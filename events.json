@@ -18148,6 +18148,34 @@
       "registration": "Not required",
       "website": "https://www.instagram.com/themadeinmarin/",
       "internal_notes": "Added 2026-11-18 at Alexandra's request from the Made in Marin flyer reposted by @sanrafaeltheplacetobe: Sat Nov 21, 12-4 PM, in the MIM workshop ('our garage'), 35 Santa Maria Dr, Novato; also tags @redbballoon. Free entry assumed; zip 94947 assumed for Santa Maria Dr."
+    },
+    {
+      "id": 2038,
+      "organization": "Fairfax Brewing Company",
+      "venue": "Fairfax Brewing Company",
+      "event_name": "Santa Selfies & Hot Cocoa Bar at Fairfax Brewing",
+      "event_name_es": "Selfis con Santa y barra de chocolate caliente en Fairfax Brewing",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "1:00 PM – 4:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Fairfax",
+      "address": "765 Center Blvd, Fairfax, CA 94930",
+      "ages": "All ages",
+      "cost": "Free entry",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-05",
+      "expires": "2026-12-05",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Fairfax",
+      "description": "Santa's coming to Fairfax Brew Co! Snap a selfie with Santa and warm up at the hot cocoa bar.",
+      "description_es": "¡Santa llega a Fairfax Brew Co! Tómate una selfi con Santa y caliéntate en la barra de chocolate caliente.",
+      "registration": "Not required",
+      "website": "https://www.instagram.com/fairfaxbrewingcompany/",
+      "internal_notes": "Added 2026-11-17 at Alexandra's request from Fairfax Brewing Company's own Instagram flyer: Sat Dec 5, 1-4 PM. Address 765 Center Blvd is from memory (not on the flyer; brewery site unreachable from the cloud). Free entry assumed; selfie/cocoa prices not stated."
     }
   ]
 }
