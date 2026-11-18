@@ -18092,6 +18092,34 @@
       "website": "https://luma.com/rrzwfw2l",
       "notes": "Free; RSVP on Luma.",
       "internal_notes": "Added 2026-11-17 at Alexandra's request (Grown-Ups Only!) from the Luma page luma.com/rrzwfw2l (read via __NEXT_DATA__): Wed Nov 18, 6-8 PM PT, The Art Bloc Sausalito, free ticket. Organizer Settled; no sales pitch on the page."
+    },
+    {
+      "id": 2036,
+      "organization": "Sweetwater Music Hall & Women's Art Alliance",
+      "venue": "Sweetwater Music Hall",
+      "event_name": "Rocking Holiday Art Show at Sweetwater",
+      "event_name_es": "Muestra navideña de arte \"Rocking\" en Sweetwater",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "11:30 AM – 3:30 PM",
+      "time_of_day": "Afternoon",
+      "town": "Mill Valley",
+      "address": "19 Corte Madera Ave, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "cost": "Free entry; art for sale",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-05",
+      "expires": "2026-12-05",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Mill Valley",
+      "description": "The first annual holiday art show from Sweetwater Music Hall and the Women's Art Alliance: fine art and gifts from local artists, with music. Shop local and support artists and music.",
+      "description_es": "La primera muestra navideña anual de arte de Sweetwater Music Hall y la Women's Art Alliance: arte y regalos de artistas locales, con música. Compra local y apoya a los artistas y la música.",
+      "registration": "Not required",
+      "website": "https://www.sweetwatermusichall.com/",
+      "internal_notes": "Added 2026-11-18 at Alexandra's request from the flyer (Women's Art Alliance / Marin Arts, reposted by @marin.dad): Sat Dec 5, 11:30 AM-3:30 PM. Not yet on sweetwatermusichall.com. Free entry assumed (flyer names no admission)."
     }
   ]
 }
