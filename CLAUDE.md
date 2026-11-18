@@ -1045,15 +1045,15 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
 
 0. **Napa follow-ups from the Oct 29 sweep (processed the same day, `79fec3a`):** call the Calistoga LAB (707-403-5028) to confirm 530's Saturday start time (7 PM unconfirmed); add Carneros Resort's Jingle & Mingle tree lighting (Nov 28, 6 PM) and Photos with Santa (Nov 28, Dec 5, 3:30-6:30 PM) once price and details are published (carnerosresort.com's events page did not render them); Festival Napa Valley MusicTime Dec 19 falls past the window, so pick it up next Napa sweep.
 0b. **Marin follow-ups from the Oct 29 sweep:** Carol-oke (1808, Dec 12) has no time yet; Slide Ranch workday (1809, Dec 12) time copied from Nov 15; recheck San Rafael Pokémon Club 824 (Nov 25) and Young Readers 1287 (Nov 29, Dec 6, 13), which were absent from the city calendar; Corte Madera Ingrid has no dates after Dec 3 (item 58m); Sausalito Library's calendar (#40) still renders blank in every browser.
-1. **Instagram, week of Nov 5 (item 15):** Thu Nov 5 5 PM, Sat Nov 7 7 AM, Sun Nov 8 5 PM, in **Template A** (4:5,
-   1080x1350). Copy `OAA marketing\Instagram templates\Template A - Thu Sat Sun posts\build_week_of_oct29.py` (it reuses the
-   helpers in `build_template_a_4x5.py`), follow `social_media_and_marketing.md` ("Template A standard", section 3e) and
-   **end every caption with exactly 3 hashtags (caption rule 12, settled 2026-10-29; no first comment)**. Clear the slide
-   folder before re-rendering (the renderer names files from card labels). First confirm the Sat Oct 31 and Sun Nov 1 posts
-   went live, then delete repo `ig/week_of_oct29/`, `ig/halloween_oct30/` and the older `ig/week_of_oct8/`, `ig/week_of_oct15/`,
-   `ig/week_of_oct22/`, `ig/king_tide_oct25/` once their posts are confirmed (`ig/README.md`).
-1a. **Tide flooding post (item 15):** published Tue Nov 3, 5 PM (https://www.instagram.com/p/DfTO7QWighX/); `ig/tide_nov4/` deleted.
-   Flood Watch on Resources shows the same slides and hides itself after Nov 11.
+1. **Instagram (item 15), as of 2026-11-18.** Weekly Thu/Sat/Sun posts stay in **Template A** (4:5, 1080x1350; builder
+   in `OAA marketing\Instagram templates\Template A - Thu Sat Sun posts\`, helpers in `build_template_a_4x5.py`; follow
+   `social_media_and_marketing.md`). **Every post goes to Alexandra as slides + caption + a witty first comment ending in a
+   question, approved together; captions end with exactly 3 hashtags.** One-off posts built in phone sessions this month
+   (headless Chromium from HTML, Halloween-post style): turkey trots (published Sun Nov 15, 5 PM; the regular Nov 15 post is a
+   **draft** in Metricool, id 427425352), rainy-day "School's out. Rain's in. Grandma's here." (scheduled **Sun Nov 22, 4 PM**,
+   id 432433886, `ig/rainy_day_nov22/`), and the **No-Stuff Gift Guide** (approved, **not scheduled**: Alexandra picks the
+   date; `ig/gift_guide_draft/` has the slides and caption.md). Sun Nov 22 still needs its regular 5 PM post. Delete each
+   `ig/` folder once its post is live (`ig/README.md`). Flood Watch on Resources has been hidden since Nov 10.
 1b. **SMMC $250 post (item 79):** SMMC confirmed **Thu Dec 3, 5:00 PM**, the collaborator tag and a Story link sticker.
    Short link outandaboutmarin.com/smmc is **live** (7614402). Final graphic, caption, mockup and email are in
    `OAA marketing\SMMC Add\SMMC social post\final_for_smmc_dec3\`; Alexandra sends them (QR not yet phone-scanned; how
