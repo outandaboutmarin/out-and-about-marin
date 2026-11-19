@@ -17595,6 +17595,35 @@
       "registration": "Not required",
       "website": "https://www.instagram.com/fairfaxbrewingcompany/",
       "internal_notes": "Added 2026-11-17 at Alexandra's request from Fairfax Brewing Company's own Instagram flyer: Sat Dec 5, 1-4 PM. Address 765 Center Blvd is from memory (not on the flyer; brewery site unreachable from the cloud). Free entry assumed; selfie/cocoa prices not stated."
+    },
+    {
+      "id": 2039,
+      "organization": "Marin Dad x East Brother Beer Co.",
+      "venue": "Tam Tavern",
+      "event_name": "Marin Dad Beer Launch Party",
+      "event_name_es": "Fiesta de lanzamiento de la cerveza Marin Dad",
+      "type": "Community Event",
+      "day": "Sunday",
+      "time": "1:00 PM – 4:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Mill Valley",
+      "address": "152 Shoreline Hwy, Mill Valley, CA 94941",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-13",
+      "expires": "2026-12-13",
+      "status": "Active",
+      "featured": false,
+      "location_group": "Mill Valley",
+      "description": "Marin Dad and East Brother Beer Co. launch the new Marin Dad Cream Ale with a family-friendly afternoon at Tam Tavern's beer garden. Bring the kids (you don't have to be a dad to come). A portion of Marin Dad beer sales supports Marin Foster Care. Tam Tavern is kid- and dog-friendly, with fire pits, heaters and games.",
+      "description_es": "Marin Dad y East Brother Beer Co. presentan la nueva Marin Dad Cream Ale con una tarde familiar en el jardín cervecero de Tam Tavern. Trae a los niños (no hace falta ser papá para venir). Una parte de las ventas de la cerveza Marin Dad apoya a Marin Foster Care. Tam Tavern admite niños y perros, y tiene fogatas, calefactores y juegos.",
+      "registration": "Free RSVP on Eventbrite",
+      "website": "https://www.eventbrite.com/e/marin-dad-beer-launch-party-tickets-2004818328589",
+      "notes": "Free, but RSVP on Eventbrite.",
+      "internal_notes": "Added 2026-11-19 at Alexandra's request (type Community Event, hers) from the marin.dad Instagram story (Save the Date, Dec 13, 1-4P, Tam Tavern, free RSVP) and the Eventbrite page (organizer East Brother Beer Company; 1-4 PM headline, agenda runs to 4:45; family-friendly, 'Bring the kids'; supports Marin Foster Care; no price shown, story says free RSVP). Address from eastbrotherbeer.com's Mill Valley page; tamtavern.com returned 503."
     }
   ]
 }
