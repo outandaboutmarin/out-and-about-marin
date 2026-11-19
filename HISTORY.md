@@ -450,6 +450,41 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
+## What changed 2026-11-17 to 2026-11-19 (phone and desktop), in one pass
+
+Health at the end of 2026-11-19: `events.json` **574 events, max id 2042**; self-test 92/92; notes-lint and bilingual-lint
+clean; `check_docs.py` clean; duplicate scan 4 findings, all known New-Year or season splits (1716/1717, 1156/1158,
+1770/1771, 1723/1724).
+
+- **Events added (phone sessions):** Caring for Aging Loved Ones panel, Sausalito (2035, Nov 18); Rocking Holiday Art Show at
+  Sweetwater (2036, Dec 5); Made in Marin Workshop Wonderland pop-up, Novato (2037, Nov 21); Santa Selfies & Hot Cocoa Bar at
+  Fairfax Brewing (2038, Dec 5); Marin Dad Beer Launch Party at Tam Tavern (2039, Dec 13); **Elevated Holiday** pop-up,
+  46 A Main Street, Tiburon (2040-2042, Dec 11-13; held on Nov 19 morning for hours, added that evening once the organiser
+  sent them; item 58 zze closed).
+- **Record fixes:** 2019 retired as a duplicate of the MAGC holiday market 1858 (Dec 6); Star Party at Memorial Park (1325)
+  carries `ALERT[2026-11-19]` "Cancelled. The star party will be rescheduled." (watch for the new date).
+- **Choose your own adventure:** Jump! City San Rafael added (`adventure.json`, slug override in `adventure_io.py`); the
+  matching row was added to `Resources\create_your_own_adventure_v2.xlsx` on the desktop so the converter keeps it.
+- **Resources tide table:** every station now NOAA **+1.50 ft** (Nov 19: +2.00 everywhere at 21:53 UTC, then +1.50; the
+  per-station overrides Tam +1.80 / Corte Madera +2.20 are gone, `TIDE_ADJUST_BY_STATION` is empty). Red shading still 7.0 ft.
+- **Instagram (item 15), all through Metricool:** rainy-day post "School's out. Rain's in. Grandma's here." scheduled Sun
+  Nov 22, 4 PM (432433886); No-Stuff Gift Guide approved but unscheduled (new item 84, `ig/gift_guide_draft/`); library
+  storytime gift guide "Dear Santa, more storytime, please." scheduled Fri Nov 27 (Black Friday), 4 PM (433889571, moved from
+  Thu Nov 26); **King Tide post** "The King Tides are here." for Fri Nov 20 to Sat Nov 28 scheduled **Thu Nov 19, 4 PM**
+  (434850197, desktop; `ig/king_tide_nov20/`, caption and six images verified identical). Style notes from the gift guides:
+  no gold (use red), bows must look like real ribbon, clean stationery look over lined-paper handwriting.
+- **Flood posts (item 78), Alexandra 2026-11-19:** the King Tide post used +1.50 ft and showed flooding for **any tide 6.9 ft
+  or higher at both Manzanita and Lucky Drive** (was above 7.0 / 7.3), +90 min; she then made **6.9 ft the standard** for
+  every future flood post. Nine-day closure slides, new scripts `*_nov20.py` in `OAA marketing\Instagram templates\Tide flooding\`.
+- **Security (new item 86):** Apple Passwords flagged a "password leak" for the site and a user messaged Alexandra; she reset
+  her PIN. The phone session checked read-only that the public key is still refused on `users` (item 24 lock holds). Likely
+  cause: 4-digit PINs are on every leaked-password list. Plan in item 86; nothing changed in the app or Supabase yet.
+- **New item 85:** a phone session pushed a stray `claude/main` branch (commit c46bec7, also on `main`); cloud sessions
+  cannot delete branches.
+- **New standing task (memory note, 2026-11-17):** when Alexandra asks how many clicks an event got, count `activity_log`
+  `event_click` rows in her signed-in Supabase (first request: The Cave's Free Open Gym, 2031).
+- **Phone inbox** applied twice on the desktop on Nov 19 (51bdcab, c3ec89b) and is empty.
+
 ## "What changed" logs and health snapshots, 2026-10-10 to 2026-11-07 (moved 2026-11-11)
 
 Moved word for word from CLAUDE.md on 2026-11-11 to shorten the rulebook. Newest first, as they stood there.

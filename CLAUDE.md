@@ -900,7 +900,7 @@ Separate from the recurring Weekly Sweep: Alexandra sometimes hands over a curat
 
 ## Resources tide table (live)
 
-The "Tides & Driving in Marin" table on Resources reads `tides.json` (raw NOAA CO-OPS predictions, MLLW, built by `generate_tides.py`; stations Tam Junction, Corte Madera / Lucky Drive, Hwy 37, Bolinas). **Since 2026-10-09 every height is shown higher than NOAA: +1.07 ft, raised to +1.25 ft on 2026-10-23, to +1.35 ft, +1.40 ft and then +1.50 ft on 2026-11-02, then per station the same day: Tam Junction +1.80 ft and Corte Madera / Lucky Drive +2.00 ft, then +2.20 ft (Hwy 37 and Bolinas +1.50); **since 2026-11-19 every station is +1.50 ft** (briefly +2.00 the same day) (`TIDE_ADJUST_FT`; `TIDE_ADJUST_BY_STATION` is empty but kept for future per-station overrides; Alexandra). `tides.json` keeps NOAA's 3 decimals since the 2026-11-02 audit (pre-rounding put 19 of 38 Lucky Drive cells 0.1 ft off)** (`TIDE_ADJUST_FT` in `index.html`, applied in `_tideHt()`), at Alexandra's request, to account for the El Niño Kelvin wave and sea-level rise; a note under the table says so (bilingual). The red "flood" shading on high tides (**7.0 ft and above as shown**, since 2026-11-02; 6.9 from 2026-10-23, > 6 ft before that) uses the adjusted height.
+The "Tides & Driving in Marin" table on Resources reads `tides.json` (raw NOAA CO-OPS predictions, MLLW, built by `generate_tides.py`; stations Tam Junction, Corte Madera / Lucky Drive, Hwy 37, Bolinas). **Since 2026-10-09 every height is shown higher than NOAA: +1.07 ft, raised to +1.25 ft on 2026-10-23, to +1.35 ft, +1.40 ft and then +1.50 ft on 2026-11-02, then per station the same day: Tam Junction +1.80 ft and Corte Madera / Lucky Drive +2.00 ft, then +2.20 ft (Hwy 37 and Bolinas +1.50); **since 2026-11-19 every station is +1.50 ft** (briefly +2.00 the same day) (`TIDE_ADJUST_FT`; `TIDE_ADJUST_BY_STATION` is empty but kept for future per-station overrides; Alexandra). `tides.json` keeps NOAA's 3 decimals since the 2026-11-02 audit (pre-rounding put 19 of 38 Lucky Drive cells 0.1 ft off)** (`TIDE_ADJUST_FT` in `index.html`, applied in `_tideHt()`), at Alexandra's request, to account for the El Niño Kelvin wave and sea-level rise; a note under the table says so (bilingual). The red "flood" shading on high tides (**7.0 ft and above as shown**, since 2026-11-02; 6.9 from 2026-10-23, > 6 ft before that) uses the adjusted height. **Flood Instagram posts (open item 78) are separate:** since 2026-11-19 they show a closure for any tide **6.9 ft or higher** at both Manzanita and Lucky Drive (Alexandra), so on a 6.9 ft day the post shows a closure the table does not shade.
 **Rows line the stations up by time, not by order within a day** (2026-10-23, `_tideGroups()`): each tide is grouped with
 the same-type tides of the other stations within 4.5 hours, and the group shows on the day of its earliest member, so a
 tide that falls just past midnight upstream shows on the evening it belongs to, marked "(next day)". Checked over all of
@@ -1030,7 +1030,7 @@ A separate reference dataset reachable from the Resources screen. **Not part of 
 
 Read this first, then the sections above as needed.
 
-**Health 2026-10-29 (end of day, after the Napa sweep)**: `events.json` is **644 events, max id 1853**; notes-lint and bilingual-lint clean; self-test 92/92; `check_docs.py` clean; duplicate scan 6 findings, all known (1643/1710/1778/1818 four Día de los Muertos in four towns, 1716/1717, 1156/1158, 1770/1771, 1723/1724, 1729 vs 286). (Older health snapshots are in `HISTORY.md`.)
+**Health 2026-11-19 (end of day)**: `events.json` is **574 events, max id 2042**; notes-lint and bilingual-lint clean; self-test 92/92; `check_docs.py` clean; duplicate scan 4 findings, all known (1716/1717, 1156/1158, 1770/1771, 1723/1724). (Older health snapshots are in `HISTORY.md`; what changed Nov 17-19 is its newest "What changed" section.)
 
 (The count moves both ways — the daily job purges expired one-offs, so a fall is the system working. **Re-run the scans rather than trusting a count written here**; a hard-coded count in prose goes stale silently, and this line has been wrong before.) GitHub Pages deploys off `main`, so **committing `events.json` IS publishing** — there is no staging.
 
@@ -1039,19 +1039,23 @@ files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and wo
 `C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
 record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
 
-## Where to pick up (2026-11-04)
+## Where to pick up (updated 2026-11-19)
 
 The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH). In order:
 
 00. **⚠ SECURITY, FIRST (2026-11-19, Alexandra continues this on the desktop): Apple Passwords "password leak" warning
-   for outandaboutmarin.com, plus a message from a user.** Full handoff in `phone_inbox.md` (entry dated 2026-11-19,
-   "Security incident") and the new open item it adds. Alexandra already reset her own PIN that morning. Nothing in the app
+   for outandaboutmarin.com, plus a message from a user.** Full handoff is now **open item 86** (Security section of
+   `open_items.md`; the phone inbox entry was applied there 2026-11-19). Alexandra already reset her own PIN that morning. Nothing in the app
    or Supabase has been changed. Start by asking her for the user's message and the exact Apple wording, then work the
    plan's Phase 1 with her (Supabase Logs → API). Every fix (login rate limit, slow salted PIN hash, SMS one-time codes)
    is a Supabase/Edge Function change: show her first.
 0. **Napa follow-ups from the Oct 29 sweep (processed the same day, `79fec3a`):** call the Calistoga LAB (707-403-5028) to confirm 530's Saturday start time (7 PM unconfirmed); add Carneros Resort's Jingle & Mingle tree lighting (Nov 28, 6 PM) and Photos with Santa (Nov 28, Dec 5, 3:30-6:30 PM) once price and details are published (carnerosresort.com's events page did not render them); Festival Napa Valley MusicTime Dec 19 falls past the window, so pick it up next Napa sweep.
 0b. **Marin follow-ups from the Oct 29 sweep:** Carol-oke (1808, Dec 12) has no time yet; Slide Ranch workday (1809, Dec 12) time copied from Nov 15; recheck San Rafael Pokémon Club 824 (Nov 25) and Young Readers 1287 (Nov 29, Dec 6, 13), which were absent from the city calendar; Corte Madera Ingrid has no dates after Dec 3 (item 58m); Sausalito Library's calendar (#40) still renders blank in every browser.
-1. **Instagram (item 15), as of 2026-11-18.** Weekly Thu/Sat/Sun posts stay in **Template A** (4:5, 1080x1350; builder
+1. **Instagram (item 15), as of 2026-11-19.** Scheduled in Metricool: **King Tide post** Thu Nov 19, 4 PM (434850197,
+   `ig/king_tide_nov20/`; flood posts now show flooding at **6.9 ft or higher** at both Manzanita and Lucky Drive, item 78),
+   rainy-day Sun Nov 22, 4 PM, library **storytime gift guide** Fri Nov 27, 4 PM (433889571, `ig/storytime_gift_nov26/`).
+   Item 84 (No-Stuff gift guide) waits on her date and on whether the storytime guide replaces it. Item 85: delete the
+   stray `claude/main` branch (only on her go). Weekly Thu/Sat/Sun posts stay in **Template A** (4:5, 1080x1350; builder
    in `OAA marketing\Instagram templates\Template A - Thu Sat Sun posts\`, helpers in `build_template_a_4x5.py`; follow
    `social_media_and_marketing.md`). **Every post goes to Alexandra as slides + caption + a witty first comment ending in a
    question, approved together; captions end with exactly 3 hashtags.** One-off posts built in phone sessions this month
