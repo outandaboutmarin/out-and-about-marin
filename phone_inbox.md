@@ -44,3 +44,12 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
   also on `main`, so nothing is lost). It does not affect the site. Cloud sessions cannot delete branches (the GitHub App has
   read-only administration, 403). Needs from you: on github.com → outandaboutmarin/out-and-about-marin → Branches, delete
   `claude/main` (or from the desktop: `git push origin --delete claude/main`).
+- **`social_media_and_marketing.md` + `open_items.md` (2026-11-19, Alexandra):** the library storytime gift guide REPLACES the
+  "No-Stuff" Choose-your-own-adventure gift guide for now (drop or reword the open item added 2026-11-18; `ig/gift_guide_draft/`
+  stays unscheduled). Scheduled **Thu Nov 26 (Thanksgiving), 5 PM**, Metricool id 433887185: 5 slides, cream "holiday
+  stationery" card on navy with a red double border; cover "THE 2026 GIFT GUIDE / Dear Santa, more storytime, please. / Give
+  the gift of reading, for free!"; then Southern, Central and Northern & West Marin lists of every library storytime Mon-Sat
+  (day, red check, time, program, library; red pill for 1st/2nd/etc.); then the normal end slide. Caption opens "Black
+  Friday is tomorrow, so here is our obligatory gift guide." First comment: "Librarians' voices are better than any toy that
+  talks. Which storytime has your kid hooked?" Staged at `ig/storytime_gift_nov26/`. Style note: she called the lined-paper
+  handwriting version "jenky and unprofessional"; she liked the clean stationery look (handwriting only for "Dear Santa,").
