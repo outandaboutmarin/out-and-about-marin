@@ -6566,9 +6566,9 @@
       "description_es": "Recorre el cielo nocturno con la Biblioteca de San Anselmo y Marin Stargazers.",
       "registration": "Not required",
       "website": "https://www.sananselmo.gov/Calendar.aspx?CID=22&Month=11&Year=2026",
-      "notes": "",
+      "notes": "ALERT[2026-11-19]: Cancelled. The star party will be rescheduled.",
       "location_group": "San Anselmo/Ross",
-      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: San Anselmo town calendar. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo)."
+      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: San Anselmo town calendar. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo). 2026-11-19: Alexandra reported it cancelled, to be rescheduled; flagged with a dated ALERT rather than removed. Add the new date when announced."
     },
     {
       "id": 1326,
