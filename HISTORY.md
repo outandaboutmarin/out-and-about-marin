@@ -485,6 +485,54 @@ clean; `check_docs.py` clean; duplicate scan 4 findings, all known New-Year or s
   `event_click` rows in her signed-in Supabase (first request: The Cave's Free Open Gym, 2031).
 - **Phone inbox** applied twice on the desktop on Nov 19 (51bdcab, c3ec89b) and is empty.
 
+## What changed 2026-11-08 to 2026-11-16 (phone and desktop), in one pass
+
+Written 2026-11-19 from the commit log, `open_items.md` and `social_media_and_marketing.md` (this stretch had no log of
+its own). Events added: ids **1970-2034**.
+
+- **Nov 8 (phone):** Golden Gate Mahjong ended its sponsorship ("stopped for now"; Leadsheet gained a Status column, row
+  marked Ended 11/08/2026; item 21). The Swel Club: Tiburon Turkey Walk (1970, Nov 26), Elf movie night now 4:30-6:30 (1767),
+  Perfect Lie Golf, 49ers Watch Party, Pep Talk and Cooking Class (1971-1974).
+- **Nov 9 (phone):** **CLAUDE.md rule 29: Ronnie's Awesome List is discovery only**; every event it lists is cross-checked
+  against the organiser's own page (source #11; memory note). Added The Yard x Upside Turkey Trot 5K (1975, Nov 26), Chanukah
+  Celebration of Light & Unity at Mill Valley Plaza (1976, Dec 6), MVLY Holiday Faire (1977-1979, Dec 11-13). Fixes: Santa
+  visit on Winterfest (99); Makers Market (470) skips Dec 12; Winter Wonderland (1425) on 4th St between A St and Lootens Pl;
+  Sausalito Winter Market (1257/1258) 10-4 everywhere; MYSTIC Holiday Market (1352) 10-2.
+- **Nov 10 (phone):** Sausalito Lighted Boat Parade (1980, Dec 12) and Jingle Bell 5K & Kids Fun Run (1981, Dec 13); Marin
+  Country Mart Tree Lighting and Nutcracker Storytime merged into one event, 4-7 PM (1912). **Kitsch + Sync's calendar became
+  sweep source #52**; added Veterans Day Playdate, Friendsgiving Weekend and Pilates & Pours (1982-1986); Littles Music price
+  (1969). Item 77 gained Milkweed, Toytopia and Depot Bookstore & Cafe.
+- **Nov 11 (desktop): Marin weekly sweep processed** (`daily_sweep_2026-11-11_review.xlsx`, window Nov 12 - Dec 28; commit
+  398d808): **27 events added (1996-2022)**, among them Tracy Tandy's monthly Sunday storytime, the Dance Palace craft fair,
+  Muir Beach Holiday Arts Fair, Fairfax Chanukah Festival, Winter Market and Craft Faire, Read to a Dog Marin City, and Marin
+  Art & Garden Center's Holidays in the Garden (Local Holiday Market Dec 6, Babaloo gingerbread, How to Warm a Dragon, Bloom
+  After Dark; prices not published). Fixes: 1938/1939 retired as duplicates of 1721/1792; 1756 10:30-12; 1202 to Nov 27, $45;
+  Winterfest (99) to 4:30; 1774 3-5 PM; FIT4MOM no-class ALERTs on 1445-1447 and 1449 (Thanksgiving week, Dec 19-23); id 15
+  skips Dec 4. Le Petit Jardin's Teddy Bear Tea held back: Alexandra will ask them to sponsor (item 21).
+- **Nov 11, sources:** every active sponsor now has its own numbered source, checked every sweep: #46 Social Klub, #52 Kitsch +
+  Sync, **#53 FIT4MOM Marin**. Metta was added as #54 and removed the same day (Alexandra: not an approved source). Marin: 53
+  sources.
+- **Nov 11, other:** Nutcracker Decorating Workshop at Falkirk (1987/1988, Nov 18, 21); Christmas Caroling in Downtown San
+  Rafael (1989, Dec 12); Sip & Shop pop-up behind MYSTIC (1990, Nov 12); Sausalito, Tiburon and Novato tree lightings
+  (1991-1993); WET flood app talk at Stinson Beach Library (1994, Nov 14); Holiday Bazaar & Community Weave at Stellar Style,
+  Sausalito (1995); Isabel Allende at Book Passage (2023, Nov 14). **Flood Watch hidden on Resources** (end date Nov 10). Dated
+  "What changed" logs and old health snapshots moved from CLAUDE.md into this file. Phone inbox (Nov 8-10) applied.
+- **Instagram, week of Nov 12 (item 15):** all three scheduled in Metricool on Nov 11 with first comments (Thu 425197927, Sat
+  425197940, Sun 425197954); Thursday cover now "Three things you won't want to miss this weekend...". From the phone on
+  Nov 12/13: Saturday rebuilt to lead with the Marin Hiking Moms hike (new id 425834893); **Sun Nov 15 became a one-off turkey
+  trots post** ("Trot first, gobble later.", 7 trots, id 427425514, published 5 PM); the regular Sunday post went to draft
+  (427425352) and on **Nov 15 was rescheduled for Mon Nov 16, 5 PM** (429530629).
+- **Nov 12-13 (phone):** Ross Autumn Seasonal Showcase (2024), Kids' Night Out at Novato Gymnastics (2025), **Larkspur Landing
+  parkrun, weekly Saturdays (2026)**, Bella Parent Party at Bon Air (2027), Sausalito Turkey Trot at Dunphy Park (2028), Saucy
+  Turkey Trot 5K (2029), TCSD Community Game Night (2030, Nov 24; item 58 zzd). Hiking Moms (255) notes the 3-mile loop and
+  coffee at Equator; Bolinas Winter Faire (1656-1658) Santa 12-4 PM; San Anselmo Chanukah Festival (1947) details.
+- **Nov 13 (desktop):** **The Cave went live as a Community Partner**; first partner listing Free Open Gym (2031, Sun Nov 15,
+  25 Dodie St, San Rafael; logo `assets/ads/the_cave_logo.png`). Not a sweep source yet (ask first). `check_duplicates.py`
+  learned two confirmed-distinct pairs (1729/286, 1932/3). New folder `OAA marketing\QR code, logo, etc\` with the logo and
+  site QR code.
+- **Nov 14-16 (phone):** Mom Life on the Move walk (1619) cancelled Nov 14 for weather (ALERT); Marin County Free Day at Bay
+  Area Discovery Museum (2032, Nov 15); Bungalow Kitchen Locals Night and Kitsch + Sync ribbon cutting (2033/2034, Nov 17).
+
 ## "What changed" logs and health snapshots, 2026-10-10 to 2026-11-07 (moved 2026-11-11)
 
 Moved word for word from CLAUDE.md on 2026-11-11 to shorten the rulebook. Newest first, as they stood there.
