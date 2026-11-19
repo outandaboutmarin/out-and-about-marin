@@ -12,6 +12,7 @@ Current folders and when to delete them:
 - week_of_nov12/   Thu Nov 12 5 PM, Sat Nov 14 7 AM posts, and the week-ahead post moved to Mon Nov 16 5 PM (Template A); after Mon Nov 16
 - turkey_trots_nov22/ Thanksgiving turkey trots post, 3 slides (moved to Sun Nov 15, 5 PM); after Sun Nov 15
 - rainy_day_nov22/ Thanksgiving-week rainy-day ideas post, 5 slides (Sun Nov 22, 4 PM); after Sun Nov 22
+- king_tide_nov20/ King Tide flood post, 6 slides (Thu Nov 19, 4 PM); after Thu Nov 19
 - gift_guide_draft/  No-Stuff Gift Guide, 4 slides + caption.md, approved 2026-11-18, NOT scheduled (Alexandra picks the date); delete after it posts
 - halloween_oct30/ Halloween weekend post (Thu Oct 29, 8:15 PM); after Thu Oct 29
 - hot_tips_v2/     Weekly Wednesday Hot Tips 1-8; after Wed Dec 2
