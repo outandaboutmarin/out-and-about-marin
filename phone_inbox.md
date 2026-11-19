@@ -39,3 +39,8 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
   realjumpcity.com/park-locations/san-rafael; description EN/ES as in adventure.json; last verified 2026-11-19. Without the row,
   the next `python adventure_io.py` drops it (the converter warns "OVERRIDES entries with no matching row"). Edit the sheet in
   Excel, never openpyxl, if it has images.
+- **`open_items.md`, new item under Infrastructure (2026-11-19, Alexandra): "Delete the stray GitHub branch `claude/main`."**
+  Status: open. A phone session pushed it by mistake on 2026-11-19 (commit c46bec7, the Marin Dad Beer Launch Party, which is
+  also on `main`, so nothing is lost). It does not affect the site. Cloud sessions cannot delete branches (the GitHub App has
+  read-only administration, 403). Needs from you: on github.com → outandaboutmarin/out-and-about-marin → Branches, delete
+  `claude/main` (or from the desktop: `git push origin --delete claude/main`).
