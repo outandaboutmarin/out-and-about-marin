@@ -420,6 +420,37 @@
       "lastVerified": "2026-11-03"
     },
     {
+      "id": "jump-city-san-rafael",
+      "name": "Jump! City San Rafael",
+      "program": "Indoor playground/drop-in",
+      "category": "Indoor playground/drop-in",
+      "categoryEs": "Parque infantil cubierto / sin cita",
+      "town": "San Rafael",
+      "locationGroup": "Marin/San Rafael",
+      "region": "Marin",
+      "days": [
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ],
+      "hours": "Tue to Fri 4 to 7pm; Sat 11am to 7pm; Sun noon to 6pm; closed Mon",
+      "hoursEs": "Mar a vie 4 a 7 p. m.; sáb 11 a. m. a 7 p. m.; dom 12 a 6 p. m.; cerrado lun",
+      "address": "Northgate Mall, 5800 Northgate Drive, San Rafael, CA 94903",
+      "ages": "Kids at least 24 inches tall",
+      "agesEs": "Niños de al menos 24 pulgadas (61 cm) de estatura",
+      "cost": "$18 for unlimited play; group discounts for 3 or more; grip socks required",
+      "booking": "Drop-in; sometimes closed for private parties (dates on their site)",
+      "indoorOutdoor": "Indoor",
+      "phone": "(877) 586-7248",
+      "website": "https://www.realjumpcity.com/park-locations/san-rafael",
+      "description": "6,000 square feet of inflatable bounce fun in the middle of Northgate Mall. Drop in for unlimited play; park on the HomeGoods side.",
+      "descriptionEs": "600 m² de inflables para saltar en el centro del Northgate Mall. Ven sin cita para jugar sin límite; estaciona del lado de HomeGoods.",
+      "lastVerified": "2026-11-19"
+    },
+    {
       "id": "children-s-museum-of-sonoma-county",
       "name": "Children's Museum of Sonoma County",
       "program": "Museum admission",

@@ -83,6 +83,11 @@ ALL_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 # checked against the place's own website on 2026-10-22 and the sheet was out
 # of date. Places with no `hours` here matched their website that day.
 OVERRIDES = {
+    # Added from a phone session 2026-11-19 (Alexandra) from realjumpcity.com/park-locations/san-rafael;
+    # the sheet needs a row named exactly "Jump! City San Rafael".
+    "jump-city-san-rafael": dict(
+        days=["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        hoursEs="Mar a vie 4 a 7 p. m.; sáb 11 a. m. a 7 p. m.; dom 12 a 6 p. m.; cerrado lun"),
     "the-social-klub": dict(
         days=["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
         hoursEs="Lun, mié y vie 9 a. m. a 5 p. m.; mar y jue 9 a. m. a 2:15 p. m.; sáb 10 a. m. a 4 p. m.; cerrado dom"),
@@ -185,6 +190,7 @@ AGES = {
     "flying-dutchman-gymnastics": "0 to 4 (toddler session), then all ages",
 }
 AGES_ES = {
+    "jump-city-san-rafael": "Niños de al menos 24 pulgadas (61 cm) de estatura",
     "the-social-klub": "0 a 7 años",
     "little-marin": "9 meses a 6 años",
     "kitsch-sync": "Desde bebés hasta edad escolar; Little Zone aparte para bebés y niños pequeños",
