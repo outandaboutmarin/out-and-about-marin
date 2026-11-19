@@ -53,3 +53,29 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
   Friday, so here is our obligatory gift guide." First comment: "Librarians' voices are better than any toy that
   talks. Which storytime has your kid hooked?" Staged at `ig/storytime_gift_nov26/`. Style note: she called the lined-paper
   handwriting version "jenky and unprofessional"; she liked the clean stationery look (handwriting only for "Dear Santa,").
+- **`open_items.md`, NEW TOPIC: add a new section `## Security` at the top of the open list (above Infrastructure), with a new
+  item (next free number) "Apple Passwords leak warning + user report (2026-11-19)". Also add it to the dashboard and set it
+  as "Needs from you".** (2026-11-19, Alexandra: "make this a new topic in the open item list"; she wants to continue on the
+  desktop.)
+  - Status: open, investigating. Created: 2026-11-19. **Needs from you:** send Claude the user's message and a screenshot of
+    the exact Apple Passwords warning; check Supabase Logs → API for unusual `users` / `login` requests.
+  - What happened: Apple Passwords alerted Alexandra to a "password leak" for Out AND About Marin; she reset her PIN that
+    morning. A user also messaged her about it (the message was NOT shared with the phone session).
+  - Checked by the phone session (read-only): the public (anon) key is REFUSED on `users` (HTTP 401, "permission denied for
+    table users"), so the item-24 lock is still in place. No changes to `index.html` or `supabase/functions/` since Nov 17.
+  - Most likely cause: Apple's check compares saved passwords against public lists of leaked passwords. The site's PIN is
+    exactly 4 digits (`login/index.ts`: `/^\d{4}$/`), only 10,000 values, so nearly every PIN is on those lists and Apple
+    will flag it. Probably not a breach of the site, but not proven.
+  - Real weaknesses found: (1) before 2026-09-28 (item 24) the `users` table was readable with the public key: phone, name,
+    zip, ages, referral, saved_events, default_filters, plan, member_since, and the PIN as unsalted SHA-256, which is
+    reversible instantly for 4 digits. Unknown whether anyone read it; assume it could have been. (2) No wrong-PIN rate limit
+    on `login` (item 60, declined 2026-09-28; worth re-raising now). No payment data or addresses are stored.
+  - Plan given to Alexandra (crisis-firm style): Phase 1 confirm (exact wording; Supabase logs; no public post yet). Phase 2
+    private holding reply to the user (draft in the phone session: Apple flags short PINs; change your PIN on Profile and
+    don't reuse it; account holds only name, ZIP, kids' ages, saved events; will follow up). Phase 3 fixes, each shown to her
+    first: login rate limit (e.g. 15-minute lock after 5 wrong tries), slow salted PIN hashing, consider SMS one-time codes
+    via the existing Twilio Verify. Phase 4 notify: no evidence → no mass notice, add an FAQ "Why did Apple warn me about my
+    PIN?"; evidence of access → notify affected members and ask a lawyer about California breach-notice rules. Phase 5 keep
+    a dated timeline in this item.
+- **Memory note (2026-11-19):** Out AND About Marin PINs are 4 digits, hashed with unsalted SHA-256 in the `login`/`signup`
+  Edge Functions; Apple Passwords will flag any such PIN as "leaked". Keep this in mind when users report password warnings.

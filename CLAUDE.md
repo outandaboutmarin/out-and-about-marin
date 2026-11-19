@@ -1043,6 +1043,12 @@ record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox
 
 The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH). In order:
 
+00. **⚠ SECURITY, FIRST (2026-11-19, Alexandra continues this on the desktop): Apple Passwords "password leak" warning
+   for outandaboutmarin.com, plus a message from a user.** Full handoff in `phone_inbox.md` (entry dated 2026-11-19,
+   "Security incident") and the new open item it adds. Alexandra already reset her own PIN that morning. Nothing in the app
+   or Supabase has been changed. Start by asking her for the user's message and the exact Apple wording, then work the
+   plan's Phase 1 with her (Supabase Logs → API). Every fix (login rate limit, slow salted PIN hash, SMS one-time codes)
+   is a Supabase/Edge Function change: show her first.
 0. **Napa follow-ups from the Oct 29 sweep (processed the same day, `79fec3a`):** call the Calistoga LAB (707-403-5028) to confirm 530's Saturday start time (7 PM unconfirmed); add Carneros Resort's Jingle & Mingle tree lighting (Nov 28, 6 PM) and Photos with Santa (Nov 28, Dec 5, 3:30-6:30 PM) once price and details are published (carnerosresort.com's events page did not render them); Festival Napa Valley MusicTime Dec 19 falls past the window, so pick it up next Napa sweep.
 0b. **Marin follow-ups from the Oct 29 sweep:** Carol-oke (1808, Dec 12) has no time yet; Slide Ranch workday (1809, Dec 12) time copied from Nov 15; recheck San Rafael Pokémon Club 824 (Nov 25) and Young Readers 1287 (Nov 29, Dec 6, 13), which were absent from the city calendar; Corte Madera Ingrid has no dates after Dec 3 (item 58m); Sausalito Library's calendar (#40) still renders blank in every browser.
 1. **Instagram (item 15), as of 2026-11-18.** Weekly Thu/Sat/Sun posts stay in **Template A** (4:5, 1080x1350; builder
