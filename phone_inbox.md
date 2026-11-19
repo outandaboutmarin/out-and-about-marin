@@ -26,3 +26,7 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
   post (scheduled Sun Nov 22, 4 PM, id 432433886); gift guide (approved, unscheduled, `ig/gift_guide_draft/`). Alexandra's
   style notes from the gift guide: no gold text or bows (use red); bows must look like real ribbon bows, not "bugs"; she
   liked the Halloween-post style for one-off posts and doubled cover fonts.
+- **`open_items.md`, item 58 (to-confirm list) (2026-11-19, Alexandra: "wait for now"):** "Elevated Holiday: a curated luxury
+  holiday pop-up weekend," Fri Dec 11 - Sun Dec 13, Downtown Tiburon (flyer from @chausaenz_official, reposted by @bebebitez,
+  tags @outandaboutmarin). Not added yet: hours and exact venue/address not posted (the flyer's bottom line was hidden).
+  Add as three one-offs (Community Event, free entry, goods for sale) once the hours and venue are published.
