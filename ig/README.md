@@ -17,4 +17,4 @@ Current folders and when to delete them:
 - hot_tips_v2/     Weekly Wednesday Hot Tips 1-8; after Wed Dec 2
 - tag_oaa_blurb2/  "Tag Out and About" Tuesdays, Blurb 2 (Oct 27); after Tue Dec 8
 - tag_oaa_posts/   "Tag Out and About" Tuesdays (Oct 13, Nov 10, Nov 24, Dec 8); after Tue Dec 8
-- `storytime_gift_nov26/`: "Dear Santa, more storytime, please." library storytime gift guide (5 slides), Thu Nov 26, 5 PM. Delete once published.
+- `storytime_gift_nov26/`: "Dear Santa, more storytime, please." library storytime gift guide (5 slides), Fri Nov 27, 4 PM. Delete once published.
