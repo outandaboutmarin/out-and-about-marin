@@ -86,11 +86,11 @@
       "description": "Fun, interactive, silly storytime with songs, dance, and play for preschoolers.",
       "registration": "Not required",
       "website": "https://beltiblibrary.org",
-      "notes": "skip: 2026-11-11 skip: 2026-11-18",
+      "notes": "skip: 2026-11-11 skip: 2026-11-18 | skip: 2026-12-23",
       "location_group": "Tiburon/Belvedere",
       "event_name_es": "Hora del Cuento Preescolar",
       "description_es": "Cuentos divertidos, interactivos y alegres con canciones, baile y juego para preescolares. ¡Perfecto para los niños de 3 a 5 años!",
-      "internal_notes": "A Sep 16 skip entry was added 2026-08-27, when the branch calendar showed no Preschool Storytime that day: the 3:30 slot was Mandarin Storytime, and the Grades 4 and 5 Book Club (id 952) also sat at 3:30, which the COLLISION scan had flagged. At that time the branch appeared to alternate Preschool fortnightly with Mandarin (Sep 9, Sep 23, Oct 7). THE LIBRARY HAS SINCE CHANGED THE SCHEDULE. Rechecked 2026-09-13 against the library calendar: Preschool Storytime now runs every Wednesday 3:30-4:00 PM from Sep 16 through Oct 28, and Mandarin moved to 4:00-4:30 PM. So Weekly is now correct, and the Sep 16 skip was removed at Alexandra's instruction (open item 58). The August note was accurate when written. The Grades 4 and 5 Book Club on Sep 16 at 3:30 (id 952) is a genuinely separate program in the same slot, so the COLLISION scan will flag this pair. It is not a duplicate. CHECKED 2026-09-26: the COLLISION scan pairs this record with id 1183 (Book Snacks!) on Wed Oct 21 at 3:30 PM. Not a duplicate. The library's own events list (beltiblibrary.org/events, page 6) shows BOTH on Oct 21: Preschool Storytime 3:30-4:00 PM in the Children's Room, and Book Snacks! (Grades 4 and 5) 3:30-4:30 PM, alongside a Pokémon Club at 3:30 in the Founders Room. Different programs for different ages; no skip needed. The scan will keep flagging the pair, as it does id 952. 2026-10-01 (sweep 2026-09-30, Alexandra approved): BelTib posts Preschool Storytime only through Nov 4; skipped Nov 11 and 18."
+      "internal_notes": "A Sep 16 skip entry was added 2026-08-27, when the branch calendar showed no Preschool Storytime that day: the 3:30 slot was Mandarin Storytime, and the Grades 4 and 5 Book Club (id 952) also sat at 3:30, which the COLLISION scan had flagged. At that time the branch appeared to alternate Preschool fortnightly with Mandarin (Sep 9, Sep 23, Oct 7). THE LIBRARY HAS SINCE CHANGED THE SCHEDULE. Rechecked 2026-09-13 against the library calendar: Preschool Storytime now runs every Wednesday 3:30-4:00 PM from Sep 16 through Oct 28, and Mandarin moved to 4:00-4:30 PM. So Weekly is now correct, and the Sep 16 skip was removed at Alexandra's instruction (open item 58). The August note was accurate when written. The Grades 4 and 5 Book Club on Sep 16 at 3:30 (id 952) is a genuinely separate program in the same slot, so the COLLISION scan will flag this pair. It is not a duplicate. CHECKED 2026-09-26: the COLLISION scan pairs this record with id 1183 (Book Snacks!) on Wed Oct 21 at 3:30 PM. Not a duplicate. The library's own events list (beltiblibrary.org/events, page 6) shows BOTH on Oct 21: Preschool Storytime 3:30-4:00 PM in the Children's Room, and Book Snacks! (Grades 4 and 5) 3:30-4:30 PM, alongside a Pokémon Club at 3:30 in the Founders Room. Different programs for different ages; no skip needed. The scan will keep flagging the pair, as it does id 952. 2026-10-01 (sweep 2026-09-30, Alexandra approved): BelTib posts Preschool Storytime only through Nov 4; skipped Nov 11 and 18. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-23: no listing on the library's own calendar (holiday break)."
     },
     {
       "id": 4,
@@ -268,10 +268,11 @@
       "description": "Multilingual wiggly and giggly storytime with books, songs, and play.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "",
+      "notes": "ALERT[2026-11-25]: Cancelled Wednesday, November 25: the library has cancelled this session. | ALERT[2026-12-02]: Cancelled Wednesday, December 2: the library has cancelled this session. | ALERT[2026-12-09]: Cancelled Wednesday, December 9: the library has cancelled this session. | ALERT[2026-12-16]: Cancelled Wednesday, December 16: the library has cancelled this session. | ALERT[2026-12-23]: Cancelled Wednesday, December 23: the library has cancelled this session. | ALERT[2026-12-30]: Cancelled Wednesday, December 30: the library has cancelled this session.",
       "location_group": "Sausalito/Marin City",
       "event_name_es": "Hora del Cuento: Movimiento y Asombro",
-      "description_es": "Cuentos multilingües, canciones y movimiento para niños pequeños y sus familias en Marin City."
+      "description_es": "Cuentos multilingües, canciones y movimiento para niños pequeños y sus familias en Marin City.",
+      "internal_notes": "2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): ALERTs 2026-11-25, 2026-12-02, 2026-12-09, 2026-12-16, 2026-12-23, 2026-12-30 (the library has cancelled this session)."
     },
     {
       "id": 11,
@@ -298,11 +299,11 @@
       "description": "Sing, dance, and read stories to build pre-reading skills in a fun, active setting.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "Novato Library has reopened after its Jun 17 – Aug 18, 2026 refresh closure. This Tuesday session resumes September 1. skip: 2026-08-18 skip: 2026-08-25 | ALERT[2026-11-24]: No session listed for Tuesday, November 24. | ALERT[2026-12-15]: No session listed for Tuesday, December 15.",
+      "notes": "Novato Library has reopened after its Jun 17 – Aug 18, 2026 refresh closure. This Tuesday session resumes September 1. skip: 2026-08-18 skip: 2026-08-25 | ALERT[2026-11-24]: No session listed for Tuesday, November 24. | ALERT[2026-12-15]: No session listed for Tuesday, December 15. | skip: 2026-12-22 | skip: 2026-12-29",
       "location_group": "Novato",
       "event_name_es": "Cuentos y Rimas con Movimiento",
       "description_es": "Canciones, rimas y movimiento para niños de 1 a 5 años en la Biblioteca de Novato. ¡Ven a bailar y divertirte!",
-      "internal_notes": "Resumption confirmed on the branch calendar (Sep 1, 8, 15). The two August skips stay: the Pioneer Park programme (id 486) ended Aug 4 and the branch session does not start until Sep 1, so neither date has a session anywhere. CORRECTED 2026-08-22: the public note previously said those two sessions were 'held at Pioneer Park instead', which was false and was live on the site — it came from the same bad 2026-08-13 assumption that retired id 486 documents. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-24, 2026-12-15."
+      "internal_notes": "Resumption confirmed on the branch calendar (Sep 1, 8, 15). The two August skips stay: the Pioneer Park programme (id 486) ended Aug 4 and the branch session does not start until Sep 1, so neither date has a session anywhere. CORRECTED 2026-08-22: the public note previously said those two sessions were 'held at Pioneer Park instead', which was false and was live on the site — it came from the same bad 2026-08-13 assumption that retired id 486 documents. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-24, 2026-12-15. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-22, 2026-12-29: no listing on the library's own calendar (holiday break)."
     },
     {
       "id": 12,
@@ -360,10 +361,11 @@
       "description": "Spanish music, movement, and stories for very young children and their caregivers.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "",
+      "notes": "skip: 2026-12-21 | skip: 2026-12-28",
       "location_group": "West Marin",
       "event_name_es": "¡Canta Conmigo!",
-      "description_es": "Canciones en español, movimiento y juego para niños de 0 a 3 años y sus cuidadores en Point Reyes. ¡Ven a cantar con nosotros!"
+      "description_es": "Canciones en español, movimiento y juego para niños de 0 a 3 años y sus cuidadores en Point Reyes. ¡Ven a cantar con nosotros!",
+      "internal_notes": "2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-21, 2026-12-28: no listing on the library's own calendar (holiday break)."
     },
     {
       "id": 14,
@@ -390,11 +392,11 @@
       "description": "Bilingual-friendly storytime for children of all ages with Mr. Brian.",
       "registration": "Not required",
       "website": "https://marinlibrary.org",
-      "notes": "skip: 2026-11-28",
+      "notes": "skip: 2026-11-28 | skip: 2027-01-02",
       "location_group": "Novato",
       "event_name_es": "Hora del Cuento con el Sr. Brian",
       "description_es": "Cuentos semanales con el Sr. Brian para niños de todas las edades los sábados por la mañana en South Novato.",
-      "internal_notes": "2026-11-19: skip Nov 28 - MCFL marks this session CANCELLED and the Special Saturday Ingrid storytime (new record) takes the slot."
+      "internal_notes": "2026-11-19: skip Nov 28 - MCFL marks this session CANCELLED and the Special Saturday Ingrid storytime (new record) takes the slot. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2027-01-02: no listing on the library's own calendar (holiday break)."
     },
     {
       "id": 15,
@@ -421,11 +423,11 @@
       "description": "Friday Family Storytime at Larkspur Library — songs, rhymes, and books for children ages 0–5 and their caregivers. A great way to introduce little ones to early literacy skills: talk, sing, read, write, and play. 10–10:30 am. Now at the new library location on Rose Lane. Special themed storytimes (bilingual, puppet shows, drumming) are posted separately.",
       "registration": "Not required",
       "website": "https://www.ci.larkspur.ca.us/333/Story-Times",
-      "notes": "Weekly Friday storytime, 0-5 yrs. New location: 10 Rose Lane (moved from Doherty Drive). Special themed weeks (bilingual, puppet shows etc.) are listed separately. On Aug 21 and Sep 18 the Cuentos con Ritmo bilingual session replaces the regular storytime. skip: 2026-08-21 skip: 2026-09-18 skip: 2026-09-25 skip: 2026-10-02 skip: 2026-10-16 skip: 2026-11-20 ALERT[2026-10-30]: Storytime is at 10:00 AM on October 23 and 30, then 10:30 AM from November 6. skip: 2026-12-18 skip: 2026-12-04",
+      "notes": "Weekly Friday storytime, 0-5 yrs. New location: 10 Rose Lane (moved from Doherty Drive). Special themed weeks (bilingual, puppet shows etc.) are listed separately. On Aug 21 and Sep 18 the Cuentos con Ritmo bilingual session replaces the regular storytime. skip: 2026-08-21 skip: 2026-09-18 skip: 2026-09-25 skip: 2026-10-02 skip: 2026-10-16 skip: 2026-11-20 ALERT[2026-10-30]: Storytime is at 10:00 AM on October 23 and 30, then 10:30 AM from November 6. skip: 2026-12-18 skip: 2026-12-04 | ALERT[2026-11-27]: Cancelled Friday, November 27: the library is closed for Thanksgiving week.",
       "location_group": "Larkspur/Greenbrae/Kentfield",
       "event_name_es": "Hora del Cuento",
       "description_es": "Cuentos semanales para niños de 0 a 5 años los viernes por la mañana en la Biblioteca de Larkspur.",
-      "internal_notes": "Replacement confirmed by Alexandra 2026-08-20; ids 699 (August) and 700 (September) carry those two dates. SKIPS ADDED 2026-09-10 (sweep Question 4). Larkspur's LibCal shows Storytime CANCELLED on Sep 25, and the Friday 10 AM slot given to Cuentos con Ritmo on Oct 2 and Oct 16. Without these the record advertised Storytime on three Fridays it does not run. 2026-10-01 (sweep 2026-09-30, Alexandra approved): Nov 20 is Cuentos con Ritmo instead. 2026-10-06: location_group Larkspur/Greenbrae -> Larkspur/Greenbrae/Kentfield (Alexandra: 'Larkspur should be with Greenbrae and Kentfield'). 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): LibCal: Oct 23 and 30 at 10:00-10:30; Nov 6, 13, Dec 4, 11 at 10:30-11:00. 2026-11-11: Dec 4 slot is Chanukah Storytime (new record)."
+      "internal_notes": "Replacement confirmed by Alexandra 2026-08-20; ids 699 (August) and 700 (September) carry those two dates. SKIPS ADDED 2026-09-10 (sweep Question 4). Larkspur's LibCal shows Storytime CANCELLED on Sep 25, and the Friday 10 AM slot given to Cuentos con Ritmo on Oct 2 and Oct 16. Without these the record advertised Storytime on three Fridays it does not run. 2026-10-01 (sweep 2026-09-30, Alexandra approved): Nov 20 is Cuentos con Ritmo instead. 2026-10-06: location_group Larkspur/Greenbrae -> Larkspur/Greenbrae/Kentfield (Alexandra: 'Larkspur should be with Greenbrae and Kentfield'). 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): LibCal: Oct 23 and 30 at 10:00-10:30; Nov 6, 13, Dec 4, 11 at 10:30-11:00. 2026-11-11: Dec 4 slot is Chanukah Storytime (new record). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): ALERTs 2026-11-27 (the library is closed for Thanksgiving week)."
     },
     {
       "id": 16,
@@ -548,7 +550,7 @@
       "location_group": "San Anselmo/Ross",
       "event_name_es": "Hora del Cuento para Bebés y Pequeños",
       "description_es": "Cuentos, canciones y rimas al aire libre para bebés y niños pequeños los lunes con sus cuidadores en Imagination Park, San Anselmo. De noviembre a marzo se traslada a la sala del Concejo Municipal (Town Council Chambers).",
-      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value. skip: 2026-09-07 added 2026-08-28 from the library flyer Alexandra sent, which prints \"No Storytime Monday, Sept. 7\" (Labor Day). Without it this record advertised a session on the one Monday it does not run. The flyer also CONFIRMS the three-record split - it names Mondays Storytime, Wednesdays Bilingual Spanish Storytime, Fridays Sing and Stomp - and confirms 10:30am in Imagination Park. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo). 2026-10-22: storytime page says it moves to Council Chambers November-March (Alexandra: follow recommendation)."
+      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value. skip: 2026-09-07 added 2026-08-28 from the library flyer Alexandra sent, which prints \"No Storytime Monday, Sept. 7\" (Labor Day). Without it this record advertised a session on the one Monday it does not run. The flyer also CONFIRMS the three-record split - it names Mondays Storytime, Wednesdays Bilingual Spanish Storytime, Fridays Sing and Stomp - and confirms 10:30am in Imagination Park. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo). 2026-10-22: storytime page says it moves to Council Chambers November-March (Alexandra: follow recommendation). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-21, 2026-12-28: no listing on the library's own calendar (holiday break)."
     },
     {
       "id": 24,
@@ -606,11 +608,11 @@
       "description": "Free drop-in Lego building and play. Legos provided. Every Saturday, 10 AM to 3 PM. Ages 4 and up.",
       "registration": "Not required",
       "website": "https://srpubliclibrary.org",
-      "notes": "Every Saturday, 10 AM – 3 PM. Drop in — Legos provided.",
+      "notes": "Every Saturday, 10 AM – 3 PM. Drop in — Legos provided. | skip: 2026-12-26 | skip: 2027-01-02",
       "location_group": "San Rafael",
       "event_name_es": "Sábados de Lego",
       "description_es": "¡Construye con LEGO los sábados en la Biblioteca Northgate de San Rafael! Todos los sábados de 10 AM a 3 PM. Abierto a todas las edades. Gratis, sin inscripción.",
-      "internal_notes": "Frequency and time settled 2026-08-21 by Alexandra: EVERY Saturday, 10 AM - 3 PM, with the branch calendar populated only through Aug 29 2026 (after that it is simply not updated, which is not evidence the program stopped). This replaces the stored twice-a-month rule (deliberately reworded here without the ordinal words, so the notes lint does not read it as a rule that went missing), which had contradicted SRPL's own live calendar since 2026-07-29 (Jul 11/18/25, Aug 1/8/15/22/29 all listed) and disagreed with the description on time as well (10am-3pm header vs 11am-3:30pm body). No phone call was needed. cadence stays Seasonal with season_start 06/01 / season_end 08/31: with no ordinal in notes the record now renders every Saturday inside the season, and the Sep 1 flip retires it. NOTE: the seasonal Active/Inactive flip is done by scraper.py (open item 1, fixed 2026-08-13 but the Sep 1 path has never run successfully) - verify this record's status manually in September. season_end tightened 08/31 -> 08/29 the same day: with no ordinal rule the record now matches every Saturday, and the week-aware season filter in getFilteredEvents() keeps a week that merely OVERLAPS the season, so an 08/31 end would have rendered Sep 5 - a date the branch calendar does not cover. Ending on the final covered Saturday closes that week. UPDATED 2026-08-27: SRPL now publishes Lego Saturdays every Saturday through September AND October (Sep 5/12/19/26, Oct 3/10/17/24/31), which supersedes the Aug 29 cut-off set on 2026-08-24 when SRPL had published nothing past August. season_end moved 08/29 -> 10/31, which is the final Saturday the library has actually published — deliberately not extended past the evidence. Re-verify when SRPL posts November; this now looks like a year-round weekly programme rather than a summer one, and if November confirms that, the record should stop being Seasonal at all. 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): Seasonal 06/01-10/31 -> Weekly: the city calendar lists it every Saturday through Dec 19 (\"new winter schedule\"); closed Thanksgiving weekend per city holidays."
+      "internal_notes": "Frequency and time settled 2026-08-21 by Alexandra: EVERY Saturday, 10 AM - 3 PM, with the branch calendar populated only through Aug 29 2026 (after that it is simply not updated, which is not evidence the program stopped). This replaces the stored twice-a-month rule (deliberately reworded here without the ordinal words, so the notes lint does not read it as a rule that went missing), which had contradicted SRPL's own live calendar since 2026-07-29 (Jul 11/18/25, Aug 1/8/15/22/29 all listed) and disagreed with the description on time as well (10am-3pm header vs 11am-3:30pm body). No phone call was needed. cadence stays Seasonal with season_start 06/01 / season_end 08/31: with no ordinal in notes the record now renders every Saturday inside the season, and the Sep 1 flip retires it. NOTE: the seasonal Active/Inactive flip is done by scraper.py (open item 1, fixed 2026-08-13 but the Sep 1 path has never run successfully) - verify this record's status manually in September. season_end tightened 08/31 -> 08/29 the same day: with no ordinal rule the record now matches every Saturday, and the week-aware season filter in getFilteredEvents() keeps a week that merely OVERLAPS the season, so an 08/31 end would have rendered Sep 5 - a date the branch calendar does not cover. Ending on the final covered Saturday closes that week. UPDATED 2026-08-27: SRPL now publishes Lego Saturdays every Saturday through September AND October (Sep 5/12/19/26, Oct 3/10/17/24/31), which supersedes the Aug 29 cut-off set on 2026-08-24 when SRPL had published nothing past August. season_end moved 08/29 -> 10/31, which is the final Saturday the library has actually published — deliberately not extended past the evidence. Re-verify when SRPL posts November; this now looks like a year-round weekly programme rather than a summer one, and if November confirms that, the record should stop being Seasonal at all. 2026-10-22 (Oct 22 sweep Record Fixes, Alexandra approved all 11): Seasonal 06/01-10/31 -> Weekly: the city calendar lists it every Saturday through Dec 19 (\"new winter schedule\"); closed Thanksgiving weekend per city holidays. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-26, 2027-01-02: San Rafael libraries' winter closure; no programmes listed Dec 20 - Jan 12."
     },
     {
       "id": 26,
@@ -637,11 +639,11 @@
       "description": "Practice reading aloud to friendly therapy dogs from the Marin Humane Society SHARE a Book program. Intended for readers in 1st to 3rd grades. A comforting, confidence-building half hour — registration required.",
       "registration": "Registration required",
       "website": "https://srpubliclibrary.org/events/",
-      "notes": "4th Saturdays of each month. Registration required.",
+      "notes": "4th Saturdays of each month. Registration required. | skip: 2026-11-28 | skip: 2026-12-26",
       "location_group": "San Rafael",
       "event_name_es": "Léele a un Perro",
       "description_es": "Practica la lectura leyendo en voz alta a un perro de terapia amigable. Para lectores emergentes de primaria. Regístrate en la mesa de niños.",
-      "internal_notes": "Ordinal rule restored 2026-07-29 - the record previously had no ordinal phrase and carried UNPREDICTABLE, so parseOccurrenceRule() returned null and it rendered NOWHERE. Dates corroborated by two independent sources: the SRPL Summer 2026 flyer ('4th Saturdays, 10:30am-11:30am') and Marin Humane's Sep 26 Share-A-Book listing at San Rafael Library. CORRECTED 2026-09-01 from the library's own bilingual flyer: registration is REQUIRED (\"Inscripción necesaria\"), and the record said 'Not required' with a public note telling families to sign up at the children's desk on the morning. That is a user-facing error of the worst kind - a family could have travelled and been turned away. Time also given a full range, 10:30-11:30. Day, 4th-Saturday cadence, venue, grade range and the Marin Humane partnership were all already correct. ⚠ RULE 9a, hit while making this very correction: the first draft of the note read \"Intended for readers in 1st to 3rd grades\", and parseOccurrenceRule() lifted \"1st\" and \"3rd\" out of that prose and returned {nths:[1,3,4]} - so the record would have rendered on the FIRST, THIRD and fourth Saturdays instead of only the fourth. Caught before commit. Grade ranges must never appear in notes; they live in the ages and description fields, neither of which is parsed."
+      "internal_notes": "Ordinal rule restored 2026-07-29 - the record previously had no ordinal phrase and carried UNPREDICTABLE, so parseOccurrenceRule() returned null and it rendered NOWHERE. Dates corroborated by two independent sources: the SRPL Summer 2026 flyer ('4th Saturdays, 10:30am-11:30am') and Marin Humane's Sep 26 Share-A-Book listing at San Rafael Library. CORRECTED 2026-09-01 from the library's own bilingual flyer: registration is REQUIRED (\"Inscripción necesaria\"), and the record said 'Not required' with a public note telling families to sign up at the children's desk on the morning. That is a user-facing error of the worst kind - a family could have travelled and been turned away. Time also given a full range, 10:30-11:30. Day, 4th-Saturday cadence, venue, grade range and the Marin Humane partnership were all already correct. ⚠ RULE 9a, hit while making this very correction: the first draft of the note read \"Intended for readers in 1st to 3rd grades\", and parseOccurrenceRule() lifted \"1st\" and \"3rd\" out of that prose and returned {nths:[1,3,4]} - so the record would have rendered on the FIRST, THIRD and fourth Saturdays instead of only the fourth. Caught before commit. Grade ranges must never appear in notes; they live in the ages and description fields, neither of which is parsed. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-11-28, 2026-12-26: San Rafael libraries' winter closure; no programmes listed Dec 20 - Jan 12."
     },
     {
       "id": 27,
@@ -826,7 +828,7 @@
       "location_group": "San Anselmo/Ross",
       "event_name_es": "Hora del Cuento Bilingüe en Español",
       "description_es": "Cuentos bilingües en español e inglés al aire libre en Imagination Park, San Anselmo. De noviembre a marzo se traslada a la sala del Concejo Municipal (Town Council Chambers).",
-      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value. CORRECTED 2026-09-03 (action item 9). notes still read 'On break for the rest of August - programs restart Wednesday September 2', which was live, public and out of date: the record is Active and the programme has resumed. Alexandra: 'if the event has reactivated and is live on the app, then correct the sentence.' Replaced with the venue and inclement-weather logistics, which is the part families actually need. Venue, time and address were re-verified against sananselmo.gov/624/Storytime-Programs today and are correct. 2026-10-01 (sweep 2026-09-30, Alexandra approved): library closed Nov 11 (Veterans Day); Alexandra: assume closed. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo). 2026-10-22: storytime page says it moves to Council Chambers November-March (Alexandra: follow recommendation)."
+      "internal_notes": "August break encoded as skip dates rather than a banner: a bare ALERT never expires and would sit on the card forever (rule 17). Address corrected 2026-08-28 at Alexandra's direction: 541 San Anselmo Ave, from the town's own facility page (sananselmo.gov/Facilities/Facility/Details/Imagination-Park-8). This closes the 535-vs-541 question in open item 26. Worth knowing the town contradicts ITSELF on this: /1975/Imagination-Park says 525, the facility page says 541, and Apple Maps and Yelp say 535. The storytime page /624/Storytime-Programs carries no address at all - only the library's own 110 Tunstead Ave. She chose 541, the facility page value. CORRECTED 2026-09-03 (action item 9). notes still read 'On break for the rest of August - programs restart Wednesday September 2', which was live, public and out of date: the record is Active and the programme has resumed. Alexandra: 'if the event has reactivated and is live on the app, then correct the sentence.' Replaced with the venue and inclement-weather logistics, which is the part families actually need. Venue, time and address were re-verified against sananselmo.gov/624/Storytime-Programs today and are correct. 2026-10-01 (sweep 2026-09-30, Alexandra approved): library closed Nov 11 (Veterans Day); Alexandra: assume closed. 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo). 2026-10-22: storytime page says it moves to Council Chambers November-March (Alexandra: follow recommendation). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-23, 2026-12-30: no listing on the library's own calendar (holiday break)."
     },
     {
       "id": 35,
@@ -1407,11 +1409,11 @@
       "description": "90-minute drop-in indoor play space for children birth to 30 months. Age-appropriate gym equipment encourages crawling, running, jumping, and exploration. A great place for young families to connect. No membership required — all are welcome. Runs until 12:00 PM.",
       "registration": "Not required — drop in",
       "website": "https://www.marinjcc.org/preschool/jym-babies/",
-      "notes": "Mondays, 9:30 AM – 11:00 AM. Drop in and pay at the door. Parking on South Knoll.",
+      "notes": "Mondays, 9:30 AM – 11:00 AM. Drop in and pay at the door. Parking on South Knoll. | ALERT[2026-11-23]: Cancelled Monday, November 23: no JymBabies class. | ALERT[2026-12-21]: Cancelled Monday, December 21: no JymBabies class. | ALERT[2026-12-28]: Cancelled Monday, December 28: no JymBabies class.",
       "location_group": "Mill Valley",
       "event_name_es": "JymBabies Indoor Play",
       "description_es": "Espacio de juego interior de 90 minutos para niños de nacimiento a 30 meses en el JCC South en Mill Valley. No se requiere membresía. $20 por visita.",
-      "internal_notes": "REACTIVATED 2026-08-27. The summer shutdown (Jun 8 - Aug 30) is over and the JCC's own 'Let's Play — Drop in Jymbabies in Mill Valley' flyer, forwarded by Alexandra, confirms Mondays 9:30 AM - 12:00 PM at JCC South, pay at the door. That flyer also SETTLES the contradiction on marinjcc.org/preschool/jym-babies/, which said 'Monday' while giving the session as 'September 9th - November 18th' (both Wednesdays): Monday is correct and the date range is the Wednesday MusicBabies session bleeding into the JymBabies block. Contact rweiss@marinjcc.org. Time corrected from a bare 9:30 AM to the full 9:30-12:00 window. 2026-10-08: End time 12:00 -> 11:00 per the JCC page (Oct 8 sweep)."
+      "internal_notes": "REACTIVATED 2026-08-27. The summer shutdown (Jun 8 - Aug 30) is over and the JCC's own 'Let's Play — Drop in Jymbabies in Mill Valley' flyer, forwarded by Alexandra, confirms Mondays 9:30 AM - 12:00 PM at JCC South, pay at the door. That flyer also SETTLES the contradiction on marinjcc.org/preschool/jym-babies/, which said 'Monday' while giving the session as 'September 9th - November 18th' (both Wednesdays): Monday is correct and the date range is the Wednesday MusicBabies session bleeding into the JymBabies block. Contact rweiss@marinjcc.org. Time corrected from a bare 9:30 AM to the full 9:30-12:00 window. 2026-10-08: End time 12:00 -> 11:00 per the JCC page (Oct 8 sweep). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): ALERTs 2026-11-23, 2026-12-21, 2026-12-28 (no JymBabies class)."
     },
     {
       "id": 64,
@@ -2198,11 +2200,11 @@
       "description": "Drop-in Saturday morning program at the Bolinas Library with crafts and free play for families. All ages welcome.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/events/69f00728129f1274383b3cf1",
-      "notes": "West Marin — Bolinas Library. Confirmed running every Saturday 10 AM-12 PM from Aug 22 through Oct 3. | ALERT[2026-11-28]: No session listed for Saturday, November 28.",
+      "notes": "West Marin — Bolinas Library. Confirmed running every Saturday 10 AM-12 PM from Aug 22 through Oct 3. | ALERT[2026-11-28]: No session listed for Saturday, November 28. | skip: 2026-12-12 | skip: 2026-12-19 | skip: 2026-12-26 | skip: 2027-01-02",
       "location_group": "West Marin",
       "event_name_es": "Sábados en la Biblioteca: Manualidades y Juego",
       "description_es": "Programa de entrada libre los sábados por la mañana en la Biblioteca de Bolinas con manualidades y juego libre para familias. Todas las edades bienvenidas.",
-      "internal_notes": "RETIRED 2026-08-13: Alexandra spoke with the Bolinas librarian, who confirmed this program is not currently running. Reactivated 2026-08-20: Bolinas programs have restarted for the fall, as the librarian predicted when this was retired (open item 5). She may restart it in the fall and will post it to the library website at that point — so this record is kept and hidden rather than deleted. To bring it back, set status to Active and re-verify the day/time against the branch. Note Bolinas is absent from MCFL's bibliocommons calendar entirely, so it cannot be checked online; the branch phone is 415-868-1171. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-28."
+      "internal_notes": "RETIRED 2026-08-13: Alexandra spoke with the Bolinas librarian, who confirmed this program is not currently running. Reactivated 2026-08-20: Bolinas programs have restarted for the fall, as the librarian predicted when this was retired (open item 5). She may restart it in the fall and will post it to the library website at that point — so this record is kept and hidden rather than deleted. To bring it back, set status to Active and re-verify the day/time against the branch. Note Bolinas is absent from MCFL's bibliocommons calendar entirely, so it cannot be checked online; the branch phone is 415-868-1171. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-28. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-12, 2026-12-19, 2026-12-26, 2027-01-02: no listing on the library's own calendar (holiday break)."
     },
     {
       "id": 176,
@@ -2229,11 +2231,11 @@
       "description": "LEGO Club at the Bolinas Library — build, create, and connect with other LEGO fans. All ages welcome. Drop in, no registration required.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/events/69f006588ddc1caf5f1fa5a8",
-      "notes": "West Marin — Bolinas Library. Confirmed running every Monday 3:30-4:30 PM from Aug 24 through Sep 28. | ALERT[2026-11-23]: No session listed for Monday, November 23.",
+      "notes": "West Marin — Bolinas Library. Confirmed running every Monday 3:30-4:30 PM from Aug 24 through Sep 28. | ALERT[2026-11-23]: No session listed for Monday, November 23. | skip: 2026-11-30 | skip: 2026-12-14 | skip: 2026-12-21 | skip: 2026-12-28",
       "location_group": "West Marin",
       "event_name_es": "Club de LEGO — Biblioteca de Bolinas",
       "description_es": "Club de LEGO en la Biblioteca de Bolinas — construye, crea y conéctate con otros fanáticos del LEGO. Todas las edades bienvenidas. Entrada libre, sin registro necesario.",
-      "internal_notes": "RETIRED 2026-08-13: Alexandra spoke with the Bolinas librarian, who confirmed this program is not currently running. Reactivated 2026-08-20: Bolinas programs have restarted for the fall (open item 5). She may restart it in the fall and will post it to the library website at that point — so this record is kept and hidden rather than deleted. To bring it back, set status to Active and re-verify the day/time against the branch. Note Bolinas is absent from MCFL's bibliocommons calendar entirely, so it cannot be checked online; the branch phone is 415-868-1171. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-23."
+      "internal_notes": "RETIRED 2026-08-13: Alexandra spoke with the Bolinas librarian, who confirmed this program is not currently running. Reactivated 2026-08-20: Bolinas programs have restarted for the fall (open item 5). She may restart it in the fall and will post it to the library website at that point — so this record is kept and hidden rather than deleted. To bring it back, set status to Active and re-verify the day/time against the branch. Note Bolinas is absent from MCFL's bibliocommons calendar entirely, so it cannot be checked online; the branch phone is 415-868-1171. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-23. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-11-30, 2026-12-14, 2026-12-21, 2026-12-28: no listing on the library's own calendar (holiday break)."
     },
     {
       "id": 177,
@@ -2384,11 +2386,11 @@
       "description": "Fun and interactive Saturday morning of music, movement, and stories for young children and their families. A great way to enjoy the weekend with singing, dancing, and storytime.",
       "registration": "Not required",
       "website": "https://www.beltiblibrary.org/event/?id=15904661",
-      "notes": "Ages 0-5.",
+      "notes": "Ages 0-5. | skip: 2026-12-26 | skip: 2027-01-02",
       "location_group": "Tiburon/Belvedere",
       "event_name_es": "CuentoMELODÍAS Familiar — Biblioteca de Belvedere-Tiburon",
       "description_es": "Una mañana sabatina divertida e interactiva de música, movimiento e historias para niños pequeños y sus familias. Una gran manera de disfrutar el fin de semana con canciones, baile y cuentos.",
-      "internal_notes": "Weekly Saturday (switched from Sunday effective August 1, 2026, per Alexandra)."
+      "internal_notes": "Weekly Saturday (switched from Sunday effective August 1, 2026, per Alexandra). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-26, 2027-01-02: no listing on the library's own calendar (holiday break)."
     },
     {
       "id": 188,
@@ -2630,11 +2632,11 @@
       "description": "Free after-school literacy program for grades K–3 at Point Reyes Library. Reading practice with volunteer buddies. Tuesdays 3–4 pm.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events",
-      "notes": "Weekly Tuesdays. K-3 literacy. Free. Point Reyes Library. Revive if the branch republishes it.",
+      "notes": "Weekly Tuesdays. K-3 literacy. Free. Point Reyes Library. Revive if the branch republishes it. | skip: 2026-12-22 | skip: 2026-12-29",
       "location_group": "West Marin",
       "event_name_es": "Compañeros de Leer — Point Reyes",
       "description_es": "Programa gratuito de alfabetización escolar para niños de jardín a 3° grado en la Biblioteca de Point Reyes. Martes de 3 a 4 pm.",
-      "internal_notes": "RETIRED 2026-08-13 (library audit, open item 28): Reading Buddies / Compañeros de Leer — absent from the MCFL calendar for the audit window. REACTIVATED 2026-09-10 on Alexandra's instruction (sweep Question 2): the MCFL feed shows this running Tuesdays 3:00 PM seven times across Sep 10 - Nov 2, so the Inactive status was stale."
+      "internal_notes": "RETIRED 2026-08-13 (library audit, open item 28): Reading Buddies / Compañeros de Leer — absent from the MCFL calendar for the audit window. REACTIVATED 2026-09-10 on Alexandra's instruction (sweep Question 2): the MCFL feed shows this running Tuesdays 3:00 PM seven times across Sep 10 - Nov 2, so the Inactive status was stale. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-22, 2026-12-29: no listing on the library's own calendar (holiday break)."
     },
     {
       "id": 334,
@@ -3721,8 +3723,8 @@
       "event_name_es": "Час сказок / Cuentacuentos en Ruso",
       "description_es": "Cuentacuentos semanal en ruso para niños pequeños — canciones, cuentos y rimas.",
       "id": 717,
-      "internal_notes": "Confirmed weekly on Saturdays throughout the sweep window. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: five Saturdays marked cancelled in the MCFL feed.",
-      "notes": "ALERT[2026-11-14]: Cancelled Saturday, November 14: the library has cancelled this session. | ALERT[2026-11-21]: Cancelled Saturday, November 21: the library has cancelled this session. | ALERT[2026-11-28]: Cancelled Saturday, November 28: the library has cancelled this session. | ALERT[2026-12-05]: Cancelled Saturday, December 5: the library has cancelled this session. | ALERT[2026-12-12]: Cancelled Saturday, December 12: the library has cancelled this session. | ALERT[2026-12-19]: Cancelled Saturday, December 19: the library has cancelled this session."
+      "internal_notes": "Confirmed weekly on Saturdays throughout the sweep window. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: five Saturdays marked cancelled in the MCFL feed. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-26, 2027-01-02: no listing on the library's own calendar (holiday break).",
+      "notes": "ALERT[2026-11-14]: Cancelled Saturday, November 14: the library has cancelled this session. | ALERT[2026-11-21]: Cancelled Saturday, November 21: the library has cancelled this session. | ALERT[2026-11-28]: Cancelled Saturday, November 28: the library has cancelled this session. | ALERT[2026-12-05]: Cancelled Saturday, December 5: the library has cancelled this session. | ALERT[2026-12-12]: Cancelled Saturday, December 12: the library has cancelled this session. | ALERT[2026-12-19]: Cancelled Saturday, December 19: the library has cancelled this session. | skip: 2026-12-26 | skip: 2027-01-02"
     },
     {
       "season_start": "06/26",
@@ -4091,9 +4093,9 @@
       "season_end": "",
       "status": "Active",
       "featured": false,
-      "notes": "Fourth Wednesday of each month. Confirmed on the branch calendar: Aug 26 and Sep 23, 2026. | ALERT[2026-11-25]: No session listed: check with the library before you go.",
+      "notes": "Fourth Wednesday of each month. Confirmed on the branch calendar: Aug 26 and Sep 23, 2026. | ALERT[2026-11-25]: No session listed: check with the library before you go. | skip: 2026-12-23",
       "registration": "Not required",
-      "internal_notes": "Converted 2026-08-13 from a single Aug 26 one-off into the recurring record it actually is."
+      "internal_notes": "Converted 2026-08-13 from a single Aug 26 one-off into the recurring record it actually is. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-23: San Rafael libraries' winter closure; no programmes listed Dec 20 - Jan 12."
     },
     {
       "id": 831,
@@ -4245,11 +4247,11 @@
       "description": "Rhymes, songs and movement for babies and their caregivers.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events",
-      "notes": "New program following Novato's reopening after the Jun 17 – Aug 18 refresh closure. | ALERT[2026-11-23]: No session listed for Monday, November 23. | ALERT[2026-12-14]: No session listed for Monday, December 14.",
+      "notes": "New program following Novato's reopening after the Jun 17 – Aug 18 refresh closure. | ALERT[2026-11-23]: No session listed for Monday, November 23. | ALERT[2026-12-14]: No session listed for Monday, December 14. | skip: 2026-12-21 | skip: 2026-12-28",
       "location_group": "Novato",
       "event_name_es": "Saltos para Bebés — Novato",
       "description_es": "Rimas, canciones y movimiento para bebés y sus cuidadores.",
-      "internal_notes": "Weekly, confirmed by Alexandra 2026-08-13. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-23, 2026-12-14."
+      "internal_notes": "Weekly, confirmed by Alexandra 2026-08-13. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-23, 2026-12-14. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-21, 2026-12-28: no listing on the library's own calendar (holiday break)."
     },
     {
       "cost": "Free",
@@ -4279,8 +4281,8 @@
       "location_group": "San Rafael",
       "event_name_es": "Música y Cuentos en español",
       "id": 853,
-      "internal_notes": "Added 2026-08-18 from @sanrafaellibraryrec's August programming flyer. NOTE: distinct from id 27 (Northgate Storytime, Monday), which was retired 2026-08-13 in the library audit as absent from srpubliclibrary.org — this is a different day AND a different program, so id 27 stays retired. Worth confirming the branch's full Northgate lineup on the next sweep, since the website and Instagram disagree. Time corrected 2026-08-20 from 10:30 AM to 10:00 AM - srpubliclibrary.org lists 10:00-10:30 AM on every date. CORRECTED 2026-09-01 from the San Rafael Library & Rec flyer, which resolves the third bullet of open item 44. TWO errors were live: the time was stored as 10:00 AM and the flyer says 10:30am; and the cadence was Weekly, so the record advertised EVERY Wednesday. The flyer lists 9/9, 9/23 and 9/30 only. Cross-checked against SRPL's own calendar read during the 2026-08-27 sweep, which showed Sep 9, 23, 30 and then Oct 14 and 28 - so 2nd and 4th Wednesdays fits four of those five exactly, and Sep 30 is an extra fifth-Wednesday session held as its own dated one-off. Weekly would have advertised Sep 2 and Sep 16, neither of which runs. 2026-10-06: TIME SETTLED at 10:00 AM. Alexandra confirmed by phone with the library (open item 58s, closed). End 10:30 from srpubliclibrary.org. The August flyer's 10:30 was wrong. 2026-10-08: Dated cancellation alert for 2026-11-11 added (Oct 8 sweep; Alexandra: red notice rather than skip).",
-      "notes": "2nd and 4th Wednesdays of each month. | ALERT[2026-11-11]: Cancelled Wednesday, November 11: the library is closed for Veterans Day."
+      "internal_notes": "Added 2026-08-18 from @sanrafaellibraryrec's August programming flyer. NOTE: distinct from id 27 (Northgate Storytime, Monday), which was retired 2026-08-13 in the library audit as absent from srpubliclibrary.org — this is a different day AND a different program, so id 27 stays retired. Worth confirming the branch's full Northgate lineup on the next sweep, since the website and Instagram disagree. Time corrected 2026-08-20 from 10:30 AM to 10:00 AM - srpubliclibrary.org lists 10:00-10:30 AM on every date. CORRECTED 2026-09-01 from the San Rafael Library & Rec flyer, which resolves the third bullet of open item 44. TWO errors were live: the time was stored as 10:00 AM and the flyer says 10:30am; and the cadence was Weekly, so the record advertised EVERY Wednesday. The flyer lists 9/9, 9/23 and 9/30 only. Cross-checked against SRPL's own calendar read during the 2026-08-27 sweep, which showed Sep 9, 23, 30 and then Oct 14 and 28 - so 2nd and 4th Wednesdays fits four of those five exactly, and Sep 30 is an extra fifth-Wednesday session held as its own dated one-off. Weekly would have advertised Sep 2 and Sep 16, neither of which runs. 2026-10-06: TIME SETTLED at 10:00 AM. Alexandra confirmed by phone with the library (open item 58s, closed). End 10:30 from srpubliclibrary.org. The August flyer's 10:30 was wrong. 2026-10-08: Dated cancellation alert for 2026-11-11 added (Oct 8 sweep; Alexandra: red notice rather than skip). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-23: San Rafael libraries' winter closure; no programmes listed Dec 20 - Jan 12.",
+      "notes": "2nd and 4th Wednesdays of each month. | ALERT[2026-11-11]: Cancelled Wednesday, November 11: the library is closed for Veterans Day. | skip: 2026-12-23"
     },
     {
       "organization": "Marin County Free Library — Novato",
@@ -4372,8 +4374,8 @@
       "website": "https://marinlibrary.bibliocommons.com/events",
       "location_group": "Novato",
       "id": 861,
-      "internal_notes": "Only observed starting Sep 16 in the Aug 21–Oct 1 confirmation window — may be a semester-timed start rather than a true gap; worth re-checking on the next sweep. Not the same program as id 776 (Belvedere-Tiburon, a different branch). 2026-10-22 sweep: Nov 18 and 25 absent from the MCFL feed; Alexandra: \"add alert\".",
-      "notes": "ALERT[2026-11-18]: No session listed for Wednesday, November 18. | ALERT[2026-11-25]: No session listed for Wednesday, November 25."
+      "internal_notes": "Only observed starting Sep 16 in the Aug 21–Oct 1 confirmation window — may be a semester-timed start rather than a true gap; worth re-checking on the next sweep. Not the same program as id 776 (Belvedere-Tiburon, a different branch). 2026-10-22 sweep: Nov 18 and 25 absent from the MCFL feed; Alexandra: \"add alert\". 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-23, 2026-12-30: no listing on the library's own calendar (holiday break).",
+      "notes": "ALERT[2026-11-18]: No session listed for Wednesday, November 18. | ALERT[2026-11-25]: No session listed for Wednesday, November 25. | skip: 2026-12-23 | skip: 2026-12-30"
     },
     {
       "id": 873,
@@ -4400,10 +4402,11 @@
       "description": "Weekly chess club for kids at the South Novato Library. 1-2 PM.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events",
-      "notes": "Confirmed weekly across five occurrences (Sep 3, 10, 17, 24 and Oct 1).",
+      "notes": "Confirmed weekly across five occurrences (Sep 3, 10, 17, 24 and Oct 1). | ALERT[2026-11-26]: Cancelled Thursday, November 26: the library has cancelled this session.",
       "location_group": "Novato",
       "event_name_es": "Club de Ajedrez para Niños",
-      "description_es": "Club semanal de ajedrez para niños en la Biblioteca de South Novato. 1-2 p.m."
+      "description_es": "Club semanal de ajedrez para niños en la Biblioteca de South Novato. 1-2 p.m.",
+      "internal_notes": "2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): ALERTs 2026-11-26 (the library has cancelled this session)."
     },
     {
       "id": 876,
@@ -4433,8 +4436,8 @@
       "location_group": "West Marin",
       "event_name_es": "Hora de los Pequeños — Biblioteca de Bolinas",
       "description_es": "Juego libre, exploración sensorial, recomendaciones de libros y la oportunidad de crear comunidad, todos los lunes por la mañana. De 0 a 5 años. 10 a.m.-12 p.m.",
-      "internal_notes": "Added 2026-08-20 alongside the reactivation of ids 175/176 - Bolinas restarted its children's programming for the fall (open item 5). 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-23.",
-      "notes": "ALERT[2026-11-23]: No session listed for Monday, November 23."
+      "internal_notes": "Added 2026-08-20 alongside the reactivation of ids 175/176 - Bolinas restarted its children's programming for the fall (open item 5). 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-23. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-14, 2026-12-21, 2026-12-28: no listing on the library's own calendar (holiday break).",
+      "notes": "ALERT[2026-11-23]: No session listed for Monday, November 23. | skip: 2026-12-14 | skip: 2026-12-21 | skip: 2026-12-28"
     },
     {
       "id": 900,
@@ -5078,9 +5081,9 @@
       "description_es": "Una tarde de manualidades para niños en la biblioteca de Corte Madera.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com",
-      "notes": "2nd and 4th Wednesdays of each month.",
+      "notes": "2nd and 4th Wednesdays of each month. | skip: 2026-12-23",
       "location_group": "Corte Madera",
-      "internal_notes": "Added 2026-09-03 from the weekly sweep (window Sep 4 - Oct 31), workbook daily_sweep_2026-09-03_review.xlsx, Alexandra marked Approve. Dates seen on the MCFL feed: Sep 9, Sep 23, Oct 14, Oct 28 = 2nd and 4th Wednesdays. Complements id 42 (LEGO Club), which holds the SAME Wed 3:30 slot on the 1st and 3rd Wednesdays - the branch alternates the two, so neither is a duplicate of the other."
+      "internal_notes": "Added 2026-09-03 from the weekly sweep (window Sep 4 - Oct 31), workbook daily_sweep_2026-09-03_review.xlsx, Alexandra marked Approve. Dates seen on the MCFL feed: Sep 9, Sep 23, Oct 14, Oct 28 = 2nd and 4th Wednesdays. Complements id 42 (LEGO Club), which holds the SAME Wed 3:30 slot on the 1st and 3rd Wednesdays - the branch alternates the two, so neither is a duplicate of the other. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-23: no listing on the library's own calendar (holiday break)."
     },
     {
       "id": 980,
@@ -5762,9 +5765,9 @@
       "description_es": "Hora del cuento semanal en la sucursal de Inverness, con canciones, rimas y cuentos para los más pequeños.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events",
-      "notes": "skip: 2026-10-14 skip: 2026-11-18 skip: 2026-11-04 skip: 2026-11-11 skip: 2026-12-02 skip: 2026-12-09",
+      "notes": "skip: 2026-10-14 skip: 2026-11-18 skip: 2026-11-04 skip: 2026-11-11 skip: 2026-12-02 skip: 2026-12-09 | skip: 2026-12-23 | skip: 2026-12-30",
       "location_group": "West Marin",
-      "internal_notes": "Added 2026-09-10 sweep. skip: 2026-10-14 added the same day: check_duplicates flagged that id 1111 (Music & Movement with Colors of Spanish) lands on that Wednesday at the same time and venue, so the Colors of Spanish session REPLACES the regular storytime that week rather than running alongside it. 2026-10-01 (sweep 2026-09-30, Alexandra approved): CANCELED Nov 18 on the MCFL feed (Colors of Spanish replaces it). 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: MCFL feed shows it only on Nov 25 and Dec 16 in the window; Dec 9 slot is Colors of Spanish.",
+      "internal_notes": "Added 2026-09-10 sweep. skip: 2026-10-14 added the same day: check_duplicates flagged that id 1111 (Music & Movement with Colors of Spanish) lands on that Wednesday at the same time and venue, so the Colors of Spanish session REPLACES the regular storytime that week rather than running alongside it. 2026-10-01 (sweep 2026-09-30, Alexandra approved): CANCELED Nov 18 on the MCFL feed (Colors of Spanish replaces it). 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: MCFL feed shows it only on Nov 25 and Dec 16 in the window; Dec 9 slot is Colors of Spanish. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-23, 2026-12-30: no listing on the library's own calendar (holiday break).",
       "id": 1108
     },
     {
@@ -5948,9 +5951,9 @@
       "description_es": "Ayuda con la tarea sin cita previa en la biblioteca después de la escuela.",
       "registration": "Not required",
       "website": "http://www.sananselmo.gov/Calendar.aspx?CID=22",
-      "notes": "skip: 2026-11-11",
+      "notes": "skip: 2026-11-11 | skip: 2026-12-23 | skip: 2026-12-30",
       "location_group": "San Anselmo/Ross",
-      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): library closed Nov 11 (Veterans Day). 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo).",
+      "internal_notes": "2026-10-01 (sweep 2026-09-30, Alexandra approved): library closed Nov 11 (Veterans Day). 2026-10-06: location_group San Anselmo -> San Anselmo/Ross (Alexandra: Ross is a separate town; group it with San Anselmo). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-23, 2026-12-30: no listing on the library's own calendar (holiday break).",
       "id": 1140
     },
     {
@@ -6196,9 +6199,9 @@
       "description_es": "Hora del cuento por la tarde a las 6 PM — ven en pijama.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events",
-      "notes": "Third Thursday of each month. | ALERT[2026-11-19]: Cancelled Thursday, November 19: the library has cancelled this session.",
+      "notes": "Third Thursday of each month. | ALERT[2026-11-19]: Cancelled Thursday, November 19: the library has cancelled this session. | skip: 2026-12-17",
       "location_group": "Novato",
-      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Source: the MCFL events feed for the sweep window, read through the bibliocommons shortcut that covers every branch in one pass. 2026-10-08: Converted One-off -> Monthly (Third Thursday of each month.) per the Oct 8 sweep (\"recurring means recurring\"); approved by Alexandra. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: Nov 19 cancelled in the MCFL feed.",
+      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Source: the MCFL events feed for the sweep window, read through the bibliocommons shortcut that covers every branch in one pass. 2026-10-08: Converted One-off -> Monthly (Third Thursday of each month.) per the Oct 8 sweep (\"recurring means recurring\"); approved by Alexandra. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: Nov 19 cancelled in the MCFL feed. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-17: no listing on the library's own calendar (holiday break).",
       "id": 1173
     },
     {
@@ -6227,9 +6230,9 @@
       "description_es": "Estudiantes de secundaria ayudan con la tarea y los trabajos escolares en el área de adolescentes, de 10 AM al mediodía. Sin inscripción, por orden de llegada.",
       "registration": "Not required",
       "website": "https://marinlibrary.bibliocommons.com/v2/events",
-      "notes": "First come, first served. | ALERT[2026-11-21]: No session listed for Saturday, November 21.",
+      "notes": "First come, first served. | ALERT[2026-11-21]: No session listed for Saturday, November 21. | skip: 2026-11-28 | skip: 2026-12-12 | skip: 2026-12-19 | skip: 2026-12-26 | skip: 2027-01-02",
       "location_group": "Corte Madera",
-      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Homework Helpers already existed at Novato (id 861) and San Anselmo (id 1140); this Saturday session at Corte Madera was not on file. 2026-10-06: location_group Larkspur/Corte Madera -> Corte Madera (Alexandra: 'Fix Corte Madera town type'); 28 other Corte Madera records already use it. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-21.",
+      "internal_notes": "Added 2026-09-24 from the weekly sweep (window Sep 25 - Nov 15), workbook daily_sweep_2026-09-24_review.xlsx, Alexandra marked Include. Homework Helpers already existed at Novato (id 861) and San Anselmo (id 1140); this Saturday session at Corte Madera was not on file. 2026-10-06: location_group Larkspur/Corte Madera -> Corte Madera (Alexandra: 'Fix Corte Madera town type'); 28 other Corte Madera records already use it. 2026-10-29 sweep (daily_sweep_2026-10-29_review.xlsx), Alexandra approved: rule 24 reverse check, date(s) absent from the MCFL feed: 2026-11-21. 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-11-28, 2026-12-12, 2026-12-19, 2026-12-26, 2027-01-02: no listing on the library's own calendar (holiday break).",
       "id": 1182
     },
     {
@@ -6507,9 +6510,9 @@
       "description_es": "Niños de 5 a 12 años leen en voz alta durante 20 minutos con un voluntario adolescente que los escucha y anima, para ganar confianza y amor por la lectura.",
       "registration": "Drop-in, first come, first served",
       "website": "https://srpubliclibrary.org/event/the-young-readers-project/",
-      "notes": "Drop-in, subject to volunteer availability. | ALERT[2026-11-29]: No session listed: check with the library before you go. | ALERT[2026-12-06]: No session listed: check with the library before you go. | ALERT[2026-12-13]: No session listed: check with the library before you go.",
+      "notes": "Drop-in, subject to volunteer availability. | ALERT[2026-11-29]: No session listed: check with the library before you go. | ALERT[2026-12-06]: No session listed: check with the library before you go. | ALERT[2026-12-13]: No session listed: check with the library before you go. | skip: 2026-12-20 | skip: 2026-12-27 | skip: 2027-01-03",
       "location_group": "San Rafael",
-      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: SRPL calendar, every Sunday Oct 4 - Nov 29 (repeating event)."
+      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: SRPL calendar, every Sunday Oct 4 - Nov 29 (repeating event). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): skip 2026-12-20, 2026-12-27, 2027-01-03: San Rafael libraries' winter closure; no programmes listed Dec 20 - Jan 12."
     },
     {
       "id": 1326,
@@ -6608,7 +6611,7 @@
       "id": 1329,
       "season_start": "",
       "season_end": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "organization": "Marin County Parks",
       "venue": "Roy's Redwoods Preserve",
@@ -6633,7 +6636,7 @@
       "website": "https://www.onetam.org/calendar/junior-rangers-nature-journaling-11-22-2026",
       "notes": "Meet at the Roy's Redwoods Loop trailhead on Nicasio Valley Rd. Bring a notebook and pencil.",
       "location_group": "Nicasio/San Geronimo",
-      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: onetam.org (Marin County Parks). Third in the fall series with 933 (Oct 11)."
+      "internal_notes": "Added 2026-10-01 from the weekly sweep (workbook daily_sweep_2026-09-30_review.xlsx, window Oct 1 - Nov 22); Alexandra marked Approve. Source: onetam.org (Marin County Parks). Third in the fall series with 933 (Oct 11). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): RETIRED: onetam lists it CANCELLED."
     },
     {
       "season_start": "",
@@ -7807,7 +7810,7 @@
       "description_es": "Stroller Strides: un entrenamiento de cuerpo completo al aire libre de 60 minutos (fuerza, cardio y abdomen) pensado para mamás embarazadas y en el posparto. Los bebés pueden ir en la carriola o en un portabebés. No se necesita una carriola para correr. Los niños pequeños y mayores son bienvenidos: pueden hacer el ejercicio junto a su mamá o andar en patineta o bicicleta. Trae una colchoneta si tienes una. de 10 a 11 AM. ¡Primera clase gratis! Inscríbete descargando la app Glofox y buscando Fit4mom Marin.",
       "registration": "Sign up in the Glofox app (search Fit4mom Marin)",
       "website": "https://marin.fit4mom.com/schedule",
-      "notes": "Meet by the kids' playground, next to the large parking lot. First class free, then $20 a class, $85 a month unlimited, or $175 for 10 classes. ALERT[2026-11-23]: No class Monday, November 23: holiday break on the FIT4MOM schedule. | ALERT[2026-12-21]: No class Monday, December 21: holiday break on the FIT4MOM schedule.",
+      "notes": "Meet by the kids' playground, next to the large parking lot. First class free, then $20 a class, $85 a month unlimited, or $175 for 10 classes. ALERT[2026-11-23]: No class Monday, November 23: holiday break on the FIT4MOM schedule.",
       "partner": true,
       "logo": "assets/ads/fit4mom_marin_logo.png",
       "contact": {
@@ -7819,7 +7822,7 @@
         "instagram": "fit4mommarin",
         "facebook": "Fit4MomMarin"
       },
-      "internal_notes": "Added 2026-10-09 at Alexandra's instruction ('commit both the feature and the events'): FIT4MOM Marin partner class, from the Stroller Strides tab of OAA Sponsorship and Partners/Advertising Partners Upload.xlsx as revised 2026-10-09 per Hannah Austin's feedback (her description, no 'caregivers', Glofox sign-up, logo). Schedule per FIT4MOM Marin's own calendar (settled 2026-09-26); Thu/Sat 9:30-10:30 confirmed by Alexandra 2026-10-09. Sponsor: the run-sweep exclusion of Stroller Strides drop-ins is lifted for these partner records. 2026-10-09: ages now end \"; 0-5 yrs\" so the class shows under the Babies, Toddlers and Preschool age filters (Alexandra). 2026-11-11: no-class dates from the Glofox schedule read in real Chrome (sweep Q13).",
+      "internal_notes": "Added 2026-10-09 at Alexandra's instruction ('commit both the feature and the events'): FIT4MOM Marin partner class, from the Stroller Strides tab of OAA Sponsorship and Partners/Advertising Partners Upload.xlsx as revised 2026-10-09 per Hannah Austin's feedback (her description, no 'caregivers', Glofox sign-up, logo). Schedule per FIT4MOM Marin's own calendar (settled 2026-09-26); Thu/Sat 9:30-10:30 confirmed by Alexandra 2026-10-09. Sponsor: the run-sweep exclusion of Stroller Strides drop-ins is lifted for these partner records. 2026-10-09: ages now end \"; 0-5 yrs\" so the class shows under the Babies, Toddlers and Preschool age filters (Alexandra). 2026-11-11: no-class dates from the Glofox schedule read in real Chrome (sweep Q13). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): removed ALERT[2026-12-21]: Glofox now lists a bookable class that day.",
       "id": 1445
     },
     {
@@ -7849,7 +7852,7 @@
       "description_es": "Stroller Strides: un entrenamiento de cuerpo completo al aire libre de 60 minutos (fuerza, cardio y abdomen) pensado para mamás embarazadas y en el posparto. Los bebés pueden ir en la carriola o en un portabebés. No se necesita una carriola para correr. Los niños pequeños y mayores son bienvenidos: pueden hacer el ejercicio junto a su mamá o andar en patineta o bicicleta. Trae una colchoneta si tienes una. de 10 a 11 AM. ¡Primera clase gratis! Inscríbete descargando la app Glofox y buscando Fit4mom Marin.",
       "registration": "Sign up in the Glofox app (search Fit4mom Marin)",
       "website": "https://marin.fit4mom.com/schedule",
-      "notes": "First class free, then $20 a class, $85 a month unlimited, or $175 for 10 classes. ALERT[2026-11-24]: No class Tuesday, November 24: holiday break on the FIT4MOM schedule. | ALERT[2026-12-22]: No class Tuesday, December 22: holiday break on the FIT4MOM schedule.",
+      "notes": "First class free, then $20 a class, $85 a month unlimited, or $175 for 10 classes. ALERT[2026-11-24]: No class Tuesday, November 24: holiday break on the FIT4MOM schedule.",
       "partner": true,
       "logo": "assets/ads/fit4mom_marin_logo.png",
       "contact": {
@@ -7861,7 +7864,7 @@
         "instagram": "fit4mommarin",
         "facebook": "Fit4MomMarin"
       },
-      "internal_notes": "Added 2026-10-09 at Alexandra's instruction ('commit both the feature and the events'): FIT4MOM Marin partner class, from the Stroller Strides tab of OAA Sponsorship and Partners/Advertising Partners Upload.xlsx as revised 2026-10-09 per Hannah Austin's feedback (her description, no 'caregivers', Glofox sign-up, logo). Schedule per FIT4MOM Marin's own calendar (settled 2026-09-26); Thu/Sat 9:30-10:30 confirmed by Alexandra 2026-10-09. Sponsor: the run-sweep exclusion of Stroller Strides drop-ins is lifted for these partner records. 2026-10-09: ages now end \"; 0-5 yrs\" so the class shows under the Babies, Toddlers and Preschool age filters (Alexandra). 2026-11-11: no-class dates from the Glofox schedule read in real Chrome (sweep Q13).",
+      "internal_notes": "Added 2026-10-09 at Alexandra's instruction ('commit both the feature and the events'): FIT4MOM Marin partner class, from the Stroller Strides tab of OAA Sponsorship and Partners/Advertising Partners Upload.xlsx as revised 2026-10-09 per Hannah Austin's feedback (her description, no 'caregivers', Glofox sign-up, logo). Schedule per FIT4MOM Marin's own calendar (settled 2026-09-26); Thu/Sat 9:30-10:30 confirmed by Alexandra 2026-10-09. Sponsor: the run-sweep exclusion of Stroller Strides drop-ins is lifted for these partner records. 2026-10-09: ages now end \"; 0-5 yrs\" so the class shows under the Babies, Toddlers and Preschool age filters (Alexandra). 2026-11-11: no-class dates from the Glofox schedule read in real Chrome (sweep Q13). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): removed ALERT[2026-12-22]: Glofox now lists a bookable class that day.",
       "id": 1446
     },
     {
@@ -7891,7 +7894,7 @@
       "description_es": "Stroller Strides: un entrenamiento de cuerpo completo al aire libre de 60 minutos (fuerza, cardio y abdomen) pensado para mamás embarazadas y en el posparto. Los bebés pueden ir en la carriola o en un portabebés. No se necesita una carriola para correr. Los niños pequeños y mayores son bienvenidos: pueden hacer el ejercicio junto a su mamá o andar en patineta o bicicleta. Trae una colchoneta si tienes una. de 10 a 11 AM. ¡Primera clase gratis! Inscríbete descargando la app Glofox y buscando Fit4mom Marin.",
       "registration": "Sign up in the Glofox app (search Fit4mom Marin)",
       "website": "https://marin.fit4mom.com/schedule",
-      "notes": "Meet by the kids' playground, next to the large parking lot. First class free, then $20 a class, $85 a month unlimited, or $175 for 10 classes. ALERT[2026-11-25]: No class Wednesday, November 25: holiday break on the FIT4MOM schedule. | ALERT[2026-12-23]: No class Wednesday, December 23: holiday break on the FIT4MOM schedule.",
+      "notes": "Meet by the kids' playground, next to the large parking lot. First class free, then $20 a class, $85 a month unlimited, or $175 for 10 classes. ALERT[2026-11-25]: No class Wednesday, November 25: holiday break on the FIT4MOM schedule.",
       "partner": true,
       "logo": "assets/ads/fit4mom_marin_logo.png",
       "contact": {
@@ -7903,7 +7906,7 @@
         "instagram": "fit4mommarin",
         "facebook": "Fit4MomMarin"
       },
-      "internal_notes": "Added 2026-10-09 at Alexandra's instruction ('commit both the feature and the events'): FIT4MOM Marin partner class, from the Stroller Strides tab of OAA Sponsorship and Partners/Advertising Partners Upload.xlsx as revised 2026-10-09 per Hannah Austin's feedback (her description, no 'caregivers', Glofox sign-up, logo). Schedule per FIT4MOM Marin's own calendar (settled 2026-09-26); Thu/Sat 9:30-10:30 confirmed by Alexandra 2026-10-09. Sponsor: the run-sweep exclusion of Stroller Strides drop-ins is lifted for these partner records. 2026-10-09: ages now end \"; 0-5 yrs\" so the class shows under the Babies, Toddlers and Preschool age filters (Alexandra). 2026-11-11: no-class dates from the Glofox schedule read in real Chrome (sweep Q13).",
+      "internal_notes": "Added 2026-10-09 at Alexandra's instruction ('commit both the feature and the events'): FIT4MOM Marin partner class, from the Stroller Strides tab of OAA Sponsorship and Partners/Advertising Partners Upload.xlsx as revised 2026-10-09 per Hannah Austin's feedback (her description, no 'caregivers', Glofox sign-up, logo). Schedule per FIT4MOM Marin's own calendar (settled 2026-09-26); Thu/Sat 9:30-10:30 confirmed by Alexandra 2026-10-09. Sponsor: the run-sweep exclusion of Stroller Strides drop-ins is lifted for these partner records. 2026-10-09: ages now end \"; 0-5 yrs\" so the class shows under the Babies, Toddlers and Preschool age filters (Alexandra). 2026-11-11: no-class dates from the Glofox schedule read in real Chrome (sweep Q13). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): removed ALERT[2026-12-23]: Glofox now lists a bookable class that day.",
       "id": 1447
     },
     {
@@ -7975,7 +7978,7 @@
       "description_es": "Stroller Strides: un entrenamiento de cuerpo completo al aire libre de 60 minutos (fuerza, cardio y abdomen) pensado para mamás embarazadas y en el posparto. Los bebés pueden ir en la carriola o en un portabebés. No se necesita una carriola para correr. Los niños pequeños y mayores son bienvenidos: pueden hacer el ejercicio junto a su mamá o andar en patineta o bicicleta. Trae una colchoneta si tienes una. de 9:30 a 10:30 AM. ¡Primera clase gratis! Inscríbete descargando la app Glofox y buscando Fit4mom Marin.",
       "registration": "Sign up in the Glofox app (search Fit4mom Marin)",
       "website": "https://marin.fit4mom.com/schedule",
-      "notes": "First class free, then $20 a class, $85 a month unlimited, or $175 for 10 classes. ALERT[2026-11-28]: No class Saturday, November 28: holiday break on the FIT4MOM schedule. | ALERT[2026-12-19]: No class Saturday, December 19: holiday break on the FIT4MOM schedule.",
+      "notes": "First class free, then $20 a class, $85 a month unlimited, or $175 for 10 classes. ALERT[2026-11-28]: No class Saturday, November 28: holiday break on the FIT4MOM schedule. | ALERT[2026-12-05]: Cancelled Saturday, December 5: no class on the FIT4MOM schedule.",
       "partner": true,
       "logo": "assets/ads/fit4mom_marin_logo.png",
       "contact": {
@@ -7987,7 +7990,7 @@
         "instagram": "fit4mommarin",
         "facebook": "Fit4MomMarin"
       },
-      "internal_notes": "Added 2026-10-09 at Alexandra's instruction ('commit both the feature and the events'): FIT4MOM Marin partner class, from the Stroller Strides tab of OAA Sponsorship and Partners/Advertising Partners Upload.xlsx as revised 2026-10-09 per Hannah Austin's feedback (her description, no 'caregivers', Glofox sign-up, logo). Schedule per FIT4MOM Marin's own calendar (settled 2026-09-26); Thu/Sat 9:30-10:30 confirmed by Alexandra 2026-10-09. Sponsor: the run-sweep exclusion of Stroller Strides drop-ins is lifted for these partner records. 2026-10-09: ages now end \"; 0-5 yrs\" so the class shows under the Babies, Toddlers and Preschool age filters (Alexandra). 2026-11-11: no-class dates from the Glofox schedule read in real Chrome (sweep Q13).",
+      "internal_notes": "Added 2026-10-09 at Alexandra's instruction ('commit both the feature and the events'): FIT4MOM Marin partner class, from the Stroller Strides tab of OAA Sponsorship and Partners/Advertising Partners Upload.xlsx as revised 2026-10-09 per Hannah Austin's feedback (her description, no 'caregivers', Glofox sign-up, logo). Schedule per FIT4MOM Marin's own calendar (settled 2026-09-26); Thu/Sat 9:30-10:30 confirmed by Alexandra 2026-10-09. Sponsor: the run-sweep exclusion of Stroller Strides drop-ins is lifted for these partner records. 2026-10-09: ages now end \"; 0-5 yrs\" so the class shows under the Babies, Toddlers and Preschool age filters (Alexandra). 2026-11-11: no-class dates from the Glofox schedule read in real Chrome (sweep Q13). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): ALERTs 2026-12-05 (no class on the FIT4MOM schedule). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): removed ALERT[2026-12-19]: Glofox now lists a bookable class that day.",
       "id": 1449
     },
     {
@@ -11148,14 +11151,14 @@
       "season_end": "",
       "status": "Active",
       "featured": false,
-      "description": "A free, campus-wide Festival of Lights hosted by the Osher Marin JCC, Brandeis Marin and Congregation Rodef Sholom, with live performances and family fun across the campus.",
-      "description_es": "Un Festival de las Luces gratuito en todo el campus, organizado por el Osher Marin JCC, Brandeis Marin y la Congregación Rodef Sholom, con presentaciones en vivo y diversión para toda la familia.",
+      "description": "A free, campus-wide Festival of Lights hosted by the Osher Marin JCC, Brandeis Marin and Congregation Rodef Sholom, with live performances and family fun across the campus. Free for families with children from birth to 3 and their siblings, as part of the JCC's Family Connections series.",
+      "description_es": "Un Festival de las Luces gratuito en todo el campus, organizado por el Osher Marin JCC, Brandeis Marin y la Congregación Rodef Sholom, con presentaciones en vivo y diversión para toda la familia. Gratis para familias con niños desde el nacimiento hasta los 3 años y sus hermanos, como parte de la serie Family Connections del JCC.",
       "registration": "Not required",
       "website": "https://www.marinjcc.org/events/",
       "notes": "",
       "event_date": "2026-12-06",
       "expires": "2026-12-06",
-      "internal_notes": "Added 2026-10-14 from the weekly sweep (window Oct 14 - Dec 1), workbook daily_sweep_2026-10-14_review.xlsx, Alexandra marked add. "
+      "internal_notes": "Added 2026-10-14 from the weekly sweep (window Oct 14 - Dec 1), workbook daily_sweep_2026-10-14_review.xlsx, Alexandra marked add.  2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): absorbed 1756 (Family Connections: Chanukah), same event."
     },
     {
       "id": 1649,
@@ -11906,7 +11909,7 @@
       "id": 1756,
       "season_start": "",
       "season_end": "",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "event_date": "2026-12-06",
       "expires": "2026-12-06",
@@ -11930,7 +11933,7 @@
       "website": "https://www.marinjcc.org/preschool/family-connections/",
       "description": "A free Chanukah celebration for children from birth to 3 and their siblings, with indoor and outdoor play, art, music, songs, dance, cooking and snacks.",
       "description_es": "Una celebración gratuita de Janucá para niños desde el nacimiento hasta los 3 años y sus hermanos, con juego bajo techo y al aire libre, arte, música, canciones, baile, cocina y bocadillos.",
-      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. Approved from the Questions tab (beyond-window list). JCC page: Sunday Dec 6, San Rafael, time TBD. Same day as Festival of Lights (1647). Contact Rachel Weiss 415.444.8072. 2026-11-11: time from marinjcc.org/preschool/family-connections (sweep Q2).",
+      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. Approved from the Questions tab (beyond-window list). JCC page: Sunday Dec 6, San Rafael, time TBD. Same day as Festival of Lights (1647). Contact Rachel Weiss 415.444.8072. 2026-11-11: time from marinjcc.org/preschool/family-connections (sweep Q2). 2026-11-19 (Nov 19 sweep, Alexandra 'follow your recommendation'): RETIRED as duplicate of 1647: the JCC Family Connections page lists 'Chanukah – Festival of Lights RSVP, Sun Dec 6, 11 am - 2 pm'.",
       "day": "Sunday"
     },
     {
@@ -17721,6 +17724,161 @@
       },
       "internal_notes": "Added 2026-11-19 from the Nov 19 sweep (daily_sweep_2026-11-19_review.xlsx); Alexandra: 'Yes, add Dec 4'. Source #53: Glofox (real Chrome) lists a one-off Friday Stroller Strides class, Marin Civic Center 9:30 AM, Hannah Austin, on Dec 4 only. Partner fields copied from 1448.",
       "id": 2053
+    },
+    {
+      "organization": "The Lark Theater",
+      "venue": "Lark Theater",
+      "address": "549 Magnolia Ave, Larkspur, CA 94939",
+      "town": "Larkspur",
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "type": "Music and Movies",
+      "cost": "Paid; tickets at the Lark",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "registration": "Buy tickets online or at the box office",
+      "status": "Active",
+      "featured": false,
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_name": "Family Movie: A Boy Named Charlie Brown (1969)",
+      "event_name_es": "Película familiar: A Boy Named Charlie Brown (1969)",
+      "ages": "All ages (rated G)",
+      "description": "The Lark's Fun Family Movie: the first Peanuts feature film. Charlie Brown enters the school spelling bee and, with help from Linus and Snoopy, makes it all the way to the national finals in New York.",
+      "description_es": "La película familiar del Lark: el primer largometraje de Peanuts. Charlie Brown participa en el concurso de ortografía de su escuela y, con la ayuda de Linus y Snoopy, llega hasta la final nacional en Nueva York.",
+      "website": "https://prod1.agileticketing.net/websales/pages/info.aspx?evtinfo=582981~93654fc6-c14e-40a7-812a-d5d2baa619e8",
+      "id": 2054,
+      "event_date": "2026-11-21",
+      "expires": "2026-11-21",
+      "day": "Saturday",
+      "time": "9:00 AM",
+      "time_of_day": "Morning",
+      "notes": "",
+      "internal_notes": "Added 2026-11-19 from the Nov 19 sweep, Question 10 (Alexandra: 'add' the Lark's Fun Family Movie weekends). Times from the Lark's Agile Ticketing page for the film. "
+    },
+    {
+      "organization": "The Lark Theater",
+      "venue": "Lark Theater",
+      "address": "549 Magnolia Ave, Larkspur, CA 94939",
+      "town": "Larkspur",
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "type": "Music and Movies",
+      "cost": "Paid; tickets at the Lark",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "registration": "Buy tickets online or at the box office",
+      "status": "Active",
+      "featured": false,
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_name": "Family Movie: A Boy Named Charlie Brown (1969)",
+      "event_name_es": "Película familiar: A Boy Named Charlie Brown (1969)",
+      "ages": "All ages (rated G)",
+      "description": "The Lark's Fun Family Movie: the first Peanuts feature film. Charlie Brown enters the school spelling bee and, with help from Linus and Snoopy, makes it all the way to the national finals in New York.",
+      "description_es": "La película familiar del Lark: el primer largometraje de Peanuts. Charlie Brown participa en el concurso de ortografía de su escuela y, con la ayuda de Linus y Snoopy, llega hasta la final nacional en Nueva York.",
+      "website": "https://prod1.agileticketing.net/websales/pages/info.aspx?evtinfo=582981~93654fc6-c14e-40a7-812a-d5d2baa619e8",
+      "id": 2055,
+      "event_date": "2026-11-22",
+      "expires": "2026-11-22",
+      "day": "Sunday",
+      "time": "3:15 PM",
+      "time_of_day": "Afternoon",
+      "notes": "",
+      "internal_notes": "Added 2026-11-19 from the Nov 19 sweep, Question 10 (Alexandra: 'add' the Lark's Fun Family Movie weekends). Times from the Lark's Agile Ticketing page for the film. "
+    },
+    {
+      "organization": "The Lark Theater",
+      "venue": "Lark Theater",
+      "address": "549 Magnolia Ave, Larkspur, CA 94939",
+      "town": "Larkspur",
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "type": "Music and Movies",
+      "cost": "Paid; tickets at the Lark",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "registration": "Buy tickets online or at the box office",
+      "status": "Active",
+      "featured": false,
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_name": "Family Movie: Popeye (1980)",
+      "event_name_es": "Película familiar: Popeye (1980)",
+      "ages": "Families (rated PG)",
+      "description": "The Lark's Fun Family Movie: Robin Williams is Popeye and Shelley Duvall is Olive Oyl in Robert Altman's live-action musical, set in the seaside town of Sweethaven.",
+      "description_es": "La película familiar del Lark: Robin Williams es Popeye y Shelley Duvall es Olivia en el musical de acción real de Robert Altman, ambientado en el pueblo costero de Sweethaven.",
+      "website": "https://prod1.agileticketing.net/websales/pages/info.aspx?evtinfo=586767~93654fc6-c14e-40a7-812a-d5d2baa619e8",
+      "id": 2056,
+      "event_date": "2026-11-28",
+      "expires": "2026-11-28",
+      "day": "Saturday",
+      "time": "9:00 AM",
+      "time_of_day": "Morning",
+      "notes": "",
+      "internal_notes": "Added 2026-11-19 from the Nov 19 sweep, Question 10 (Alexandra: 'add' the Lark's Fun Family Movie weekends). Times from the Lark's Agile Ticketing page for the film. "
+    },
+    {
+      "organization": "The Lark Theater",
+      "venue": "Lark Theater",
+      "address": "549 Magnolia Ave, Larkspur, CA 94939",
+      "town": "Larkspur",
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "type": "Music and Movies",
+      "cost": "Paid; tickets at the Lark",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "registration": "Buy tickets online or at the box office",
+      "status": "Active",
+      "featured": false,
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "event_name": "Family Movie: Popeye (1980)",
+      "event_name_es": "Película familiar: Popeye (1980)",
+      "ages": "Families (rated PG)",
+      "description": "The Lark's Fun Family Movie: Robin Williams is Popeye and Shelley Duvall is Olive Oyl in Robert Altman's live-action musical, set in the seaside town of Sweethaven.",
+      "description_es": "La película familiar del Lark: Robin Williams es Popeye y Shelley Duvall es Olivia en el musical de acción real de Robert Altman, ambientado en el pueblo costero de Sweethaven.",
+      "website": "https://prod1.agileticketing.net/websales/pages/info.aspx?evtinfo=586767~93654fc6-c14e-40a7-812a-d5d2baa619e8",
+      "id": 2057,
+      "event_date": "2026-11-29",
+      "expires": "2026-11-29",
+      "day": "Sunday",
+      "time": "3:40 PM",
+      "time_of_day": "Afternoon",
+      "notes": "",
+      "internal_notes": "Added 2026-11-19 from the Nov 19 sweep, Question 10 (Alexandra: 'add' the Lark's Fun Family Movie weekends). Times from the Lark's Agile Ticketing page for the film. "
+    },
+    {
+      "organization": "The Lark Theater",
+      "venue": "Lark Theater",
+      "address": "549 Magnolia Ave, Larkspur, CA 94939",
+      "town": "Larkspur",
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "type": "Music and Movies",
+      "cost": "Paid; tickets at the Lark",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "registration": "Buy tickets online or at the box office",
+      "status": "Active",
+      "featured": false,
+      "cadence": "One-off",
+      "season_start": "",
+      "season_end": "",
+      "id": 2058,
+      "event_name": "Thanksgiving Screenings: The Wizard of Oz (1939)",
+      "event_name_es": "Funciones de Acción de Gracias: El mago de Oz (1939)",
+      "ages": "All ages (rated G)",
+      "event_date": "2026-11-26",
+      "expires": "2026-11-26",
+      "day": "Thursday",
+      "time": "Shows 11 AM, 1 PM, 3 PM and 5 PM",
+      "time_of_day": "Morning",
+      "description": "The Lark's Thanksgiving tradition: The Wizard of Oz in 4K, screened four times through the day. The 11 AM, 1 PM and 3 PM shows are sensory-friendly screenings.",
+      "description_es": "La tradición de Acción de Gracias del Lark: El mago de Oz en 4K, con cuatro funciones durante el día. Las funciones de las 11 AM, 1 PM y 3 PM son adaptadas para personas con sensibilidad sensorial.",
+      "website": "https://prod1.agileticketing.net/websales/pages/info.aspx?evtinfo=467451~93654fc6-c14e-40a7-812a-d5d2baa619e8",
+      "notes": "The 11 AM, 1 PM and 3 PM shows are sensory-friendly.",
+      "internal_notes": "Added 2026-11-19 from the Nov 19 sweep, Question 10 (Alexandra: 'add' the Lark's Fun Family Movie weekends). Times from the Lark's Agile Ticketing page for the film. "
     }
   ]
 }
