@@ -450,6 +450,34 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
+## 2026-11-19 (evening): Napa sweep, Flood Watch, a new Instagram standard, and two sponsors' events
+
+Health at the end: `events.json` 648 events, max id 2127; notes-lint and bilingual-lint clean; duplicate scan 4 known
+split pairs (1716/1717, 1156/1158, 1770/1771, 1723/1724); `check_docs.py` clean.
+
+- **Napa sweep (Nov 20 - Jan 3), processed (`bcb5ba0`, another session):** 42 events added (ids 2059-2100) from
+  `napa_sweep_2026-11-19_review.xlsx`; 1817 renamed Moonflower; 904 Salvia Temp. paused. **Standing rule: nothing in Lake
+  County** (Langtry Farms, Middletown, not added). Follow-ups are in open item 18.
+- **Flood Watch on Resources is back for Nov 20-28 (`ee8464c`):** slides 1-4 of the King Tide Instagram post
+  (`assets/flood/tide_nov20_1..4.jpg`); the section hides itself after Sat Nov 28.
+- **Instagram (item 15):** the week's only regular post went out as one weekend post, **scheduled Fri Nov 20, 4:30 PM**
+  (Metricool 435153693, comment A; Megan @ Milkweed, Workshop Wonderland Pop-Up, Gratitude Scavenger Hunt; `ig/week_of_nov19/`).
+  **New Template A standards (Alexandra):** the **cover** (logo up top, white WEEKEND ROUNDUP label, "Three things you won't
+  want to miss...", larger dates and Swipe arrow; `cover(..., label=)`) and the **end slide** (logo up top, "Your resource for
+  family fun and local things to do with kids!", COMMENT "OUT" pill, "and we'll send you the link to the web app!",
+  www.outandaboutmarin.com). Both live in `build_template_a_4x5.py`. **Mockup fix:** the navy slides used to collapse to a
+  thin strip in the mockup page (9cqw padding measured the page); now `box-sizing:border-box` and `padding:0 9%`.
+- **Kitsch + Sync December (sponsor):** 21 partner listings (2101-2121) from their emailed December list. Night events
+  without a time carry a **5-8 PM placeholder** (2108, 2112, 2113, 2117); 2103, 2118-2120 say Time TBA. Sweep source #52
+  now checks their site weekly and replaces placeholders (open item 58 zzg).
+- **The Phoenix Used Bookshop: new sponsor, Featured Partner from Dec 1.** Partner listings with its logo
+  (`assets/ads/phoenix_logo.png`, from the site header): 2124 Holiday Book Swap: En Plein Air (Dec 1, Internos Wine Bar),
+  2125 Phoenix Noir: Mystery & Thriller Book Club (Jan 20, Mill Valley), 2126 Books-to-Movies Night: The Hunger Games:
+  Sunrise on the Reaping (Nov 23, CinemaWest Larkspur), 2127 The Phoenix at the Shop Local Holiday Market (Dec 6, MAGC).
+  **Titles and descriptions are Alexandra's exact wording** (Spanish titles identical). The Winter Reading Challenge
+  (2122/2123) was removed at her request. Leadsheet row 9 and a new "The Phoenix" tab in the partner workbook; source #20
+  now carries the partner rules and checks the homepage weekly. **Featured card (ads.json) still to build for Dec 1.**
+
 ## 2026-11-19: Marin weekly sweep (Nov 19 - Jan 3), processed the same day
 
 Health after processing: `events.json` **579 events, max id 2058**; notes-lint and bilingual-lint clean; `check_docs.py`
