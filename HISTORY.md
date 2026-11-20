@@ -450,6 +450,30 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
+## 2026-11-19: Marin weekly sweep (Nov 19 - Jan 3), processed the same day
+
+Health after processing: `events.json` **579 events, max id 2058**; notes-lint and bilingual-lint clean; `check_docs.py`
+clean; duplicate scan 4 findings (the known split pairs 1716/1717, 1156/1158, 1770/1771, 1723/1724).
+
+- **Workbook** `OAA maintence and content\daily_sweep_2026-11-19_review.xlsx`: 53 of 53 sources attested (`attestation:
+  complete`); **#9 Enjoy Mill Valley BLOCKED** (Cloudflare human check, homepage only). 16 candidate rows, 13 questions.
+- **Added (f9d430d, df6c497, 992a8f6):** 2043 Stinson sewing workshop, 2044 Sloat Novato Winter Faire, 2045 Ingrid special
+  Saturday storytime (skip Nov 28 on 14), 2046 Loch Lomond birding, 2047 Rodef Sholom Chanukah Shabbat, 2048/2051 Marin
+  Humane mobile adoptions (Tiburon, Greenbrae), 2049 Novato Teen Area reveal, 2050 Stafford Lake Birds, 2052 Hamilton
+  Wetlands Birds, 2053 Friday Dec 4 Stroller Strides (partner), 2054-2058 **Lark Theater family films** (Charlie Brown
+  Nov 21/22, Thanksgiving Wizard of Oz, Popeye Nov 28/29). **750 Pottery Barn Kids storytime reactivated as Weekly
+  Friday 11 AM** (Alexandra: "it is recurring"). Skipped: Happy Lane Wizard of Oz (4 shows).
+- **Record fixes from the Questions tab** (all "follow your recommendation"): cancellation ALERTs on 10, 873, 59, 15
+  (Larkspur closed all of Thanksgiving week), 1449 (Dec 5); FIT4MOM Dec 19/21/22/23 break ALERTs removed (Glofox lists
+  classes again); **holiday-break skips** on 19 MCFL/San Anselmo/BelTib records and the San Rafael libraries' winter
+  closure (25, 26, 824, 853, 1287; nothing listed Dec 20 - Jan 12); 1329 (cancelled) and 1756 (duplicate of 1647) Inactive.
+- **Decisions to keep:** library programmes absent from their own calendar over the holidays get `skip:`; Dec 24, 25, 31
+  and Jan 1 are left to the app's holiday banner (same as Thanksgiving). **Lark "Fun Family Movie" weekends are IN**:
+  times come from each film's Agile Ticketing page (prod1.agileticketing.net, JS: read it in a browser). Skipped for good:
+  West End Nursery Christmas House, Wee Yogis open play (paid drop-in), MAGC radio play, Joske Grove milkweed planting.
+- **Route notes:** Mill Valley city month grids are JS-only now (read the iCal feeds, catID 25/54/14); Marin Mommies
+  roundup that week was `/marin-bay-area-family-events-weekend-november-20–22`; Kitsch + Sync images still November only.
+
 ## What changed 2026-11-17 to 2026-11-19 (phone and desktop), in one pass
 
 Health at the end of 2026-11-19: `events.json` **574 events, max id 2042**; self-test 92/92; notes-lint and bilingual-lint
