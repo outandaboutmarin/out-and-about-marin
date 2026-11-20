@@ -20108,7 +20108,7 @@
     },
     {
       "organization": "The Phoenix Used Bookshop",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "partner": true,
       "contact": {
@@ -20144,12 +20144,12 @@
       "id": 2122,
       "season_start": "11/23",
       "season_end": "12/31",
-      "internal_notes": "Added 2026-11-19 at Alexandra's request: The Phoenix Bookshop is a Featured Partner sponsor from Dec 1, 2026. Read from phoenixusedbookshop.com. Partner record. Seasonal run split at New Year (the Nov 23 - Dec 31 part); the other half is the neighbouring id (a season cannot cross Dec 31).",
+      "internal_notes": "Added 2026-11-19 at Alexandra's request: The Phoenix Bookshop is a Featured Partner sponsor from Dec 1, 2026. Read from phoenixusedbookshop.com. Partner record. Seasonal run split at New Year (the Nov 23 - Dec 31 part); the other half is the neighbouring id (a season cannot cross Dec 31). RETIRED 2026-11-19: Alexandra asked to remove the Winter Reading Challenge.",
       "logo": "assets/ads/phoenix_logo.png"
     },
     {
       "organization": "The Phoenix Used Bookshop",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "partner": true,
       "contact": {
@@ -20185,7 +20185,7 @@
       "id": 2123,
       "season_start": "01/01",
       "season_end": "01/02",
-      "internal_notes": "Added 2026-11-19 at Alexandra's request: The Phoenix Bookshop is a Featured Partner sponsor from Dec 1, 2026. Read from phoenixusedbookshop.com. Partner record. Seasonal run split at New Year (the Jan 1 - 2 part); the other half is the neighbouring id (a season cannot cross Dec 31).",
+      "internal_notes": "Added 2026-11-19 at Alexandra's request: The Phoenix Bookshop is a Featured Partner sponsor from Dec 1, 2026. Read from phoenixusedbookshop.com. Partner record. Seasonal run split at New Year (the Jan 1 - 2 part); the other half is the neighbouring id (a season cannot cross Dec 31). RETIRED 2026-11-19: Alexandra asked to remove the Winter Reading Challenge.",
       "logo": "assets/ads/phoenix_logo.png"
     },
     {
