@@ -7,8 +7,9 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
 ## Pending
 
 - **`social_media_and_marketing.md` (2026-11-22, Alexandra):** the storytime gift guide (Fri Nov 27, 4 PM) is now Metricool id
-  **437725072** (was 433889571). Slides 1-3 updated: Southern Marin adds Wed 11 am Books by the Bay, Thu 11 am Mart Littles
+  **437727704** (was 433889571). Slides 1-3 updated: Southern Marin adds Wed 11 am Books by the Bay, Thu 11 am Mart Littles
   Storytime at Copperfield's, Fri 11 am Pottery Barn Kids Storytime, 1st Sat 10:30 am Book Passage Storytime, and Mill Valley
-  Sing & Stomp at 10:15 & 11:15 am; Central adds Fri 10:30 am Sing & Stomp with Emily Bonn (San Anselmo). Cover and caption now
+  Sing & Stomp at 10:15 & 11:15 am; Central adds Fri 10:30 am Sing & Stomp with Emily Bonn (San Anselmo). Later the same day Corte Madera, Belvedere-Tiburon, Copperfield's, Pottery Barn Kids and Book Passage
+  moved from the Southern to the Central Marin slide (Alexandra). Cover and caption now
   say "Marin's libraries (plus/and a few local shops)". Still left off on purpose: Sunday storytimes, Read to a Dog, Reading
   Buddies, the virtual Baby Sign Language group.
