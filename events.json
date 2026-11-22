@@ -19835,6 +19835,35 @@
       "website": "https://www.marincounty.gov/departments/cultural-services/department-sponsored-events/holiday-light-spectacular",
       "notes": "Nightly 5-9 PM, including holidays. Free entry and parking.",
       "internal_notes": "Added 2026-11-20 at Alexandra's request (seen on @neighborhoodmamameetup's 'Free in Marin & the North Bay' slide; discovery only). Confirmed from the County's own Holiday Light Spectacular page as quoted in search results (direct fetch of marincounty.gov returns 403): Nov 27, 2026 - Jan 3, 2027, 5-9 PM daily incl. holidays, Marin Center Fairgrounds, free, rain or shine; Nov 5 2026 county release: may cancel for lightning/high winds. Part 2 of 2 (Jan 1-3, 2027): split at New Year because a year-wrapping season does not render (rule 16). Movie nights are separate records 1911, 1927, 1930, 1931. CHECKED 2026-11-20: the RECURRING finding 2130/2131 in check_duplicates.py is expected (one season split at New Year, like 1156/1158); not a duplicate. RETIRED 2026-11-20 at Alexandra's request: an every-night light display is not a listing she wants in the feed."
+    },
+    {
+      "id": 2132,
+      "organization": "The Power With Grace",
+      "venue": "UU Marin (Unitarian Universalist Congregation of Marin)",
+      "event_name": "Free Thanksgiving Dance Class (Stop Drop and Dance)",
+      "event_name_es": "Clase de baile gratis de Acción de Gracias (Stop Drop and Dance)",
+      "type": "Fitness",
+      "day": "Thursday",
+      "time": "9:30 AM – 10:30 AM",
+      "time_of_day": "Morning",
+      "town": "San Rafael",
+      "address": "240 Channing Way, San Rafael, CA 94903",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-26",
+      "expires": "2026-11-26",
+      "status": "Active",
+      "featured": false,
+      "location_group": "San Rafael",
+      "description": "An easy-to-follow dance fitness workout with no mirrors, no judgment and no egos, only joy! Everyone is welcome: grown-ups, grandparents, teens and dancing kids. Join in person in San Rafael or on Zoom from anywhere. Wear comfortable clothes and sneakers and bring a water bottle. It's The Power With Grace's 7th annual free Thanksgiving class.",
+      "description_es": "Una clase de baile fitness fácil de seguir, sin espejos, sin juicios y sin egos, ¡solo alegría! Todos son bienvenidos: adultos, abuelos, adolescentes y niños bailarines. Únete en persona en San Rafael o por Zoom desde cualquier lugar. Usa ropa cómoda y tenis y trae una botella de agua. Es la 7.ª clase anual gratuita de Acción de Gracias de The Power With Grace.",
+      "registration": "Free; RSVP on The Power With Grace's website",
+      "website": "https://www.thepowerwithgrace.com/classes",
+      "notes": "Free, but RSVP through The Power With Grace's website. Also streams on Zoom.",
+      "internal_notes": "Added 2026-11-22 at Alexandra's request from @thepowerwithgrace's Instagram post (Thanksgiving, 9:30-10:30 AM, UU Marin 240 Channing Way or Zoom, free, RSVP via profile link). Confirmed on thepowerwithgrace.com/classes: 'LIVE Th 11/26 9:30am *FREE THANKSGIVING CLASS!* ZOOM or IN-PERSON @UUMarin Stop Drop And Dance', 7th annual, all prices FREE. Their regular Tue/Thu/Sat 9:30 AM drop-in classes ($25 in person, kids free with paid parent; $15 Zoom) NOT added: Alexandra not yet asked/decided."
     }
   ]
 }
