@@ -11166,7 +11166,7 @@
       "id": 1723,
       "season_start": "11/28",
       "season_end": "12/31",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "event_date": "",
       "expires": "2026-12-31",
@@ -11191,13 +11191,13 @@
       "website": "https://downtownsanrafael.org/elf-hunt/",
       "description": "Rogue elves are hiding inside businesses along 4th Street. Pick up a map, find each elf, write its name on the map and turn it in at Mike's Bikes to enter a drawing for gift baskets.",
       "description_es": "Unos duendes traviesos se esconden en los negocios de la calle 4th. Recoge un mapa, encuentra a cada duende, escribe su nombre en el mapa y entrégalo en Mike's Bikes para participar en un sorteo de canastas de regalo.",
-      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. 5th annual, Nov 28 2026 - Jan 10 2027; split at New Year because seasons do not wrap the year; expires set so it does not recur in 2027."
+      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. 5th annual, Nov 28 2026 - Jan 10 2027; split at New Year because seasons do not wrap the year; expires set so it does not recur in 2027. RETIRED 2026-11-22 at Alexandra's request: moved to a Holiday section on the Resources tab instead (the week-level season check showed it before Nov 28 and twice around New Year)."
     },
     {
       "id": 1724,
       "season_start": "01/01",
       "season_end": "01/10",
-      "status": "Active",
+      "status": "Inactive",
       "featured": false,
       "event_date": "",
       "expires": "2027-01-10",
@@ -11222,7 +11222,7 @@
       "website": "https://downtownsanrafael.org/elf-hunt/",
       "description": "Rogue elves are hiding inside businesses along 4th Street. Pick up a map, find each elf, write its name on the map and turn it in at Mike's Bikes to enter a drawing for gift baskets.",
       "description_es": "Unos duendes traviesos se esconden en los negocios de la calle 4th. Recoge un mapa, encuentra a cada duende, escribe su nombre en el mapa y entrégalo en Mike's Bikes para participar en un sorteo de canastas de regalo.",
-      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. January part of the 2026-27 Elf Hunt."
+      "internal_notes": "Added 2026-10-22 from the weekly sweep (window Oct 22 - Dec 3), workbook daily_sweep_2026-10-22_review.xlsx, Alexandra marked add. January part of the 2026-27 Elf Hunt. RETIRED 2026-11-22 at Alexandra's request: moved to a Holiday section on the Resources tab instead (the week-level season check showed it before Nov 28 and twice around New Year)."
     },
     {
       "id": 1726,
