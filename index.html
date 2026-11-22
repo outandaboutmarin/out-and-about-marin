@@ -1858,6 +1858,16 @@ function mapDbUser(dbUser) {
   .tide-date { min-width:168px; text-align:center; font-weight:600; color:var(--navy); font-size:0.84rem; }
   .tide-today-btn { background:none; border:none; color:#3a5a9c; font-size:0.72rem; font-weight:600;
     cursor:pointer; text-decoration:underline; font-family:inherit; padding:0; }
+  .hol-wrap { border:1px solid #E2E8F2; border-radius:var(--radius-sm); background:#fff; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .hol-grid { border-collapse:separate; border-spacing:0; min-width:640px; width:100%; font-size:0.78rem; line-height:1.4; }
+  .hol-grid th, .hol-grid td { padding:0.5rem 0.55rem; text-align:left; vertical-align:top; border-bottom:1px solid #EEF2F8; }
+  .hol-grid thead th { font-size:0.7rem; font-weight:600; color:var(--navy); background:#F1F5FB; border-bottom:1px solid #DCE4F0; white-space:nowrap; }
+  .hol-grid tbody tr:last-child td { border-bottom:none; }
+  .hol-grid .hn { position:sticky; left:0; z-index:1; background:#fff; width:120px; min-width:120px; font-weight:600; border-right:1px solid #EEF2F8; }
+  .hol-grid thead .hn { background:#F1F5FB; z-index:2; }
+  .hol-grid td:nth-child(2) { width:150px; min-width:150px; }
+  .hol-grid td:nth-child(3) { width:140px; min-width:140px; }
+  .hol-grid td:nth-child(4) { min-width:230px; }
   .dine-wrap { border:1px solid #E2E8F2; border-radius:var(--radius-sm); background:#fff; overflow:hidden; }
   .dine-grid { border-collapse:collapse; width:100%; table-layout:fixed; font-size:0.74rem; line-height:1.4; }
   .dine-grid th, .dine-grid td { padding:0.4rem 0.45rem; text-align:left; vertical-align:top; border-bottom:1px solid #EEF2F8; overflow-wrap:anywhere; }
@@ -2743,18 +2753,14 @@ function mapDbUser(dbUser) {
     <div class="about-section" style="margin-bottom:0.75rem" id="holidaySection" data-until="2027-01-10">
       <div class="about-title" data-es="🎄 Actividades navideñas (toda la temporada)">🎄 Holiday Happenings (all season long)</div>
       <div class="about-text">
-        <div style="padding:0.55rem 0;border-bottom:1px solid #EEF2F8;">
-          <p style="margin:0 0 0.15rem;font-weight:600;color:var(--navy);font-size:1rem"><a href="https://www.marincounty.gov/departments/cultural-services/department-sponsored-events/holiday-light-spectacular" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="Espectáculo navideño de luces de Marin">Marin Holiday Light Spectacular</span></a></p>
-          <p style="margin:0;line-height:1.45"><b data-es="Cuándo:">When:</b> <span data-es="Todas las noches, del 27 de nov. al 3 de ene. · 5 a 9 p. m. (incluso días festivos)">Nightly, Nov 27 – Jan 3 · 5–9 PM (holidays included)</span></p>
-          <p style="margin:0;line-height:1.45"><b data-es="Dónde:">Where:</b> <a href="https://maps.google.com/?q=Marin+Center+10+Avenue+of+the+Flags+San+Rafael+CA" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="Recinto ferial del Marin Center, San Rafael">Marin Center Fairgrounds, San Rafael</span></a></p>
-          <p style="margin:0.2rem 0 0;line-height:1.45" data-es="Exhibiciones de luces gratis para recorrer a pie en el recinto ferial, y arcos de luces para recorrer en auto en el Civic Center. Entrada y estacionamiento gratis; llueva o truene (cierra por rayos o vientos fuertes).">Free walk-through light displays at the fairgrounds, plus drive-through light arches at the Civic Center. Free entry and parking; rain or shine (closes for lightning or high winds).</p>
-        </div>
-        <div style="padding:0.55rem 0;">
-          <p style="margin:0 0 0.15rem;font-weight:600;color:var(--navy);font-size:1rem"><a href="https://downtownsanrafael.org/elf-hunt/" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="Búsqueda de duendes en el centro de San Rafael">Downtown San Rafael Elf Hunt</span></a></p>
-          <p style="margin:0;line-height:1.45"><b data-es="Cuándo:">When:</b> <span data-es="Del 28 de nov. al 10 de ene. · en horario comercial">Nov 28 – Jan 10 · during business hours</span></p>
-          <p style="margin:0;line-height:1.45"><b data-es="Dónde:">Where:</b> <a href="https://maps.google.com/?q=4th+St+and+Lincoln+Ave+San+Rafael+CA" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="Calle 4th, de Lincoln Ave a H St, San Rafael">4th Street, Lincoln Ave to H St, San Rafael</span></a></p>
-          <p style="margin:0.2rem 0 0;line-height:1.45" data-es="Unos duendes traviesos se esconden en las tiendas de la calle 4th. Recoge un mapa en T&amp;B Sports (1345 Fourth St) o descárgalo, encuentra a cada duende y entrega tu mapa en Mike's Bikes (836 Fourth St) para participar en un sorteo de canastas de regalo. Gratis.">Rogue elves are hiding inside shops along 4th Street. Pick up a map at T&amp;B Sports (1345 Fourth St) or download it, find each elf, then turn your map in at Mike's Bikes (836 Fourth St) to enter a drawing for gift baskets. Free.</p>
-        </div>
+        <div class="hol-wrap"><table class="hol-grid">
+          <thead><tr><th class="hn" data-es="Evento">Event</th><th data-es="Cuándo">When</th><th data-es="Dónde">Where</th><th data-es="Qué esperar">What to expect</th></tr></thead>
+          <tbody>
+            <tr><td class="hn"><a href="https://www.marincounty.gov/departments/cultural-services/department-sponsored-events/holiday-light-spectacular" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="Espectáculo navideño de luces de Marin">Marin Holiday Light Spectacular</span></a></td><td data-es="Todas las noches, del 27 de nov. al 3 de ene.<br>5 a 9 p. m. (incluso días festivos)">Nightly, Nov 27 – Jan 3<br>5–9 PM (holidays included)</td><td><a href="https://maps.google.com/?q=Marin+Center+10+Avenue+of+the+Flags+San+Rafael+CA" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="Recinto ferial del Marin Center, San Rafael">Marin Center Fairgrounds, San Rafael</span></a></td><td data-es="Exhibiciones de luces gratis para recorrer a pie en el recinto ferial, y arcos de luces para recorrer en auto en el Civic Center. Entrada y estacionamiento gratis; llueva o truene (cierra por rayos o vientos fuertes).">Free walk-through light displays at the fairgrounds, plus drive-through light arches at the Civic Center. Free entry and parking; rain or shine (closes for lightning or high winds).</td></tr>
+            <tr><td class="hn"><a href="https://downtownsanrafael.org/elf-hunt/" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="Búsqueda de duendes en el centro de San Rafael">Downtown San Rafael Elf Hunt</span></a></td><td data-es="Del 28 de nov. al 10 de ene.<br>En horario comercial">Nov 28 – Jan 10<br>During business hours</td><td><a href="https://maps.google.com/?q=4th+St+and+Lincoln+Ave+San+Rafael+CA" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline"><span data-es="Calle 4th, de Lincoln Ave a H St, San Rafael">4th Street, Lincoln Ave to H St, San Rafael</span></a></td><td data-es="Unos duendes traviesos se esconden en las tiendas de la calle 4th. Recoge un mapa en T&amp;B Sports (1345 Fourth St) o descárgalo, encuentra a cada duende y entrega tu mapa en Mike's Bikes (836 Fourth St) para participar en un sorteo de canastas de regalo. Gratis.">Rogue elves are hiding inside shops along 4th Street. Pick up a map at T&amp;B Sports (1345 Fourth St) or download it, find each elf, then turn your map in at Mike's Bikes (836 Fourth St) to enter a drawing for gift baskets. Free.</td></tr>
+          </tbody>
+        </table></div>
+        <p style="margin:0.35rem 0 0;font-size:0.7rem;color:#6b7791" data-es="Desliza la tabla hacia los lados para ver más →">Swipe the table sideways to see more →</p>
       </div>
     </div>
     <script>
@@ -6462,7 +6468,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-11-22.2';
+const APP_BUILD = '2026-11-22.3';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
