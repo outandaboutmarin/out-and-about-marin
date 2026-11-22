@@ -1,16 +1,16 @@
 Out AND About Marin — Scraper Run Report
 Date: 2026-11-22
-Time: 00:13:51
+Time: 20:01:47
 
-Total events in events.json: 631
+Total events in events.json: 633
 Active events: 569
 Temp. closed: 0
 
 Events by type:
-  Community Event: 154
+  Community Event: 155
   Farmers Market: 18
   Festival: 33
-  Fitness: 26
+  Fitness: 27
   Grown-Ups Only!: 58
   Kids Programs: 119
   Library: 145
@@ -42,7 +42,7 @@ Events by town:
   Ross: 10
   San Anselmo: 16
   San Geronimo: 2
-  San Rafael: 72
+  San Rafael: 74
   Sausalito: 27
   St. Helena: 31
   Telluride: 32
@@ -53,6 +53,7 @@ Events by town:
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
+  🔔 PAGE CHANGED: Larkspur Library
   🔔 PAGE CHANGED: San Rafael Public Library — Downtown
   🔔 PAGE CHANGED: MCFL — Civic Center Library
   🔔 PAGE CHANGED: MCFL — Corte Madera Library
