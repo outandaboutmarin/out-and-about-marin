@@ -450,6 +450,21 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
+## 2026-11-20 to 2026-11-22 (phone sessions, pulled in on the desktop 2026-11-22)
+
+- **Resources → Holiday Happenings** (new, `#holidaySection`, below the tide table): a sideways-scrolling table of
+  season-long holiday items kept out of the daily feed: the Phoenix's Marin Kids Winter Reading Challenge, the Marin
+  Holiday Light Spectacular, the Downtown San Rafael Elf Hunt. Hides itself after Jan 31, 2027. Their event records are
+  retired (1723/1724, 2130/2131; 2122/2123 already).
+- **Events:** Holiday Magic on Magnolia, Larkspur (2128/2129, Dec 5-6); free Thanksgiving dance class, UU Marin
+  (2132, Nov 26); French Market Marin Dec 13 at the VMA lot (1049) plus a monthly 2nd-Sunday record (2133).
+- **The Phoenix:** Books-to-Movies Night (2126) retired, cancelled for low ticket sales; contact phone and info@ email on
+  all listings; 2127 renamed The Phoenix at Marin Local for the Holidays. On the desktop (2026-11-22) the Featured card
+  mockup got The Phoenix's feedback (About, phone, email, tags, circle poppy logo in the tile icon,
+  `assets/ads/phoenix_circle_240.png`); still a draft, not in ads.json; an Artist's Way tile graphic is coming.
+- **Instagram:** the storytime gift guide (Fri Nov 27, 4 PM) was reworked and rescheduled several times; final Metricool
+  id 437734528 (bookstore and shop storytimes added, one-line layout, COMMENT "OUT" end slide).
+
 ## 2026-11-19 (evening): Napa sweep, Flood Watch, a new Instagram standard, and two sponsors' events
 
 Health at the end: `events.json` 648 events, max id 2127; notes-lint and bilingual-lint clean; duplicate scan 4 known
