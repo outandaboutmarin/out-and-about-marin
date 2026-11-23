@@ -1039,7 +1039,7 @@ files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and wo
 `C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
 record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
 
-## Where to pick up (updated 2026-11-19, evening)
+## Where to pick up (updated 2026-11-22)
 
 The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH). In order:
 
@@ -1051,19 +1051,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
    is a Supabase/Edge Function change: show her first.
 0. **Napa follow-ups from the Oct 29 sweep (processed the same day, `79fec3a`):** call the Calistoga LAB (707-403-5028) to confirm 530's Saturday start time (7 PM unconfirmed); add Carneros Resort's Jingle & Mingle tree lighting (Nov 28, 6 PM) and Photos with Santa (Nov 28, Dec 5, 3:30-6:30 PM) once price and details are published (carnerosresort.com's events page did not render them); Festival Napa Valley MusicTime Dec 19 falls past the window, so pick it up next Napa sweep.
 0b. **Marin follow-ups from the Oct 29 sweep:** Carol-oke (1808, Dec 12) has no time yet; Slide Ranch workday (1809, Dec 12) time copied from Nov 15; recheck San Rafael Pokémon Club 824 (Nov 25) and Young Readers 1287 (Nov 29, Dec 6, 13), which were absent from the city calendar; Corte Madera Ingrid has no dates after Dec 3 (item 58m); Sausalito Library's calendar (#40) still renders blank in every browser.
-1. **Instagram (item 15), as of 2026-11-19 (evening).** **Weekend post scheduled Fri Nov 20, 4:30 PM** (Metricool 435153693, `ig/week_of_nov19/`). **New Template A standards: the WEEKEND ROUNDUP cover and the COMMENT "OUT" end slide, both in `build_template_a_4x5.py`** (see `social_media_and_marketing.md`). Also scheduled: **King Tide post** Thu Nov 19, 4 PM (434850197,
-   `ig/king_tide_nov20/`; flood posts now show flooding at **6.9 ft or higher** at both Manzanita and Lucky Drive, item 78),
-   rainy-day Sun Nov 22, 4 PM, library **storytime gift guide** Fri Nov 27, 4 PM (437734528 since the Nov 22 update, `ig/storytime_gift_nov26/`; now also lists Copperfield's, Books by the Bay, Pottery Barn Kids, Book Passage and Emily Bonn's Sing & Stomp).
-   Item 84 (No-Stuff gift guide) waits on her date and on whether the storytime guide replaces it. Item 85: delete the
-   stray `claude/main` branch (only on her go). Weekly Thu/Sat/Sun posts stay in **Template A** (4:5, 1080x1350; builder
-   in `OAA marketing\Instagram templates\Template A - Thu Sat Sun posts\`, helpers in `build_template_a_4x5.py`; follow
-   `social_media_and_marketing.md`). **Every post goes to Alexandra as slides + caption + a witty first comment ending in a
-   question, approved together; captions end with exactly 3 hashtags.** One-off posts built in phone sessions this month
-   (headless Chromium from HTML, Halloween-post style): turkey trots (published Sun Nov 15, 5 PM; the regular Nov 15 post is a
-   **draft** in Metricool, id 427425352), rainy-day "School's out. Rain's in. Grandma's here." (scheduled **Sun Nov 22, 4 PM**,
-   id 432433886, `ig/rainy_day_nov22/`), and the **No-Stuff Gift Guide** (approved, **not scheduled**: Alexandra picks the
-   date; `ig/gift_guide_draft/` has the slides and caption.md). Sun Nov 22 still needs its regular 5 PM post. Delete each
-   `ig/` folder once its post is live (`ig/README.md`). Flood Watch on Resources shows the Nov 20-28 king tide slides (`ee8464c`) and hides itself after Nov 28.
+1. **Instagram (item 15), as of 2026-11-22.** Published: weekend post Fri Nov 20 (435153693), rainy-day Sun Nov 22 (432433886); no regular Sun Nov 22 weekly post. Scheduled: Tue Nov 24 tag post, Wed Nov 25 Hot Tip #7, **Fri Nov 27, 4 PM storytime gift guide (437734528, `ig/storytime_gift_nov26/`)**, Wed Dec 2 Hot Tip #8, Tue Dec 8 tag post. **Next:** Thanksgiving-week Thu/Sat/Sun posts (none built) and the No-Stuff gift guide date (item 84, `ig/gift_guide_draft/`). Weekly posts use **Template A** with the **WEEKEND ROUNDUP cover and COMMENT "OUT" end slide** (both in `build_template_a_4x5.py`); every post goes to Alexandra as slides + caption + a witty first comment ending in a question; captions end with exactly 3 hashtags. Stage images in `ig/<folder>/`, delete the folder once the post is live (`ig/README.md`; published folders cleared 2026-11-22). Flood Watch on Resources shows the Nov 20-28 king tide slides and hides itself after Nov 28; Holiday Happenings (Resources) runs to Jan 31.
 1b. **SMMC $250 post (item 79):** SMMC confirmed **Thu Dec 3, 5:00 PM**, the collaborator tag and a Story link sticker.
    Short link outandaboutmarin.com/smmc is **live** (7614402). Final graphic, caption, mockup and email are in
    `OAA marketing\SMMC Add\SMMC social post\final_for_smmc_dec3\`; Alexandra sends them (QR not yet phone-scanned; how
@@ -1074,7 +1062,7 @@ The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifa
    recheck the winter-break gaps (item 58zzb) and pick up the Learning Bus December PDF. Napa's last covered Oct 30 to Dec 15.
 4. **Item 58:** zr (Diwali at Mill Valley Library) and zs (Mill Valley ShaBabies venue, ask Rachel Weiss), plus the rest.
 5. **Telluride (items 65, 66, 72):** Lee Shea's setup and first partner sweep; the five library questions 66a-66e.
-6. **Sponsors:** **The Phoenix Used Bookshop signed 2026-11-19, Featured Partner from Dec 1: build its Featured card (ads.json) before Dec 1** from the files Alexandra saves in `OAA Sponsorship and Partners\The Phoenix Bookshop\`; partner listings 2124-2127 are live. The Cave went live 2026-11-13 as a Community Partner (first listing id 2031, logo `assets/ads/the_cave_logo.png`). **Prospect:** Osher Marin JCC (mockups ready); FIT4MOM still owes the direct Glofox link.
+6. **Sponsors:** **The Phoenix Used Bookshop, Featured Partner from Dec 1 ($80/month): Featured card mockup v6 is with The Phoenix for review** (`OAA Sponsorship and Partners\The Phoenix Bookshop\`, `build_phoenix_mockup.py`; circle logo `assets/ads/phoenix_circle_240.png` for the tile icon; Artist's Way featured event has SAMPLE text). Add the ads.json entry only on Alexandra's go. Live partner listings: 2124, 2125, 2127 (2126 cancelled). The Cave went live 2026-11-13 as a Community Partner (first listing id 2031, logo `assets/ads/the_cave_logo.png`). **Prospect:** Osher Marin JCC (mockups ready); FIT4MOM still owes the direct Glofox link.
 7. Items 71 and 75 closed 2026-10-24 (old folders deleted; Context Transfer skill uploaded under Customize → Skills and working in regular chats). Say "context transfer" in any chat or Code session to hand off.
 
 ## Dated "What changed" logs

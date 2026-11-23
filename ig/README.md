@@ -3,20 +3,8 @@ Instagram carousel slides staged here so Metricool can fetch them by public URL
 Temporary: delete each folder after its posts have published. Not linked from the site.
 
 Current folders and when to delete them:
-- week_of_oct8/    weekly event posts; after Sun Oct 11
-- week_of_oct15/   weekly event posts (Template A); after Sun Oct 18
-- week_of_oct22/   weekly event posts (Template A); after Sun Oct 25
-- king_tide_oct25/ king tide flood post, 5 slides (Sat Oct 24, 4 PM); after Sat Oct 24
-- week_of_oct29/   Sat Oct 31 7 AM + Sun Nov 1 5 PM posts (Template A); after Sun Nov 1
-- week_of_nov5/    Thu Nov 5 5 PM, Sat Nov 7 7 AM, Sun Nov 8 5 PM posts (Template A); after Sun Nov 8
-- week_of_nov12/   Thu Nov 12 5 PM, Sat Nov 14 7 AM posts, and the week-ahead post moved to Mon Nov 16 5 PM (Template A); after Mon Nov 16
-- turkey_trots_nov22/ Thanksgiving turkey trots post, 3 slides (moved to Sun Nov 15, 5 PM); after Sun Nov 15
-- rainy_day_nov22/ Thanksgiving-week rainy-day ideas post, 5 slides (Sun Nov 22, 4 PM); after Sun Nov 22
-- king_tide_nov20/ King Tide flood post, 6 slides (Thu Nov 19, 4 PM); after Thu Nov 19
 - gift_guide_draft/  No-Stuff Gift Guide, 4 slides + caption.md, approved 2026-11-18, NOT scheduled (Alexandra picks the date); delete after it posts
-- halloween_oct30/ Halloween weekend post (Thu Oct 29, 8:15 PM); after Thu Oct 29
 - hot_tips_v2/     Weekly Wednesday Hot Tips 1-8; after Wed Dec 2
 - tag_oaa_blurb2/  "Tag Out and About" Tuesdays, Blurb 2 (Oct 27); after Tue Dec 8
 - tag_oaa_posts/   "Tag Out and About" Tuesdays (Oct 13, Nov 10, Nov 24, Dec 8); after Tue Dec 8
 - `storytime_gift_nov26/`: "Dear Santa, more storytime, please." library storytime gift guide (5 slides), Fri Nov 27, 4 PM. Delete once published.
-- week_of_nov19/   Fri Nov 20 4:30 PM weekend post (Sat 21 - Sun 22, Template A, new cover and end slide); after Sun Nov 22

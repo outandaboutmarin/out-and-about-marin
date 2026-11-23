@@ -461,7 +461,10 @@ which made the fix easy to trust.
 - **The Phoenix:** Books-to-Movies Night (2126) retired, cancelled for low ticket sales; contact phone and info@ email on
   all listings; 2127 renamed The Phoenix at Marin Local for the Holidays. On the desktop (2026-11-22) the Featured card
   mockup got The Phoenix's feedback (About, phone, email, tags, circle poppy logo in the tile icon,
-  `assets/ads/phoenix_circle_240.png`); still a draft, not in ads.json; an Artist's Way tile graphic is coming.
+  `assets/ads/phoenix_circle_240.png`); then v6 added a **Featured event** section above About (The Artist's Way Group,
+  Mill Valley, starts Jan 12, only 7 spots; sample text). Still a draft, not in ads.json; Alexandra sent v6 to The Phoenix.
+- **Instagram status (Metricool, 2026-11-22):** rainy-day post published Sun Nov 22, 4 PM; no regular Sun Nov 22 weekly post;
+  repo `ig/` folders of published posts deleted (12 folders).
 - **Instagram:** the storytime gift guide (Fri Nov 27, 4 PM) was reworked and rescheduled several times; final Metricool
   id 437734528 (bookstore and shop storytimes added, one-line layout, COMMENT "OUT" end slide).
 
