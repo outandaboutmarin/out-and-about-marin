@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-22",
+  "last_updated": "2026-11-23",
   "events": [
     {
       "id": 1,
@@ -19428,6 +19428,35 @@
       "description_es": "Más de 140 puestos de tesoros vintage y antigüedades en el Marin Center, con música y comida. Desde la autopista 101, toma la salida de North San Pedro Road, gira a la izquierda en Civic Center Drive y sigue los letreros.",
       "internal_notes": "Added 2026-11-22 at Alexandra's request. thefrenchmarketmarin.com homepage: '2nd Sunday of Every Month', 9am-3pm, 140 booths, free admission & parking; 'Upcoming Events in 2027': Jan 10, Feb 14, Mar 14, Apr 11, May 9, Jun 13, Jul 11, Aug 8, Sep 12, Oct 10, Nov 14, Dec 12 (all 2nd Sundays). Usual site the Armory lot; Dec 13 2026 is at the VMA lot and is held by one-off id 1049, hence skip: 2026-12-13 here. Rainouts move to the following Sunday (posted on the site / 415-383-2252).",
       "day": "Sunday"
+    },
+    {
+      "id": 2134,
+      "organization": "Stinson Beach small businesses (Salty Pup & Sacred Tide)",
+      "venue": "Downtown Stinson Beach",
+      "event_name": "Holiday Sip & Shop, Stinson Beach",
+      "event_name_es": "Sip & Shop navideño en Stinson Beach",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "2:00 PM – 5:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "Stinson Beach",
+      "address": "Shoreline Hwy (Hwy 1), downtown Stinson Beach, CA 94970",
+      "ages": "All ages",
+      "cost": "Free entry; shopping for sale",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-28",
+      "expires": "2026-11-28",
+      "status": "Active",
+      "featured": false,
+      "location_group": "West Marin",
+      "description": "The third annual Holiday Sip & Shop supports small businesses in downtown Stinson Beach: sweet treats, drinks and gift shopping. Hosted by Salty Pup and Sacred Tide with local makers including Ornaments by Taji, Weld Loved, Colette Peri Photography, Stinson Beach Books, LaLuna, Surf Lodge and more.",
+      "description_es": "El tercer Sip & Shop navideño anual apoya a los pequeños negocios del centro de Stinson Beach: dulces, bebidas y compras de regalos. Organizado por Salty Pup y Sacred Tide con creadores locales como Ornaments by Taji, Weld Loved, Colette Peri Photography, Stinson Beach Books, LaLuna, Surf Lodge y más.",
+      "registration": "Not required",
+      "website": "https://www.google.com/maps/search/?api=1&query=Shoreline+Hwy+Stinson+Beach+CA",
+      "notes": "",
+      "internal_notes": "Added 2026-11-23 at Alexandra's request (type hers: Community) from a Nextdoor post and flyer: third annual Holiday Sip & Shop, Sat Nov 28, 2-5 PM, downtown Stinson Beach, hosted by Salty Pup and Sacred Tide plus Ornaments by Taji, Weld Loved permanent jewelry, Colette Peri Photography, Stinson Beach Books, LaLuna, Surf Lodge, Galaxy Flower Lab skin studio, La Sirena (Bolinas), Live Water Surf Shop, West Marin Wellness Collective. No organiser website found (search 2026-11-23), so website is a Maps link to downtown Stinson; replace if a page turns up."
     }
   ]
 }
