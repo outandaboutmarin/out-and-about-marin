@@ -465,6 +465,9 @@ which made the fix easy to trust.
   Mill Valley, starts Jan 12, only 7 spots; sample text). Still a draft, not in ads.json; Alexandra sent v6 to The Phoenix.
 - **Instagram status (Metricool, 2026-11-22):** rainy-day post published Sun Nov 22, 4 PM; no regular Sun Nov 22 weekly post;
   repo `ig/` folders of published posts deleted (12 folders).
+- **Thanksgiving week kept quiet (Alexandra, 2026-11-22):** the Tue Nov 24 "Tag Out and About" post moved to Tue Dec 15, 5 PM
+  (438303777) and Hot Tip #7 from Wed Nov 25 to Wed Dec 9, 4 PM (438303788); only the Fri Nov 27 storytime gift guide posts
+  that week. The Phoenix's circle logo is committed as `assets/ads/phoenix_circle_240.png` (used only by the draft Featured card).
 - **Instagram:** the storytime gift guide (Fri Nov 27, 4 PM) was reworked and rescheduled several times; final Metricool
   id 437734528 (bookstore and shop storytimes added, one-line layout, COMMENT "OUT" end slide).
 
