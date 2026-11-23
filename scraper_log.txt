@@ -1,20 +1,20 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-11-22
-Time: 20:01:47
+Date: 2026-11-23
+Time: 00:44:05
 
-Total events in events.json: 633
-Active events: 569
+Total events in events.json: 619
+Active events: 556
 Temp. closed: 0
 
 Events by type:
-  Community Event: 155
+  Community Event: 148
   Farmers Market: 18
-  Festival: 33
-  Fitness: 27
+  Festival: 31
+  Fitness: 26
   Grown-Ups Only!: 58
-  Kids Programs: 119
+  Kids Programs: 116
   Library: 145
-  Music and Movies: 78
+  Music and Movies: 77
 
 Events by town:
   Belvedere: 1
@@ -25,7 +25,7 @@ Events by town:
   Fairfax: 21
   Greenbrae: 1
   Inverness: 4
-  Larkspur: 33
+  Larkspur: 32
   Marin City: 8
   Marin County: 1
   Marshall: 1
@@ -35,21 +35,21 @@ Events by town:
   Napa: 17
   Naturita: 2
   Nicasio/San Geronimo: 2
-  Norwood: 19
-  Novato: 74
+  Norwood: 18
+  Novato: 69
   Point Reyes Station: 8
   Ridgway: 11
-  Ross: 10
+  Ross: 9
   San Anselmo: 16
-  San Geronimo: 2
-  San Rafael: 74
+  San Geronimo: 1
+  San Rafael: 73
   Sausalito: 27
-  St. Helena: 31
+  St. Helena: 28
   Telluride: 32
   Tiburon: 48
   Tomales: 1
   Virtual: 4
-  Yountville: 8
+  Yountville: 7
 
 Library pages changed — review recommended:
   🔔 PAGE CHANGED: Belvedere-Tiburon Library
