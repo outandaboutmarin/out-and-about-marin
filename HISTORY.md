@@ -477,6 +477,11 @@ which made the fix easy to trust.
   - **Captions trimmed to exactly 3 hashtags** on Hot Tip #8 and #7 (#marincounty #marinkids #marinmoms; #7 Dec 9 is
     439878407) and both "Tag Out and About" posts (#marincounty #marinkids #marinevents; Dec 8 is 439878299, Dec 15 is
     439878354). Those three keep "Link in bio 🔗".
+  - **New: Thanksgiving gratitude post, Thu Nov 26, 9 AM** (440747912), 6 navy slides in `ig/thanksgiving_nov26/`: cover,
+    librarians + parks & rec, farmers markets, nonprofits (PPSC, Marin Foster Care Association @marinfostercare, SF-Marin
+    Food Bank @sfmfoodbank, donate links), sponsors "for their support" (current plus past sponsor Golden Gate Mahjong; The
+    Cave left off at Alexandra's request), "You" with COMMENT "OUT". Her design rules from this post: no colour emoji on
+    slides (gray-blue line icons or plain dots only; no stars or hearts as bullets); caption emoji only 🤍/💙.
   - Alexandra posted a Story from The Social Klub ("Out AND About Marin Playdate at The Social Klub", mention sticker,
     emoji reaction sticker); no Metricool record.
 - **Open items (via phone inbox):** new top item **"Enable notifications"** (home-screen web push like tideroadwatch.com:
