@@ -19599,6 +19599,34 @@
       "website": "https://marincountrymart.com/events",
       "location_group": "Larkspur/Greenbrae/Kentfield",
       "internal_notes": "Added 2026-11-24 at Alexandra's request from marincountrymart.com/events (Wed Dec 9, 5-7 PM). Cost not stated; listed Free as a free community event; latkes/sufganiyot may be for sale."
+    },
+    {
+      "id": 2145,
+      "organization": "HeadsUp San Rafael and West End Nursery",
+      "venue": "West End Nursery",
+      "event_name": "Happy Holidays with HeadsUp and West End Nursery",
+      "event_name_es": "Felices fiestas con HeadsUp y West End Nursery",
+      "type": "Community Event",
+      "day": "Sunday",
+      "time": "4:00 PM – 6:00 PM",
+      "time_of_day": "Afternoon",
+      "town": "San Rafael",
+      "address": "1938 Fifth Ave, San Rafael, CA 94901",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Both",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-13",
+      "expires": "2026-12-13",
+      "status": "Active",
+      "featured": false,
+      "description": "Sip, shop and celebrate at West End Nursery's festive holiday fundraiser for the HeadsUp Foundation, which supports San Rafael's public schools. Enjoy complimentary refreshments, holiday crafts for the kids, photos with Santa and gift wrapping. 20% of your purchase is donated to HeadsUp.",
+      "description_es": "Bebe, compra y celebra en la recaudación de fondos navideña de West End Nursery a beneficio de la HeadsUp Foundation, que apoya a las escuelas públicas de San Rafael. Disfruta refrigerios gratis, manualidades navideñas para los niños, fotos con Santa y envoltura de regalos. El 20% de tu compra se dona a HeadsUp.",
+      "registration": "Not required",
+      "website": "https://www.westendnursery.com/",
+      "location_group": "San Rafael",
+      "internal_notes": "Added 2026-11-24 from HeadsUp San Rafael's own flyer (reshared by @marin.dad on Instagram), sent by Alexandra: Sun Dec 13, 4-6 PM, 1938 Fifth Ave; tagged @headsupsanrafael, @west_end_nursery, @sanrafaeltheplacetobe. No web page for it found; website set to the nursery. Separate from 2011 (Santa at West End Nursery, Dec 6)."
     }
   ]
 }
