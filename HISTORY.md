@@ -458,7 +458,8 @@ which made the fix easy to trust.
   Marin Theatre Company, 9 and 11 AM; 2137 Downtown Landmarks, Depot Clock Tower, 9/10/11 AM; $10, under 18 free);
   Marin Country Mart: **Photos with Santa at the Marin Country Mart** (2138-2140, Sat Dec 5/12/19, 10 AM-1 PM, cost
   assumed Free by Alexandra), **Jolly Thursdays** (2141-2143, Dec 3/10/17, 11 AM-5 PM, family fun 3-5 PM, per-date shop
-  line-ups), **Hanukkah at Marin Country Mart** (2144, Wed Dec 9, 5-7 PM). Source: marincountrymart.com/events (needs
+  line-ups), **Hanukkah at Marin Country Mart** (2144, Wed Dec 9, 5-7 PM). **Happy Holidays with HeadsUp and West End Nursery** (2145, Sun Dec 13, 4-6 PM, free; HeadsUp
+  Foundation fundraiser flyer reshared by @marin.dad; website set to westendnursery.com, no event page found). Source: marincountrymart.com/events (needs
   headless Chromium; WebFetch reads nothing).
 - **Checked and not added:** Small Business Saturday Novato (already id 921). From Lindsay Kacer's "Marin County Winter
   Events" list, 10 of 16 were already live; Petaluma Riverboat and Dickens Fair out of region; Light Spectacular is on
@@ -484,6 +485,8 @@ which made the fix easy to trust.
     slides (gray-blue line icons or plain dots only; no stars or hearts as bullets); caption emoji only 🤍/💙.
   - Alexandra posted a Story from The Social Klub ("Out AND About Marin Playdate at The Social Klub", mention sticker,
     emoji reaction sticker); no Metricool record.
+- **Marin source #10 (Marin Country Mart)** now says to read marincountrymart.com/events in a browser every sweep (JS-rendered;
+  WebFetch reads nothing), which is why its Santa, Jolly Thursdays and Hanukkah dates had been missed.
 - **Open items (via phone inbox):** new top item **"Enable notifications"** (home-screen web push like tideroadwatch.com:
   needs a manifest, a service worker, a Supabase subscriptions table with GRANT, and an Edge Function; waiting on her
   answers: what to send, how often, who sends); Nick's Cove Santa under item 58; item 15 update.
