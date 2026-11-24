@@ -1,5 +1,5 @@
 {
-  "sweep_date": "2026-11-23",
+  "sweep_date": "2026-11-24",
   "suggested_events": [
     {
       "date": "TBD",
@@ -27,16 +27,6 @@
       "location": "Strawberry Recreation District, Mill Valley",
       "source": "Strawberry Rec",
       "source_type": "AUTO"
-    },
-    {
-      "date": "2026-11-23",
-      "day_label": "Monday, 2026-11-23",
-      "title": "Senior Stroll: Las Gallinas Birds",
-      "time": "10:00 AM",
-      "location": "Las Gallinas Treatment Ponds",
-      "description": "Directions: Meet at the Las Gallinas Sanitary District water treatment ponds in San Rafael (310 Smith Ranch Road). From Hwy 101 in San Rafael, take the exit for Smith Ranch Rd east approximately 0.7 m",
-      "source": "Marin County Parks (Trumba iCal)",
-      "website": "https://parks.marincounty.gov/discoverlearn/events-calendar"
     },
     {
       "date": "2026-11-29",
@@ -151,7 +141,7 @@
     {
       "date": "2026-12-02",
       "day_label": "Wednesday, 2026-12-02",
-      "title": "Tween Dungeons and Dragons Club (Ages 10-14 Only)",
+      "title": "Canceled: Tween Dungeons and Dragons Club (Ages 10-14 Only)",
       "time": "10:30 PM",
       "location": "Conference Room",
       "description": "Put on your elf boots and pack your knapsack for adventure! Uncover the schemes of feckless creatures as they try to tame the Wildwood. Outwit the thieves of souls and the unrelenting forces of disturbance. Decipher the codes to long lost rituals. Face the faceless makers of evil and destroyers of d",
@@ -234,6 +224,17 @@
       "description": "Enjoy a hit movie and free popcorn! All Ages. No Registration Required.   Young Asha makes a wish so powerful that it's answered by a cosmic force, a little ball of boundless energy called Star. With Star's help, Asha must save her kingdom from King Magnifico and prove that when the will of one cour",
       "source": "https://millvalleylibrary.libcal.com/event/17267215",
       "website": "https://millvalleylibrary.libcal.com/event/17267215",
+      "source_type": "AUTO"
+    },
+    {
+      "date": "2027-01-07",
+      "day_label": "Thursday, 2027-01-07",
+      "title": "Virtual Author Talk: Diary of a Wimpy Kid's Jeff Kinney",
+      "time": "9:00 PM",
+      "location": "Mill Valley Public Library",
+      "description": "Join us online for a virtual conversation with #1 international bestselling author Jeff Kinney as he introduces the 21st book in his globally beloved series, Diary of a Wimpy Kid: Fight or Flight.   Greg Heffley is about to learn that surviving middle school is no easy feat. In Fight or Flight, Greg",
+      "source": "https://millvalleylibrary.libcal.com/event/18086797",
+      "website": "https://millvalleylibrary.libcal.com/event/18086797",
       "source_type": "AUTO"
     },
     {
