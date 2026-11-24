@@ -8,3 +8,4 @@ Current folders and when to delete them:
 - tag_oaa_blurb2/  "Tag Out and About" Tuesdays, Blurb 2 (Oct 27); after Tue Dec 8
 - tag_oaa_posts/   "Tag Out and About" Tuesdays (Oct 13, Nov 10, Dec 8, Dec 15 (moved from Nov 24)); after Tue Dec 15
 - `storytime_gift_nov26/`: "Dear Santa, more storytime, please." library storytime gift guide (5 slides), Fri Nov 27, 4 PM. Delete once published.
+- `giving_tuesday_dec1/`: Giving Tuesday post for the Postpartum Support Center (2 slides, collaborator @postpartumsupportcenter), Tue Dec 1, 9 AM. Delete once published.
