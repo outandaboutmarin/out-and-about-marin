@@ -19571,6 +19571,34 @@
       "notes": "Family fun 3-5 PM.",
       "location_group": "Larkspur/Greenbrae/Kentfield",
       "internal_notes": "Added 2026-11-24 at Alexandra's request from marincountrymart.com/events (read with headless Chromium): Jolly Thursdays Dec 3, 10 & 17, 11 AM-5 PM, family fun 3-5 PM, per-date shop line-ups from that page."
+    },
+    {
+      "id": 2144,
+      "organization": "Marin Country Mart",
+      "venue": "Marin Country Mart",
+      "event_name": "Hanukkah at Marin Country Mart",
+      "event_name_es": "Janucá en Marin Country Mart",
+      "type": "Community Event",
+      "day": "Wednesday",
+      "time": "5:00 PM – 7:00 PM",
+      "time_of_day": "Evening",
+      "town": "Larkspur",
+      "address": "2257 Larkspur Landing Circle, Larkspur, CA 94939",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-09",
+      "expires": "2026-12-09",
+      "status": "Active",
+      "featured": false,
+      "description": "Celebrate Hanukkah at Marin Country Mart with an evening of music, traditions, treats and family fun: a menorah lighting, live music from the Brandeis Marin Band, and activities for little ones including storytime, hot cocoa and menorah making. Enjoy latkes from Loveski and sufganiyot from Johnny Doughnuts.",
+      "description_es": "Celebra Janucá en Marin Country Mart con una noche de música, tradiciones, golosinas y diversión familiar: encendido de la menorá, música en vivo de la Brandeis Marin Band y actividades para los pequeños, como cuentos, chocolate caliente y manualidad de menorás. Disfruta latkes de Loveski y sufganiyot de Johnny Doughnuts.",
+      "registration": "Not required",
+      "website": "https://marincountrymart.com/events",
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "internal_notes": "Added 2026-11-24 at Alexandra's request from marincountrymart.com/events (Wed Dec 9, 5-7 PM). Cost not stated; listed Free as a free community event; latkes/sufganiyot may be for sale."
     }
   ]
 }
