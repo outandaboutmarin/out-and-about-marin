@@ -450,6 +450,39 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
+## 2026-11-23 to 2026-11-24 (phone session)
+
+- **Events added:** Holiday Sip & Shop, Stinson Beach (2134, Nov 28); Cheer on the Quad Dipsea (2135, Sat Nov 28,
+  7:30 AM, Old Mill Park; confirmed on quad-dipsea.com, the unhyphenated quaddipsea.com does not resolve); Mill Valley
+  Historical Society Day After Thanksgiving walks, two records because two start points (2136 Sloughs to Streets,
+  Marin Theatre Company, 9 and 11 AM; 2137 Downtown Landmarks, Depot Clock Tower, 9/10/11 AM; $10, under 18 free);
+  Marin Country Mart: **Photos with Santa at the Marin Country Mart** (2138-2140, Sat Dec 5/12/19, 10 AM-1 PM, cost
+  assumed Free by Alexandra), **Jolly Thursdays** (2141-2143, Dec 3/10/17, 11 AM-5 PM, family fun 3-5 PM, per-date shop
+  line-ups), **Hanukkah at Marin Country Mart** (2144, Wed Dec 9, 5-7 PM). Source: marincountrymart.com/events (needs
+  headless Chromium; WebFetch reads nothing).
+- **Checked and not added:** Small Business Saturday Novato (already id 921). From Lindsay Kacer's "Marin County Winter
+  Events" list, 10 of 16 were already live; Petaluma Riverboat and Dickens Fair out of region; Light Spectacular is on
+  Resources. **Her "12/5 Larkspur Holiday Tree Lighting" is Larkspur, COLORADO** (larkspurchamberofcommerce.com, P.O. Box
+  in Larkspur CO 80118): an aggregator list can pick up a same-named town in another state. Santa at Nick's Cove has no
+  2026 date yet (open item 58). Marin Ballet Nutcracker Dec 5-6 (Novato HS) offered, not yet confirmed or added.
+- **Instagram (all Metricool, brand 7335950):**
+  - **New: Giving Tuesday, Tue Dec 1, 9 AM** (439872036), for the Postpartum Support Center, collaborator
+    @postpartumsupportcenter (handle from PPSC's own site). Two slides in `ig/giving_tuesday_dec1/`, a **new navy
+    Template A variant built in the session's scratchpad** (Hot Tip layout: brand top-left, MARIN COUNTY top-right, faint
+    Marin outline, PPSC logo from their website on a white card). Cover: "Found a storytime, a festival, or a rainy-day
+    rescue here? Pay it forward." (underlined). Slide 2: one-sentence description, four bullets, a white "Donate at
+    postpartumsc.org/donate" button. Figures from PPSC's donate page ($25,000 match through Dec 31). Alexandra DM'd PPSC.
+  - **Hot Tip #8 moved Wed Dec 2 → Wed Dec 16, 4 PM** (439877380), the last Wednesday before Christmas Eve; caption now ends
+    "Find it all at outandaboutmarin.com 🔗". Its slide 3 still says "Link in bio" (left as is).
+  - **Captions trimmed to exactly 3 hashtags** on Hot Tip #8 and #7 (#marincounty #marinkids #marinmoms; #7 Dec 9 is
+    439878407) and both "Tag Out and About" posts (#marincounty #marinkids #marinevents; Dec 8 is 439878299, Dec 15 is
+    439878354). Those three keep "Link in bio 🔗".
+  - Alexandra posted a Story from The Social Klub ("Out AND About Marin Playdate at The Social Klub", mention sticker,
+    emoji reaction sticker); no Metricool record.
+- **Open items (via phone inbox):** new top item **"Enable notifications"** (home-screen web push like tideroadwatch.com:
+  needs a manifest, a service worker, a Supabase subscriptions table with GRANT, and an Edge Function; waiting on her
+  answers: what to send, how often, who sends); Nick's Cove Santa under item 58; item 15 update.
+
 ## 2026-11-20 to 2026-11-22 (phone sessions, pulled in on the desktop 2026-11-22)
 
 - **Resources → Holiday Happenings** (new, `#holidaySection`, below the tide table): a sideways-scrolling table of
