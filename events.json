@@ -19535,6 +19535,35 @@
       "website": "https://www.westendnursery.com/",
       "location_group": "San Rafael",
       "internal_notes": "Added 2026-11-24 from HeadsUp San Rafael's own flyer (reshared by @marin.dad on Instagram), sent by Alexandra: Sun Dec 13, 4-6 PM, 1938 Fifth Ave; tagged @headsupsanrafael, @west_end_nursery, @sanrafaeltheplacetobe. No web page for it found; website set to the nursery. Separate from 2011 (Santa at West End Nursery, Dec 6)."
+    },
+    {
+      "id": 2146,
+      "organization": "West Marin Community Services, Dance Palace & Bolinas Film Festival",
+      "venue": "The Dance Palace",
+      "event_name": "Grinchmas Party: Free Screening of The Grinch",
+      "event_name_es": "Fiesta Grinchmas: proyección gratis de El Grinch",
+      "type": "Music and Movies",
+      "day": "Sunday",
+      "time": "5:00 PM",
+      "time_of_day": "Evening",
+      "town": "Point Reyes Station",
+      "address": "503 B Street, Point Reyes Station, CA 94956",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-13",
+      "expires": "2026-12-13",
+      "status": "Active",
+      "featured": false,
+      "description": "Join West Marin Community Services, the Dance Palace and the Bolinas Film Festival for a Grinchmas Party and a free screening of The Grinch. Free entry; snacks for sale.",
+      "description_es": "Acompaña a West Marin Community Services, el Dance Palace y el Bolinas Film Festival en una Fiesta Grinchmas con proyección gratis de El Grinch. Entrada gratis; habrá bocadillos a la venta.",
+      "registration": "Not required",
+      "website": "https://www.dancepalace.org/",
+      "notes": "Snacks for sale.",
+      "location_group": "West Marin",
+      "internal_notes": "Added 2026-11-25 from the organisers' flyer (WMCS, Dance Palace, Bolinas Film Festival) reshared by @thewestmarinfeed, sent by Alexandra: Sun Dec 13, 5 PM, free entry, snacks sold."
     }
   ]
 }
