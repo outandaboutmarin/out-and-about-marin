@@ -19593,6 +19593,35 @@
       "notes": "RSVP on The Shack's Instagram; drop-ins welcome.",
       "location_group": "Larkspur/Greenbrae/Kentfield",
       "internal_notes": "Added 2026-11-24 evening from @theshack_larkspur's own Instagram story (sent by Alexandra): 'Caregiver & Me' art session Wed 11/25, 10 AM-12 PM, free, drop-ins welcome, air-dry clay ornaments, 10% off ice cream, free coffee/tea with art kit purchase. Shares the slot with 1161 (adult Art & Affogato), which gets skip: 2026-11-25."
+    },
+    {
+      "id": 2148,
+      "organization": "Marin Country Mart",
+      "venue": "Marin Country Mart",
+      "event_name": "Holiday Movie Night: The Grinch & Frosty's Winter Wonderland",
+      "event_name_es": "Noche de cine navideña: El Grinch y Frosty's Winter Wonderland",
+      "type": "Music and Movies",
+      "day": "Friday",
+      "time": "5:00 PM",
+      "time_of_day": "Evening",
+      "town": "Larkspur",
+      "address": "2257 Larkspur Landing Circle, Larkspur, CA 94939",
+      "ages": "All ages",
+      "cost": "Free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-18",
+      "expires": "2026-12-18",
+      "status": "Active",
+      "featured": false,
+      "description": "A holiday double feature under the heated tent at Marin Country Mart: The Grinch and Frosty's Winter Wonderland. Hot chocolate, Miette marshmallows and hot toddies, plus dinner, nibbles and sips to go from the Mart.",
+      "description_es": "Una doble función navideña bajo la carpa con calefacción de Marin Country Mart: El Grinch y Frosty's Winter Wonderland. Chocolate caliente, malvaviscos de Miette y hot toddies, además de cena, bocadillos y bebidas para llevar del Mart.",
+      "registration": "Not required",
+      "website": "https://marincountrymart.com/events",
+      "notes": "Under the heated tent. Food and drinks for sale.",
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "internal_notes": "Added 2026-11-25 from a Marin Country Mart Instagram flyer sent by Alexandra. The flyer says 'Saturday December 18th, 5PM'; Dec 18 2026 is a Friday (Dec 18 was a Saturday in 2021, so the flyer may be a reused design). Alexandra: 'Assume Friday.' Not yet on marincountrymart.com/events on 2026-11-25; recheck at the next sweep (source #10) and correct the date if the Mart lists it. Cost assumed free (screening); food/drink sold."
     }
   ]
 }
