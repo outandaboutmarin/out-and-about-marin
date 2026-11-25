@@ -6077,9 +6077,9 @@
       "description_es": "Trae lo que estés creando — tejido, dibujo, caligrafía, álbumes — y trabaja en ello un par de horas en buena compañía, de 10 AM a 12 PM. Los $25 incluyen un affogato, espresso sobre helado.",
       "registration": "Book in advance — sessions sell out",
       "website": "https://www.everlacedesignco.com/",
-      "notes": "Fourth Wednesday of each month. For grown-ups, not a children’s session. Space is limited and sessions have sold out.",
+      "notes": "Fourth Wednesday of each month. For grown-ups, not a children’s session. Space is limited and sessions have sold out. skip: 2026-11-25",
       "location_group": "Larkspur/Greenbrae/Kentfield",
-      "internal_notes": "Added 2026-09-23 at Alexandra's request ('every last Wednesday, Larkspur'). everlacedesignco.com confirms the format, venue and price: The Shack Ice Cream, 236 Magnolia Ave, Larkspur, 10 AM-12 PM, '$25 and includes affogato (espresso + ice cream)', 'Bring your art. We'll bring the affogato', listed as 'Multiple Dates' with sessions waitlisted. TWO THINGS UNCONFIRMED and tracked in open item 58: (1) the site does NOT state a last-Wednesday rule - the ordinal here comes from Alexandra's summary, and the site's own upcoming date was Sep 23, the FOURTH Wednesday; (2) the site never says whether children are welcome, so this is stored as Grown-Ups Only! rather than guessing it is a family event. | 2026-09-25, RESOLVED by Alexandra (open item 58q): the cadence is the FOURTH Wednesday of each month, not the last, and it stays Grown-Ups Only with no children. ⚠ This changes which dates it generates: the old \"last Wednesday\" rule fired on Sep 30, the fourth-Wednesday rule does not — September’s session was Sep 23 and the next is Oct 28. 2026-10-06: location_group Ross Valley -> Larkspur/Greenbrae/Kentfield (Alexandra: 'Larkspur should be with Greenbrae and Kentfield').",
+      "internal_notes": "Added 2026-09-23 at Alexandra's request ('every last Wednesday, Larkspur'). everlacedesignco.com confirms the format, venue and price: The Shack Ice Cream, 236 Magnolia Ave, Larkspur, 10 AM-12 PM, '$25 and includes affogato (espresso + ice cream)', 'Bring your art. We'll bring the affogato', listed as 'Multiple Dates' with sessions waitlisted. TWO THINGS UNCONFIRMED and tracked in open item 58: (1) the site does NOT state a last-Wednesday rule - the ordinal here comes from Alexandra's summary, and the site's own upcoming date was Sep 23, the FOURTH Wednesday; (2) the site never says whether children are welcome, so this is stored as Grown-Ups Only! rather than guessing it is a family event. | 2026-09-25, RESOLVED by Alexandra (open item 58q): the cadence is the FOURTH Wednesday of each month, not the last, and it stays Grown-Ups Only with no children. ⚠ This changes which dates it generates: the old \"last Wednesday\" rule fired on Sep 30, the fourth-Wednesday rule does not — September’s session was Sep 23 and the next is Oct 28. 2026-10-06: location_group Ross Valley -> Larkspur/Greenbrae/Kentfield (Alexandra: 'Larkspur should be with Greenbrae and Kentfield'). | 2026-11-25: skip added for Nov 25 (Alexandra): The Shack's own story announced a free 'Caregiver & Me' art session in this 10-12 slot that day (new record).",
       "id": 1161
     },
     {
@@ -19564,6 +19564,35 @@
       "notes": "Snacks for sale.",
       "location_group": "West Marin",
       "internal_notes": "Added 2026-11-25 from the organisers' flyer (WMCS, Dance Palace, Bolinas Film Festival) reshared by @thewestmarinfeed, sent by Alexandra: Sun Dec 13, 5 PM, free entry, snacks sold."
+    },
+    {
+      "id": 2147,
+      "organization": "The Shack Ice Cream",
+      "venue": "The Shack Ice Cream",
+      "event_name": "\"Caregiver & Me\" Art Session: Clay Ornaments",
+      "event_name_es": "Sesión de arte \"Cuidador y yo\": adornos de arcilla",
+      "type": "Kids Programs",
+      "day": "Wednesday",
+      "time": "10:00 AM – 12:00 PM",
+      "time_of_day": "Morning",
+      "town": "Larkspur",
+      "address": "236 Magnolia Ave, Larkspur, CA 94939",
+      "ages": "Kids",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-11-25",
+      "expires": "2026-11-25",
+      "status": "Active",
+      "featured": false,
+      "description": "Make air-dry clay ornaments together at The Shack's \"Caregiver & Me\" art session. Free to attend, drop-ins welcome. Enjoy 10% off ice cream, plus a free coffee or tea with any art kit purchase.",
+      "description_es": "Hagan juntos adornos de arcilla que seca al aire en la sesión de arte \"Cuidador y yo\" de The Shack. Gratis, se aceptan visitas sin reserva. Disfruta 10% de descuento en helado y un café o té gratis con la compra de cualquier kit de arte.",
+      "registration": "RSVP on Instagram; drop-ins welcome",
+      "website": "https://www.instagram.com/theshack_larkspur/",
+      "notes": "RSVP on The Shack's Instagram; drop-ins welcome.",
+      "location_group": "Larkspur/Greenbrae/Kentfield",
+      "internal_notes": "Added 2026-11-24 evening from @theshack_larkspur's own Instagram story (sent by Alexandra): 'Caregiver & Me' art session Wed 11/25, 10 AM-12 PM, free, drop-ins welcome, air-dry clay ornaments, 10% off ice cream, free coffee/tea with art kit purchase. Shares the slot with 1161 (adult Art & Affogato), which gets skip: 2026-11-25."
     }
   ]
 }
