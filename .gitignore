@@ -22,3 +22,17 @@ dashboard.html
 *.bak
 *.bak[0-9]
 *.tmp
+
+# Local Instagram mockups (kept on disk, not published)
+templates/stroller_strides_monday.html
+templates/tide_flood_covers_nov4.html
+templates/tide_flood_covers_oct25.html
+templates/tide_flood_post_lucky_nov5.html
+templates/tide_flood_post_lucky_oct25.html
+templates/tide_flood_post_nov5.html
+templates/tide_flood_post_oct25.html
+templates/tide_flood_resources_nov4.html
+templates/tide_flood_resources_oct25.html
+templates/tide_flood_selfserve_nov4.html
+templates/tide_resources_phone_nov4.png
+templates/tide_resources_phone_oct25.png
