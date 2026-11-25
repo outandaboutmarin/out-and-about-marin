@@ -19598,11 +19598,11 @@
       "id": 2148,
       "organization": "Marin Country Mart",
       "venue": "Marin Country Mart",
-      "event_name": "Holiday Movie Night: The Grinch & Frosty's Winter Wonderland",
-      "event_name_es": "Noche de cine navideña: El Grinch y Frosty's Winter Wonderland",
+      "event_name": "Holiday Double Feature: The Grinch & Frosty's Winter Wonderland",
+      "event_name_es": "Doble función navideña: El Grinch y Frosty's Winter Wonderland",
       "type": "Music and Movies",
       "day": "Friday",
-      "time": "5:00 PM",
+      "time": "5:00 PM – 8:00 PM",
       "time_of_day": "Evening",
       "town": "Larkspur",
       "address": "2257 Larkspur Landing Circle, Larkspur, CA 94939",
@@ -19615,13 +19615,13 @@
       "expires": "2026-12-18",
       "status": "Active",
       "featured": false,
-      "description": "A holiday double feature under the heated tent at Marin Country Mart: The Grinch and Frosty's Winter Wonderland. Hot chocolate, Miette marshmallows and hot toddies, plus dinner, nibbles and sips to go from the Mart.",
-      "description_es": "Una doble función navideña bajo la carpa con calefacción de Marin Country Mart: El Grinch y Frosty's Winter Wonderland. Chocolate caliente, malvaviscos de Miette y hot toddies, además de cena, bocadillos y bebidas para llevar del Mart.",
+      "description": "An evening of holiday classics under the heated tent at Marin Country Mart: a double feature of The Grinch and Frosty's Winter Wonderland. Hot chocolate and Miette marshmallows for the little ones, hot toddies for the grown-ups, and plenty of dinner, nibbles and sips throughout the evening.",
+      "description_es": "Una noche de clásicos navideños bajo la carpa con calefacción de Marin Country Mart: doble función de El Grinch y Frosty's Winter Wonderland. Chocolate caliente y malvaviscos de Miette para los pequeños, hot toddies para los adultos, y cena, bocadillos y bebidas durante toda la noche.",
       "registration": "Not required",
       "website": "https://marincountrymart.com/events",
       "notes": "Under the heated tent. Food and drinks for sale.",
       "location_group": "Larkspur/Greenbrae/Kentfield",
-      "internal_notes": "Added 2026-11-25 from a Marin Country Mart Instagram flyer sent by Alexandra. The flyer says 'Saturday December 18th, 5PM'; Dec 18 2026 is a Friday (Dec 18 was a Saturday in 2021, so the flyer may be a reused design). Alexandra: 'Assume Friday.' Not yet on marincountrymart.com/events on 2026-11-25; recheck at the next sweep (source #10) and correct the date if the Mart lists it. Cost assumed free (screening); food/drink sold."
+      "internal_notes": "Added 2026-11-25 from a Marin Country Mart Instagram flyer sent by Alexandra. The flyer says 'Saturday December 18th, 5PM'; Dec 18 2026 is a Friday (Dec 18 was a Saturday in 2021, so the flyer may be a reused design). Alexandra: 'Assume Friday.' Not yet on marincountrymart.com/events on 2026-11-25; recheck at the next sweep (source #10) and correct the date if the Mart lists it. Cost assumed free (screening); food/drink sold. | 2026-11-25: CONFIRMED on marincountrymart.com/events ('Holiday Double Feature at Marin Country Mart', Friday, December 18, 2026, 5:00-8:00 PM, Under the Heated Tent); title, time and copy updated to match. Note: the page lazy-loads; it only listed this after scrolling the headless browser."
     }
   ]
 }
