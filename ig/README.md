@@ -10,3 +10,4 @@ Current folders and when to delete them:
 - `storytime_gift_nov26/`: "Dear Santa, more storytime, please." library storytime gift guide (5 slides), Fri Nov 27, 4 PM. Delete once published.
 - `giving_tuesday_dec1/`: Giving Tuesday post for the Postpartum Support Center (2 slides, collaborator @postpartumsupportcenter), Tue Dec 1, 9 AM. Delete once published.
 - `thanksgiving_nov26/`: Thanksgiving gratitude post (6 slides; nonprofits tagged on slide 4, sponsors on slide 5), Thu Nov 26, 9 AM. Delete once published.
+- `turkey_trots_story_nov25/`: Story, turkey trots list marked UPDATED with Corte Madera CANCELED, Wed Nov 25, 4 PM. Delete once published.
