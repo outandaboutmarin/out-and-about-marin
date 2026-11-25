@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tide Flood Covers Nov 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Wed Nov 4 - Wed Nov 11 tide flooding carousel: four cover (hook) options in the Oct 25 cover D
+     look (light, brand blues), plus the end slide with the WET app. Slides 2-3 are
+     tide_flood_post_nov5.html (Manzanita) and tide_flood_post_lucky_nov5.html (Lucky Drive).
+     Render: python render_slides.py templates/tide_flood_covers_nov4.html --size 1080x1350 */
+  :root{
+    --navy:#0D1B3E; --off-white:#F4F3EF; --blue:#0C447C; --blue-2:#1A3A6B; --grey:#555555; --line:#DCE1EA;
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'Jost','Helvetica Neue',Arial,sans-serif;
+    --page:#EDEBE5;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --page:#15161a; } }
+  :root[data-theme="dark"]{ --page:#15161a; }
+  body{margin:0;background:var(--page);font-family:var(--sans);}
+  .wrap{max-width:560px;margin:0 auto;padding:32px 16px 64px;display:flex;flex-direction:column;gap:28px;}
+
+  .slide{container-type:inline-size;aspect-ratio:4/5;overflow:hidden;position:relative;
+         display:flex;flex-direction:column;box-shadow:0 6px 22px rgba(13,27,62,.16);
+         background:var(--off-white);color:var(--navy);}
+  .slide > *:not(.wave){position:relative;z-index:1;}
+
+  .top{padding:6cqw 8cqw 0;}
+  .swipe{font-size:3.2cqw;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--blue);}
+  .body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 8cqw;gap:4cqw;}
+  .kicker{font-size:3.2cqw;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);
+          display:flex;align-items:center;gap:1.6cqw;margin-bottom:-2cqw;}
+  .kicker::before{content:"";width:2.4cqw;height:2.4cqw;border-radius:50%;background:currentColor;}
+  .hook{font-family:var(--serif);font-weight:600;font-size:12.4cqw;line-height:1.06;letter-spacing:-.015em;margin:0;text-wrap:balance;}
+  .hook em{font-style:italic;font-weight:400;color:var(--blue-2);}
+  .aside{font-family:var(--serif);font-style:italic;font-size:6cqw;color:var(--blue-2);margin-top:-1.5cqw;}
+  .sub{font-size:4.6cqw;line-height:1.45;color:var(--grey);}
+  .sub b{color:var(--navy);font-weight:600;white-space:nowrap;}
+
+  .foot{padding:0 8cqw 6cqw;display:flex;justify-content:space-between;align-items:flex-end;}
+  .wm{font-family:var(--serif);font-size:4cqw;font-weight:600;}
+  .wm .and{font-family:var(--sans);font-size:2.1cqw;letter-spacing:.2em;vertical-align:middle;margin:0 .35cqw;}
+  .url{font-size:2.6cqw;letter-spacing:.06em;color:var(--grey);}
+
+  /* soft wave along the bottom, in brand blue */
+  .wave{position:absolute;left:0;right:0;bottom:0;height:18cqw;pointer-events:none;}
+  .wave svg{width:100%;height:100%;display:block;}
+
+  /* End slide: WET app first, then the brand sign-off */
+  #end{justify-content:space-between;}
+  #end .wetbox{margin:7cqw 8cqw 0;background:#fff;border:1px solid var(--line);border-radius:4cqw;padding:5.5cqw 6cqw;
+               display:flex;flex-direction:column;gap:2.2cqw;}
+  #end .wk{font-size:3cqw;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);}
+  #end .wh{font-family:var(--serif);font-weight:600;font-size:7.6cqw;line-height:1.08;margin:0;text-wrap:balance;}
+  #end .wh em{font-style:italic;font-weight:400;color:var(--blue-2);}
+  #end .wt{font-size:3.8cqw;line-height:1.45;color:var(--grey);}
+  #end .wt b{color:var(--navy);font-weight:600;}
+  #end .wurl{align-self:flex-start;font-size:4.2cqw;font-weight:600;color:#fff;background:var(--blue);
+             padding:2.6cqw 5cqw;border-radius:999px;letter-spacing:.02em;margin-top:1cqw;}
+  #end .sign{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8cqw 6.5cqw;gap:2cqw;}
+  #end .logo{width:13cqw;height:13cqw;}
+  #end .logo img{width:100%;height:100%;display:block;border-radius:22%;box-shadow:0 1.2cqw 3cqw rgba(13,27,62,.18);}
+  #end .ewm{font-family:var(--serif);font-weight:600;font-size:6.4cqw;line-height:1.1;}
+  #end .ewm .and{font-family:var(--sans);font-size:2.9cqw;font-weight:600;letter-spacing:.2em;vertical-align:middle;position:relative;top:-.4cqw;margin:0 .6cqw;}
+  #end .line{font-size:3.8cqw;color:var(--grey);line-height:1.4;}
+  #end .ourl{font-size:4cqw;font-weight:600;color:#fff;background:var(--navy);padding:2.2cqw 5cqw;border-radius:999px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Cover 1: the tides are back -->
+  <div class="slide" id="cover1">
+    <div class="top"><div class="swipe">Swipe before you drive →</div></div>
+    <div class="body">
+      <div class="kicker">Flood alert!</div>
+      <h1 class="hook">The tides are <em>back!</em></h1>
+      <div class="aside">They never call ahead.</div>
+      <div class="sub">High tides flood <b>Manzanita</b> and <b>Lucky Drive</b> <b>Wed Nov 4 – Wed Nov 11.</b><br>Here’s when to steer clear.</div>
+    </div>
+    <div class="foot"><div class="wm">Out <span class="and">AND</span> About Marin</div><div class="url">outandaboutmarin.com</div></div>
+    <div class="wave"><svg viewBox="0 0 1000 160" preserveAspectRatio="none"><path d="M0 70 C120 30 220 110 340 70 S560 30 680 70 880 110 1000 70 V160 H0Z" fill="#0C447C" opacity=".10"/><path d="M0 100 C140 60 240 140 380 100 S600 60 740 100 900 140 1000 100 V160 H0Z" fill="#0C447C" opacity=".16"/></svg></div>
+  </div>
+
+  <!-- Cover 2: waterfront -->
+  <div class="slide" id="cover2">
+    <div class="top"><div class="swipe">Swipe before you drive →</div></div>
+    <div class="body">
+      <div class="kicker">Flood alert!</div>
+      <h1 class="hook">Your commute just went <em>waterfront.</em></h1>
+      <div class="sub">High tides flood <b>Manzanita</b> and <b>Lucky Drive</b> <b>Wed Nov 4 – Wed Nov 11.</b><br>Here’s when to steer clear.</div>
+    </div>
+    <div class="foot"><div class="wm">Out <span class="and">AND</span> About Marin</div><div class="url">outandaboutmarin.com</div></div>
+    <div class="wave"><svg viewBox="0 0 1000 160" preserveAspectRatio="none"><path d="M0 70 C120 30 220 110 340 70 S560 30 680 70 880 110 1000 70 V160 H0Z" fill="#0C447C" opacity=".10"/><path d="M0 100 C140 60 240 140 380 100 S600 60 740 100 900 140 1000 100 V160 H0Z" fill="#0C447C" opacity=".16"/></svg></div>
+  </div>
+
+  <!-- Cover 3: minivan / boat -->
+  <div class="slide" id="cover3">
+    <div class="top"><div class="swipe">Swipe before you drive →</div></div>
+    <div class="body">
+      <div class="kicker">Flood alert!</div>
+      <h1 class="hook">Your minivan does a lot. <em>Boat</em> isn’t one of them.</h1>
+      <div class="sub">High tides flood <b>Manzanita</b> and <b>Lucky Drive</b> <b>Wed Nov 4 – Wed Nov 11.</b><br>Here’s when to steer clear.</div>
+    </div>
+    <div class="foot"><div class="wm">Out <span class="and">AND</span> About Marin</div><div class="url">outandaboutmarin.com</div></div>
+    <div class="wave"><svg viewBox="0 0 1000 160" preserveAspectRatio="none"><path d="M0 70 C120 30 220 110 340 70 S560 30 680 70 880 110 1000 70 V160 H0Z" fill="#0C447C" opacity=".10"/><path d="M0 100 C140 60 240 140 380 100 S600 60 740 100 900 140 1000 100 V160 H0Z" fill="#0C447C" opacity=".16"/></svg></div>
+  </div>
+
+  <!-- Cover 4: high tide, low patience -->
+  <div class="slide" id="cover4">
+    <div class="top"><div class="swipe">Swipe before you drive →</div></div>
+    <div class="body">
+      <div class="kicker">Flood alert!</div>
+      <h1 class="hook">High tide. <em>Low patience.</em></h1>
+      <div class="sub">Manzanita and Lucky Drive flood every morning <b>Wed Nov 4 – Wed Nov 11.</b><br>Here’s when to steer clear.</div>
+    </div>
+    <div class="foot"><div class="wm">Out <span class="and">AND</span> About Marin</div><div class="url">outandaboutmarin.com</div></div>
+    <div class="wave"><svg viewBox="0 0 1000 160" preserveAspectRatio="none"><path d="M0 70 C120 30 220 110 340 70 S560 30 680 70 880 110 1000 70 V160 H0Z" fill="#0C447C" opacity=".10"/><path d="M0 100 C140 60 240 140 380 100 S600 60 740 100 900 140 1000 100 V160 H0Z" fill="#0C447C" opacity=".16"/></svg></div>
+  </div>
+
+  <!-- End slide: WET app + sign-off -->
+  <div class="slide" id="end">
+    <div class="wetbox">
+      <div class="wk">Most current flood conditions</div>
+      <h2 class="wh">Check the <em>WET</em> app before you drive</h2>
+      <div class="wt">The <b>Weather Event Tide (WET)</b> app has the most current flood conditions for Manzanita, Lucky Drive and other Marin trouble spots.</div>
+      <div class="wurl">weathereventtide.com</div>
+    </div>
+    <div class="sign">
+      <div class="logo"><img src="../apple-touch-icon.png" alt="Out AND About Marin logo"></div>
+      <div class="ewm">Out <span class="and">AND</span> About Marin</div>
+      <div class="line">Family events in Marin, all in one place.</div>
+      <div class="ourl">outandaboutmarin.com</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

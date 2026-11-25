@@ -450,6 +450,23 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
+## 2026-11-25 (phone session, synced on the desktop the same day)
+
+Health at the sync: `events.json` 627 events, max id 2148; notes-lint and bilingual-lint clean; duplicate scan 3 known
+findings.
+
+- **Events added:** Grinchmas Party: Free Screening of The Grinch, Dance Palace, Point Reyes Station (2146, Sun Dec 13,
+  5 PM); "Caregiver & Me" Art Session: Clay Ornaments at The Shack (2147, Wed Nov 25, 10 AM-12 PM; Art & Affogato skipped
+  that day); **Holiday Double Feature: The Grinch & Frosty's Winter Wonderland** at Marin Country Mart (2148, Fri Dec 18,
+  5-8 PM, confirmed on the Mart site; source #10's page lazy-loads, so scroll to the bottom).
+- **Corte Madera Turkey Trot (1422) canceled:** canceled banner on the record; the Nov 25 turkey trots Story says
+  UPDATED / CANCELED.
+- **Resources → Holiday Happenings:** added the Fairfax Gingerbread House Tour & Competition and the Sausalito Gingerbread
+  House Tour.
+- **Desktop sync (2026-11-25):** Metricool checked (8 posts pending, Nov 25 to Dec 16); phone inbox applied: open item 87
+  Enable notifications (first on the list), item 15 schedule, item 21 Thanksgiving sponsor tags, item 58 zzh/zzi,
+  item 79 reminder; memory notes for the Instagram design preferences and the Marin Country Mart browser rule.
+
 ## 2026-11-23 to 2026-11-24 (phone session)
 
 - **Events added:** Holiday Sip & Shop, Stinson Beach (2134, Nov 28); Cheer on the Quad Dipsea (2135, Sat Nov 28,

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tide Flood Covers</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Three cover (hook) options for the Oct 25-30 king tide carousel.
+     Slide 1 = one of these; slides 2-3 = tide_flood_post_oct25.html and
+     tide_flood_post_lucky_oct25.html. Same palette as the tide slides. */
+  :root{
+    --navy:#0D1B3E; --off-white:#F4F3EF; --flood:#C0392B; --flood-soft:#F3B9B2;
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'Jost','Helvetica Neue',Arial,sans-serif;
+    --page:#EDEBE5; --page-ink:#1c1c22;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --page:#15161a; --page-ink:#e9e7e2; }
+  }
+  :root[data-theme="dark"]{ --page:#15161a; --page-ink:#e9e7e2; }
+  body{margin:0;background:var(--page);color:var(--page-ink);font-family:var(--sans);}
+  .wrap{max-width:560px;margin:0 auto;padding:32px 16px 64px;display:flex;flex-direction:column;gap:28px;}
+
+  .slide{container-type:inline-size;aspect-ratio:4/5;overflow:hidden;position:relative;
+         display:flex;flex-direction:column;box-shadow:0 6px 22px rgba(13,27,62,.16);}
+  .navy{background:var(--navy);color:#fff;}
+  .light{background:var(--off-white);color:var(--navy);}
+
+  .kicker{font-size:2.4cqw;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+          color:var(--flood-soft);display:flex;align-items:center;gap:1.6cqw;}
+  .light .kicker{color:var(--flood);}
+  .kicker::before{content:"";width:1.8cqw;height:1.8cqw;border-radius:50%;background:currentColor;}
+  .body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 8cqw;gap:4cqw;}
+  .hook{font-family:var(--serif);font-weight:600;font-size:9.6cqw;line-height:1.08;
+        letter-spacing:-.015em;margin:0;text-wrap:balance;}
+  .hook em{font-style:italic;font-weight:400;color:var(--flood-soft);}
+  .light .hook em{color:var(--flood);}
+  .sub{font-size:3.4cqw;line-height:1.45;font-weight:300;color:rgba(255,255,255,.82);max-width:34ch;}
+  .light .sub{color:#333;font-weight:400;}
+  .sub b{font-weight:600;color:#fff;}
+  .light .sub b{color:var(--navy);}
+  .swipe{font-size:2.5cqw;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+         color:var(--flood-soft);}
+  .light .swipe{color:var(--flood);}
+
+  .foot{padding:0 8cqw 6cqw;display:flex;justify-content:space-between;align-items:flex-end;}
+  .wm{font-family:var(--serif);font-size:3.2cqw;font-weight:600;}
+  .wm .and{font-family:var(--sans);font-size:1.7cqw;letter-spacing:.2em;vertical-align:middle;margin:0 .35cqw;}
+  .url{font-size:2cqw;letter-spacing:.06em;opacity:.6;}
+
+  /* wave band along the bottom edge */
+  .wave{position:absolute;left:0;right:0;bottom:0;height:16cqw;pointer-events:none;}
+  .wave svg{width:100%;height:100%;display:block;}
+  .slide > *:not(.wave){position:relative;z-index:1;}
+
+  /* option C: road chips */
+  .roads{display:flex;flex-direction:column;gap:2.4cqw;}
+  .road{display:flex;align-items:center;justify-content:space-between;background:#fff;
+        border:1px solid #E2DED6;border-radius:2.4cqw;padding:2.6cqw 3.4cqw;}
+  .road .n{font-family:var(--serif);font-size:4.6cqw;font-weight:600;color:var(--navy);}
+  .road .t{font-size:2.6cqw;color:var(--flood);font-weight:600;letter-spacing:.04em;text-align:right;}
+  .road .t span{display:block;font-weight:400;color:#6b6b73;letter-spacing:0;}
+
+  .stamp{font-family:var(--serif);font-style:italic;font-size:4.4cqw;color:var(--flood-soft);}
+
+  /* D: larger type throughout */
+  #optD .kicker{font-size:3.2cqw;}
+  #optD .kicker::before{width:2.4cqw;height:2.4cqw;}
+  #optD .hook{font-size:12.4cqw;}
+  #optD .sub{font-size:4.6cqw;max-width:none;}
+  #optD .swipe{font-size:3.2cqw;}
+  #optD .wm{font-size:4cqw;}
+  #optD .wm .and{font-size:2.1cqw;}
+  #optD .url{font-size:2.6cqw;}
+
+  /* D: brand blues and greys (colours from index.html) instead of cream and red */
+  #optD{background:#F4F3EF;color:#0D1B3E;}
+  #optD .kicker{color:#0C447C;}
+  #optD .hook{color:#0D1B3E;}
+  #optD .hook em{color:#1A3A6B;}
+  #optD .sub{color:#555555;}
+  #optD .sub b{color:#0D1B3E;}
+  #optD .swipe{color:#0C447C;}
+  #optD .url{color:#555555;opacity:1;}
+
+  /* End slide: logo + website */
+  #endE{background:#F4F3EF;color:#0D1B3E;align-items:center;justify-content:center;text-align:center;gap:0;}
+  #endE .logo{width:26cqw;height:26cqw;margin-bottom:6cqw;}
+  #endE .logo img{width:100%;height:100%;display:block;border-radius:22%;box-shadow:0 1.5cqw 4cqw rgba(13,27,62,.18);}
+  #endE .ewm{font-family:var(--serif);font-weight:600;font-size:8.4cqw;line-height:1.1;}
+  #endE .ewm .and{font-family:var(--sans);font-size:3.8cqw;font-weight:600;letter-spacing:.2em;
+                  vertical-align:middle;position:relative;top:-.5cqw;margin:0 .8cqw;}
+  #endE .rule{width:14cqw;height:2px;background:#0C447C;margin:6cqw auto;opacity:.5;}
+  #endE .line{font-size:4.6cqw;color:#555555;line-height:1.45;}
+  #endE .url{display:inline-block;margin-top:6cqw;font-size:5cqw;font-weight:600;color:#fff;
+             background:#0D1B3E;padding:3cqw 6cqw;border-radius:999px;letter-spacing:.02em;opacity:1;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- A: the question hook -->
+  <div class="slide navy" id="optA">
+    <div style="padding:7cqw 8cqw 0"><div class="kicker">King tides · Oct 25–30</div></div>
+    <div class="body">
+      <h1 class="hook">Don’t want to sit in <em>three hours</em> of flood traffic?</h1>
+      <div class="sub">King tides flood <b>Manzanita</b> and <b>Lucky Drive</b> this week. Here’s exactly when to steer clear.</div>
+      <div class="swipe">Swipe for closure times →</div>
+    </div>
+    <div class="foot"><div class="wm">Out <span class="and">AND</span> About Marin</div><div class="url">outandaboutmarin.com</div></div>
+    <div class="wave"><svg viewBox="0 0 1000 160" preserveAspectRatio="none"><path d="M0 70 C120 30 220 110 340 70 S560 30 680 70 880 110 1000 70 V160 H0Z" fill="#C0392B" opacity=".18"/><path d="M0 100 C140 60 240 140 380 100 S600 60 740 100 900 140 1000 100 V160 H0Z" fill="#C0392B" opacity=".28"/></svg></div>
+  </div>
+
+  <!-- B: the January memory hook -->
+  <div class="slide navy" id="optB">
+    <div style="padding:7cqw 8cqw 0"><div class="kicker">Remember January?</div></div>
+    <div class="body">
+      <div class="stamp">Jan 3, 2026 · 101 underwater in Larkspur</div>
+      <h1 class="hook">Still having <em>flashbacks</em> to the January floods?</h1>
+      <div class="sub">King tides are back <b>Sun Oct 25 – Fri Oct 30</b>. Plan around the two roads that go under first.</div>
+      <div class="swipe">Swipe before you drive →</div>
+    </div>
+    <div class="foot"><div class="wm">Out <span class="and">AND</span> About Marin</div><div class="url">outandaboutmarin.com</div></div>
+    <div class="wave"><svg viewBox="0 0 1000 160" preserveAspectRatio="none"><path d="M0 70 C120 30 220 110 340 70 S560 30 680 70 880 110 1000 70 V160 H0Z" fill="#C0392B" opacity=".18"/><path d="M0 100 C140 60 240 140 380 100 S600 60 740 100 900 140 1000 100 V160 H0Z" fill="#C0392B" opacity=".28"/></svg></div>
+  </div>
+
+  <!-- C: the save-this utility hook -->
+  <div class="slide light" id="optC">
+    <div style="padding:7cqw 8cqw 0"><div class="kicker">Save this before you drive</div></div>
+    <div class="body">
+      <h1 class="hook">Two Marin roads flood <em>every day</em> this week.</h1>
+      <div class="roads">
+        <div class="road"><div class="n">Manzanita</div><div class="t">3–4 hrs a day<span>between 9:50 AM &amp; 4:15 PM</span></div></div>
+        <div class="road"><div class="n">Lucky Drive</div><div class="t">3–4 hrs a day<span>between 10:20 AM &amp; 5 PM</span></div></div>
+      </div>
+      <div class="swipe">Exact times by day →</div>
+    </div>
+    <div class="foot"><div class="wm">Out <span class="and">AND</span> About Marin</div><div class="url">outandaboutmarin.com</div></div>
+  </div>
+
+  <!-- D: B's words in C's light styling -->
+  <div class="slide light" id="optD">
+    <div style="padding:6cqw 8cqw 0"><div class="swipe">Swipe before you drive →</div></div>
+    <div class="body">
+      <div class="kicker" style="margin-bottom:-4.4cqw">FLOOD ALERT!</div>
+      <h1 class="hook">Still having <em>flashbacks</em> to the January floods?</h1>
+      <div class="sub">King tides are back in Marin <b style="white-space:nowrap">Sun Oct 25 – Fri Oct 30!</b><br>Plan around the roads that go under first.</div>
+    </div>
+    <div class="foot"><div class="wm">Out <span class="and">AND</span> About Marin</div><div class="url">outandaboutmarin.com</div></div>
+  </div>
+
+  <!-- E: end slide -->
+  <div class="slide" id="endE">
+    <div class="logo"><img src="../apple-touch-icon.png" alt="Out AND About Marin logo"></div>
+    <div class="ewm">Out <span class="and">AND</span> About Marin</div>
+    <div class="rule"></div>
+    <div class="line">Family events in Marin,<br>all in one place.</div>
+    <div class="url">outandaboutmarin.com</div>
+  </div>
+
+</div>
+</body>
+</html>

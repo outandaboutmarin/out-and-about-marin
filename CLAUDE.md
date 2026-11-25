@@ -1039,10 +1039,11 @@ files were sent to the Recycle Bin during the 2026-10-10 move. **The repo and wo
 `C:\Users\AWalter\Code\out-and-about-marin`, working files at `C:\Users\AWalter\Dropbox\01. Out AND About Files`. Full
 record, troubleshooting table and undo steps: `OAA maintence and content\Dropbox_move_plan_2026-10-10.md`.
 
-## Where to pick up (updated 2026-11-22)
+## Where to pick up (updated 2026-11-25)
 
 The live to-do list is `open_items.md` / the dashboard (https://claude.ai/artifact/GLDWenXPBuvDmhwDippPFH). In order:
 
+0. **Enable notifications (open item 87, first on the list since 2026-11-24):** home-screen web push like tideroadwatch.com (manifest, service worker, Supabase subscriptions table with GRANT, Edge Function). Waiting on Alexandra: what to send, how often, who sends. Nothing built yet.
 00. **⚠ SECURITY, FIRST (2026-11-19, Alexandra continues this on the desktop): Apple Passwords "password leak" warning
    for outandaboutmarin.com, plus a message from a user.** Full handoff is now **open item 86** (Security section of
    `open_items.md`; the phone inbox entry was applied there 2026-11-19). Alexandra already reset her own PIN that morning. Nothing in the app
