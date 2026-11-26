@@ -450,6 +450,24 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
+## 2026-11-25 (desktop, evening) and 2026-11-26
+
+- **The Phoenix Featured card, round 3 (mockup v7-v9, not live):** the Featured tile now leads the strip with "The
+  Artist's Way · Mill Valley" (Sponsored, The Phoenix · Jan 12) through early January while sign-ups are open, then their
+  next event or the store. Their "Missing Your Creative Spark?" graphic (`artists_way_graphic.jpg`) replaces the wordmark
+  at the top of the opened card; the Featured event text is The Phoenix's own (every other Tuesday 6:30-8 pm, The Phoenix
+  Pop Up @ Mystic Mill Valley, 31 Sunnyside Ave, six sessions Jan 12 - Mar 23, $225 / $265 with book + journal, early-bird
+  $195 / $235 through Dec 31); a Sign up button goes to phoenixusedbookshop.com/workshops; "Only 7 spots" kept
+  (Alexandra). Mockup's day-list example now shows 2127's current title. ads.json waits for her go (live Dec 1).
+- **Site privacy found and parked (open item 88):** GitHub Pages serves every repo file (outandaboutmarin.com/CLAUDE.md,
+  /HISTORY.md, /events.json all HTTP 200) and the repo is public. Options recorded (publish only app files; private repo
+  ~$4/month; copyright/terms line; Supabase paging); nothing changed.
+- **Repo:** 12 local tide-post template mockups committed by accident in `4c51506` were untracked and added to
+  `.gitignore` (`2aa51b8`); they stay on disk and in Dropbox.
+- **Phone, 2026-11-26:** Sausalito Secret History Walking Tour (2149, Sat Nov 28, 10:30 AM, Ice House Museum, $20).
+- **Instagram:** the Nov 25 turkey trots Story and the Thu Nov 26 Thanksgiving post (instagram.com/p/DgNnVMeiI5A)
+  published; `ig/turkey_trots_story_nov25/` and `ig/thanksgiving_nov26/` deleted.
+
 ## 2026-11-25 (phone session, synced on the desktop the same day)
 
 Health at the sync: `events.json` 627 events, max id 2148; notes-lint and bilingual-lint clean; duplicate scan 3 known
