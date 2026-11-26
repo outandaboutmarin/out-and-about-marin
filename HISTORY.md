@@ -450,6 +450,21 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
+## 2026-11-26: Marin weekly sweep (Nov 27 - Jan 4), awaiting review
+
+- Workbook `OAA maintence and content\daily_sweep_2026-11-26_review.xlsx`: 53/53 sources attested (#9 Enjoy Mill
+  Valley BLOCKED by Cloudflare, homepage read), **13 candidates**, 16 questions. Raw feeds for MCFL, libcal (Mill Valley,
+  Larkspur), BelTib, SRPL, tribe (JCC, Humane, Strawberry), Luma, Reuse, Ronnie's; all 39 Marin Mommies day pages + the
+  Nov 27-29 roundup; headless Chromium for the Mart (scrolled), Village, Klub, Kitsch graphics, Sausalito list views and
+  the Glofox schedule; real Chrome for Barnes & Noble (no in-store events Nov 27 - Jan 10).
+- Candidates: Novato Lego Club (Dec 17) and Messy Mayhem Craft Club (Dec 23, 30); Bolinas film screening (Dec 1);
+  Mill Valley Books and Bites (Dec 17); Larkspur Chess Club (Dec 4, 11, 18); Sleepy Hollow Holiday Market (Dec 4);
+  Winter Lights Lanterns at the Light Spectacular (Dec 5, 19); Junior Rangers: Nature Investigators (Dec 20);
+  Blackstone Canyon walk (Dec 21).
+- Questions include Kitsch + Sync placeholder times now posted (2103, 2112, 2113, 2118, 2120, 2121), FIT4MOM Dec 5
+  ALERT and the dropped Fri Dec 4 class (2053), Bolinas skips to undo (175, 876), BelTib Friday Toddler Storytime (5)
+  missing all December, MAGC Bloom After Dark Dec 10.
+
 ## 2026-11-25 (desktop, evening) and 2026-11-26
 
 - **The Phoenix Featured card, round 3 (mockup v7-v9, not live):** the Featured tile now leads the strip with "The
