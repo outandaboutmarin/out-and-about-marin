@@ -19281,6 +19281,36 @@
       "notes": "Under the heated tent. Food and drinks for sale.",
       "location_group": "Larkspur/Greenbrae/Kentfield",
       "internal_notes": "Added 2026-11-25 from a Marin Country Mart Instagram flyer sent by Alexandra. The flyer says 'Saturday December 18th, 5PM'; Dec 18 2026 is a Friday (Dec 18 was a Saturday in 2021, so the flyer may be a reused design). Alexandra: 'Assume Friday.' Not yet on marincountrymart.com/events on 2026-11-25; recheck at the next sweep (source #10) and correct the date if the Mart lists it. Cost assumed free (screening); food/drink sold. | 2026-11-25: CONFIRMED on marincountrymart.com/events ('Holiday Double Feature at Marin Country Mart', Friday, December 18, 2026, 5:00-8:00 PM, Under the Heated Tent); title, time and copy updated to match. Note: the page lazy-loads; it only listed this after scrolling the headless browser."
+    },
+    {
+      "id": 2149,
+      "organization": "Sausalito Historical Society",
+      "venue": "Ice House Museum",
+      "event_name": "Sausalito Secret History Walking Tour",
+      "event_name_es": "Recorrido a pie por la historia secreta de Sausalito",
+      "type": "Community Event",
+      "day": "Saturday",
+      "time": "10:30 AM",
+      "time_of_day": "Morning",
+      "town": "Sausalito",
+      "address": "780 Bridgeway, Sausalito, CA 94965",
+      "ages": "All ages",
+      "cost": "$20",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-28",
+      "expires": "2026-11-28",
+      "status": "Active",
+      "featured": false,
+      "description": "A guided 10:30 AM to 12 PM walk through Sausalito's hidden past: the artists, sailors, shipbuilders, musicians and cultural rebels behind the waterfront town. Tickets benefit the Sausalito Historical Society. Plan for about 2 hours of parking; the lot at Locust & Bridgeway is free for 3 hours.",
+      "description_es": "Un recorrido guiado de 10:30 AM a 12 PM por el pasado oculto de Sausalito: los artistas, marineros, constructores de barcos, músicos y rebeldes culturales detrás de este pueblo costero. Las entradas benefician a la Sociedad Histórica de Sausalito. Calcule unas 2 horas de estacionamiento; el lote de Locust y Bridgeway es gratuito por 3 horas.",
+      "registration": "Tickets on Eventbrite",
+      "website": "https://www.eventbrite.com/e/sausalito-secret-history-walking-tour-tickets-1422906354209",
+      "notes": "Steady rain cancels the tour.",
+      "location_group": "Sausalito/Marin City",
+      "county": "",
+      "internal_notes": "Added 2026-11-26 from Alexandra's Nextdoor screenshots (guide Kara Halvorsen); Eventbrite confirms $20, all ages, rain policy. Eventbrite says Saturdays mid-Feb to mid-Nov, so Nov 28 treated as an extra date. Tour ends with a free round of drinks, left out of public copy; typed Community Event per Alexandra."
     }
   ]
 }
