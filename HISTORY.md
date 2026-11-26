@@ -450,7 +450,15 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
-## 2026-11-26: Marin weekly sweep (Nov 27 - Jan 4), awaiting review
+## 2026-11-26: Marin weekly sweep (Nov 27 - Jan 4), processed the same day (`700a785`)
+
+- **Processed:** all 13 candidates approved, ids 2150-2162. Record fixes per Alexandra ("follow your recommendation"):
+  Kitsch + Sync real times (2103, 2112, 2113, 2118, 2120, 2121); FIT4MOM 1449 Dec 5 ALERT removed; Bolinas 175/876 skips
+  undone (876 now 10 AM - 12 PM), 176 skips Dec 7 + Jan 4; 1737 ALERT Dec 2; 18 skip Jan 2; 1 skip Jan 4; 25 Jan 2 skip
+  removed; BelTib Friday Toddler Storytime (5) Temp. paused; 39 now 3:30-4:30; MAGC Bloom After Dark (2022) skips Dec 10.
+  **Resources -> Holiday Happenings** gained the Marin Country Mart Giving Tree and The Social Klub's North Pole Mailbox
+  (build 2026-11-26.1). Skipped as advised: Marin Ballet Nutcracker (item 58 zzh closed), Crown & Crumpet teas and Wee
+  Yogis (sponsor prospects), the It's a Wonderful Life radio play; Phoenix workshops: nothing more for now.
 
 - Workbook `OAA maintence and content\daily_sweep_2026-11-26_review.xlsx`: 53/53 sources attested (#9 Enjoy Mill
   Valley BLOCKED by Cloudflare, homepage read), **13 candidates**, 16 questions. Raw feeds for MCFL, libcal (Mill Valley,
