@@ -452,7 +452,7 @@ which made the fix easy to trust.
 
 ## 2026-11-26: Marin weekly sweep (Nov 27 - Jan 4), processed the same day (`700a785`)
 
-- **Instagram:** **2026-11-26: Thanksgiving-week Template A posts SCHEDULED (Alexandra approved, comment B on both):** weekend roundup **Fri Nov 27, 7 PM** (Metricool 443737011: Hook at the Light Spectacular Sat, The Secret Garden family matinee Sun, Mart tree lighting + Nutcracker storytime Sun) and week ahead **Sun Nov 29, 5 PM** (443737031: Perry's tree lighting and Hot Cocoa PJ Reading Wed Dec 2, Sausalito tree lighting Thu Dec 3; cover label THE WEEK AHEAD). Builder `build_week_of_nov26.py`; slides staged `ig/week_of_nov26/` (md5-verified; delete after Nov 29). Captions use only 🤍/💙. Weekend roundup for Dec 4-6 not built yet.
+- **Instagram:** **2026-11-26: Thanksgiving-week Template A posts SCHEDULED (Alexandra approved, comment B on both):** weekend roundup **Fri Nov 27, 4 PM** (moved from 7 PM; Metricool 443739975, was 443737011; the storytime gift guide moved to **Fri 9 AM**, now 443739965: Hook at the Light Spectacular Sat, The Secret Garden family matinee Sun, Mart tree lighting + Nutcracker storytime Sun) and week ahead **Sun Nov 29, 5 PM** (443737031: Perry's tree lighting and Hot Cocoa PJ Reading Wed Dec 2, Sausalito tree lighting Thu Dec 3; cover label THE WEEK AHEAD). Builder `build_week_of_nov26.py`; slides staged `ig/week_of_nov26/` (md5-verified; delete after Nov 29). Captions use only 🤍/💙. Weekend roundup for Dec 4-6 not built yet.
 
 - **Processed:** all 13 candidates approved, ids 2150-2162. Record fixes per Alexandra ("follow your recommendation"):
   Kitsch + Sync real times (2103, 2112, 2113, 2118, 2120, 2121); FIT4MOM 1449 Dec 5 ALERT removed; Bolinas 175/876 skips
