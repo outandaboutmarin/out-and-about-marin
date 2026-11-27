@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-26",
+  "last_updated": "2026-11-27",
   "events": [
     {
       "id": 1,
@@ -18957,13 +18957,13 @@
       "registration": "Tickets required",
       "website": "https://www.mvhistory.org/event/thanksgiving-walks-into-history/",
       "location_group": "Mill Valley",
-      "internal_notes": "Added 2026-11-24 from a Nextdoor post Alexandra sent; confirmed on mvhistory.org event page (read with headless Chromium; WebFetch 403). Day After Thanksgiving Family Walks Into History, first annual. Two walks = two records (different start points).",
+      "internal_notes": "Added 2026-11-24 from a Nextdoor post Alexandra sent; confirmed on mvhistory.org event page (read with headless Chromium; WebFetch 403). Day After Thanksgiving Family Walks Into History, first annual. Two walks = two records (different start points). 11 AM walk split into its own listing 2026-11-27.",
       "id": 2136,
       "venue": "Marin Theatre Company",
       "address": "397 Miller Ave, Mill Valley, CA 94941",
       "time": "9:00 AM",
-      "event_name": "Sloughs to Streets History Walk",
-      "event_name_es": "Caminata histórica: de los pantanos a las calles",
+      "event_name": "Sloughs to Streets History Walk (9 AM)",
+      "event_name_es": "Caminata histórica: de los pantanos a las calles (9 AM)",
       "description": "A guided 1.5-mile, 90-minute history walk with the Mill Valley Historical Society, the day after Thanksgiving. Discover how the Miwok presence along the bay wetlands became today's Sycamore Park neighborhood, with stories of the places, people and events from 1770 to 1970. Starts and ends at Marin Theatre Company. Rain and king tides may make it extra fun, so wear boots.",
       "description_es": "Una caminata histórica guiada de 1.5 millas y 90 minutos con la Sociedad Histórica de Mill Valley, el día después de Acción de Gracias. Descubre cómo la presencia miwok en los humedales de la bahía se convirtió en el actual vecindario de Sycamore Park, con historias de lugares, personas y sucesos entre 1770 y 1970. Sale y termina en Marin Theatre Company. La lluvia y las mareas reales pueden hacerla aún más divertida, así que trae botas.",
       "notes": "Walks start at 9 and 11 AM. Buy tickets ahead; kids under 18 free."
@@ -19717,6 +19717,35 @@
       "website": "https://www.onetam.org/blackstone-canyon",
       "internal_notes": "Added 2026-11-26 from the weekly sweep (window Nov 27 - Jan 4), workbook daily_sweep_2026-11-26_review.xlsx; Alexandra marked add. Source #13 (onetam.org; Audience: Adults).",
       "id": 2162
+    },
+    {
+      "organization": "Mill Valley Historical Society",
+      "type": "Community Event",
+      "day": "Friday",
+      "time_of_day": "Morning",
+      "town": "Mill Valley",
+      "ages": "All ages",
+      "cost": "$10; under 18 free",
+      "indoor_outdoor": "Outdoor",
+      "active_sedentary": "Active",
+      "cadence": "One-off",
+      "event_date": "2026-11-27",
+      "expires": "2026-11-27",
+      "status": "Active",
+      "featured": false,
+      "registration": "Tickets required",
+      "website": "https://www.mvhistory.org/event/thanksgiving-walks-into-history/",
+      "location_group": "Mill Valley",
+      "internal_notes": "Added 2026-11-27 at Alexandra's request as a separate listing for the 11 AM walk; copy of id 2136 (9 AM).",
+      "id": 2163,
+      "venue": "Marin Theatre Company",
+      "address": "397 Miller Ave, Mill Valley, CA 94941",
+      "time": "11:00 AM",
+      "event_name": "Sloughs to Streets History Walk (11 AM)",
+      "event_name_es": "Caminata histórica: de los pantanos a las calles (11 AM)",
+      "description": "A guided 1.5-mile, 90-minute history walk with the Mill Valley Historical Society, the day after Thanksgiving. Discover how the Miwok presence along the bay wetlands became today's Sycamore Park neighborhood, with stories of the places, people and events from 1770 to 1970. Starts and ends at Marin Theatre Company. Rain and king tides may make it extra fun, so wear boots.",
+      "description_es": "Una caminata histórica guiada de 1.5 millas y 90 minutos con la Sociedad Histórica de Mill Valley, el día después de Acción de Gracias. Descubre cómo la presencia miwok en los humedales de la bahía se convirtió en el actual vecindario de Sycamore Park, con historias de lugares, personas y sucesos entre 1770 y 1970. Sale y termina en Marin Theatre Company. La lluvia y las mareas reales pueden hacerla aún más divertida, así que trae botas.",
+      "notes": "Walks start at 9 and 11 AM. Buy tickets ahead; kids under 18 free."
     }
   ]
 }
