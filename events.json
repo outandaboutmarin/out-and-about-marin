@@ -19440,6 +19440,36 @@
       "description": "An easy 1-mile, 1-hour stroll through downtown Mill Valley with a Mill Valley Historical Society guide, the day after Thanksgiving. Learn about the land grants, the town's founding and the historic buildings along the way. Starts and ends at the Depot Clock Tower; grab a coffee first. A great way to show visiting family around town.",
       "description_es": "Un paseo tranquilo de 1 milla y 1 hora por el centro de Mill Valley con un guía de la Sociedad Histórica de Mill Valley, el día después de Acción de Gracias. Conoce las concesiones de tierras, la fundación del pueblo y los edificios históricos del recorrido. Sale y termina en la torre del reloj del Depot; tómate un café antes. Una gran manera de mostrarle el pueblo a la familia que viene de visita.",
       "notes": "Walks start at 9, 10 and 11 AM. Buy tickets ahead; kids under 18 free."
+    },
+    {
+      "id": 2166,
+      "organization": "Milkweed Kids",
+      "venue": "Milkweed Kids",
+      "event_name": "French Story Time @ Milkweed",
+      "event_name_es": "Cuentos en francés @ Milkweed",
+      "type": "Kids Programs",
+      "day": "Friday",
+      "time": "10:00 AM",
+      "time_of_day": "Morning",
+      "town": "Mill Valley",
+      "address": "12 Miller Ave, Mill Valley, CA 94941",
+      "ages": "0-5 yrs",
+      "cost": "Free",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Sedentary",
+      "cadence": "One-off",
+      "event_date": "2026-12-04",
+      "expires": "2026-12-04",
+      "status": "Active",
+      "featured": false,
+      "description": "An interactive French story time with Ambi from Le Petit Jardin at Milkweed, the children's shop on Miller Avenue.",
+      "description_es": "Una hora del cuento interactiva en francés con Ambi de Le Petit Jardin en Milkweed, la tienda infantil de Miller Avenue.",
+      "registration": "Not required",
+      "website": "https://www.instagram.com/milkweedmillvalley/",
+      "notes": "First come, first served.",
+      "location_group": "Mill Valley",
+      "county": "",
+      "internal_notes": "Added 2026-11-26 from Milkweed's December calendar graphic (@milkweedmillvalley, reposted by @thelocalhypegirl), sent by Alexandra. Ages not stated on the graphic; 0-5 assumed to match Milkweed's other kids programs. Megan's Dec 5 and Dec 19 sessions on the same graphic are already covered by id 1353 (1st and 3rd Saturdays), so no new records."
     }
   ]
 }
