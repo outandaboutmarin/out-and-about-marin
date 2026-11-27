@@ -6,4 +6,4 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
 
 ## Pending
 
-(empty)
+- **Memory note:** Always use Pacific time, never UTC, for "today", "tomorrow" and dates (Alexandra, 2026-11-26; cloud clocks run on UTC). Already in CLAUDE.md, cloud standing instructions.

@@ -75,6 +75,7 @@ phone session.
   READ (Artifact `read`, URL in "Open Items tracker"), but never republish it from a cloud session: the desktop rebuilds
   it from `open_items.md` and would overwrite the edit.
 - **Use `python3`**, not `python`.
+- **Always use Pacific time, never UTC** (Alexandra, 2026-11-26). The cloud container's clock is UTC, so after 4 PM Pacific (5 PM in summer) it already shows tomorrow's date. Before saying "today" or "tomorrow", or picking a date, run `TZ=America/Los_Angeles date`.
 - **Push in the same session.** After long idle gaps the cloud copy can be reset, and anything committed but not pushed
   is lost (a July 2026 event commit disappeared this way).
 
