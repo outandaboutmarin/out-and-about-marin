@@ -453,7 +453,7 @@ which made the fix easy to trust.
 ## 2026-11-27 (desktop): Metta Mama Yoga Studio goes live
 
 - Alexandra approved all of it: the 12 weekly partner classes (ids 2168-2179, from mettayogastudio.com/mama), the Fall Kids Yoga Series (2167, added earlier the same day) and the v11 Featured card.
-- Featured ad `metta-mama` in `ads.json`, live 2026-12-01 to 2027-02-28 (3-month Featured Partner); **billing starts 12/01/2026**.
+- Featured ad `metta-mama` in `ads.json`, live 2026-12-01 to 2027-02-28 (3-month Featured Partner); **billing starts 12/01/2026**; fee $200 for the 3 months.
 - `index.html` (build 2026-11-27.1): new optional ad fields, all backward-compatible: `tile_border`, `tile_border_w`, `tile_tint`, `tile_glow` (per-sponsor tile styling), offer `url`/`url_label`, `about_strong` (bold About line), `tags_link` (link under Details). Checked with the date set to Dec 2: tile, card, both links, no console errors.
 - Source #54 added to `sources/marin.md`: every week, check class times, days, locations and adds/removals, and propose new events from the page.
 
