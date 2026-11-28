@@ -534,10 +534,6 @@
           "url_label": {
             "en": "Redeem your free class →",
             "es": "Canjea tu clase gratis →"
-          },
-          "note": {
-            "en": "After your free class, Metta's intro offer is $59 for 30 days of unlimited yoga at all three studios.",
-            "es": "Después de tu clase gratis, la oferta de introducción de Metta es $59 por 30 días de yoga ilimitado en sus tres estudios."
           }
         }
       ],
@@ -581,7 +577,7 @@
       "website": "https://www.mettayogastudio.com/mama",
       "website_label": "website",
       "instagram": "mettamamamarin",
-      "internal_notes": "Posted 2026-11-27 at Alexandra's go ('I approve of the Featured Partner Carousel, please commit'); live 2026-12-01 to 2027-02-28 (3-month Featured Partner; billing from 12/01/2026). Built from mockup v11 (OAA Sponsorship and Partners/Metta). Tile: bold navy outline 4px, blue #6E97A8 at 26% tint, 60% glow (new per-ad fields). Free first class offer from mettayogastudio.com/google-ads-intro-offer-metta-mama-free-class. Weekly classes are partner events 2168-2179; kids series 2167. Sweep source #54. 2026-11-28: card rebuilt to match mockup v11 exactly (Alexandra): order About, Weekly classes table, Contact, Where (two locations), Offer (with the $59 intro line), Details pills; uses the new optional fields order, hours_style 'table', locations, tag_style 'pill'.",
+      "internal_notes": "Posted 2026-11-27 at Alexandra's go ('I approve of the Featured Partner Carousel, please commit'); live 2026-12-01 to 2027-02-28 (3-month Featured Partner; billing from 12/01/2026). Built from mockup v11 (OAA Sponsorship and Partners/Metta). Tile: bold navy outline 4px, blue #6E97A8 at 26% tint, 60% glow (new per-ad fields). Free first class offer from mettayogastudio.com/google-ads-intro-offer-metta-mama-free-class. Weekly classes are partner events 2168-2179; kids series 2167. Sweep source #54. 2026-11-28: card rebuilt to match mockup v11 exactly (Alexandra): order About, Weekly classes table, Contact, Where (two locations), Offer (with the $59 intro line), Details pills; uses the new optional fields order, hours_style 'table', locations, tag_style 'pill'. 2026-11-28: $59 intro-offer line removed from the offer box (Alexandra).",
       "order": [
         "about",
         "hours",
