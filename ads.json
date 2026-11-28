@@ -307,7 +307,7 @@
     {
       "id": "metta-mama",
       "active": true,
-      "start": "2026-12-01",
+      "start": "2026-11-28",
       "end": "2027-02-28",
       "name": "Metta Mama Yoga Studio",
       "logo": "assets/ads/metta_mark_240.png",
@@ -539,6 +539,163 @@
       "website_label": "website",
       "instagram": "mettamamamarin",
       "internal_notes": "Posted 2026-11-27 at Alexandra's go ('I approve of the Featured Partner Carousel, please commit'); live 2026-12-01 to 2027-02-28 (3-month Featured Partner; billing from 12/01/2026). Built from mockup v11 (OAA Sponsorship and Partners/Metta). Tile: bold navy outline 4px, blue #6E97A8 at 26% tint, 60% glow (new per-ad fields). Free first class offer from mettayogastudio.com/google-ads-intro-offer-metta-mama-free-class. Weekly classes are partner events 2168-2179; kids series 2167. Sweep source #54."
+    },
+    {
+      "id": "phoenix-bookshop",
+      "active": true,
+      "start": "2026-11-28",
+      "end": "",
+      "name": "The Phoenix Used Bookshop",
+      "logo": "assets/ads/phoenix_logo.png",
+      "logo_wide": true,
+      "tile_icon": "assets/ads/phoenix_circle_240.png",
+      "tile_icon_fill": true,
+      "color": "#0B4F9C",
+      "color_ink": "#0B4F9C",
+      "tile_border": "#D98E04",
+      "tile_border_w": "5px",
+      "tile_glow": "0%",
+      "tile_meta": {
+        "en": "Used books for kids",
+        "es": "Libros usados para niños"
+      },
+      "town": "Larkspur",
+      "badge": {
+        "en": "Sponsored · Local partner",
+        "es": "Patrocinado · Colaborador local"
+      },
+      "subtitle": {
+        "en": "Used books for kids & teens, 0–16 · Larkspur",
+        "es": "Libros usados para niños y adolescentes, 0–16 · Larkspur"
+      },
+      "feature": {
+        "until": "2027-01-11",
+        "first": true,
+        "tile_name": {
+          "en": "The Artist's Way · Mill Valley",
+          "es": "The Artist's Way · Mill Valley"
+        },
+        "tile_meta": {
+          "en": "The Phoenix",
+          "es": "The Phoenix"
+        },
+        "tile_after": {
+          "en": "Jan 12",
+          "es": "12 ene"
+        },
+        "image": "assets/ads/phoenix_artists_way.jpg",
+        "image_alt": {
+          "en": "Missing your creative spark? The Artist's Way, Winter 2027, Mill Valley, CA",
+          "es": "¿Te falta la chispa creativa? The Artist's Way, invierno 2027, Mill Valley, CA"
+        },
+        "label": {
+          "en": "Featured event",
+          "es": "Evento destacado"
+        },
+        "title": {
+          "en": "The Artist's Way Group",
+          "es": "Grupo The Artist's Way"
+        },
+        "meta": {
+          "en": "Mill Valley · Starts Jan 12",
+          "es": "Mill Valley · Empieza el 12 de enero"
+        },
+        "meta_strong": {
+          "en": "Only 7 spots",
+          "es": "Solo 7 lugares"
+        },
+        "text": {
+          "en": "Missing your creative spark? Join a small group working through Julia Cameron's The Artist's Way together, every other Tuesday from 6:30 to 8 pm at The Phoenix Pop Up @ Mystic Mill Valley, 31 Sunnyside Ave. Six sessions, Jan 12 – Mar 23. $225 for the series, or $265 with a book + journal. Early-bird pricing ($195 / $235) through Dec 31.",
+          "es": "¿Te falta la chispa creativa? Únete a un grupo pequeño que trabaja junto el libro The Artist's Way de Julia Cameron, un martes sí y otro no de 6:30 a 8 pm en The Phoenix Pop Up @ Mystic Mill Valley, 31 Sunnyside Ave. Seis sesiones, del 12 de enero al 23 de marzo. $225 por la serie, o $265 con libro y cuaderno. Precio anticipado ($195 / $235) hasta el 31 de diciembre."
+        },
+        "url": "https://www.phoenixusedbookshop.com/workshops",
+        "url_label": {
+          "en": "Sign up",
+          "es": "Inscríbete"
+        }
+      },
+      "venue": "The Phoenix Used Bookshop",
+      "address": "501 Magnolia Ave, Larkspur, CA 94939",
+      "phone": "(628) 276-0144",
+      "hours_label": {
+        "en": "Store hours",
+        "es": "Horario de la tienda"
+      },
+      "hours": [
+        {
+          "days": {
+            "en": "Wednesday – Saturday",
+            "es": "Miércoles – sábado"
+          },
+          "time": {
+            "en": "10:00 AM – 6:00 PM",
+            "es": "10:00 AM – 6:00 PM"
+          }
+        },
+        {
+          "days": {
+            "en": "Sunday",
+            "es": "Domingo"
+          },
+          "time": {
+            "en": "10:00 AM – 5:00 PM",
+            "es": "10:00 AM – 5:00 PM"
+          }
+        },
+        {
+          "days": {
+            "en": "Monday & Tuesday",
+            "es": "Lunes y martes"
+          },
+          "time": {
+            "en": "Closed",
+            "es": "Cerrado"
+          }
+        }
+      ],
+      "about": {
+        "en": "Marin's first used bookshop for kids and teens, ages 0–16. Every book on our shelves was contributed by the community. Our first location focuses on kids and teens — with an all-ages store in the works. We accept book contributions when we are open.",
+        "es": "La primera librería de libros usados de Marin para niños y adolescentes, de 0 a 16 años. Cada libro en nuestros estantes fue donado por la comunidad. Nuestra primera tienda se enfoca en niños y adolescentes, y estamos preparando una tienda para todas las edades. Aceptamos donaciones de libros cuando estamos abiertos."
+      },
+      "contact": {
+        "name": "The Phoenix",
+        "phone": "(628) 276-0144",
+        "email": "info@phoenixusedbookshop.com"
+      },
+      "tags": [
+        {
+          "text": {
+            "en": "Bookshop",
+            "es": "Librería"
+          },
+          "class": "tag-community"
+        },
+        {
+          "text": {
+            "en": "Kids & teens",
+            "es": "Niños y adolescentes"
+          },
+          "class": "tag-age"
+        },
+        {
+          "text": {
+            "en": "Book clubs",
+            "es": "Clubes de lectura"
+          },
+          "class": "tag-community"
+        },
+        {
+          "text": {
+            "en": "Workshops",
+            "es": "Talleres"
+          },
+          "class": "tag-community"
+        }
+      ],
+      "website": "https://www.phoenixusedbookshop.com/",
+      "website_label": "website",
+      "instagram": "phoenixusedbookshop",
+      "internal_notes": "Live 2026-11-28 at Alexandra's go ('launch everything for the Phoenix and Metta, now live; billing as of 12/1'). Featured Partner, $80/month, billing from 12/01/2026; no end date. Built from mockup v9 (round-3 feedback 2026-11-25, OAA Sponsorship and Partners/The Phoenix Bookshop). Until feature.until (2027-01-11) the tile leads the strip as 'The Artist's Way · Mill Valley' and the card opens on their Artist's Way graphic + Featured event; after that it falls back to the store card (wordmark logo, 'Used books for kids · Larkspur'). Tile: 5px orange-gold border #D98E04, no glow. Partner listings 2124, 2125, 2127. Sweep source #20."
     }
   ]
 }

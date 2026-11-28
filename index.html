@@ -1262,6 +1262,14 @@ function mapDbUser(dbUser) {
     box-shadow: 0 4px 14px color-mix(in srgb, var(--ad-color, #AACDCF) var(--ad-glow, 45%), transparent); }
   /* Optional per-ad tile overrides from ads.json (2026-11-27, Metta): tile_border, tile_border_w, tile_tint, tile_glow */
   .ad-strong { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); line-height: 1.55; margin-top: 0.4rem; }
+  /* Optional ads.json "feature" block (2026-11-28, The Phoenix): a sponsor's featured event, shown until feature.until */
+  .ad-feat-img img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+  .ad-feat-title { font-family: var(--font-serif); font-size: 1.02rem; font-weight: 600; color: var(--navy); line-height: 1.3; }
+  .ad-feat-meta { font-size: 0.72rem; color: #8A5A00; margin: 3px 0 0.5rem; letter-spacing: .02em; }
+  .ad-feat-meta b { font-weight: 600; color: #B5530B; }
+  .ad-feat-btn { display: inline-block; margin-top: 0.7rem; padding: .5rem 1rem; border-radius: 999px; background: var(--ad-ink, #0D1B3E); color: #fff; font-size: 0.78rem; font-weight: 600; text-decoration: none; }
+  .feat-tile.ad.icon-fill .ft-icon { border: none; background: transparent; }
+  .feat-tile.ad.icon-fill .ft-icon img { object-fit: cover; }
   .ad-link { display: inline-block; margin-top: 0.55rem; font-size: 0.78rem; font-weight: 600; color: var(--navy); text-decoration: underline; text-underline-offset: 2px; }
   #adBody .description-text { white-space: pre-line; }  /* a blank line in an ad's about text starts a new paragraph */
   .feat-tile.ad .ft-icon { background: #fff; border: 1px solid #e3eeef; overflow: hidden; }
@@ -4593,7 +4601,7 @@ function withAds(sel) {
   var ads = activeCounty !== 'marin' ? [] : (activeAds || []).slice(0, MAX_FEAT_ADS);
   if (!ads.length) return sel;
   var out = sel.slice(0, Math.max(0, FEAT_SLOTS - ads.length));
-  ads.forEach(function (a, i) { out.splice(Math.min(1 + i, out.length), 0, { ad: a }); });
+  ads.forEach(function (a, i) { var f = adFeat(a); out.splice(f && f.first ? 0 : Math.min(1 + i, out.length), 0, { ad: a }); });
   return out;
 }
 // "Community Resources!" card (Alexandra 2026-10-13): one slot in the Marin strip that opens the Resources tab at the
@@ -4614,11 +4622,20 @@ function openResourcesTop() {
   if (rs) { rs.scrollTop = 0; Array.prototype.forEach.call(rs.querySelectorAll('*'), function (el) { if (el.scrollTop) el.scrollTop = 0; }); }
   window.scrollTo(0, 0);
 }
+// An ad's optional "feature" (a featured event) shows until feature.until (inclusive), then the ad falls back to its normal card.
+function adFeat(a) {
+  var f = a && a.feature; if (!f) return null;
+  var t = new Date(); var today = t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+  return (!f.until || today <= f.until) ? f : null;
+}
 function adTileHTML(a) {
+  var f = adFeat(a);
+  var tName = f && f.tile_name ? adText(f.tile_name) : a.name, tMeta = f && f.tile_meta ? adText(f.tile_meta) : adText(a.tile_meta);
+  var tAfter = f && f.tile_after ? adText(f.tile_after) : adText(a.town);
   var style = '--ad-color:' + adEsc(a.color || '#AACDCF') + ';--ad-ink:' + adEsc(a.color_ink || '#3E6E72')
     + (a.tile_border ? ';--ad-border:' + adEsc(a.tile_border) : '') + (a.tile_border_w ? ';--ad-border-w:' + adEsc(a.tile_border_w) : '')
     + (a.tile_tint ? ';--ad-tint:' + adEsc(a.tile_tint) : '') + (a.tile_glow ? ';--ad-glow:' + adEsc(a.tile_glow) : '');
-  return '<div class="feat-card" onclick="openAd(\'' + adEsc(a.id) + '\')"><div class="feat-tile ad" style="' + style + '"><div class="ft-top"><span class="ft-icon"><img src="' + adEsc(a.tile_icon || a.logo) + '" alt=""></span><div class="ft-kicker">' + (currentLang === 'es' ? 'Patrocinado' : 'Sponsored') + '</div></div><div class="ft-name">' + adEsc(a.name) + '</div><div class="ft-meta"><b>' + adEsc(adText(a.tile_meta)) + '</b>' + (a.town ? ' · ' + adEsc(a.town) : '') + '</div></div></div>';
+  return '<div class="feat-card" onclick="openAd(\'' + adEsc(a.id) + '\')"><div class="feat-tile ad' + (a.tile_icon_fill ? ' icon-fill' : '') + '" style="' + style + '"><div class="ft-top"><span class="ft-icon"><img src="' + adEsc(a.tile_icon || a.logo) + '" alt=""></span><div class="ft-kicker">' + (currentLang === 'es' ? 'Patrocinado' : 'Sponsored') + '</div></div><div class="ft-name">' + adEsc(tName) + '</div><div class="ft-meta"><b>' + adEsc(tMeta) + '</b>' + (tAfter ? ' · ' + adEsc(tAfter) : '') + '</div></div></div>';
 }
 function adEl(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
 function adSection(label) { var s = adEl('div', 'detail-section'); s.appendChild(adEl('div', 'section-label', label)); return s; }
@@ -4667,8 +4684,18 @@ function openAd(id) {
 
   var body = document.getElementById('adBody'); body.textContent = '';
   var card = adEl('div', 'detail-card');
-  if (a.logo) { var lg = adEl('div', a.logo_wide ? 'ad-logo wide' : 'ad-logo'); var im = document.createElement('img'); im.src = a.logo; im.alt = a.name + ' logo'; lg.appendChild(im); card.appendChild(lg); }
+  var feat = adFeat(a);
+  if (feat && feat.image) { var fi = adEl('div', 'ad-feat-img'); var fim = document.createElement('img'); fim.src = feat.image; fim.alt = adText(feat.image_alt) || ''; fi.appendChild(fim); card.appendChild(fi); }
+  else if (a.logo) { var lg = adEl('div', a.logo_wide ? 'ad-logo wide' : 'ad-logo'); var im = document.createElement('img'); im.src = a.logo; im.alt = a.name + ' logo'; lg.appendChild(im); card.appendChild(lg); }
 
+  if (feat && feat.title) {
+    var fs = adSection(adText(feat.label) || (es ? 'Evento destacado' : 'Featured event'));
+    fs.appendChild(adEl('div', 'ad-feat-title', adText(feat.title)));
+    if (feat.meta) { var fm = adEl('div', 'ad-feat-meta', adText(feat.meta)); if (feat.meta_strong) { fm.appendChild(document.createTextNode(' · ')); fm.appendChild(adEl('b', null, adText(feat.meta_strong))); } fs.appendChild(fm); }
+    if (feat.text) fs.appendChild(adEl('div', 'description-text', adText(feat.text)));
+    if (feat.url) { var fb = adEl('a', 'ad-feat-btn', adText(feat.url_label) || (es ? 'Inscríbete' : 'Sign up')); fb.href = feat.url; fb.target = '_blank'; fb.rel = 'noopener'; fs.appendChild(fb); }
+    card.appendChild(fs);
+  }
   // An ad with no single address (a class that moves between parks, 2026-10-09) skips Where and
   // carries its places in the hours table instead; it also gets no Directions button below.
   var where = adSection(es ? 'Dónde' : 'Where');
@@ -6483,7 +6510,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-11-27.1';
+const APP_BUILD = '2026-11-28.1';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();

@@ -450,6 +450,13 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
+## 2026-11-28 (desktop): The Phoenix and Metta Featured cards launched
+
+- Alexandra: "launch everything for the Phoenix and Metta, now live. We will start billing as of 12/1."
+- `ads.json`: Metta's start moved from 12/01 to 2026-11-28 (end 2027-02-28); new ad `phoenix-bookshop` (live 2026-11-28, no end; $80/month from 12/01), built from mockup v9.
+- `index.html` (build 2026-11-28.1): optional ads.json `feature` block for a sponsor's featured event (tile name/meta, lead position, a top image in place of the logo, and a Featured event section with a Sign up button), shown until `feature.until`, then the normal card returns by itself; `tile_icon_fill` for a round logo that fills the icon. Phoenix's feature (The Artist's Way, Jan 12) runs to 2027-01-11. Checked on Nov 28 and Jan 15: no console errors.
+- The phone inbox entry for the Phoenix card is applied.
+
 ## 2026-11-27 (desktop): Metta Mama Yoga Studio goes live
 
 - Alexandra approved all of it: the 12 weekly partner classes (ids 2168-2179, from mettayogastudio.com/mama), the Fall Kids Yoga Series (2167, added earlier the same day) and the v11 Featured card.
