@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-28",
+  "last_updated": "2026-11-27",
   "events": [
     {
       "id": 1,
@@ -19297,6 +19297,48 @@
       "location_group": "Mill Valley",
       "county": "",
       "internal_notes": "Added 2026-11-26 from Milkweed's December calendar graphic (@milkweedmillvalley, reposted by @thelocalhypegirl), sent by Alexandra. Ages not stated on the graphic; 0-5 assumed to match Milkweed's other kids programs. Megan's Dec 5 and Dec 19 sessions on the same graphic are already covered by id 1353 (1st and 3rd Saturdays), so no new records."
+    },
+    {
+      "id": 2167,
+      "status": "Active",
+      "featured": false,
+      "cadence": "Weekly",
+      "season_start": "09/28",
+      "season_end": "12/07",
+      "event_date": "",
+      "expires": "2026-12-07",
+      "day": "Monday",
+      "time": "4:15 PM – 5:00 PM",
+      "time_of_day": "Afternoon",
+      "organization": "Metta Mama Yoga Studio (Metta Yoga)",
+      "venue": "Metta Yoga San Rafael",
+      "address": "851 4th Street, San Rafael, CA 94901",
+      "town": "San Rafael",
+      "location_group": "San Rafael",
+      "event_name": "Fall Kids Yoga Series (PreK-2nd Grade)",
+      "event_name_es": "Serie de yoga infantil de otoño (de preescolar a 2.º grado)",
+      "type": "Kids Programs",
+      "ages": "4-8 yrs (PreK-2nd grade)",
+      "cost": "Drop-ins welcome (ask Metta for the drop-in price); $250 for the 10-week series",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "registration": "Book on the Metta Yoga app or website",
+      "description": "Kids yoga with Stacey Capobianco: poses, games, storytelling and playful breathing that build balance, strength, flexibility and body awareness, and help kids manage big feelings. Designed for ages 4-8. Parents are welcome to drop off.",
+      "description_es": "Yoga para niños con Stacey Capobianco: posturas, juegos, cuentos y respiración divertida para desarrollar equilibrio, fuerza, flexibilidad y conciencia corporal, y para ayudar a los niños a manejar sus emociones. Para niños de 4 a 8 años. Los padres pueden dejar a sus hijos en la clase.",
+      "website": "https://www.mettayogastudio.com/mama",
+      "notes": "Class size is limited. Parents are welcome to drop off. skip: 2026-11-23",
+      "partner": true,
+      "logo": "assets/ads/metta_mark_240.png",
+      "contact": {
+        "name": "Metta Mama Yoga Studio",
+        "phone": "(415) 868-3569",
+        "email": "hello@mettayogastudio.com",
+        "instagram": "mettamamamarin"
+      },
+      "socials": {
+        "instagram": "mettamamamarin"
+      },
+      "internal_notes": "Added 2026-11-27 at Alexandra's request ('add in the weekly fall kids yoga because it allows drop in'); first Metta partner listing, before the Featured card goes live. Source: mettayogastudio.com/events/sa-rafael-kids-series (Mondays 4:15-5:00 PM, Sep 28 - Dec 7, skipping 11/23, ages 4-8, $250 series, Stacey Capobianco). Drop-in per Metta via Alexandra; drop-in price not published. Link follows the sponsor rule (mettayogastudio.com/mama)."
     }
   ]
 }
