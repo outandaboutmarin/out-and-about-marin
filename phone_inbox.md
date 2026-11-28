@@ -6,4 +6,4 @@ commits.** See "Phone inbox" in CLAUDE.md. Skip any entry the target file alread
 
 ## Pending
 
-(empty)
+- **Phoenix Featured card (2026-11-28, Alexandra):** she will add The Phoenix's ads.json entry on the desktop, built from mockup v9 (Artist's Way graphic is in Dropbox, not the repo), to show from Dec 1. The Metta Mama card is already in ads.json and starts Dec 1 on its own.
