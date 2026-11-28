@@ -1282,6 +1282,19 @@ function mapDbUser(dbUser) {
   .ad-logo.wide img { width: 210px; height: auto; }
   .ad-contact { font-size: 0.78rem; line-height: 1.5; margin-top: 0.6rem; color: var(--text-primary); }
   .ad-contact a { color: var(--navy); }
+  /* Optional ad layout fields (2026-11-28, Metta v11): hours_style "table", locations, order with its own "contact", tag_style "pill" */
+  .ad-sched { width: 100%; border-collapse: collapse; font-size: 0.74rem; }
+  .ad-sched td { padding: .3rem .2rem; border-bottom: 0.5px solid #EDEAE4; vertical-align: top; }
+  .ad-sched tr:last-child td { border-bottom: none; }
+  .ad-sched td.d { font-weight: 600; color: var(--text-primary); white-space: nowrap; width: 2.6rem; }
+  .ad-sched td.t { white-space: nowrap; color: #444; width: 4.2rem; }
+  .ad-sched td.cl { color: var(--text-primary); }
+  .ad-sched td.cl small { display: block; color: var(--text-muted); font-size: .66rem; margin-top: 1px; }
+  .ad-sched td.l { color: var(--text-muted); text-align: right; white-space: nowrap; font-size: .66rem; }
+  .ad-sched td.d2 { font-weight: 600; color: var(--text-primary); white-space: nowrap; font-size: 0.76rem; }
+  .ad-sched td.t2 { color: #444; text-align: right; white-space: nowrap; font-size: 0.76rem; }
+  .ad-contact-plain { font-size: 0.78rem; line-height: 1.6; color: #333; }
+  .ad-contact-plain a { color: var(--navy); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
   .ad-hours { display: grid; grid-template-columns: auto 1fr; column-gap: 0.9rem; row-gap: 0.3rem; font-size: 0.82rem; margin: 0; }
   .ad-hours dt { font-weight: 500; color: var(--text-primary); }
   .ad-hours dd { margin: 0; font-weight: 300; color: #333; }
@@ -4688,7 +4701,7 @@ function openAd(id) {
   if (feat && feat.image) { var fi = adEl('div', 'ad-feat-img'); var fim = document.createElement('img'); fim.src = feat.image; fim.alt = adText(feat.image_alt) || ''; fi.appendChild(fim); card.appendChild(fi); }
   else if (a.logo) { var lg = adEl('div', a.logo_wide ? 'ad-logo wide' : 'ad-logo'); var im = document.createElement('img'); im.src = a.logo; im.alt = a.name + ' logo'; lg.appendChild(im); card.appendChild(lg); }
 
-  var featSec = null;
+  var featSec = null, S = {}, ownContact = !!(a.order && a.order.indexOf('contact') >= 0);
   if (feat && feat.title) {
     var fs = adSection(adText(feat.label) || (es ? 'Evento destacado' : 'Featured event'));
     fs.appendChild(adEl('div', 'ad-feat-title', adText(feat.title)));
@@ -4700,32 +4713,52 @@ function openAd(id) {
   // An ad with no single address (a class that moves between parks, 2026-10-09) skips Where and
   // carries its places in the hours table instead; it also gets no Directions button below.
   var where = adSection(es ? 'Dónde' : 'Where');
-  if (a.address) {
+  if (a.locations && a.locations.length) {
+    a.locations.forEach(function (l) { var lr = adRow('pin', adText(l.name)); lr.content.appendChild(adEl('div', 'detail-row-value', adText(l.address))); where.appendChild(lr.row); });
+  } else if (a.address) {
     var w = adRow('pin', es ? 'Lugar y dirección' : 'Venue & address');
     w.content.appendChild(adEl('div', 'detail-row-value', a.venue || a.name));
     w.content.appendChild(adEl('div', 'detail-row-sub', a.address + (a.address_note ? ' · ' + adText(a.address_note) : '')));
     where.appendChild(w.row);
   }
-  if (a.phone) {
+  if (a.phone && !ownContact) {
     var ph = adRow('phone', es ? 'Teléfono' : 'Phone');
     var pv = adEl('div', 'detail-row-value ad-phone'); var pl = adEl('a', null, a.phone); pl.href = 'tel:' + a.phone.replace(/[^\d+]/g, '');
     pv.appendChild(pl); ph.content.appendChild(pv); where.appendChild(ph.row);
   }
-  if (a.address || a.phone) card.appendChild(where);
+  if (where.childNodes.length > 1) S.where = where;
 
   if (a.hours && a.hours.length) {
     var hs = adSection(adText(a.hours_label) || (es ? 'Horario' : 'Hours'));
+    if (a.hours_style === 'table') {
+      var tb = adEl('table', 'ad-sched');
+      a.hours.forEach(function (x) {
+        var tr = document.createElement('tr');
+        if (!x.name) { tr.appendChild(adEl('td', 'd2', adText(x.days))); tr.appendChild(adEl('td', 't2', adText(x.time))); tb.appendChild(tr); return; }   // two-column store hours (Phoenix v9)
+        tr.appendChild(adEl('td', 'd', adText(x.days))); tr.appendChild(adEl('td', 't', adText(x.time)));
+        var cl = adEl('td', 'cl', adText(x.name)); if (x.sub) cl.appendChild(adEl('small', null, adText(x.sub))); tr.appendChild(cl);
+        tr.appendChild(adEl('td', 'l', adText(x.place))); tb.appendChild(tr);
+      });
+      hs.appendChild(tb); S.hours = hs;
+    } else {
     var h = adRow('clock', null); var dl = adEl('dl', 'ad-hours');
     a.hours.forEach(function (x) { dl.appendChild(adEl('dt', null, adText(x.days))); dl.appendChild(adEl('dd', null, adText(x.time))); });
     h.content.appendChild(dl);
     if (a.hours_note) { var hn = adEl('div', 'detail-row-sub', adText(a.hours_note)); hn.style.marginTop = '6px'; h.content.appendChild(hn); }
-    hs.appendChild(h.row); card.appendChild(hs);
+    hs.appendChild(h.row); S.hours = hs;
+    }
   }
 
   var ab = adSection(es ? 'Acerca de' : 'About');
   ab.appendChild(adEl('div', 'description-text', adText(a.about)));
   if (a.about_strong) ab.appendChild(adEl('div', 'ad-strong', adText(a.about_strong)));
-  if (a.contact && (a.contact.phone || a.contact.email)) {
+  if (a.contact && (a.contact.phone || a.contact.email) && ownContact) {
+    var cs = adSection(es ? 'Contacto' : 'Contact'); var cc = adEl('div', 'ad-contact-plain');
+    if (a.contact.phone) { var cp2 = adEl('a', null, a.contact.phone); cp2.href = 'tel:' + a.contact.phone.replace(/[^\d+]/g, ''); cc.appendChild(cp2); }
+    if (a.contact.phone && a.contact.email) cc.appendChild(document.createTextNode(' · '));
+    if (a.contact.email) { var ce2 = adEl('a', null, a.contact.email); ce2.href = 'mailto:' + a.contact.email; cc.appendChild(ce2); }
+    cs.appendChild(cc); S.contact = cs;
+  } else if (a.contact && (a.contact.phone || a.contact.email)) {
     var ct = adEl('div', 'ad-contact'); ct.appendChild(adEl('b', null, (es ? '¿Preguntas? Contacta a ' : 'Questions? Contact ') + (a.contact.name || a.name)));
     ct.appendChild(document.createElement('br'));
     if (a.contact.phone) { var cp = adEl('a', null, a.contact.phone); cp.href = 'tel:' + a.contact.phone.replace(/[^\d+]/g, ''); ct.appendChild(cp); }
@@ -4734,8 +4767,7 @@ function openAd(id) {
     ab.appendChild(ct);
   }
   if (a.note) ab.appendChild(adEl('div', 'notes-text', adText(a.note)));
-  // With a featured event, About sits right under it (Alexandra 2026-11-28, The Phoenix); otherwise after the hours.
-  if (featSec) card.insertBefore(ab, featSec.nextSibling); else card.appendChild(ab);
+  S.about = ab;
 
   if (a.offers && a.offers.length) {
     var of = adSection(adText(a.offers_label) || (es ? 'Ofertas' : 'Offers'));
@@ -4752,16 +4784,20 @@ function openAd(id) {
       row.appendChild(b); box.appendChild(row); of.appendChild(box);
     });
     if (a.offers_how) of.appendChild(adEl('div', 'offer-how', adText(a.offers_how)));
-    card.appendChild(of);
+    S.offers = of;
   }
 
   if (a.tags && a.tags.length) {
     var ds = adSection(es ? 'Detalles' : 'Details'); var tg = adEl('div', 'detail-tags');
-    a.tags.forEach(function (t) { tg.appendChild(adEl('span', 'detail-tag ' + (t['class'] || ''), adText(t.text))); });
+    a.tags.forEach(function (t) { tg.appendChild(adEl('span', (a.tag_style === 'pill' ? 'tag ' : 'detail-tag ') + (t['class'] || ''), adText(t.text))); });
     ds.appendChild(tg);
     if (a.tags_link && a.tags_link.url) { var tl = adEl('a', 'ad-link', adText(a.tags_link.label)); tl.href = a.tags_link.url; tl.target = '_blank'; tl.rel = 'noopener'; ds.appendChild(tl); }
-    card.appendChild(ds);
+    S.tags = ds;
   }
+  // Section order: a.order if the ad sets one (Metta v11); with a featured event, About sits right under it
+  // (Alexandra 2026-11-28, The Phoenix); otherwise the original order.
+  (a.order || (featSec ? ['about', 'where', 'hours', 'offers', 'tags'] : ['where', 'hours', 'about', 'offers', 'tags']))
+    .forEach(function (k) { if (S[k]) card.appendChild(S[k]); });
   body.appendChild(card);
 
   var r1 = adEl('div', 'action-row');
@@ -6512,7 +6548,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-11-28.2';
+const APP_BUILD = '2026-11-28.3';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();
