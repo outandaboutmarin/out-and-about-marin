@@ -4688,13 +4688,14 @@ function openAd(id) {
   if (feat && feat.image) { var fi = adEl('div', 'ad-feat-img'); var fim = document.createElement('img'); fim.src = feat.image; fim.alt = adText(feat.image_alt) || ''; fi.appendChild(fim); card.appendChild(fi); }
   else if (a.logo) { var lg = adEl('div', a.logo_wide ? 'ad-logo wide' : 'ad-logo'); var im = document.createElement('img'); im.src = a.logo; im.alt = a.name + ' logo'; lg.appendChild(im); card.appendChild(lg); }
 
+  var featSec = null;
   if (feat && feat.title) {
     var fs = adSection(adText(feat.label) || (es ? 'Evento destacado' : 'Featured event'));
     fs.appendChild(adEl('div', 'ad-feat-title', adText(feat.title)));
     if (feat.meta) { var fm = adEl('div', 'ad-feat-meta', adText(feat.meta)); if (feat.meta_strong) { fm.appendChild(document.createTextNode(' · ')); fm.appendChild(adEl('b', null, adText(feat.meta_strong))); } fs.appendChild(fm); }
     if (feat.text) fs.appendChild(adEl('div', 'description-text', adText(feat.text)));
     if (feat.url) { var fb = adEl('a', 'ad-feat-btn', adText(feat.url_label) || (es ? 'Inscríbete' : 'Sign up')); fb.href = feat.url; fb.target = '_blank'; fb.rel = 'noopener'; fs.appendChild(fb); }
-    card.appendChild(fs);
+    card.appendChild(fs); featSec = fs;
   }
   // An ad with no single address (a class that moves between parks, 2026-10-09) skips Where and
   // carries its places in the hours table instead; it also gets no Directions button below.
@@ -4733,7 +4734,8 @@ function openAd(id) {
     ab.appendChild(ct);
   }
   if (a.note) ab.appendChild(adEl('div', 'notes-text', adText(a.note)));
-  card.appendChild(ab);
+  // With a featured event, About sits right under it (Alexandra 2026-11-28, The Phoenix); otherwise after the hours.
+  if (featSec) card.insertBefore(ab, featSec.nextSibling); else card.appendChild(ab);
 
   if (a.offers && a.offers.length) {
     var of = adSection(adText(a.offers_label) || (es ? 'Ofertas' : 'Offers'));
@@ -6510,7 +6512,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-11-28.1';
+const APP_BUILD = '2026-11-28.2';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();

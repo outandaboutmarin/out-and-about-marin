@@ -456,6 +456,7 @@ which made the fix easy to trust.
 - `ads.json`: Metta's start moved from 12/01 to 2026-11-28 (end 2027-02-28); new ad `phoenix-bookshop` (live 2026-11-28, no end; $80/month from 12/01), built from mockup v9.
 - `index.html` (build 2026-11-28.1): optional ads.json `feature` block for a sponsor's featured event (tile name/meta, lead position, a top image in place of the logo, and a Featured event section with a Sign up button), shown until `feature.until`, then the normal card returns by itself; `tile_icon_fill` for a round logo that fills the icon. Phoenix's feature (The Artist's Way, Jan 12) runs to 2027-01-11. Checked on Nov 28 and Jan 15: no console errors.
 - The phone inbox entry for the Phoenix card is applied.
+- Later the same day (Alexandra): on The Phoenix card, About moved directly below the Featured event (any ad with a live `feature` now shows About right after it); build 2026-11-28.2.
 
 ## 2026-11-27 (desktop): Metta Mama Yoga Studio goes live
 
