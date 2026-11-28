@@ -19901,6 +19901,48 @@
       "day": "Saturday",
       "time": "10:00 AM – 4:00 PM",
       "time_of_day": "Morning"
+    },
+    {
+      "status": "Active",
+      "featured": false,
+      "cadence": "Weekly",
+      "season_start": "",
+      "season_end": "",
+      "event_date": "",
+      "expires": "",
+      "organization": "Metta Mama Yoga Studio (Metta Yoga)",
+      "type": "Fitness",
+      "indoor_outdoor": "Indoor",
+      "active_sedentary": "Active",
+      "registration": "Book on the Metta Yoga app or website",
+      "website": "https://www.mettayogastudio.com/mama",
+      "partner": true,
+      "logo": "assets/ads/metta_mark_240.png",
+      "contact": {
+        "name": "Metta Mama Yoga Studio",
+        "phone": "(415) 868-3569",
+        "email": "hello@mettayogastudio.com",
+        "instagram": "mettamamamarin"
+      },
+      "socials": {
+        "instagram": "mettamamamarin"
+      },
+      "venue": "Metta Yoga San Rafael",
+      "address": "851 4th Street, San Rafael, CA 94901",
+      "town": "San Rafael",
+      "location_group": "San Rafael",
+      "id": 2182,
+      "day": "Friday",
+      "time": "9:15 AM",
+      "time_of_day": "Morning",
+      "event_name": "Prenatal Yoga",
+      "event_name_es": "Yoga prenatal",
+      "description": "Create space mentally, physically and spiritually, and build community with other expecting moms. Each class includes breathwork, mindfulness meditation and movement to support every stage of pregnancy and help with labor preparation, with modifications and props for every stage. First class free!",
+      "description_es": "Crea espacio mental, física y espiritualmente, y forma comunidad con otras futuras mamás. Cada clase incluye respiración, meditación y movimiento para acompañar cada etapa del embarazo y prepararte para el parto, con modificaciones y accesorios para cada etapa. ¡Primera clase gratis!",
+      "ages": "Expecting moms",
+      "cost": "$35 drop-in · first class free; memberships & discounted packages available",
+      "notes": "First class free for new students (pre and postnatal classes), then $35 drop-in. Memberships and discounted packages available.",
+      "internal_notes": "Added 2026-11-28 at Alexandra's request (Fri 9:15 AM Prenatal, on mettayogastudio.com/mama, read 2026-11-28); copied from the Tuesday Prenatal Yoga record 2176. Metta Mama is a Featured Partner (card live 11/28/2026, billing from 12/01/2026). Weekly sweep source #54 re-checks times, days, locations and adds/removals. Sponsor link rule: website = /mama."
     }
   ]
 }
