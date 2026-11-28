@@ -450,6 +450,18 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
+## 2026-11-27 (phone session, synced on the desktop)
+
+- **Mill Valley Historical Society walks (Nov 27):** each start time split into its own listing (the 11 AM Sloughs to
+  Streets walk; the 10 and 11 AM Downtown Landmarks walks), alongside 2136/2137; all past now and dropped by the daily update.
+- **Added:** French Story Time @ Milkweed (2166, Fri Dec 4, 10 AM, Milkweed Kids, Mill Valley).
+- **Rule:** always use Pacific time, never UTC, for today/tomorrow and dates (CLAUDE.md cloud standing instructions;
+  memory note `oaa-pacific-time`).
+- **Desktop, Nov 26 evening:** partner workbook brought current for every sponsor and prospect (Leadsheet notes column,
+  five prospect rows, new Metta tab); Metta Featured card mockup v7 (9 weekly classes, memberships line and pill, pricing
+  link, Offer section removed) for Metta's final confirmation; the local copy of the context-transfer skill was removed
+  (the claude.ai plugin copy, identical, is the one to use).
+
 ## 2026-11-26: Marin weekly sweep (Nov 27 - Jan 4), processed the same day (`700a785`)
 
 - **Instagram:** **2026-11-26: Thanksgiving-week Template A posts SCHEDULED (Alexandra approved, comment B on both):** weekend roundup **Fri Nov 27, 4 PM** (moved from 7 PM; Metricool 443739975, was 443737011; the storytime gift guide moved to **Fri 9 AM**, now 443739965: Hook at the Light Spectacular Sat, The Secret Garden family matinee Sun, Mart tree lighting + Nutcracker storytime Sun) and week ahead **Sun Nov 29, 5 PM** (443737031: Perry's tree lighting and Hot Cocoa PJ Reading Wed Dec 2, Sausalito tree lighting Thu Dec 3; cover label THE WEEK AHEAD). Builder `build_week_of_nov26.py`; slides staged `ig/week_of_nov26/` (md5-verified; delete after Nov 29). Captions use only 🤍/💙. Weekend roundup for Dec 4-6 not built yet.
