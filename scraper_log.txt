@@ -1,16 +1,16 @@
 Out AND About Marin — Scraper Run Report
-Date: 2026-11-27
-Time: 21:43:01
+Date: 2026-11-28
+Time: 02:34:29
 
-Total events in events.json: 622
-Active events: 558
+Total events in events.json: 616
+Active events: 551
 Temp. closed: 0
 
 Events by type:
-  Community Event: 160
+  Community Event: 155
   Farmers Market: 18
   Festival: 31
-  Fitness: 16
+  Fitness: 15
   Grown-Ups Only!: 56
   Kids Programs: 113
   Library: 151
@@ -29,7 +29,7 @@ Events by town:
   Marin City: 8
   Marin County: 1
   Marshall: 1
-  Mill Valley: 72
+  Mill Valley: 67
   Montrose: 12
   Muir Beach: 4
   Napa: 14
@@ -42,7 +42,7 @@ Events by town:
   Ross: 9
   San Anselmo: 16
   San Geronimo: 2
-  San Rafael: 75
+  San Rafael: 74
   Sausalito: 25
   St. Helena: 25
   Stinson Beach: 1
