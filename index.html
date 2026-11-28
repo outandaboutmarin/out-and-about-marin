@@ -1257,9 +1257,12 @@ function mapDbUser(dbUser) {
      told apart by the sponsor's logo in the icon circle, a SPONSORED kicker and a border
      in the sponsor's colour (--ad-color / --ad-ink, set per ad from ads.json). */
   /* Bolder outline (Alexandra 2026-10-25): 3px border, a soft glow and a light tint, all in the sponsor's colour */
-  .feat-tile.ad { border: 3px solid var(--ad-color, #AACDCF); padding: 10px 10px 9px;
-    background: color-mix(in srgb, var(--ad-color, #AACDCF) 9%, #fff);
-    box-shadow: 0 4px 14px color-mix(in srgb, var(--ad-color, #AACDCF) 45%, transparent); }
+  .feat-tile.ad { border: var(--ad-border-w, 3px) solid var(--ad-border, var(--ad-color, #AACDCF)); padding: 10px 10px 9px;
+    background: color-mix(in srgb, var(--ad-color, #AACDCF) var(--ad-tint, 9%), #fff);
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--ad-color, #AACDCF) var(--ad-glow, 45%), transparent); }
+  /* Optional per-ad tile overrides from ads.json (2026-11-27, Metta): tile_border, tile_border_w, tile_tint, tile_glow */
+  .ad-strong { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); line-height: 1.55; margin-top: 0.4rem; }
+  .ad-link { display: inline-block; margin-top: 0.55rem; font-size: 0.78rem; font-weight: 600; color: var(--navy); text-decoration: underline; text-underline-offset: 2px; }
   #adBody .description-text { white-space: pre-line; }  /* a blank line in an ad's about text starts a new paragraph */
   .feat-tile.ad .ft-icon { background: #fff; border: 1px solid #e3eeef; overflow: hidden; }
   .feat-tile.ad .ft-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
@@ -4612,7 +4615,9 @@ function openResourcesTop() {
   window.scrollTo(0, 0);
 }
 function adTileHTML(a) {
-  var style = '--ad-color:' + adEsc(a.color || '#AACDCF') + ';--ad-ink:' + adEsc(a.color_ink || '#3E6E72');
+  var style = '--ad-color:' + adEsc(a.color || '#AACDCF') + ';--ad-ink:' + adEsc(a.color_ink || '#3E6E72')
+    + (a.tile_border ? ';--ad-border:' + adEsc(a.tile_border) : '') + (a.tile_border_w ? ';--ad-border-w:' + adEsc(a.tile_border_w) : '')
+    + (a.tile_tint ? ';--ad-tint:' + adEsc(a.tile_tint) : '') + (a.tile_glow ? ';--ad-glow:' + adEsc(a.tile_glow) : '');
   return '<div class="feat-card" onclick="openAd(\'' + adEsc(a.id) + '\')"><div class="feat-tile ad" style="' + style + '"><div class="ft-top"><span class="ft-icon"><img src="' + adEsc(a.tile_icon || a.logo) + '" alt=""></span><div class="ft-kicker">' + (currentLang === 'es' ? 'Patrocinado' : 'Sponsored') + '</div></div><div class="ft-name">' + adEsc(a.name) + '</div><div class="ft-meta"><b>' + adEsc(adText(a.tile_meta)) + '</b>' + (a.town ? ' · ' + adEsc(a.town) : '') + '</div></div></div>';
 }
 function adEl(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
@@ -4691,6 +4696,7 @@ function openAd(id) {
 
   var ab = adSection(es ? 'Acerca de' : 'About');
   ab.appendChild(adEl('div', 'description-text', adText(a.about)));
+  if (a.about_strong) ab.appendChild(adEl('div', 'ad-strong', adText(a.about_strong)));
   if (a.contact && (a.contact.phone || a.contact.email)) {
     var ct = adEl('div', 'ad-contact'); ct.appendChild(adEl('b', null, (es ? '¿Preguntas? Contacta a ' : 'Questions? Contact ') + (a.contact.name || a.name)));
     ct.appendChild(document.createElement('br'));
@@ -4708,6 +4714,8 @@ function openAd(id) {
       var box = adEl('div', 'offer');
       box.appendChild(adEl('div', 'offer-title', adText(o.title)));
       if (o.sub) box.appendChild(adEl('div', 'offer-sub', adText(o.sub)));
+      if (o.url) { var ol = adEl('a', 'ad-link', adText(o.url_label) || (es ? 'Canjear oferta →' : 'Redeem offer →')); ol.href = o.url; ol.target = '_blank'; ol.rel = 'noopener'; box.appendChild(ol); }
+      if (o.note) box.appendChild(adEl('div', 'offer-how', adText(o.note)));
       if (!o.code) { of.appendChild(box); return; }   // an offer with no code (e.g. first class free)
       var row = adEl('div', 'offer-code'); row.appendChild(adEl('span', 'code', o.code));
       var b = adEl('button', 'copy', es ? 'Copiar código' : 'Copy code'); b.type = 'button';
@@ -4721,7 +4729,9 @@ function openAd(id) {
   if (a.tags && a.tags.length) {
     var ds = adSection(es ? 'Detalles' : 'Details'); var tg = adEl('div', 'detail-tags');
     a.tags.forEach(function (t) { tg.appendChild(adEl('span', 'detail-tag ' + (t['class'] || ''), adText(t.text))); });
-    ds.appendChild(tg); card.appendChild(ds);
+    ds.appendChild(tg);
+    if (a.tags_link && a.tags_link.url) { var tl = adEl('a', 'ad-link', adText(a.tags_link.label)); tl.href = a.tags_link.url; tl.target = '_blank'; tl.rel = 'noopener'; ds.appendChild(tl); }
+    card.appendChild(ds);
   }
   body.appendChild(card);
 
@@ -6473,7 +6483,7 @@ function swimInitTopScrollSync() {
 // if a newer build is live it reloads, so a tab left open never runs old code against new data.
 // That is what put Colorado events in the Marin feed on 2026-10-10 (pre-region page + new events.json).
 // Reloads at most once per remote build (sessionStorage guard), so CDN lag cannot cause a loop.
-const APP_BUILD = '2026-11-26.1';
+const APP_BUILD = '2026-11-27.1';
 let lastBuildCheck = 0;
 function checkForNewBuild(force) {
   const now = Date.now();

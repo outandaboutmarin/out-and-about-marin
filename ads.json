@@ -303,6 +303,242 @@
       "website_label": "kitschandsync.com",
       "instagram": "kitschandsync",
       "internal_notes": "Built 2026-10-22 at Alexandra's instruction from the approved mockup OAA Sponsorship and Partners/Kitsch + Sync/Kitsch + Sync - Featured card mockup (2026-10-21). Kitsch + Sync signed a 3-month Featured sponsorship 2026-10-22 (Leadsheet), so start 2026-10-22 and end 2027-01-21. Address, hours, $13 pass, memberships, socks, waiver from kitschandsync.com read 2026-10-21. Coming-up list removed 2026-10-22 at Alexandra's request (it was hand-typed and would go stale). Tile border bright yellow #FFD200 per Alexandra (their logo's own gold is #EABD4F); kicker text stays navy for contrast. Facebook left off: their page has no slug, only /people/Kitsch-Sync/61583055145909/. Billing: item 22."
+    },
+    {
+      "id": "metta-mama",
+      "active": true,
+      "start": "2026-12-01",
+      "end": "2027-02-28",
+      "name": "Metta Mama Yoga Studio",
+      "logo": "assets/ads/metta_mark_240.png",
+      "tile_icon": "assets/ads/metta_mark_240.png",
+      "color": "#6E97A8",
+      "color_ink": "#3B4F66",
+      "tile_border": "#0D1B3E",
+      "tile_border_w": "4px",
+      "tile_tint": "26%",
+      "tile_glow": "60%",
+      "tile_meta": {
+        "en": "Mama/Kids Yoga",
+        "es": "Yoga mamá/niños"
+      },
+      "town": "",
+      "badge": {
+        "en": "Sponsored · Local partner",
+        "es": "Patrocinado · Colaborador local"
+      },
+      "subtitle": {
+        "en": "Pre & postnatal yoga · San Rafael & Sausalito",
+        "es": "Yoga prenatal y posnatal · San Rafael y Sausalito"
+      },
+      "venue": "Metta Yoga San Rafael",
+      "address": "851 4th Street, San Rafael, CA 94901",
+      "address_note": {
+        "en": "also Cloudbreak Yoga, 1621 Bridgeway, Sausalito",
+        "es": "también Cloudbreak Yoga, 1621 Bridgeway, Sausalito"
+      },
+      "phone": "(415) 868-3569",
+      "hours_label": {
+        "en": "Weekly classes for moms, moms-to-be & little ones",
+        "es": "Clases semanales para mamás, futuras mamás y pequeños"
+      },
+      "hours": [
+        {
+          "days": {
+            "en": "Mon",
+            "es": "Lun"
+          },
+          "time": {
+            "en": "10:45 AM · Mom & Baby Postnatal Yoga · San Rafael",
+            "es": "10:45 AM · Yoga posnatal para mamá y bebé · San Rafael"
+          }
+        },
+        {
+          "days": {
+            "en": "Mon",
+            "es": "Lun"
+          },
+          "time": {
+            "en": "1:15 PM · Baby Wearing Bootcamp (Postnatal) · Cloudbreak",
+            "es": "1:15 PM · Bootcamp con bebé en portabebés (posnatal) · Cloudbreak"
+          }
+        },
+        {
+          "days": {
+            "en": "Mon",
+            "es": "Lun"
+          },
+          "time": {
+            "en": "6:45 PM · Gentle Prenatal Yoga · San Rafael",
+            "es": "6:45 PM · Yoga prenatal suave · San Rafael"
+          }
+        },
+        {
+          "days": {
+            "en": "Tue",
+            "es": "Mar"
+          },
+          "time": {
+            "en": "9:15 AM · Yoga for Mom & Tots · San Rafael",
+            "es": "9:15 AM · Yoga para mamá y pequeños · San Rafael"
+          }
+        },
+        {
+          "days": {
+            "en": "Tue",
+            "es": "Mar"
+          },
+          "time": {
+            "en": "10:45 AM · Prenatal Yoga · San Rafael",
+            "es": "10:45 AM · Yoga prenatal · San Rafael"
+          }
+        },
+        {
+          "days": {
+            "en": "Wed",
+            "es": "Mié"
+          },
+          "time": {
+            "en": "10:45 AM · Baby Wearing Bootcamp (Postnatal) · San Rafael",
+            "es": "10:45 AM · Bootcamp con bebé en portabebés (posnatal) · San Rafael"
+          }
+        },
+        {
+          "days": {
+            "en": "Wed",
+            "es": "Mié"
+          },
+          "time": {
+            "en": "6:45 PM · Birth Prep Prenatal Yoga · San Rafael",
+            "es": "6:45 PM · Yoga prenatal de preparación para el parto · San Rafael"
+          }
+        },
+        {
+          "days": {
+            "en": "Thu",
+            "es": "Jue"
+          },
+          "time": {
+            "en": "9:15 AM · Yoga for Mom & Tots · San Rafael",
+            "es": "9:15 AM · Yoga para mamá y pequeños · San Rafael"
+          }
+        },
+        {
+          "days": {
+            "en": "Thu",
+            "es": "Jue"
+          },
+          "time": {
+            "en": "10:45 AM · Prenatal Yoga · San Rafael",
+            "es": "10:45 AM · Yoga prenatal · San Rafael"
+          }
+        },
+        {
+          "days": {
+            "en": "Fri",
+            "es": "Vie"
+          },
+          "time": {
+            "en": "10:45 AM · Mom & Baby Postnatal Yoga · San Rafael",
+            "es": "10:45 AM · Yoga posnatal para mamá y bebé · San Rafael"
+          }
+        },
+        {
+          "days": {
+            "en": "Fri",
+            "es": "Vie"
+          },
+          "time": {
+            "en": "1:30 PM · Preparing the Body for Pregnancy (series, Jan 8 – Feb 26) · San Rafael",
+            "es": "1:30 PM · Preparar el cuerpo para el embarazo (serie, 8 ene – 26 feb) · San Rafael"
+          }
+        },
+        {
+          "days": {
+            "en": "Sat",
+            "es": "Sáb"
+          },
+          "time": {
+            "en": "10:30 AM · Yoga for Mom & Tots · San Rafael",
+            "es": "10:30 AM · Yoga para mamá y pequeños · San Rafael"
+          }
+        }
+      ],
+      "about": {
+        "en": "A yoga studio and community for every stage of becoming a mom, from preparing for pregnancy to postpartum and the toddler years. Classes build strength and calm the nervous system, and babies and little ones come along. Kids yoga series and family classes too.",
+        "es": "Un estudio de yoga y una comunidad para cada etapa de la maternidad, desde la preparación para el embarazo hasta el posparto y los primeros años. Las clases dan fuerza y calman el sistema nervioso, y los bebés y pequeños vienen contigo. También hay series de yoga para niños y clases en familia."
+      },
+      "about_strong": {
+        "en": "Both Memberships and Discounted Packages are available; Drop in classes are $35.",
+        "es": "Hay membresías y paquetes con descuento; las clases sueltas cuestan $35."
+      },
+      "contact": {
+        "name": "Metta Yoga",
+        "phone": "(415) 868-3569",
+        "email": "hello@mettayogastudio.com"
+      },
+      "offers_label": {
+        "en": "Offer for Out AND About Marin readers",
+        "es": "Oferta para lectores de Out AND About Marin"
+      },
+      "offers": [
+        {
+          "title": {
+            "en": "Your first Metta Mama class is free",
+            "es": "Tu primera clase de Metta Mama es gratis"
+          },
+          "sub": {
+            "en": "Pregnant or new to motherhood? Pick any prenatal or postnatal class as your free first class. Redeem it online, then reserve your spot on the San Rafael schedule. No code needed.",
+            "es": "¿Embarazada o mamá primeriza? Elige cualquier clase prenatal o posnatal como tu primera clase gratis. Canjéala en línea y reserva tu lugar en el horario de San Rafael. No necesitas código."
+          },
+          "url": "https://mettayogasr.brandbot-checkout.com/free-metta-mama-class-XeE.html",
+          "url_label": {
+            "en": "Redeem your free class →",
+            "es": "Canjea tu clase gratis →"
+          }
+        }
+      ],
+      "tags": [
+        {
+          "text": {
+            "en": "Pre & postnatal yoga",
+            "es": "Yoga prenatal y posnatal"
+          },
+          "class": "tag-fitness"
+        },
+        {
+          "text": {
+            "en": "Moms, babies & kids",
+            "es": "Mamás, bebés y niños"
+          },
+          "class": "tag-age"
+        },
+        {
+          "text": {
+            "en": "$35 · first class free",
+            "es": "$35 · primera clase gratis"
+          },
+          "class": "tag-paid"
+        },
+        {
+          "text": {
+            "en": "Memberships & packages available",
+            "es": "Membresías y paquetes disponibles"
+          },
+          "class": "tag-paid"
+        }
+      ],
+      "tags_link": {
+        "url": "https://www.mettayogastudio.com/pricing",
+        "label": {
+          "en": "See memberships & class packages →",
+          "es": "Ver membresías y paquetes de clases →"
+        }
+      },
+      "website": "https://www.mettayogastudio.com/mama",
+      "website_label": "website",
+      "instagram": "mettamamamarin",
+      "internal_notes": "Posted 2026-11-27 at Alexandra's go ('I approve of the Featured Partner Carousel, please commit'); live 2026-12-01 to 2027-02-28 (3-month Featured Partner; billing from 12/01/2026). Built from mockup v11 (OAA Sponsorship and Partners/Metta). Tile: bold navy outline 4px, blue #6E97A8 at 26% tint, 60% glow (new per-ad fields). Free first class offer from mettayogastudio.com/google-ads-intro-offer-metta-mama-free-class. Weekly classes are partner events 2168-2179; kids series 2167. Sweep source #54."
     }
   ]
 }

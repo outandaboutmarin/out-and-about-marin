@@ -450,6 +450,13 @@ again. With +1.50 ft the double rounding was harmless; with Lucky Drive's new +1
 display.** The proof she asked for was a plain table (NOAA value, plus the adjustment, the shown value) for two weeks,
 which made the fix easy to trust.
 
+## 2026-11-27 (desktop): Metta Mama Yoga Studio goes live
+
+- Alexandra approved all of it: the 12 weekly partner classes (ids 2168-2179, from mettayogastudio.com/mama), the Fall Kids Yoga Series (2167, added earlier the same day) and the v11 Featured card.
+- Featured ad `metta-mama` in `ads.json`, live 2026-12-01 to 2027-02-28 (3-month Featured Partner); **billing starts 12/01/2026**.
+- `index.html` (build 2026-11-27.1): new optional ad fields, all backward-compatible: `tile_border`, `tile_border_w`, `tile_tint`, `tile_glow` (per-sponsor tile styling), offer `url`/`url_label`, `about_strong` (bold About line), `tags_link` (link under Details). Checked with the date set to Dec 2: tile, card, both links, no console errors.
+- Source #54 added to `sources/marin.md`: every week, check class times, days, locations and adds/removals, and propose new events from the page.
+
 ## 2026-11-27 (phone session, synced on the desktop)
 
 - **Mill Valley Historical Society walks (Nov 27):** each start time split into its own listing (the 11 AM Sloughs to
